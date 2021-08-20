@@ -89,7 +89,7 @@ function yoast_replace_trail(array $crumbs): array {
   return [
     $home,
     get_programs_archive_crumb(),
-    ['text' => 'Filtered Results']
+    ['text' => 'Filtered Results', 'url' => null]
   ];
 }
 
@@ -127,6 +127,6 @@ function aioseo_replace_trail(array $crumbs): array
       'label' => $crumb['text'],
       'link' => $crumb['url'],
     ],
-    ['label' => 'Filtered Results']
+    ['label' => 'Filtered Results', 'link' => 'null']
   ];
 }
