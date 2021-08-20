@@ -30,7 +30,7 @@ $includes = [
   '/src/template.php',
   '/src/template-tags.php',
   '/src/subpages.php',
-  // '/src/assets.php'
+  '/src/breadcrumbs.php',
 ];
 
 foreach ($includes as $subpath) {
