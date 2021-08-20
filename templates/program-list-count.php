@@ -23,6 +23,5 @@ if ($wp_query->found_posts) : ?>
     ?>
   </span>
 </div>
-<pre><?php print_r($wp_query); ?></pre>
 <?php endif;
 
