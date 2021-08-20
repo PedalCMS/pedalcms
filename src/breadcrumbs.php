@@ -4,6 +4,7 @@ namespace InvisibleUs\Programs;
 
 // Breadcrumb NavXT support.
 add_action('bcn_before_fill', __NAMESPACE__ . '\navxt_add_subpage');
+add_action('bcn_after_fill', __NAMESPACE__ . '\navxt_replace_archive_trail');
 add_filter('bcn_breadcrumb_linked', __NAMESPACE__ . '\navxt_breadcrumb_linked', 10, 3);
 
 // Yoast SEO Breadcrumb support.
@@ -12,13 +13,36 @@ add_filter('wpseo_breadcrumb_links', __NAMESPACE__ . '\yoast_add_subpage');
 // All in One SEO Breadcrumb support.
 add_filter('aioseo_breadcrumbs_trail', __NAMESPACE__ . '\aioseo_add_subpage');
 
-function navxt_add_subpage(object $breadcrumb_trail)
-{
+function get_programs_archive_crumb(): array {
+  return [
+    'text' => 'Programs',
+    'url' => get_post_type_archive_link( 'nvis_program' )
+  ];
+}
+
+function navxt_add_subpage(object $trail) {
   if (is_singular('nvis_program')) {
     $subpage = nvis_prog_get_active_subpage();
     $title = (nvis_prog_get_subpages())[$subpage];
     // TODO: Add support for "Link Current Item" feature.
-    $breadcrumb_trail->add(new \bcn_breadcrumb($title, null, [], null, null, false));
+    $trail->add(new \bcn_breadcrumb($title, null, [], null, null, false));
+  }
+}
+
+function navxt_replace_archive_trail(object $trail) {
+  if (nvis_prog_is_filtered_results()) {
+    if ($trail->opt['bhome_display']) {
+      $home = array_pop($trail->breadcrumbs);
+    } 
+    $trail->breadcrumbs = [];
+    $crumb = get_programs_archive_crumb();
+    
+    $trail->add(new \bcn_breadcrumb('Filtered Results', null, [], null, null, false));
+    $trail->add(new \bcn_breadcrumb($crumb['text'], null, [], $crumb['url'], null, true));
+
+    if ($trail->opt['bhome_display']) {
+      $trail->breadcrumbs[] = $home;
+    } 
   }
 }
 
