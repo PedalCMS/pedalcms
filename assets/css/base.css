@@ -244,6 +244,21 @@ article.nvis_program .empty-state-message,
   animation: nvis-fade-in-left .25s ease-in-out;
 }
 
+.related-post {
+  display: flex;
+  /* flex-direction: row-reverse; */
+  gap: calc(2 * var(--nvis-prog-spacing));
+  margin-bottom: calc(4 * var(--nvis-prog-spacing));
+}
+
+.related-post__title {
+  margin-bottom: var(--nvis-prog-spacing);
+}
+
+.related-post__more {
+  margin: var(--nvis-prog-spacing) 0;
+}
+
 @keyframes nvis-fade-in-left {
   0% {
     opacity: 0;
