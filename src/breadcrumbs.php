@@ -16,16 +16,23 @@ add_filter('aioseo_breadcrumbs_trail', __NAMESPACE__ . '\aioseo_add_subpage');
 function get_programs_archive_crumb(): array {
   return [
     'text' => 'Programs',
-    'url' => get_post_type_archive_link( 'nvis_program' )
+    'url' => get_post_type_archive_link('nvis_program')
+  ];
+}
+
+function get_program_subpage_crumb(): array {
+  $subpage = nvis_prog_get_active_subpage();
+  return [
+    'text' => (nvis_prog_get_subpages())[$subpage],
+    'url' => nvis_prog_subpage_link($subpage, false)
   ];
 }
 
 function navxt_add_subpage(object $trail) {
   if (is_singular('nvis_program')) {
-    $subpage = nvis_prog_get_active_subpage();
-    $title = (nvis_prog_get_subpages())[$subpage];
-    // TODO: Add support for "Link Current Item" feature.
-    $trail->add(new \bcn_breadcrumb($title, null, [], null, null, false));
+    $crumb = get_program_subpage_crumb();
+    $linked = (bool) $trail->opt['bcurrent_item_linked'];
+    $trail->add(new \bcn_breadcrumb($crumb['text'], null, [], $crumb['url'], null, $linked));
   }
 }
 
@@ -56,10 +63,9 @@ function navxt_breadcrumb_linked(bool $linked, array $types, int $id = null): bo
   return $linked;
 }
 
+
 function yoast_add_subpage(array $crumbs): array
 {
-  global $post;
-
   if (is_singular('nvis_program')) {
     $subpage = nvis_prog_get_active_subpage();
     $title = (nvis_prog_get_subpages())[$subpage];
