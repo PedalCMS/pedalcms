@@ -11,7 +11,7 @@ add_filter('bcn_breadcrumb_linked', __NAMESPACE__ . '\navxt_breadcrumb_linked', 
 add_filter('wpseo_breadcrumb_links', __NAMESPACE__ . '\yoast_update_trail');
 
 // All in One SEO Breadcrumb support.
-add_filter('aioseo_breadcrumbs_trail', __NAMESPACE__ . '\aioseo_add_subpage');
+add_filter('aioseo_breadcrumbs_trail', __NAMESPACE__ . '\aioseo_update_trail');
 
 function get_programs_archive_crumb(): array {
   return [
@@ -93,15 +93,40 @@ function yoast_replace_trail(array $crumbs): array {
   ];
 }
 
-function aioseo_add_subpage(array $crumbs): array
-{
+function aioseo_update_trail(array $crumbs): array {
   if (is_singular('nvis_program')) {
-    $crumb = get_program_subpage_crumb();
-    $crumbs[] = [
-      'label' => $crumb['text'],
-      'link' => $crumb['url'],
-    ];
+    return aioseo_add_subpage($crumbs);
+  }
+
+  if (nvis_prog_is_filtered_results()) {
+    return aioseo_replace_trail($crumbs);
   }
 
   return $crumbs;
+}
+
+function aioseo_add_subpage(array $crumbs): array
+{
+  $crumb = get_program_subpage_crumb();
+  $crumbs[] = [
+    'label' => $crumb['text'],
+    'link' => $crumb['url'],
+  ];
+
+  return $crumbs;
+}
+
+function aioseo_replace_trail(array $crumbs): array
+{
+  $home = array_shift($crumbs);
+  $crumb = get_programs_archive_crumb();
+
+  return [
+    $home,
+    [
+      'label' => $crumb['text'],
+      'link' => $crumb['url'],
+    ],
+    ['label' => 'Filtered Results']
+  ];
 }
