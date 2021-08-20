@@ -67,13 +67,7 @@ function navxt_breadcrumb_linked(bool $linked, array $types, int $id = null): bo
 function yoast_add_subpage(array $crumbs): array
 {
   if (is_singular('nvis_program')) {
-    $subpage = nvis_prog_get_active_subpage();
-    $title = (nvis_prog_get_subpages())[$subpage];
-
-    $crumbs[] = [
-      'text' => $title,
-      'url' => nvis_prog_subpage_link($subpage, false),
-    ];
+    $crumbs[] = get_program_subpage_crumb();
   }
 
   return $crumbs;
@@ -81,15 +75,11 @@ function yoast_add_subpage(array $crumbs): array
 
 function aioseo_add_subpage(array $crumbs): array
 {
-  global $post;
-
   if (is_singular('nvis_program')) {
-    $subpage = nvis_prog_get_active_subpage();
-    $title = (nvis_prog_get_subpages())[$subpage];
-    // error_log(print_r($crumbs, true));
+    $crumb = get_program_subpage_crumb();
     $crumbs[] = [
-      'label' => $title,
-      'link' => nvis_prog_subpage_link($subpage, false),
+      'label' => $crumb['text'],
+      'link' => $crumb['url'],
     ];
   }
 
