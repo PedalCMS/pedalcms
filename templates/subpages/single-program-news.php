@@ -4,7 +4,7 @@
         <h2 class="section-head">News</h2>
 
         <?php nvis_prog_get_template_part('single-program-subpage-lead-content'); ?>
-        <?php nvis_prog_get_template_part('single-program-related-news'); ?>
+        <?php nvis_prog_get_template_part('single-program-related-posts'); ?>
     </div>
 
 <?php endif; ?>
