@@ -118,15 +118,15 @@ function aioseo_add_subpage(array $crumbs): array
 
 function aioseo_replace_trail(array $crumbs): array
 {
-  $home = array_shift($crumbs);
-  $crumb = get_programs_archive_crumb();
+  $crumbs = [];
+  $home = aioseo()->breadcrumbs->maybeGetHomePageCrumb();
 
-  return [
-    $home,
-    [
-      'label' => $crumb['text'],
-      'link' => $crumb['url'],
-    ],
-    ['label' => 'Filtered Results', 'link' => 'null']
-  ];
+  if ($home) {
+    $crumbs[] = $home;
+  }
+
+  $crumbs[] = aioseo()->breadcrumbs->getPostTypeArchiveCrumb(get_queried_object());
+  $crumbs[] = ['label' => 'Filtered Results', 'link' => 'null'];
+
+  return $crumbs;
 }
