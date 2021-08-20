@@ -5,6 +5,12 @@ function nvis_prog_get_template_part(string $template, array $data = [])
   \InvisibleUs\Programs\TemplateManager::loadTemplate($template, $data);
 }
 
+function nvis_prog_is_filtered_results(): bool {
+  return 
+    is_post_type_archive('nvis_program') && 
+    (is_search() || is_tax());
+}
+
 function nvis_prog_has_news(): bool {
   // TODO: Make this work.
   return false;

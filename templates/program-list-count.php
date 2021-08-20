@@ -1,6 +1,5 @@
 <?php
 global $wp_query;
-$filtered = isset($wp_query->query['s']);
 $per_page = (int) get_query_var('posts_per_page');
 $page = get_query_var('paged');
 $page = $page ? $page : 1;
@@ -9,7 +8,7 @@ $last = $first + ($wp_query->post_count - 1);
 
 if ($wp_query->found_posts) : ?>
 <div class="program-list-count">
-  <?php if ($filtered) : ?>
+  <?php if (nvis_prog_is_filtered_results()) : ?>
     <strong class="program-list-count__filtered">Filtered Results:</strong>
   <?php endif; ?>
 
@@ -24,4 +23,6 @@ if ($wp_query->found_posts) : ?>
     ?>
   </span>
 </div>
+<pre><?php print_r($wp_query); ?></pre>
 <?php endif;
+
