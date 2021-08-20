@@ -10,7 +10,12 @@ if ($tag && is_array($posts)) : ?>
         <div class="related-post-list">
             <?php foreach ($posts as $post) : ?>
                 <article class="related-post">
-                    <?php if (has_post_thumbnail($post)) the_post_thumbnail('medium', ['class' => 'related-post__image']); ?>
+                    <?php if (has_post_thumbnail($post)) : ?>
+                        <div class="related-post__image-wrapper">
+                            <?php echo get_the_post_thumbnail($post, 'medium', ['class' => 'related-post__image']); ?>
+                        </div>
+                    <?php endif; ?>
+                        
                     <div class="related-post__wrapper">
                         <header class="related-post__header">
                             <h3 class="related-post__title">

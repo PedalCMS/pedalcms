@@ -246,9 +246,17 @@ article.nvis_program .empty-state-message,
 
 .related-post {
   display: flex;
-  /* flex-direction: row-reverse; */
+  flex-direction: row-reverse;
   gap: calc(2 * var(--nvis-prog-spacing));
   margin-bottom: calc(4 * var(--nvis-prog-spacing));
+}
+
+.related-post__wrapper {
+  width: 70%;
+}
+
+.related-post__image-wrapper {
+  width: 30%;
 }
 
 .related-post__title {
