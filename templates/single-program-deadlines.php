@@ -1,11 +1,12 @@
-  <?php if (have_rows('nvis_application_deadlines', 'option')) : ?>
+  <?php $deadlines = nvis_prog_the_application_deadlines(); ?>
+  <?php if (is_array($deadlines)) : ?>
     <div class="program-deadlines">
       <h2 class="program-deadlines__title program-sidebar__title">Application Deadlines</h2>
       <dl class="program-deadlines__list">
-        <?php while (have_rows('nvis_application_deadlines', 'option')) : the_row(); ?>
-          <dt><?php echo esc_html(get_sub_field('deadline_label')); ?></dt>
-          <dd><?php echo esc_html(get_sub_field('deadline_info')); ?></dd>
-        <?php endwhile; ?>
+        <?php foreach ($deadlines as $deadline) : ?>
+          <dt><?php echo esc_html($deadline['deadline_label']); ?></dt>
+          <dd><?php echo esc_html($deadline['deadline_info']); ?></dd>
+        <?php endforeach; ?>
       </dl>
     </div>
   <?php endif;
