@@ -23,6 +23,7 @@ define('NVIS_PROGRAMS_TEMPLATE_PATH', NVIS_PROGRAMS_PATH . '/templates/');
 
 $includes = [
   '/src/_autoload.php',
+  '/src/acf.php',
   '/src/assets.php',
   '/src/content-model.php',
   '/src/admin.php',
