@@ -7,11 +7,10 @@ add_action('enter_title_here', __NAMESPACE__ . '\update_enter_title_text', PHP_I
 add_action('pre_get_posts', __NAMESPACE__ . '\update_sort_order');
 
 
-function register_content_model()
-{
-  register_post_type(
-    'nvis_program',
-    [
+function register_content_model() {
+    register_post_type(
+        'nvis_program',
+        [
       'labels' => create_post_type_labels('Program', 'Programs'),
       'public' => true,
       'publicly_queryable' => true,
@@ -28,11 +27,11 @@ function register_content_model()
       'hierarchical' => true,
       'supports' => ['title', 'thumbnail']
     ]
-  );
+    );
 
-  register_post_type(
-    'nvis_course',
-    [
+    register_post_type(
+        'nvis_course',
+        [
       'labels' => create_post_type_labels('Course', 'Courses'),
       'public' => true,
       'show_in_menu' => 'edit.php?post_type=nvis_program',
@@ -42,11 +41,11 @@ function register_content_model()
       'supports' => ['title', 'editor', 'custom-fields'],
       'rewrite' => ['slug' => 'course'],
     ]
-  );
+    );
 
-  register_post_type(
-    'nvis_faq',
-    [
+    register_post_type(
+        'nvis_faq',
+        [
       'labels' => create_post_type_labels('FAQ', 'FAQs'),
       'public' => true,
       'publicly_queryable' => true,
@@ -62,11 +61,11 @@ function register_content_model()
       'hierarchical' => true,
       'supports' => ['title', 'editor']
     ]
-  );
+    );
 
-  register_post_type(
-    'nvis_person',
-    [
+    register_post_type(
+        'nvis_person',
+        [
       'labels' => create_post_type_labels('Contact', 'Contacts'),
       'public' => true,
       'publicly_queryable' => true,
@@ -82,13 +81,13 @@ function register_content_model()
       'hierarchical' => false,
       'supports' => ['title', 'thumbnail']
     ]
-  );
+    );
 
-  // TODO: Is Levels a universal way to describe this? 
-  register_taxonomy(
-    'nvis_program_type',
-    'nvis_program',
-    [
+    // TODO: Is Levels a universal way to describe this?
+    register_taxonomy(
+        'nvis_program_type',
+        'nvis_program',
+        [
       'labels' => create_taxonomy_labels('Program Type', 'Program Types'),
       'query_var' => 'prog_type',
       'rewrite' => false,
@@ -101,12 +100,12 @@ function register_content_model()
       'show_in_nav_menus' => false,
       'show_tagcloud' => false,
     ]
-  );
+    );
 
-  register_taxonomy(
-    'nvis_program_college',
-    'nvis_program',
-    [
+    register_taxonomy(
+        'nvis_program_college',
+        'nvis_program',
+        [
       'labels' => create_taxonomy_labels('College', 'Colleges'),
       'rewrite' => false,
       'query_var' => 'prog_college',
@@ -119,12 +118,12 @@ function register_content_model()
       'show_in_nav_menus' => false,
       'show_tagcloud' => false,
     ]
-  );
+    );
 
-  register_taxonomy(
-    'nvis_program_format', 
-    'nvis_program',
-    [
+    register_taxonomy(
+        'nvis_program_format',
+        'nvis_program',
+        [
       'labels' => create_taxonomy_labels('Format', 'Formats'),
       'hierarchical' => false,
       'query_var' => 'prog_format',
@@ -136,12 +135,12 @@ function register_content_model()
       'show_in_nav_menus' => false,
       'show_tagcloud' => false,
     ]
-  );
+    );
 
-  register_taxonomy(
-    'nvis_faq_cat',
-    'nvis_faq',
-    [
+    register_taxonomy(
+        'nvis_faq_cat',
+        'nvis_faq',
+        [
       'labels' => create_taxonomy_labels('FAQ Category', 'FAQ Categories'),
       'hierarchical' => true,
       'public' => true,
@@ -150,16 +149,14 @@ function register_content_model()
       'show_in_nav_menus' => false,
       'show_tagcloud' => false,
     ]
-  );
-
+    );
 }
 
 // TODO: make strtolower optional.
-function create_post_type_labels(string $name, string $plural_name): array
-{
-  $text_domain = 'wp-program-pages';
+function create_post_type_labels(string $name, string $plural_name): array {
+    $text_domain = 'wp-program-pages';
 
-  return [
+    return [
     'name'               => _x($plural_name, 'post type general name', $text_domain),
     'singular_name'      => _x($name, 'post type singular name', $text_domain),
     'menu_name'          => _x($plural_name, 'admin menu', $text_domain),
@@ -177,11 +174,10 @@ function create_post_type_labels(string $name, string $plural_name): array
   ];
 }
 
-function create_taxonomy_labels(string $name, string $plural_name): array
-{
-  $text_domain = 'wp-program-pages';
+function create_taxonomy_labels(string $name, string $plural_name): array {
+    $text_domain = 'wp-program-pages';
 
-  return [
+    return [
     'name' => _x($plural_name, $plural_name, $text_domain),
     'singular_name' => _x($name, $name, $text_domain),
     'search_items' =>  __('Search ' . $plural_name, $text_domain),
@@ -200,8 +196,8 @@ function create_taxonomy_labels(string $name, string $plural_name): array
   ];
 }
 
-function update_enter_title_text(string $text, \WP_Post $post ): string {
-  switch ($post->post_type) {
+function update_enter_title_text(string $text, \WP_Post $post): string {
+    switch ($post->post_type) {
     case 'nvis_faq':
       return 'Enter the Question';
     case 'nvis_person':
@@ -212,29 +208,28 @@ function update_enter_title_text(string $text, \WP_Post $post ): string {
   }
 }
 
-function update_sort_order(\WP_Query $query)
-{
-  if (is_post_type_archive('nvis_program')) {
-    $query->set('order', 'ASC');
-    $query->set('orderby', 'title');
-  }
+function update_sort_order(\WP_Query $query) {
+    if (is_post_type_archive('nvis_program')) {
+        $query->set('order', 'ASC');
+        $query->set('orderby', 'title');
+    }
 };
 
 function group_faqs_by_category(array $faqs): array {
-  $cats = [];
+    $cats = [];
 
-  foreach ($faqs as $faq) {
-    $terms = get_the_terms( $faq, 'nvis_faq_cat' );
-    if (is_array($terms)) {
-      $cat = array_shift($terms);
-      if (!isset( $cats[$cat->slug] )) {
-        $cat->faqs = [];
-        $cats[ $cat->slug ] = $cat;
-      }
+    foreach ($faqs as $faq) {
+        $terms = get_the_terms($faq, 'nvis_faq_cat');
+        if (is_array($terms)) {
+            $cat = array_shift($terms);
+            if (!isset($cats[$cat->slug])) {
+                $cat->faqs = [];
+                $cats[ $cat->slug ] = $cat;
+            }
 
-      $cats[$cat->slug]->faqs[] = $faq;
+            $cats[$cat->slug]->faqs[] = $faq;
+        }
     }
-  }
 
-  return $cats;
+    return $cats;
 }
