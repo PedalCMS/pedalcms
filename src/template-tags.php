@@ -31,12 +31,7 @@ function nvis_prog_get_active_subpage(): string {
 
 // TODO: Move this to subpages.
 function nvis_prog_show_subpage(string $subpage): bool {
-  // TODO: Add Global Setting awareness.
-  return $subpage === 'index' ?
-    true :
-    (bool) get_field(
-      sprintf('show_%s_section', $subpage)
-    );  
+    return \InvisibleUs\Programs\maybe_show_subpage($subpage);
 }
 
 function nvis_prog_is_active_subpage(string $subpage): bool {
