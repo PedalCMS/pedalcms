@@ -75,6 +75,10 @@ function nvis_prog_get_action_link(string $action, mixed $program = null): strin
   return '';
 }
 
+function nvis_prog_the_application_deadlines(mixed $program = null): array {
+  return \InvisibleUs\Programs\get_program_application_deadlines($program);
+}
+
 function nvis_prog_get_faqs_by_category(array $faqs): array {
   return \InvisibleUs\Programs\group_faqs_by_category($faqs);
 }
