@@ -21,12 +21,19 @@ function get_subpages(): array {
 }
 
 function maybe_show_subpage(string $subpage): bool {
-    // TODO: Add Global Setting awareness.
-    return $subpage === 'index' ?
-        true :
-        (bool) get_field(
-            sprintf('show_%s_section', $subpage)
-        );
+    if ($subpage === 'index') {
+        return true;
+    }
+
+    $enabled = get_field('enable_program_subpages', 'option');
+
+    if (!is_array($enabled)) {
+        $enabled = [];
+    }
+
+    return
+        in_array($subpage, $enabled) &&
+        (bool) get_field(sprintf('show_%s_section', $subpage));
 }
 
 
