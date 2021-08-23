@@ -233,3 +233,30 @@ function group_faqs_by_category(array $faqs): array {
 
     return $cats;
 }
+
+function get_program_application_deadlines(mixed $program = null): array {
+    $program = $program ? get_post($program) : get_post();
+
+    // First, check if the program has specific deadlines.
+    $deadlines = get_field('application_deadlines', $program);
+    if (!empty($deadlines)) {
+        return $deadlines;
+    }
+
+    // Then, check if either the college or the program type has overriden.
+    $terms = ['college','program_type'];
+
+    foreach ($terms as $name) {
+        $term = get_field($name, $program);
+        if (!empty($term)) {
+            $deadlines = get_field('application_deadlines', $term);
+    
+            if (!empty($deadlines)) {
+                return $deadlines;
+            }
+        }
+    }
+
+    // If all else fails, just return the global setting.
+    return get_field('nvis_application_deadlines', 'option');
+}
