@@ -26,11 +26,16 @@ function acf_settings_url(string $url) {
 }
 
 function load_fields() {
-    $plugin_settings = get_plugin_acf_fields();
-    acf_add_local_field_group($plugin_settings);
+    $field_groups = [
+        get_plugin_acf_fields(),
+        get_program_type_acf_fields(),
+        get_taxonomy_app_deadlines_acf_fields()
+    ];
 
-    $program_fields = get_program_type_acf_fields();
-    acf_add_local_field_group($program_fields);
+    foreach ($field_groups as $group) {
+        acf_add_local_field_group($group);
+    }
+
 }
 
 function get_plugin_acf_fields(): array {
@@ -99,37 +104,12 @@ function get_plugin_acf_fields(): array {
                 'instructions' => 'Enter a URL pattern to create unique contact URLs for each program. You can use the following tags: {$program_guid} {$program_slug}',
                 'placeholder' => '',
             ],
-            [
-                'key' => 'field_61156b547d402',
-                'label' => 'Application Deadlines',
-                'name' => 'nvis_application_deadlines',
-                'type' => 'repeater',
-                'instructions' => '',
-                'collapsed' => 'field_61156b777d403',
-                'layout' => 'table',
-                'button_label' => 'Add Deadline',
-                'sub_fields' => [
-                    [
-                        'key' => 'field_61156b777d403',
-                        'label' => 'Deadline Label',
-                        'name' => 'deadline_label',
-                        'type' => 'text',
-                        'instructions' => '',
-                        'required' => 1,
-                        'placeholder' => 'Fall, Spring, etc.',
-                        'maxlength' => '',
-                    ],
-                    [
-                        'key' => 'field_61156bbe7d404',
-                        'label' => 'Deadline Info',
-                        'name' => 'deadline_info',
-                        'type' => 'text',
-                        'instructions' => '',
-                        'placeholder' => 'e.g. June 24th',
-                        'maxlength' => '',
-                    ],
-                ],
-            ],
+            get_acf_app_deadlines_field(
+                'Application Deadlines',
+                'nvis_application_deadlines',
+                '',
+                'field_61156b547d402'
+            )
         ]
     ];
 }
@@ -245,6 +225,12 @@ function get_program_type_acf_fields(): array {
                 'instructions' => 'Overrides the global pattern for Apply Now URLs.',
                 'placeholder' => '',
             ],
+            get_acf_app_deadlines_field(
+                'Application Deadlines',
+                'application_deadlines',
+                'Leave blank to inherit.',
+                'field_612405570ceb7'
+            ),
             [
                 'key' => 'field_61127d948fbcd',
                 'label' => 'Contact Us URL',
@@ -454,6 +440,44 @@ function get_program_type_acf_fields(): array {
     return $group;
 }
 
+function get_taxonomy_app_deadlines_acf_fields(): array {
+    return [
+        'key' => 'group_6123fad662541',
+        'title' => 'Application Deadlines',
+        'description' => '',
+        'location' => [
+            [
+                [
+                    'param' => 'taxonomy',
+                    'operator' => '==',
+                    'value' => 'nvis_program_type',
+                ],
+            ],
+            [
+                [
+                    'param' => 'taxonomy',
+                    'operator' => '==',
+                    'value' => 'nvis_program_college',
+                ],
+            ],
+        ],
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'active' => true,
+        'fields' => [
+            get_acf_app_deadlines_field(
+                'Override Application Deadlines',
+                'application_deadlines',
+                'Override application deadlines for all related programs. Must provide all deadlines.',
+                'field_6123fae8f9946'
+            )
+        ],
+    ];
+}
+
 function get_acf_tab_field(string $label, string $key): array {
     return [
         'key' => $key,
@@ -491,5 +515,39 @@ function get_acf_lead_content_field(string $label, string $name, string $instruc
         'toolbar' => 'full',
         'media_upload' => 1,
         'delay' => 1,
+    ];
+}
+
+function get_acf_app_deadlines_field(string $label, string $name, string $instructions, string $key): array {
+    return [
+        'key' => $key,
+        'label' => $label,
+        'name' => $name,
+        'type' => 'repeater',
+        'instructions' => $instructions,
+        'collapsed' => 'field_61156b777d403',
+        'layout' => 'block',
+        'button_label' => 'Add Deadline',
+        'sub_fields' => [
+            [
+                'key' => 'field_61156b777d403',
+                'label' => 'Deadline Label',
+                'name' => 'deadline_label',
+                'type' => 'text',
+                'instructions' => '',
+                'required' => 1,
+                'placeholder' => 'Fall, Spring, etc.',
+                'maxlength' => '',
+            ],
+            [
+                'key' => 'field_61156bbe7d404',
+                'label' => 'Deadline Info',
+                'name' => 'deadline_info',
+                'type' => 'text',
+                'instructions' => '',
+                'placeholder' => 'e.g. June 24th',
+                'maxlength' => '',
+            ],
+        ],
     ];
 }
