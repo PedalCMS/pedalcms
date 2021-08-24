@@ -350,6 +350,20 @@ function get_program_type_acf_fields(): array {
                 '',
                 'field_611274eed4b72'
             ),
+            [
+                'key' => 'field_612527fd6b84d',
+                'label' => 'Related Courses',
+                'name' => 'related_courses',
+                'type' => 'relationship',
+                'instructions' => 'Connect all the courses related to this program.',
+                'post_type' => [
+                    0 => 'nvis_course',
+                ],
+                'filters' => [
+                    0 => 'search',
+                ],
+                'return_format' => 'object'
+            ],
         ],
         'cost' => [
             get_acf_tab_field('Cost', 'field_611d69e77f47e'),
