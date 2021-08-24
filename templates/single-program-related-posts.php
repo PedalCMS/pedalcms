@@ -1,7 +1,5 @@
 <?php
 
-use function InvisibleUs\Programs\get_program_related_posts;
-
 $posts = nvis_prog_get_related_posts();
 
 if (!empty($posts)) : ?>
