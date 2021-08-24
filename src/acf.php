@@ -35,7 +35,6 @@ function load_fields() {
     foreach ($field_groups as $group) {
         acf_add_local_field_group($group);
     }
-
 }
 
 function get_plugin_acf_fields(): array {
@@ -358,7 +357,7 @@ function get_program_type_acf_fields(): array {
                 'Show Cost Section?',
                 'show_cost_section',
                 '',
-                'field_611d69fb7f47f'
+                'field_6124eebb8a99e'
             ),
             [
                 'key' => 'field_611d6a3a7f480',
