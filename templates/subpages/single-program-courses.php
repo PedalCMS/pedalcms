@@ -4,6 +4,7 @@
 	<h2 class="section-head">Courses</h2>
 
 	<?php nvis_prog_get_template_part('single-program-subpage-lead-content'); ?>
+	<?php nvis_prog_get_template_part('single-program-related-courses'); ?>
 </div>
 
 <?php endif; ?>
