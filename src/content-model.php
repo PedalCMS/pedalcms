@@ -234,6 +234,22 @@ function group_faqs_by_category(array $faqs): array {
     return $cats;
 }
 
+function get_program_related_posts(mixed $program = null): array {
+    $program = get_post($program);
+
+    $tag = get_field('news_tag', $program);
+    $num_posts = get_field('news_num_posts', $program);
+    
+    if (!$tag) {
+        return '';
+    }
+
+    return get_posts([
+        'tag_id' => $tag,
+        'posts_per_page' => $num_posts
+    ]);
+}
+
 function get_program_application_deadlines(mixed $program = null): array {
     $program = $program ? get_post($program) : get_post();
 

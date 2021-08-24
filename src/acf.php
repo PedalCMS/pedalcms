@@ -415,6 +415,41 @@ function get_program_type_acf_fields(): array {
                 'load_terms' => 0,
                 'return_format' => 'id',
                 'multiple' => 0,
+                'wrapper' => [
+                    'width' => '33',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_6124f029ff016',
+                'label' => 'Number of Posts',
+                'name' => 'news_num_posts',
+                'type' => 'number',
+                'instructions' => 'Number of posts to show on this subpage. Set to -1 to show all.',
+                'default_value' => 10,
+                'placeholder' => '10',
+                'min' => -1,
+                'step' => 1,
+                'wrapper' => [
+                    'width' => '33',
+                    'class' => '',
+                    'id' => '',
+                ],
+            ],
+            [
+                'key' => 'field_6124f184ff017',
+                'label' => 'Show link to all posts?',
+                'name' => 'news_show_all_link',
+                'type' => 'true_false',
+                'instructions' => 'Link to the tag archive view at the bottom of the list?',
+                'default_value' => 1,
+                'ui' => 1,
+                'wrapper' => [
+                    'width' => '33',
+                    'class' => '',
+                    'id' => '',
+                ],
             ],
             get_acf_lead_content_field(
                 'News Lead Content',
@@ -487,7 +522,7 @@ function get_acf_tab_field(string $label, string $key): array {
     ];
 }
 
-function get_acf_true_false_field(string $label, string $name, string $instructions, string $key) {
+function get_acf_true_false_field(string $label, string $name, string $instructions, string $key, bool $default = true) {
     return [
         'key' => $key,
         'label' => $label,
@@ -495,7 +530,7 @@ function get_acf_true_false_field(string $label, string $name, string $instructi
         'type' => 'true_false',
         'instructions' => $instructions,
         'message' => '',
-        'default_value' => 1,
+        'default_value' => $default,
         'ui' => 1,
         'ui_on_text' => '',
         'ui_off_text' => '',
