@@ -235,20 +235,27 @@ function group_faqs_by_category(array $faqs): array {
     return $cats;
 }
 
-function get_program_related_posts(mixed $program = null): array {
+function get_program_related_posts(mixed $program = null, array $not_in = []): array {
     $program = get_post($program);
 
     $tag = get_field('news_tag', $program);
     $num_posts = get_field('news_num_posts', $program);
 
     if (!$tag) {
-        return '';
+        return [];
     }
 
-    return get_posts([
+    $args = [
         'tag_id' => $tag,
+        'ignore_sticky_posts' => true,
         'posts_per_page' => $num_posts
-    ]);
+    ];
+
+    if (!empty($not_in)) {
+        $args['post__not_in'] = $not_in;
+    }
+
+    return get_posts($args);
 }
 
 function get_program_application_deadlines(mixed $program = null): array {

@@ -465,10 +465,24 @@ function get_program_type_acf_fields(): array {
                     'id' => '',
                 ],
             ],
+            [
+                'key' => 'field_61263568d2f46',
+                'label' => 'Featured Posts',
+                'name' => 'news_featured_posts',
+                'type' => 'post_object',
+                'instructions' => 'Select posts to keep at the top of the news subpage.',
+                'post_type' => [
+                    0 => 'post',
+                ],
+                'allow_null' => 1,
+                'multiple' => 1,
+                'return_format' => 'object',
+                'ui' => 1,
+            ],
             get_acf_lead_content_field(
                 'News Lead Content',
                 'news_lead',
-                '',
+                'Content to appear at the top of the page, before the posts.',
                 'field_611fdfd220be5'
             )
         ]

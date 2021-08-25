@@ -250,12 +250,15 @@ article.nvis_program .empty-state-message,
 
 .related-post {
   display: flex;
-  flex-direction: row-reverse;
   gap: calc(2 * var(--nvis-prog-spacing));
   margin-bottom: calc(4 * var(--nvis-prog-spacing));
 }
 
-.related-post__wrapper {
+.related-post--has-image {
+  flex-direction: row-reverse;
+}
+
+.related-post .related-post__wrapper {
   width: 70%;
 }
 
