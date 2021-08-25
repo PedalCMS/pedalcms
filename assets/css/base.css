@@ -217,6 +217,25 @@ article.nvis_program .empty-state-message,
   font-style: italic;
 }
 
+.nvis-expandable {
+  margin-bottom: var(--nvis-prog-spacing);
+}
+
+.nvis-expandable summary {
+  font-size: 1.25em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nvis-expandable summary::marker {
+  color: var(--nvis-prog-active-color);
+  font-size: 0.95em;
+}
+
+.nvis-expandable[open] .nvis-expandable__contents {
+  animation: nvis-fade-in-left .25s ease-in-out;
+}
+
 .faq-category {
   margin-bottom: calc( 2 * var(--nvis-prog-spacing));
 }
@@ -225,23 +244,8 @@ article.nvis_program .empty-state-message,
   margin-bottom: var(--nvis-prog-spacing);
 }
 
-.program-faq {
-  margin-bottom: var(--nvis-prog-spacing);
-}
-
-.program-faq__question {
-  font-size: 1.25em;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.program-faq__question::marker {
-  color: var(--nvis-prog-active-color);
-  font-size: 0.95em;
-}
-
-.program-faq[open] .program-faq__answer {
-  animation: nvis-fade-in-left .25s ease-in-out;
+.program-course__actions {
+  margin-bottom: calc(2 * var(--nvis-prog-spacing));
 }
 
 .related-post {
