@@ -279,9 +279,9 @@ article.nvis_program .empty-state-message,
     opacity: 0;
     transform: translateX(-10px)
   }
-  
+
   100% {
-    opacity: 1; 
+    opacity: 1;
     transform: translateX(0)
   }
 }
