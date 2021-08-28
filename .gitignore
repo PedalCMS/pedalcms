@@ -1,1 +1,8 @@
+# Bundled Advanced Custom Fields
 src/acf
+
+# Developer Artifacts
+node_modules
+package-lock.json
+.php_cs.cache
+.php-cs-fixer.cache
