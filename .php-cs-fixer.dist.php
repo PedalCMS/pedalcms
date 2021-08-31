@@ -1,9 +1,11 @@
 <?php
 
-$config = new PhpCsFixer\Config();
+
 $finder = PhpCsFixer\Finder::create()
-    ->exclude('node_modules')
-    ->in(__DIR__);
+    ->in(__DIR__ . '/src')
+    ->exclude(['src/acf','node_modules'])
+    ->ignoreDotFiles(true);
+
 
 $rules = [
     '@PSR12'                 => true,
@@ -20,6 +22,8 @@ $rules = [
         'position_after_functions_and_oop_constructs' => 'same'
     ]
 ];
+
+$config = new PhpCsFixer\Config();
 
 return $config
     ->setRiskyAllowed(true)
