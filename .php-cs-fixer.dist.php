@@ -20,6 +20,20 @@ $rules = [
     ],
     'braces' => [
         'position_after_functions_and_oop_constructs' => 'same'
+    ],
+    'blank_line_before_statement' => [
+        'statements' => [
+            'break',
+            'do',
+            'for',
+            'foreach',
+            'if',
+            'return',
+            'switch',
+            'throw',
+            'try',
+            'while'
+        ]
     ]
 ];
 
