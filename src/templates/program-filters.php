@@ -11,12 +11,12 @@
       <label for="prog_level" class="screen-reader-text">Program Level</label>
       <?php
       wp_dropdown_categories([
-        'taxonomy' => 'nvis_program_type',
-        'name' => 'prog_type',
-        'selected' => get_query_var('prog_type'),
-        'show_option_none' => 'Any Program Type',
-        'option_none_value' => '',
-        'value_field' => 'slug',
+          'taxonomy'          => 'nvis_program_type',
+          'name'              => 'prog_type',
+          'selected'          => get_query_var('prog_type'),
+          'show_option_none'  => 'Any Program Type',
+          'option_none_value' => '',
+          'value_field'       => 'slug',
       ]);
       ?>
     </div>
@@ -24,12 +24,12 @@
       <label for="prog_format" class="screen-reader-text">Program Format</label>
       <?php
       wp_dropdown_categories([
-        'taxonomy' => 'nvis_program_format',
-        'name' => 'prog_format',
-        'selected' => get_query_var('prog_format'),
-        'show_option_none' => 'Any Format',
-        'option_none_value' => '',
-        'value_field' => 'slug'
+          'taxonomy'          => 'nvis_program_format',
+          'name'              => 'prog_format',
+          'selected'          => get_query_var('prog_format'),
+          'show_option_none'  => 'Any Format',
+          'option_none_value' => '',
+          'value_field'       => 'slug'
       ]);
       ?>
     </div>
@@ -37,12 +37,12 @@
       <label for="prog_college" class="screen-reader-text">College</label>
       <?php
       wp_dropdown_categories([
-        'taxonomy' => 'nvis_program_college',
-        'name' => 'prog_college',
-        'selected' => get_query_var('prog_college'),
-        'show_option_none' => 'Any College',
-        'option_none_value' => '',
-        'value_field' => 'slug'
+          'taxonomy'          => 'nvis_program_college',
+          'name'              => 'prog_college',
+          'selected'          => get_query_var('prog_college'),
+          'show_option_none'  => 'Any College',
+          'option_none_value' => '',
+          'value_field'       => 'slug'
       ]);
       ?>
     </div>

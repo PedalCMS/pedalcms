@@ -1,5 +1,6 @@
 <?php
 $contacts = get_field('related_contacts');
+
 if (is_array($contacts) && !empty($contacts)) :
 ?>
   <div class="program-contacts">
@@ -33,6 +34,7 @@ if (is_array($contacts) && !empty($contacts)) :
 <?php
 $action = 'contact';
 $url = nvis_prog_get_action_link($action);
+
 if ($url) :
 ?>
   <a class="<?php echo $action; ?>-button button button-secondary" href="<?php echo esc_url($url); ?>">Contact</a>

@@ -11,76 +11,76 @@ function register_content_model() {
     register_post_type(
         'nvis_program',
         [
-            'labels' => create_post_type_labels('Program', 'Programs'),
-            'public' => true,
+            'labels'             => create_post_type_labels('Program', 'Programs'),
+            'public'             => true,
             'publicly_queryable' => true,
-            'show_ui' => true,
-            'show_in_menu' => true,
-            'query_var' => true,
-            'menu_position' => 5,
-            'menu_icon' => 'dashicons-welcome-learn-more',
-            'capability_type' => 'nvis_program',
-            'map_meta_cap' => true,
+            'show_ui'            => true,
+            'show_in_menu'       => true,
+            'query_var'          => true,
+            'menu_position'      => 5,
+            'menu_icon'          => 'dashicons-welcome-learn-more',
+            'capability_type'    => 'nvis_program',
+            'map_meta_cap'       => true,
             // TODO: Make this dynamic.
-            'has_archive' => 'programs',
-            'rewrite' => ['slug' => 'program'],
+            'has_archive'  => 'programs',
+            'rewrite'      => ['slug' => 'program'],
             'hierarchical' => true,
-            'supports' => ['title', 'thumbnail']
+            'supports'     => ['title', 'thumbnail']
         ]
     );
 
     register_post_type(
         'nvis_course',
         [
-            'labels' => create_post_type_labels('Course', 'Courses'),
-            'public' => true,
-            'hierarchical' => false,
+            'labels'          => create_post_type_labels('Course', 'Courses'),
+            'public'          => true,
+            'hierarchical'    => false,
             'capability_type' => 'nvis_program',
-            'map_meta_cap' => true,
-            'supports' => ['title', 'editor', 'custom-fields'],
-            'rewrite' => ['slug' => 'course'],
-            'menu_position' => 5,
-            'menu_icon' => 'dashicons-book-alt',
+            'map_meta_cap'    => true,
+            'supports'        => ['title', 'editor', 'custom-fields'],
+            'rewrite'         => ['slug' => 'course'],
+            'menu_position'   => 5,
+            'menu_icon'       => 'dashicons-book-alt',
         ]
     );
 
     register_post_type(
         'nvis_faq',
         [
-            'labels' => create_post_type_labels('FAQ', 'FAQs'),
-            'public' => true,
+            'labels'             => create_post_type_labels('FAQ', 'FAQs'),
+            'public'             => true,
             'publicly_queryable' => true,
-            'show_ui' => true,
-            'show_in_menu' => true,
-            'query_var' => true,
-            'menu_position' => 5,
-            'menu_icon' => 'dashicons-editor-help',
-            'capability_type' => 'nvis_faq',
-            'map_meta_cap' => true,
-            'has_archive' => true,
-            'rewrite' => ['slug' => 'faq'],
-            'hierarchical' => true,
-            'supports' => ['title', 'editor']
+            'show_ui'            => true,
+            'show_in_menu'       => true,
+            'query_var'          => true,
+            'menu_position'      => 5,
+            'menu_icon'          => 'dashicons-editor-help',
+            'capability_type'    => 'nvis_faq',
+            'map_meta_cap'       => true,
+            'has_archive'        => true,
+            'rewrite'            => ['slug' => 'faq'],
+            'hierarchical'       => true,
+            'supports'           => ['title', 'editor']
         ]
     );
 
     register_post_type(
         'nvis_person',
         [
-            'labels' => create_post_type_labels('Contact', 'Contacts'),
-            'public' => true,
+            'labels'             => create_post_type_labels('Contact', 'Contacts'),
+            'public'             => true,
             'publicly_queryable' => true,
-            'show_ui' => true,
-            'show_in_menu' => true,
-            'query_var' => true,
-            'menu_position' => 5,
-            'menu_icon' => 'dashicons-businesswoman',
-            'capability_type' => 'nvis_person',
-            'map_meta_cap' => true,
-            'has_archive' => true,
-            'rewrite' => ['slug' => 'person'],
-            'hierarchical' => false,
-            'supports' => ['title', 'thumbnail']
+            'show_ui'            => true,
+            'show_in_menu'       => true,
+            'query_var'          => true,
+            'menu_position'      => 5,
+            'menu_icon'          => 'dashicons-businesswoman',
+            'capability_type'    => 'nvis_person',
+            'map_meta_cap'       => true,
+            'has_archive'        => true,
+            'rewrite'            => ['slug' => 'person'],
+            'hierarchical'       => false,
+            'supports'           => ['title', 'thumbnail']
         ]
     );
 
@@ -89,17 +89,17 @@ function register_content_model() {
         'nvis_program_type',
         'nvis_program',
         [
-            'labels' => create_taxonomy_labels('Program Type', 'Program Types'),
-            'query_var' => 'prog_type',
-            'rewrite' => false,
-            'hierarchical' => true,
-            'public' => true,
-            'show_ui' => true,
+            'labels'             => create_taxonomy_labels('Program Type', 'Program Types'),
+            'query_var'          => 'prog_type',
+            'rewrite'            => false,
+            'hierarchical'       => true,
+            'public'             => true,
+            'show_ui'            => true,
             'show_in_quick_edit' => false,
-            'meta_box_cb' => false,
-            'show_admin_column' => true,
-            'show_in_nav_menus' => false,
-            'show_tagcloud' => false,
+            'meta_box_cb'        => false,
+            'show_admin_column'  => true,
+            'show_in_nav_menus'  => false,
+            'show_tagcloud'      => false,
         ]
     );
 
@@ -107,17 +107,17 @@ function register_content_model() {
         'nvis_program_college',
         'nvis_program',
         [
-            'labels' => create_taxonomy_labels('College', 'Colleges'),
-            'rewrite' => false,
-            'query_var' => 'prog_college',
-            'hierarchical' => false,
-            'public' => true,
-            'show_ui' => true,
+            'labels'             => create_taxonomy_labels('College', 'Colleges'),
+            'rewrite'            => false,
+            'query_var'          => 'prog_college',
+            'hierarchical'       => false,
+            'public'             => true,
+            'show_ui'            => true,
             'show_in_quick_edit' => false,
-            'meta_box_cb' => false,
-            'show_admin_column' => true,
-            'show_in_nav_menus' => false,
-            'show_tagcloud' => false,
+            'meta_box_cb'        => false,
+            'show_admin_column'  => true,
+            'show_in_nav_menus'  => false,
+            'show_tagcloud'      => false,
         ]
     );
 
@@ -125,16 +125,16 @@ function register_content_model() {
         'nvis_program_format',
         'nvis_program',
         [
-            'labels' => create_taxonomy_labels('Format', 'Formats'),
-            'hierarchical' => false,
-            'query_var' => 'prog_format',
-            'public' => true,
-            'show_ui' => true,
+            'labels'             => create_taxonomy_labels('Format', 'Formats'),
+            'hierarchical'       => false,
+            'query_var'          => 'prog_format',
+            'public'             => true,
+            'show_ui'            => true,
             'show_in_quick_edit' => false,
-            'meta_box_cb' => false,
-            'show_admin_column' => true,
-            'show_in_nav_menus' => false,
-            'show_tagcloud' => false,
+            'meta_box_cb'        => false,
+            'show_admin_column'  => true,
+            'show_in_nav_menus'  => false,
+            'show_tagcloud'      => false,
         ]
     );
 
@@ -142,13 +142,13 @@ function register_content_model() {
         'nvis_faq_cat',
         'nvis_faq',
         [
-            'labels' => create_taxonomy_labels('FAQ Category', 'FAQ Categories'),
-            'hierarchical' => true,
-            'public' => true,
+            'labels'             => create_taxonomy_labels('FAQ Category', 'FAQ Categories'),
+            'hierarchical'       => true,
+            'public'             => true,
             'show_in_quick_edit' => true,
-            'show_admin_column' => true,
-            'show_in_nav_menus' => false,
-            'show_tagcloud' => false,
+            'show_admin_column'  => true,
+            'show_in_nav_menus'  => false,
+            'show_tagcloud'      => false,
         ]
     );
 }
@@ -179,21 +179,21 @@ function create_taxonomy_labels(string $name, string $plural_name): array {
     $text_domain = 'wp-program-pages';
 
     return [
-        'name' => _x($plural_name, $plural_name, $text_domain),
-        'singular_name' => _x($name, $name, $text_domain),
-        'search_items' =>  __('Search ' . $plural_name, $text_domain),
-        'popular_items' => __('Popular ' . $plural_name, $text_domain),
-        'all_items' => __('All ' . $plural_name, $text_domain),
-        'parent_item' => __('Parent ' . $name, $text_domain),
-        'parent_item_colon' => __('Parent ' . $name . ':', $text_domain),
-        'edit_item' => __('Edit ' . $name, $text_domain),
-        'update_item' => __('Update ' . $name, $text_domain),
-        'add_new_item' => __('Add New ' . $name, $text_domain),
-        'new_item_name' => __('New ' . $name . ' Name', $text_domain),
+        'name'                       => _x($plural_name, $plural_name, $text_domain),
+        'singular_name'              => _x($name, $name, $text_domain),
+        'search_items'               => __('Search ' . $plural_name, $text_domain),
+        'popular_items'              => __('Popular ' . $plural_name, $text_domain),
+        'all_items'                  => __('All ' . $plural_name, $text_domain),
+        'parent_item'                => __('Parent ' . $name, $text_domain),
+        'parent_item_colon'          => __('Parent ' . $name . ':', $text_domain),
+        'edit_item'                  => __('Edit ' . $name, $text_domain),
+        'update_item'                => __('Update ' . $name, $text_domain),
+        'add_new_item'               => __('Add New ' . $name, $text_domain),
+        'new_item_name'              => __('New ' . $name . ' Name', $text_domain),
         'separate_items_with_commas' => __('Separate ' . strtolower($plural_name) . ' with commas', $text_domain),
-        'add_or_remove_items' => __('Add or remove ' . strtolower($plural_name), $text_domain),
-        'choose_from_most_used' => __('Choose from the most used ' . strtolower($plural_name), $text_domain),
-        'menu_name' => __($plural_name),
+        'add_or_remove_items'        => __('Add or remove ' . strtolower($plural_name), $text_domain),
+        'choose_from_most_used'      => __('Choose from the most used ' . strtolower($plural_name), $text_domain),
+        'menu_name'                  => __($plural_name),
     ];
 }
 
@@ -221,8 +221,10 @@ function group_faqs_by_category(array $faqs): array {
 
     foreach ($faqs as $faq) {
         $terms = get_the_terms($faq, 'nvis_faq_cat');
+
         if (is_array($terms)) {
             $cat = array_shift($terms);
+
             if (!isset($cats[$cat->slug])) {
                 $cat->faqs = [];
                 $cats[ $cat->slug ] = $cat;
@@ -246,9 +248,9 @@ function get_program_related_posts(mixed $program = null, array $not_in = []): a
     }
 
     $args = [
-        'tag_id' => $tag,
+        'tag_id'              => $tag,
         'ignore_sticky_posts' => true,
-        'posts_per_page' => $num_posts
+        'posts_per_page'      => $num_posts
     ];
 
     if (!empty($not_in)) {
@@ -263,6 +265,7 @@ function get_program_application_deadlines(mixed $program = null): array {
 
     // First, check if the program has specific deadlines.
     $deadlines = get_field('application_deadlines', $program);
+
     if (!empty($deadlines)) {
         return $deadlines;
     }
@@ -272,6 +275,7 @@ function get_program_application_deadlines(mixed $program = null): array {
 
     foreach ($terms as $name) {
         $term = get_field($name, $program);
+
         if (!empty($term)) {
             $deadlines = get_field('application_deadlines', $term);
 

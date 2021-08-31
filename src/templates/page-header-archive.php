@@ -3,9 +3,9 @@
   <h1 class="page-title">
     <?php
     if (is_post_type_archive('nvis_program')) {
-      echo __('Browse Programs', 'wp-program-pages');
+        echo __('Browse Programs', 'wp-program-pages');
     } else {
-      the_archive_title();
+        the_archive_title();
     }
     ?>
   </h1>

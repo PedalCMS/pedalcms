@@ -1,6 +1,6 @@
 <div class="program-actions">
   <ul>
-    <?php if(isset($data['add_permalink'])) : ?>
+    <?php if (isset($data['add_permalink'])) : ?>
     <li>
         <a class="program-details-button button button-primary" href="<?php echo esc_url($data['add_permalink']);?>">Program Details</a>
     </li>
@@ -9,6 +9,7 @@
     <?php
     $action = 'apply_now';
     $url = nvis_prog_get_action_link($action);
+
     if ($url) :
     ?>
       <li>
@@ -19,6 +20,7 @@
     <?php
     $action = 'request_info';
     $url = nvis_prog_get_action_link($action);
+
     if ($url) :
     ?>
       <li>

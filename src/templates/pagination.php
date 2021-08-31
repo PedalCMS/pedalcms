@@ -1,19 +1,19 @@
 <nav class="pagination">
   <?php
     if (function_exists('wp_pagenavi')) {
-      wp_pagenavi(); 
-    } else if (function_exists('wp_paginate')) {
-      wp_paginate();
+        wp_pagenavi();
+    } elseif (function_exists('wp_paginate')) {
+        wp_paginate();
     } else {
-      global $wp_query;
-      echo paginate_links([
-        'total'        => $wp_query->max_num_pages,
-        'show_all'     => false,
-        'type'         => 'plain',
-        'end_size'     => 1,
-        'mid_size'     => 1,
-        'prev_next'    => true,
-      ]);
+        global $wp_query;
+        echo paginate_links([
+            'total'        => $wp_query->max_num_pages,
+            'show_all'     => false,
+            'type'         => 'plain',
+            'end_size'     => 1,
+            'mid_size'     => 1,
+            'prev_next'    => true,
+        ]);
     }
   ?>
 </nav>

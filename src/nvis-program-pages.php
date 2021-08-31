@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Program Pages
  * Plugin URI: https://invisible.us
- * Description: Creates program listing capabilities. 
+ * Description: Creates program listing capabilities.
  * Requires PHP: 7.4
  * Requires at least: 5.6
  * Version: 0.1
@@ -22,18 +22,18 @@ define('NVIS_PROGRAMS_URL', plugins_url('', __FILE__));
 define('NVIS_PROGRAMS_TEMPLATE_PATH', NVIS_PROGRAMS_PATH . '/templates/');
 
 $includes = [
-  '/src/_autoload.php',
-  '/src/acf.php',
-  '/src/assets.php',
-  '/src/content-model.php',
-  '/src/admin.php',
-  '/src/ajax.php',
-  '/src/template.php',
-  '/src/template-tags.php',
-  '/src/subpages.php',
-  '/src/breadcrumbs.php',
+    '/src/_autoload.php',
+    '/src/acf.php',
+    '/src/assets.php',
+    '/src/content-model.php',
+    '/src/admin.php',
+    '/src/ajax.php',
+    '/src/template.php',
+    '/src/template-tags.php',
+    '/src/subpages.php',
+    '/src/breadcrumbs.php',
 ];
 
 foreach ($includes as $subpath) {
-  require __DIR__ . $subpath;
+    require __DIR__ . $subpath;
 }

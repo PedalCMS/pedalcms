@@ -16,17 +16,16 @@ if ($wp_query->found_posts) : ?>
   <span class="program-list-count__value">
     <?php
     if ($showing_all) {
-      echo sprintf('Showing %d programs.', $wp_query->found_posts);
+        echo sprintf('Showing %d programs.', $wp_query->found_posts);
     } else {
-      echo sprintf(
-        'Showing %d–%d of %d programs.',
-        $first,
-        $last,
-        $wp_query->found_posts
-      );
+        echo sprintf(
+            'Showing %d–%d of %d programs.',
+            $first,
+            $last,
+            $wp_query->found_posts
+        );
     }
     ?>
   </span>
 </div>
 <?php endif;
-

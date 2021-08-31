@@ -4,7 +4,7 @@ $featured_posts = get_field('news_featured_posts');
 $is_featured = true;
 
 $posts = nvis_prog_get_related_posts(
-    null, 
+    null,
     array_column($featured_posts, 'ID')
 );
 
@@ -13,7 +13,7 @@ if (!empty($featured_posts) && !empty($posts)) : ?>
     <?php if (!empty($featured_posts)) : ?>
     <div class="related-post-list related-post-list--featured">
         <?php foreach ($featured_posts as $post) : ?>
-            <?php nvis_prog_get_template_part('single-program-news-item', compact('post','is_featured')); ?>
+            <?php nvis_prog_get_template_part('single-program-news-item', compact('post', 'is_featured')); ?>
         <?php endforeach; ?>        
     </div>
     <?php endif; ?>
@@ -32,4 +32,4 @@ if (!empty($featured_posts) && !empty($posts)) : ?>
 
 <?php else : ?>
     <p class="empty-state-message">No posts found.</p>
-<?php endif; 
+<?php endif;

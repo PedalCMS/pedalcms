@@ -3,7 +3,7 @@
 <nav class="program-subnav">
   <ul class="program-subnav__menu menu">
     <?php
-      foreach ($subpages as $slug => $label) : 
+      foreach ($subpages as $slug => $label) :
         if (nvis_prog_show_subpage($slug)) :
     ?>
     <li class="<?php echo nvis_prog_is_active_subpage($slug) ? 'active-subpage' : ''; ?>">
@@ -13,4 +13,4 @@
   </ul>
 </nav>
 
-<?php endif; 
+<?php endif;

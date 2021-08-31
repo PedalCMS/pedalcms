@@ -8,16 +8,18 @@
     <div class="program-faq-list">
     <?php
     $faqs = get_field('related_faqs');
+
     if (!empty($faqs)) :
-      if (get_field('faqs_by_category')): 
+      if (get_field('faqs_by_category')):
         // TODO: Skip categorization if there is only one cat?
         $cats = nvis_prog_get_faqs_by_category($faqs);
-        foreach($cats as $cat) :
+
+        foreach ($cats as $cat) :
       ?>
       <div class="faq-category">
         <h3 id="<?php echo $cat->slug; ?>" class="faq-category__title"><?php echo $cat->name; ?></h3>
         <div class="faq-category__faqs">
-          <?php 
+          <?php
           foreach ($cat->faqs as $faq) :
             nvis_prog_get_template_part('single-program-faq-item', compact('faq'));
           endforeach;
@@ -28,10 +30,10 @@
         endforeach;
       else:
         foreach ($faqs as $faq) :
-          nvis_prog_get_template_part('single-program-faq-item', compact('faq')); 
+          nvis_prog_get_template_part('single-program-faq-item', compact('faq'));
         endforeach;
       endif;
-    endif; 
+    endif;
     ?>
     </div>
 

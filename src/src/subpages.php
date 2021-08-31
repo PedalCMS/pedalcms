@@ -10,13 +10,13 @@ add_filter('query_vars', __NAMESPACE__ . '\insert_query_var');
 
 function get_subpages(): array {
     return [
-        'index' => 'Overview',
+        'index'   => 'Overview',
         'careers' => 'Careers',
         'courses' => 'Courses',
-        'faqs' => 'FAQs',
-        'cost' => 'Cost',
-        'apply' => 'How to Apply',
-        'news' => 'News'
+        'faqs'    => 'FAQs',
+        'cost'    => 'Cost',
+        'apply'   => 'How to Apply',
+        'news'    => 'News'
     ];
 }
 
@@ -32,7 +32,7 @@ function maybe_show_subpage(string $subpage): bool {
     }
 
     return
-        in_array($subpage, $enabled) &&
+        in_array($subpage, $enabled, true) &&
         (bool) get_field(sprintf('show_%s_section', $subpage));
 }
 
@@ -43,6 +43,7 @@ function insert_rules($rules) {
     $subpages = nvis_prog_get_subpages();
 
     $subpage_rules = [];
+
     foreach ($subpages as $slug => $title) {
         // TODO: load program stub dynamically.
         $subpage_rules['program/([^/]+)/' . $slug . '/?$'] = 'index.php?nvis_program=$matches[1]&nvis_subpage=' . $slug;
@@ -54,6 +55,7 @@ function insert_rules($rules) {
 // Tell WordPress to accept our custom query variable.
 function insert_query_var($vars) {
     $vars[] = 'nvis_subpage';
+
     return $vars;
 }
 
@@ -74,5 +76,6 @@ function subpage_canonical() {
 
 function get_active_subpage(): string {
     $subpage = get_query_var('nvis_subpage');
+
     return $subpage ? $subpage : 'index';
 }

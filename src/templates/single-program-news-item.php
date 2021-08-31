@@ -1,5 +1,5 @@
-<?php 
-    $post = $data['post'] ?? null; 
+<?php
+    $post = $data['post'] ?? null;
     $classes = ['related-post'];
     $is_featured = $data['is_featured'] ?? false;
 
@@ -11,7 +11,7 @@
         $classes[] = 'related-post--has-image';
     }
 
-    
+
     if ($post) :?>
     <article class="<?php echo implode(' ', $classes); ?>">  
         <?php if (has_post_thumbnail($post)) : ?>
@@ -29,7 +29,7 @@
                 </h3>
             </header>
             <div class="related-post__content"><?php echo get_the_excerpt($post); ?></div>
-            <?php // TODO: Make this optional and filterable. 
+            <?php // TODO: Make this optional and filterable.
             ?>
             <p class="related-post__more">
                 <a class="related-post__more-link" href="<?php echo esc_url(get_permalink($post)); ?>">
@@ -38,4 +38,4 @@
             </p>
         </div>
     </article>
-<?php endif; 
+<?php endif;
