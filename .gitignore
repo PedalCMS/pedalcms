@@ -1,8 +1,11 @@
-# Bundled Advanced Custom Fields
+# Bundled Advanced Custom Fields.
 src/acf
 
-# Developer Artifacts
+# Developer Artifacts.
 node_modules
 package-lock.json
 .php_cs.cache
 .php-cs-fixer.cache
+
+# File that we want to keep around temporarily.
+*.ignoreme
