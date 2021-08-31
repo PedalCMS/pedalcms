@@ -2,6 +2,7 @@
 src/acf
 
 # Developer Artifacts.
+build
 node_modules
 package-lock.json
 .php_cs.cache
