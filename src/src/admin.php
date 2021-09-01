@@ -1,12 +1,14 @@
 <?php
 
-add_action('acf/init', 'nvis_programs_register_tuition_settings_page');
+namespace InvisibleUs\Programs;
 
-function nvis_programs_register_tuition_settings_page() {
+add_action('acf/init', __NAMESPACE__ . '\register_settings_page');
+
+function register_settings_page(): void {
     if (function_exists('acf_add_options_page')) {
         acf_add_options_page(
             [
-                'page_title'  => 'WP Program Pages',
+                'page_title'  => 'WP Program Pages Settings',
                 'menu_title'  => 'WP Program Pages',
                 'menu_slug'   => 'wp-program-pages-settings',
                 'capability'  => 'manage_options',
@@ -16,4 +18,6 @@ function nvis_programs_register_tuition_settings_page() {
             ]
         );
     }
+
+    return;
 }
