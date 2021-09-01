@@ -5,7 +5,6 @@ namespace InvisibleUs\Programs;
 // use InvisibleUs\Programs\TemplateManager;
 
 add_action('init', __NAMESPACE__ . '\setup_template_manager');
-add_filter('body_class', __NAMESPACE__ . '\body_class');
 
 function setup_template_manager() {
     $templates = [
