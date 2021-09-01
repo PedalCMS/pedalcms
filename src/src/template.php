@@ -2,7 +2,7 @@
 
 namespace InvisibleUs\Programs;
 
-use InvisibleUs\Programs\TemplateManager;
+// use InvisibleUs\Programs\TemplateManager;
 
 add_action('init', __NAMESPACE__ . '\setup_template_manager');
 add_filter('body_class', __NAMESPACE__ . '\body_class');
@@ -21,7 +21,11 @@ function setup_template_manager() {
         ],
     ];
 
-    $NVIS_TemplateManager = new TemplateManager($templates);
+    $NVIS_TemplateManager = new TemplateManager(
+        NVIS_PROGRAMS_TEMPLATE_PATH,
+        NVIS_PROGRAMS_PLUGIN_NAME,
+        $templates
+    );
 
     add_filter('template_include', [$NVIS_TemplateManager, 'maybeUseTemplate'], PHP_INT_MAX);
 }

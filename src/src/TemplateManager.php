@@ -4,6 +4,20 @@ namespace InvisibleUs\Programs;
 
 class TemplateManager {
     /**
+     * Base path of the plugin templates.
+     *
+     * @var string
+     */
+    private static $base_path = '';
+
+    /**
+     * The folder to look for templates in the theme.
+     *
+     * @var string
+     */
+    private static $theme_folder = '';
+
+    /**
      * An array of associative arrays that match a set of callbacks
      * with templates to render.
      *
@@ -21,10 +35,15 @@ class TemplateManager {
      */
     private $templates = [];
 
-    public function __construct($templates = []) {
+    public function __construct(string $base_path, string $theme_folder, array $templates = []) {
+        self::$base_path = $base_path;
+        self::$theme_folder = $theme_folder;
+
         if ($templates) {
             $this->registerTemplates($templates);
         }
+
+        return $this;
     }
 
     /**
@@ -62,8 +81,13 @@ class TemplateManager {
      * @return string
      */
     public static function locateTemplate(string $template): string {
+        if (!self::$theme_folder) {
+            // TODO: Error handling.
+            return false;
+        }
+
         $pattern = '%s/%s.php';
-        $theme_tmpl = sprintf($pattern, NVIS_PROGRAMS_PLUGIN_NAME, $template);
+        $theme_tmpl = sprintf($pattern, self::$theme_folder, $template);
         $theme_tmpl = locate_template($theme_tmpl);
 
         if ($theme_tmpl) {
@@ -74,7 +98,7 @@ class TemplateManager {
         //  https://developer.wordpress.org/reference/functions/get_template_part/
         return apply_filters(
             'nvis_programs/locate_template',
-            sprintf($pattern, NVIS_PROGRAMS_TEMPLATE_PATH, $template)
+            sprintf($pattern, self::$base_path, $template)
         );
     }
 
