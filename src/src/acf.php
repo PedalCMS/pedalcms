@@ -67,7 +67,7 @@ function get_plugin_acf_fields(): array {
         'description'           => '',
         'fields'                => [
             [
-                'key'           => 'field_6123e2fca5e15',
+                'key'           => 'field_612f7a95b683c',
                 'label'         => 'Enable Program Subpages',
                 'name'          => 'enable_program_subpages',
                 'type'          => 'checkbox',
