@@ -1,9 +1,12 @@
-<?php $course = $data['course'] ?? null; ?>
+<?php
+$course = $data['course'] ?? null;
 
-<?php if ($course) :?>
+if ($course) :
+    $url_more_info = nvis_prog_get_course_action_link('more_info', $course);
+    $url_reg_search = nvis_prog_get_course_action_link('reg_search', $course);
+?>
 <details class="program-course nvis-expandable">
     <summary class="program-course__title">
-        <?php the_field('course_id', $course); ?><span class="separator">:</span>
         <?php echo get_the_title($course); ?>
     </summary>
     <div class="program-course__content-wrapper nvis-expandable__contents">
@@ -12,10 +15,20 @@
         </div>
 
         <div class="program-course__actions">
-            <a href="#">More info</a> 
-            &nbsp; | &nbsp; 
-            <a href="#">Search for Sections</a>
+            <?php if ($url_more_info) :?>
+            <a href="<?php echo esc_url($url_more_info); ?>">More
+                info</a>
+            <?php endif; ?>
+
+            <?php if ($url_more_info && $url_reg_search) :?>
+            &nbsp; | &nbsp;
+            <?php endif; ?>
+
+            <?php if ($url_reg_search) :?>
+            <a href="<?php echo esc_url($url_reg_search); ?>">Search
+                for Sections</a>
+            <?php endif; ?>
         </div>
     </div>
 </details>
-<?php endif; ?>
+<?php endif;

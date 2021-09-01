@@ -76,6 +76,38 @@ function nvis_prog_get_action_link(string $action, mixed $program = null): strin
     return '';
 }
 
+function nvis_prog_get_course_action_link(string $action, $course): string {
+    $course = get_post($course);
+
+    // Check for a local override.
+    $url = get_field('url_' . $action, $course);
+
+    if ($url) {
+        return $url;
+    }
+
+    // Check for the global setting.
+    $url = get_field('nvis_course_url_' . $action, 'option');
+
+    if ($url) {
+        $url = str_replace(
+            [
+                '{$course_cat_key}',
+                '{$course_reg_key}'
+            ],
+            [
+                get_field('course_catalog_key', $course),
+                get_field('course_registration_key', $course)
+            ],
+            $url
+        );
+
+        return $url;
+    }
+
+    return '';
+}
+
 function nvis_prog_the_application_deadlines(mixed $program = null): array {
     return \InvisibleUs\Programs\get_program_application_deadlines($program);
 }

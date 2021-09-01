@@ -29,7 +29,8 @@ function load_fields() {
     $field_groups = [
         get_plugin_acf_fields(),
         get_program_type_acf_fields(),
-        get_taxonomy_app_deadlines_acf_fields()
+        get_taxonomy_app_deadlines_acf_fields(),
+        get_course_type_acf_fields()
     ];
 
     foreach ($field_groups as $group) {
@@ -102,6 +103,22 @@ function get_plugin_acf_fields(): array {
                 'type'         => 'url',
                 'instructions' => 'Enter a URL pattern to create unique contact URLs for each program. You can use the following tags: {$program_guid} {$program_slug}',
                 'placeholder'  => '',
+            ],
+            [
+                'key'               => 'field_612e8eb51b6a6',
+                'label'             => 'Course More Info URL',
+                'name'              => 'nvis_course_url_more_info',
+                'type'              => 'url',
+                'instructions'      => 'Enter a URL pattern to create unique "More info" URLs for each course. You can use the following tags: {$course_cat_key} {$course_reg_key}',
+                'placeholder'       => '',
+            ],
+            [
+                'key'               => 'field_612e8f1e1b6a7',
+                'label'             => 'Course Registration Search URL',
+                'name'              => 'nvis_course_url_reg_search',
+                'type'              => 'url',
+                'instructions'      => 'Enter a URL pattern to create unique "Search Sections" URLs for each course. You can use the following tags: {$course_cat_key} {$course_reg_key}',
+                'placeholder'       => '',
             ],
             get_acf_app_deadlines_field(
                 'Application Deadlines',
@@ -500,6 +517,81 @@ function get_program_type_acf_fields(): array {
     }
 
     return $group;
+}
+
+function get_course_type_acf_fields(): array {
+    return [
+        'key'    => 'group_612f7f2c97e10',
+        'title'  => 'Course Info',
+        'fields' => [
+            [
+                'key'               => 'field_61252469d4a0c',
+                'label'             => 'Course Catalog Key',
+                'name'              => 'course_catalog_key',
+                'type'              => 'text',
+                'instructions'      => 'They key, or ID, that you can use to search course catalogs for this course via URL parameter.',
+                'wrapper'           => ['width' => '50'],
+                'placeholder'       => '',
+                'maxlength'         => 16,
+            ],
+            [
+                'key'               => 'field_61252546d4a0d',
+                'label'             => 'Course Registration Key',
+                'name'              => 'course_registration_key',
+                'type'              => 'text',
+                'instructions'      => 'They key, or ID, that you can use to search course registrations for this course via URL parameter.',
+                'wrapper'           => ['width' => '50'],
+                'default_value'     => '',
+                'placeholder'       => '61252586f020c'
+            ],
+            [
+                'key'               => 'field_6125264d27bb4',
+                'label'             => 'Related Programs',
+                'name'              => 'related_programs',
+                'type'              => 'relationship',
+                'instructions'      => '',
+                'post_type'         => [0 => 'nvis_program'],
+                'taxonomy'          => '',
+                'filters'           => [
+                    0 => 'search',
+                    1 => 'taxonomy',
+                ],
+                'return_format' => 'id',
+            ],
+            [
+                'key'               => 'field_612e962087a05',
+                'label'             => 'More Info URL',
+                'name'              => 'url_more_info',
+                'type'              => 'url',
+                'instructions'      => 'Enter a URL for the "More Info" link. Overrides global setting.',
+                'placeholder'       => '',
+            ],
+            [
+                'key'               => 'field_612e96a887a06',
+                'label'             => 'Registration Search URL',
+                'name'              => 'url_reg_search',
+                'type'              => 'url',
+                'instructions'      => 'Enter a URL for the "More Info" link. Overrides global setting.',
+                'placeholder'       => '',
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param'    => 'post_type',
+                    'operator' => '==',
+                    'value'    => 'nvis_course',
+                ],
+            ],
+        ],
+        'menu_order'            => 0,
+        'position'              => 'normal',
+        'style'                 => 'default',
+        'label_placement'       => 'top',
+        'instruction_placement' => 'field',
+        'active'                => true,
+        'description'           => '',
+    ];
 }
 
 function get_taxonomy_app_deadlines_acf_fields(): array {
