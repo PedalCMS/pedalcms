@@ -2,8 +2,6 @@
 
 namespace InvisibleUs\Programs;
 
-// use InvisibleUs\Programs\TemplateManager;
-
 add_action('init', __NAMESPACE__ . '\setup_template_manager');
 
 function setup_template_manager() {
