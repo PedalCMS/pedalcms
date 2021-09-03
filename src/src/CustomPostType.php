@@ -13,6 +13,8 @@ abstract class CustomPostType extends CustomContentObject {
 
     public $post_object = null;
 
+    public $lowercase_safe = true;
+
     protected $icons_path = 'icons/';
 
 
@@ -23,30 +25,32 @@ abstract class CustomPostType extends CustomContentObject {
 
     public function register() {
         parent::register();
-        $this->create_labels();
         $this->maybe_load_icon();
         $this->post_object = register_post_type(static::post_type, $this->args);
-        // After we register the post type the args and labels are redundant
+        // After we register the post type, the args and labels are redundant.
         $this->args = null;
         $this->labels = null;
     }
 
     protected function create_labels() {
+        $lower_singular = $this->lowercase_safe ? strtolower($this->name) : $this->name;
+        $lower_plural = $this->lowercase_safe ? strtolower($this->plural_name) : $this->plural_name;
+
         $default_labels = [
             'name'               => _x($this->plural_name, 'post type general name', $this->text_domain),
             'singular_name'      => _x($this->name, 'post type singular name', $this->text_domain),
             'menu_name'          => _x($this->plural_name, 'admin menu', $this->text_domain),
             'name_admin_bar'     => _x($this->name, 'add new on admin bar', $this->text_domain),
-            'add_new'            => _x('Add New', strtolower($this->name), $this->text_domain),
+            'add_new'            => _x('Add New', $lower_singular, $this->text_domain),
             'add_new_item'       => __('Add New ' . $this->name, $this->text_domain),
             'new_item'           => __('New ' . $this->name, $this->text_domain),
             'edit_item'          => __('Edit ' . $this->name, $this->text_domain),
             'view_item'          => __('View ' . $this->name, $this->text_domain),
-            'all_items'          => __('All '. strtolower($this->plural_name), $this->text_domain),
-            'search_items'       => __('Search '. strtolower($this->plural_name), $this->text_domain),
-            'parent_item_colon'  => __('Parent '. strtolower($this->plural_name) . ':', $this->text_domain),
-            'not_found'          => __('No '. strtolower($this->plural_name) . ' found.', $this->text_domain),
-            'not_found_in_trash' => __('No '. strtolower($this->plural_name) . ' found in Trash.', $this->text_domain)
+            'all_items'          => __('All '. $lower_plural, $this->text_domain),
+            'search_items'       => __('Search '. $lower_plural, $this->text_domain),
+            'parent_item_colon'  => __('Parent '. $lower_plural . ':', $this->text_domain),
+            'not_found'          => __('No '. $lower_plural . ' found.', $this->text_domain),
+            'not_found_in_trash' => __('No '. $lower_plural . ' found in Trash.', $this->text_domain)
         ];
 
         if ($this->labels) {

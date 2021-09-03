@@ -23,6 +23,13 @@ class FAQ extends CustomPostType {
     public $plural_name = 'FAQs';
 
     /**
+     * Whether or not it is safe to lowercase the name.
+     *
+     * @var boolean
+     */
+    public $lowercase_safe = false;
+
+    /**
      * The args to pass to register_post_type.
      *
      * Gets updated throughout the setup process.
