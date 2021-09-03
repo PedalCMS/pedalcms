@@ -1,10 +1,16 @@
 # Bundled Advanced Custom Fields.
 src/src/acf
 
+# No builds.
+*.zip
+
 # Developer Artifacts.
-build
-node_modules
+/build
+/node_modules
 package-lock.json
+/src/vendor
+/vendor
+composer.lock
 .php_cs.cache
 .php-cs-fixer.cache
 
