@@ -32,8 +32,7 @@ class Program extends CustomPostType {
     public $args = [
         'has_archive'         => 'programs',
         'rewrite'             => ['slug' => 'program', 'with_front' => true],
-        // We're overriding this in the constructor.
-        'capability_type'     => 'post',
+        'capability_type'     => self::post_type,
         'menu_icon'           => 'dashicons-welcome-learn-more',
         'menu_position'       => 5,
         'description'         => '',
@@ -41,7 +40,6 @@ class Program extends CustomPostType {
         'show_ui'             => true,
         'show_in_menu'        => true,
         'query_var'           => true,
-        'exclude_from_search' => true,
         'map_meta_cap'        => true,
         'hierarchical'        => false,
         'supports'            => ['title', 'thumbnail'],
@@ -55,9 +53,4 @@ class Program extends CustomPostType {
     public $field_groups = [
 
     ];
-
-    public function __construct() {
-        parent::__construct();
-        $this->args['capability_type'] = self::post_type;
-    }
 }
