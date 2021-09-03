@@ -30,6 +30,13 @@ class FAQ extends CustomPostType {
     public $lowercase_safe = false;
 
     /**
+     * The Text to
+     *
+     * @var string
+     */
+    public static $enter_title_text = 'Enter the Question';
+
+    /**
      * The args to pass to register_post_type.
      *
      * Gets updated throughout the setup process.
