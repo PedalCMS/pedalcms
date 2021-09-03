@@ -15,12 +15,28 @@ abstract class CustomPostType extends CustomContentObject {
 
     public $lowercase_safe = true;
 
+    public static $enter_title_text = '';
+
     protected $icons_path = 'icons/';
 
 
     public function __construct() {
         parent::__construct();
         $this->system_name = static::post_type;
+
+        return;
+    }
+
+    public function setup_hooks(): void {
+        return;
+    }
+
+    public static function update_enter_title_text(string $text, \WP_Post $post): string {
+        if ($post->post_type === static::post_type) {
+            $text = static::$enter_title_text;
+        }
+
+        return $text;
     }
 
     public function register() {
@@ -30,6 +46,11 @@ abstract class CustomPostType extends CustomContentObject {
         // After we register the post type, the args and labels are redundant.
         $this->args = null;
         $this->labels = null;
+        $this->setup_hooks();
+
+        if (static::$enter_title_text) {
+            add_action('enter_title_here', [static::class, 'update_enter_title_text'], 10, 2);
+        }
     }
 
     protected function create_labels() {
