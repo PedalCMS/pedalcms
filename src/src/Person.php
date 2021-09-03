@@ -23,6 +23,13 @@ class Person extends CustomPostType {
     public $plural_name = 'Faculty & Staff';
 
     /**
+     * The replacement text for enter_title_here filter.
+     *
+     * @var string
+     */
+    public static $enter_title_text = 'Enter the Full Name';
+
+    /**
      * The args to pass to register_post_type.
      *
      * Gets updated throughout the setup process.
