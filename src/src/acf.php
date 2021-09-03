@@ -39,11 +39,8 @@ function load_fields() {
 }
 
 function get_plugin_acf_fields(): array {
-    $subpages = get_subpages();
+    $subpages = ProgramSubpageManager::get_subpages(false);
     $def_vals = [];
-
-    // Remove the first subpage (Overview). It is not optional.
-    array_shift($subpages);
 
     return [
         'key'      => 'group_6113a9e72073e',

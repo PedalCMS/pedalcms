@@ -6,8 +6,8 @@ function nvis_prog_get_template_part(string $template, array $data = []) {
 
 function nvis_prog_is_filtered_results(): bool {
     return
-    is_post_type_archive('nvis_program') &&
-    (is_search() || is_tax());
+        is_post_type_archive(\InvisibleUs\Programs\Program::post_type) &&
+        (is_search() || is_tax());
 }
 
 function nvis_prog_has_news(): bool {
@@ -21,33 +21,23 @@ function nvis_prog_show_subpages(): bool {
 }
 
 function nvis_prog_get_subpages(): array {
-    return \InvisibleUs\Programs\get_subpages();
+    return \InvisibleUs\Programs\ProgramSubpageManager::get_subpages();
 }
 
 function nvis_prog_get_active_subpage(): string {
-    return \InvisibleUs\Programs\get_active_subpage();
+    return \InvisibleUs\Programs\ProgramSubpageManager::get_active_subpage();
 }
 
-// TODO: Move this to subpages.
 function nvis_prog_show_subpage(string $subpage): bool {
-    return \InvisibleUs\Programs\maybe_show_subpage($subpage);
+    return \InvisibleUs\Programs\ProgramSubpageManager::maybe_show_subpage($subpage);
 }
 
 function nvis_prog_is_active_subpage(string $subpage): bool {
-    return nvis_prog_get_active_subpage() === $subpage;
+    return \InvisibleUs\Programs\ProgramSubpageManager::is_active_subpage($subpage);
 }
 
-// TODO: Move this to subpages.
 function nvis_prog_subpage_link(string $subpage, bool $echo = true): string {
-    $link = $subpage === 'index' ?
-    get_the_permalink() :
-    sprintf('%s%s/', get_the_permalink(), $subpage);
-
-    if ($echo) {
-        echo $link;
-    }
-
-    return $link;
+    return \InvisibleUs\Programs\ProgramSubpageManager::get_subpage_link($subpage, $echo);
 }
 
 function nvis_prog_get_action_link(string $action, mixed $program = null): string {

@@ -15,7 +15,7 @@ class ProgramSubpageManager {
      *
      * @var array
      */
-    private $subpages = [
+    private static $subpages = [
         'index'   => 'Overview',
         'careers' => 'Careers',
         'courses' => 'Courses',
@@ -29,9 +29,28 @@ class ProgramSubpageManager {
      * Constructor
      */
     public function __construct() {
-        add_action('wp', [$this, '\maybe_override_rel_canonical']);
-        add_filter('rewrite_rules_array', [$this, '\insert_rules']);
-        add_filter('query_vars', [$this, '\insert_query_var']);
+        self::$subpages = [
+            (object) [
+                'slug'  => 'index',
+                'title' => 'Overview'
+            ],
+            new CareersProgramSubpage(),
+            new CoursesProgramSubpage(),
+            new FAQProgramSubpage(),
+            new CostProgramSubpage(),
+            new ApplyProgramSubpage(),
+            new NewsProgramSubpage()
+        ];
+
+        return;
+    }
+
+    public function init(): void {
+        add_action('wp', [self::class, 'maybe_override_rel_canonical']);
+        add_filter('rewrite_rules_array', [self::class, 'insert_rules']);
+        add_filter('query_vars', [self::class, 'add_query_var']);
+
+        do_action('nvis/afer_program_subpages_setup');
 
         return;
     }
@@ -39,10 +58,30 @@ class ProgramSubpageManager {
     /**
      * Returns the list of subpages.
      *
+     * @param bool $with_index Whether or not to include the index.
+     * @param string $return_type Can be 'hash' or 'objects'.
      * @return array
      */
-    public function get_subpages(): array {
-        return $this->subpages;
+    public static function get_subpages(bool $with_index = true, string $return_type = 'hash'): array {
+        if ($return_type === 'hash') {
+            $hash = array_combine(
+                wp_list_pluck(self::$subpages, 'slug'),
+                wp_list_pluck(self::$subpages, 'title')
+            );
+
+            if (!$with_index) {
+                array_shift($hash);
+            }
+
+            return $hash;
+        }
+
+        if ($return_type !== 'objects') {
+            // TODO: Trigger error.
+            return [];
+        }
+
+        return self::$subpages;
     }
 
     /**
@@ -51,7 +90,7 @@ class ProgramSubpageManager {
      * @param array $vars The existing query vars.
      * @return array The resulting query vars after we add ours.
      */
-    public function insert_query_var(array $vars): array {
+    public static function add_query_var(array $vars): array {
         $vars[] = self::query_var;
 
         return $vars;
@@ -63,16 +102,22 @@ class ProgramSubpageManager {
      * @param array $rules The existing rewrite rules.
      * @return array The resulting rewrite rules with ours added.
      */
-    public function insert_rules(array $rules): array {
+    public static function insert_rules(array $rules): array {
         $subpage_rules = [];
         // TODO: load program stub dynamically.
         $pretty_pattern = 'program/([^/]+)/%s/?$';
         // TODO: load program CPT name by reference.
-        $real_pattern = 'index.php?nvis_program=$matches[1]&nvis_subpage=';
+        $real_pattern = sprintf(
+            'index.php?%s=$matches[1]&%s=',
+            Program::post_type,
+            self::query_var
+        );
 
-        foreach ($this->subpages as $slug => $title) {
-            $index = sprintf($pretty_pattern, $slug);
-            $subpage_rules[$index] = $real_pattern . $slug;
+        foreach (self::$subpages as $subpage) {
+            if ($subpage->slug !== 'index') {
+                $index = sprintf($pretty_pattern, $subpage->slug);
+                $subpage_rules[$index] = $real_pattern . $subpage->slug;
+            }
         }
 
         return $subpage_rules + $rules;
@@ -83,11 +128,11 @@ class ProgramSubpageManager {
      *
      * @return void
      */
-    public function maybe_override_rel_canonical(): void {
+    public static function maybe_override_rel_canonical(): void {
         // TODO: make program CPT name a reference.
-        if (is_singular('nvis_program') && $this->get_active_subpage() !== 'index') {
+        if (is_singular(Program::post_type) && self::get_active_subpage() !== 'index') {
             remove_filter('wp_head', 'rel_canonical');
-            add_filter('wp_head', __NAMESPACE__  . '\subpage_canonical');
+            add_filter('wp_head', [self::class, 'subpage_canonical']);
         }
 
         return;
@@ -98,10 +143,10 @@ class ProgramSubpageManager {
      *
      * @return void
      */
-    public function subpage_canonical(): void {
+    public static function subpage_canonical(): void {
         echo sprintf(
             '<link rel="canonical" href="%s" />',
-            $this->get_subpage_link($this->get_active_subpage(), false)
+            self::get_subpage_link(self::get_active_subpage(), false)
         );
 
         return;
@@ -118,6 +163,16 @@ class ProgramSubpageManager {
         $subpage = get_query_var(self::query_var);
 
         return $subpage ? $subpage : 'index';
+    }
+
+    /**
+     * Tests whether the subpage is currently active.
+     *
+     * @param string $subpage The slug of the page to test.
+     * @return boolean
+     */
+    public static function is_active_subpage(string $subpage): bool {
+        return self::get_active_subpage() === $subpage;
     }
 
 
@@ -163,7 +218,7 @@ class ProgramSubpageManager {
      * @param boolean $echo Whether or not to output the URL.
      * @return string The subpage URL.
      */
-    public function get_subpage_link(string $subpage, bool $echo = true): string {
+    public static function get_subpage_link(string $subpage, bool $echo = true): string {
         $link = $subpage === 'index' ?
             get_the_permalink() :
             sprintf('%s%s/', get_the_permalink(), $subpage);
