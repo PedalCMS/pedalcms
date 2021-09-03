@@ -54,6 +54,19 @@ class Program extends CustomPostType {
 
     ];
 
+    public function setup_hooks(): void {
+        add_action('pre_get_posts', [static::class, 'update_sort_order']);
+    }
+
+    public static function update_sort_order(\WP_Query $query): void {
+        if (is_post_type_archive(self::post_type)) {
+            $query->set('order', 'ASC');
+            $query->set('orderby', 'title');
+        }
+
+        return;
+    }
+
     public static function get_related_posts($program = null, array $not_in = []): array {
         $program = get_post($program);
 
