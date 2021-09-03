@@ -3,8 +3,8 @@
 namespace InvisibleUs\Programs;
 
 class CoursesProgramSubpage {
-    public $slug = 'careers';
-    public $title = 'Careers';
+    public $slug = 'courses';
+    public $title = 'Courses';
 
     public $fields = [
         [
