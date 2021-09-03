@@ -109,13 +109,13 @@ function nvis_prog_get_course_action_link(string $action, $course): string {
 }
 
 function nvis_prog_the_application_deadlines(mixed $program = null): array {
-    return \InvisibleUs\Programs\get_program_application_deadlines($program);
+    return \InvisibleUs\Programs\Program::get_application_deadlines($program);
 }
 
 function nvis_prog_get_related_posts(mixed $post = null, array $not_in): array {
-    return \InvisibleUs\Programs\get_program_related_posts($post, $not_in);
+    return \InvisibleUs\Programs\Program::get_related_posts($post, $not_in);
 }
 
 function nvis_prog_get_faqs_by_category(array $faqs): array {
-    return \InvisibleUs\Programs\group_faqs_by_category($faqs);
+    return \InvisibleUs\Programs\FAQ::group_by_category($faqs);
 }
