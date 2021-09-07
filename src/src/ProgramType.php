@@ -25,5 +25,59 @@ class ProgramType extends CustomTaxonomy {
         'show_tagcloud'         => false,
     ];
 
-    public $field_groups = [];
+    public static $field_groups = [
+        [
+            'key'         => 'group_6123fad662541',
+            'title'       => 'Application Deadlines',
+            'description' => '',
+            'location'    => [
+                [
+                    [
+                        'param'    => 'taxonomy',
+                        'operator' => '==',
+                        'value'    => self::taxonomy,
+                    ],
+                ]
+            ],
+            'menu_order'            => 0,
+            'position'              => 'normal',
+            'style'                 => 'default',
+            'label_placement'       => 'top',
+            'instruction_placement' => 'label',
+            'active'                => true,
+            'fields'                => [
+                [
+                    'key'          => 'field_61156b547d402',
+                    'label'        => 'Application Deadlines',
+                    'name'         => 'nvis_application_deadlines',
+                    'type'         => 'repeater',
+                    'instructions' => '',
+                    'collapsed'    => 'field_61156b777d403',
+                    'layout'       => 'block',
+                    'button_label' => 'Add Deadline',
+                    'sub_fields'   => [
+                        [
+                            'key'          => 'field_61156b777d403',
+                            'label'        => 'Deadline Label',
+                            'name'         => 'deadline_label',
+                            'type'         => 'text',
+                            'instructions' => '',
+                            'required'     => 1,
+                            'placeholder'  => 'Fall, Spring, etc.',
+                            'maxlength'    => '',
+                        ],
+                        [
+                            'key'          => 'field_61156bbe7d404',
+                            'label'        => 'Deadline Info',
+                            'name'         => 'deadline_info',
+                            'type'         => 'text',
+                            'instructions' => '',
+                            'placeholder'  => 'e.g. June 24th',
+                            'maxlength'    => '',
+                        ],
+                    ],
+                ],
+            ],
+        ]
+    ];
 }
