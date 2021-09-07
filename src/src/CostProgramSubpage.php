@@ -27,9 +27,9 @@ class CostProgramSubpage {
             'ui_off_text'   => '',
         ],
         [
-            'key'           => 'field_611d6bfe199d9',
-            'label'         => 'Apply Content',
-            'name'          => 'apply_content',
+            'key'           => 'field_61327ef17bf0d',
+            'label'         => 'Cost Content',
+            'name'          => 'cost_content',
             'type'          => 'wysiwyg',
             'instructions'  => '',
             'default_value' => '',
