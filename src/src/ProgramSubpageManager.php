@@ -229,4 +229,17 @@ class ProgramSubpageManager {
 
         return $link;
     }
+
+    public static function get_enabled_subpage_fields(): array {
+        $fields = [];
+        $enabled = self::get_enabled_subpages();
+
+        foreach (self::$subpages as $subpage) {
+            if (in_array($subpage->slug, $enabled, true)) {
+                $fields = array_merge($fields, $subpage->fields);
+            }
+        }
+
+        return $fields;
+    }
 }
