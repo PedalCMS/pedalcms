@@ -26,7 +26,6 @@ $includes = [
     '/src/acf.php',
     '/src/assets.php',
     '/src/content-model.php',
-    '/src/admin.php',
     '/src/ajax.php',
     '/src/template.php',
     '/src/template-tags.php',
