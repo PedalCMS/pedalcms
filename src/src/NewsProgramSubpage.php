@@ -8,8 +8,8 @@ class NewsProgramSubpage {
 
     public $fields = [
         [
-            'key'       => 'News',
-            'label'     => 'field_611fdfc220be4',
+            'key'       => 'field_611fdfc220be4',
+            'label'     => 'News',
             'type'      => 'tab',
             'placement' => 'top',
             'endpoint'  => 0,
