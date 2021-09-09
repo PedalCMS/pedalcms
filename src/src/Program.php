@@ -92,7 +92,7 @@ class Program extends CustomPostType {
                     'type'          => 'taxonomy',
                     'instructions'  => '',
                     'required'      => 1,
-                    'taxonomy'      => 'nvis_program_college',
+                    'taxonomy'      => College::taxonomy,
                     'field_type'    => 'select',
                     'allow_null'    => 0,
                     'add_term'      => 0,
@@ -108,7 +108,7 @@ class Program extends CustomPostType {
                     'type'          => 'taxonomy',
                     'instructions'  => '',
                     'required'      => 1,
-                    'taxonomy'      => 'nvis_program_type',
+                    'taxonomy'      => ProgramType::taxonomy,
                     'field_type'    => 'radio',
                     'allow_null'    => 0,
                     'add_term'      => 0,
@@ -123,7 +123,7 @@ class Program extends CustomPostType {
                     'name'          => 'delivery_format',
                     'type'          => 'taxonomy',
                     'instructions'  => '',
-                    'taxonomy'      => 'nvis_program_format',
+                    'taxonomy'      => DeliveryFormat::taxonomy,
                     'field_type'    => 'radio',
                     'allow_null'    => 0,
                     'add_term'      => 0,
@@ -141,8 +141,6 @@ class Program extends CustomPostType {
                     'message'       => '',
                     'default_value' => true,
                     'ui'            => 1,
-                    'ui_on_text'    => '',
-                    'ui_off_text'   => '',
                 ],
                 [
                     'key'           => 'field_6112738ed4b70',
@@ -173,7 +171,25 @@ class Program extends CustomPostType {
                     'placeholder'  => '',
                 ],
                 [
-                    'key'          => 'field_612405570ceb7',
+                    'key'          => 'field_61127d948fbcd',
+                    'label'        => 'Contact Us URL',
+                    'name'         => 'url_contact_us',
+                    'type'         => 'url',
+                    'instructions' => 'Overrides the global pattern for Contact Us URLs.',
+                    'placeholder'  => '',
+                ],
+                [
+                    'key'           => 'field_6138d5c7722ca',
+                    'label'         => 'Show Application Deadlines?',
+                    'name'          => 'show_application_deadlines',
+                    'type'          => 'true_false',
+                    'instructions'  => '',
+                    'message'       => '',
+                    'default_value' => true,
+                    'ui'            => 1,
+                ],
+                [
+                    'key'          => 'field_613a6d0cce1eb',
                     'label'        => 'Application Deadlines',
                     'name'         => 'application_deadlines',
                     'type'         => 'repeater',
@@ -202,14 +218,15 @@ class Program extends CustomPostType {
                             'maxlength'    => '',
                         ],
                     ],
-                ],
-                [
-                    'key'          => 'field_61127d948fbcd',
-                    'label'        => 'Contact Us URL',
-                    'name'         => 'url_contact_us',
-                    'type'         => 'url',
-                    'instructions' => 'Overrides the global pattern for Contact Us URLs.',
-                    'placeholder'  => '',
+                    'conditional_logic' => [
+                        [
+                            [
+                                'field'    => 'field_6138d5c7722ca',
+                                'operator' => '==',
+                                'value'    => '1'
+                            ],
+                        ],
+                    ]
                 ],
                 [
                     'key'          => 'field_611276e3640f3',
