@@ -21,6 +21,7 @@ function register_content_model(): void {
     (new ProgramType())->register();
     (new College())->register();
     (new DeliveryFormat())->register();
+    (new PersonCategory())->register();
     (new FAQCategory())->register();
 
     return;
