@@ -15,15 +15,7 @@ class ProgramSubpageManager {
      *
      * @var array
      */
-    private static $subpages = [
-        'index'   => 'Overview',
-        'careers' => 'Careers',
-        'courses' => 'Courses',
-        'faqs'    => 'FAQs',
-        'cost'    => 'Cost',
-        'apply'   => 'How to Apply',
-        'news'    => 'News'
-    ];
+    private static $subpages = [];
 
     /**
      * Constructor
@@ -36,9 +28,10 @@ class ProgramSubpageManager {
             ],
             new CareersProgramSubpage(),
             new CoursesProgramSubpage(),
-            new FAQProgramSubpage(),
+            new FacultyStaffProgramSubpage(),
             new CostProgramSubpage(),
             new ApplyProgramSubpage(),
+            new FAQProgramSubpage(),
             new NewsProgramSubpage()
         ];
 
@@ -188,10 +181,11 @@ class ProgramSubpageManager {
         }
 
         $enabled = self::get_enabled_subpages();
+        $field_safe = str_replace('-', '_', $subpage);
 
         return
             in_array($subpage, $enabled, true) &&
-            (bool) get_field(sprintf('show_%s_section', $subpage));
+            (bool) get_field(sprintf('show_%s_section', $field_safe));
     }
 
     /**
