@@ -38,5 +38,37 @@ class FacultyStaffProgramSubpage {
             'media_upload'  => 1,
             'delay'         => 1,
         ],
+        [
+            'key'           => 'field_613b6ecd4687a',
+            'label'         => 'Group by category?',
+            'name'          => 'faculty_staff_by_category',
+            'type'          => 'true_false',
+            'instructions'  => '',
+            'message'       => '',
+            'default_value' => true,
+            'ui'            => 1,
+            'ui_on_text'    => '',
+            'ui_off_text'   => '',
+        ],
+        [
+            'key'          => 'field_613b6de416aa1',
+            'label'        => 'Related Faculty & Staff',
+            'name'         => 'related_faculty_staff',
+            'type'         => 'relationship',
+            'instructions' => '',
+            'post_type'    => [
+                0 => 'nvis_person',
+            ],
+            'taxonomy' => '',
+            'filters'  => [
+                0 => 'search',
+            ],
+            'elements' => [
+                0 => 'featured_image',
+            ],
+            'min'           => '',
+            'max'           => '',
+            'return_format' => 'object',
+        ]
     ];
 }
