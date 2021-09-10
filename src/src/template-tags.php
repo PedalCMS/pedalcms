@@ -109,3 +109,7 @@ function nvis_prog_get_related_posts(mixed $post = null, array $not_in): array {
 function nvis_prog_get_faqs_by_category(array $faqs): array {
     return \InvisibleUs\Programs\FAQ::group_by_category($faqs);
 }
+
+function nvis_prog_get_people_by_category(array $people): array {
+    return \InvisibleUs\Programs\Person::group_by_category($people);
+}
