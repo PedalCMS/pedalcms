@@ -13,11 +13,32 @@ add_filter('wpseo_breadcrumb_links', __NAMESPACE__ . '\yoast_update_trail');
 // All in One SEO Breadcrumb support.
 add_filter('aioseo_breadcrumbs_trail', __NAMESPACE__ . '\aioseo_update_trail');
 
-function get_programs_archive_crumb(): array {
-    return [
-        'text' => 'Programs',
-        'url'  => get_post_type_archive_link('nvis_program')
+function get_archive_crumb(): array {
+    $found = false;
+
+    $post_types = [
+        // TODO: Add these to the objects and reference them.
+        Program::post_type => 'Programs',
+        Person::post_type  => 'Directory',
     ];
+
+    foreach ($post_types as $post_type => $text) {
+        if (is_post_type_archive($post_type)) {
+            $found = true;
+
+            break;
+        }
+    }
+
+    if ($found) {
+        // TODO: Make this filterable.
+        return [
+            'text' => $text,
+            'url'  => get_post_type_archive_link($post_type)
+        ];
+    }
+
+    return [];
 }
 
 function get_program_subpage_crumb(): array {
@@ -30,7 +51,7 @@ function get_program_subpage_crumb(): array {
 }
 
 function navxt_add_subpage(object $trail) {
-    if (is_singular('nvis_program')) {
+    if (is_singular(Program::post_type)) {
         $crumb = get_program_subpage_crumb();
         $linked = (bool) $trail->opt['bcurrent_item_linked'];
         $trail->add(new \bcn_breadcrumb($crumb['text'], null, [], $crumb['url'], null, $linked));
@@ -38,12 +59,14 @@ function navxt_add_subpage(object $trail) {
 }
 
 function navxt_replace_archive_trail(object $trail) {
-    if (nvis_prog_is_filtered_results()) {
+    $post_types = [Program::post_type, Person::post_type];
+
+    if (nvis_prog_is_filtered_results($post_types)) {
         if ($trail->opt['bhome_display']) {
             $home = array_pop($trail->breadcrumbs);
         }
         $trail->breadcrumbs = [];
-        $crumb = get_programs_archive_crumb();
+        $crumb = get_archive_crumb();
 
         $trail->add(new \bcn_breadcrumb('Filtered Results', null, [], null, null, false));
         $trail->add(new \bcn_breadcrumb($crumb['text'], null, [], $crumb['url'], null, true));
@@ -55,21 +78,27 @@ function navxt_replace_archive_trail(object $trail) {
 }
 
 function navxt_breadcrumb_linked(bool $linked, array $types, int $id = null): bool {
-    if (is_singular('nvis_program') && in_array('post-nvis_program', $types, true)) {
-        // TODO: Add support for "Link Current Item" feature.
-        // ID is null for newly created subpages.
-        return (bool) $id;
+    $post_types = [Program::post_type, Person::post_type];
+
+    // TODO: Add support for "Link Current Item" feature.
+    foreach ($post_types as $post_type) {
+        if (is_singular($post_type) && in_array('post-' . $post_type, $types, true)) {
+            // ID is null for newly created subpages.
+            return (bool) $id;
+        }
     }
 
     return $linked;
 }
 
 function yoast_update_trail(array $crumbs): array {
-    if (is_singular('nvis_program')) {
+    if (is_singular(Program::post_type)) {
         return yoast_add_subpage($crumbs);
     }
 
-    if (nvis_prog_is_filtered_results()) {
+    $post_types = [Program::post_type, Person::post_type];
+
+    if (nvis_prog_is_filtered_results($post_types)) {
         return yoast_replace_trail($crumbs);
     }
 
@@ -87,17 +116,20 @@ function yoast_replace_trail(array $crumbs): array {
 
     return [
         $home,
-        get_programs_archive_crumb(),
+        get_archive_crumb(),
+        // TODO: Make text filterable.
         ['text' => 'Filtered Results', 'url' => null]
     ];
 }
 
 function aioseo_update_trail(array $crumbs): array {
-    if (is_singular('nvis_program')) {
+    if (is_singular(Program::post_type)) {
         return aioseo_add_subpage($crumbs);
     }
 
-    if (nvis_prog_is_filtered_results()) {
+    $post_types = [Program::post_type, Person::post_type];
+
+    if (nvis_prog_is_filtered_results($post_types)) {
         return aioseo_replace_trail($crumbs);
     }
 
@@ -123,6 +155,7 @@ function aioseo_replace_trail(array $crumbs): array {
     }
 
     $crumbs[] = aioseo()->breadcrumbs->getPostTypeArchiveCrumb(get_queried_object());
+    // TODO: Make label filterable.
     $crumbs[] = ['label' => 'Filtered Results', 'link' => 'null'];
 
     return $crumbs;
