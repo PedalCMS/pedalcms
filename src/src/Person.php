@@ -37,8 +37,8 @@ class Person extends CustomPostType {
      * @var array
      */
     public $args = [
-        'rewrite'             => ['slug' => 'person'],
-        'has_archive'         => 'people',
+        'rewrite'             => ['slug' => 'directory'],
+        'has_archive'         => 'directory',
         'capability_type'     => self::post_type,
         'menu_icon'           => 'dashicons-businesswoman',
         'menu_position'       => 5,
@@ -49,7 +49,54 @@ class Person extends CustomPostType {
         'query_var'           => true,
         'map_meta_cap'        => true,
         'hierarchical'        => false,
-        'supports'            => ['title', 'editor', 'thumbnail'],
+        'show_in_rest'        => true,
+        'supports'            => ['title', 'editor', 'thumbnail', 'custom-fields']
+    ];
+
+    public static $field_groups = [
+        [
+            'key'      => 'group_61140677b6acb',
+            'title'    => 'Contact Info',
+            'location' => [
+                [
+                    [
+                        'param'    => 'post_type',
+                        'operator' => '==',
+                        'value'    => self::post_type,
+                    ],
+                ],
+            ],
+            'menu_order'            => 0,
+            'position'              => 'acf_after_title',
+            'style'                 => 'default',
+            'label_placement'       => 'top',
+            'instruction_placement' => 'label',
+            'active'                => true,
+            'fields'                => [
+                [
+                    'key'               => 'field_611406a953e0e',
+                    'label'             => 'Job Title',
+                    'name'              => 'job_title',
+                    'type'              => 'text',
+                    'instructions'      => '',
+                ],
+                [
+                    'key'               => 'field_611406db53e0f',
+                    'label'             => 'Office Phone',
+                    'name'              => 'office_phone',
+                    'type'              => 'text',
+                    'instructions'      => '',
+                    'placeholder'       => '(919) 555-1001',
+                ],
+                [
+                    'key'               => 'field_6114072c53e10',
+                    'label'             => 'Email Address',
+                    'name'              => 'email_address',
+                    'type'              => 'email',
+                    'instructions'      => '',
+                ],
+            ],
+        ]
     ];
 
     /**
