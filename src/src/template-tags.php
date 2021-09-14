@@ -4,9 +4,11 @@ function nvis_prog_get_template_part(string $template, array $data = []) {
     \InvisibleUs\Programs\TemplateManager::loadTemplate($template, $data);
 }
 
-function nvis_prog_is_filtered_results(): bool {
+function nvis_prog_is_filtered_results($post_type = null): bool {
+    $post_type = $post_type ?? \InvisibleUs\Programs\Program::post_type;
+
     return
-        is_post_type_archive(\InvisibleUs\Programs\Program::post_type) &&
+        is_post_type_archive($post_type) &&
         (is_search() || is_tax());
 }
 
