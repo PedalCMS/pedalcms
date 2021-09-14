@@ -11,7 +11,6 @@ class PersonCategory extends CustomTaxonomy {
 
     public $args = [
         'query_var'             => 'person_cat',
-        'rewrite'               => false,
         'description'           => '',
         'sort'                  => true,
         'rewrite'               => false,
