@@ -95,6 +95,14 @@ class Person extends CustomPostType {
                     'type'              => 'email',
                     'instructions'      => '',
                 ],
+                [
+                    'key'               => 'field_6140ba895cb46',
+                    'label'             => 'Office',
+                    'name'              => 'office',
+                    'type'              => 'text',
+                    'instructions'      => '',
+                    'placeholder'       => 'Main Building, 448C'
+                ],
             ],
         ]
     ];
