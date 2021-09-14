@@ -13,7 +13,7 @@ abstract class CustomPostType extends CustomContentObject {
 
     public $post_object = null;
 
-    public $lowercase_safe = true;
+    public $lowercase_safe = false;
 
     public static $enter_title_text = '';
 
