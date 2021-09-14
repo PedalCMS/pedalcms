@@ -1,14 +1,17 @@
-<form action="<?php echo get_post_type_archive_link('nvis_program'); ?>" class="program-filters">
+<form
+  action="<?php echo get_post_type_archive_link('nvis_program'); ?>"
+  class="program-filters nvis-post-filters">
   <fieldset>
     <legend>Filter Programs</legend>
-    <div class="program-filters-fields">
-      </div>
-    <div class="program-filters-field">
-      <label for="s" class="screen-reader-text">Keyword</label>
-      <input type="text" name="s" id="prog_keyword" placeholder="Keyword …" value="<?php echo get_query_var('s'); ?>">
+    <div class="nvis-filters-fields">
     </div>
-    <div class="program-filters-field">
-      <label for="prog_level" class="screen-reader-text">Program Level</label>
+    <div class="nvis-filters-field">
+      <label for="s" class="screen-reader-text">Keyword</label>
+      <input type="text" name="s" id="prog_keyword" placeholder="Keyword …"
+        value="<?php echo get_query_var('s'); ?>">
+    </div>
+    <div class="nvis-filters-field">
+      <label for="prog_type" class="screen-reader-text">Program Level</label>
       <?php
       wp_dropdown_categories([
           'taxonomy'          => 'nvis_program_type',
@@ -20,7 +23,7 @@
       ]);
       ?>
     </div>
-    <div class="program-filters-field">
+    <div class="nvis-filters-field">
       <label for="prog_format" class="screen-reader-text">Program Format</label>
       <?php
       wp_dropdown_categories([
@@ -33,7 +36,7 @@
       ]);
       ?>
     </div>
-    <div class="program-filters-field">
+    <div class="nvis-filters-field">
       <label for="prog_college" class="screen-reader-text">College</label>
       <?php
       wp_dropdown_categories([
@@ -48,5 +51,7 @@
     </div>
   </fieldset>
   <button class="button" type="submit">Search</button>
-  <a class="reset-link" href="<?php echo get_post_type_archive_link('nvis_program'); ?>">Reset Filters</a>
+  <a class="reset-link"
+    href="<?php echo get_post_type_archive_link('nvis_program'); ?>">Reset
+    Filters</a>
 </form>

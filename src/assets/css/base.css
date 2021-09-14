@@ -1,6 +1,8 @@
 /* TODO: Namespace CSS classes? */
 article.nvis_program,
-.programs-archive-main {
+.programs-archive-main,
+article.nvis_program,
+.person-archive-main  {
   --nvis-prog-active-color: #f90;
   --nvis-prog-gray: #999;
   --nvis-prog-spacing: 1rem;
@@ -39,7 +41,7 @@ article.nvis_program .empty-state-message,
   padding-bottom: calc(3 * var(--nvis-prog-spacing));
 }
 
-.programs-archive-main .program-filters {
+.archive .nvis-post-filters {
   align-items: center;
   background: rgba(0,0,0,0.1);
   display: flex;
@@ -49,7 +51,7 @@ article.nvis_program .empty-state-message,
   padding: var(--nvis-prog-spacing);
 }
 
-.programs-archive-main .program-filters fieldset {
+.archive .nvis-post-filters fieldset {
   align-items: center;
   border: none;
   display: flex;
@@ -58,7 +60,7 @@ article.nvis_program .empty-state-message,
   padding: 0;
 }
 
-.programs-archive-main .program-filters legend {
+.archive .nvis-post-filters legend {
   border: none;
   float: left;
   font-size: 1em;
@@ -68,7 +70,7 @@ article.nvis_program .empty-state-message,
   width: auto;
 }
 
-.programs-archive-main .program-filters .reset-link {
+.archive .nvis-post-filters .reset-link {
   display: inline-block;
 }
 
