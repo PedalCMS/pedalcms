@@ -169,7 +169,7 @@ abstract class CustomPostType extends CustomContentObject {
         return false;
     }
 
-    public function is_edit_posts_screen() {
+    public static function is_edit_posts_screen() {
         global $pagenow;
 
         if ($pagenow == 'edit.php') {
@@ -183,7 +183,7 @@ abstract class CustomPostType extends CustomContentObject {
         return false;
     }
 
-    public function is_edit_screen() {
+    public static function is_edit_screen() {
         if (!function_exists('get_current_screen')) {
             return null;
         }
