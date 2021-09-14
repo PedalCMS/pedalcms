@@ -14,6 +14,7 @@ article.nvis_program,
 }
 
 article.nvis_program .empty-state-message,
+.person-archive-main .empty-state-message,
 .programs-archive-main .empty-state-message {
   font-size: 1.5em;
   font-weight: 900;
