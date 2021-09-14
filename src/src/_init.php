@@ -22,6 +22,7 @@ function register_content_model(): void {
     (new College())->register();
     (new DeliveryFormat())->register();
     (new PersonCategory())->register();
+    (new Department())->register();
     (new FAQCategory())->register();
 
     return;
@@ -33,12 +34,17 @@ function setup_template_manager(): void {
         [
             'name'     => 'single-program',
             'callback' => 'is_singular',
-            'args'     => ['nvis_program']
+            'args'     => [Program::post_type]
         ],
         [
             'name'     => 'archive-program',
             'callback' => 'is_post_type_archive',
-            'args'     => ['nvis_program']
+            'args'     => [Program::post_type]
+        ],
+        [
+            'name'     => 'archive-person',
+            'callback' => 'is_post_type_archive',
+            'args'     => [Person::post_type]
         ],
     ];
 
