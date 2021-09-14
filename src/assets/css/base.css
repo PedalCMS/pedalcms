@@ -8,6 +8,11 @@ article.nvis_program,
   --nvis-prog-spacing: 1rem;
   --nvis-prog-sidebar-width: 20%;
 }
+/* TODO: Make this more generic and global. */
+.person-archive-main {
+  width: 100%;
+}
+
 article.nvis_program .empty-state-message,
 .programs-archive-main .empty-state-message {
   font-size: 1.5em;
