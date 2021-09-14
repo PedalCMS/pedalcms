@@ -31,9 +31,10 @@ function acf_init(): void {
 
     $field_groups = [
         (new Plugin())::$field_groups[0],
-        get_program_type_acf_fields(),
+        get_program_acf_fields(),
         ProgramType::$field_groups[0],
-        Course::$field_groups[0]
+        Course::$field_groups[0],
+        Person::$field_groups[0]
     ];
 
     foreach ($field_groups as $group) {
@@ -43,7 +44,7 @@ function acf_init(): void {
     return;
 }
 
-function get_program_type_acf_fields(): array {
+function get_program_acf_fields(): array {
     $group = Program::$field_groups[0];
 
     $group['fields'] = array_merge(
