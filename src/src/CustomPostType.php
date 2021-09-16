@@ -11,6 +11,8 @@ abstract class CustomPostType extends CustomContentObject {
 
     public $args = [];
 
+    public $post_meta = [];
+
     public $post_object = null;
 
     public $lowercase_safe = false;
@@ -46,11 +48,24 @@ abstract class CustomPostType extends CustomContentObject {
         // After we register the post type, the args and labels are redundant.
         $this->args = null;
         $this->labels = null;
+        $this->maybe_register_meta();
         $this->setup_hooks();
 
         if (static::$enter_title_text) {
             add_action('enter_title_here', [static::class, 'update_enter_title_text'], 10, 2);
         }
+    }
+
+    public function maybe_register_meta(): void {
+        if (empty($this->post_meta)) {
+            return;
+        }
+
+        foreach ($this->post_meta as $meta_key => $args) {
+            register_post_meta(static::post_type, $meta_key, $args);
+        }
+
+        return;
     }
 
     protected function create_labels() {
