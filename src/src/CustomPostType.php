@@ -11,7 +11,7 @@ abstract class CustomPostType extends CustomContentObject {
 
     public $args = [];
 
-    public $post_meta = [];
+    public static $post_meta = [];
 
     public $post_object = null;
 
