@@ -37,12 +37,12 @@
       ?>
     </div>
     <div class="nvis-filters-field">
-      <label for="prog_college" class="screen-reader-text">College</label>
+      <label for="college" class="screen-reader-text">College</label>
       <?php
       wp_dropdown_categories([
           'taxonomy'          => 'nvis_program_college',
-          'name'              => 'prog_college',
-          'selected'          => get_query_var('prog_college'),
+          'name'              => 'college',
+          'selected'          => get_query_var('college'),
           'show_option_none'  => 'Any College',
           'option_none_value' => '',
           'value_field'       => 'slug'
