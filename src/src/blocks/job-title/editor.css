@@ -1,0 +1,18 @@
+.wp-block-nvis-job-title.is-selected {
+    border-radius: 1px;
+    box-shadow: 
+        0 0 0 10px #fff,
+        0 0 0 11px #ddd;
+}
+
+.wp-block-nvis-job-title:not(.is-selected) input {
+    border: none;
+    color: #333;
+    font-size: 1rem;
+    font-style: italic;
+    padding: 0;
+}
+
+.wp-block-nvis-job-title:not(.is-selected) label {
+    opacity: 0.4;
+}
