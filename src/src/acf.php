@@ -34,7 +34,7 @@ function acf_init(): void {
         get_program_acf_fields(),
         ProgramType::$field_groups[0],
         Course::$field_groups[0],
-        Person::$field_groups[0]
+        // Person::$field_groups[0]
     ];
 
     foreach ($field_groups as $group) {

@@ -7,7 +7,9 @@ add_action('plugins_loaded', __NAMESPACE__ . '\setup_subpage_manager');
 
 
 function setup_plugin(): void {
+    new Plugin();
     register_content_model();
+    register_custom_blocks();
     setup_template_manager();
 }
 
@@ -28,6 +30,25 @@ function register_content_model(): void {
     return;
 }
 
+function register_custom_blocks(): void {
+    $block_dir = __DIR__ . '/blocks/';
+    $blocks = glob($block_dir . '*', GLOB_ONLYDIR);
+
+    foreach ($blocks as $block) {
+        $block_name = basename($block);
+        $callback =
+            __NAMESPACE__ .
+            '\render_block_' .
+            str_replace('-', '_', $block_name);
+
+        register_block_type(
+            $block,
+            ['render_callback' => $callback ]
+        );
+    }
+
+    return;
+}
 
 function setup_template_manager(): void {
     $templates = [

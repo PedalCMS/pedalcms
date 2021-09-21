@@ -13,14 +13,14 @@ class Person extends CustomPostType {
      *
      * @var string
      */
-    public $name = 'Faculty & Staff';
+    public $name = 'Person';
 
     /**
      * The plural version of the proper name.
      *
      * @var string
      */
-    public $plural_name = 'Faculty & Staff';
+    public $plural_name = 'Personnel';
 
     /**
      * The replacement text for enter_title_here filter.
@@ -50,8 +50,29 @@ class Person extends CustomPostType {
         'map_meta_cap'        => true,
         'hierarchical'        => false,
         'show_in_rest'        => true,
-        'supports'            => ['title', 'editor', 'thumbnail', 'custom-fields']
+        'supports'            => ['title', 'editor', 'thumbnail', 'custom-fields'],
+        'template'            => [
+            [
+                'nvis/job-title',
+                [
+                    'placeholder' => 'Add job title …'
+                ]
+            ]
+        ]
     ];
+
+    public static $post_meta = [
+        'job_title' => [
+            'label'             => 'Job Title',
+            'description'       => 'The current position this team member holds',
+            'type'              => 'string',
+            'default'           => 'Team member',
+            'single'            => true,
+            'sanitize_callback' => 'sanitize_text_field',
+            'show_in_rest'      => true
+        ]
+    ];
+
 
     public static $field_groups = [
         [

@@ -28,6 +28,7 @@ $includes = [
     '/src/assets.php',
     '/src/ajax.php',
     '/src/filters.php',
+    '/src/custom-blocks.php',
     '/src/template-tags.php',
     '/src/breadcrumbs.php',
 ];
