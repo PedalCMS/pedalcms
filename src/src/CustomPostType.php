@@ -57,11 +57,11 @@ abstract class CustomPostType extends CustomContentObject {
     }
 
     public function maybe_register_meta(): void {
-        if (empty($this->post_meta)) {
+        if (empty(static::$post_meta)) {
             return;
         }
 
-        foreach ($this->post_meta as $meta_key => $args) {
+        foreach (static::$post_meta as $meta_key => $args) {
             register_post_meta(static::post_type, $meta_key, $args);
         }
 
