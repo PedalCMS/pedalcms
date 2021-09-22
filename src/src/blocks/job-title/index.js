@@ -7,6 +7,7 @@
   var useBlockProps = wp.blockEditor.useBlockProps;
 
   registerBlockType('nvis/job-title', {
+    title: 'Job Title',
     edit: function (props) {
       var blockProps = useBlockProps();
       var postType = useSelect(function (select) {
