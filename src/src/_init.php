@@ -31,26 +31,22 @@ function register_content_model(): void {
 }
 
 function register_custom_blocks(): void {
-    $block_dir = __DIR__ . '/blocks/';
-    $blocks = glob($block_dir . '*', GLOB_ONLYDIR);
-
-    foreach ($blocks as $block) {
-        $block_name = basename($block);
-        $callback =
-            __NAMESPACE__ .
-            '\render_block_' .
-            str_replace('-', '_', $block_name);
-
-        register_block_type(
-            $block,
-            ['render_callback' => $callback ]
-        );
+    if (!Person::is_block_editor_enabled()) {
+        return;
     }
+
+    new JobTitleBlock();
 
     return;
 }
 
 function setup_template_manager(): void {
+    $person_template = 'single-person';
+
+    if (!Person::is_block_editor_enabled()) {
+        $person_template .= '-classic';
+    }
+
     $templates = [
         [
             'name'     => 'single-program',
@@ -67,6 +63,11 @@ function setup_template_manager(): void {
             'callback' => 'is_post_type_archive',
             'args'     => [Person::post_type]
         ],
+        [
+            'name'     => $person_template,
+            'callback' => 'is_singular',
+            'args'     => [Person::post_type]
+        ]
     ];
 
     $NVIS_TemplateManager = new TemplateManager(

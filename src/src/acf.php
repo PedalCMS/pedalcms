@@ -33,9 +33,12 @@ function acf_init(): void {
         (new Plugin())::$field_groups[0],
         get_program_acf_fields(),
         ProgramType::$field_groups[0],
-        Course::$field_groups[0],
-        // Person::$field_groups[0]
+        Course::$field_groups[0]
     ];
+
+    if (!Person::is_block_editor_enabled()) {
+        $field_groups[] = Person::$field_groups[0];
+    }
 
     foreach ($field_groups as $group) {
         acf_add_local_field_group($group);
