@@ -119,6 +119,25 @@ class Plugin {
                         ],
                     ],
                 ],
+                [
+                    'key'               => 'field_6149ea9d1c0df',
+                    'label'             => 'Enable Block Editor for Personnel',
+                    'name'              => 'enable_block_editor_personnel',
+                    'type'              => 'true_false',
+                    'instructions'      => 'Use the block editor to edit personnel profiles.',
+                    'required'          => 0,
+                    'conditional_logic' => 0,
+                    'wrapper'           => [
+                        'width' => '',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                    'message'       => '',
+                    'default_value' => 1,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
             ]
         ]
     ];
