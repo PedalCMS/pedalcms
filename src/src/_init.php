@@ -36,6 +36,7 @@ function register_custom_blocks(): void {
     }
 
     new JobTitleBlock();
+    new ContactInfoBlock();
 
     return;
 }

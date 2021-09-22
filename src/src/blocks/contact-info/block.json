@@ -1,0 +1,13 @@
+{
+	"apiVersion": 2,
+	"name": "nvis/contact-info",
+	"version": "0.1.0",
+	"title": "Contact Info",
+	"category": "text",
+	"icon": "phone",
+	"description": "Enter the contact info for this person.",
+	"supports": {
+		"html": false
+	},
+	"textdomain": "nvis-programs"
+}
