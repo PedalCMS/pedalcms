@@ -17,9 +17,9 @@
       var meta = entityProp[0];
       var setMeta = entityProp[1];
 
-      var metaFieldValue = meta['job_title'];
+      var jobTitle = meta['job_title'];
 
-      function updateMetaValue(newValue) {
+      function updateJobTitle(newValue) {
         setMeta(
           Object.assign({}, meta, {
             job_title: newValue,
@@ -32,8 +32,9 @@
         blockProps,
         el(TextControl, {
           label: 'Job Title',
-          value: metaFieldValue,
-          onChange: updateMetaValue,
+          placeholder: 'Associate Professor',
+          value: jobTitle,
+          onChange: updateJobTitle,
         })
       );
     },
