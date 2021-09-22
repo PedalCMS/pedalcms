@@ -46,20 +46,23 @@
       }
 
       return el(
-        "div",
+        'div',
         blockProps,
         el(TextControl, {
-          label: "Office Phone",
+          label: 'Office Phone',
+          placeholder: '(919) 555-1212',
           value: officePhone,
           onChange: updatePhone,
         }),
         el(TextControl, {
-          label: "Email Address",
+          label: 'Email Address',
+          placeholder: 'jdoe@college.edu',
           value: emailAddress,
           onChange: updateEmail,
         }),
         el(TextControl, {
-          label: "Office",
+          label: 'Office',
+          placeholder: 'Main Building, 448C',
           value: office,
           onChange: updateOffice,
         })
