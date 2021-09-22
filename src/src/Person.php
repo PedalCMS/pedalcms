@@ -52,12 +52,18 @@ class Person extends CustomPostType {
         'show_in_rest'        => true,
         'supports'            => ['title', 'editor', 'thumbnail', 'custom-fields'],
         'template'            => [
-            [
-                'nvis/job-title',
-                [
-                    'placeholder' => 'Add job title …'
-                ]
-            ]
+            [ 'core/columns', [], [
+                [ 'core/column', ['width' => '66.66%'], [
+                    ['nvis/job-title'],
+                    [ 'core/paragraph', [
+                        'placeholder' => 'Add some bio text …'
+                    ] ],
+                ] ],
+                [ 'core/column', ['width' => '33.33%'], [
+                    ['core/post-featured-image'],
+                    ['nvis/contact-info']
+                ] ],
+            ] ],
         ]
     ];
 
