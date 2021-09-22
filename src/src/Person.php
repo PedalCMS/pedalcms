@@ -128,6 +128,14 @@ class Person extends CustomPostType {
         ]
     ];
 
+    public function register() {
+        if (!self::is_block_editor_enabled()) {
+            $this->args['show_in_rest'] = false;
+        }
+
+        parent::register();
+    }
+
     /**
      * Takes a list of People and returns them indexed by category.
      *
@@ -154,5 +162,9 @@ class Person extends CustomPostType {
         }
 
         return $cats;
+    }
+
+    public static function is_block_editor_enabled(): bool {
+        return (bool) get_field('enable_block_editor_personnel', 'option');
     }
 }
