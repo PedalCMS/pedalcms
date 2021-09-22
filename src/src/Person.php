@@ -66,7 +66,34 @@ class Person extends CustomPostType {
             'label'             => 'Job Title',
             'description'       => 'The current position this team member holds',
             'type'              => 'string',
-            'default'           => 'Team member',
+            'default'           => '',
+            'single'            => true,
+            'sanitize_callback' => 'sanitize_text_field',
+            'show_in_rest'      => true
+        ],
+        'office_phone' => [
+            'label'             => 'Office Phone',
+            'description'       => '',
+            'type'              => 'string',
+            'default'           => '',
+            'single'            => true,
+            'sanitize_callback' => 'sanitize_tex_field',
+            'show_in_rest'      => true
+        ],
+        'email_address' => [
+            'label'             => 'Email Address',
+            'description'       => '',
+            'type'              => 'string',
+            'default'           => '',
+            'single'            => true,
+            'sanitize_callback' => 'sanitize_email',
+            'show_in_rest'      => true
+        ],
+        'office' => [
+            'label'             => 'Office',
+            'description'       => '',
+            'type'              => 'string',
+            'default'           => '',
             'single'            => true,
             'sanitize_callback' => 'sanitize_text_field',
             'show_in_rest'      => true
