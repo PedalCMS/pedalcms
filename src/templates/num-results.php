@@ -16,12 +16,12 @@ $last = $first + ($wp_query->post_count - 1);
 $showing_all = $wp_query->post_count === $wp_query->found_posts;
 
 if ($wp_query->found_posts) : ?>
-<div class="program-list-count">
-    <?php if (nvis_prog_is_filtered_results()) : ?>
-    <strong class="program-list-count__filtered">Filtered Results:</strong>
+<div class="num-results">
+    <?php if (nvis_prog_is_filtered_results($post_type)) : ?>
+    <strong class="num-results__filtered">Filtered Results:</strong>
     <?php endif; ?>
 
-    <span class="program-list-count__value">
+    <span class="num-results__value">
         <?php
     if ($showing_all) {
         echo sprintf('Showing %d %s.', $wp_query->found_posts, $posts_label);

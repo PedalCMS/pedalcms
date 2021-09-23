@@ -80,7 +80,7 @@ article.nvis_program .empty-state-message,
   display: inline-block;
 }
 
-.program-list-count {
+.num-results {
   font-size: 0.9em;
   margin: calc(2 * var(--nvis-prog-spacing)) 0;
 }
