@@ -1,8 +1,8 @@
 <?php
-$tax = isset($data['taxonomy']) ? $data['taxonomy'] : null;
-$query_var = isset($data['query_var']) ? $data['query_var'] : null;
-$label = isset($data['label']) ? $data['label'] : null;
-$short_label = isset($data['short_label']) ? $data['short_label'] : $label;
+$tax = $data['taxonomy'] ?? null;
+$query_var = $data['query_var'] ?? null;
+$label = $data['label'] ?? null;
+$short_label = $data['short_label'] ?? $label;
 
 if ($tax && $query_var && $label) :?>
 <div
