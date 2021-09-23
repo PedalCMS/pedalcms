@@ -23,8 +23,8 @@
       </h3>
       <div class="person-category__people">
         <?php
-          foreach ($cat->people as $person) :
-            nvis_prog_get_template_part('single-program/person-item', compact('person'));
+          foreach ($cat->people as $post) :
+            nvis_prog_get_template_part('archive-person/person-item', compact('post'));
           endforeach;
           ?>
       </div>
@@ -32,8 +32,8 @@
     <?php
         endforeach;
       else:
-        foreach ($people as $person) :
-          nvis_prog_get_template_part('single-program/person-item', compact('person'));
+        foreach ($people as $post) :
+          nvis_prog_get_template_part('archive-person/person-item', compact('post'));
         endforeach;
       endif;
     endif;
