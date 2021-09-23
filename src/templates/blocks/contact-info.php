@@ -1,6 +1,6 @@
 <?php
     $post = $data['post'];
-    $show_office = $data['show_office'] ?? false;
+    $show_office = $data['show_office'] ?? true;
 ?>
 <div class="contact-info">
     <?php if ($post->office_phone) : ?>
@@ -16,7 +16,7 @@
     </div>
     <?php endif; ?>
 
-    <?php if ($post->office) : ?>
+    <?php if ($post->office && $show_office) : ?>
     <div class="contact-info__phone">
         <?php echo esc_html($post->office); ?>
     </div>
