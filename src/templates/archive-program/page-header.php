@@ -10,6 +10,6 @@
     ?>
   </h1>
   <?php nvis_prog_get_template_part('archive-program/filters'); ?>
-  <?php nvis_prog_get_template_part('archive-program/program-list-count'); ?>
+  <?php nvis_prog_get_template_part('archive-program/num-results'); ?>
 
 </section><!-- .page-header -->
