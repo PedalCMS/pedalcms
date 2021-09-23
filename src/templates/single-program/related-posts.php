@@ -17,7 +17,7 @@ if (!empty($featured_posts) || !empty($posts)) : ?>
 <?php if (!empty($featured_posts)) : ?>
 <div class="related-post-list related-post-list--featured">
     <?php foreach ($featured_posts as $post) : ?>
-    <?php nvis_prog_get_template_part('single-program-news-item', compact('post', 'is_featured')); ?>
+    <?php nvis_prog_get_template_part('single-program/news-item', compact('post', 'is_featured')); ?>
     <?php endforeach; ?>
 </div>
 <?php endif; ?>
@@ -25,7 +25,7 @@ if (!empty($featured_posts) || !empty($posts)) : ?>
 <?php if (!empty($posts)) : ?>
 <div class="related-post-list">
     <?php foreach ($posts as $post) : ?>
-    <?php nvis_prog_get_template_part('single-program-news-item', compact('post')); ?>
+    <?php nvis_prog_get_template_part('single-program/news-item', compact('post')); ?>
     <?php endforeach; ?>
 </div>
 <?php endif; ?>

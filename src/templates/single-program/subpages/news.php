@@ -1,10 +1,10 @@
 <?php if (nvis_prog_show_subpage('news')) : ?>
 
-    <div class="program-news-subpage program-subpage">
-        <h2 class="section-head">News</h2>
+<div class="program-news-subpage program-subpage">
+    <h2 class="section-head">News</h2>
 
-        <?php nvis_prog_get_template_part('single-program-subpage-lead-content'); ?>
-        <?php nvis_prog_get_template_part('single-program-related-posts'); ?>
-    </div>
+    <?php nvis_prog_get_template_part('single-program/subpages/lead-content'); ?>
+    <?php nvis_prog_get_template_part('single-program/related-posts'); ?>
+</div>
 
-<?php endif; ?>
+<?php endif;

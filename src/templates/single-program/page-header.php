@@ -14,6 +14,6 @@
     the_terms(get_the_ID(), 'nvis_program_type');
     ?>
   </div>
-  <?php nvis_prog_get_template_part('single-program-meta'); ?>
-  <?php nvis_prog_get_template_part('single-program-subnav'); ?>
+  <?php nvis_prog_get_template_part('single-program/meta'); ?>
+  <?php nvis_prog_get_template_part('single-program/subnav'); ?>
 </header><!-- .page-header -->

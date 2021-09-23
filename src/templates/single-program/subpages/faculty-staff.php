@@ -3,7 +3,7 @@
 
   <h2 class="section-head">Faculty &amp; Staff</h2>
 
-  <?php nvis_prog_get_template_part('single-program-subpage-lead-content'); ?>
+  <?php nvis_prog_get_template_part('single-program/subpages/lead-content'); ?>
 
   <div class="program-people-list">
     <?php
@@ -24,7 +24,7 @@
       <div class="person-category__people">
         <?php
           foreach ($cat->people as $person) :
-            nvis_prog_get_template_part('single-program-person-item', compact('person'));
+            nvis_prog_get_template_part('single-program/person-item', compact('person'));
           endforeach;
           ?>
       </div>
@@ -33,7 +33,7 @@
         endforeach;
       else:
         foreach ($people as $person) :
-          nvis_prog_get_template_part('single-program-sperson-item', compact('person'));
+          nvis_prog_get_template_part('single-program/person-item', compact('person'));
         endforeach;
       endif;
     endif;

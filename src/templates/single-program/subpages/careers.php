@@ -3,7 +3,7 @@
 <div class="program-careers-subpage program-subpage">
   <h2 class="section-head">Careers</h2>
 
-  <?php nvis_prog_get_template_part('single-program-subpage-lead-content'); ?>
+  <?php nvis_prog_get_template_part('single-program/subpages/lead-content'); ?>
 
   <?php
     $careers = get_field('related_careers');
@@ -15,7 +15,8 @@
     <ul>
       <?php foreach ($careers as $career) : ?>
       <li>
-        <a href="<?php echo get_permalink($career) . '?ref_prog=' . $program->post_name; ?>"><?php echo $career->post_title; ?></a>
+        <a
+          href="<?php echo get_permalink($career) . '?ref_prog=' . $program->post_name; ?>"><?php echo $career->post_title; ?></a>
       </li>
       <?php endforeach; ?>
     </ul>
@@ -24,4 +25,4 @@
 
 </div>
 
-<?php endif; ?>
+<?php endif;
