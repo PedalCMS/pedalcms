@@ -9,6 +9,7 @@
     }
     ?>
   </h1>
-  <?php nvis_prog_get_template_part('program-filters'); ?>
-  <?php nvis_prog_get_template_part('program-list-count'); ?>
+  <?php nvis_prog_get_template_part('archive-program/filters'); ?>
+  <?php nvis_prog_get_template_part('archive-program/program-list-count'); ?>
+
 </section><!-- .page-header -->

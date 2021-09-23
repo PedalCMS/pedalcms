@@ -1,10 +1,10 @@
 <?php nvis_prog_get_template_part('header'); ?>
 <div class="programs-archive-main">
-    <?php nvis_prog_get_template_part('page-header-archive'); ?>
+    <?php nvis_prog_get_template_part('archive-program/page-header'); ?>
     <?php
     global $wp_query;
     $programs = $wp_query->posts;
-    nvis_prog_get_template_part('programs-list', compact('programs'));
+    nvis_prog_get_template_part('archive-program/program-list', compact('programs'));
     ?>
     <?php nvis_prog_get_template_part('pagination'); ?>
 </div>
