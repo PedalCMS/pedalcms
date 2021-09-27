@@ -47,9 +47,33 @@ class Course extends CustomPostType {
 
     public static $field_groups = [
         [
-            'key'    => 'group_612f7f2c97e10',
-            'title'  => 'Course Info',
-            'fields' => [
+            'key'      => 'group_612f7f2c97e10',
+            'title'    => 'Course Info',
+            'location' => [
+                [
+                    [
+                        'param'    => 'post_type',
+                        'operator' => '==',
+                        'value'    => 'nvis_course',
+                    ],
+                ],
+            ],
+            'menu_order'            => 0,
+            'position'              => 'normal',
+            'style'                 => 'default',
+            'label_placement'       => 'top',
+            'instruction_placement' => 'field',
+            'active'                => true,
+            'description'           => '',
+            'fields'                => [
+                [
+                    'key'               => 'field_615226746dddd',
+                    'label'             => 'Credit Hours',
+                    'name'              => 'credits',
+                    'type'              => 'number',
+                    'instructions'      => 'Number of credit hours earned for this course. Sometimes also referred to as units.',
+                    'placeholder'       => 1,
+                ],
                 [
                     'key'               => 'field_61252469d4a0c',
                     'label'             => 'Course Catalog Key',
@@ -101,22 +125,6 @@ class Course extends CustomPostType {
                     'placeholder'       => '',
                 ],
             ],
-            'location' => [
-                [
-                    [
-                        'param'    => 'post_type',
-                        'operator' => '==',
-                        'value'    => 'nvis_course',
-                    ],
-                ],
-            ],
-            'menu_order'            => 0,
-            'position'              => 'normal',
-            'style'                 => 'default',
-            'label_placement'       => 'top',
-            'instruction_placement' => 'field',
-            'active'                => true,
-            'description'           => '',
         ]
     ];
 }
