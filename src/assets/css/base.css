@@ -1,21 +1,14 @@
 /* TODO: Namespace CSS classes? */
-article.nvis_program,
-.programs-archive-main,
-article.nvis_program,
-.person-archive-main  {
+.nvis-progs-template  {
   --nvis-prog-active-color: #f90;
   --nvis-prog-gray: #999;
   --nvis-prog-spacing: 1rem;
   --nvis-prog-sidebar-width: 20%;
-}
-/* TODO: Make this more generic and global. */
-.person-archive-main {
+
   width: 100%;
 }
 
-article.nvis_program .empty-state-message,
-.person-archive-main .empty-state-message,
-.programs-archive-main .empty-state-message {
+.nvis-progs-template .empty-state-message {
   font-size: 1.5em;
   font-weight: 900;
 }
