@@ -23,6 +23,8 @@ function register_content_model(): void {
     (new ProgramType())->register();
     (new College())->register();
     (new DeliveryFormat())->register();
+    (new Subject())->register();
+    (new Semester())->register();
     (new PersonCategory())->register();
     (new Department())->register();
     (new FAQCategory())->register();
@@ -58,6 +60,16 @@ function setup_template_manager(): void {
             'name'     => 'archive-program',
             'callback' => 'is_post_type_archive',
             'args'     => [Program::post_type]
+        ],
+        [
+            'name'     => 'single-course',
+            'callback' => 'is_singular',
+            'args'     => [Course::post_type]
+        ],
+        [
+            'name'     => 'archive-course',
+            'callback' => 'is_post_type_archive',
+            'args'     => [Course::post_type]
         ],
         [
             'name'     => 'archive-person',
