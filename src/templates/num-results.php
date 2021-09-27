@@ -24,13 +24,13 @@ if ($wp_query->found_posts) : ?>
     <span class="num-results__value">
         <?php
     if ($showing_all) {
-        echo sprintf('Showing %d %s.', $wp_query->found_posts, $posts_label);
+        echo sprintf('Showing %s %s.', $wp_query->found_posts, $posts_label);
     } else {
         echo sprintf(
-            'Showing %d–%d of %d %s.',
-            $first,
-            $last,
-            $wp_query->found_posts,
+            'Showing %s–%s of %s %s.',
+            number_format($first),
+            number_format($last),
+            number_format($wp_query->found_posts),
             $posts_label
         );
     }
