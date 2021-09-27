@@ -5,6 +5,7 @@
   --nvis-prog-spacing: 1rem;
   --nvis-prog-sidebar-width: 20%;
 
+  margin: calc(2 * var(--nvis-prog-spacing)) auto;
   width: 100%;
 }
 
@@ -33,11 +34,7 @@
 .single-program-page-header,
 .programs-archive-page-header {
   width: 100%;
-  margin: calc(2 * var(--nvis-prog-spacing)) 0;
-}
-
-.programs-archive-main {
-  padding-bottom: calc(3 * var(--nvis-prog-spacing));
+  margin: 0 0 calc(2 * var(--nvis-prog-spacing));
 }
 
 .archive .nvis-post-filters {
@@ -73,12 +70,12 @@
   display: inline-block;
 }
 
-.num-results {
+.nvis-progs-template .num-results {
   font-size: 0.9em;
   margin: calc(2 * var(--nvis-prog-spacing)) 0;
 }
 
-.programs-list {
+.nvis-progs-template .pagination {
   margin: calc(2 * var(--nvis-prog-spacing)) 0;
 }
 
@@ -274,6 +271,58 @@
 
 .related-post__more {
   margin: var(--nvis-prog-spacing) 0;
+}
+
+.person-archive-main .person-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--nvis-prog-spacing);
+}
+
+.person-archive-main .person-list .nvis_person {
+  display: flex;
+  gap: var(--nvis-prog-spacing);
+  padding: calc(2 * var(--nvis-prog-spacing));
+}
+
+.person-archive-main .person-list .person-featured-image {
+  width: 33%;
+}
+.person-archive-main .person-featured-image img {
+  height: auto;
+  width: 100%;
+}
+
+.person-archive-main .img-placeholder {
+  background: rgba(0,0,0,0.1);
+  padding: 10px 10px 5px;
+}
+
+.person-archive-main .img-placeholder svg {
+  fill: rgba(0,0,0,0.1);
+  height: auto;
+  width: 100%;
+}
+
+.person-archive-main .person-list .person-info {
+  width: 66%;
+}
+
+.person-archive-main .person-list .person-name {
+  font-size: 1.5em;
+}
+
+.person-archive-main .person-list .person-position {
+  margin-bottom: calc(1.5 * var(--nvis-prog-spacing));
+}
+
+.person-archive-main .person-list .person-job-title {
+  font-style: italic;
+  line-height: 1.1;
+}
+
+.person-archive-main .person-list .contact-info {
+  line-height: 1.4;
 }
 
 @keyframes nvis-fade-in-left {
