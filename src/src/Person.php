@@ -83,7 +83,7 @@ class Person extends CustomPostType {
             'type'              => 'string',
             'default'           => '',
             'single'            => true,
-            'sanitize_callback' => 'sanitize_tex_field',
+            'sanitize_callback' => 'sanitize_text_field',
             'show_in_rest'      => true
         ],
         'email_address' => [
