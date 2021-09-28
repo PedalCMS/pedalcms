@@ -20,7 +20,6 @@ $includes = [
     '/src/_autoload.php',
     '/src/acf.php',
     '/src/assets.php',
-    '/src/ajax.php',
     '/src/filters.php',
     '/src/template-tags.php',
     '/src/breadcrumbs.php',
