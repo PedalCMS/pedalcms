@@ -16,11 +16,6 @@
 
 namespace InvisibleUs\Programs;
 
-define('NVIS_PROGRAMS_PLUGIN_NAME', basename(__DIR__));
-define('NVIS_PROGRAMS_PATH', __DIR__);
-define('NVIS_PROGRAMS_URL', plugins_url('', __FILE__));
-define('NVIS_PROGRAMS_TEMPLATE_PATH', NVIS_PROGRAMS_PATH . '/templates/');
-
 $includes = [
     '/src/_autoload.php',
     '/src/acf.php',

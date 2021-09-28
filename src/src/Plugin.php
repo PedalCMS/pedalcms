@@ -7,6 +7,7 @@ class Plugin {
     public static $path = '';
     public static $url = '';
     public static $template_path = '/templates';
+    private static $_init = false;
 
     public static $options_page = [
         'page_title'  => 'Program Pages Settings',
@@ -143,6 +144,10 @@ class Plugin {
     ];
 
     public function __construct() {
+        if (self::$_init) {
+            return;
+        }
+
         self::$path = dirname(__DIR__);
         self::$url = plugins_url(self::$name);
         self::$template_path = self::$path . self::$template_path;
@@ -151,6 +156,8 @@ class Plugin {
 
         add_action('plugins_loaded', [self::class, 'setup_subpage_manager']);
         add_action('init', [self::class, 'plugin_init']);
+
+        self::$_init = true;
     }
 
     public static function plugin_init(): void {
@@ -254,8 +261,8 @@ class Plugin {
         ];
 
         $NVIS_TemplateManager = new TemplateManager(
-            NVIS_PROGRAMS_TEMPLATE_PATH,
-            NVIS_PROGRAMS_PLUGIN_NAME,
+            self::$template_path,
+            self::$name,
             $templates
         );
 

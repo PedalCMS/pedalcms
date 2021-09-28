@@ -13,8 +13,8 @@ function maybe_load_acf() {
     }
 
     $subpath = '/src/acf/';
-    define('NVISP_ACF_PATH', NVIS_PROGRAMS_PATH . $subpath);
-    define('NVISP_ACF_URL', NVIS_PROGRAMS_URL . $subpath);
+    define('NVISP_ACF_PATH', Plugin::$path . $subpath);
+    define('NVISP_ACF_URL', Plugin::$url . $subpath);
 
     include_once(NVISP_ACF_PATH . 'acf.php');
 

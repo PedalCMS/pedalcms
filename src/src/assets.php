@@ -11,7 +11,7 @@ function register_assets() {
     )) {
         wp_enqueue_style(
             'nvis-program-base',
-            NVIS_PROGRAMS_URL . '/assets/css/base.css'
+            Plugin::$url . '/assets/css/base.css'
         );
     }
 }
