@@ -23,7 +23,6 @@ define('NVIS_PROGRAMS_TEMPLATE_PATH', NVIS_PROGRAMS_PATH . '/templates/');
 
 $includes = [
     '/src/_autoload.php',
-    '/src/_init.php',
     '/src/acf.php',
     '/src/assets.php',
     '/src/ajax.php',
@@ -35,3 +34,5 @@ $includes = [
 foreach ($includes as $subpath) {
     require __DIR__ . $subpath;
 }
+
+$plugin = new Plugin();

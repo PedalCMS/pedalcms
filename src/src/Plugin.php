@@ -148,9 +148,18 @@ class Plugin {
         self::$template_path = self::$path . self::$template_path;
 
         $this->init_field_group();
+
+        add_action('plugins_loaded', [self::class, 'setup_subpage_manager']);
+        add_action('init', [self::class, 'plugin_init']);
     }
 
-    public static function init_field_group(): void {
+    public static function plugin_init(): void {
+        self::register_content_model();
+        self::register_custom_blocks();
+        self::setup_template_manager();
+    }
+
+    public function init_field_group(): void {
         $subpages = ProgramSubpageManager::get_subpages(false);
         $def_vals = [];
 
@@ -170,6 +179,94 @@ class Plugin {
         ];
 
         array_unshift(self::$field_groups[0]['fields'], $enable_subpages);
+
+        return;
+    }
+
+    public static function register_content_model(): void {
+        // Register post types.
+        (new Program())->register();
+        (new Course())->register();
+        (new FAQ())->register();
+        (new Person())->register();
+        // Register taxonomies.
+        (new ProgramType())->register();
+        (new College())->register();
+        (new DeliveryFormat())->register();
+        (new Subject())->register();
+        (new Semester())->register();
+        (new PersonCategory())->register();
+        (new Department())->register();
+        (new FAQCategory())->register();
+
+        return;
+    }
+
+    public static function register_custom_blocks(): void {
+        if (!Person::is_block_editor_enabled()) {
+            return;
+        }
+
+        new JobTitleBlock();
+        new ContactInfoBlock();
+
+        return;
+    }
+
+    public static function setup_template_manager(): void {
+        $person_template = 'single-person';
+
+        if (!Person::is_block_editor_enabled()) {
+            $person_template .= '-classic';
+        }
+
+        $templates = [
+            [
+                'name'     => 'single-program',
+                'callback' => 'is_singular',
+                'args'     => [Program::post_type]
+            ],
+            [
+                'name'     => 'archive-program',
+                'callback' => 'is_post_type_archive',
+                'args'     => [Program::post_type]
+            ],
+            [
+                'name'     => 'single-course',
+                'callback' => 'is_singular',
+                'args'     => [Course::post_type]
+            ],
+            [
+                'name'     => 'archive-course',
+                'callback' => 'is_post_type_archive',
+                'args'     => [Course::post_type]
+            ],
+            [
+                'name'     => 'archive-person',
+                'callback' => 'is_post_type_archive',
+                'args'     => [Person::post_type]
+            ],
+            [
+                'name'     => $person_template,
+                'callback' => 'is_singular',
+                'args'     => [Person::post_type]
+            ]
+        ];
+
+        $NVIS_TemplateManager = new TemplateManager(
+            NVIS_PROGRAMS_TEMPLATE_PATH,
+            NVIS_PROGRAMS_PLUGIN_NAME,
+            $templates
+        );
+
+        add_filter('template_include', [$NVIS_TemplateManager, 'maybeUseTemplate'], PHP_INT_MAX);
+
+        return;
+    }
+
+    public static function setup_subpage_manager(): void {
+        $mngr = new ProgramSubpageManager();
+        $mngr->init();
 
         return;
     }
