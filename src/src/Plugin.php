@@ -152,9 +152,9 @@ class Plugin {
         self::$url = plugins_url(self::$name);
         self::$template_path = self::$path . self::$template_path;
 
+        self::setup_subpage_manager();
         $this->init_field_group();
 
-        add_action('plugins_loaded', [self::class, 'setup_subpage_manager']);
         add_action('init', [self::class, 'plugin_init']);
 
         self::$_init = true;
