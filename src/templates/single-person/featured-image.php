@@ -1,5 +1,5 @@
 <?php
-$size = $data['size'] ?? 'medium';
+$size = $data['img_size'] ?? 'medium';
 $post = $data['post'] ?? get_post();
 ?>
 <div class="person-featured-image">

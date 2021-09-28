@@ -216,6 +216,15 @@
   font-style: italic;
 }
 
+.program-faculty-staff-list .person-list .nvis_person {
+  padding: 0;
+  margin-bottom: var(--nvis-prog-spacing);
+}
+
+.program-faculty-staff-list .person-list .person-featured-image {
+  width: 25%;
+}
+
 .nvis-expandable {
   margin-bottom: var(--nvis-prog-spacing);
 }
@@ -273,55 +282,56 @@
   margin: var(--nvis-prog-spacing) 0;
 }
 
-.person-archive-main .person-list {
+.person-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--nvis-prog-spacing);
 }
 
-.person-archive-main .person-list .nvis_person {
+.person-list .nvis_person {
   display: flex;
   gap: var(--nvis-prog-spacing);
   padding: calc(2 * var(--nvis-prog-spacing));
 }
 
-.person-archive-main .person-list .person-featured-image {
+.person-list .person-featured-image {
   width: 33%;
 }
-.person-archive-main .person-featured-image img {
+.person-list .person-featured-image img {
   height: auto;
   width: 100%;
 }
 
-.person-archive-main .img-placeholder {
+.person-list .img-placeholder {
   background: rgba(0,0,0,0.1);
   padding: 10px 10px 5px;
 }
 
-.person-archive-main .img-placeholder svg {
+.person-list .img-placeholder svg {
   fill: rgba(0,0,0,0.1);
   height: auto;
   width: 100%;
 }
 
-.person-archive-main .person-list .person-info {
+.person-list .person-info {
   width: 66%;
 }
 
-.person-archive-main .person-list .person-name {
+.person-list .person-name {
   font-size: 1.5em;
+  margin-bottom: 0;
 }
 
-.person-archive-main .person-list .person-position {
+.person-list .person-position {
   margin-bottom: calc(1.5 * var(--nvis-prog-spacing));
 }
 
-.person-archive-main .person-list .person-job-title {
+.person-list .person-job-title {
   font-style: italic;
   line-height: 1.1;
 }
 
-.person-archive-main .person-list .contact-info {
+.person-list .contact-info {
   line-height: 1.4;
 }
 
