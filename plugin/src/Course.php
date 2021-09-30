@@ -6,7 +6,7 @@ class Course extends CustomPostType {
     /**
      * The post type to register.
      */
-    public const post_type = 'nvis_course';
+    public const POST_TYPE = 'nvis_course';
 
     /**
      * The proper name.
@@ -32,7 +32,7 @@ class Course extends CustomPostType {
     public $args = [
         'rewrite'             => ['slug' => 'course'],
         'has_archive'         => 'courses',
-        'capability_type'     => Program::post_type,
+        'capability_type'     => Program::POST_TYPE,
         'menu_icon'           => 'dashicons-book-alt',
         'menu_position'       => 5,
         'description'         => '',

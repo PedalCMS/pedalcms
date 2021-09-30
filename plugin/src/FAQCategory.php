@@ -7,7 +7,7 @@ class FAQCategory extends CustomTaxonomy {
     public $name = 'FAQ Category';
     public $plural_name = 'FAQ Categories';
 
-    public $object_types = [FAQ::post_type];
+    public $object_types = [FAQ::POST_TYPE];
 
     public $args = [
         'query_var'             => 'faq_cat',

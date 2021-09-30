@@ -5,7 +5,7 @@ function nvis_prog_get_template_part(string $template, array $data = []) {
 }
 
 function nvis_prog_is_filtered_results($post_type = null): bool {
-    $post_type = $post_type ?? \InvisibleUs\Programs\Program::post_type;
+    $post_type = $post_type ?? \InvisibleUs\Programs\Program::POST_TYPE;
 
     return
         is_post_type_archive($post_type) &&

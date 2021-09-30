@@ -6,7 +6,7 @@ class Person extends CustomPostType {
     /**
      * The post type to register.
      */
-    public const post_type = 'nvis_person';
+    public const POST_TYPE = 'nvis_person';
 
     /**
      * The proper name.
@@ -39,7 +39,7 @@ class Person extends CustomPostType {
     public $args = [
         'rewrite'             => ['slug' => 'directory'],
         'has_archive'         => 'directory',
-        'capability_type'     => self::post_type,
+        'capability_type'     => self::POST_TYPE,
         'menu_icon'           => 'dashicons-businesswoman',
         'menu_position'       => 5,
         'description'         => '',
@@ -116,7 +116,7 @@ class Person extends CustomPostType {
                     [
                         'param'    => 'post_type',
                         'operator' => '==',
-                        'value'    => self::post_type,
+                        'value'    => self::POST_TYPE,
                     ],
                 ],
             ],
@@ -176,7 +176,7 @@ class Person extends CustomPostType {
     }
 
     public static function update_sort_order(\WP_Query $query): void {
-        if (is_post_type_archive(self::post_type)) {
+        if (is_post_type_archive(self::POST_TYPE)) {
             $query->set('order', 'ASC');
             $query->set('orderby', 'title');
         }

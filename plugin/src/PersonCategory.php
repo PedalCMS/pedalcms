@@ -7,7 +7,7 @@ class PersonCategory extends CustomTaxonomy {
     public $name = 'Person Category';
     public $plural_name = 'Person Categories';
 
-    public $object_types = [Person::post_type];
+    public $object_types = [Person::POST_TYPE];
 
     public $args = [
         'query_var'             => 'person_cat',

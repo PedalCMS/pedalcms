@@ -7,7 +7,7 @@ class Department extends CustomTaxonomy {
     public $name = 'Department';
     public $plural_name = 'Departments';
 
-    public $object_types = [Person::post_type];
+    public $object_types = [Person::POST_TYPE];
 
     public $args = [
         'query_var'             => 'dept',

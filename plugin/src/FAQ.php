@@ -6,7 +6,7 @@ class FAQ extends CustomPostType {
     /**
      * The post type to register.
      */
-    public const post_type = 'nvis_faq';
+    public const POST_TYPE = 'nvis_faq';
 
     /**
      * The proper name.
@@ -46,7 +46,7 @@ class FAQ extends CustomPostType {
     public $args = [
         'rewrite'             => ['slug' => 'faq'],
         'has_archive'         => 'faqs',
-        'capability_type'     => self::post_type,
+        'capability_type'     => self::POST_TYPE,
         'menu_icon'           => 'dashicons-editor-help',
         'menu_position'       => 5,
         'description'         => '',

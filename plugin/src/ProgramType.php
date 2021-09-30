@@ -7,7 +7,7 @@ class ProgramType extends CustomTaxonomy {
     public $name = 'Program Type';
     public $plural_name = 'Program Types';
 
-    public $object_types = [Program::post_type];
+    public $object_types = [Program::POST_TYPE];
 
     public $args = [
         'query_var'             => 'prog_type',

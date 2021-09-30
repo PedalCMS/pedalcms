@@ -7,8 +7,8 @@ add_filter('document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 
 function document_title_parts(array $title): array {
     $post_types = [
         // TODO: Add these to the objects and reference them.
-        Program::post_type => 'Programs',
-        Person::post_type  => 'Directory',
+        Program::POST_TYPE => 'Programs',
+        Person::POST_TYPE  => 'Directory',
     ];
 
     foreach ($post_types as $post_type => $replacement) {

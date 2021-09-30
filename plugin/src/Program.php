@@ -6,7 +6,7 @@ class Program extends CustomPostType {
     /**
      * The post type to register.
      */
-    public const post_type = 'nvis_program';
+    public const POST_TYPE = 'nvis_program';
 
     /**
      * The proper name.
@@ -32,7 +32,7 @@ class Program extends CustomPostType {
     public $args = [
         'has_archive'         => 'programs',
         'rewrite'             => ['slug' => 'program', 'with_front' => true],
-        'capability_type'     => self::post_type,
+        'capability_type'     => self::POST_TYPE,
         'menu_icon'           => 'dashicons-welcome-learn-more',
         'menu_position'       => 5,
         'description'         => '',
@@ -257,7 +257,7 @@ class Program extends CustomPostType {
     }
 
     public static function update_sort_order(\WP_Query $query): void {
-        if (is_post_type_archive(self::post_type)) {
+        if (is_post_type_archive(self::POST_TYPE)) {
             $query->set('order', 'ASC');
             $query->set('orderby', 'title');
         }

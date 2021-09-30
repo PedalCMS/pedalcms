@@ -102,7 +102,7 @@ class ProgramSubpageManager {
         // TODO: load program CPT name by reference.
         $real_pattern = sprintf(
             'index.php?%s=$matches[1]&%s=',
-            Program::post_type,
+            Program::POST_TYPE,
             self::query_var
         );
 
@@ -123,7 +123,7 @@ class ProgramSubpageManager {
      */
     public static function maybe_override_rel_canonical(): void {
         // TODO: make program CPT name a reference.
-        if (is_singular(Program::post_type) && self::get_active_subpage() !== 'index') {
+        if (is_singular(Program::POST_TYPE) && self::get_active_subpage() !== 'index') {
             remove_filter('wp_head', 'rel_canonical');
             add_filter('wp_head', [self::class, 'subpage_canonical']);
         }

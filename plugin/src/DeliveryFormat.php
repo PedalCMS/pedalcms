@@ -7,7 +7,7 @@ class DeliveryFormat extends CustomTaxonomy {
     public $name = 'Delivery Format';
     public $plural_name = 'Delivery Formats';
 
-    public $object_types = [Program::post_type];
+    public $object_types = [Program::POST_TYPE];
 
     public $args = [
         'query_var'             => 'prog_format',

@@ -18,8 +18,8 @@ function get_archive_crumb(): array {
 
     $post_types = [
         // TODO: Add these to the objects and reference them.
-        Program::post_type => 'Programs',
-        Person::post_type  => 'Directory',
+        Program::POST_TYPE => 'Programs',
+        Person::POST_TYPE  => 'Directory',
     ];
 
     foreach ($post_types as $post_type => $text) {
@@ -51,7 +51,7 @@ function get_program_subpage_crumb(): array {
 }
 
 function navxt_add_subpage(object $trail) {
-    if (is_singular(Program::post_type)) {
+    if (is_singular(Program::POST_TYPE)) {
         $crumb = get_program_subpage_crumb();
         $linked = (bool) $trail->opt['bcurrent_item_linked'];
         $trail->add(new \bcn_breadcrumb($crumb['text'], null, [], $crumb['url'], null, $linked));
@@ -59,7 +59,7 @@ function navxt_add_subpage(object $trail) {
 }
 
 function navxt_replace_archive_trail(object $trail) {
-    $post_types = [Program::post_type, Person::post_type];
+    $post_types = [Program::POST_TYPE, Person::POST_TYPE];
 
     if (nvis_prog_is_filtered_results($post_types)) {
         if ($trail->opt['bhome_display']) {
@@ -78,7 +78,7 @@ function navxt_replace_archive_trail(object $trail) {
 }
 
 function navxt_breadcrumb_linked(bool $linked, array $types, int $id = null): bool {
-    $post_types = [Program::post_type, Person::post_type];
+    $post_types = [Program::POST_TYPE, Person::POST_TYPE];
 
     // TODO: Add support for "Link Current Item" feature.
     foreach ($post_types as $post_type) {
@@ -92,11 +92,11 @@ function navxt_breadcrumb_linked(bool $linked, array $types, int $id = null): bo
 }
 
 function yoast_update_trail(array $crumbs): array {
-    if (is_singular(Program::post_type)) {
+    if (is_singular(Program::POST_TYPE)) {
         return yoast_add_subpage($crumbs);
     }
 
-    $post_types = [Program::post_type, Person::post_type];
+    $post_types = [Program::POST_TYPE, Person::POST_TYPE];
 
     if (nvis_prog_is_filtered_results($post_types)) {
         return yoast_replace_trail($crumbs);
@@ -123,11 +123,11 @@ function yoast_replace_trail(array $crumbs): array {
 }
 
 function aioseo_update_trail(array $crumbs): array {
-    if (is_singular(Program::post_type)) {
+    if (is_singular(Program::POST_TYPE)) {
         return aioseo_add_subpage($crumbs);
     }
 
-    $post_types = [Program::post_type, Person::post_type];
+    $post_types = [Program::POST_TYPE, Person::POST_TYPE];
 
     if (nvis_prog_is_filtered_results($post_types)) {
         return aioseo_replace_trail($crumbs);

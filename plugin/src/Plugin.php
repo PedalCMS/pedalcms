@@ -231,32 +231,32 @@ class Plugin {
             [
                 'name'     => 'single-program',
                 'callback' => 'is_singular',
-                'args'     => [Program::post_type]
+                'args'     => [Program::POST_TYPE]
             ],
             [
                 'name'     => 'archive-program',
                 'callback' => 'is_post_type_archive',
-                'args'     => [Program::post_type]
+                'args'     => [Program::POST_TYPE]
             ],
             [
                 'name'     => 'single-course',
                 'callback' => 'is_singular',
-                'args'     => [Course::post_type]
+                'args'     => [Course::POST_TYPE]
             ],
             [
                 'name'     => 'archive-course',
                 'callback' => 'is_post_type_archive',
-                'args'     => [Course::post_type]
+                'args'     => [Course::POST_TYPE]
             ],
             [
                 'name'     => 'archive-person',
                 'callback' => 'is_post_type_archive',
-                'args'     => [Person::post_type]
+                'args'     => [Person::POST_TYPE]
             ],
             [
                 'name'     => $person_template,
                 'callback' => 'is_singular',
-                'args'     => [Person::post_type]
+                'args'     => [Person::POST_TYPE]
             ]
         ];
 

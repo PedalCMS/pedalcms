@@ -7,7 +7,7 @@ class Subject extends CustomTaxonomy {
     public $name = 'Subject';
     public $plural_name = 'Subjects';
 
-    public $object_types = [Course::post_type];
+    public $object_types = [Course::POST_TYPE];
 
     public $args = [
         'query_var'             => 'subj',

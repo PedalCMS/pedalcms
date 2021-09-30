@@ -7,7 +7,7 @@ class College extends CustomTaxonomy {
     public $name = 'College';
     public $plural_name = 'Colleges';
 
-    public $object_types = [Program::post_type, Person::post_type];
+    public $object_types = [Program::POST_TYPE, Person::POST_TYPE];
 
     public $args = [
         'query_var'             => 'college',

@@ -3,7 +3,7 @@
 namespace InvisibleUs\Programs;
 
 abstract class CustomPostType extends CustomContentObject {
-    public const post_type = '';
+    public const POST_TYPE = '';
 
     public $icon_file = '';
 
@@ -24,7 +24,7 @@ abstract class CustomPostType extends CustomContentObject {
 
     public function __construct() {
         parent::__construct();
-        $this->system_name = static::post_type;
+        $this->system_name = static::POST_TYPE;
 
         return;
     }
@@ -34,7 +34,7 @@ abstract class CustomPostType extends CustomContentObject {
     }
 
     public static function update_enter_title_text(string $text, \WP_Post $post): string {
-        if ($post->post_type === static::post_type) {
+        if ($post->post_type === static::POST_TYPE) {
             $text = static::$enter_title_text;
         }
 
@@ -44,7 +44,7 @@ abstract class CustomPostType extends CustomContentObject {
     public function register() {
         parent::register();
         $this->maybe_load_icon();
-        $this->post_object = register_post_type(static::post_type, $this->args);
+        $this->post_object = register_post_type(static::POST_TYPE, $this->args);
         // After we register the post type, the args and labels are redundant.
         $this->args = null;
         $this->labels = null;
@@ -62,7 +62,7 @@ abstract class CustomPostType extends CustomContentObject {
         }
 
         foreach (static::$post_meta as $meta_key => $args) {
-            register_post_meta(static::post_type, $meta_key, $args);
+            register_post_meta(static::POST_TYPE, $meta_key, $args);
         }
 
         return;
@@ -96,7 +96,7 @@ abstract class CustomPostType extends CustomContentObject {
                 trigger_error(
                     sprintf(
                         __('Error setting up labels for custom post type %s. Expected class member \'labels\' to be array.', 'rc-content-model'),
-                        static::post_type
+                        static::POST_TYPE
                     ),
                     E_USER_ERROR
                 );
@@ -130,7 +130,7 @@ abstract class CustomPostType extends CustomContentObject {
 
     public static function get_all($post_status = 'any') {
         $posts = get_posts([
-            'post_type'     => static::post_type,
+            'post_type'     => static::POST_TYPE,
             'nopaging'      => true,
             'post_status'   => $post_status
         ]);
@@ -140,7 +140,7 @@ abstract class CustomPostType extends CustomContentObject {
 
     public static function get_by_slug($slug) {
         $posts = get_posts([
-            'post_type'     => static::post_type,
+            'post_type'     => static::POST_TYPE,
             'numberposts'   => 1,
             'post_status'   => 'any',
             'name'          => $slug
@@ -159,7 +159,7 @@ abstract class CustomPostType extends CustomContentObject {
 
     public static function get_by_meta($key = '', $value = '', $compare = '=', $limit = 1) {
         $posts = get_posts([
-            'post_type'     => static::post_type,
+            'post_type'     => static::POST_TYPE,
             'numberposts'   => $limit,
             'post_status'   => 'any',
             'meta_query'    => [
@@ -189,7 +189,7 @@ abstract class CustomPostType extends CustomContentObject {
 
         if ($pagenow == 'edit.php') {
             if (!empty($_GET['post_type'])) {
-                if ($_GET['post_type'] == static::post_type) {
+                if ($_GET['post_type'] == static::POST_TYPE) {
                     return true;
                 }
             }
@@ -204,7 +204,7 @@ abstract class CustomPostType extends CustomContentObject {
         }
         $screen = get_current_screen();
 
-        return $screen->parent_base === 'edit' && $screen->id === static::post_type;
+        return $screen->parent_base === 'edit' && $screen->id === static::POST_TYPE;
     }
 
     public static function group_by_tax(array $posts, string $taxonomy, string $index = 'posts'): array {

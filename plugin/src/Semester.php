@@ -7,7 +7,7 @@ class Semester extends CustomTaxonomy {
     public $name = 'Term';
     public $plural_name = 'Terms';
 
-    public $object_types = [Course::post_type];
+    public $object_types = [Course::POST_TYPE];
 
     public $args = [
         'query_var'             => 'sem_term',
