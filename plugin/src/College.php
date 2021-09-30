@@ -3,7 +3,7 @@
 namespace InvisibleUs\Programs;
 
 class College extends CustomTaxonomy {
-    public const taxonomy = 'nvis_program_college';
+    public const TAXONOMY = 'nvis_program_college';
     public $name = 'College';
     public $plural_name = 'Colleges';
 

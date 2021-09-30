@@ -3,7 +3,7 @@
 namespace InvisibleUs\Programs;
 
 class FAQCategory extends CustomTaxonomy {
-    public const taxonomy = 'nvis_faq_cat';
+    public const TAXONOMY = 'nvis_faq_cat';
     public $name = 'FAQ Category';
     public $plural_name = 'FAQ Categories';
 

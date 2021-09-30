@@ -3,7 +3,7 @@
 namespace InvisibleUs\Programs;
 
 class Semester extends CustomTaxonomy {
-    public const taxonomy = 'nvis_semester';
+    public const TAXONOMY = 'nvis_semester';
     public $name = 'Term';
     public $plural_name = 'Terms';
 

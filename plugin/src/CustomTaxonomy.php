@@ -6,7 +6,7 @@ abstract class CustomTaxonomy extends CustomContentObject {
     /**
      * The taxonomy identifier, slug style, to supply to WordPress.
      */
-    public const taxonomy = '';
+    public const TAXONOMY = '';
 
     public $object_types = null;
 
@@ -33,20 +33,20 @@ abstract class CustomTaxonomy extends CustomContentObject {
     ];
 
     public function __construct() {
-        $this->system_name = static::taxonomy;
+        $this->system_name = static::TAXONOMY;
         parent::__construct();
     }
 
     public function register() {
         $this->create_labels();
         $this->maybe_behave_like_tag();
-        $result = register_taxonomy(static::taxonomy, $this->object_types, $this->args);
+        $result = register_taxonomy(static::TAXONOMY, $this->object_types, $this->args);
 
         if (is_wp_error($result)) {
             trigger_error(
                 sprintf(
                     __('Could not register taxonomy %s. Error: %s', 'rc-content-model'),
-                    static::taxonomy,
+                    static::TAXONOMY,
                     $result->get_error_message()
                 ),
                 E_USER_ERROR
@@ -106,7 +106,7 @@ abstract class CustomTaxonomy extends CustomContentObject {
                 trigger_error(
                     sprintf(
                         __('Error setting up labels for taxonomy %s. Expected class member \'labels\' to be array.', 'rc-content-model'),
-                        static::taxonomy,
+                        static::TAXONOMY,
                         $result->get_error_message()
                     ),
                     E_USER_ERROR
@@ -132,7 +132,7 @@ abstract class CustomTaxonomy extends CustomContentObject {
 
     public function get_all() {
         return get_terms([
-            'taxonomy'      => static::taxonomy,
+            'taxonomy'      => static::TAXONOMY,
             'hide_empty'    => false
         ]);
     }

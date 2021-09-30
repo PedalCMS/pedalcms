@@ -3,7 +3,7 @@
 namespace InvisibleUs\Programs;
 
 class Department extends CustomTaxonomy {
-    public const taxonomy = 'nvis_department';
+    public const TAXONOMY = 'nvis_department';
     public $name = 'Department';
     public $plural_name = 'Departments';
 

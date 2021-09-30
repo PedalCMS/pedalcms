@@ -3,7 +3,7 @@
 namespace InvisibleUs\Programs;
 
 class DeliveryFormat extends CustomTaxonomy {
-    public const taxonomy = 'nvis_program_format';
+    public const TAXONOMY = 'nvis_program_format';
     public $name = 'Delivery Format';
     public $plural_name = 'Delivery Formats';
 

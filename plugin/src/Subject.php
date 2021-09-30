@@ -3,7 +3,7 @@
 namespace InvisibleUs\Programs;
 
 class Subject extends CustomTaxonomy {
-    public const taxonomy = 'nvis_subject';
+    public const TAXONOMY = 'nvis_subject';
     public $name = 'Subject';
     public $plural_name = 'Subjects';
 

@@ -3,7 +3,7 @@
 namespace InvisibleUs\Programs;
 
 class ProgramType extends CustomTaxonomy {
-    public const taxonomy = 'nvis_program_type';
+    public const TAXONOMY = 'nvis_program_type';
     public $name = 'Program Type';
     public $plural_name = 'Program Types';
 
@@ -35,7 +35,7 @@ class ProgramType extends CustomTaxonomy {
                     [
                         'param'    => 'taxonomy',
                         'operator' => '==',
-                        'value'    => self::taxonomy,
+                        'value'    => self::TAXONOMY,
                     ],
                 ]
             ],

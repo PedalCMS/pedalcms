@@ -3,7 +3,7 @@
 namespace InvisibleUs\Programs;
 
 class PersonCategory extends CustomTaxonomy {
-    public const taxonomy = 'nvis_person_cat';
+    public const TAXONOMY = 'nvis_person_cat';
     public $name = 'Person Category';
     public $plural_name = 'Person Categories';
 

@@ -191,7 +191,7 @@ class Person extends CustomPostType {
      * @return array The category indexed list of people.
      */
     public static function group_by_category(array $people): array {
-        return self::group_by_tax($people, PersonCategory::taxonomy, 'people');
+        return self::group_by_tax($people, PersonCategory::TAXONOMY, 'people');
     }
 
     public static function is_block_editor_enabled(): bool {
