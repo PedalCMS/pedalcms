@@ -117,7 +117,7 @@ abstract class CustomContentObject {
     /**
      * Utility function to get an absolute help file path.
      *
-     * @param [type] $file The relative file path.
+     * @param string $file The relative file path.
      * @return string The absolute path.
      */
     public function get_help_file_path($file): string {
