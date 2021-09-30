@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Base class for common custom taxonomy tasks in WordPress.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 abstract class CustomTaxonomy extends CustomContentObject {
     /**
      * The taxonomy identifier, slug style, to supply to WordPress.
