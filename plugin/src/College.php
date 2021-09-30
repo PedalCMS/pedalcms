@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * College custom taxonomy.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class College extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_program_college';
     public string $name = 'College';

@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Program Subpage class stores settings for Cost.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class CostProgramSubpage {
     public string $slug = 'cost';
     public string $title = 'Cost';

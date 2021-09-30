@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Subject custom taxonomy.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class Subject extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_subject';
     public string $name = 'Subject';

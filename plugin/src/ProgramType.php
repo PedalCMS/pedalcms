@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Program Type custom taxonomy.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class ProgramType extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_program_type';
     public string $name = 'Program Type';

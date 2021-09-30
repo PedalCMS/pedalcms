@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Program Subpage class stores settings for Apply.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class ApplyProgramSubpage {
     public string $slug = 'apply';
     public string $title = 'How to Apply';

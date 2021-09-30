@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Handles all global settings and setup.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class Plugin {
     public static $name = 'nvis-program-pages';
     public static $path = '';

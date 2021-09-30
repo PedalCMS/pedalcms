@@ -2,6 +2,15 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Contact Info custom block.
+ * 
+ * Used with Person post types.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class ContactInfoBlock extends CustomBlock {
     public static string $block_name = 'contact-info';
 

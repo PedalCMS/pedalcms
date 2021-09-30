@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Program Subpage class stores settings for News.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class NewsProgramSubpage {
     public string $slug = 'news';
     public string $title = 'News';

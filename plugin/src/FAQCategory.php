@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * FAQ Category custom taxonomy.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class FAQCategory extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_faq_cat';
     public string $name = 'FAQ Category';

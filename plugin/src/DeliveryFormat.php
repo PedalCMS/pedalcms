@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Delivery Format custom taxonomy.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class DeliveryFormat extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_program_format';
     public string $name = 'Delivery Format';

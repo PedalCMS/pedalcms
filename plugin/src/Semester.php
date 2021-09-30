@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Semester custom taxonomy.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class Semester extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_semester';
     public string $name = 'Term';

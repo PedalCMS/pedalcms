@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Program Subpage class stores settings for FAQs.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class FAQProgramSubpage {
     public string $slug = 'faqs';
     public string $title = 'FAQs';

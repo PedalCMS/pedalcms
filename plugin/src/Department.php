@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Department custom taxonomy.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class Department extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_department';
     public string $name = 'Department';

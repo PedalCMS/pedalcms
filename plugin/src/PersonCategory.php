@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Person Category custom taxonomy.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class PersonCategory extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_person_cat';
     public string $name = 'Person Category';

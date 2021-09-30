@@ -2,6 +2,13 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Program Subpage class stores settings for Careers.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class CareersProgramSubpage {
     public string $slug = 'careers';
     public string $title = 'Careers';

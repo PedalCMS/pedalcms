@@ -2,6 +2,15 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Job Title custom block.
+ * 
+ * Used with Person post types.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 class JobTitleBlock extends CustomBlock {
     public static string $block_name = 'job-title';
 
