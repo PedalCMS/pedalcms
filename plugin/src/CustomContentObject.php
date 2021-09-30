@@ -100,17 +100,19 @@ abstract class CustomContentObject {
     }
 
     /**
-     * Utility function to get a help file path.
+     * Utility function to get an absolute help file path.
      *
-     * @param [type] $file
-     * @return string
+     * @param [type] $file The relative file path.
+     * @return string The absolute path.
      */
     public function get_help_file_path($file): string {
         return trailingslashit($this->help_path) . $file;
     }
 
     /**
-     * Callback to handle loading the help template files. Called on action 'admin_head'.
+     * Callback to handle loading the help template files. 
+     * 
+     * Called on action 'admin_head'.
      *
      * @return void
      */
