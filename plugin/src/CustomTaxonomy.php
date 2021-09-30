@@ -4,7 +4,7 @@ namespace InvisibleUs\Programs;
 
 /**
  * Base class for common custom taxonomy tasks in WordPress.
- * 
+ *
  * @version 0.1.0
  * @package nvis-programs
  * @since 0.1.0
@@ -16,12 +16,12 @@ abstract class CustomTaxonomy extends CustomContentObject {
     public const TAXONOMY = '';
 
     /**
-     * The post types to associate with this taxonomy. 
+     * The post types to associate with this taxonomy.
      *
      * @var array
      */
     public $object_types = null;
-    
+
     public array $args = [
         'description'           => '',
         'hierarchical'          => false,
@@ -65,7 +65,7 @@ abstract class CustomTaxonomy extends CustomContentObject {
             return;
         }
         $this->args = [];
-        $this->labels = ;
+        $this->labels = [];
 
         return;
     }
@@ -135,7 +135,7 @@ abstract class CustomTaxonomy extends CustomContentObject {
 
     /**
      * Sets an update_count_callback if necessary.
-     * 
+     *
      * Automatically handles the update_count_callback. See:
      * @link http://codex.wordpress.org/Function_Reference/register_taxonomy#Example
      *
@@ -153,7 +153,7 @@ abstract class CustomTaxonomy extends CustomContentObject {
 
     /**
      * Gets all terms of this taxonomy.
-     * 
+     *
      * Wrapper for get_terms.
      *
      * @return array Array of WP_Term objects.
