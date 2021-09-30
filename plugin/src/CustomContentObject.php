@@ -15,31 +15,66 @@ abstract class CustomContentObject {
     public string $plural_name = '';
 
     /**
-     * The labels array to pass to the appropriate register function.
+     * The labels array which becomes part of args.
      *
      * @var array
      */
     public array $labels = [];
 
+    /**
+     * The args array passed to the appropriate register function.
+     *
+     * @var array
+     */
     public array $args = [];
 
+    /**
+     * The text domain for labels.
+     *
+     * @var string
+     */
     public string $text_domain = '';
 
-    // This will either be the 'post_type' or the 'taxonomy'
+    /**
+     * Slug style machine name, either the 'post_type' or the 'taxonomy'.
+     *
+     * @var string
+     */
     public string $system_name = '';
 
-    // The file path of the template to render as contextual help on the post_type screen (admin single edit)
+    /**
+     * The file path of the template to render as contextual help on the post_type screen (admin single edit).
+     *
+     * @var string
+     */
     public string $help = '';
 
-    // The file path of the template to render as contextual help on the edit-post_type screen (admin list view)
+    /**
+     * The file path of the template to render as contextual help on the edit-post_type screen (admin list view).
+     *
+     * @var string
+     */
     public string $edit_help = '';
 
+    /**
+     * The base path to help templates. Relative to the plugin root. 
+     *
+     * @var string
+     */
     public string $help_path = 'help/';
 
+    /**
+     * Constructor.
+     */
     public function __construct() {
         $this->text_domain = Plugin::$name;
     }
 
+    /**
+     * Dynamically generates the appropriate labels for this content type.
+     *
+     * @return void
+     */
     abstract protected function create_labels();
 
     public function register(): void {
@@ -50,8 +85,9 @@ abstract class CustomContentObject {
     }
 
     /**
-     *  Set up the help callback.
+     * Set up the help callback.
      *
+     * @return void
      */
     protected function setup_help(): void {
         if ($this->help || $this->edit_help) {
@@ -64,16 +100,19 @@ abstract class CustomContentObject {
     }
 
     /**
-     *  Utility function to get a help file path
+     * Utility function to get a help file path.
      *
+     * @param [type] $file
+     * @return string
      */
     public function get_help_file_path($file): string {
         return trailingslashit($this->help_path) . $file;
     }
 
     /**
-     *  Callback to handle loading the help template files. Called on action 'admin_head'.
+     * Callback to handle loading the help template files. Called on action 'admin_head'.
      *
+     * @return void
      */
     public function render_contextual_help(): void {
         $tabs = null;
