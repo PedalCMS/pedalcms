@@ -77,6 +77,14 @@ abstract class CustomContentObject {
      */
     abstract protected function create_labels();
 
+    /**
+     * Registers the custom content object. 
+     * 
+     * Handles any prep, cleanup, and other tasks necessary to setup 
+     * this post_type.
+     *
+     * @return void
+     */
     public function register(): void {
         $this->create_labels();
         $this->setup_help();
