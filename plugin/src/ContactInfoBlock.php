@@ -3,9 +3,9 @@
 namespace InvisibleUs\Programs;
 
 class ContactInfoBlock extends CustomBlock {
-    public static $block_name = 'contact-info';
+    public static string $block_name = 'contact-info';
 
-    public static $editor_dependencies = [
+    public static array $editor_dependencies = [
         'wp-blocks',
         'wp-element',
         'wp-components',

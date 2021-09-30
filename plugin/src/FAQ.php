@@ -13,28 +13,28 @@ class FAQ extends CustomPostType {
      *
      * @var string
      */
-    public $name = 'FAQ';
+    public string $name = 'FAQ';
 
     /**
      * The plural version of the proper name.
      *
      * @var string
      */
-    public $plural_name = 'FAQs';
+    public string $plural_name = 'FAQs';
 
     /**
      * Whether or not it is safe to lowercase the name.
      *
      * @var boolean
      */
-    public $lowercase_safe = false;
+    public bool $lowercase_safe = false;
 
     /**
      * The Text to
      *
      * @var string
      */
-    public static $enter_title_text = 'Enter the Question';
+    public static string $enter_title_text = 'Enter the Question';
 
     /**
      * The args to pass to register_post_type.
@@ -43,7 +43,7 @@ class FAQ extends CustomPostType {
      *
      * @var array
      */
-    public $args = [
+    public array $args = [
         'rewrite'             => ['slug' => 'faq'],
         'has_archive'         => 'faqs',
         'capability_type'     => self::POST_TYPE,

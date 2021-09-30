@@ -4,12 +4,12 @@ namespace InvisibleUs\Programs;
 
 class Subject extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_subject';
-    public $name = 'Subject';
-    public $plural_name = 'Subjects';
+    public string $name = 'Subject';
+    public string $plural_name = 'Subjects';
 
     public $object_types = [Course::POST_TYPE];
 
-    public $args = [
+    public array $args = [
         'query_var'             => 'subj',
         'description'           => '',
         'sort'                  => true,

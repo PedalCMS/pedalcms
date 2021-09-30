@@ -4,12 +4,12 @@ namespace InvisibleUs\Programs;
 
 class PersonCategory extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_person_cat';
-    public $name = 'Person Category';
-    public $plural_name = 'Person Categories';
+    public string $name = 'Person Category';
+    public string $plural_name = 'Person Categories';
 
     public $object_types = [Person::POST_TYPE];
 
-    public $args = [
+    public array $args = [
         'query_var'             => 'person_cat',
         'description'           => '',
         'sort'                  => true,

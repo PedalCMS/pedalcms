@@ -3,12 +3,12 @@
 namespace InvisibleUs\Programs;
 
 abstract class CustomBlock {
-    public static $namespace = 'nvis';
-    public static $block_name = 'custom-block';
+    public static string $namespace = 'nvis';
+    public static string $block_name = 'custom-block';
 
-    public static $editor_dependencies = [];
+    public static array $editor_dependencies = [];
 
-    public static $assets = [
+    public static array $assets = [
         'editor.js' => [
             'type'         => 'script',
             'editor_only'  => true,

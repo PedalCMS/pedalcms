@@ -3,10 +3,10 @@
 namespace InvisibleUs\Programs;
 
 class FacultyStaffProgramSubpage {
-    public $slug = 'faculty-staff';
-    public $title = 'Faculty & Staff';
+    public string $slug = 'faculty-staff';
+    public string $title = 'Faculty & Staff';
 
-    public $fields = [
+    public array $fields = [
         [
             'key'       => 'field_613b63eae979f',
             'label'     => 'People',

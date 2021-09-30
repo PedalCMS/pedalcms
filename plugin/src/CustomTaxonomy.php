@@ -8,14 +8,18 @@ abstract class CustomTaxonomy extends CustomContentObject {
      */
     public const TAXONOMY = '';
 
+    /**
+     * The post types to associate with this taxonomy. 
+     *
+     * @var array
+     */
     public $object_types = null;
-
-    public $labels = [];
+    
     /**
      * Taken right from register_taxonomy. @link https://developer.wordpress.org/reference/functions/register_taxonomy/
      * @var array
      */
-    public $args = [
+    public array $args = [
         'description'           => '',
         'hierarchical'          => false,
         'labels'                => [],
@@ -54,8 +58,8 @@ abstract class CustomTaxonomy extends CustomContentObject {
 
             return;
         }
-        $this->args = null;
-        $this->labels = null;
+        $this->args = [];
+        $this->labels = [];
 
         return;
     }

@@ -4,12 +4,12 @@ namespace InvisibleUs\Programs;
 
 class FAQCategory extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_faq_cat';
-    public $name = 'FAQ Category';
-    public $plural_name = 'FAQ Categories';
+    public string $name = 'FAQ Category';
+    public string $plural_name = 'FAQ Categories';
 
     public $object_types = [FAQ::POST_TYPE];
 
-    public $args = [
+    public array $args = [
         'query_var'             => 'faq_cat',
         'rewrite'               => false,
         'description'           => '',

@@ -7,25 +7,34 @@ abstract class CustomContentObject {
      * singular name, display style.
      * @var string
      */
-    public $name = '';
+    public string $name = '';
     /**
      * plural name, display style
      * @var string
      */
-    public $plural_name = '';
+    public string $plural_name = '';
 
-    public $text_domain = '';
+    /**
+     * The labels array to pass to the appropriate register function.
+     *
+     * @var array
+     */
+    public array $labels = [];
+
+    public array $args = [];
+
+    public string $text_domain = '';
 
     // This will either be the 'post_type' or the 'taxonomy'
-    public $system_name = '';
+    public string $system_name = '';
 
     // The file path of the template to render as contextual help on the post_type screen (admin single edit)
-    public $help = null;
+    public string $help = '';
 
     // The file path of the template to render as contextual help on the edit-post_type screen (admin list view)
-    public $edit_help = null;
+    public string $edit_help = '';
 
-    public $help_path = 'help/';
+    public string $help_path = 'help/';
 
     public function __construct() {
         $this->text_domain = Plugin::$name;

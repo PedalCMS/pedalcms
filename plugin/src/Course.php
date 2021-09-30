@@ -13,14 +13,14 @@ class Course extends CustomPostType {
      *
      * @var string
      */
-    public $name = 'Course';
+    public string $name = 'Course';
 
     /**
      * The plural version of the proper name.
      *
      * @var string
      */
-    public $plural_name = 'Courses';
+    public string $plural_name = 'Courses';
 
     /**
      * The args to pass to register_post_type.
@@ -29,7 +29,7 @@ class Course extends CustomPostType {
      *
      * @var array
      */
-    public $args = [
+    public array $args = [
         'rewrite'             => ['slug' => 'course'],
         'has_archive'         => 'courses',
         'capability_type'     => Program::POST_TYPE,

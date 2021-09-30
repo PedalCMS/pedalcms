@@ -4,12 +4,12 @@ namespace InvisibleUs\Programs;
 
 class Semester extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_semester';
-    public $name = 'Term';
-    public $plural_name = 'Terms';
+    public string $name = 'Term';
+    public string $plural_name = 'Terms';
 
     public $object_types = [Course::POST_TYPE];
 
-    public $args = [
+    public array $args = [
         'query_var'             => 'sem_term',
         'description'           => '',
         'sort'                  => true,

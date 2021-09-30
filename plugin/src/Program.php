@@ -13,14 +13,14 @@ class Program extends CustomPostType {
      *
      * @var string
      */
-    public $name = 'Program';
+    public string $name = 'Program';
 
     /**
      * The plural version of the proper name.
      *
      * @var string
      */
-    public $plural_name = 'Programs';
+    public string $plural_name = 'Programs';
 
     /**
      * The args to pass to register_post_type.
@@ -29,7 +29,7 @@ class Program extends CustomPostType {
      *
      * @var array
      */
-    public $args = [
+    public array $args = [
         'has_archive'         => 'programs',
         'rewrite'             => ['slug' => 'program', 'with_front' => true],
         'capability_type'     => self::POST_TYPE,

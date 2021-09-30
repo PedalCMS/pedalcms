@@ -3,10 +3,10 @@
 namespace InvisibleUs\Programs;
 
 class CostProgramSubpage {
-    public $slug = 'cost';
-    public $title = 'Cost';
+    public string $slug = 'cost';
+    public string $title = 'Cost';
 
-    public $fields = [
+    public array $fields = [
         [
             'key'       => 'field_611d69e77f47e',
             'label'     => 'Cost',

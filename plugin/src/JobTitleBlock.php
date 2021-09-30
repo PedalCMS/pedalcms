@@ -3,9 +3,9 @@
 namespace InvisibleUs\Programs;
 
 class JobTitleBlock extends CustomBlock {
-    public static $block_name = 'job-title';
+    public static string $block_name = 'job-title';
 
-    public static $editor_dependencies = [
+    public static array $editor_dependencies = [
         'wp-blocks',
         'wp-element',
         'wp-components',

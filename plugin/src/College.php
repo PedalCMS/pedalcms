@@ -4,12 +4,12 @@ namespace InvisibleUs\Programs;
 
 class College extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_program_college';
-    public $name = 'College';
-    public $plural_name = 'Colleges';
+    public string $name = 'College';
+    public string $plural_name = 'Colleges';
 
     public $object_types = [Program::POST_TYPE, Person::POST_TYPE];
 
-    public $args = [
+    public array $args = [
         'query_var'             => 'college',
         'rewrite'               => false,
         'description'           => '',

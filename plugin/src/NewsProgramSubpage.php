@@ -3,10 +3,10 @@
 namespace InvisibleUs\Programs;
 
 class NewsProgramSubpage {
-    public $slug = 'news';
-    public $title = 'News';
+    public string $slug = 'news';
+    public string $title = 'News';
 
-    public $fields = [
+    public array $fields = [
         [
             'key'       => 'field_611fdfc220be4',
             'label'     => 'News',

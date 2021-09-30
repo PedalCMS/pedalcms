@@ -3,10 +3,10 @@
 namespace InvisibleUs\Programs;
 
 class FAQProgramSubpage {
-    public $slug = 'faqs';
-    public $title = 'FAQs';
+    public string $slug = 'faqs';
+    public string $title = 'FAQs';
 
-    public $fields = [
+    public array $fields = [
         [
             'key'       => 'field_61118a94cb6c1',
             'label'     => 'FAQs',

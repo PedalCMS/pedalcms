@@ -3,10 +3,10 @@
 namespace InvisibleUs\Programs;
 
 class ApplyProgramSubpage {
-    public $slug = 'apply';
-    public $title = 'How to Apply';
+    public string $slug = 'apply';
+    public string $title = 'How to Apply';
 
-    public $fields = [
+    public array $fields = [
         [
             'key'       => 'field_611d6bb9199d7',
             'label'     => 'Apply',

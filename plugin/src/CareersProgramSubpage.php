@@ -3,10 +3,10 @@
 namespace InvisibleUs\Programs;
 
 class CareersProgramSubpage {
-    public $slug = 'careers';
-    public $title = 'Careers';
+    public string $slug = 'careers';
+    public string $title = 'Careers';
 
-    public $fields = [
+    public array $fields = [
         [
             'key'       => 'field_61118a3dcb6bf',
             'label'     => 'Careers',

@@ -13,21 +13,21 @@ class Person extends CustomPostType {
      *
      * @var string
      */
-    public $name = 'Person';
+    public string $name = 'Person';
 
     /**
      * The plural version of the proper name.
      *
      * @var string
      */
-    public $plural_name = 'Personnel';
+    public string $plural_name = 'Personnel';
 
     /**
      * The replacement text for enter_title_here filter.
      *
      * @var string
      */
-    public static $enter_title_text = 'Enter the Full Name';
+    public static string $enter_title_text = 'Enter the Full Name';
 
     /**
      * The args to pass to register_post_type.
@@ -36,7 +36,7 @@ class Person extends CustomPostType {
      *
      * @var array
      */
-    public $args = [
+    public array $args = [
         'rewrite'             => ['slug' => 'directory'],
         'has_archive'         => 'directory',
         'capability_type'     => self::POST_TYPE,
@@ -67,7 +67,7 @@ class Person extends CustomPostType {
         ]
     ];
 
-    public static $post_meta = [
+    public static array $post_meta = [
         'job_title' => [
             'label'             => 'Job Title',
             'description'       => 'The current position this team member holds',

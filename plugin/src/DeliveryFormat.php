@@ -4,12 +4,12 @@ namespace InvisibleUs\Programs;
 
 class DeliveryFormat extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_program_format';
-    public $name = 'Delivery Format';
-    public $plural_name = 'Delivery Formats';
+    public string $name = 'Delivery Format';
+    public string $plural_name = 'Delivery Formats';
 
     public $object_types = [Program::POST_TYPE];
 
-    public $args = [
+    public array $args = [
         'query_var'             => 'prog_format',
         'rewrite'               => false,
         'description'           => '',

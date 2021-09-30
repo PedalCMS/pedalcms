@@ -5,21 +5,17 @@ namespace InvisibleUs\Programs;
 abstract class CustomPostType extends CustomContentObject {
     public const POST_TYPE = '';
 
-    public $icon_file = '';
+    public string $icon_file = '';
 
-    public $labels = [];
+    public static array $post_meta = [];
 
-    public $args = [];
+    public ?object $post_object = null;
 
-    public static $post_meta = [];
+    public bool $lowercase_safe = false;
 
-    public $post_object = null;
+    public static string $enter_title_text = '';
 
-    public $lowercase_safe = false;
-
-    public static $enter_title_text = '';
-
-    protected $icons_path = 'icons/';
+    protected string $icons_path = 'icons/';
 
 
     public function __construct() {
@@ -46,8 +42,8 @@ abstract class CustomPostType extends CustomContentObject {
         $this->maybe_load_icon();
         $this->post_object = register_post_type(static::POST_TYPE, $this->args);
         // After we register the post type, the args and labels are redundant.
-        $this->args = null;
-        $this->labels = null;
+        $this->args = [];
+        $this->labels = [];
         $this->maybe_register_meta();
         $this->setup_hooks();
 

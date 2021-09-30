@@ -4,12 +4,12 @@ namespace InvisibleUs\Programs;
 
 class ProgramType extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_program_type';
-    public $name = 'Program Type';
-    public $plural_name = 'Program Types';
+    public string $name = 'Program Type';
+    public string $plural_name = 'Program Types';
 
     public $object_types = [Program::POST_TYPE];
 
-    public $args = [
+    public array $args = [
         'query_var'             => 'prog_type',
         'rewrite'               => ['slug' => 'type'],
         'description'           => '',
