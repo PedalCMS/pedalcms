@@ -7,6 +7,7 @@ namespace InvisibleUs\Programs;
  *
  * @version 0.1.0
  * @package NVISPrograms
+ * @subpackage StandardLib
  * @since 0.1.0
  */
 abstract class CustomTaxonomy extends CustomContentObject {

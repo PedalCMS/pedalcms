@@ -3,10 +3,11 @@
 namespace InvisibleUs\Programs;
 
 /**
- * Template Manager for handling our template system.
+ * Handles all functionality related to our extended template system.
  * 
  * @version 0.1.0
  * @package NVISPrograms
+ * @subpackage StandardLib
  * @since 0.1.0
  */
 class TemplateManager {
