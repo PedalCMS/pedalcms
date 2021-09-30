@@ -2,7 +2,6 @@
 /**
  * Various global hook functions.
  * 
- * @version 0.1.0
  * @package NVISPrograms
  * @since 0.1.0
  */

@@ -5,7 +5,6 @@ namespace InvisibleUs\Programs;
 /**
  * Program Type custom taxonomy.
  * 
- * @version 0.1.0
  * @package NVISPrograms
  * @since 0.1.0
  */

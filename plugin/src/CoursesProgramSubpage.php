@@ -5,7 +5,6 @@ namespace InvisibleUs\Programs;
 /**
  * Program Subpage class stores settings for Courses.
  * 
- * @version 0.1.0
  * @package NVISPrograms
  * @since 0.1.0
  */
