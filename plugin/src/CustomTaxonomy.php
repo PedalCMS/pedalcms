@@ -15,10 +15,6 @@ abstract class CustomTaxonomy extends CustomContentObject {
      */
     public $object_types = null;
     
-    /**
-     * Taken right from register_taxonomy. @link https://developer.wordpress.org/reference/functions/register_taxonomy/
-     * @var array
-     */
     public array $args = [
         'description'           => '',
         'hierarchical'          => false,
@@ -36,6 +32,9 @@ abstract class CustomTaxonomy extends CustomContentObject {
         'sort'                  => false
     ];
 
+    /**
+     * Constructor.
+     */
     public function __construct() {
         $this->system_name = static::TAXONOMY;
         parent::__construct();
@@ -59,7 +58,7 @@ abstract class CustomTaxonomy extends CustomContentObject {
             return;
         }
         $this->args = [];
-        $this->labels = [];
+        $this->labels = ;
 
         return;
     }
@@ -127,9 +126,15 @@ abstract class CustomTaxonomy extends CustomContentObject {
         return;
     }
 
-    private function maybe_behave_like_tag() {
-        // Preference: automatically handles the update_count_callback for you.
-        // @link http://codex.wordpress.org/Function_Reference/register_taxonomy#Example
+    /**
+     * Sets an update_count_callback if necessary.
+     * 
+     * Automatically handles the update_count_callback. See:
+     * @link http://codex.wordpress.org/Function_Reference/register_taxonomy#Example
+     *
+     * @return void
+     */
+    private function maybe_behave_like_tag(): void {
         if (empty($this->args['hierarchical']) || !$this->args['hierarchical']) {
             if (!isset($this->args['update_count_callback'])) {
                 $this->args['update_count_callback'] = '_update_post_term_count';
@@ -139,7 +144,14 @@ abstract class CustomTaxonomy extends CustomContentObject {
         return;
     }
 
-    public function get_all() {
+    /**
+     * Gets all terms of this taxonomy.
+     * 
+     * Wrapper for get_terms.
+     *
+     * @return array Array of WP_Term objects.
+     */
+    public function get_all(): array {
         return get_terms([
             'taxonomy'      => static::TAXONOMY,
             'hide_empty'    => false
