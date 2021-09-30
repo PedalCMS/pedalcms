@@ -128,7 +128,7 @@ abstract class CustomPostType extends CustomContentObject {
         }
     }
 
-    public function get_all($post_status = 'any') {
+    public static function get_all($post_status = 'any') {
         $posts = get_posts([
             'post_type'     => static::post_type,
             'nopaging'      => true,
@@ -205,5 +205,25 @@ abstract class CustomPostType extends CustomContentObject {
         $screen = get_current_screen();
 
         return $screen->parent_base === 'edit' && $screen->id === static::post_type;
+    }
+
+    public static function group_by_tax(array $posts, string $taxonomy, string $index = 'posts'): array {
+        $groups = [];
+
+        foreach ($posts as $post) {
+            $terms = get_the_terms($post, $taxonomy);
+
+            if (is_array($terms)) {
+                $term = array_shift($terms);
+
+                if (!isset($groups[$term->slug])) {
+                    $term->{$index} = [];
+                    $groups[ $term->slug ] = $term;
+                }
+                $groups[$term->slug]->{$index}[] = $post;
+            }
+        }
+
+        return $groups;
     }
 }

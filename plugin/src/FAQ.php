@@ -66,23 +66,6 @@ class FAQ extends CustomPostType {
      * @return array The category indexed list of FAQs.
      */
     public static function group_by_category(array $faqs): array {
-        $cats = [];
-
-        foreach ($faqs as $faq) {
-            $terms = get_the_terms($faq, FAQCategory::taxonomy);
-
-            if (is_array($terms)) {
-                $cat = array_shift($terms);
-
-                if (!isset($cats[$cat->slug])) {
-                    $cat->faqs = [];
-                    $cats[ $cat->slug ] = $cat;
-                }
-
-                $cats[$cat->slug]->faqs[] = $faq;
-            }
-        }
-
-        return $cats;
+        return self::group_by_tax($faqs, FAQCategory::taxonomy, 'faqs');
     }
 }
