@@ -1,4 +1,11 @@
 <?php
+/**
+ * Asset management.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 
 namespace InvisibleUs\Programs;
 

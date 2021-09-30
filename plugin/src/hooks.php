@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * Various global hook functions.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 namespace InvisibleUs\Programs;
 
 add_filter('document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 3);

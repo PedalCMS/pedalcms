@@ -1,4 +1,11 @@
 <?php
+/**
+ * Breadcrumb adapter functions for NavXT, YoastSEO, and All in One SEO.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 
 namespace InvisibleUs\Programs;
 
