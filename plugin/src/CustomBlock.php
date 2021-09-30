@@ -2,12 +2,48 @@
 
 namespace InvisibleUs\Programs;
 
+/**
+ * Base class for common custom block tasks in WordPress.
+ * 
+ * @version 0.1.0
+ * @package nvis-programs
+ * @since 0.1.0
+ */
 abstract class CustomBlock {
+    /**
+     * The namespace to prefix the block. 
+     * 
+     * Example: 'nvis/block-name'
+     *
+     * @var string
+     */
     public static string $namespace = 'nvis';
+    /**
+     * The block's machine name.
+     *
+     * @var string
+     */
     public static string $block_name = 'custom-block';
 
+    /**
+     * Dependencies of the registerBlockType script.
+     *
+     * A list of handles of registered scripts that are required by the 
+     * index.js script that registers the block.
+     * 
+     * @var array Array of script handles.
+     */
     public static array $editor_dependencies = [];
 
+    /**
+     * A list of other assets to enqueue. 
+     * 
+     * By default, this list includes both a script and a stylesheet for
+     * everywhere and for only in the editor. To prevent checking if these
+     * files exist, can be set to an empty array. 
+     *
+     * @var array Associative array of assets indexed by filename.
+     */
     public static array $assets = [
         'editor.js' => [
             'type'         => 'script',
@@ -31,6 +67,9 @@ abstract class CustomBlock {
         ]
     ];
 
+    /**
+     * Constructor.
+     */
     public function __construct() {
         $block_dir = __DIR__ . '/blocks/' . static::$block_name;
         // error_log($block_dir);
@@ -43,6 +82,14 @@ abstract class CustomBlock {
         add_action('enqueue_block_assets', [static::class, 'load_assets']);
     }
 
+    /**
+     * Loads all block assets.
+     * 
+     * Fired on enqueue_block_assets (both frontend and editor) and filters
+     * out admin_only assets as necessary.
+     *
+     * @return void
+     */
     public static function load_assets(): void {
         $block_path = sprintf('%s/blocks/%s/', __DIR__, static::$block_name);
         $block_url = trailingslashit(Plugin::$url . '/src/blocks/' . static::$block_name);
@@ -92,6 +139,13 @@ abstract class CustomBlock {
         }
     }
 
+    /**
+     * Renders the block.
+     *
+     * @param array $block_attributes Array of block attributes and their values.
+     * @param string $content Block content.
+     * @return string The HTML output. 
+     */
     public static function render(array $block_attributes, string $content): string {
         return '';
     }
