@@ -3,7 +3,7 @@
 /**
  * Displays breadcrumbs for use in the page header.
  *
- * @package wp-career-profiles
+ * @package nvis-programs
  * @version 1.0
  */
 ?>
