@@ -93,16 +93,11 @@ abstract class CustomBlock {
     public static function load_assets(): void {
         $block_path = sprintf('%s/blocks/%s/', __DIR__, static::$block_name);
         $block_url = trailingslashit(Plugin::$url . '/src/blocks/' . static::$block_name);
-        $asset_handle = sprintf(
-            '%s-block-%s-',
-            static::$namespace,
-            static::$block_name
-        );
 
         $register = 'index.js';
 
         wp_enqueue_script(
-            $asset_handle . 'register',
+            self::get_asset_handle('register', true),
             $block_url . $register,
             static::$editor_dependencies,
             filemtime($block_path . $register),
@@ -122,14 +117,14 @@ abstract class CustomBlock {
             // TODO: fix asset_handles.
             if ($props['type'] === 'style') {
                 wp_enqueue_style(
-                    $asset_handle,
+                    self::get_asset_handle($asset, $props['editor_only']),
                     $block_url . $asset,
                     $props['dependencies'],
                     filemtime($block_path . $asset)
                 );
             } elseif ($props['type'] == 'script') {
                 wp_enqueue_script(
-                    $asset_handle,
+                    self::get_asset_handle($asset, $props['editor_only']),
                     $block_url . $asset,
                     $props['dependencies'],
                     filemtime($block_path . $asset),
@@ -137,6 +132,25 @@ abstract class CustomBlock {
                 );
             }
         }
+    }
+
+    /**
+     * Gets a unique handle for the block asset.
+     *
+     * @param string $name Name or filename of the asset. 
+     * @param boolean $editor_only Whether this asset only loads in the editor.
+     * @return string Asset handle.
+     */
+    public static function get_asset_handle(string $name, bool $editor_only): string {
+        $dot = stripos( $name, '.' );
+
+        return sprintf(
+            '%s%s-block-%s-%s',
+            $editor_only ? 'admin-' : '',
+            static::$namespace,
+            static::$block_name,
+            $dot ? substr($name, 0, $dot) : $name
+        );
     }
 
     /**
