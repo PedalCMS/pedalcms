@@ -33,28 +33,32 @@ abstract class CustomContentObject {
 
     abstract protected function create_labels();
 
-    public function register() {
+    public function register(): void {
         $this->create_labels();
         $this->setup_help();
+
+        return;
     }
 
     /**
      *  Set up the help callback.
      *
      */
-    protected function setup_help() {
+    protected function setup_help(): void {
         if ($this->help || $this->edit_help) {
             $this->help_path = trailingslashit(Plugin::$path) . $this->help_path;
 
             add_action('admin_head', [&$this, 'render_contextual_help'], 10, 3);
         }
+
+        return;
     }
 
     /**
      *  Utility function to get a help file path
      *
      */
-    public function get_help_file_path($file) {
+    public function get_help_file_path($file): string {
         return trailingslashit($this->help_path) . $file;
     }
 
@@ -62,7 +66,7 @@ abstract class CustomContentObject {
      *  Callback to handle loading the help template files. Called on action 'admin_head'.
      *
      */
-    public function render_contextual_help() {
+    public function render_contextual_help(): void {
         $tabs = null;
         $screen = get_current_screen();
         // first, figure out what screen we are on and get our tabs

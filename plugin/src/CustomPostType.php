@@ -41,7 +41,7 @@ abstract class CustomPostType extends CustomContentObject {
         return $text;
     }
 
-    public function register() {
+    public function register(): void {
         parent::register();
         $this->maybe_load_icon();
         $this->post_object = register_post_type(static::POST_TYPE, $this->args);
@@ -54,6 +54,8 @@ abstract class CustomPostType extends CustomContentObject {
         if (static::$enter_title_text) {
             add_action('enter_title_here', [static::class, 'update_enter_title_text'], 10, 2);
         }
+
+        return;
     }
 
     public function maybe_register_meta(): void {
@@ -68,7 +70,7 @@ abstract class CustomPostType extends CustomContentObject {
         return;
     }
 
-    protected function create_labels() {
+    protected function create_labels(): void {
         $lower_singular = $this->lowercase_safe ? strtolower($this->name) : $this->name;
         $lower_plural = $this->lowercase_safe ? strtolower($this->plural_name) : $this->plural_name;
 
@@ -105,10 +107,12 @@ abstract class CustomPostType extends CustomContentObject {
             $this->labels = $default_labels;
         }
         $this->args['labels'] = $this->labels;
+
+        return;
     }
 
 
-    protected function maybe_load_icon() {
+    protected function maybe_load_icon(): void {
         if (!$this->icon_file) {
             return;
         }
@@ -126,9 +130,11 @@ abstract class CustomPostType extends CustomContentObject {
         if ($file) {
             $this->args['menu_icon'] = $file;
         }
+
+        return;
     }
 
-    public static function get_all($post_status = 'any') {
+    public static function get_all($post_status = 'any'): array {
         $posts = get_posts([
             'post_type'     => static::POST_TYPE,
             'nopaging'      => true,
@@ -138,7 +144,7 @@ abstract class CustomPostType extends CustomContentObject {
         return $posts;
     }
 
-    public static function get_by_slug($slug) {
+    public static function get_by_slug($slug): array {
         $posts = get_posts([
             'post_type'     => static::POST_TYPE,
             'numberposts'   => 1,
@@ -184,7 +190,7 @@ abstract class CustomPostType extends CustomContentObject {
         return false;
     }
 
-    public static function is_edit_posts_screen() {
+    public static function is_edit_posts_screen(): bool {
         global $pagenow;
 
         if ($pagenow == 'edit.php') {

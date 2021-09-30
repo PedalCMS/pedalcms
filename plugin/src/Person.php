@@ -161,7 +161,7 @@ class Person extends CustomPostType {
         ]
     ];
 
-    public function register() {
+    public function register(): void {
         if (!self::is_block_editor_enabled()) {
             $this->args['show_in_rest'] = false;
         }

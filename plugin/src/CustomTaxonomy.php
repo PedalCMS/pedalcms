@@ -37,7 +37,7 @@ abstract class CustomTaxonomy extends CustomContentObject {
         parent::__construct();
     }
 
-    public function register() {
+    public function register(): void {
         $this->create_labels();
         $this->maybe_behave_like_tag();
         $result = register_taxonomy(static::TAXONOMY, $this->object_types, $this->args);
@@ -56,9 +56,11 @@ abstract class CustomTaxonomy extends CustomContentObject {
         }
         $this->args = null;
         $this->labels = null;
+
+        return;
     }
 
-    protected function create_labels() {
+    protected function create_labels(): void {
         // recreate WordPress' default labels based around the name of the object
         $default_labels = [
             'name'                       => _x($this->plural_name, $this->plural_name, $this->text_domain),
@@ -115,7 +117,10 @@ abstract class CustomTaxonomy extends CustomContentObject {
         } else {
             $this->labels = $default_labels;
         }
+
         $this->args['labels'] = $this->labels;
+
+        return;
     }
 
     private function maybe_behave_like_tag() {
