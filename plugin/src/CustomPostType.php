@@ -6,7 +6,7 @@ namespace InvisibleUs\Programs;
  * Base class for common custom post type tasks in WordPress.
  * 
  * @version 0.1.0
- * @package nvis-programs
+ * @package NVISPrograms
  * @since 0.1.0
  */
 abstract class CustomPostType extends CustomContentObject {

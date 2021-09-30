@@ -8,7 +8,7 @@ namespace InvisibleUs\Programs;
  * Used with Person post types.
  * 
  * @version 0.1.0
- * @package nvis-programs
+ * @package NVISPrograms
  * @since 0.1.0
  */
 class JobTitleBlock extends CustomBlock {

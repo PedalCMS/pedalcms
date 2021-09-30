@@ -1,11 +1,13 @@
 <?php
+
 /**
  * All template tags created by the plugin.
  * 
  * @version 0.1.0
- * @package nvis-programs
+ * @package NVISPrograms
  * @since 0.1.0
  */
+
 
 function nvis_prog_get_template_part(string $template, array $data = []) {
     \InvisibleUs\Programs\TemplateManager::loadTemplate($template, $data);

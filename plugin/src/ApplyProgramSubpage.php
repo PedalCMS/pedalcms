@@ -6,7 +6,7 @@ namespace InvisibleUs\Programs;
  * Program Subpage class stores settings for Apply.
  * 
  * @version 0.1.0
- * @package nvis-programs
+ * @package NVISPrograms
  * @since 0.1.0
  */
 class ApplyProgramSubpage {

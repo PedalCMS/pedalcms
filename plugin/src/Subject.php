@@ -6,7 +6,7 @@ namespace InvisibleUs\Programs;
  * Subject custom taxonomy.
  * 
  * @version 0.1.0
- * @package nvis-programs
+ * @package NVISPrograms
  * @since 0.1.0
  */
 class Subject extends CustomTaxonomy {

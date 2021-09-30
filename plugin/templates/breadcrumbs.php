@@ -3,7 +3,7 @@
 /**
  * Displays breadcrumbs for use in the page header.
  *
- * @package nvis-programs
+ * @package NVISPrograms
  * @version 1.0
  */
 ?>

@@ -6,7 +6,7 @@ namespace InvisibleUs\Programs;
  * Template Manager for handling our template system.
  * 
  * @version 0.1.0
- * @package nvis-programs
+ * @package NVISPrograms
  * @since 0.1.0
  */
 class TemplateManager {

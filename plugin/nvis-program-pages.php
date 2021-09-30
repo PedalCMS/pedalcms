@@ -11,7 +11,7 @@
  * Author URI: https://invisible.us
  * Text Domain: nvis-program-pages
  *
- * @package nvis-programs
+ * @package NVISPrograms
  */
 
 namespace InvisibleUs\Programs;
