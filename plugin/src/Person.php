@@ -4,7 +4,7 @@ namespace InvisibleUs\Programs;
 
 /**
  * Person custom post type.
- * 
+ *
  * @package NVISPrograms
  * @subpackage ContentModel
  * @since 0.1.0
@@ -182,6 +182,14 @@ class Person extends CustomPostType {
         return;
     }
 
+    /**
+     * Changes the sort order for Person.
+     *
+     * Called on filter: pre_get_posts
+     *
+     * @param WP_Query $query The current WP_Query
+     * @return void
+     */
     public static function update_sort_order(\WP_Query $query): void {
         if (is_post_type_archive(self::POST_TYPE)) {
             $query->set('order', 'ASC');
@@ -201,6 +209,11 @@ class Person extends CustomPostType {
         return self::group_by_tax($people, PersonCategory::TAXONOMY, 'people');
     }
 
+    /**
+     * Determines whether the block editor should be enabled for Person.
+     *
+     * @return boolean
+     */
     public static function is_block_editor_enabled(): bool {
         return (bool) get_field('enable_block_editor_personnel', 'option');
     }

@@ -26,7 +26,7 @@ class ProgramSubpageManager {
 
     /**
      * Constructor
-     * 
+     *
      * @param array $subpages List of Subpage objects.
      */
     public function __construct(array $subpages) {
@@ -50,7 +50,7 @@ class ProgramSubpageManager {
      *
      * @param bool $with_index Whether or not to include the index.
      * @param string $return_type Can be 'hash' or 'objects'.
-     * @return array
+     * @return array List of subpages.
      */
     public static function get_subpages(bool $with_index = true, string $return_type = 'hash'): array {
         if ($return_type === 'hash') {
@@ -158,7 +158,7 @@ class ProgramSubpageManager {
     /**
      * Tests whether the subpage is currently active.
      *
-     * @param string $subpage The slug of the page to test.
+     * @param string $subpage The slug of the subpage to test.
      * @return boolean
      */
     public static function is_active_subpage(string $subpage): bool {
@@ -167,7 +167,7 @@ class ProgramSubpageManager {
 
 
     /**
-     * Decides whether a particular subpage should be rendered.
+     * Determines whether a particular subpage should be rendered.
      *
      * @param string $subpage
      * @return boolean
@@ -221,6 +221,11 @@ class ProgramSubpageManager {
         return $link;
     }
 
+    /**
+     * Returns a list of ACF fields from all enabled subpages.
+     *
+     * @return array List of ACF fields.
+     */
     public static function get_enabled_subpage_fields(): array {
         $fields = [];
         $enabled = self::get_enabled_subpages();

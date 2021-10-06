@@ -1,14 +1,22 @@
 <?php
 /**
  * Various global hook functions.
- * 
+ *
  * @package NVISPrograms
  * @since 0.1.0
  */
+
 namespace InvisibleUs\Programs;
 
 add_filter('document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 3);
 
+/**
+ * Updates the title for filtered results in archives.
+ *
+ * Called on filter: document_title_parts
+ *
+ * @param array $title The current title parts.
+ */
 function document_title_parts(array $title): array {
     $post_types = [
         // TODO: Add these to the objects and reference them.

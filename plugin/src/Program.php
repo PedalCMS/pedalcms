@@ -4,7 +4,7 @@ namespace InvisibleUs\Programs;
 
 /**
  * Program custom post type.
- * 
+ *
  * @package NVISPrograms
  * @subpackage ContentModel
  * @since 0.1.0
@@ -263,7 +263,16 @@ class Program extends CustomPostType {
         add_action('pre_get_posts', [static::class, 'update_sort_order']);
     }
 
+    /**
+     * Changes the sort order for Programs.
+     *
+     * Called on filter: pre_get_posts
+     *
+     * @param WP_Query $query The current WP_Query
+     * @return void
+     */
     public static function update_sort_order(\WP_Query $query): void {
+        // TODO: Limit this to main query.
         if (is_post_type_archive(self::POST_TYPE)) {
             $query->set('order', 'ASC');
             $query->set('orderby', 'title');
@@ -272,6 +281,15 @@ class Program extends CustomPostType {
         return;
     }
 
+    /**
+     * Get the news posts for a given program by related tag.
+     *
+     * Meta field news_tag must be set first.
+     *
+     * @param mixed $program Program to check for news posts. Either ID or WP_Post.
+     * @param array $not_in List of ids to exclude from the results.
+     * @return array List of WP_Posts that match the Program's tag.
+     */
     public static function get_related_posts($program = null, array $not_in = []): array {
         $program = get_post($program);
 
@@ -295,6 +313,14 @@ class Program extends CustomPostType {
         return get_posts($args);
     }
 
+    /**
+     * Gets a list of application deadlines based on override hierarchy.
+     *
+     * Hierarchy is Program, College, Program Type, Global.
+     *
+     * @param mixed $program Program to check for news posts. Either ID or WP_Post.
+     * @return array An ACF repeater field with deadline_label and deadline_info subfields.
+     */
     public static function get_application_deadlines($program = null): array {
         $program = get_post($program);
 

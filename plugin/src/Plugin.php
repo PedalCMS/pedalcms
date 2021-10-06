@@ -4,17 +4,51 @@ namespace InvisibleUs\Programs;
 
 /**
  * Handles all global settings and setup.
- * 
+ *
  * @package NVISPrograms
  * @since 0.1.0
  */
 class Plugin {
+    /**
+     * Slug style name of the plugin. Should match folder name.
+     *
+     * @var string
+     */
     public static $name = 'nvis-program-pages';
+
+    /**
+     * Absolute path of the plugin root.
+     *
+     * @var string
+     */
     public static $path = '';
+
+    /**
+     * URL of the plugin root.
+     *
+     * @var string
+     */
     public static $url = '';
+
+    /**
+     * Template folder name.
+     *
+     * @var string
+     */
     public static $template_path = '/templates';
+
+    /**
+     * Whether the plugin has already been initialized.
+     *
+     * @var boolean
+     */
     private static $_init = false;
 
+    /**
+     * Config for reistering ACF options page.
+     *
+     * @var array
+     */
     public static $options_page = [
         'page_title'  => 'Program Pages Settings',
         'menu_title'  => 'Program Pages',
@@ -25,6 +59,7 @@ class Plugin {
         'redirect'    => false,
     ];
 
+    /** Config for populating Plugin options page. */
     public static $field_groups = [
         [
             'key'      => 'group_6113a9e72073e',
@@ -149,6 +184,9 @@ class Plugin {
         ]
     ];
 
+    /**
+     * Kicks off the whole plugin setup.
+     */
     public function __construct() {
         if (self::$_init) {
             return;
@@ -166,12 +204,24 @@ class Plugin {
         self::$_init = true;
     }
 
+    /**
+     * Performs some plugin setup.
+     *
+     * Called on action: init
+     *
+     * @return void
+     */
     public static function plugin_init(): void {
         self::register_content_model();
         self::register_custom_blocks();
         self::setup_template_manager();
     }
 
+    /**
+     * Handles some dynamic configuration of the ACF field group.
+     *
+     * @return void
+     */
     public function init_field_group(): void {
         $subpages = ProgramSubpageManager::get_subpages(false);
         $def_vals = [];
@@ -196,6 +246,11 @@ class Plugin {
         return;
     }
 
+    /**
+     * Registers all the custom post types and custom taxonomies.
+     *
+     * @return void
+     */
     public static function register_content_model(): void {
         // Register post types.
         (new Program())->register();
@@ -215,6 +270,11 @@ class Plugin {
         return;
     }
 
+    /**
+     * Registers custom Gutenberg blocks for the entire plugin.
+     *
+     * @return void
+     */
     public static function register_custom_blocks(): void {
         if (!Person::is_block_editor_enabled()) {
             return;
@@ -226,6 +286,11 @@ class Plugin {
         return;
     }
 
+    /**
+     * Creates and configures the template manager.
+     *
+     * @return void
+     */
     public static function setup_template_manager(): void {
         $person_template = 'single-person';
 
@@ -277,6 +342,11 @@ class Plugin {
         return;
     }
 
+    /**
+     * Creates and configures the ProgramSubpageManager.
+     *
+     * @return void
+     */
     public static function setup_subpage_manager(): void {
         $mngr = new ProgramSubpageManager([
             (object) [

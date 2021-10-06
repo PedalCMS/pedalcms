@@ -10,6 +10,11 @@ namespace InvisibleUs\Programs;
 
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\register_assets');
 
+/**
+ * Registers and enqueues frontend assets.
+ *
+ * @return void
+ */
 function register_assets() {
     if (!is_admin() && (
         is_singular([Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE]) ||
