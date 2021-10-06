@@ -4,7 +4,7 @@ namespace InvisibleUs\Programs;
 
 /**
  * Handles all functionality related to Program Subpages.
- * 
+ *
  * @package NVISPrograms
  * @subpackage ProgramSubpages
  * @since 0.1.0
@@ -18,7 +18,7 @@ class ProgramSubpageManager {
     private const query_var = 'nvis_subpage';
 
     /**
-     * List of subpages as a slug/title hash.
+     * List of Subpage objects.
      *
      * @var array
      */
@@ -26,21 +26,11 @@ class ProgramSubpageManager {
 
     /**
      * Constructor
+     * 
+     * @param array $subpages List of Subpage objects.
      */
-    public function __construct() {
-        self::$subpages = [
-            (object) [
-                'slug'  => 'index',
-                'title' => 'Overview'
-            ],
-            new CareersProgramSubpage(),
-            new CoursesProgramSubpage(),
-            new FacultyStaffProgramSubpage(),
-            new CostProgramSubpage(),
-            new ApplyProgramSubpage(),
-            new FAQProgramSubpage(),
-            new NewsProgramSubpage()
-        ];
+    public function __construct(array $subpages) {
+        self::$subpages = $subpages;
 
         return;
     }

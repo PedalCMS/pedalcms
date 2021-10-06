@@ -278,7 +278,19 @@ class Plugin {
     }
 
     public static function setup_subpage_manager(): void {
-        $mngr = new ProgramSubpageManager();
+        $mngr = new ProgramSubpageManager([
+            (object) [
+                'slug'  => 'index',
+                'title' => 'Overview'
+            ],
+            new CareersProgramSubpage(),
+            new CoursesProgramSubpage(),
+            new FacultyStaffProgramSubpage(),
+            new CostProgramSubpage(),
+            new ApplyProgramSubpage(),
+            new FAQProgramSubpage(),
+            new NewsProgramSubpage()
+        ]);
         $mngr->init();
 
         return;
