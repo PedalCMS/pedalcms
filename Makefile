@@ -1,5 +1,5 @@
 PLUGIN_NAME := nvis-program-pages
-PLUGIN_VERSION := $$(grep "^ \* Version" src/$(PLUGIN_NAME).php| awk -F' ' '{print $3}' | cut -d ":" -f2 | sed 's/ //g')
+PLUGIN_VERSION := $$(grep "^ \* Version" plugin/$(PLUGIN_NAME).php| awk -F' ' '{print $3}' | cut -d ":" -f2 | sed 's/ //g')
 
 .PHONY: install
 install: | clean
