@@ -5,6 +5,7 @@ plugin/src/acf
 *.zip
 
 # Developer Artifacts.
+.env
 /build
 /node_modules
 package-lock.json
@@ -12,8 +13,9 @@ package-lock.json
 composer.lock
 .php_cs.cache
 .php-cs-fixer.cache
+.phpdoc
+/docs
 
 # File that we want to keep around temporarily.
 *.ignoreme
-.phpdoc
-docs
+
