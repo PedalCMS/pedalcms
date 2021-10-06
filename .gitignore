@@ -1,5 +1,5 @@
 # Bundled Advanced Custom Fields.
-src/src/acf
+plugin/src/acf
 
 # No builds.
 *.zip
@@ -8,7 +8,6 @@ src/src/acf
 /build
 /node_modules
 package-lock.json
-/src/vendor
 /vendor
 composer.lock
 .php_cs.cache
