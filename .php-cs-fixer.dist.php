@@ -2,8 +2,8 @@
 
 
 $finder = PhpCsFixer\Finder::create()
-    ->in(__DIR__ . '/src')
-    ->exclude(['src/acf','node_modules'])
+    ->in(__DIR__ . '/plugin')
+    ->exclude(['plugin/acf','node_modules'])
     ->ignoreDotFiles(true);
 
 
