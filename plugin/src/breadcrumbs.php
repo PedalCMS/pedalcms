@@ -149,9 +149,11 @@ function yoast_update_trail(array $crumbs): array {
     }
 
     $post_types = [Program::POST_TYPE, Person::POST_TYPE];
-    // FIXME: Passing an array i/o a string.
-    if (nvis_prog_is_filtered_results($post_types)) {
-        return yoast_replace_trail($crumbs);
+
+    foreach ($post_types as $post_type) {
+        if (nvis_prog_is_filtered_results($post_type)) {
+            return yoast_replace_trail($crumbs);
+        }
     }
 
     return $crumbs;
@@ -201,8 +203,10 @@ function aioseo_update_trail(array $crumbs): array {
 
     $post_types = [Program::POST_TYPE, Person::POST_TYPE];
 
-    if (nvis_prog_is_filtered_results($post_types)) {
-        return aioseo_replace_trail($crumbs);
+    foreach ($post_types as $post_type) {
+        if (nvis_prog_is_filtered_results($post_type)) {
+            return aioseo_replace_trail($crumbs);
+        }
     }
 
     return $crumbs;
