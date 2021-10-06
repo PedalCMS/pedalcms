@@ -16,3 +16,5 @@ composer.lock
 
 # File that we want to keep around temporarily.
 *.ignoreme
+.phpdoc
+docs

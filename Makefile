@@ -12,6 +12,7 @@ clean:
 		node_modules
 		package-lock.json
 		*.cache
+		.phpdoc
 
 .PHONY: release
 release:
@@ -27,3 +28,8 @@ release:
 		echo "file not available"; \
 		exit 1; \
 	fi
+
+.PHONY: docs
+docs:
+	@echo "\nBuilding code docs. Output will be saved to ./docs\n"
+	phpdoc -d ./plugin -t ./docs/
