@@ -53,7 +53,7 @@ release: getacf
 docs:
 	@echo "\nBuilding code docs...\n"
 	rm -rf docs
-	phpdoc -d ./$(PLUGIN_ROOT) -t ./docs/
+	phpdoc
 	@if [ ! -f docs/index.html  ]; then \
 		echo "\n\n\033[0;31mPHPDocumentor failed. Check the output.\033[0m\n\n"; \
 		exit 1; \
