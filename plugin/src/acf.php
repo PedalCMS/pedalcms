@@ -11,10 +11,15 @@ namespace InvisibleUs\Programs;
 add_action('plugins_loaded', __NAMESPACE__ . '\maybe_load_acf');
 add_action('acf/init', __NAMESPACE__ . '\acf_init');
 
-function maybe_load_acf() {
-    // If ACF is already loaded, we can bail.
+/**
+ * Loads bundled ACF Pro if ACF not already loaded.
+ *
+ * @return void
+ */
+function maybe_load_acf(): void {
     if (class_exists('ACF')) {
         // TODO: Add minimum version number handling.
+        // TODO: Figure out how to deal with Free/Pro discrepancy.
         return;
     }
 
@@ -26,12 +31,25 @@ function maybe_load_acf() {
 
     add_filter('acf/settings/url', __NAMESPACE__ . '\acf_settings_url');
     add_filter('acf/settings/show_admin', '__return_false');
+
+    return;
 }
 
+/**
+ * Returns the ACF settings URL override.
+ *
+ * @param string $url
+ * @return void
+ */
 function acf_settings_url(string $url) {
     return NVISP_ACF_URL;
 }
 
+/**
+ * Loads all the ACF Field Groups configured throughout the plugin.
+ *
+ * @return void
+ */
 function acf_init(): void {
     acf_add_options_page(Plugin::$options_page);
 
@@ -53,6 +71,11 @@ function acf_init(): void {
     return;
 }
 
+/**
+ * Merges all subpage fields into the program field group. 
+ *
+ * @return array
+ */
 function get_program_acf_fields(): array {
     $group = Program::$field_groups[0];
 
