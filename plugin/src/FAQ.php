@@ -6,6 +6,7 @@ namespace InvisibleUs\Programs;
  * FAQ custom post type.
  * 
  * @package NVISPrograms
+ * @subpackage ContentModel
  * @since 0.1.0
  */
 class FAQ extends CustomPostType {

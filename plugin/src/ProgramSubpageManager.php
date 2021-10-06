@@ -6,6 +6,7 @@ namespace InvisibleUs\Programs;
  * Handles all functionality related to Program Subpages.
  * 
  * @package NVISPrograms
+ * @subpackage ProgramSubpages
  * @since 0.1.0
  */
 class ProgramSubpageManager {

@@ -6,6 +6,7 @@ namespace InvisibleUs\Programs;
  * Semester custom taxonomy.
  * 
  * @package NVISPrograms
+ * @subpackage ContentModel
  * @since 0.1.0
  */
 class Semester extends CustomTaxonomy {

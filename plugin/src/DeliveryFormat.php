@@ -6,6 +6,7 @@ namespace InvisibleUs\Programs;
  * Delivery Format custom taxonomy.
  * 
  * @package NVISPrograms
+ * @subpackage ContentModel
  * @since 0.1.0
  */
 class DeliveryFormat extends CustomTaxonomy {

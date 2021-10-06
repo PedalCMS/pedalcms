@@ -6,6 +6,7 @@ namespace InvisibleUs\Programs;
  * Person custom post type.
  * 
  * @package NVISPrograms
+ * @subpackage ContentModel
  * @since 0.1.0
  */
 class Person extends CustomPostType {

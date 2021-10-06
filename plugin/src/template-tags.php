@@ -1,5 +1,4 @@
 <?php
-
 /**
  * All template tags created by the plugin.
  * 

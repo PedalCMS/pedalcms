@@ -6,6 +6,7 @@ namespace InvisibleUs\Programs;
  * Program Subpage class stores settings for Cost.
  * 
  * @package NVISPrograms
+ * @subpackage ProgramSubpages
  * @since 0.1.0
  */
 class CostProgramSubpage {
