@@ -20,8 +20,8 @@ release:
 	rm -rf $(PLUGIN_NAME).$(PLUGIN_VERSION).zip
 	rm -rf build
 	mkdir build
-	cp -av src build
-	mv build/src build/$(PLUGIN_NAME)
+	cp -av plugin build
+	mv build/plugin build/$(PLUGIN_NAME)
 	PLUGIN_VERSION=$(PLUGIN_VERSION) && cd build && zip -r $(PLUGIN_NAME).$$PLUGIN_VERSION.zip *
 	mv build/$(PLUGIN_NAME).$(PLUGIN_VERSION).zip ./
 	if [ ! -f ./$(PLUGIN_NAME).$(PLUGIN_VERSION).zip  ]; then \
