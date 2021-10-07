@@ -164,6 +164,20 @@ class Person extends CustomPostType {
                     'instructions'      => '',
                     'placeholder'       => 'Main Building, 448C'
                 ],
+                [
+                    'key'               => 'field_615f36c2ba5cf',
+                    'label'             => 'Courses Taught',
+                    'name'              => 'related_courses',
+                    'type'              => 'relationship',
+                    'instructions'      => '',
+                    'post_type'         => [0 => Course::POST_TYPE],
+                    'taxonomy'          => '',
+                    'filters'           => [
+                        0 => 'search',
+                        1 => 'taxonomy',
+                    ],
+                    'return_format' => 'id',
+                ],
             ],
         ]
     ];
