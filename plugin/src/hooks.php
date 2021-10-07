@@ -22,6 +22,7 @@ function document_title_parts(array $title): array {
         // TODO: Add these to the objects and reference them.
         Program::POST_TYPE => 'Programs',
         Person::POST_TYPE  => 'Directory',
+        Course::POST_TYPE  => 'Course Catalog',
     ];
 
     foreach ($post_types as $post_type => $replacement) {
@@ -29,9 +30,11 @@ function document_title_parts(array $title): array {
             // TODO: centralize this text so it can be called here and in breadcrumbs.
             $title['title'] = $replacement . ' Filtered Results';
 
-            break;
+            return $title;
         }
     }
+
+    // TODO: Add support for Program subpages.
 
     return $title;
 }
