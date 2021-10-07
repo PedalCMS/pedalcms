@@ -31,6 +31,7 @@ function get_archive_crumb(): array {
         // TODO: Add these to the objects and reference them.
         Program::POST_TYPE => 'Programs',
         Person::POST_TYPE  => 'Directory',
+        Course::POST_TYPE  => 'Course Catalog',
     ];
 
     foreach ($post_types as $post_type => $text) {
@@ -92,7 +93,7 @@ function navxt_add_subpage(object $trail): void {
  * @return void
  */
 function navxt_replace_archive_trail(object $trail) {
-    $post_types = [Program::POST_TYPE, Person::POST_TYPE];
+    $post_types = [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE];
 
     if (nvis_prog_is_filtered_results($post_types)) {
         if ($trail->opt['bhome_display']) {
@@ -158,7 +159,7 @@ function yoast_update_trail(array $crumbs): array {
         return yoast_add_subpage($crumbs);
     }
 
-    $post_types = [Program::POST_TYPE, Person::POST_TYPE];
+    $post_types = [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE];
 
     if (nvis_prog_is_filtered_results($post_types)) {
         return yoast_replace_trail($crumbs);
@@ -209,7 +210,7 @@ function aioseo_update_trail(array $crumbs): array {
         return aioseo_add_subpage($crumbs);
     }
 
-    $post_types = [Program::POST_TYPE, Person::POST_TYPE];
+    $post_types = [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE];
 
     if (nvis_prog_is_filtered_results($post_types)) {
         return aioseo_replace_trail($crumbs);
