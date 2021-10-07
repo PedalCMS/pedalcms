@@ -160,7 +160,7 @@ function yoast_update_trail(array $crumbs): array {
 
     $post_types = [Program::POST_TYPE, Person::POST_TYPE];
 
-    if (nvis_prog_is_filtered_results($post_type)) {
+    if (nvis_prog_is_filtered_results($post_types)) {
         return yoast_replace_trail($crumbs);
     }
 
@@ -211,7 +211,7 @@ function aioseo_update_trail(array $crumbs): array {
 
     $post_types = [Program::POST_TYPE, Person::POST_TYPE];
 
-    if (nvis_prog_is_filtered_results($post_type)) {
+    if (nvis_prog_is_filtered_results($post_types)) {
         return aioseo_replace_trail($crumbs);
     }
 
