@@ -107,6 +107,14 @@ class Plugin {
                     'placeholder'  => '',
                 ],
                 [
+                    'key'          => 'field_612e8f1e1b6a7',
+                    'label'        => 'Course Registration Search URL',
+                    'name'         => 'nvis_course_url_reg_search',
+                    'type'         => 'url',
+                    'instructions' => 'Enter a URL pattern to create unique "Search Sections" URLs for each course. You can use the following tag: {$course_reg_key}',
+                    'placeholder'  => '',
+                ],
+                [
                     'key'          => 'field_613a6ffacb272',
                     'label'        => 'Program Contact Label',
                     'name'         => 'nvis_program_contact_label',
