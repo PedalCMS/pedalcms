@@ -24,7 +24,7 @@ function nvis_prog_get_template_part(string $template, array $data = []) {
  *
  * @param string $post_type The post_type to test.
  */
-function nvis_prog_is_filtered_results(string $post_type = null): bool {
+function nvis_prog_is_filtered_results($post_type = null): bool {
     $post_type = $post_type ?? \InvisibleUs\Programs\Program::POST_TYPE;
 
     return
