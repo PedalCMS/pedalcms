@@ -113,7 +113,11 @@ function navxt_replace_archive_trail(object $trail) {
 /**
  * Fixes the unlinked Program crumb when "Link Current Item" is off.
  *
- * Called on filter: bcn_breadcrumb_linked
+ * The logic of this function relies on the $id argument being null for
+ * Program subpages. It is a slightly brittle approach that stems from
+ * Breadcrumb NavXT not understanding our Program subpages.
+ *
+ * Called on filter: bcn_breadcrumb_linked.
  *
  * @param bool $linked The current value of this filtered variable.
  * @param array $types The types of the crumb being evaluated.
@@ -130,7 +134,11 @@ function navxt_breadcrumb_linked(bool $linked, array $types, int $id = null): bo
     }
 
     if (is_singular($post_type) && in_array('post-' . $post_type, $types, true)) {
-        // ID is null for subpages and we don't want to "Link Current Item."
+        /**
+         * ID is null for subpages and we don't want to "Link Current Item."
+         * ID is true for the Program itself and we do want them linked
+         * because they are not the current item.
+         */
         return (bool) $id;
     }
 
