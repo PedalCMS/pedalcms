@@ -114,8 +114,8 @@ class Course extends CustomPostType {
                     'return_format' => 'id',
                 ],
                 [
-                    'key'               => 'field_6125264d27bb4',
-                    'label'             => 'Related Personnel',
+                    'key'               => 'field_615f36b994871',
+                    'label'             => 'Taught By',
                     'name'              => 'related_personnel',
                     'type'              => 'relationship',
                     'instructions'      => '',
