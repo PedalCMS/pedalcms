@@ -4,7 +4,7 @@ namespace InvisibleUs\Programs;
 
 /**
  * Course custom post type.
- * 
+ *
  * @package NVISPrograms
  * @subpackage ContentModel
  * @since 0.1.0
@@ -61,7 +61,7 @@ class Course extends CustomPostType {
                     [
                         'param'    => 'post_type',
                         'operator' => '==',
-                        'value'    => 'nvis_course',
+                        'value'    => self::POST_TYPE,
                     ],
                 ],
             ],
@@ -82,16 +82,6 @@ class Course extends CustomPostType {
                     'placeholder'       => 1,
                 ],
                 [
-                    'key'               => 'field_61252469d4a0c',
-                    'label'             => 'Course Catalog Key',
-                    'name'              => 'course_catalog_key',
-                    'type'              => 'text',
-                    'instructions'      => 'They key, or ID, that you can use to search course catalogs for this course via URL parameter.',
-                    'wrapper'           => ['width' => '50'],
-                    'placeholder'       => '',
-                    'maxlength'         => 16,
-                ],
-                [
                     'key'               => 'field_61252546d4a0d',
                     'label'             => 'Course Registration Key',
                     'name'              => 'course_registration_key',
@@ -102,12 +92,20 @@ class Course extends CustomPostType {
                     'placeholder'       => '61252586f020c'
                 ],
                 [
+                    'key'               => 'field_612e96a887a06',
+                    'label'             => 'Registration Search URL',
+                    'name'              => 'url_reg_search',
+                    'type'              => 'url',
+                    'instructions'      => 'Enter a URL for the "Search Sections" link. Overrides global setting.',
+                    'placeholder'       => '',
+                ],
+                [
                     'key'               => 'field_6125264d27bb4',
                     'label'             => 'Related Programs',
                     'name'              => 'related_programs',
                     'type'              => 'relationship',
                     'instructions'      => '',
-                    'post_type'         => [0 => 'nvis_program'],
+                    'post_type'         => [0 => Program::POST_TYPE],
                     'taxonomy'          => '',
                     'filters'           => [
                         0 => 'search',
@@ -116,20 +114,18 @@ class Course extends CustomPostType {
                     'return_format' => 'id',
                 ],
                 [
-                    'key'               => 'field_612e962087a05',
-                    'label'             => 'More Info URL',
-                    'name'              => 'url_more_info',
-                    'type'              => 'url',
-                    'instructions'      => 'Enter a URL for the "More Info" link. Overrides global setting.',
-                    'placeholder'       => '',
-                ],
-                [
-                    'key'               => 'field_612e96a887a06',
-                    'label'             => 'Registration Search URL',
-                    'name'              => 'url_reg_search',
-                    'type'              => 'url',
-                    'instructions'      => 'Enter a URL for the "More Info" link. Overrides global setting.',
-                    'placeholder'       => '',
+                    'key'               => 'field_6125264d27bb4',
+                    'label'             => 'Related Personnel',
+                    'name'              => 'related_personnel',
+                    'type'              => 'relationship',
+                    'instructions'      => '',
+                    'post_type'         => [0 => Person::POST_TYPE],
+                    'taxonomy'          => '',
+                    'filters'           => [
+                        0 => 'search',
+                        1 => 'taxonomy',
+                    ],
+                    'return_format' => 'id',
                 ],
             ],
         ]
