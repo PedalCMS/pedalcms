@@ -111,7 +111,7 @@ function navxt_replace_archive_trail(object $trail) {
 }
 
 /**
- * Determines whether or not to link the breadcrumb in single post type situations.
+ * Fixes the unlinked Program crumb when "Link Current Item" is off.
  *
  * Called on filter: bcn_breadcrumb_linked
  *
@@ -121,15 +121,17 @@ function navxt_replace_archive_trail(object $trail) {
  * @return bool Whether or not the crumb should be linked.
  */
 function navxt_breadcrumb_linked(bool $linked, array $types, int $id = null): bool {
-    // TODO: Double-check that this shouldn't be only for Program Subpages.
-    $post_types = [Program::POST_TYPE, Person::POST_TYPE];
+    $post_type = Program::POST_TYPE;
 
-    // TODO: Add support for "Link Current Item" feature.
-    foreach ($post_types as $post_type) {
-        if (is_singular($post_type) && in_array('post-' . $post_type, $types, true)) {
-            // ID is null for newly created subpages.
-            return (bool) $id;
-        }
+    if ($linked) {
+        // If "Link Current Item" turned on, this will be true and
+        // we have nothing to do.
+        return true;
+    }
+
+    if (is_singular($post_type) && in_array('post-' . $post_type, $types, true)) {
+        // ID is null for subpages and we don't want to "Link Current Item."
+        return (bool) $id;
     }
 
     return $linked;
