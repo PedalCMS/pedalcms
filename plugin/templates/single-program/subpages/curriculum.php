@@ -7,9 +7,11 @@
 	<?php
     $sections = get_field('curriculum_sections');
 
-    foreach ($sections as $section) :
-        nvis_prog_get_template_part('single-program/curriculum-section', $section);
-    endforeach;
+    if (is_array($sections)) :
+        foreach ($sections as $section) :
+            nvis_prog_get_template_part('single-program/curriculum-section', $section);
+        endforeach;
+    endif;
     ?>
 </div>
 
