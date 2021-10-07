@@ -348,13 +348,14 @@ class Plugin {
      * @return void
      */
     public static function setup_subpage_manager(): void {
+        // TODO: Allow the order to be customized.
         $mngr = new ProgramSubpageManager([
             (object) [
                 'slug'  => 'index',
                 'title' => 'Overview'
             ],
+            new CurriculumProgramSubpage(),
             new CareersProgramSubpage(),
-            new CoursesProgramSubpage(),
             new FacultyStaffProgramSubpage(),
             new CostProgramSubpage(),
             new ApplyProgramSubpage(),
