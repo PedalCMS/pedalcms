@@ -150,10 +150,8 @@ function yoast_update_trail(array $crumbs): array {
 
     $post_types = [Program::POST_TYPE, Person::POST_TYPE];
 
-    foreach ($post_types as $post_type) {
-        if (nvis_prog_is_filtered_results($post_type)) {
-            return yoast_replace_trail($crumbs);
-        }
+    if (nvis_prog_is_filtered_results($post_type)) {
+        return yoast_replace_trail($crumbs);
     }
 
     return $crumbs;
@@ -203,10 +201,8 @@ function aioseo_update_trail(array $crumbs): array {
 
     $post_types = [Program::POST_TYPE, Person::POST_TYPE];
 
-    foreach ($post_types as $post_type) {
-        if (nvis_prog_is_filtered_results($post_type)) {
-            return aioseo_replace_trail($crumbs);
-        }
+    if (nvis_prog_is_filtered_results($post_type)) {
+        return aioseo_replace_trail($crumbs);
     }
 
     return $crumbs;
