@@ -66,8 +66,8 @@ class Course extends CustomPostType {
                 ],
             ],
             'menu_order'            => 0,
-            'position'              => 'normal',
-            'style'                 => 'default',
+            'position'              => 'acf_after_title',
+            'style'                 => 'seamless',
             'label_placement'       => 'top',
             'instruction_placement' => 'field',
             'active'                => true,
@@ -124,6 +124,9 @@ class Course extends CustomPostType {
                     'filters'           => [
                         0 => 'search',
                         1 => 'taxonomy',
+                    ],
+                    'elements' => [
+                        0 => 'featured_image',
                     ],
                     'return_format' => 'id',
                 ],
