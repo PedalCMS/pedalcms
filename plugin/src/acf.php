@@ -1,7 +1,7 @@
 <?php
 /**
  * ACF related functionality.
- * 
+ *
  * @package NVISPrograms
  * @since 0.1.0
  */
@@ -10,6 +10,8 @@ namespace InvisibleUs\Programs;
 
 add_action('plugins_loaded', __NAMESPACE__ . '\maybe_load_acf');
 add_action('acf/init', __NAMESPACE__ . '\acf_init');
+add_filter('acf/update_value/type=relationship', __NAMESPACE__ . '\maybe_update_bidirectional_relationship', 10, 3);
+
 
 /**
  * Loads bundled ACF Pro if ACF not already loaded.
@@ -72,7 +74,7 @@ function acf_init(): void {
 }
 
 /**
- * Merges all subpage fields into the program field group. 
+ * Merges all subpage fields into the program field group.
  *
  * @return array
  */
@@ -85,4 +87,102 @@ function get_program_acf_fields(): array {
     );
 
     return $group;
+}
+
+function get_related_field_name($field_name) {
+    $bidirectional = [
+        'related_personnel' => 'related_courses',
+    ];
+
+    if (array_key_exists($field_name, $bidirectional)) {
+        return $bidirectional[$field_name];
+    }
+
+    $bidirectional = array_flip($bidirectional);
+
+    if (array_key_exists($field_name, $bidirectional)) {
+        return $bidirectional[$field_name];
+    }
+
+    return false;
+}
+
+function maybe_update_bidirectional_relationship($value, $post_id, $field) {
+    $field_name = $field['name'];
+    $global_name = 'nvis_is_updating_bidirectional';
+    $rel_field_name = get_related_field_name($field_name);
+
+    if (!empty($GLOBALS[ $global_name ])) {
+        // We are already updating this bidirectional relationship.
+        return $value;
+    }
+
+    if (!$rel_field_name) {
+        // This is not a bidirectional relationship.
+        return $value;
+    }
+
+
+    $old_value = get_field($field_name, $post_id, false);
+
+    if (!is_array($value)) {
+        $value = [];
+    }
+
+    if (!is_array($old_value)) {
+        $old_value = [];
+    }
+
+    $add_to = array_diff($value, $old_value);
+    $remove_from = array_diff($old_value, $value);
+
+    // Begin the "critial section".
+    $GLOBALS[$global_name] = 1;
+
+    add_relationship($post_id, $add_to, $rel_field_name);
+    remove_relationship($post_id, $remove_from, $rel_field_name);
+
+    // End the "critical section".
+    unset($GLOBALS[$global_name]);
+
+
+    return $value;
+}
+
+function add_relationship(int $add_post, array $to_posts, string $field_name): void {
+    if (!empty($to_posts)) {
+        foreach ($to_posts as $post_id) {
+            $rel_posts = get_field($field_name, $post_id);
+
+            if (empty($rel_posts)) {
+                $rel_posts = [];
+            }
+
+            $rel_posts[] = $add_post;
+            update_field($field_name, $rel_posts, $post_id);
+        }
+    }
+
+    return;
+}
+
+function remove_relationship(int $remove_post, array $from_posts, string $field_name): void {
+    if (!empty($from_posts)) {
+        foreach ($from_posts as $post_id) {
+            $rel_posts = get_field($field_name, $post_id);
+
+            if (empty($rel_posts)) {
+                continue;
+            }
+
+            $i = array_search($remove_post, $rel_posts, true);
+
+            if ($i !== false) {
+                unset($rel_posts[$i]);
+                update_field($field_name, $rel_posts, $post_id);
+            }
+        }
+    }
+
+    return;
 }
