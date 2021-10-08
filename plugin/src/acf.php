@@ -91,17 +91,17 @@ function get_program_acf_fields(): array {
 
 function get_related_field_name($field_name) {
     $bidirectional = [
-        'related_personnel' => 'related_courses',
+        'related_course_personnel' => 'related_person_courses',
     ];
 
     if (array_key_exists($field_name, $bidirectional)) {
         return $bidirectional[$field_name];
     }
 
-    $bidirectional = array_flip($bidirectional);
+    $rel_field_name = array_search($field_name, $bidirectional, true);
 
-    if (array_key_exists($field_name, $bidirectional)) {
-        return $bidirectional[$field_name];
+    if ($rel_field_name !== false) {
+        return $rel_field_name;
     }
 
     return false;

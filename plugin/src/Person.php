@@ -167,7 +167,7 @@ class Person extends CustomPostType {
                 [
                     'key'               => 'field_615f36c2ba5cf',
                     'label'             => 'Courses Taught',
-                    'name'              => 'related_courses',
+                    'name'              => 'related_person_courses',
                     'type'              => 'relationship',
                     'instructions'      => '',
                     'post_type'         => [0 => Course::POST_TYPE],
