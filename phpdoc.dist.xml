@@ -18,4 +18,5 @@
             </ignore>
         </api>
     </version>
+    <!-- <setting name="graphs.enabled" value="true"/> -->
 </phpdocumentor>
