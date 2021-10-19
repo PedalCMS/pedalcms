@@ -6,8 +6,9 @@ nvis_prog_get_template_part('header');
 ?>
 <article <?php post_class(); ?>>
 	<?php nvis_prog_get_template_part('single-person/page-header-classic'); ?>
-	<div class="program-main entry-content">
+	<div class="person-main entry-content">
 		<?php the_content(); ?>
+		<?php nvis_prog_get_template_part('single-person/related-courses'); ?>
 	</div>
 </article>
 <?php nvis_prog_get_template_part('footer');

@@ -335,6 +335,43 @@
   line-height: 1.4;
 }
 
+.single-person-page-header--classic::after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.single-person-page-header--classic {
+  padding-bottom: calc(2 * var(--nvis-prog-spacing));
+  margin-bottom: calc(2 * var(--nvis-prog-spacing));
+  border-bottom: solid 1px var(--nvis-prog-gray);
+}
+
+.single-person-page-header--classic .entry-title {
+  clear: left;
+  margin: calc(3 * var(--nvis-prog-spacing)) 0 0;
+}
+
+.single-person-page-header--classic .single-person__meta {
+  margin: 0 0 calc(2 * var(--nvis-prog-spacing));
+}
+
+.single-person-page-header--classic .person-job-title {
+  font-size: 1.25em;
+  font-style: italic;
+}
+
+.single-person-page-header--classic .person-featured-image {
+  float: right;
+}
+
+.single-person-page-header--classic .label {
+  display: inline-block;
+  font-size: 0.9em;
+  font-weight: bold;
+  width: 4em;
+}
+
 @keyframes nvis-fade-in-left {
   0% {
     opacity: 0;
