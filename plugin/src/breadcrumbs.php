@@ -231,11 +231,13 @@ function aioseo_update_trail(array $crumbs): array {
  * @return array The filtered trail of crumbs.
  */
 function aioseo_add_subpage(array $crumbs): array {
-    $crumb = get_program_subpage_crumb();
-    $crumbs[] = [
-        'label' => $crumb['text'],
-        'link'  => $crumb['url'],
-    ];
+    if (aioseo()->breadcrumbs->showCurrentItem()) {
+        $crumb = get_program_subpage_crumb();
+        $crumbs[] = [
+            'label' => $crumb['text'],
+            'link'  => $crumb['url'],
+        ];
+    }
 
     return $crumbs;
 }
