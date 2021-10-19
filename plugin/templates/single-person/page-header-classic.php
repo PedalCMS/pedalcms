@@ -1,5 +1,5 @@
 <header class="single-person-page-header single-person-page-header--classic page-header entry-header">
-    <?php nvis_prog_get_template_part('breadcrumbs'); ?>
+    <?php nvis_prog_get_template_part('common/breadcrumbs'); ?>
 
     <?php if (has_post_thumbnail()) : ?>
     <div class="person-featured-image">

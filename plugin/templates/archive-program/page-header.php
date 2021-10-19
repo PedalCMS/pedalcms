@@ -1,5 +1,5 @@
 <section class="programs-archive-page-header page-header">
-  <?php nvis_prog_get_template_part('breadcrumbs'); ?>
+  <?php nvis_prog_get_template_part('common/breadcrumbs'); ?>
   <h1 class="page-title">
     <?php
     if (is_post_type_archive('nvis_program')) {

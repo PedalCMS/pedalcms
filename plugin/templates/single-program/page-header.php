@@ -1,5 +1,5 @@
 <header class="single-program-page-header page-header entry-header">
-  <?php nvis_prog_get_template_part('breadcrumbs'); ?>
+  <?php nvis_prog_get_template_part('common/breadcrumbs'); ?>
   <?php if (has_post_thumbnail()) : ?>
   <div class="program-featured-image">
     <?php the_post_thumbnail('medium'); ?>
