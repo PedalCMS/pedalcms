@@ -19,6 +19,11 @@ add_filter('wpseo_breadcrumb_links', __NAMESPACE__ . '\yoast_update_trail');
 // All in One SEO Breadcrumb support.
 add_filter('aioseo_breadcrumbs_trail', __NAMESPACE__ . '\aioseo_update_trail');
 
+// Rank Math Support.
+add_filter('rank_math/frontend/breadcrumb/items', __NAMESPACE__ . '\rankmath_update_trail', 10, 2);
+
+
+
 /**
  * Generates a crumb based on the current archive.
  *
@@ -251,7 +256,68 @@ function aioseo_replace_trail(array $crumbs): array {
 
     $crumbs[] = aioseo()->breadcrumbs->getPostTypeArchiveCrumb(get_queried_object());
     // TODO: Make label filterable.
-    $crumbs[] = ['label' => 'Filtered Results', 'link' => 'null'];
+    $crumbs[] = ['label' => 'Filtered Results', 'link' => ''];
 
     return $crumbs;
+}
+
+
+/**
+ * Updates the Yoast trail for program subpages and filtered results.
+ *
+ * Called on filter: rank_math/frontend/breadcrumb/items
+ *
+ * @param array $crumbs The current trail of crumbs.
+ * @param Breadcrumbs $class The current breadcrumb object.
+ * @return array The filtered trail of crumbs.
+ */
+function rankmath_update_trail(array $crumbs, \RankMath\Frontend\Breadcrumbs $class): array {
+    if (is_singular(Program::POST_TYPE)) {
+        return rankmath_add_subpage($crumbs);
+    }
+
+    $post_types = [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE];
+
+    if (nvis_prog_is_filtered_results($post_types)) {
+        return rankmath_replace_trail($crumbs);
+    }
+
+    return $crumbs;
+}
+
+/**
+ * Adds the current subpage crumb to the AiOSEO trail.
+ *
+ * @param array $crumbs The current trail of crumbs.
+ * @return array The filtered trail of crumbs.
+ */
+function rankmath_add_subpage($crumbs) {
+    $hide_title = \RankMath\Helper::get_settings('general.breadcrumbs_remove_post_title');
+
+    if (!$hide_title) {
+        $crumb = get_program_subpage_crumb();
+        $crumbs[] = array_values($crumb);
+    }
+
+    return $crumbs;
+}
+
+/**
+ * Rebuild the entire RankMath trail for the current archive.
+ *
+ * @param array $crumbs The current trail of crumbs.
+ * @return array The new trail of crumbs.
+ */
+function rankmath_replace_trail(array $crumbs): array {
+    $new_crumbs = [];
+    $show_home = \RankMath\Helper::get_settings('general.breadcrumbs_home');
+
+    if ($show_home) {
+        $new_crumbs[] = array_shift($crumbs);
+    }
+
+    $new_crumbs[] = array_values(get_archive_crumb());
+    $new_crumbs[] = ['Filtered Results', ''];
+
+    return $new_crumbs;
 }

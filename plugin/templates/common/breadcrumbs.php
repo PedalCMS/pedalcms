@@ -9,16 +9,14 @@
 ?>
 <div id="breadcrumbs" class="breadcrumbs careers-breadcrumbs">
   <?php
-    /**
-     * First, check for breadcrumb specific plugins. Then, look
-     * for SEO plugins.
-     */
     if (function_exists('bcn_display')) {
         bcn_display();
     } elseif (function_exists('yoast_breadcrumb')) {
         yoast_breadcrumb();
     } elseif (function_exists('aioseo_breadcrumbs')) {
         aioseo_breadcrumbs();
+    } elseif (function_exists('rank_math_the_breadcrumbs')) {
+        rank_math_the_breadcrumbs();
     }
   ?>
 </div>
