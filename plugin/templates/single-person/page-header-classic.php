@@ -8,5 +8,5 @@
     <h1 class="page-title entry-title">
         <?php the_title(); ?>
     </h1>
-    <?php nvis_prog_get_template_part('single-person-meta'); ?>
+    <?php nvis_prog_get_template_part('single-person/person-meta'); ?>
 </header><!-- .page-header -->
