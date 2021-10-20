@@ -10,4 +10,4 @@ $data = [
     ]
 ];
 
-nvis_prog_get_template_part('filters', $data);
+nvis_prog_get_template_part('common/filters', $data);

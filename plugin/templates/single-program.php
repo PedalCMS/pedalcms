@@ -2,7 +2,7 @@
 // Prime the cache. We will be getting a lot of meta.
 get_post_meta(get_the_ID());
 
-nvis_prog_get_template_part('header');
+nvis_prog_get_template_part('common/header');
 ?>
 <article <?php post_class(); ?>>
 	<?php nvis_prog_get_template_part('single-program/page-header'); ?>
@@ -11,4 +11,4 @@ nvis_prog_get_template_part('header');
 	</div>
 	<?php nvis_prog_get_template_part('single-program/sidebar'); ?>
 </article>
-<?php nvis_prog_get_template_part('footer');
+<?php nvis_prog_get_template_part('common/footer');

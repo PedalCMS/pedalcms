@@ -1,4 +1,4 @@
-<?php nvis_prog_get_template_part('header'); ?>
+<?php nvis_prog_get_template_part('common/header'); ?>
 <div class="person-archive-main">
     <?php nvis_prog_get_template_part('archive-person/page-header'); ?>
     <?php
@@ -6,6 +6,6 @@
     $people = $wp_query->posts;
     nvis_prog_get_template_part('archive-person/person-list', compact('people'));
     ?>
-    <?php nvis_prog_get_template_part('pagination'); ?>
+    <?php nvis_prog_get_template_part('common/pagination'); ?>
 </div>
-<?php nvis_prog_get_template_part('footer');
+<?php nvis_prog_get_template_part('common/footer');

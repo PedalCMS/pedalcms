@@ -1,1 +1,1 @@
-<?php nvis_prog_get_template_part('num-results', ['posts_label' => 'programs']);
+<?php nvis_prog_get_template_part('common/num-results', ['posts_label' => 'programs']);
