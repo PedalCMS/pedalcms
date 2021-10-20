@@ -7,15 +7,15 @@
 
   <div class="program-faq-list">
     <?php
-    $faqs = get_field('related_faqs');
+    $group_by_cat = get_field('faqs_by_category');
+    $faqs = get_field('related_faqs_list');
+    $faqs = \InvisibleUs\Programs\FAQ::normalize_faq_types($faqs, $group_by_cat);
 
     if (!empty($faqs)) :
-      if (get_field('faqs_by_category')):
+      if ($group_by_cat):
         // TODO: Skip categorization if there is only one cat?
-        $cats = nvis_prog_get_faqs_by_category($faqs);
-
-        foreach ($cats as $cat) :
-      ?>
+        foreach ($faqs as $cat) :
+    ?>
     <div class="faq-category">
       <h3 id="<?php echo $cat->slug; ?>" class="faq-category__title">
         <?php echo $cat->name; ?>

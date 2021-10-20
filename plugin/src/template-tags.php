@@ -22,7 +22,7 @@ function nvis_prog_get_template_part(string $template, array $data = []) {
 /**
  * Determines if the current view is a filtered archive view.
  *
- * @param string $post_type The post_type to test.
+ * @param mixed $post_type The post_type to test.
  */
 function nvis_prog_is_filtered_results($post_type = null): bool {
     $post_type = $post_type ?? \InvisibleUs\Programs\Program::POST_TYPE;
@@ -220,6 +220,20 @@ function nvis_prog_get_related_posts(mixed $post = null, array $not_in): array {
 function nvis_prog_get_faqs_by_category(array $faqs): array {
     return \InvisibleUs\Programs\FAQ::group_by_category($faqs);
 }
+
+/**
+ * Normalizes a list of FAQs of mixed type.
+ *
+ * Alias of FAQ::normalize_faq_types()
+ *
+ * @param array $faqs A list of FAQs of mixed type WP_Post.
+ * @param bool $group_by_cat Group by FAQCategory?
+ * @return array The list of FAQs, either grouped by category or not.
+ */
+function normalize_faq_types(array $faqs, bool $group_by_cat = false): array {
+    return \InvisibleUs\Programs\FAQ::normalize_faq_types($faqs, $group_by_cat);
+}
+
 
 /**
  * Takes a list of People and returns them indexed by category.

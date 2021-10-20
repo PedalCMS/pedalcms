@@ -4,7 +4,7 @@ namespace InvisibleUs\Programs;
 
 /**
  * FAQ custom post type.
- * 
+ *
  * @package NVISPrograms
  * @subpackage ContentModel
  * @since 0.1.0
@@ -74,5 +74,61 @@ class FAQ extends CustomPostType {
      */
     public static function group_by_category(array $faqs): array {
         return self::group_by_tax($faqs, FAQCategory::TAXONOMY, 'faqs');
+    }
+
+    public static function normalize_faq_types(array $faqs, bool $group_by_cat = false): array {
+        $new_list = [];
+
+        foreach ($faqs as $faq) {
+            if ($faq['faq_type'] === 'global') {
+                $post = $faq['faq_post'];
+                $cat = get_the_terms($post, FAQCategory::TAXONOMY);
+
+                if (is_array($cat)) {
+                    $cat = $cat[0];
+                } else {
+                    $cat = null;
+                }
+
+                $faq = [
+                    'question'     => $post->post_title,
+                    'answer'       => apply_filters('the_content', $post->post_content),
+                    'faq_category' => $cat
+                ];
+            } else {
+                unset($faq['faq_post']);
+            }
+
+            unset($faq['faq_type']);
+            $new_list[] = $faq;
+        }
+
+        if ($group_by_cat) {
+            $groups = [];
+            $uncat_term = (object) [
+                'slug' => 'uncategorized',
+                'name' => 'Uncategorized',
+                'faqs' => []
+            ];
+
+            foreach ($new_list as $faq) {
+                $term = $faq['faq_category'];
+                unset($faq['faq_category']);
+
+                if (!$term) {
+                    $term = $uncat_term;
+                }
+
+                if (!isset($groups[$term->slug])) {
+                    $term->faqs = [];
+                    $groups[ $term->slug ] = $term;
+                }
+                $groups[$term->slug]->faqs[] = $faq;
+            }
+
+            $new_list = $groups;
+        }
+
+        return $new_list;
     }
 }
