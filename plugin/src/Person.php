@@ -231,4 +231,21 @@ class Person extends CustomPostType {
     public static function is_block_editor_enabled(): bool {
         return (bool) get_field('enable_block_editor_personnel', 'option');
     }
+
+    /**
+     * Retrieves the appropriate ACF field group based on block editor setting.
+     *
+     * @return array The ACF Field Group.
+     */
+    public static function get_field_group(): array {
+        if (!self::is_block_editor_enabled()) {
+            return self::$field_groups[0];
+        }
+
+        $group = self::$field_groups[0];
+        // The courses relationship field is the last one.
+        $group['fields'] = array_slice($group['fields'], -1);
+
+        return $group;
+    }
 }

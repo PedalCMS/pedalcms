@@ -59,12 +59,9 @@ function acf_init(): void {
         (new Plugin())::$field_groups[0],
         get_program_acf_fields(),
         ProgramType::$field_groups[0],
-        Course::$field_groups[0]
+        Course::$field_groups[0],
+        Person::get_field_group()
     ];
-
-    if (!Person::is_block_editor_enabled()) {
-        $field_groups[] = Person::$field_groups[0];
-    }
 
     foreach ($field_groups as $group) {
         acf_add_local_field_group($group);
@@ -79,6 +76,7 @@ function acf_init(): void {
  * @return array
  */
 function get_program_acf_fields(): array {
+    // TODO: Move this to Program class.
     $group = Program::$field_groups[0];
 
     $group['fields'] = array_merge(
