@@ -87,7 +87,16 @@ function get_program_acf_fields(): array {
     return $group;
 }
 
-function get_related_field_name($field_name) {
+/**
+ * Get the corresponding field of a post relationship.
+ *
+ * Uses a lookup table to match names of fields that constitute a bidirectional
+ * relationship.
+ *
+ * @param string $field_name The name of the field to match.
+ * @return mixed String name of related field. False on failure.
+ */
+function get_related_field_name(string $field_name) {
     $bidirectional = [
         'related_course_personnel' => 'related_person_courses',
     ];
@@ -105,7 +114,20 @@ function get_related_field_name($field_name) {
     return false;
 }
 
-function maybe_update_bidirectional_relationship($value, $post_id, $field) {
+/**
+ * Updates a bidirectional relationship when necessary.
+ *
+ * This function handles the necessary duplication of data to create
+ * bidirectional relationships in ACF.
+ *
+ * Fires on: acf/update_value/type=relationship
+ *
+ * @param mixed $value The field value.
+ * @param integer $post_id The post ID where the value is saved.
+ * @param array $field  The field array containing all settings.
+ * @return void
+ */
+function maybe_update_bidirectional_relationship($value, int $post_id, array $field) {
     $field_name = $field['name'];
     $global_name = 'nvis_is_updating_bidirectional';
     $rel_field_name = get_related_field_name($field_name);
@@ -119,7 +141,6 @@ function maybe_update_bidirectional_relationship($value, $post_id, $field) {
         // This is not a bidirectional relationship.
         return $value;
     }
-
 
     $old_value = get_field($field_name, $post_id, false);
 
@@ -147,6 +168,14 @@ function maybe_update_bidirectional_relationship($value, $post_id, $field) {
     return $value;
 }
 
+/**
+ * Adds the relationship value to the connected post(s).
+ *
+ * @param integer $add_post The source post.
+ * @param array $to_posts The target posts to connect the source.
+ * @param string $field_name The name of the relationship field.
+ * @return void
+ */
 function add_relationship(int $add_post, array $to_posts, string $field_name): void {
     if (!empty($to_posts)) {
         foreach ($to_posts as $post_id) {
@@ -163,7 +192,14 @@ function add_relationship(int $add_post, array $to_posts, string $field_name): v
 
     return;
 }
-
+/**
+ * Removes the relationship value from the connected post(s).
+ *
+ * @param integer $remove_post The source post.
+ * @param array $from_posts The target posts to disconnect the source.
+ * @param string $field_name The name of the relationship field.
+ * @return void
+ */
 function remove_relationship(int $remove_post, array $from_posts, string $field_name): void {
     if (!empty($from_posts)) {
         foreach ($from_posts as $post_id) {
