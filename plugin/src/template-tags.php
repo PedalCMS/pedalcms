@@ -126,7 +126,7 @@ function nvis_prog_get_action_link(string $action, mixed $program = null): strin
         return $url;
     }
 
-    $url = get_field('nvis_url_' . $action, 'option');
+    $url = \InvisibleUs\Programs\Plugin::get_option('url_' . $action);
 
     if ($url) {
         $url = str_replace(
@@ -151,9 +151,8 @@ function nvis_prog_get_action_link(string $action, mixed $program = null): strin
  * @param mixed $program The ID of the course or a Post object.
  * @return string The URL of the course action.
  */
-
 function nvis_prog_get_course_action_link(string $action, $course): string {
-    // TODO: Get rid of this?
+    // TODO: Get rid of this function?
     $course = get_post($course);
 
     $url = get_field('url_' . $action, $course);
@@ -162,7 +161,7 @@ function nvis_prog_get_course_action_link(string $action, $course): string {
         return $url;
     }
 
-    $url = get_field('nvis_course_url_' . $action, 'option');
+    $url = \InvisibleUs\Programs\Plugin::get_option('course_url_' . $action);
 
     if ($url) {
         $url = str_replace(

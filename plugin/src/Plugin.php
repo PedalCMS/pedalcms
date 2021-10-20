@@ -156,7 +156,7 @@ class Plugin {
                 [
                     'key'               => 'field_6149ea9d1c0df',
                     'label'             => 'Enable Block Editor for Personnel',
-                    'name'              => 'enable_block_editor_personnel',
+                    'name'              => 'nvis_enable_block_editor_personnel',
                     'type'              => 'true_false',
                     'instructions'      => 'Use the block editor to edit personnel profiles.',
                     'required'          => 0,
@@ -221,7 +221,7 @@ class Plugin {
         $enable_subpages = [
             'key'           => 'field_612f7a95b683c',
             'label'         => 'Enable Program Subpages',
-            'name'          => 'enable_program_subpages',
+            'name'          => 'nvis_enable_program_subpages',
             'type'          => 'checkbox',
             'instructions'  => '',
             'choices'       => $subpages,
@@ -357,5 +357,18 @@ class Plugin {
         $mngr->init();
 
         return;
+    }
+
+    /**
+     * Retrieves a plugin setting.
+     *
+     * A simple wrapper around ACF get_field that handles prefixing the
+     * setting name.
+     *
+     * @param string $option The name of the setting.
+     * @return mixed The value of the setting.
+     */
+    public static function get_option(string $option) {
+        return get_field('nvis_' . $option, 'option');
     }
 }

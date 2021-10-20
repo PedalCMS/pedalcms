@@ -347,6 +347,6 @@ class Program extends CustomPostType {
         }
 
         // If all else fails, just return the global setting.
-        return get_field('nvis_application_deadlines', 'option');
+        return Plugin::get_option('application_deadlines');
     }
 }

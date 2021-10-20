@@ -191,7 +191,7 @@ class ProgramSubpageManager {
      * @return array List of subpages by slug.
      */
     public static function get_enabled_subpages(): array {
-        $enabled = get_field('enable_program_subpages', 'option');
+        $enabled = Plugin::get_option('enable_program_subpages');
 
         if (!is_array($enabled)) {
             $enabled = [];
