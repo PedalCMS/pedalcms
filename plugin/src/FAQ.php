@@ -76,6 +76,13 @@ class FAQ extends CustomPostType {
         return self::group_by_tax($faqs, FAQCategory::TAXONOMY, 'faqs');
     }
 
+    /**
+     * Normalizes a list of FAQs of mixed type.
+     *
+     * @param array $faqs A list of FAQs of mixed type WP_Post.
+     * @param bool $group_by_cat Group by FAQCategory?
+     * @return array The list of FAQs, either grouped by category or not.
+     */
     public static function normalize_faq_types(array $faqs, bool $group_by_cat = false): array {
         $new_list = [];
 
