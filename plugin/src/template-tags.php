@@ -9,14 +9,14 @@
 /**
  * Outputs a template.
  *
- * Alias of TemplateManager::loadTemplate()
+ * Alias of TemplateManager::load_template()
  *
  * @param string $template The requested template file. Can include subdir.
  * @param array $data Data to pass to the requested template.
  * @return void
  */
 function nvis_prog_get_template_part(string $template, array $data = []) {
-    \InvisibleUs\Programs\TemplateManager::loadTemplate($template, $data);
+    \InvisibleUs\Programs\TemplateManager::load_template($template, $data);
 }
 
 /**

@@ -329,7 +329,7 @@ class Plugin {
             $templates
         );
 
-        add_filter('template_include', [$NVIS_TemplateManager, 'maybeUseTemplate'], PHP_INT_MAX);
+        add_filter('template_include', [$NVIS_TemplateManager, 'maybe_use_template'], PHP_INT_MAX);
 
         return;
     }

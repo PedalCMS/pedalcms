@@ -57,7 +57,7 @@ class TemplateManager {
 
         if ($templates) {
             // TODO: Fix method name casing to match project standard.
-            $this->registerTemplates($templates);
+            $this->register_templates($templates);
         }
 
         return $this;
@@ -69,7 +69,7 @@ class TemplateManager {
      * @param array $templates The list of templates to render.
      * @return void
      */
-    public function registerTemplates(array $templates) {
+    public function register_templates(array $templates) {
         $this->templates = $templates;
     }
 
@@ -81,10 +81,10 @@ class TemplateManager {
      * @param string $current_template The current template based on WP's template hierarchy.
      * @return string The filtered template path.
      */
-    public function maybeUseTemplate(string $current_template): string {
+    public function maybe_use_template(string $current_template): string {
         foreach ($this->templates as $template) {
             if (call_user_func($template['callback'], ...$template['args'])) {
-                return $this->locateTemplate($template['name']);
+                return $this->locate_template($template['name']);
             }
         }
 
@@ -97,7 +97,7 @@ class TemplateManager {
      * @param string $template The name of the template to locate.
      * @return string The full path of the located template.
      */
-    public static function locateTemplate(string $template): string {
+    public static function locate_template(string $template): string {
         if (!self::$theme_folder) {
             // TODO: Error handling.
             return false;
@@ -136,8 +136,8 @@ class TemplateManager {
      * @param array $data Data to pass to the requested template.
      * @return void
      */
-    public static function loadTemplate(string $template, array $data = []) {
-        $path = TemplateManager::locateTemplate($template);
+    public static function load_template(string $template, array $data = []) {
+        $path = TemplateManager::locate_template($template);
 
         if (file_exists($path)) {
             include $path;
