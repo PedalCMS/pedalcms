@@ -1,8 +1,9 @@
 <?php
-
 /**
  *
  */
+
+defined('ABSPATH') || exit;
 
 get_header();
 do_action('nvis/programs/after_header');

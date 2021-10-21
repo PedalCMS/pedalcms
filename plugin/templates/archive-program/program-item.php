@@ -1,4 +1,8 @@
-<?php $post = $data['post'] ?? null;
+<?php
+
+defined('ABSPATH') || exit;
+
+$post = $data['post'] ?? null;
 
 if ($post) :?>
 <article <?php post_class('', $post); ?>>

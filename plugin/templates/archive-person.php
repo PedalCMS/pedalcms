@@ -1,4 +1,7 @@
-<?php nvis_prog_get_template_part('common/header'); ?>
+<?php
+defined('ABSPATH') || exit;
+
+nvis_prog_get_template_part('common/header'); ?>
 <div class="person-archive-main">
     <?php nvis_prog_get_template_part('archive-person/page-header'); ?>
     <?php

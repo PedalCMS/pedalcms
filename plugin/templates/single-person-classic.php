@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') || exit;
+
 // Prime the cache. We will be getting a lot of meta.
 get_post_meta(get_the_ID());
 

@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 $wp_query = $data['wp_query'] ?? null;
 $posts_label = $data['posts_label'] ?? 'posts';
 

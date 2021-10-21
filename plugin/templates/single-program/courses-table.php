@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') || exit;
+
 $courses = $data['courses'] ?? null;
 
 if (is_array($courses)): ?>

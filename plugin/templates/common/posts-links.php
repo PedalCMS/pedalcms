@@ -1,4 +1,7 @@
-<?php if (!empty($data['posts'])) : ?>
+<?php
+defined('ABSPATH') || exit;
+
+if (!empty($data['posts'])) : ?>
 <ul class="post-links">
     <?php foreach ($data['posts'] as $post) :?>
     <li class="post-links__item">

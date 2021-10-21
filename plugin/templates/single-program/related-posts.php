@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 
 $featured_posts = get_field('news_featured_posts');
 $is_featured = true;

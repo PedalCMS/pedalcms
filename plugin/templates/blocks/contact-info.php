@@ -1,9 +1,12 @@
 <?php
-    $post = $data['post'] ?? null;
-    $show_office = $data['show_office'] ?? true;
-    $show_labels = $data['show_labels'] ?? false;
 
-    if ($post):
+defined('ABSPATH') || exit;
+
+$post = $data['post'] ?? null;
+$show_office = $data['show_office'] ?? true;
+$show_labels = $data['show_labels'] ?? false;
+
+if ($post):
 ?>
 <div class="contact-info">
     <?php if ($post->office_phone) : ?>

@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 $data = [
     'taxonomy'  => 'nvis_program_type',
     'query_var' => 'prog_type',

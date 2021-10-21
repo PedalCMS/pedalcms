@@ -1,11 +1,13 @@
 <?php
-
 /**
  * Displays breadcrumbs for use in the page header.
  *
  * @package NVISPrograms
  * @version 1.0
  */
+
+defined('ABSPATH') || exit;
+
 ?>
 <div id="breadcrumbs" class="breadcrumbs careers-breadcrumbs">
   <?php

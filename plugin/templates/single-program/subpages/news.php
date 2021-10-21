@@ -1,4 +1,7 @@
-<?php if (nvis_prog_show_subpage('news')) : ?>
+<?php
+defined('ABSPATH') || exit;
+
+if (nvis_prog_show_subpage('news')) : ?>
 
 <div class="program-news-subpage program-subpage">
     <h2 class="section-head">News</h2>

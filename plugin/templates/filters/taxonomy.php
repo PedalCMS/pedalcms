@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') || exit;
+
 $tax = $data['taxonomy'] ?? null;
 $query_var = $data['query_var'] ?? null;
 $label = $data['label'] ?? null;

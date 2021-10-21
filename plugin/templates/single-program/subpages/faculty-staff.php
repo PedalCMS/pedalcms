@@ -1,4 +1,7 @@
-<?php if (nvis_prog_show_subpage('faculty-staff')) : ?>
+<?php
+defined('ABSPATH') || exit;
+
+if (nvis_prog_show_subpage('faculty-staff')) : ?>
 <div class="program-faculty-staff-subpage program-subpage">
 
   <h2 class="section-head">Faculty &amp; Staff</h2>

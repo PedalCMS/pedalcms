@@ -1,3 +1,6 @@
+<?php
+defined('ABSPATH') || exit;
+?>
 <section class="programs-archive-page-header page-header">
   <?php nvis_prog_get_template_part('common/breadcrumbs'); ?>
   <h1 class="page-title">

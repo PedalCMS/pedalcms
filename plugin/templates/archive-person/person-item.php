@@ -1,4 +1,7 @@
 <?php
+
+defined('ABSPATH') || exit;
+
 $post = $data['post'] ?? null;
 $img_size = $data['img_size'] ?? 'medium';
 $h_level = $data['h_level'] ?? 2;

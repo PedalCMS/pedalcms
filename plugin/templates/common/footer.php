@@ -2,6 +2,9 @@
 /**
  *
  */
+
+defined('ABSPATH') || exit;
+
 ?>
 </div><!-- .nvis-progs-template -->
 <?php

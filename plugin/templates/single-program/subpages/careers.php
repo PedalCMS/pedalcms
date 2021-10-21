@@ -1,4 +1,7 @@
-<?php if (nvis_prog_show_subpage('careers')) : $program = get_queried_object(); ?>
+<?php
+defined('ABSPATH') || exit;
+
+if (nvis_prog_show_subpage('careers')) : $program = get_queried_object(); ?>
 
 <div class="program-careers-subpage program-subpage">
   <h2 class="section-head">Careers</h2>

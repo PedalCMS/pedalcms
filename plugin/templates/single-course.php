@@ -1,4 +1,7 @@
-<?php nvis_prog_get_template_part('common/header'); ?>
+<?php
+defined('ABSPATH') || exit;
+
+nvis_prog_get_template_part('common/header'); ?>
 <article <?php post_class(); ?>>
 	<?php nvis_prog_get_template_part('single-course/page-header'); ?>
 	<div class="program-main entry-content">

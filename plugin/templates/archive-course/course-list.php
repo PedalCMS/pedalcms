@@ -1,3 +1,8 @@
+<?php
+
+defined('ABSPATH') || exit;
+
+?>
 <section class="course-list">
     <?php
     if (is_array($data['courses']) && !empty($data['courses'])) :

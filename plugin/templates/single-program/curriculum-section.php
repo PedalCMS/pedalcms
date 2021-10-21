@@ -1,3 +1,7 @@
+<?php
+defined('ABSPATH') || exit;
+
+?>
 <div class="curriculum-section">
     <?php if (isset($data['section_title'])): ?>
     <h3 class="curriculum-section__title"><?php echo esc_html($data['section_title']); ?>

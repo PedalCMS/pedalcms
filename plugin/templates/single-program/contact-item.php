@@ -1,7 +1,9 @@
 <?php
-    $post = $data['post'];
+defined('ABSPATH') || exit;
 
-    if ($post) :
+$post = $data['post'];
+
+if ($post) :
 ?>
 <div class="program-contact">
     <?php echo get_the_post_thumbnail($post, 'thumbnail', ['class' => 'program-contact__picture']); ?>

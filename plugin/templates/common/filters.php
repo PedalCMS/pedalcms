@@ -1,4 +1,7 @@
-<?php if (!empty($data['filters']) && !empty($data['post_type'])) : ?>
+<?php
+defined('ABSPATH') || exit;
+
+if (!empty($data['filters']) && !empty($data['post_type'])) : ?>
 <form
     action="<?php echo get_post_type_archive_link($data['post_type']); ?>"
     class="<?php echo $data['post_type']; ?>-filters nvis-post-filters">

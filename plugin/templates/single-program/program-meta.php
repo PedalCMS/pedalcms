@@ -1,4 +1,5 @@
 <?php
+defined('ABSPATH') || exit;
 
 ?>
 <div class="program-meta">

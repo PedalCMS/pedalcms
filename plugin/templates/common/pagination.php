@@ -1,3 +1,6 @@
+<?php
+defined('ABSPATH') || exit;
+?>
 <nav class="pagination">
   <?php
     if (function_exists('wp_pagenavi')) {

@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 $data = [
     'taxonomy'  => 'nvis_semester',
     'query_var' => 'sem_term',

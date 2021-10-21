@@ -1,5 +1,8 @@
 <?php
 
+
+defined('ABSPATH') || exit;
+
 $data = [
     'post_type' => 'nvis_course',
     'filters'   => [

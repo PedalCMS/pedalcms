@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') || exit;
+
 $post = $data['post'] ?? null;
 
 if ($post) : ?>

@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') || exit;
+
 $size = $data['img_size'] ?? 'medium';
 $post = $data['post'] ?? get_post();
 ?>

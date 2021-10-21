@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') || exit;
+
 $posts = get_field('related_course_personnel');
 
 if (!empty($posts)) :

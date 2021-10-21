@@ -1,3 +1,7 @@
+<?php
+defined('ABSPATH') || exit;
+
+?>
 <header class="single-program-page-header page-header entry-header">
   <?php nvis_prog_get_template_part('common/breadcrumbs'); ?>
   <?php if (has_post_thumbnail()) : ?>

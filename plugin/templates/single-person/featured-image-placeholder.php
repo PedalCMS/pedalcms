@@ -1,3 +1,6 @@
+<?php
+defined('ABSPATH') || exit;
+?>
 <div class="img-placeholder">
     <svg width="100pt" height="100pt" version="1.1" viewBox="0 0 100 100">
         <path

@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 $data = [
     'taxonomy'    => 'nvis_department',
     'query_var'   => 'dept',

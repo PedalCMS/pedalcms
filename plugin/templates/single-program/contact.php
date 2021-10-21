@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') || exit;
+
 $contacts = get_field('related_contacts');
 
 if (is_array($contacts) && !empty($contacts)) :

@@ -1,6 +1,9 @@
-<?php $faq = $data['faq'] ?? null; ?>
+<?php
+defined('ABSPATH') || exit;
 
-<?php if ($faq) : ?>
+$faq = $data['faq'] ?? null;
+
+if ($faq) : ?>
 <details class="program-faq nvis-expandable">
   <summary class="program-faq__question"><?php echo esc_html($faq['question']); ?>
   </summary>
