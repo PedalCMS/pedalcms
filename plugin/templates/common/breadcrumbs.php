@@ -15,6 +15,15 @@
 
 defined('ABSPATH') || exit;
 
+
+/**
+ * Fires before the breadcrumbs are loaded.
+ *
+ * @since 0.1
+ *
+ */
+do_action('nvis/programs/before_breadcrumbs');
+
 ?>
 <div id="breadcrumbs" class="breadcrumbs careers-breadcrumbs">
   <?php
@@ -29,3 +38,11 @@ defined('ABSPATH') || exit;
     }
   ?>
 </div>
+<?php
+/**
+ * Fires after the breadcrumbs are loaded.
+ *
+ * @since 0.1
+ *
+ */
+do_action('nvis/programs/after_breadcrumbs');

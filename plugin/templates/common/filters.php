@@ -9,6 +9,15 @@
  */
 defined('ABSPATH') || exit;
 
+/**
+ * Fires before the search filter form is loaded.
+ *
+ * @since 0.1
+ *
+ * @param array $data The args passed to the template: a list of filters and the post_type.
+ */
+do_action('nvis/programs/before_filters_form', $data);
+
 if (!empty($data['filters']) && !empty($data['post_type'])) : ?>
 <form
     action="<?php echo get_post_type_archive_link($data['post_type']); ?>"
@@ -16,9 +25,28 @@ if (!empty($data['filters']) && !empty($data['post_type'])) : ?>
     <fieldset>
         <legend>Filter</legend>
         <?php
+
+        /**
+         * Fires before the search filter fields are loaded.
+         *
+         * @since 0.1
+         *
+         * @param array $data The args passed to the template: a list of filters and the post_type.
+         */
+        do_action('nvis/programs/before_filters_fields', $data);
+
         foreach ($data['filters'] as $filter):
-            nvis_prog_get_template_part('filters/'.$filter);
+            nvis_prog_get_template_part('filters/' . $filter);
         endforeach;
+
+        /**
+         * Fires after the search filter fields are loaded.
+         *
+         * @since 0.1
+         *
+         * @param array $data The args passed to the template: a list of filters and the post_type.
+         */
+        do_action('nvis/programs/after_filters_fields', $data);
         ?>
     </fieldset>
     <button class="button" type="submit">Search</button>
@@ -31,3 +59,12 @@ if (!empty($data['filters']) && !empty($data['post_type'])) : ?>
 <?php else: ?>
 Missing data to render filters.
 <?php endif;
+
+/**
+ * Fires after the search filter form is loaded.
+ *
+ * @since 0.1
+ *
+ * @param array $data The args passed to the template: a list of filters and the post_type.
+ */
+do_action('nvis/programs/after_filters_form', $data);
