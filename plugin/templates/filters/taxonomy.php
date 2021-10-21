@@ -1,4 +1,15 @@
 <?php
+/**
+ * Displays a dropdown filter for a given taxonomy.
+ *
+ * An abstract template. Only meant to be referenced by other filter templates.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
+
 defined('ABSPATH') || exit;
 
 $tax = $data['taxonomy'] ?? null;

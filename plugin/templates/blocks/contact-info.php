@@ -1,4 +1,13 @@
 <?php
+/**
+ * Displays a group of contact info for a Person.
+ *
+ * Primarily used to render the ContactInfo block but can be used anywhere.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
 
 defined('ABSPATH') || exit;
 

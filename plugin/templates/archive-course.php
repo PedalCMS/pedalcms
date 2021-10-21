@@ -1,4 +1,11 @@
 <?php
+/**
+ * The template for displaying course archives.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
 defined('ABSPATH') || exit;
 
 nvis_prog_get_template_part('common/header'); ?>

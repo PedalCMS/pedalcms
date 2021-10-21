@@ -1,4 +1,12 @@
 <?php
+/**
+ * Displays a simple list of post links.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 if (!empty($data['posts'])) : ?>

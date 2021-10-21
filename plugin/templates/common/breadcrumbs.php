@@ -1,8 +1,15 @@
 <?php
 /**
- * Displays breadcrumbs for use in the page header.
+ * Displays a breadcrumb trail, for use in the page header.
+ *
+ * Relies on third party plugins to handle rendering breadcrumbs. Supports:
+ * - Breadcrumb NavXT
+ * - Yoast SEO
+ * - All in One SEO
+ * - Rank Math
  *
  * @package NVISPrograms
+ * @subpackage Templates
  * @version 1.0
  */
 

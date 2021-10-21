@@ -1,4 +1,11 @@
 <?php
+/**
+ * The template for displaying a single program.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
 defined('ABSPATH') || exit;
 
 // Prime the cache. We will be getting a lot of meta.

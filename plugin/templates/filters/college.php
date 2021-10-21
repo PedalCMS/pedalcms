@@ -1,4 +1,11 @@
 <?php
+/**
+ * Displays a College taxonomy dropdown filter.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
 
 defined('ABSPATH') || exit;
 

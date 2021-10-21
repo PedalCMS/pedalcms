@@ -1,4 +1,12 @@
 <?php
+/**
+ * Displays a keyword search box filter.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 ?>

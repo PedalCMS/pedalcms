@@ -1,4 +1,11 @@
 <?php
+/**
+ * Template for displaying number of results in archives and filtered search.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
 
 defined('ABSPATH') || exit;
 

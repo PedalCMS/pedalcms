@@ -1,4 +1,14 @@
 <?php
+/**
+ * A template for displaying a search and filter form.
+ *
+ * A sort of abstract or meta template.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ *
+ */
 defined('ABSPATH') || exit;
 
 if (!empty($data['filters']) && !empty($data['post_type'])) : ?>

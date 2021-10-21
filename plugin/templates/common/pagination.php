@@ -1,4 +1,17 @@
 <?php
+/**
+ * Displays pagination navigation, for use in archives.
+ *
+ * Prefers third party plugins to handle rendering links but falls back to
+ * native WordPress paginate_links(). Supports:
+ * - WP-PageNavi
+ * - WP-Paginate
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 ?>
 <nav class="pagination">
