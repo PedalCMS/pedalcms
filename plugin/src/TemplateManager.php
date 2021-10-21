@@ -30,6 +30,7 @@ class TemplateManager {
      * with templates to render.
      *
      * Example:
+     * ```
      *    $templates = [
      *      [
      *        'name' => 'single-career',
@@ -37,6 +38,7 @@ class TemplateManager {
      *        'args' => ['nvis_career']
      *      ]
      *    ];
+     * ```
      *
      * @var array The list of registered templates.
      */
@@ -101,6 +103,8 @@ class TemplateManager {
             return false;
         }
 
+        $template = trim($template, "./ \n\r\t\v\0");
+
         $pattern = '%s/%s.php';
         $theme_tmpl = sprintf($pattern, self::$theme_folder, $template);
         $theme_tmpl = locate_template($theme_tmpl);
@@ -109,11 +113,19 @@ class TemplateManager {
             // Note: theme templates will not get filtered.
             return $theme_tmpl;
         }
-        // TODO: Doc block this hook. For an example, see:
-        //  https://developer.wordpress.org/reference/functions/get_template_part/
+
+        /**
+         * Filters the value of an existing option before it is retrieved.
+         *
+         * @since 0.1.0
+         *
+         * @param string  $template_path The full path to the template.
+         * @param string $name The template name.
+         */
         return apply_filters(
-            'nvis_programs/locate_template',
-            sprintf($pattern, self::$base_path, $template)
+            'nvis_prog/locate_template',
+            sprintf($pattern, self::$base_path, $template),
+            $template
         );
     }
 
