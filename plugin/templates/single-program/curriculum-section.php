@@ -11,19 +11,19 @@ defined('ABSPATH') || exit;
 
 ?>
 <div class="curriculum-section">
-    <?php if (isset($data['section_title'])): ?>
-    <h3 class="curriculum-section__title"><?php echo esc_html($data['section_title']); ?>
+    <?php if (isset($args['section_title'])): ?>
+    <h3 class="curriculum-section__title"><?php echo esc_html($args['section_title']); ?>
     </h3>
     <?php endif;?>
-    <?php if (isset($data['section_content'])): ?>
+    <?php if (isset($args['section_content'])): ?>
     <div class="curriculum-section__content">
-        <?php echo $data['section_content']; ?>
+        <?php echo $args['section_content']; ?>
     </div>
     <?php endif;?>
 
     <?php
-    if (isset($data['section_content'])) :
-        nvis_prog_get_template_part('single-program/courses-table', ['courses' => $data['section_courses']]);
+    if (isset($args['section_content'])) :
+        nvis_prog_get_template_part('single-program/courses-table', ['courses' => $args['section_courses']]);
     endif;
     ?>
 </div>

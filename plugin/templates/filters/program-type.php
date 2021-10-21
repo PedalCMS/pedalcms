@@ -9,10 +9,10 @@
 
 defined('ABSPATH') || exit;
 
-$data = [
+$args = [
     'taxonomy'  => 'nvis_program_type',
     'query_var' => 'prog_type',
     'label'     => 'Program Type'
 ];
 
-nvis_prog_get_template_part('filters/taxonomy', $data);
+nvis_prog_get_template_part('filters/taxonomy', $args);

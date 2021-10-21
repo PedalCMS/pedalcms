@@ -11,8 +11,8 @@ defined('ABSPATH') || exit;
 ?>
 <section class="person-list">
     <?php
-    if (is_array($data['people']) && !empty($data['people'])) :
-        foreach ($data['people'] as $post) :
+    if (is_array($args['people']) && !empty($args['people'])) :
+        foreach ($args['people'] as $post) :
             nvis_prog_get_template_part('archive-person/person-item', compact('post'));
         endforeach;
     else: ?>

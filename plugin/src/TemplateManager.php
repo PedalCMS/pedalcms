@@ -136,7 +136,7 @@ class TemplateManager {
      * @param array $data Data to pass to the requested template.
      * @return void
      */
-    public static function load_template(string $template, array $data = []) {
+    public static function load_template(string $template, array $args = []) {
         $path = TemplateManager::locate_template($template);
 
         if (file_exists($path)) {

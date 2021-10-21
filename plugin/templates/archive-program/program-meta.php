@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = $data['post'] ?? null;
+$post = $args['post'] ?? null;
 
 if ($post) : ?>
 <div class="program-meta">

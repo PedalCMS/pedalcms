@@ -12,10 +12,10 @@ defined('ABSPATH') || exit;
 ?>
 <div class="program-actions">
   <ul>
-    <?php if (isset($data['add_permalink'])) : ?>
+    <?php if (isset($args['add_permalink'])) : ?>
     <li>
       <a class="program-details-button button button-primary"
-        href="<?php echo esc_url($data['add_permalink']);?>">Program
+        href="<?php echo esc_url($args['add_permalink']);?>">Program
         Details</a>
     </li>
     <?php endif; ?>

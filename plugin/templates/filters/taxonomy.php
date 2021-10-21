@@ -12,10 +12,10 @@
 
 defined('ABSPATH') || exit;
 
-$tax = $data['taxonomy'] ?? null;
-$query_var = $data['query_var'] ?? null;
-$label = $data['label'] ?? null;
-$short_label = $data['short_label'] ?? $label;
+$tax = $args['taxonomy'] ?? null;
+$query_var = $args['query_var'] ?? null;
+$label = $args['label'] ?? null;
+$short_label = $args['short_label'] ?? $label;
 
 if ($tax && $query_var && $label) :?>
 <div

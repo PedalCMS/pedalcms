@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = $data['post'];
+$post = $args['post'];
 
 if ($post) :
 ?>

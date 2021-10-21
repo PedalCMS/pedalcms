@@ -9,9 +9,9 @@
 
 defined('ABSPATH') || exit;
 
-$post = $data['post'] ?? null;
+$post = $args['post'] ?? null;
 $classes = ['related-post'];
-$is_featured = $data['is_featured'] ?? false;
+$is_featured = $args['is_featured'] ?? false;
 
 if ($is_featured) {
     $classes[] = 'related-post--featured';

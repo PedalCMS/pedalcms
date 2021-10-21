@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$courses = $data['courses'] ?? null;
+$courses = $args['courses'] ?? null;
 
 if (is_array($courses)): ?>
 <table class="courses-table">

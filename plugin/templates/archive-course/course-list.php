@@ -12,8 +12,8 @@ defined('ABSPATH') || exit;
 ?>
 <section class="course-list">
     <?php
-    if (is_array($data['courses']) && !empty($data['courses'])) :
-        foreach ($data['courses'] as $post) :
+    if (is_array($args['courses']) && !empty($args['courses'])) :
+        foreach ($args['courses'] as $post) :
             nvis_prog_get_template_part('archive-course/course-item', compact('post'));
         endforeach;
     else: ?>

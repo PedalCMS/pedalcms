@@ -11,8 +11,8 @@
 
 defined('ABSPATH') || exit;
 
-if (isset($data['job_title'])) :?>
+if (isset($args['job_title'])) :?>
 <div class="person-job-title">
-    <?php echo esc_html($data['job_title']); ?>
+    <?php echo esc_html($args['job_title']); ?>
 </div>
 <?php endif;

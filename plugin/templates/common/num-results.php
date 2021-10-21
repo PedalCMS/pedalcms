@@ -9,8 +9,8 @@
 
 defined('ABSPATH') || exit;
 
-$wp_query = $data['wp_query'] ?? null;
-$posts_label = $data['posts_label'] ?? 'posts';
+$wp_query = $args['wp_query'] ?? null;
+$posts_label = $args['posts_label'] ?? 'posts';
 
 if (!$wp_query) {
     global $wp_query;

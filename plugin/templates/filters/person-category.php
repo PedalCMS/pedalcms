@@ -10,10 +10,10 @@
 
 defined('ABSPATH') || exit;
 
-$data = [
+$args = [
     'taxonomy'    => 'nvis_person_cat',
     'query_var'   => 'person_cat',
     'label'       => 'Category',
 ];
 
-nvis_prog_get_template_part('filters/taxonomy', $data);
+nvis_prog_get_template_part('filters/taxonomy', $args);

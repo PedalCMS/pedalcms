@@ -11,9 +11,9 @@
 
 defined('ABSPATH') || exit;
 
-$post = $data['post'] ?? null;
-$show_office = $data['show_office'] ?? true;
-$show_labels = $data['show_labels'] ?? false;
+$post = $args['post'] ?? null;
+$show_office = $args['show_office'] ?? true;
+$show_labels = $args['show_labels'] ?? false;
 
 if ($post):
 ?>

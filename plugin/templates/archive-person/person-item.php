@@ -9,9 +9,9 @@
 
 defined('ABSPATH') || exit;
 
-$post = $data['post'] ?? null;
-$img_size = $data['img_size'] ?? 'medium';
-$h_level = $data['h_level'] ?? 2;
+$post = $args['post'] ?? null;
+$img_size = $args['img_size'] ?? 'medium';
+$h_level = $args['h_level'] ?? 2;
 $h_tag = 'h' . (int) $h_level;
 
 if ($post) :?>

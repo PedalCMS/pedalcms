@@ -10,7 +10,7 @@
 
 defined('ABSPATH') || exit;
 
-$data = [
+$args = [
     'post_type' => 'nvis_course',
     'filters'   => [
         'keyword',
@@ -19,4 +19,4 @@ $data = [
     ]
 ];
 
-nvis_prog_get_template_part('common/filters', $data);
+nvis_prog_get_template_part('common/filters', $args);

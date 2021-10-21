@@ -9,8 +9,8 @@
 
 defined('ABSPATH') || exit;
 
-$size = $data['img_size'] ?? 'medium';
-$post = $data['post'] ?? get_post();
+$size = $args['img_size'] ?? 'medium';
+$post = $args['post'] ?? get_post();
 ?>
 <div class="person-featured-image">
     <a href="<?php esc_url(get_permalink($post)); ?>">

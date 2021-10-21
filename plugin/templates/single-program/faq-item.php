@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$faq = $data['faq'] ?? null;
+$faq = $args['faq'] ?? null;
 
 if ($faq) : ?>
 <details class="program-faq nvis-expandable">

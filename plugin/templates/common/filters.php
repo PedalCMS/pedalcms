@@ -14,14 +14,14 @@ defined('ABSPATH') || exit;
  *
  * @since 0.1
  *
- * @param array $data The args passed to the template: a list of filters and the post_type.
+ * @param array $args The args passed to the template: a list of filters and the post_type.
  */
-do_action('nvis/programs/before_filters_form', $data);
+do_action('nvis/programs/before_filters_form', $args);
 
-if (!empty($data['filters']) && !empty($data['post_type'])) : ?>
+if (!empty($args['filters']) && !empty($args['post_type'])) : ?>
 <form
-    action="<?php echo get_post_type_archive_link($data['post_type']); ?>"
-    class="<?php echo $data['post_type']; ?>-filters nvis-post-filters">
+    action="<?php echo get_post_type_archive_link($args['post_type']); ?>"
+    class="<?php echo $args['post_type']; ?>-filters nvis-post-filters">
     <fieldset>
         <legend>Filter</legend>
         <?php
@@ -31,11 +31,11 @@ if (!empty($data['filters']) && !empty($data['post_type'])) : ?>
          *
          * @since 0.1
          *
-         * @param array $data The args passed to the template: a list of filters and the post_type.
+         * @param array $args The args passed to the template: a list of filters and the post_type.
          */
-        do_action('nvis/programs/before_filters_fields', $data);
+        do_action('nvis/programs/before_filters_fields', $args);
 
-        foreach ($data['filters'] as $filter):
+        foreach ($args['filters'] as $filter):
             nvis_prog_get_template_part('filters/' . $filter);
         endforeach;
 
@@ -44,15 +44,15 @@ if (!empty($data['filters']) && !empty($data['post_type'])) : ?>
          *
          * @since 0.1
          *
-         * @param array $data The args passed to the template: a list of filters and the post_type.
+         * @param array $args The args passed to the template: a list of filters and the post_type.
          */
-        do_action('nvis/programs/after_filters_fields', $data);
+        do_action('nvis/programs/after_filters_fields', $args);
         ?>
     </fieldset>
     <button class="button" type="submit">Search</button>
-    <?php if (nvis_prog_is_filtered_results($data['post_type'])): ?>
+    <?php if (nvis_prog_is_filtered_results($args['post_type'])): ?>
     <a class="reset-link"
-        href="<?php echo get_post_type_archive_link($data['post_type']); ?>">Reset
+        href="<?php echo get_post_type_archive_link($args['post_type']); ?>">Reset
         Filters</a>
     <?php endif; ?>
 </form>
@@ -65,6 +65,6 @@ Missing data to render filters.
  *
  * @since 0.1
  *
- * @param array $data The args passed to the template: a list of filters and the post_type.
+ * @param array $args The args passed to the template: a list of filters and the post_type.
  */
-do_action('nvis/programs/after_filters_form', $data);
+do_action('nvis/programs/after_filters_form', $args);
