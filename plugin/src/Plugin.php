@@ -154,7 +154,7 @@ class Plugin {
                     ],
                 ],
                 [
-                    'key'               => 'field_6149ea9d1c0df',
+                    'key'               => 'field_6171cbf69ba0a',
                     'label'             => 'Enable Block Editor for Personnel',
                     'name'              => 'nvis_enable_block_editor_personnel',
                     'type'              => 'true_false',
