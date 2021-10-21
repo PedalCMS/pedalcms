@@ -1,4 +1,11 @@
 <?php
+/**
+ * Displays a single Program item, for use in an archive or other Program list.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
 
 defined('ABSPATH') || exit;
 

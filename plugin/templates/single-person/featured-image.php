@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying the a featured image for a Person.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $size = $data['img_size'] ?? 'medium';

@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying the Program's application deadlines.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $deadlines = nvis_prog_the_application_deadlines();

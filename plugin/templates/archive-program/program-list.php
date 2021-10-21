@@ -1,5 +1,13 @@
 <?php
-defined('ABSPATH') || exit;
+/**
+ * Displays a list of Program items, for use in an archive.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
+ defined('ABSPATH') || exit;
 ?>
 <section class="programs-list">
     <?php if (is_array($data['programs']) && !empty($data['programs'])) :

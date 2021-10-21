@@ -1,4 +1,12 @@
 <?php
+/**
+ * Template for displaying the Program archive page header.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 ?>
 <section class="programs-archive-page-header page-header">

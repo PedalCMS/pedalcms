@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying Program action buttons.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 ?>

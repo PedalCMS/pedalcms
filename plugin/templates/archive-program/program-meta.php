@@ -1,4 +1,12 @@
 <?php
+/**
+ * Displays a variety of Program meta items, for use in a list of Programs.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $post = $data['post'] ?? null;

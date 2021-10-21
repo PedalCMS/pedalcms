@@ -1,4 +1,11 @@
 <?php
+/**
+ * Displays a single Person item, for use in an archive or other Course list.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
 
 defined('ABSPATH') || exit;
 

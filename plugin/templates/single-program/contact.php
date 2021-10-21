@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying the Program contact section.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $contacts = get_field('related_contacts');

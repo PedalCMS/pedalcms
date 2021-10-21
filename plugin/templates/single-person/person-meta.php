@@ -1,4 +1,12 @@
 <?php
+/**
+ * Displays a variety of meta items, for use in a single Person view.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $person = get_post(); ?>

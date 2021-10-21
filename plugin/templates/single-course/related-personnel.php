@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying a list of people who teach a Course.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $posts = get_field('related_course_personnel');

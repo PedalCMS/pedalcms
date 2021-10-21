@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying a Program contact person.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $post = $data['post'];

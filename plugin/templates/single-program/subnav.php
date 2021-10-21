@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying the Program Subpage navigation.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 if (nvis_prog_show_subpages()) : $subpages = nvis_prog_get_subpages(); ?>

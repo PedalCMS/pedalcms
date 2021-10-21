@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying a single FAQ item, for use on the FAQ subpage.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $faq = $data['faq'] ?? null;

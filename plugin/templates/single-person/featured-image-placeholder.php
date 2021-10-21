@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying the an SVG image placeholder for a Person.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 ?>
 <div class="img-placeholder">

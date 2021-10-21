@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying Courses taught by a Person.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $posts = get_field('related_person_courses');

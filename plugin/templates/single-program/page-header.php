@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying the single Program page header.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 ?>

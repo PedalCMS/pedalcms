@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying the Faculty & Staff Program Subpage.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 if (nvis_prog_show_subpage('faculty-staff')) : ?>

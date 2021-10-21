@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying the document =footer.
+ * The template for displaying the document footer.
  *
  * A thin wrapper around get_footer().
  *

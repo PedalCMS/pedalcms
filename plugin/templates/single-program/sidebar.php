@@ -1,4 +1,11 @@
 <?php
+/**
+ * The template for displaying the Program sidebar with calls to action and contact info.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
 
 defined('ABSPATH') || exit;
 

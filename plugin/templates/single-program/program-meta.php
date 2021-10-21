@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying Program meta items, for use on single Program.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 ?>

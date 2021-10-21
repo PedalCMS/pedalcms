@@ -1,4 +1,11 @@
 <?php
+/**
+ * Displays a list of Course items, for use in an archive.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
 
 defined('ABSPATH') || exit;
 

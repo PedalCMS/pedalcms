@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying a table of Courses, for use on Curriculum subpage.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $courses = $data['courses'] ?? null;

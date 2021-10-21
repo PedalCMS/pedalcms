@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying a list of posts, for use on the News subpage.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $featured_posts = get_field('news_featured_posts');

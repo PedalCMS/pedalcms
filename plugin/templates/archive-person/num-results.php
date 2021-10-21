@@ -1,4 +1,11 @@
 <?php
+/**
+ * Template for displaying number of results in Person archives.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
 
 defined('ABSPATH') || exit;
 

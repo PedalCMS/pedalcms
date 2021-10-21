@@ -1,4 +1,12 @@
 <?php
+/**
+ * The template for displaying a single Post item, for use on the News subpage.
+ *
+ * @package NVISPrograms
+ * @subpackage Templates
+ * @version 1.0
+ */
+
 defined('ABSPATH') || exit;
 
 $post = $data['post'] ?? null;
