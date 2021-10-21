@@ -24,6 +24,15 @@ $first = ($page - 1) * $per_page + 1;
 $last = $first + ($wp_query->post_count - 1);
 $showing_all = $wp_query->post_count === $wp_query->found_posts;
 
+/**
+ * Fires before the number of results is loaded.
+ *
+ * @since 0.1
+ *
+ */
+do_action('nvis/programs/before_num_results');
+
+
 if ($wp_query->found_posts) : ?>
 <div class="num-results">
     <?php if (nvis_prog_is_filtered_results($post_type)) : ?>
@@ -47,3 +56,10 @@ if ($wp_query->found_posts) : ?>
     </span>
 </div>
 <?php endif;
+/**
+ * Fires after the number of results is loaded.
+ *
+ * @since 0.1
+ *
+ */
+do_action('nvis/programs/after_num_results');

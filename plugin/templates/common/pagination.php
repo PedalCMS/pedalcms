@@ -13,6 +13,15 @@
  */
 
 defined('ABSPATH') || exit;
+
+/**
+ * Fires before the pagination is loaded.
+ *
+ * @since 0.1
+ *
+ */
+do_action('nvis/programs/before_pagination');
+
 ?>
 <nav class="pagination">
   <?php
@@ -33,3 +42,11 @@ defined('ABSPATH') || exit;
     }
   ?>
 </nav>
+<?php
+/**
+ * Fires after the pagination is loaded.
+ *
+ * @since 0.1
+ *
+ */
+do_action('nvis/programs/after_pagination');
