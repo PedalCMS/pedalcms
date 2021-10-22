@@ -12,7 +12,8 @@ defined('ABSPATH') || exit;
 $post = $args['post'] ?? null;
 $img_size = $args['img_size'] ?? 'medium';
 $h_level = $args['h_level'] ?? 2;
-$h_tag = 'h' . (int) $h_level;
+$h_level = max(1, min(6, (int) $h_level));
+$h_tag = 'h' . $h_level;
 
 if ($post) :?>
 <article <?php post_class('', $post); ?>>
