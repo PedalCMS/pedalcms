@@ -13,7 +13,7 @@ $size = $args['img_size'] ?? 'medium';
 $post = $args['post'] ?? get_post();
 ?>
 <div class="person-featured-image">
-    <a href="<?php esc_url(get_permalink($post)); ?>">
+    <a href="<?php echo esc_url(get_permalink($post)); ?>">
         <?php
     if (has_post_thumbnail($post)):
         echo get_the_post_thumbnail($post, $size);
