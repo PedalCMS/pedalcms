@@ -48,7 +48,6 @@ function document_title_parts(array $title): array {
  *
  * @return void
  */
-
 function before_main_content() {
     $pattern = '<%s id="%s" class="%s" %s>';
     $id = apply_filters('nvis/programs/main_content_wrapper_id', 'main-content-wrapper');
