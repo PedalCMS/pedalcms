@@ -16,6 +16,8 @@
 
 namespace InvisibleUs\Programs;
 
+defined('ABSPATH') || exit;
+
 $includes = [
     '/src/_autoload.php',
     '/src/acf.php',
