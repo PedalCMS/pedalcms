@@ -10,7 +10,8 @@
 defined('ABSPATH') || exit;
 
 $wp_query = $args['wp_query'] ?? null;
-$posts_label = $args['posts_label'] ?? 'posts';
+$label = $args['label'] ?? 'posts';
+$label_single = $args['label_single'] ?? 'post';
 
 if (!$wp_query) {
     global $wp_query;
@@ -42,14 +43,17 @@ if ($wp_query->found_posts) : ?>
     <span class="num-results__value">
         <?php
     if ($showing_all) {
-        echo sprintf('Showing %s %s.', $wp_query->found_posts, $posts_label);
+        if ($wp_query->found_posts == 1) {
+            $label = $label_single;
+        }
+        echo sprintf('Showing %s %s.', $wp_query->found_posts, $label);
     } else {
         echo sprintf(
             'Showing %s–%s of %s %s.',
             number_format($first),
             number_format($last),
             number_format($wp_query->found_posts),
-            $posts_label
+            $label
         );
     }
     ?>
