@@ -19,5 +19,3 @@ get_header();
  * @since 0.1
  */
 do_action('nvis/programs/before_main_content');
-?>
-<div class="nvis-progs-template">

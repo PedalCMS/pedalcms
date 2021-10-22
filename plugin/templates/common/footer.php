@@ -11,9 +11,6 @@
 
 defined('ABSPATH') || exit;
 
-?>
-</div><!-- .nvis-progs-template -->
-<?php
 /**
  * Fires just before the footer is loaded after the main content.
  *
