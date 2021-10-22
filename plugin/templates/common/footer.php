@@ -15,10 +15,10 @@ defined('ABSPATH') || exit;
 </div><!-- .nvis-progs-template -->
 <?php
 /**
- * Fires just before the footer is loaded.
+ * Fires just before the footer is loaded after the main content.
  *
  * @since 0.1
  */
-do_action('nvis/programs/before_footer');
+do_action('nvis/programs/after_main_content');
 
 get_footer();

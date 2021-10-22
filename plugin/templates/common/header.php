@@ -14,10 +14,10 @@ defined('ABSPATH') || exit;
 get_header();
 
 /**
- * Fires after the header is loaded.
+ * Fires after the header is loaded before the main content.
  *
  * @since 0.1
  */
-do_action('nvis/programs/after_header');
+do_action('nvis/programs/before_main_content');
 ?>
 <div class="nvis-progs-template">
