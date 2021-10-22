@@ -369,6 +369,15 @@ class Plugin {
      * @return mixed The value of the setting.
      */
     public static function get_option(string $option) {
-        return get_field('nvis_' . $option, 'option');
+        $value = get_field('nvis_' . $option, 'option');
+
+        /**
+         * Filters the value of an option. The last part is the name of the option.
+         *
+         * @since 0.1
+         *
+         * @param $value The value of the option.
+         */
+        return apply_filters("nvis/programs/options/{$option}", $value);
     }
 }
