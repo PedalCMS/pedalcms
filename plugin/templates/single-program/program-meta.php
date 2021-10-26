@@ -16,8 +16,8 @@ defined('ABSPATH') || exit;
   // TODO: Link these somewhere else?
   the_terms(
       get_the_ID(),
-      'nvis_program_format',
-      '<div class="program-format program-meta__item">Delivery Format: ',
+      'nvis_instruct_mode',
+      '<div class="instruction-mode program-meta__item">Instruction Mode: ',
       ', ',
       '</div>'
   ); ?>

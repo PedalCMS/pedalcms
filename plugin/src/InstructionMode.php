@@ -3,21 +3,21 @@
 namespace InvisibleUs\Programs;
 
 /**
- * Delivery Format custom taxonomy.
- * 
+ * Instruction Mode custom taxonomy.
+ *
  * @package NVISPrograms
  * @subpackage ContentModel
  * @since 0.1.0
  */
-class DeliveryFormat extends CustomTaxonomy {
-    public const TAXONOMY = 'nvis_program_format';
-    public string $name = 'Delivery Format';
-    public string $plural_name = 'Delivery Formats';
+class InstructionMode extends CustomTaxonomy {
+    public const TAXONOMY = 'nvis_instruct_mode';
+    public string $name = 'Instruction Mode';
+    public string $plural_name = 'Instruction Modes';
 
     public $object_types = [Program::POST_TYPE];
 
     public array $args = [
-        'query_var'             => 'prog_format',
+        'query_var'             => 'inst_mode',
         'rewrite'               => false,
         'description'           => '',
         'sort'                  => true,

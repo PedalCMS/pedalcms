@@ -15,7 +15,7 @@ $args = [
     'filters'   => [
         'keyword',
         'program-type',
-        'program-format',
+        'instruct-mode',
         'college'
     ]
 ];

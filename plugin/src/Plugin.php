@@ -256,7 +256,7 @@ class Plugin {
         // Register taxonomies.
         (new ProgramType())->register();
         (new College())->register();
-        (new DeliveryFormat())->register();
+        (new InstructionMode())->register();
         (new Subject())->register();
         (new Session())->register();
         (new PersonCategory())->register();
