@@ -258,7 +258,7 @@ class Plugin {
         (new College())->register();
         (new DeliveryFormat())->register();
         (new Subject())->register();
-        (new Semester())->register();
+        (new Session())->register();
         (new PersonCategory())->register();
         (new Department())->register();
         (new FAQCategory())->register();

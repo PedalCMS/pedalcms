@@ -10,8 +10,8 @@
 defined('ABSPATH') || exit;
 
 $args = [
-    'taxonomy'  => 'nvis_semester',
-    'query_var' => 'sem_term',
+    'taxonomy'  => 'nvis_session',
+    'query_var' => 'sess',
     'label'     => 'Term'
 ];
 

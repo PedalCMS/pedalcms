@@ -3,21 +3,21 @@
 namespace InvisibleUs\Programs;
 
 /**
- * Semester custom taxonomy.
- * 
+ * Session custom taxonomy.
+ *
  * @package NVISPrograms
  * @subpackage ContentModel
  * @since 0.1.0
  */
-class Semester extends CustomTaxonomy {
-    public const TAXONOMY = 'nvis_semester';
+class Session extends CustomTaxonomy {
+    public const TAXONOMY = 'nvis_session';
     public string $name = 'Term';
     public string $plural_name = 'Terms';
 
     public $object_types = [Course::POST_TYPE];
 
     public array $args = [
-        'query_var'             => 'sem_term',
+        'query_var'             => 'sess',
         'description'           => '',
         'sort'                  => true,
         'rewrite'               => false,

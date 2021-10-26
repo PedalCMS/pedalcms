@@ -15,7 +15,7 @@ $args = [
     'filters'   => [
         'keyword',
         'subject',
-        'semester'
+        'session'
     ]
 ];
 
