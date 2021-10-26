@@ -180,9 +180,19 @@ class ProgramSubpageManager {
         $enabled = self::get_enabled_subpages();
         $field_safe = str_replace('-', '_', $subpage);
 
-        return
+        $show =
             in_array($subpage, $enabled, true) &&
             (bool) get_field(sprintf('show_%s_section', $field_safe));
+
+        /**
+         * Filters the decision to show a particular subpage.
+         *
+         * @since 0.1
+         *
+         * @param bool $show_subpage Whether to show the subpage.
+         * @param string $subpage The subpage in question.
+         */
+        return apply_filters('nvis/programs/maybe_show_subpage', $show, $subpage);
     }
 
     /**
@@ -197,7 +207,14 @@ class ProgramSubpageManager {
             $enabled = [];
         }
 
-        return $enabled;
+        /**
+         * Filters the list of currently enabled subpages.
+         *
+         * @since 0.1
+         *
+         * @param array $filters The program subpages by slug.
+         */
+        return apply_filters('nvis/programs/enabled_program_subpages', $enabled);
     }
 
     /**
@@ -213,6 +230,16 @@ class ProgramSubpageManager {
         $link = $subpage === 'index' ?
             get_the_permalink() :
             sprintf('%s%s/', get_the_permalink(), $subpage);
+
+        /**
+         * Filters the program subpage link.
+         *
+         * @since 0.1
+         *
+         * @param string $url The url of the subpage.
+         * @param string $subpage The slug of the corresponding program subpage.
+         */
+        $link = apply_filters('nvis/programs/get_subpage_link', $link, $subpage);
 
         if ($echo) {
             echo $link;
