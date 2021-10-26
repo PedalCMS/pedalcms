@@ -18,7 +18,18 @@ defined('ABSPATH') || exit;
  */
 do_action('nvis/programs/before_filters_form', $args);
 
-if (!empty($args['filters']) && !empty($args['post_type'])) : ?>
+
+if (!empty($args['filters']) && !empty($args['post_type'])) :
+    /**
+     * Filters the search filters to be displayed.
+     *
+     * @since 0.1
+     *
+     * @param array $filters The list of search filters to display.
+     * @param string $post_type The post_type arg passed to the template.
+     */
+    $filters = apply_filters('nvis/programs/search_filters', $args['filters'], $args['post_type']);
+?>
 <form
     action="<?php echo get_post_type_archive_link($args['post_type']); ?>"
     class="<?php echo $args['post_type']; ?>-filters nvis-post-filters">
