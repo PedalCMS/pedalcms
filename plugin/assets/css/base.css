@@ -278,7 +278,7 @@
   margin-bottom: var(--nvis-prog-spacing);
 }
 
-.program-course__actions {
+.nvis_program .courses-table {
   margin-bottom: calc(2 * var(--nvis-prog-spacing));
 }
 
