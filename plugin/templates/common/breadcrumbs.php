@@ -25,7 +25,7 @@ defined('ABSPATH') || exit;
 do_action('nvis/programs/before_breadcrumbs');
 
 ?>
-<div id="breadcrumbs" class="breadcrumbs careers-breadcrumbs">
+<div id="breadcrumbs" class="breadcrumbs nvis-breadcrumbs">
   <?php
     if (function_exists('bcn_display')) {
         bcn_display();
