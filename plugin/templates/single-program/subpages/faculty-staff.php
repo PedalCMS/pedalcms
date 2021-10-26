@@ -9,6 +9,8 @@
 
 defined('ABSPATH') || exit;
 
+$show_contact_info_labels = true;
+
 if (nvis_prog_show_subpage('faculty-staff')) : ?>
 <div class="program-faculty-staff-subpage program-subpage">
 
@@ -39,7 +41,7 @@ if (nvis_prog_show_subpage('faculty-staff')) : ?>
       <div class="person-category__list person-list">
         <?php
           foreach ($cat->people as $post) :
-            nvis_prog_get_template_part('archive-person/person-item', compact('post', 'h_level', 'img_size'));
+            nvis_prog_get_template_part('archive-person/person-item', compact('post', 'h_level', 'img_size', 'show_contact_info_labels'));
           endforeach;
           ?>
       </div>
@@ -51,7 +53,7 @@ if (nvis_prog_show_subpage('faculty-staff')) : ?>
     <div class="person-list">
       <?php
         foreach ($people as $post) :
-          nvis_prog_get_template_part('archive-person/person-item', compact('post', 'h_level'));
+          nvis_prog_get_template_part('archive-person/person-item', compact('post', 'h_level', 'show_contact_info_labels'));
         endforeach;
       ?>
     </div>

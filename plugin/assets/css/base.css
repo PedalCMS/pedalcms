@@ -216,13 +216,35 @@
   font-style: italic;
 }
 
+.program-faculty-staff-list .person-list {
+  --image-width: 100px;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--nvis-prog-spacing);
+  margin: 0 0 calc(2 * var(--nvis-prog-spacing));
+}
+
 .program-faculty-staff-list .person-list .nvis_person {
   padding: 0;
-  margin-bottom: var(--nvis-prog-spacing);
 }
 
 .program-faculty-staff-list .person-list .person-featured-image {
-  width: 25%;
+  width: var(--image-width);
+}
+
+.program-faculty-staff-list .person-list .person-info {
+  display: flex;
+  flex-grow: 2;
+}
+
+.program-faculty-staff-list .person-list header {
+  width: 50%;
+}
+
+.program-faculty-staff-list .person-list .contact-info {
+  padding: 0.5em 0 0;
+  width: 50%;
 }
 
 .nvis-expandable {
@@ -280,6 +302,13 @@
 
 .related-post__more {
   margin: var(--nvis-prog-spacing) 0;
+}
+
+.nvis_person .contact-info .label {
+  display: inline-block;
+  font-size: 0.9em;
+  font-weight: bold;
+  width: 4em;
 }
 
 .person-list {
@@ -363,13 +392,6 @@
 
 .single-person-page-header--classic .person-featured-image {
   float: right;
-}
-
-.single-person-page-header--classic .label {
-  display: inline-block;
-  font-size: 0.9em;
-  font-weight: bold;
-  width: 4em;
 }
 
 @keyframes nvis-fade-in-left {

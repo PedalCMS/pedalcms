@@ -14,6 +14,7 @@ $img_size = $args['img_size'] ?? 'medium';
 $h_level = $args['h_level'] ?? 2;
 $h_level = max(1, min(6, (int) $h_level));
 $h_tag = 'h' . $h_level;
+$show_labels = $args['show_contact_info_labels'] ?? false;
 
 if ($post) :?>
 <article <?php post_class('', $post); ?>>
@@ -23,20 +24,20 @@ if ($post) :?>
             <?php echo sprintf('<%s class="person-name">', $h_tag); ?>
             <a href="<?php echo get_the_permalink($post); ?>"><?php echo get_the_title($post); ?></a>
             <?php echo sprintf('</%s>', $h_tag); ?>
+            <div class="person-position">
+                <?php nvis_prog_get_template_part('blocks/job-title', ['job_title' => $post->job_title]); ?>
+                <?php
+                // TODO: Link these somewhere else?
+                the_terms(
+                    $post,
+                    'nvis_department',
+                    '<div class="person-department">',
+                    ', ',
+                    '</div>'
+                ); ?>
+            </div>
         </header>
-        <div class="person-position">
-            <?php nvis_prog_get_template_part('blocks/job-title', ['job_title' => $post->job_title]); ?>
-            <?php
-            // TODO: Link these somewhere else?
-            the_terms(
-                $post,
-                'nvis_department',
-                '<div class="person-department">',
-                ', ',
-                '</div>'
-            ); ?>
-        </div>
-        <?php nvis_prog_get_template_part('blocks/contact-info', compact('post')); ?>
+        <?php nvis_prog_get_template_part('blocks/contact-info', compact('post', 'show_labels')); ?>
     </div>
 </article>
 <?php endif;
