@@ -251,6 +251,12 @@
   width: 50%;
 }
 
+.program-estimated-cost .program-estimated-cost__label {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
 .nvis-expandable {
   margin-bottom: var(--nvis-prog-spacing);
 }

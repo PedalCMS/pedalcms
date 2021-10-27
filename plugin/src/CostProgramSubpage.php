@@ -4,7 +4,7 @@ namespace InvisibleUs\Programs;
 
 /**
  * Program Subpage class stores settings for Cost.
- * 
+ *
  * @package NVISPrograms
  * @subpackage ProgramSubpages
  * @since 0.1.0
@@ -32,6 +32,20 @@ class CostProgramSubpage {
             'ui'            => 1,
             'ui_on_text'    => '',
             'ui_off_text'   => '',
+        ],[
+            'key'           => 'field_617848545496b',
+            'label'         => 'Estimated Cost Label',
+            'name'          => 'estimated_cost_label',
+            'type'          => 'text',
+            'instructions'  => '',
+            'placeholder'   => 'Estimated Cost',
+        ],
+        [
+            'key'               => 'field_6178492a5496c',
+            'label'             => 'Estimated Cost',
+            'name'              => 'estimated_cost',
+            'type'              => 'text',
+            'instructions'      => 'Leave blank to omit this field.'
         ],
         [
             'key'           => 'field_61327ef17bf0d',
