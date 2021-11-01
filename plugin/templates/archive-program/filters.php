@@ -1,6 +1,6 @@
 <?php
 /**
- * A template for displaying the Course archive search and filter form.
+ * A template for displaying the Program archive search and filter form.
  *
  * @package NVISPrograms
  * @subpackage Templates
