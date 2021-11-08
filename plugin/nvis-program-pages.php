@@ -32,3 +32,5 @@ foreach ($includes as $subpath) {
 }
 
 $plugin = new Plugin();
+
+register_activation_hook(__FILE__, [__NAMESPACE__ . '\Plugin', 'install']);

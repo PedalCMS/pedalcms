@@ -200,6 +200,31 @@ class Plugin {
         self::$_init = true;
     }
 
+    public static function install() {
+        flush_rewrite_rules();
+        self::install_capabilities();
+    }
+
+    public static function install_capabilities() {
+        $role = get_role('administrator');
+        $post_type_args = [
+            (object) (new Program())->args,
+            (object) (new Person())->args,
+            (object) (new Course())->args,
+            (object) (new FAQ())->args,
+        ];
+
+        foreach ($post_type_args as $args) {
+            $args->capabilities = [];
+
+            $caps = get_post_type_capabilities($args);
+
+            foreach ($caps as $cap) {
+                $role->add_cap($cap);
+            }
+        }
+    }
+
     /**
      * Performs some plugin setup.
      *
