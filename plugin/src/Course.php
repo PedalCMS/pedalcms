@@ -39,7 +39,7 @@ class Course extends CustomPostType {
     public array $args = [
         'rewrite'             => ['slug' => 'course'],
         'has_archive'         => 'courses',
-        'capability_type'     => Program::POST_TYPE,
+        'capability_type'     => self::POST_TYPE,
         'menu_icon'           => 'dashicons-book-alt',
         'menu_position'       => 5,
         'description'         => '',
