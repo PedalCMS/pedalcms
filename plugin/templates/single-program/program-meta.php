@@ -10,31 +10,31 @@
 defined('ABSPATH') || exit;
 
 ?>
-<div class="program-meta">
+<div class="program-meta nvis-meta-group">
 
   <?php
   // TODO: Link these somewhere else?
   the_terms(
       get_the_ID(),
       'nvis_instruct_mode',
-      '<div class="instruction-mode program-meta__item">Instruction Mode: ',
+      '<span class="instruction-mode nvis-meta-group__item"><span class="label">Instruction Mode<span class="separator">:</span></span> <span class="value">',
       ', ',
-      '</div>'
+      '</span></span>'
   ); ?>
 
-  <div class="program-entrance-exam program-meta__item">
-    Prerequisites:
-    <?php echo get_field('prerequisites') ? 'Yes' : 'No'; ?>
-  </div>
+  <span class="program-entrance-exam nvis-meta-group__item">
+    <span class="label">Prerequisites<span class="separator">:</span></span>
+    <span class="value"><?php echo get_field('prerequisites') ? 'Yes' : 'No'; ?></span>
+  </span>
 
   <?php
   // TODO: Link these to the college, not the archive.
   the_terms(
       get_the_ID(),
       'nvis_program_college',
-      '<div class="program-college program-meta__item">College: ',
+      '<span class="program-college nvis-meta-group__item"><span class="label">College<span class="separator">:</span></span> <span class="value"> ',
       ', ',
-      '</div>'
+      '</span></span>'
   ); ?>
 
 </div>

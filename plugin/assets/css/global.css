@@ -26,7 +26,7 @@
 }
 
 .nvis-template .button {
-    display: inline-block;
+  display: inline-block;
 }
 
 .nvis-template .footnote-text {
@@ -99,10 +99,28 @@
   display: inline-block;
 }
 
-.nvis-template [data-tooltip] {
-    --background: rgba(0,0,0,0.9);
+.nvis-meta-group {
+  display: flex;
+  gap: calc(2.5 * var(--nvis-spacing));
+}
 
-    position: relative;
+.nvis-meta-group__item {
+  display: block;
+  font-size: 0.9em;
+}
+
+.nvis-meta-group__item .label {
+  display: block;
+}
+
+.nvis-meta-group__item .value {
+  font-weight: bold;
+}
+
+.nvis-template [data-tooltip] {
+  --background: rgba(0,0,0,0.9);
+
+  position: relative;
 }
 
 .nvis-template [data-tooltip]::after {

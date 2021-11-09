@@ -64,13 +64,7 @@
 }
 
 .single-nvis_program .program-meta {
-  display: flex;
-  gap: calc(2.5 * var(--nvis-spacing));;
-  margin: var(--nvis-spacing) 0 calc( 3 * var(--nvis-spacing));
-}
-
-.program-meta__item {
-  font-size: 0.9em;
+  margin: calc(2 * var(--nvis-spacing)) 0 calc(2 * var(--nvis-spacing));
 }
 
 .program-subnav__menu {
