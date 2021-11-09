@@ -201,8 +201,9 @@ class Plugin {
     }
 
     public static function install() {
-        flush_rewrite_rules();
+        self::register_content_model();
         self::install_capabilities();
+        flush_rewrite_rules();
     }
 
     public static function install_capabilities() {
