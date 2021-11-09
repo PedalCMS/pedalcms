@@ -51,7 +51,10 @@ function document_title_parts(array $title): array {
 function before_main_content() {
     $pattern = '<%s id="%s" class="%s">';
     $id = apply_filters('nvis/programs/main_content_wrapper_id', 'main-content-wrapper');
-    $classes = apply_filters('nvis/programs/main_content_wrapper_class', ['nvis-progs-template']);
+    $classes = apply_filters(
+        'nvis/programs/main_content_wrapper_class',
+        ['nvis-progs-template', 'nvis-template']
+    );
     $tag = Plugin::get_option('main_content_wrapper_tag');
 
     echo sprintf(

@@ -1,22 +1,4 @@
 /* TODO: Namespace CSS classes? */
-.nvis-progs-template  {
-  --nvis-prog-active-color: #f90;
-  --nvis-prog-gray: #999;
-  --nvis-prog-spacing: 1rem;
-  --nvis-prog-sidebar-width: 20%;
-
-  margin: calc(2 * var(--nvis-prog-spacing)) auto;
-  width: 100%;
-}
-
-.nvis-progs-template .empty-state-message {
-  font-size: 1.5em;
-  font-weight: 900;
-}
-
-.nvis-breadcrumbs {
-  margin-bottom: var(--nvis-prog-spacing);
-}
 
 .program-actions ul {
   margin: 0;
@@ -32,72 +14,24 @@
 .program-actions a.button {
   display: block;
   text-align: center;
-  margin-bottom: calc(0.5 * var(--nvis-prog-spacing));
-}
-
-.single-program-page-header,
-.programs-archive-page-header {
-  width: 100%;
-  margin: 0 0 calc(2 * var(--nvis-prog-spacing));
-}
-
-.archive .nvis-post-filters {
-  align-items: center;
-  background: rgba(0,0,0,0.1);
-  display: flex;
-  gap: var(--nvis-prog-spacing);
-  line-height: 1.25;
-  margin: 0 0 var(--nvis-prog-spacing);
-  padding: var(--nvis-prog-spacing);
-}
-
-.archive .nvis-post-filters fieldset {
-  align-items: center;
-  border: none;
-  display: flex;
-  font-size: 0.85em;
-  gap: var(--nvis-prog-spacing);
-  padding: 0;
-}
-
-.archive .nvis-post-filters legend {
-  border: none;
-  float: left;
-  font-size: 1em;
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-  width: auto;
-}
-
-.archive .nvis-post-filters .reset-link {
-  display: inline-block;
-}
-
-.nvis-progs-template .num-results {
-  font-size: 0.9em;
-  margin: calc(2 * var(--nvis-prog-spacing)) 0;
-}
-
-.nvis-progs-template .pagination {
-  margin: calc(2 * var(--nvis-prog-spacing)) 0;
+  margin-bottom: calc(0.5 * var(--nvis-spacing));
 }
 
 .programs-list article.nvis_program {
   display: flex;
-  gap: calc(2 * var(--nvis-prog-spacing));
+  gap: calc(2 * var(--nvis-spacing));
   justify-content: space-between;
-  margin: 0 0 calc(2 * var(--nvis-prog-spacing));
-  padding: 0 0 0 var(--nvis-prog-spacing);
+  margin: 0 0 calc(2 * var(--nvis-spacing));
+  padding: 0 0 0 var(--nvis-spacing);
 }
 
 .programs-list .program-featured-image {
-  margin-left: calc(-1 * var(--nvis-prog-spacing));
+  margin-left: calc(-1 * var(--nvis-spacing));
 }
 
 .programs-list .program-info {
   flex-grow: 2;
-  padding: var(--nvis-prog-spacing) 0;
+  padding: var(--nvis-spacing) 0;
 }
 
 .programs-list .program-title {
@@ -105,18 +39,18 @@
 }
 
 .programs-list .program-meta {
-  margin: var(--nvis-prog-spacing) 0 0;
+  margin: var(--nvis-spacing) 0 0;
 }
 
 .programs-list .program-actions {
-  padding: var(--nvis-prog-spacing);
+  padding: var(--nvis-spacing);
   padding-left: 0;
 }
 
 .single-nvis_program article.nvis_program {
   display: flex;
   flex-wrap: wrap;
-  gap: calc(2 * var(--nvis-prog-spacing));
+  gap: calc(2 * var(--nvis-spacing));
   width: 100%;
 }
 
@@ -126,13 +60,13 @@
 
 .single-program-page-header h1 {
   clear: left;
-  margin: calc(3 * var(--nvis-prog-spacing)) 0 0;
+  margin: calc(3 * var(--nvis-spacing)) 0 0;
 }
 
 .single-nvis_program .program-meta {
   display: flex;
-  gap: calc(2.5 * var(--nvis-prog-spacing));;
-  margin: var(--nvis-prog-spacing) 0 calc( 3 * var(--nvis-prog-spacing));
+  gap: calc(2.5 * var(--nvis-spacing));;
+  margin: var(--nvis-spacing) 0 calc( 3 * var(--nvis-spacing));
 }
 
 .program-meta__item {
@@ -140,13 +74,13 @@
 }
 
 .program-subnav__menu {
-  border-bottom: solid 1px var(--nvis-prog-gray);
+  border-bottom: solid 1px var(--nvis-gray);
   clear: both;
   display: flex;
-  gap: calc(2 * var(--nvis-prog-spacing));
+  gap: calc(2 * var(--nvis-spacing));
   list-style: none;
   margin: 0;
-  padding: calc(2 * var(--nvis-prog-spacing)) 0 0;
+  padding: calc(2 * var(--nvis-spacing)) 0 0;
 }
 
 .program-subnav__menu li {
@@ -163,35 +97,35 @@
 }
 
 .program-subnav__menu .active-subpage a {
-  border-color: var(--nvis-prog-active-color);
+  border-color: var(--nvis-active-color);
 }
 
 .program-main {
-  width: calc(100% - var(--nvis-prog-sidebar-width) - 2 * var(--nvis-prog-spacing));
+  width: calc(100% - var(--nvis-sidebar-width) - 2 * var(--nvis-spacing));
 }
 
 .program-sidebar {
   font-size: 0.9em;
-  width: var(--nvis-prog-sidebar-width);
+  width: var(--nvis-sidebar-width);
 }
 
 .program-sidebar__title {
   font-size: 1.75em;
-  margin-bottom: calc(0.5 * var(--nvis-prog-spacing));
+  margin-bottom: calc(0.5 * var(--nvis-spacing));
 }
 
 .program-sidebar .button {
   display: block;
   text-align: center;
-  margin-bottom: calc(0.5 * var(--nvis-prog-spacing));
+  margin-bottom: calc(0.5 * var(--nvis-spacing));
 }
 
 .program-sidebar .program-actions ul {
-  margin: 0 0 calc(1.25 * var(--nvis-prog-spacing));
+  margin: 0 0 calc(1.25 * var(--nvis-spacing));
 }
 
 .program-deadlines {
-  margin: calc(1.5 * var(--nvis-prog-spacing)) 0;
+  margin: calc(1.5 * var(--nvis-spacing)) 0;
 }
 
 .program-deadlines__list {
@@ -199,16 +133,16 @@
 }
 
 .program-deadlines__list dd {
-  margin: 0 0 calc(0.5 * var(--nvis-prog-spacing));
+  margin: 0 0 calc(0.5 * var(--nvis-spacing));
 }
 
 .program-contact {
   line-height: 1.5em;
-  margin: calc( 0.5 * var(--nvis-prog-spacing)) 0 calc( 1.5 * var(--nvis-prog-spacing));
+  margin: calc( 0.5 * var(--nvis-spacing)) 0 calc( 1.5 * var(--nvis-spacing));
 }
 
 .program-contact__picture {
-  margin-bottom: calc(0.5 * var(--nvis-prog-spacing));
+  margin-bottom: calc(0.5 * var(--nvis-spacing));
 }
 
 .program-contact__name {
@@ -225,8 +159,8 @@
 
   display: flex;
   flex-direction: column;
-  gap: var(--nvis-prog-spacing);
-  margin: 0 0 calc(2 * var(--nvis-prog-spacing));
+  gap: var(--nvis-spacing);
+  margin: 0 0 calc(2 * var(--nvis-spacing));
 }
 
 .program-faculty-staff-list .person-list .nvis_person {
@@ -258,7 +192,7 @@
 }
 
 .nvis-expandable {
-  margin-bottom: var(--nvis-prog-spacing);
+  margin-bottom: var(--nvis-spacing);
 }
 
 .nvis-expandable summary {
@@ -268,7 +202,7 @@
 }
 
 .nvis-expandable summary::marker {
-  color: var(--nvis-prog-active-color);
+  color: var(--nvis-active-color);
   font-size: 0.95em;
 }
 
@@ -277,21 +211,21 @@
 }
 
 .faq-category {
-  margin-bottom: calc( 2 * var(--nvis-prog-spacing));
+  margin-bottom: calc( 2 * var(--nvis-spacing));
 }
 
 .faq-category__title {
-  margin-bottom: var(--nvis-prog-spacing);
+  margin-bottom: var(--nvis-spacing);
 }
 
 .nvis_program .courses-table {
-  margin-bottom: calc(2 * var(--nvis-prog-spacing));
+  margin-bottom: calc(2 * var(--nvis-spacing));
 }
 
 .related-post {
   display: flex;
-  gap: calc(2 * var(--nvis-prog-spacing));
-  margin-bottom: calc(4 * var(--nvis-prog-spacing));
+  gap: calc(2 * var(--nvis-spacing));
+  margin-bottom: calc(4 * var(--nvis-spacing));
 }
 
 .related-post--has-image {
@@ -307,11 +241,11 @@
 }
 
 .related-post__title {
-  margin-bottom: var(--nvis-prog-spacing);
+  margin-bottom: var(--nvis-spacing);
 }
 
 .related-post__more {
-  margin: var(--nvis-prog-spacing) 0;
+  margin: var(--nvis-spacing) 0;
 }
 
 .nvis_person .contact-info .label {
@@ -324,13 +258,13 @@
 .person-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--nvis-prog-spacing);
+  gap: var(--nvis-spacing);
 }
 
 .person-list .nvis_person {
   display: flex;
-  gap: var(--nvis-prog-spacing);
-  padding: calc(2 * var(--nvis-prog-spacing));
+  gap: var(--nvis-spacing);
+  padding: calc(2 * var(--nvis-spacing));
 }
 
 .person-list .person-featured-image {
@@ -362,7 +296,7 @@
 }
 
 .person-list .person-position {
-  margin-bottom: calc(1.5 * var(--nvis-prog-spacing));
+  margin-bottom: calc(1.5 * var(--nvis-spacing));
 }
 
 .person-list .person-job-title {
@@ -381,18 +315,18 @@
 }
 
 .single-person-page-header--classic {
-  padding-bottom: calc(2 * var(--nvis-prog-spacing));
-  margin-bottom: calc(2 * var(--nvis-prog-spacing));
-  border-bottom: solid 1px var(--nvis-prog-gray);
+  padding-bottom: calc(2 * var(--nvis-spacing));
+  margin-bottom: calc(2 * var(--nvis-spacing));
+  border-bottom: solid 1px var(--nvis-gray);
 }
 
 .single-person-page-header--classic .entry-title {
   clear: left;
-  margin: calc(3 * var(--nvis-prog-spacing)) 0 0;
+  margin: calc(3 * var(--nvis-spacing)) 0 0;
 }
 
 .single-person-page-header--classic .single-person__meta {
-  margin: 0 0 calc(2 * var(--nvis-prog-spacing));
+  margin: 0 0 calc(2 * var(--nvis-spacing));
 }
 
 .single-person-page-header--classic .person-job-title {

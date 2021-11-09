@@ -1,0 +1,67 @@
+:root {
+  --nvis-active-color: #f90;
+  --nvis-gray: #999;
+  --nvis-spacing: 1rem;
+  --nvis-sidebar-width: 20%;
+}
+
+.nvis-template {
+    margin: calc(2 * var(--nvis-spacing)) auto;
+    width: 100%;
+}
+
+.nvis-template .empty-state-message {
+  font-size: 1.5em;
+  font-weight: 900;
+}
+
+.nvis-template .page-header {
+  width: 100%;
+  margin: 0 0 calc(2 * var(--nvis-spacing));
+}
+
+.nvis-breadcrumbs {
+  margin-bottom: var(--nvis-spacing);
+}
+
+.nvis-template .num-results {
+  font-size: 0.9em;
+  margin: calc(2 * var(--nvis-spacing)) 0;
+}
+
+.nvis-template .pagination {
+  margin: calc(2 * var(--nvis-spacing)) 0;
+}
+
+.archive .nvis-post-filters {
+  align-items: center;
+  background: rgba(0,0,0,0.1);
+  display: flex;
+  gap: var(--nvis-spacing);
+  line-height: 1.25;
+  margin: 0 0 var(--nvis-spacing);
+  padding: var(--nvis-spacing);
+}
+
+.archive .nvis-post-filters fieldset {
+  align-items: center;
+  border: none;
+  display: flex;
+  font-size: 0.85em;
+  gap: var(--nvis-spacing);
+  padding: 0;
+}
+
+.archive .nvis-post-filters legend {
+  border: none;
+  float: left;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  width: auto;
+}
+
+.archive .nvis-post-filters .reset-link {
+  display: inline-block;
+}
