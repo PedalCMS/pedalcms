@@ -1,18 +1,36 @@
 :root {
-  --nvis-active-color: #f90;
+  --nvis-active-color: #f93;
   --nvis-gray: #999;
+  --nvis-green: #417D2B;
+  --nvis-red: #9D2E2A;
   --nvis-spacing: 1rem;
   --nvis-sidebar-width: 20%;
+  --nvis-chart-color-1: #39c;
+  --nvis-chart-color-2: #f93;
+  --nvis-chart-color-3: #f39;
+  --nvis-chart-color-4: #393;
+  --nvis-chart-color-5: #939;
+  --nvis-chart-color-6: #c30;
+  --nvis-chart-color-7: #099;
+  --nvis-chart-color-8: #303;
 }
 
 .nvis-template {
-    margin: calc(2 * var(--nvis-spacing)) auto;
-    width: 100%;
+  margin: calc(2 * var(--nvis-spacing)) auto;
+  width: 100%;
 }
 
 .nvis-template .empty-state-message {
   font-size: 1.5em;
   font-weight: 900;
+}
+
+.nvis-template .button {
+    display: inline-block;
+}
+
+.nvis-template .footnote-text {
+  font-size: 0.9em;
 }
 
 .nvis-template .page-header {
@@ -31,6 +49,21 @@
 
 .nvis-template .pagination {
   margin: calc(2 * var(--nvis-spacing)) 0;
+}
+
+.nvis-expandable summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nvis-expandable summary::marker {
+  color: var(--nvis-active-color);
+  font-size: 0.95em;
+}
+
+.nvis-expandable[open] .nvis-expandable__contents {
+  animation: nvis-fade-in-left .25s ease-in-out;
+  margin-bottom: var(--nvis-spacing);
 }
 
 .archive .nvis-post-filters {
@@ -64,4 +97,53 @@
 
 .archive .nvis-post-filters .reset-link {
   display: inline-block;
+}
+
+.nvis-template [data-tooltip] {
+    --background: rgba(0,0,0,0.9);
+
+    position: relative;
+}
+
+.nvis-template [data-tooltip]::after {
+    border:10px solid var(--background);
+    border-color: transparent var(--background) transparent transparent; 
+    content: "";
+    display:none;
+    left: 125%;
+    margin-left:-5px;
+    position:absolute;
+    top:50%;
+    transition: all 0.25s;
+    transform:translateY(-50%);
+    z-index: 1000;
+}
+
+.nvis-template [data-tooltip]::before {
+    background: var(--background);
+    border-radius: 5px;
+    color: #fff;
+    content:attr(data-tooltip);
+    display: none;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.2;
+    left: 125%;
+    margin-left: 15px;
+    opacity: 0;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    transition: all 0.25s;
+    transform:translateY(-50%);
+    width: 200px;
+    z-index: 1000;
+}
+
+.nvis-template [data-tooltip]:hover::after,
+.nvis-template [data-tooltip]:hover::before {
+    display: block;
+    left: 100%;
+    opacity: 1;
+    transition: all 0.25s;
 }
