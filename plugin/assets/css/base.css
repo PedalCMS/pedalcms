@@ -191,23 +191,8 @@
   margin-bottom: 0;
 }
 
-.nvis-expandable {
-  margin-bottom: var(--nvis-spacing);
-}
-
-.nvis-expandable summary {
+.nvis-template .program-faq__question {
   font-size: 1.25em;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.nvis-expandable summary::marker {
-  color: var(--nvis-active-color);
-  font-size: 0.95em;
-}
-
-.nvis-expandable[open] .nvis-expandable__contents {
-  animation: nvis-fade-in-left .25s ease-in-out;
 }
 
 .faq-category {
