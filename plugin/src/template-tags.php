@@ -266,3 +266,26 @@ function nvis_sanitize_title_tag(string $tag, string $default): string {
 }
 
 endif;
+
+
+if (!function_exists('nvis_args_or_global')) :
+/**
+ * Returns the args array value if available, global value if not.
+ *
+ * @param string $key The key to test.
+ * @param array $args The args array to check.
+ * @return mixed The 'key' value in args or global array.
+ */
+function nvis_args_or_global(string $key, array $args) {
+    if (isset($args[$key])) {
+        return $args[$key];
+    }
+
+    if (isset($GLOBALS[$key])) {
+        return $GLOBALS[$key];
+    }
+
+    return null;
+}
+
+endif;
