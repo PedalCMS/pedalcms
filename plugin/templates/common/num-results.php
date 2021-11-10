@@ -36,7 +36,7 @@ do_action('nvis/programs/before_num_results');
 
 if ($wp_query->found_posts) : ?>
 <div class="num-results">
-    <?php if (nvis_prog_is_filtered_results($post_type)) : ?>
+    <?php if (nvis_is_filtered_results($post_type)) : ?>
     <strong class="num-results__filtered">Filtered Results:</strong>
     <?php endif; ?>
 

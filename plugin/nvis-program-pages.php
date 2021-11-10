@@ -32,6 +32,7 @@ foreach ($includes as $subpath) {
 
 add_action('after_setup_theme', function () {
     require __DIR__ . '/src/template-tags.php';
+    require __DIR__ . '/src/template-tags-shared.php';
 });
 
 $plugin = new Plugin();

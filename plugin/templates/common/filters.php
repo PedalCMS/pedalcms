@@ -61,7 +61,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
         ?>
     </fieldset>
     <button class="button" type="submit">Search</button>
-    <?php if (nvis_prog_is_filtered_results($args['post_type'])): ?>
+    <?php if (nvis_is_filtered_results($args['post_type'])): ?>
     <a class="reset-link"
         href="<?php echo get_post_type_archive_link($args['post_type']); ?>">Reset
         Filters</a>

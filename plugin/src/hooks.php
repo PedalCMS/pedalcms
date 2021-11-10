@@ -28,7 +28,7 @@ function document_title_parts(array $title): array {
     ];
 
     foreach ($post_types as $post_type => $replacement) {
-        if (nvis_prog_is_filtered_results($post_type)) {
+        if (nvis_is_filtered_results($post_type)) {
             // TODO: centralize this text so it can be called here and in breadcrumbs.
             $title['title'] = $replacement . ' Filtered Results';
 
