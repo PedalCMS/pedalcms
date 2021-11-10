@@ -23,13 +23,16 @@ $includes = [
     '/src/acf.php',
     '/src/assets.php',
     '/src/hooks.php',
-    '/src/template-tags.php',
     '/src/breadcrumbs.php',
 ];
 
 foreach ($includes as $subpath) {
     require __DIR__ . $subpath;
 }
+
+add_action('after_setup_theme', function () {
+    require __DIR__ . '/src/template-tags.php';
+});
 
 $plugin = new Plugin();
 

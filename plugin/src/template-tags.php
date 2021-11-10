@@ -245,3 +245,24 @@ function normalize_faq_types(array $faqs, bool $group_by_cat = false): array {
 function nvis_prog_get_people_by_category(array $people): array {
     return \InvisibleUs\Programs\Person::group_by_category($people);
 }
+
+
+if (!function_exists('nvis_sanitize_title_tag')) :
+/**
+ * Checks a tag against an allowed list.
+ *
+ * @param string $tag The tag to check.
+ * @param string $default The fallback tag.
+ * @return string The safe html title tag.
+ */
+function nvis_sanitize_title_tag(string $tag, string $default): string {
+    $allowed_tags = ['h1','h2','h3','h4','h5','h6','p','div'];
+
+    if (!in_array($tag, $allowed_tags, true)) {
+        $tag = $default;
+    }
+
+    return $tag;
+}
+
+endif;
