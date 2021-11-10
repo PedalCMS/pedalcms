@@ -9,7 +9,10 @@
 
 defined('ABSPATH') || exit;
 
-if (nvis_prog_show_subpage('careers')) : $program = get_queried_object(); ?>
+if (nvis_prog_show_subpage('careers')) :
+  $program = get_queried_object();
+  $careers = get_field('related_careers');
+?>
 
 <div class="program-careers-subpage program-subpage">
   <h2 class="section-head">Careers</h2>
@@ -17,23 +20,21 @@ if (nvis_prog_show_subpage('careers')) : $program = get_queried_object(); ?>
   <?php nvis_prog_get_template_part('single-program/subpages/lead-content'); ?>
 
   <?php
-    $careers = get_field('related_careers');
-
-    if (!empty($careers)) : ?>
-  <div class="program-careers-list">
-    <h3>Job Titles</h3>
-
-    <ul>
-      <?php foreach ($careers as $career) : ?>
-      <li>
-        <a
-          href="<?php echo get_permalink($career) . '?ref_prog=' . $program->post_name; ?>"><?php echo $career->post_title; ?></a>
-      </li>
-      <?php endforeach; ?>
-    </ul>
-  </div>
-  <?php endif; ?>
-
+    if (!empty($careers)) :
+      if (function_exists('nvis_car_get_template_part')) :
+        nvis_car_get_template_part(
+            'archive-career/career-list',
+            [
+                'posts'                 => $careers,
+                'title_tag'             => 'h3',
+                'show_related_programs' => false
+            ]
+        );
+      else:
+        nvis_prog_get_template_part('common/post-links', ['posts' => $careers]);
+      endif;
+    endif;
+  ?>
 </div>
 
 <?php endif;

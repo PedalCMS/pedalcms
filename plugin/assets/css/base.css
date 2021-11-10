@@ -185,6 +185,18 @@
   margin-bottom: 0;
 }
 
+.program-careers-subpage .career {
+  padding: 0;
+  margin-bottom: calc(4 * var(--nvis-spacing));
+}
+
+.program-careers-subpage .career-header {
+  margin-bottom: calc(0.5 * var(--nvis-spacing));
+}
+.program-careers-subpage .career-title {
+  margin-bottom: 0;
+}
+
 .nvis-template .program-faq__question {
   font-size: 1.25em;
 }
