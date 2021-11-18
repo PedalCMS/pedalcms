@@ -56,8 +56,9 @@ function acf_settings_url(string $url) {
 function acf_init(): void {
     acf_add_options_page(Plugin::$options_page);
 
+    acf_add_local_field_group((new Plugin())::$field_groups[0]);
+
     $field_groups = [
-        (new Plugin())::$field_groups[0],
         get_program_acf_fields(),
         ProgramType::$field_groups[0],
         Course::$field_groups[0],
