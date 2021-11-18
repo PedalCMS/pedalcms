@@ -27,7 +27,8 @@ if (nvis_prog_show_subpage('careers')) :
             [
                 'posts'                 => $careers,
                 'title_tag'             => 'h3',
-                'show_related_programs' => false
+                'transpose_table'       => false,
+                'show_related_programs' => false,
             ]
         );
       else:
