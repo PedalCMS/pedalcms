@@ -5,14 +5,22 @@
   --nvis-red: #9D2E2A;
   --nvis-spacing: 1rem;
   --nvis-sidebar-width: 20%;
-  --nvis-chart-color-1: #39c;
+  --nvis-chart-color-1: #09c;
   --nvis-chart-color-2: #f93;
-  --nvis-chart-color-3: #f39;
+  --nvis-chart-color-3: #c30;
   --nvis-chart-color-4: #393;
   --nvis-chart-color-5: #939;
-  --nvis-chart-color-6: #c30;
-  --nvis-chart-color-7: #099;
+  --nvis-chart-color-6: #69f;
+  --nvis-chart-color-7: #e37;
   --nvis-chart-color-8: #303;
+  --nvis-chart-color-alt-1: #80cce6;
+  --nvis-chart-color-alt-2: #ffc285;
+  --nvis-chart-color-alt-3: #e08566;
+  --nvis-chart-color-alt-4: #85c285;
+  --nvis-chart-color-alt-5: #c285c2;
+  --nvis-chart-color-alt-6: #85c2ff;
+  --nvis-chart-color-alt-7: #f585ad;
+  --nvis-chart-color-alt-8: #856685;
 }
 
 .nvis-template {
@@ -55,6 +63,7 @@
 .nvis-expandable summary {
   font-weight: bold;
   cursor: pointer;
+  width: max-content;
 }
 
 .nvis-expandable summary::marker {
@@ -121,6 +130,8 @@
 .nvis-template [data-tooltip] {
   --background: rgba(0,0,0,0.9);
 
+  border-bottom: dotted 1px;
+  cursor: help;
   position: relative;
 }
 
