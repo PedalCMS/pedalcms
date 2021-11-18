@@ -16,6 +16,10 @@ add_action('wp_enqueue_scripts', __NAMESPACE__ . '\register_assets');
  * @return void
  */
 function register_assets() {
+    if (nvis_prog_is_active_subpage('careers')) {
+        wp_enqueue_style('nvis-careers-base');
+    }
+
     if (!is_admin()) {
         $global = '/assets/css/global.css';
         wp_enqueue_style(
