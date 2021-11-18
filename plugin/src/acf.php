@@ -10,6 +10,7 @@ namespace InvisibleUs\Programs;
 
 add_action('plugins_loaded', __NAMESPACE__ . '\maybe_load_acf');
 add_action('acf/init', __NAMESPACE__ . '\acf_init');
+add_action('plugins_loaded', __NAMESPACE__ . '\maybe_load_acf', 0);
 add_filter('acf/update_value/type=relationship', __NAMESPACE__ . '\maybe_update_bidirectional_relationship', 10, 3);
 
 
