@@ -187,14 +187,30 @@
 
 .program-careers-subpage .career {
   padding: 0;
-  margin-bottom: calc(4 * var(--nvis-spacing));
+  margin-bottom: calc(2 * var(--nvis-spacing));
 }
 
 .program-careers-subpage .career-header {
   margin-bottom: calc(0.5 * var(--nvis-spacing));
+  width: 100%;
 }
 .program-careers-subpage .career-title {
   margin-bottom: 0;
+}
+
+.program-careers-subpage .career-content {
+  width: 100%;
+  flex-direction: column;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+/* .program-careers-subpage .career-description {
+  margin-bottom: var(--nvis-spacing);
+} */
+
+.program-careers-subpage .career-footer {
+  width: max-content;
 }
 
 .nvis-template .program-faq__question {
