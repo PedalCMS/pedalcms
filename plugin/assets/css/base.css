@@ -103,6 +103,11 @@
   width: var(--nvis-sidebar-width);
 }
 
+.program-sidebar .back-to-top {
+  display: inline-block;
+  margin-top: calc(2 * var(--nvis-spacing));
+}
+
 .program-sidebar__title {
   font-size: 1.75em;
   margin-bottom: calc(0.5 * var(--nvis-spacing));
@@ -191,7 +196,8 @@
 }
 
 .program-careers-subpage .career-header {
-  margin-bottom: calc(0.5 * var(--nvis-spacing));
+  border-bottom: none;
+  margin-bottom: 0;
   width: 100%;
 }
 .program-careers-subpage .career-title {
@@ -199,15 +205,12 @@
 }
 
 .program-careers-subpage .career-content {
-  width: 100%;
-  flex-direction: column;
   break-after: avoid;
-  page-break-after: avoid;
-}
-
-/* .program-careers-subpage .career-description {
+  flex-direction: column;
   margin-bottom: var(--nvis-spacing);
-} */
+  page-break-after: avoid;
+  width: 100%;
+}
 
 .program-careers-subpage .career-footer {
   width: max-content;
