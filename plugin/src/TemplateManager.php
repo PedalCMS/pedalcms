@@ -115,7 +115,7 @@ class TemplateManager {
         }
 
         /**
-         * Filters the value of an existing option before it is retrieved.
+         * Filters the location of a template.
          *
          * @since 0.1.0
          *
@@ -123,7 +123,7 @@ class TemplateManager {
          * @param string $name The template name.
          */
         return apply_filters(
-            'nvis_prog/locate_template',
+            'nvis/locate_template',
             sprintf($pattern, self::$base_path, $template),
             $template
         );
@@ -140,6 +140,19 @@ class TemplateManager {
         $path = TemplateManager::locate_template($template);
 
         if (file_exists($path)) {
+            /**
+             * Filters the template args.
+             *
+             * @since 0.1.0
+             *
+             * @param array  $template_path The array of template args.
+             * @param string $template The template name.
+             */
+            $args = apply_filters(
+                'nvis/template_args',
+                $args,
+                $template
+            );
             include $path;
         } else {
             // TODO: Error handling
