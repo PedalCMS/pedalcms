@@ -35,11 +35,24 @@
 
 .nvis-template .button {
   display: inline-block;
+}
+
+.nvis-template .entry-content .button {
   text-decoration: none;
 }
 
 .nvis-template .footnote-text {
   font-size: 0.9em;
+}
+
+.nvis-template .back-to-top {
+  text-decoration: underline;
+}
+
+.nvis-template .back-to-top::before {
+  content: '\27A6';
+  display: inline-block;
+  transform: rotate(-90deg) scale(1.25, 1.5); 
 }
 
 .nvis-template .page-header {
@@ -58,6 +71,11 @@
 
 .nvis-template .pagination {
   margin: calc(2 * var(--nvis-spacing)) 0;
+}
+
+.nvis-sidebar .nvis-sidebar__content {
+  position: sticky;
+  top: calc(2 * var(--nvis-spacing));
 }
 
 .nvis-expandable summary {

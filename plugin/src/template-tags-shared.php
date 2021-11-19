@@ -2,7 +2,7 @@
 /**
  * Template tags shared across the plugin suite.
  *
- * @package NVISPrograms
+ * @package NVISCareers
  * @since 0.1.0
  */
 
@@ -63,5 +63,58 @@ if (!function_exists('nvis_is_filtered_results')):
         is_post_type_archive($post_type) &&
         (is_search() || is_tax());
  }
+
+endif;
+
+
+if (!function_exists('nvis_article_id_attr')):
+/**
+ * Generates the id attribute for the article element of a post.
+ *
+ * @param mixed $post_id The id of the post.
+ * @return string The id attribute string, not including the id declaration.
+ */
+function nvis_article_id_attr($post_id = 0, bool $echo = false): string {
+    if (!$post_id) {
+        $post_id = get_the_ID();
+    }
+
+    $id = apply_filters(
+        'nvis/article_id_attr',
+        'article-' . $post_id,
+        $post_id
+    );
+
+    if ($echo) {
+        echo $id;
+    }
+
+    return $id;
+}
+
+endif;
+
+
+if (!function_exists('nvis_back_to_top_link')):
+/** */
+function nvis_back_to_top_link(string $target = '', bool $echo = true): string {
+    if (!$target) {
+        $target = nvis_article_id_attr('', false);
+    }
+
+    $text = apply_filters('nvis/back_to_top_text', 'Back to Top');
+
+    $link = sprintf(
+        '<a class="back-to-top" href="#%s">%s</a>',
+        esc_attr($target),
+        esc_html($text)
+    );
+
+    if ($echo) {
+        echo $link;
+    }
+
+    return $link;
+}
 
 endif;
