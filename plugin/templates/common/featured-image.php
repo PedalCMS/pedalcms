@@ -30,7 +30,7 @@ $classes = [
     $args['image_wrapper_class']
 ];
 
-if (has_post_thumbnail() && $args['display_image']) : ?>
+if ($args['show_image'] && has_post_thumbnail()) : ?>
 <div class="featured-image <?php echo $align_class; ?>">
     <?php the_post_thumbnail($args['image_size'], $args['image_attributes']); ?>
 </div>
