@@ -14,11 +14,7 @@ $post = $args['post'] ?? null;
 if ($post) :?>
 <article <?php post_class('', $post); ?>>
 
-    <?php if (has_post_thumbnail($post)):?>
-    <div class="program-featured-image">
-        <?php echo get_the_post_thumbnail($post, 'medium'); ?>
-    </div>
-    <?php endif; ?>
+    <?php nvis_prog_get_template_part('common/post-featured-image', ['image_size' => 'medium', 'image_align' => 'left']); ?>
 
     <div class="program-info">
         <header>
