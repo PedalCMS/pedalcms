@@ -10,7 +10,7 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'display_image'       => true,
+    'show_image'          => true,
     'image_size'          => 'medium',
     'image_align'         => 'right',
     'image_wrapper_class' => '',
