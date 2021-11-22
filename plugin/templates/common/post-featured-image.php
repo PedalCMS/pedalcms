@@ -38,20 +38,15 @@ $show_image = $args['show_image'] && (
     !empty($args['fallback_attachment_id'])
 );
 
-if ($show_image) : ?>
-<div
-    class="<?php echo implode(' ', $classes); ?>">
-    <?php
-    if (has_post_thumbnail($post)) :
-        echo get_the_post_thumbnail($post, $args['image_size'], $args['image_attributes']);
-    elseif (!empty($args['fallback_attachment_id'])) :
-        echo wp_get_attachment_image(
+if ($show_image) :
+    echo sprintf(
+        '<div class="%s">%s</div>',
+        implode(' ', $classes),
+        nvis_post_thumbnail_or_fallback(
+            $post,
             $args['fallback_attachment_id'],
             $args['image_size'],
-            false,
             $args['image_attributes']
-        );
-    endif;
-    ?>
-</div>
-<?php endif;
+        )
+    );
+endif;
