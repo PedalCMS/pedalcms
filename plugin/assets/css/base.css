@@ -25,12 +25,14 @@
   padding: 0 0 0 var(--nvis-spacing);
 }
 
-.programs-list .program-featured-image {
+.programs-list .featured-image {
+  flex: 30%;
   margin-left: calc(-1 * var(--nvis-spacing));
+  margin-right: 0;
 }
 
 .programs-list .program-info {
-  flex-grow: 2;
+  flex: 2 1 50%;
   padding: var(--nvis-spacing) 0;
 }
 
@@ -43,6 +45,7 @@
 }
 
 .programs-list .program-actions {
+  flex: 20%;
   padding: var(--nvis-spacing);
   padding-left: 0;
 }
@@ -54,13 +57,17 @@
   width: 100%;
 }
 
-.single-program-page-header .program-featured-image {
-  float: right;
+.page-header .page-title {
+  margin: calc(3 * var(--nvis-spacing)) 0 0;
+  clear: none;
 }
 
-.single-program-page-header h1 {
-  clear: left;
+.page-header__title-group {
   margin: calc(3 * var(--nvis-spacing)) 0 0;
+}
+
+.page-header__title-group .page-title {
+  margin-top: 0;
 }
 
 .single-nvis_program .program-meta {
