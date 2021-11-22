@@ -15,7 +15,15 @@
 
 defined('ABSPATH') || exit;
 
+$defaults = [
+    'show_breadcrumbs'         => true,
+    'breadcrumb_wrapper_id'    => 'breadcrumbs',
+    'breadcrumb_wrapper_class' => 'breadcrumbs'
+];
 
+$args = wp_parse_args($args, $defaults);
+
+if ($args['show_breadcrumbs']) :
 /**
  * Fires before the breadcrumbs are loaded.
  *
@@ -25,8 +33,9 @@ defined('ABSPATH') || exit;
 do_action('nvis/programs/before_breadcrumbs');
 
 ?>
-<div id="breadcrumbs" class="breadcrumbs nvis-breadcrumbs">
-  <?php
+<div id="<?php echo esc_attr($args['breadcrumb_wrapper_id']); ?>"
+    class="nvis-breadcrumbs <?php echo esc_attr($args['breadcrumb_wrapper_class']); ?>">
+    <?php
     if (function_exists('bcn_display')) {
         bcn_display();
     } elseif (function_exists('yoast_breadcrumb')) {
@@ -46,3 +55,5 @@ do_action('nvis/programs/before_breadcrumbs');
  *
  */
 do_action('nvis/programs/after_breadcrumbs');
+
+endif;
