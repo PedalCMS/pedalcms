@@ -12,11 +12,12 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 
 $defaults = [
-    'show_image'          => true,
-    'image_size'          => 'medium',
-    'image_align'         => 'right',
-    'image_wrapper_class' => '',
-    'image_attributes'    => '',
+    'show_image'             => true,
+    'image_size'             => 'medium',
+    'image_align'            => 'right',
+    'image_wrapper_class'    => '',
+    'image_attributes'       => '',
+    'fallback_attachment_id' => ''
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -32,9 +33,25 @@ $classes = [
     esc_attr($args['image_wrapper_class'])
 ];
 
-if ($args['show_image'] && has_post_thumbnail($post)) : ?>
+$show_image = $args['show_image'] && (
+    has_post_thumbnail($post) ||
+    !empty($args['fallback_attachment_id'])
+);
+
+if ($show_image) : ?>
 <div
     class="<?php echo implode(' ', $classes); ?>">
-    <?php echo get_the_post_thumbnail($post, $args['image_size'], $args['image_attributes']); ?>
+    <?php
+    if (has_post_thumbnail($post)) :
+        echo get_the_post_thumbnail($post, $args['image_size'], $args['image_attributes']);
+    elseif (!empty($args['fallback_attachment_id'])) :
+        echo wp_get_attachment_image(
+            $args['fallback_attachment_id'],
+            $args['image_size'],
+            false,
+            $args['image_attributes']
+        );
+    endif;
+    ?>
 </div>
 <?php endif;
