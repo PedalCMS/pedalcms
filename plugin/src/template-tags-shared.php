@@ -118,3 +118,22 @@ function nvis_back_to_top_link(string $target = '', bool $echo = true): string {
 }
 
 endif;
+
+
+if (!function_exists('nvis_post_thumbnail_or_fallback')) :
+
+function nvis_post_thumbnail_or_fallback($post, $fallback_id, $size = 'medium', $attrs = ''): string {
+    $post = get_post($post);
+
+    if (has_post_thumbnail($post)) {
+        return get_the_post_thumbnail($post, $size, $attrs);
+    }
+
+    if ($fallback_id) {
+        return wp_get_attachment_image($fallback_id, $size, false, $attrs);
+    }
+
+    return '';
+}
+
+endif;
