@@ -9,12 +9,14 @@
 
 defined('ABSPATH') || exit;
 
+$post = nvis_args_or_global('post', $args);
+
 $defaults = [
     'show_image'          => true,
     'image_size'          => 'medium',
     'image_align'         => 'right',
     'image_wrapper_class' => '',
-    'image_attributes'    => ''
+    'image_attributes'    => '',
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -27,11 +29,12 @@ $align_class = 'align' . $align_class;
 $classes = [
     'featured-image',
     $align_class,
-    $args['image_wrapper_class']
+    esc_attr($args['image_wrapper_class'])
 ];
 
-if ($args['show_image'] && has_post_thumbnail()) : ?>
-<div class="featured-image <?php echo $align_class; ?>">
-    <?php the_post_thumbnail($args['image_size'], $args['image_attributes']); ?>
+if ($args['show_image'] && has_post_thumbnail($post)) : ?>
+<div
+    class="<?php echo implode(' ', $classes); ?>">
+    <?php echo get_the_post_thumbnail($post, $args['image_size'], $args['image_attributes']); ?>
 </div>
 <?php endif;
