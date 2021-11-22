@@ -16,7 +16,10 @@ nvis_prog_get_template_part('common/header');
 <article
 	id="<?php nvis_article_id_attr('', true); ?>"
 	<?php post_class(); ?>>
-	<?php nvis_prog_get_template_part('single-program/page-header'); ?>
+	<?php
+    nvis_prog_get_template_part('common/breadcrumbs');
+    nvis_prog_get_template_part('single-program/page-header');
+    ?>
 	<div class="program-main entry-content">
 		<?php nvis_prog_get_template_part('single-program/subpages/' . nvis_prog_get_active_subpage()); ?>
 	</div>
