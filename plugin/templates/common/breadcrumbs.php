@@ -29,9 +29,10 @@ if ($args['show_breadcrumbs']) :
  *
  * @since 0.1
  *
+ * @param $args The array of args for the template.
+ *
  */
-do_action('nvis/programs/before_breadcrumbs');
-
+do_action('nvis/programs/before_breadcrumbs', $args);
 ?>
 <div id="<?php echo esc_attr($args['breadcrumb_wrapper_id']); ?>"
     class="nvis-breadcrumbs <?php echo esc_attr($args['breadcrumb_wrapper_class']); ?>">
@@ -53,7 +54,9 @@ do_action('nvis/programs/before_breadcrumbs');
  *
  * @since 0.1
  *
+ * @param $args The array of args for the template.
+ *
  */
-do_action('nvis/programs/after_breadcrumbs');
+do_action('nvis/programs/after_breadcrumbs', $args);
 
 endif;
