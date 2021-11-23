@@ -325,6 +325,21 @@
   line-height: 1.4;
 }
 
+body.single-nvis_person .person-main {
+  --margin: calc(2 * var(--nvis-spacing));
+
+  display: flex;
+  gap: var(--margin);
+}
+
+body.single-nvis_person .person-content {
+  width: calc(100% - var(--nvis-sidebar-width) - var(--margin));
+}
+
+body.single-nvis_person .person-sidebar {
+  width: var(--nvis-sidebar-width); 
+}
+
 .single-person-page-header--classic::after {
   display: block;
   content: '';
@@ -338,7 +353,6 @@
 }
 
 .single-person-page-header--classic .entry-title {
-  clear: left;
   margin: calc(3 * var(--nvis-spacing)) 0 0;
 }
 

@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $size = $args['img_size'] ?? 'medium';
 $post = $args['post'] ?? get_post();
 ?>
-<div class="person-featured-image">
+<div class="person-featured-image featured-image">
     <a href="<?php echo esc_url(get_permalink($post)); ?>">
         <?php
     if (has_post_thumbnail($post)):
