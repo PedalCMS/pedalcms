@@ -5,19 +5,23 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 
 $defaults = [
-    'show_backdrop'          => false,
-    'backdrop_size'          => 'large',
-    'fallback_attachment_id' => ''
+    'attachment_id'    => 0,
+    'show_backdrop'    => false,
+    'backdrop_size'    => 'large',
+    'fallback_to_post' => true,
 ];
 
 $args = wp_parse_args($args, $defaults);
 
+if (empty($args['attachment_id']) && $args['fallback_to_post']) {
+    $args['attachment_id'] = get_post_thumbnail_id($post);
+}
+
 if ($args['show_backdrop']) :
     echo sprintf(
         '<div class="page-header__backdrop">%s</div>',
-        nvis_post_thumbnail_or_fallback(
-            $post,
-            $args['fallback_attachment_id'],
+        wp_get_attachment_image(
+            $args['attachment_id'],
             $args['backdrop_size']
         )
     );
