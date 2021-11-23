@@ -2,7 +2,7 @@
 /**
  * Template tags shared across the plugin suite.
  *
- * @package NVISCareers
+ * @package NVISPrograms
  * @since 0.1.0
  */
 
