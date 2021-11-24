@@ -9,22 +9,32 @@
 
 defined('ABSPATH') || exit;
 
-$post = $args['post'] ?? null;
-$classes = ['related-post'];
-$is_featured = $args['is_featured'] ?? false;
+$defaults = [
+    'post'             => null,
+    'is_featured'      => false,
+    'show_image'       => true,
+    'show_permalink'   => true,
+];
 
-if ($is_featured) {
-    $classes[] = 'related-post--featured';
-}
+$args = wp_parse_args($args, $defaults);
 
-if (has_post_thumbnail($post)) {
-    $classes[] = 'related-post--has-image';
-}
+if ($args['post']) :
+    $post = $args['post'];
+    $classes = ['related-post'];
 
-if ($post) :?>
+    if ($args['is_featured']) {
+        $classes[] = 'related-post--featured';
+    }
+
+    if (has_post_thumbnail($post)) {
+        $classes[] = 'related-post--has-image';
+    }
+
+?>
 <article
     class="<?php echo implode(' ', $classes); ?>">
-    <?php if (has_post_thumbnail($post)) : ?>
+
+    <?php if ($args['show_image'] && has_post_thumbnail($post)) : ?>
     <div class="related-post__image-wrapper">
         <?php echo get_the_post_thumbnail($post, 'medium', ['class' => 'related-post__image']); ?>
     </div>
@@ -41,14 +51,16 @@ if ($post) :?>
         </header>
         <div class="related-post__content"><?php echo get_the_excerpt($post); ?>
         </div>
-        <?php // TODO: Make this optional and filterable.
-            ?>
+
+        <?php if ($args['show_permalink']): ?>
         <p class="related-post__more">
             <a class="related-post__more-link"
                 href="<?php echo esc_url(get_permalink($post)); ?>">
                 Read More
             </a>
         </p>
+        <?php endif; ?>
+
     </div>
 </article>
 <?php endif;
