@@ -10,10 +10,13 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'post'             => null,
-    'is_featured'      => false,
-    'show_image'       => true,
-    'show_permalink'   => true,
+    'post'                => null,
+    'is_featured'         => false,
+    'show_image'          => true,
+    'show_permalink'      => true,
+    'image_align'         => 'right',
+    'image_size'          => 'thumbnail',
+    'image_wrapper_class' => 'related-post__image-wrapper'
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -34,11 +37,11 @@ if ($args['post']) :
 <article
     class="<?php echo implode(' ', $classes); ?>">
 
-    <?php if ($args['show_image'] && has_post_thumbnail($post)) : ?>
-    <div class="related-post__image-wrapper">
-        <?php echo get_the_post_thumbnail($post, 'medium', ['class' => 'related-post__image']); ?>
-    </div>
-    <?php endif; ?>
+    <?php
+    if ($args['show_image'] && has_post_thumbnail($post)) :
+        nvis_prog_get_template_part('common/post-featured-image', $args);
+    endif;
+    ?>
 
     <div class="related-post__wrapper">
         <header class="related-post__header">
