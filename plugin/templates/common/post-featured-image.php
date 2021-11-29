@@ -13,6 +13,7 @@ $post = nvis_args_or_global('post', $args);
 
 $defaults = [
     'show_image'             => true,
+    'link_image'             => false,
     'image_size'             => 'medium',
     'image_align'            => 'right',
     'image_wrapper_class'    => '',
@@ -39,14 +40,25 @@ $show_image = $args['show_image'] && (
 );
 
 if ($show_image) :
-    echo sprintf(
-        '<div class="%s">%s</div>',
-        implode(' ', $classes),
-        nvis_post_thumbnail_or_fallback(
-            $post,
-            $args['fallback_attachment_id'],
-            $args['image_size'],
-            $args['image_attributes']
-        )
+    $image = nvis_post_thumbnail_or_fallback(
+        $post,
+        $args['fallback_attachment_id'],
+        $args['image_size'],
+        $args['image_attributes']
     );
+
+    if ($args['link_image']) :
+        echo sprintf(
+            '<div class="%s"><a href="%s">%s</a></div>',
+            implode(' ', $classes),
+            get_the_permalink($post),
+            $image
+        );
+    else:
+        echo sprintf(
+            '<div class="%s">%s</div>',
+            implode(' ', $classes),
+            $image
+        );
+    endif;
 endif;
