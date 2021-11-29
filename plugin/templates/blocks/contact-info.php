@@ -11,16 +11,23 @@
 
 defined('ABSPATH') || exit;
 
-$post = $args['post'] ?? null;
-$show_office = $args['show_office'] ?? true;
-$show_labels = $args['show_labels'] ?? false;
+$post = nvis_args_or_global('post', $args);
+
+$defaults = [
+    'show_phone'  => true,
+    'show_email'  => true,
+    'show_office' => true,
+    'show_labels' => false,
+];
+
+$args = wp_parse_args($args, $defaults);
 
 if ($post):
 ?>
 <div class="contact-info">
-    <?php if ($post->office_phone) : ?>
+    <?php if ($args['show_phone'] && $post->office_phone) : ?>
     <div class="contact-info__field">
-        <?php if ($show_labels): ?>
+        <?php if ($args['show_labels']): ?>
         <span class="contact-info__label label">Phone<span class="separator">:</span></span>
         <?php endif; ?>
 
@@ -28,9 +35,9 @@ if ($post):
     </div>
     <?php endif; ?>
 
-    <?php if ($post->email_address) : ?>
+    <?php if ($args['show_email'] && $post->email_address) : ?>
     <div class="contact-info__field">
-        <?php if ($show_labels): ?>
+        <?php if ($args['show_labels']): ?>
         <span class="contact-info__label label">Email<span class="separator">:</span></span>
         <?php endif; ?>
 
@@ -39,14 +46,15 @@ if ($post):
     </div>
     <?php endif; ?>
 
-    <?php if ($post->office && $show_office) : ?>
+    <?php if ($args['show_office'] && $post->office) : ?>
     <div class="contact-info__phone">
-        <?php if ($show_labels): ?>
+        <?php if ($args['show_labels']): ?>
         <span class="contact-info__label label">Office<span class="separator">:</span></span>
         <?php endif; ?>
 
         <?php echo esc_html($post->office); ?>
     </div>
     <?php endif; ?>
+
 </div>
 <?php endif;
