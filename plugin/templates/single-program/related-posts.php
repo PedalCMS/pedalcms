@@ -9,39 +9,46 @@
 
 defined('ABSPATH') || exit;
 
-$featured_posts = get_field('news_featured_posts');
-$is_featured = true;
-
+// TODO: Figure out how to prevent unnecessary DB calls here (when args passed).
+$post = nvis_args_or_global('post', $args);
+$featured_posts = get_field('news_featured_posts', $post);
 $not_in = !empty($featured_posts) ?
     array_column($featured_posts, 'ID') :
     [];
 
-$posts = nvis_prog_get_related_posts(
-    null,
-    $not_in
-);
+$defaults = [
+    'featured_posts'      => $featured_posts,
+    'posts'               => nvis_prog_get_related_posts($post, $not_in),
+    'news_tag'            => get_field('news_tag', $post),
+    'show_all_posts_link' => get_field('news_show_all_link', $post),
+];
 
-if (!empty($featured_posts) || !empty($posts)) : ?>
+$args = wp_parse_args($args, $defaults);
 
-<?php if (!empty($featured_posts)) : ?>
+if (!empty($args['featured_posts']) || !empty($args['posts'])) : ?>
+
+<?php if (!empty($args['featured_posts'])) : ?>
 <div class="related-post-list related-post-list--featured">
-    <?php foreach ($featured_posts as $post) : ?>
-    <?php nvis_prog_get_template_part('single-program/news-item', compact('post', 'is_featured')); ?>
-    <?php endforeach; ?>
+    <?php
+    foreach ($args['featured_posts'] as $p) :
+        nvis_prog_get_template_part('single-program/news-item', ['post' => $p, 'is_featured' => true]);
+    endforeach;
+    ?>
 </div>
 <?php endif; ?>
 
-<?php if (!empty($posts)) : ?>
+<?php if (!empty($args['posts'])) : ?>
 <div class="related-post-list">
-    <?php foreach ($posts as $post) : ?>
-    <?php nvis_prog_get_template_part('single-program/news-item', compact('post')); ?>
-    <?php endforeach; ?>
+    <?php
+    foreach ($args['posts'] as $p) :
+        nvis_prog_get_template_part('single-program/news-item', ['post' => $p]);
+    endforeach; ?>
 </div>
 <?php endif; ?>
 
-<?php if (get_field('news_show_all_link')) :?>
+<?php if ($args['show_all_posts_link']) :?>
 <a
-    href="<?php echo esc_url(get_term_link(get_field('news_tag'))); ?>">Show
+    href="<?php echo esc_url(get_term_link($args['news_tag'])); ?>">Show
     all posts</a>
 <?php endif; ?>
 
