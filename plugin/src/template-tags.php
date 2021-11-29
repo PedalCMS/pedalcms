@@ -102,7 +102,7 @@ function nvis_prog_subpage_link(string $subpage, bool $echo = true): string {
  * @param mixed $program The ID of the program or a Post object.
  * @return string The URL of the program action.
  */
-function nvis_prog_get_action_link(string $action, mixed $program = null): string {
+function nvis_prog_get_action_link(string $action, $program = null): string {
     // TODO: Move this to Plugin class.
     $program = get_post($program);
 
@@ -178,7 +178,7 @@ function nvis_prog_get_course_action_link(string $action, $course): string {
  * @param mixed $program Program to check for news posts. Either ID or WP_Post.
  * @return array An ACF repeater field with deadline_label and deadline_info subfields.
  */
-function nvis_prog_the_application_deadlines(mixed $program = null): array {
+function nvis_prog_the_application_deadlines($program = null): array {
     return \InvisibleUs\Programs\Program::get_application_deadlines($program);
 }
 
@@ -191,7 +191,7 @@ function nvis_prog_the_application_deadlines(mixed $program = null): array {
  * @param array $not_in List of ids to exclude from the results.
  * @return array List of WP_Posts that match the Program's tag.
  */
-function nvis_prog_get_related_posts(mixed $post = null, array $not_in): array {
+function nvis_prog_get_related_posts($post = null, array $not_in): array {
     return \InvisibleUs\Programs\Program::get_related_posts($post, $not_in);
 }
 
