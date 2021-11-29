@@ -31,6 +31,12 @@
   margin-right: 0;
 }
 
+.programs-list .featured-image img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
 .programs-list .program-info {
   flex: 2 1 50%;
   padding: var(--nvis-spacing) 0;
@@ -131,7 +137,7 @@
 }
 
 .program-deadlines {
-  margin: calc(1.5 * var(--nvis-spacing)) 0;
+  margin: calc(2 * var(--nvis-spacing)) 0;
 }
 
 .program-deadlines__list {
@@ -160,13 +166,18 @@
   font-style: italic;
 }
 
+body.single-nvis_program .program-lead-content {
+  margin-bottom: calc(4 * var(--nvis-spacing));
+}
+
 .program-faculty-staff-list .person-list {
   --image-width: 100px;
+  --spacing: calc(2 * var(--nvis-spacing));
 
   display: flex;
   flex-direction: column;
-  gap: var(--nvis-spacing);
-  margin: 0 0 calc(2 * var(--nvis-spacing));
+  gap: calc(2 * var(--nvis-spacing));
+  margin: 0 0 calc(4 * var(--nvis-spacing));
 }
 
 .program-faculty-staff-list .person-list .nvis_person {
@@ -203,10 +214,20 @@
 }
 
 .program-careers-subpage .career-header {
-  border-bottom: none;
-  margin-bottom: 0;
+  border-bottom: solid 1px #ccc;
+  margin-bottom: var(--nvis-spacing);
+  padding: 0;
   width: 100%;
 }
+
+body.single-nvis_program .career-header a {
+  text-decoration: none;
+}
+
+body.single-nvis_program .career-header a:hover {
+  text-decoration: underline;
+}
+
 .program-careers-subpage .career-title {
   margin-bottom: 0;
 }
@@ -239,13 +260,29 @@
   margin-bottom: calc(2 * var(--nvis-spacing));
 }
 
+.nvis_program .courses-table thead th:first-child {
+  text-align: left;
+}
+
+.nvis_program .courses-table thead th:last-child {
+  width: 10%;
+}
+
+.nvis_program .courses-table tbody tr td:last-child {
+  text-align: center;
+}
+
 .related-post {
   display: flex;
   gap: calc(2 * var(--nvis-spacing));
   margin-bottom: calc(4 * var(--nvis-spacing));
 }
 
-.related-post--has-image {
+.related-post .featured-image {
+  margin: 0;
+}
+
+.related-post--has-image.related-post--image-right {
   flex-direction: row-reverse;
 }
 
@@ -255,6 +292,11 @@
 
 .related-post__image-wrapper {
   width: 30%;
+}
+
+.related-post__header {
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .related-post__title {
