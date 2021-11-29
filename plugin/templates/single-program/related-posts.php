@@ -47,9 +47,9 @@ if (!empty($args['featured_posts']) || !empty($args['posts'])) : ?>
 <?php endif; ?>
 
 <?php if ($args['show_all_posts_link']) :?>
-<a
+<a class="button button-secondary"
     href="<?php echo esc_url(get_term_link($args['news_tag'])); ?>">Show
-    all posts</a>
+    All Posts</a>
 <?php endif; ?>
 
 <?php else : ?>
