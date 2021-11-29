@@ -12,16 +12,19 @@ defined('ABSPATH') || exit;
 $defaults = [
     'post'                => null,
     'is_featured'         => false,
+    'show_featured_label' => false,
     'show_image'          => true,
+    'show_category'       => true,
     'show_excerpt'        => true,
     'show_permalink'      => true,
     'image_align'         => 'right',
-    'image_size'          => 'thumbnail',
+    'image_size'          => 'small',
     'image_wrapper_class' => 'related-post__image-wrapper',
 ];
 
 $args = wp_parse_args($args, $defaults);
 $args['context'] = $template;
+$args['link_image'] = true;
 
 if ($args['post']) :
     $post = $args['post'];
@@ -34,6 +37,8 @@ if ($args['post']) :
     if (has_post_thumbnail($post)) {
         $classes[] = 'related-post--has-image';
     }
+
+    $classes[] = 'related-post--image-' . esc_attr($args['image_align']);
 
 ?>
 <article
@@ -53,6 +58,16 @@ if ($args['post']) :
                     <?php echo get_the_title($post); ?>
                 </a>
             </h3>
+
+            <?php if ($args['is_featured'] && $args['show_featured_label']) : ?>
+            <span class="related-post__title-label label">Featured</span>
+            <?php endif; ?>
+
+            <?php
+            if ($args['show_category']) :
+                the_terms($post, 'category', '<span class="related-post__category">', ',', '</span>');
+            endif;
+            ?>
         </header>
 
         <?php if ($args['show_excerpt']): ?>
