@@ -13,13 +13,15 @@ $defaults = [
     'post'                => null,
     'is_featured'         => false,
     'show_image'          => true,
+    'show_excerpt'        => true,
     'show_permalink'      => true,
     'image_align'         => 'right',
     'image_size'          => 'thumbnail',
-    'image_wrapper_class' => 'related-post__image-wrapper'
+    'image_wrapper_class' => 'related-post__image-wrapper',
 ];
 
 $args = wp_parse_args($args, $defaults);
+$args['context'] = $template;
 
 if ($args['post']) :
     $post = $args['post'];
@@ -52,8 +54,11 @@ if ($args['post']) :
                 </a>
             </h3>
         </header>
+
+        <?php if ($args['show_excerpt']): ?>
         <div class="related-post__content"><?php echo get_the_excerpt($post); ?>
         </div>
+        <?php endif; ?>
 
         <?php if ($args['show_permalink']): ?>
         <p class="related-post__more">
