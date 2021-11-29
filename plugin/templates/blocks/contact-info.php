@@ -14,10 +14,13 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 
 $defaults = [
-    'show_phone'  => true,
-    'show_email'  => true,
-    'show_office' => true,
-    'show_labels' => false,
+    'office_phone'  => $post->office_phone,
+    'email_address' => $post->email_address,
+    'office'        => $post->office,
+    'show_phone'    => true,
+    'show_email'    => true,
+    'show_office'   => true,
+    'show_labels'   => false,
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -25,34 +28,34 @@ $args = wp_parse_args($args, $defaults);
 if ($post):
 ?>
 <div class="contact-info">
-    <?php if ($args['show_phone'] && $post->office_phone) : ?>
+    <?php if ($args['show_phone'] && $args['office_phone']) : ?>
     <div class="contact-info__field">
         <?php if ($args['show_labels']): ?>
         <span class="contact-info__label label">Phone<span class="separator">:</span></span>
         <?php endif; ?>
 
-        <span class="contact-info__phone"><?php echo esc_html($post->office_phone); ?></span>
+        <span class="contact-info__phone"><?php echo esc_html($args['office_phone']); ?></span>
     </div>
     <?php endif; ?>
 
-    <?php if ($args['show_email'] && $post->email_address) : ?>
+    <?php if ($args['show_email'] && $args['email_address']) : ?>
     <div class="contact-info__field">
         <?php if ($args['show_labels']): ?>
         <span class="contact-info__label label">Email<span class="separator">:</span></span>
         <?php endif; ?>
 
         <a class="contact-info__email"
-            href="mailto:<?php echo antispambot($post->email_address, true); ?>"><?php echo antispambot($post->email_address); ?></a>
+            href="mailto:<?php echo antispambot($args['email_address'], true); ?>"><?php echo antispambot($args['email_address']); ?></a>
     </div>
     <?php endif; ?>
 
-    <?php if ($args['show_office'] && $post->office) : ?>
+    <?php if ($args['show_office'] && $args['office']) : ?>
     <div class="contact-info__phone">
         <?php if ($args['show_labels']): ?>
         <span class="contact-info__label label">Office<span class="separator">:</span></span>
         <?php endif; ?>
 
-        <?php echo esc_html($post->office); ?>
+        <?php echo esc_html($args['office']); ?>
     </div>
     <?php endif; ?>
 
