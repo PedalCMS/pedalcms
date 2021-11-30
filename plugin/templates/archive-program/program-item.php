@@ -9,24 +9,48 @@
 
 defined('ABSPATH') || exit;
 
-$post = $args['post'] ?? null;
+$post = nvis_args_or_global('post', $args);
 
-if ($post) :?>
-<article <?php post_class('', $post); ?>>
+$defaults = [
+    'show_image'           => true,
+    'show_program_type'    => true,
+    'show_program_meta'    => true,
+    'show_program_actions' => true,
+    'wrapper_class'        => ''
+];
 
-    <?php nvis_prog_get_template_part('common/post-featured-image', ['image_size' => 'medium', 'image_align' => 'left']); ?>
+$args = wp_parse_args($args, $defaults);
 
-    <div class="program-info">
+if ($post) : ?>
+<article <?php post_class($args['wrapper_class'], $post); ?>>
+
+    <?php
+    if ($args['show_image']) :
+        nvis_prog_get_template_part('common/post-featured-image', ['post' => $post, 'image_size' => 'medium', 'image_align' => 'left', 'link_image' => true, 'context' => $template]);
+    endif;
+    ?>
+
+    <div class="program-info item-info">
         <header>
             <h2 class="program-title"><a
                     href="<?php echo get_the_permalink($post); ?>"><?php echo get_the_title($post); ?></a></h2>
-            <?php the_terms($post, 'nvis_program_type'); ?>
-        </header>
-        <?php nvis_prog_get_template_part('archive-program/program-meta', compact('post')); ?>
-    </div>
-    <?php
-                $add_permalink = get_permalink($post);
-                nvis_prog_get_template_part('single-program/program-actions', compact('add_permalink'));
+            <?php
+            if ($args['show_program_type']) :
+                the_terms($post, 'nvis_program_type', '<div class="program-type">', ',', '</div>');
+            endif;
             ?>
+        </header>
+        <?php
+        if ($args['show_program_meta']) :
+            nvis_prog_get_template_part('archive-program/program-meta', compact('post'));
+        endif;
+        ?>
+    </div>
+
+    <?php
+    if ($args['show_program_actions']) :
+        nvis_prog_get_template_part('single-program/program-actions', ['post' => $post, 'add_permalink' => true]);
+    endif;
+    ?>
 </article>
 <?php endif;
