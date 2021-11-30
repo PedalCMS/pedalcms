@@ -9,38 +9,43 @@
 
 defined('ABSPATH') || exit;
 
-// TODO: Figure out how to prevent unnecessary DB calls here (when args passed).
 $post = nvis_args_or_global('post', $args);
-$featured_posts = get_field('news_featured_posts', $post);
-$not_in = !empty($featured_posts) ?
-    array_column($featured_posts, 'ID') :
-    [];
 
 $defaults = [
-    'featured_posts'      => $featured_posts,
-    'posts'               => nvis_prog_get_related_posts($post, $not_in),
+    'featured_posts'      => null,
+    'posts'               => null,
     'news_tag'            => get_field('news_tag', $post),
     'show_all_posts_link' => get_field('news_show_all_link', $post),
 ];
 
 $args = wp_parse_args($args, $defaults);
 
-if (!empty($args['featured_posts']) || !empty($args['posts'])) : ?>
+$featured_posts = $args['featured_posts'] ?? get_field('news_featured_posts', $post);
+$posts = $args['posts'];
 
-<?php if (!empty($args['featured_posts'])) : ?>
+if (empty($posts) && $posts !== false) {
+    $not_in = !empty($featured_posts) ?
+        array_column($featured_posts, 'ID') :
+        [];
+    $posts = nvis_prog_get_related_posts($post, $not_in);
+}
+
+if (!empty($featured_posts) || !empty($posts)) : ?>
+
+<?php if (!empty($featured_posts)) : ?>
 <div class="related-post-list related-post-list--featured">
     <?php
-    foreach ($args['featured_posts'] as $p) :
+    foreach ($featured_posts as $p) :
         nvis_prog_get_template_part('single-program/news-item', ['post' => $p, 'is_featured' => true]);
     endforeach;
     ?>
 </div>
 <?php endif; ?>
 
-<?php if (!empty($args['posts'])) : ?>
+<?php if (!empty($posts)) : ?>
 <div class="related-post-list">
     <?php
-    foreach ($args['posts'] as $p) :
+    foreach ($posts as $p) :
         nvis_prog_get_template_part('single-program/news-item', ['post' => $p]);
     endforeach; ?>
 </div>
