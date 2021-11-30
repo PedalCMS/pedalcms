@@ -1,5 +1,31 @@
+body .nvis-template {
+    --header-padding: calc(3 * var(--nvis-spacing));
+}
+
+.nvis-post-filters input[type="text"],
+.nvis-post-filters input[type="search"],
+.nvis-post-filters select,
+.nvis-post-filters option {
+    background-color: #fff;
+    border: solid 1px #999;
+    color: #333;
+    font-size: 14px;
+    line-height: 1;
+    padding: 5px 10px;
+}
+
+.nvis-post-filters select {
+    width: fit-content;
+}
+
+.nvis-post-filters button {
+    font-size: 14px;
+    line-height: 1;
+    padding: 8px 16px;
+}
+
 body.single .nvis-template article:not(article article) {
-    --article-padding: calc(3 * var(--nvis-spacing));
+    --article-padding: var(--header-padding);
 
     padding: 0 var(--article-padding) var(--article-padding); 
     gap: var(--nvis-spacing);
@@ -11,16 +37,17 @@ body.single .nvis-template article:not(article article) {
     margin-bottom: -1px;
 }
 
-body.single .nvis-template .page-header {
+.nvis-template .page-header {
     --header-bg: linear-gradient(#000, #444); 
 
-    padding: 0 var(--article-padding);
+    padding: 0 var(--header-padding);
     background: var(--header-bg);
     color: #fff;
     position: relative;
     overflow: hidden;
     margin-left: calc(-1 * var(--article-padding));
     margin-right: calc(-1 * var(--article-padding));
+    min-height: 300px;
     width: calc(100% + (2 * var(--article-padding)));
 }
 
@@ -29,7 +56,7 @@ body.single .nvis-template .page-header {
     z-index: 1;
 }
 
-.nvis-template .page-header a {
+body.single .nvis-template .page-header a {
     color: #fff;
     text-shadow: 1px 1px 5px #000;
 }
@@ -39,7 +66,7 @@ body.single .nvis-template .page-header {
     flex-direction: column-reverse;
 }
 
-.nvis-template .page-header .page-title {
+.nvis-template .page-title {
     color: #fff;
     font-size: 42px;
     font-weight: bold;
@@ -94,6 +121,17 @@ body.single .nvis-template .page-header .contact-info {
 
 .nvis-template .page-header .nvis-meta-group a {
     text-decoration: underline;
+    border-radius: 2px;
+    display: inline-block;
+    line-height: 1;
+    padding: 2px;
+}
+
+.nvis-template .page-header .nvis-meta-group a:hover {
+    background: #fff;
+    color: #000;
+    text-decoration: none;
+    text-shadow: none;
 }
 
 .nvis-template .page-header .program-subnav {
@@ -122,7 +160,7 @@ body.single .nvis-template .page-header .contact-info {
     padding: 0.1em 0.2em 0.2em;
 }
 
-.page-header .program-type a:hover {
+body.single .nvis-template .page-header .program-type a:hover {
     background: var(--nvis-active-color);
     color: #fff;
     text-shadow: none;
@@ -150,3 +188,91 @@ body.single .nvis-template .page-header .contact-info {
 .nvis-template .program-main {
     width: calc(100% - var(--nvis-sidebar-width) - 4 * var(--nvis-spacing));
 }
+
+.archive .nvis-template article h2 {
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+.archive .programs-list header {
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: solid 1px #ddd;
+    padding: 0 0 var(--nvis-spacing);
+}
+
+.archive .programs-list .item-meta {
+    display: table;
+    font-size: 0.9em;
+}
+
+.archive .programs-list .item-meta__item {
+    display: table-row;
+}
+
+.archive .programs-list .item-meta .label {
+    display: table-cell;
+    padding-right: var(--nvis-spacing);
+}
+
+.archive .programs-list .item-meta .value {
+    display: table-cell;
+    font-weight: bold;
+}
+
+body.single-nvis_program .program-lead-content {
+    margin-bottom: calc(4 * var(--nvis-spacing));
+}
+
+body.single-nvis_program .career-category {
+    margin-bottom: 0.25em;
+}
+
+body.single-nvis_program .person-category__title {
+    border-bottom: solid 1px #ccc;
+}
+
+body.single-nvis_program .related-post {
+    --spacing: calc(2 * var(--nvis-spacing));
+
+    border-bottom: solid 1px #ccc;
+    margin-bottom: var(--spacing);
+    padding-bottom: var(--spacing);
+}
+
+body.single-nvis_program .related-post__title-label {
+    display: inline-block;
+    font-size: 0.75em;
+    line-height: 1;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+body.single-nvis_program .related-post__category a {
+    text-decoration: none;
+    margin-bottom: .1em;
+}
+
+.featured-image--zoom-hover {
+    overflow: hidden;
+    height: fit-content;
+}
+
+.featured-image--zoom-hover img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.25s;
+}
+
+.featured-image--zoom-hover img:hover {
+    filter: saturate(1.1) brightness(1.15);
+    transform: scale(1.2);
+    transition: all 1.5s;
+}
+
+/* body.single-nvis_program .nvis-sidebar .program-deadlines {
+    margin-bottom: calc(3 * var(--nvis-spacing));
+    margin-top: calc(3 * var(--nvis-spacing));
+} */
