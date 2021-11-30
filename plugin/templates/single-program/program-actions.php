@@ -30,7 +30,7 @@ $defaults = [
 $args = wp_parse_args($args, $defaults);
 
 if ($args['add_permalink']) {
-    $permalink = $permalink === true ? get_permalink($post) : $permalink;
+    $permalink = $args['add_permalink'] === true ? get_permalink($post) : $args['add_permalink'];
 
     array_unshift(
         $args['actions'],
