@@ -12,8 +12,13 @@ global $posts;
 
 nvis_prog_get_template_part('common/header'); ?>
 <div class="programs-archive-main">
-    <?php nvis_prog_get_template_part('archive-program/page-header'); ?>
-    <?php nvis_prog_get_template_part('archive-program/program-list', ['programs' => $posts]); ?>
-    <?php nvis_prog_get_template_part('common/pagination'); ?>
+    <?php
+        nvis_prog_get_template_part('common/breadcrumbs');
+        nvis_prog_get_template_part('archive-program/page-header');
+        nvis_prog_get_template_part('archive-program/filters');
+        nvis_prog_get_template_part('archive-program/num-results');
+        nvis_prog_get_template_part('archive-program/program-list', ['programs' => $posts]);
+        nvis_prog_get_template_part('common/pagination');
+    ?>
 </div>
 <?php nvis_prog_get_template_part('common/footer');
