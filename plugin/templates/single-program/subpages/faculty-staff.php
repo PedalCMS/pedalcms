@@ -9,59 +9,86 @@
 
 defined('ABSPATH') || exit;
 
-$show_contact_info_labels = true;
+$post = nvis_args_or_global('post', $args);
 
-if (nvis_prog_show_subpage('faculty-staff')) : ?>
+$defaults = [
+    'show_subpage'             => nvis_prog_show_subpage('faculty-staff'),
+    'subpage_title'            => 'Faculty &amp; Staff',
+    'show_contact_info_labels' => true,
+    'personnel'                => get_field('related_faculty_staff', $post),
+    'group_by_category'        => get_field('faculty_staff_by_category', $post),
+    'image_size'               => 'thumbnail'
+];
+
+$args = wp_parse_args($args, $defaults);
+
+if ($args['show_subpage']) : ?>
 <div class="program-faculty-staff-subpage program-subpage">
+  <h2 class="program-subpage__title"><?php echo esc_html($args['subpage_title']); ?>
+  </h2>
 
-  <h2 class="section-head">Faculty &amp; Staff</h2>
+  <div class="program-subpage__content">
 
-  <?php nvis_prog_get_template_part('single-program/subpages/lead-content'); ?>
+    <?php nvis_prog_get_template_part('single-program/subpages/lead-content'); ?>
 
-  <div class="program-faculty-staff-list">
-    <?php
-    $people = get_field('related_faculty_staff');
-
-    if (!empty($people)) :
-      $h_level = 3;
-      $img_size = 'thumbnail';
-
-      if (get_field('faculty_staff_by_category')):
-        // TODO: Skip categorization if there is only one cat?
-        $cats = nvis_prog_get_people_by_category($people);
-        $h_level = 4;
-
-        foreach ($cats as $cat) :
-      ?>
-    <div class="person-category">
-      <h3 id="<?php echo $cat->slug; ?>"
-        class="person-category__title">
-        <?php echo $cat->name; ?>
-      </h3>
-      <div class="person-category__list person-list">
-        <?php
-          foreach ($cat->people as $post) :
-            nvis_prog_get_template_part('archive-person/person-item', compact('post', 'h_level', 'img_size', 'show_contact_info_labels'));
-          endforeach;
-          ?>
-      </div>
-    </div>
-    <?php
-        endforeach;
-      else:
-    ?>
-    <div class="person-list">
+    <div class="program-faculty-staff-list">
       <?php
-        foreach ($people as $post) :
-          nvis_prog_get_template_part('archive-person/person-item', compact('post', 'h_level', 'show_contact_info_labels'));
-        endforeach;
+      if (!empty($args['personnel'])) :
+        $h_level = 3;
+
+        if ($args['group_by_category']):
+          // TODO: Skip categorization if there is only one cat?
+          $cats = nvis_prog_get_people_by_category($args['personnel']);
+          $h_level = 4;
+
+          foreach ($cats as $cat) :
+        ?>
+      <div class="person-category">
+        <h3 id="<?php echo $cat->slug; ?>"
+          class="person-category__title">
+          <?php echo $cat->name; ?>
+        </h3>
+        <div class="person-category__list person-list">
+          <?php
+            foreach ($cat->people as $person) :
+              nvis_prog_get_template_part(
+                  'archive-person/person-item',
+                  [
+                      'post'                     => $person,
+                      'h_level'                  => $h_level,
+                      'img_size'                 => $args['image_size'],
+                      'show_contact_info_labels' => $args['show_contact_info_labels']
+                  ]
+              );
+            endforeach;
+            ?>
+        </div>
+      </div>
+      <?php
+          endforeach;
+        else:
+      ?>
+      <div class="person-list">
+        <?php
+          foreach ($args['personnel'] as $person) :
+            nvis_prog_get_template_part(
+                'archive-person/person-item',
+                [
+                    'post'                     => $person,
+                    'h_level'                  => $h_level,
+                    'img_size'                 => $args['image_size'],
+                    'show_contact_info_labels' => $args['show_contact_info_labels']
+                ]
+            );
+          endforeach;
+        ?>
+      </div>
+      <?php
+        endif;
+      endif;
       ?>
     </div>
-    <?php
-      endif;
-    endif;
-    ?>
-  </div>
 
+  </div>
 </div>
 <?php endif;

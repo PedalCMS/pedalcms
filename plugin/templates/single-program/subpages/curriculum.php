@@ -1,21 +1,33 @@
 <?php
 defined('ABSPATH') || exit;
 
-if (nvis_prog_show_subpage('curriculum')) : ?>
+$post = nvis_args_or_global('post', $args);
+
+$defaults = [
+    'show_subpage'        => nvis_prog_show_subpage('curriculum'),
+    'subpage_title'       => 'Curriculum',
+    'subpage_content'     => get_field('apply_content', $post),
+    'curriculum_sections' => get_field('curriculum_sections', $post)
+];
+
+$args = wp_parse_args($args, $defaults);
+
+if ($args['show_subpage']) : ?>
 
 <div class="program-curriculum-subpage program-subpage">
-    <h2 class="section-head">Curriculum</h2>
+    <h2 class="program-subpage__title"><?php echo esc_html($args['subpage_title']); ?>
+    </h2>
+    <div class="program-subpage__content">
+        <?php
+        nvis_prog_get_template_part('single-program/subpages/lead-content');
 
-    <?php nvis_prog_get_template_part('single-program/subpages/lead-content'); ?>
-    <?php
-    $sections = get_field('curriculum_sections');
-
-    if (is_array($sections)) :
-        foreach ($sections as $section) :
-            nvis_prog_get_template_part('single-program/curriculum-section', $section);
-        endforeach;
-    endif;
-    ?>
+        if (is_array($args['curriculum_sections'])) :
+            foreach ($args['curriculum_sections'] as $section) :
+                nvis_prog_get_template_part('single-program/curriculum-section', $section);
+            endforeach;
+        endif;
+        ?>
+    </div>
 </div>
 
 <?php endif;

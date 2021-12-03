@@ -9,6 +9,15 @@
  */
 defined('ABSPATH') || exit;
 
+$defaults = [
+    'filters_legend'    => 'Filter',
+    'button_text'       => 'Search',
+    'reset_link_text'   => 'Reset Filters',
+    'missing_data_text' => 'Missing data to render filters.'
+];
+
+$args = wp_parse_args($args, $defaults);
+
 /**
  * Fires before the search filter form is loaded.
  *
@@ -34,7 +43,8 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
     action="<?php echo get_post_type_archive_link($args['post_type']); ?>"
     class="<?php echo $args['post_type']; ?>-filters nvis-post-filters">
     <fieldset>
-        <legend>Filter</legend>
+        <legend><?php echo esc_html($args['filters_legend']); ?>
+        </legend>
         <?php
 
         /**
@@ -60,16 +70,16 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
         do_action('nvis/programs/after_filters_fields', $args);
         ?>
     </fieldset>
-    <button class="button" type="submit">Search</button>
+    <button class="button" type="submit"><?php echo esc_html($args['button_text']); ?></button>
     <?php if (nvis_is_filtered_results($args['post_type'])): ?>
     <a class="reset-link"
-        href="<?php echo get_post_type_archive_link($args['post_type']); ?>">Reset
-        Filters</a>
+        href="<?php echo get_post_type_archive_link($args['post_type']); ?>"><?php echo esc_html($args['reset_link_text']); ?></a>
     <?php endif; ?>
 </form>
-<?php else: ?>
-Missing data to render filters.
-<?php endif;
+<?php
+else:
+    echo esc_html($args['missing_data_text']);
+endif;
 
 /**
  * Fires after the search filter form is loaded.

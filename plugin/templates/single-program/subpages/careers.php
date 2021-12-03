@@ -9,13 +9,22 @@
 
 defined('ABSPATH') || exit;
 
-if (nvis_prog_show_subpage('careers')) :
-  $program = get_queried_object();
-  $careers = get_field('related_careers');
+$post = nvis_args_or_global('post', $args);
+
+$defaults = [
+    'show_subpage'  => nvis_prog_show_subpage('careers'),
+    'subpage_title' => 'Careers'
+];
+
+$args = wp_parse_args($args, $defaults);
+
+if ($args['show_subpage']) :
+  $careers = get_field('related_careers', $post);
 ?>
 
 <div class="program-careers-subpage program-subpage">
-  <h2 class="section-head">Careers</h2>
+  <h2 class="program-subpage__title"><?php echo esc_html($args['subpage_title']); ?>
+  </h2>
 
   <?php nvis_prog_get_template_part('single-program/subpages/lead-content'); ?>
 

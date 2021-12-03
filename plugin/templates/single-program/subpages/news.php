@@ -9,13 +9,26 @@
 
 defined('ABSPATH') || exit;
 
-if (nvis_prog_show_subpage('news')) : ?>
+$post = nvis_args_or_global('post', $args);
+
+$defaults = [
+    'show_subpage'    => nvis_prog_show_subpage('news'),
+    'subpage_title'   => 'News',
+];
+
+$args = wp_parse_args($args, $defaults);
+
+if ($args['show_subpage']) : ?>
 
 <div class="program-news-subpage program-subpage">
-    <h2 class="section-head">News</h2>
-
-    <?php nvis_prog_get_template_part('single-program/subpages/lead-content'); ?>
-    <?php nvis_prog_get_template_part('single-program/related-posts'); ?>
+    <h2 class="program-subpage__title"><?php echo esc_html($args['subpage_title']); ?>
+    </h2>
+    <div class="program-subpage__content">
+        <?php
+            nvis_prog_get_template_part('single-program/subpages/lead-content');
+            nvis_prog_get_template_part('single-program/related-posts', ['post' => $post, 'context' => $template]);
+        ?>
+    </div>
 </div>
 
 <?php endif;

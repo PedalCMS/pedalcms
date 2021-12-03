@@ -12,28 +12,38 @@
 
 defined('ABSPATH') || exit;
 
-$tax = $args['taxonomy'] ?? null;
-$query_var = $args['query_var'] ?? null;
-$label = $args['label'] ?? null;
-$short_label = $args['short_label'] ?? $label;
+$defaults = [
+    'taxonomy'             => null,
+    'query_var'            => null,
+    'label'                => null,
+    'short_label'          => null,
+    'none_selected_prefix' => 'Any ',
+    'missing_data_text'    => 'Missing data to render %s filter'
+];
 
-if ($tax && $query_var && $label) :?>
+$args = wp_parse_args($args, $defaults);
+
+$short_label = $args['short_label'] ?? $args['label'];
+
+if ($args['taxonomy'] && $args['query_var'] && $args['label']) : ?>
 <div
-    class="nvis-filter-<?php echo esc_attr($query_var); ?> nvis-filters-field">
-    <label for="<?php echo esc_attr($query_var); ?>"
-        class="screen-reader-text"><?php echo esc_html($label); ?></label>
+    class="nvis-filter-<?php echo esc_attr($args['query_var']); ?> nvis-filters-field">
+    <label
+        for="<?php echo esc_attr($args['query_var']); ?>"
+        class="screen-reader-text"><?php echo esc_html($args['label']); ?></label>
     <?php
     wp_dropdown_categories([
-        'taxonomy'          => $tax,
-        'name'              => $query_var,
-        'selected'          => get_query_var($query_var),
-        'show_option_none'  => 'Any ' . $short_label,
+        'taxonomy'          => $args['taxonomy'],
+        'name'              => $args['query_var'],
+        'selected'          => get_query_var($args['query_var']),
+        'show_option_none'  => $args['none_selected_prefix'] . $short_label,
         'option_none_value' => '',
         'value_field'       => 'slug',
     ]);
     ?>
 </div>
-<?php else :?>
-<div>Missing data to render <?php echo esc_html($tax); ?> filter.
+<?php else : ?>
+<div>
+    <?php echo sprintf($args['missing_data_text'], $args['taxonomy']); ?>
 </div>
 <?php endif;

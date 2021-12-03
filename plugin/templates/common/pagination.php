@@ -19,8 +19,10 @@ defined('ABSPATH') || exit;
  *
  * @since 0.1
  *
+ * @param array $args The arguments passed to the template.
+ *
  */
-do_action('nvis/programs/before_pagination');
+do_action('nvis/programs/before_pagination', $args);
 
 ?>
 <nav class="pagination">
@@ -48,5 +50,7 @@ do_action('nvis/programs/before_pagination');
  *
  * @since 0.1
  *
+ * @param array $args The arguments passed to the template.
+ *
  */
-do_action('nvis/programs/after_pagination');
+do_action('nvis/programs/after_pagination', $args);

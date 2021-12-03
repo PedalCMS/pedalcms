@@ -9,12 +9,23 @@
 
 defined('ABSPATH') || exit;
 
-if (nvis_prog_show_subpage('apply')) : ?>
+$post = nvis_args_or_global('post', $args);
+
+$defaults = [
+    'show_subpage'    => nvis_prog_show_subpage('apply'),
+    'subpage_title'   => 'How to Apply',
+    'subpage_content' => get_field('apply_content', $post)
+];
+
+$args = wp_parse_args($args, $defaults);
+
+if ($args['show_subpage']) : ?>
 
 <div class="program-apply-subpage program-subpage">
-  <h2 class="section-head">How to Apply</h2>
-  <div class="program-apply-content">
-    <?php the_field('apply_content'); ?>
+  <h2 class="program-subpage__title"><?php echo esc_html($args['subpage_title']); ?>
+  </h2>
+  <div class="program-subpage__content">
+    <?php echo $args['subpage_content']; ?>
   </div>
 </div>
 

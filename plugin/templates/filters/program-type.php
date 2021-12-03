@@ -9,10 +9,12 @@
 
 defined('ABSPATH') || exit;
 
-$args = [
+$defaults = [
     'taxonomy'  => 'nvis_program_type',
     'query_var' => 'prog_type',
     'label'     => 'Program Type'
 ];
+
+$args = wp_parse_args($args, $defaults);
 
 nvis_prog_get_template_part('filters/taxonomy', $args);
