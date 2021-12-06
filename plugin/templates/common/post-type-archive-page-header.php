@@ -18,7 +18,8 @@ $defaults = [
 $args = wp_parse_args($args, $defaults);
 
 ?>
-<section class="programs-archive-page-header page-header">
+<section
+  class="<?php echo get_post_type(); ?>-archive-page-header page-header">
   <?php nvis_prog_get_template_part('common/page-header-backdrop', ['context' => $template, 'fallback_to_post' => false]); ?>
   <div class="page-header__content">
     <h1 class="page-title">
