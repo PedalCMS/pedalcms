@@ -19,9 +19,9 @@
 
 .programs-list article.nvis_program {
   display: flex;
-  gap: calc(2 * var(--nvis-spacing));
+  gap: var(--nvis-dbl-spacing);
   justify-content: space-between;
-  margin: 0 0 calc(2 * var(--nvis-spacing));
+  margin: 0 0 var(--nvis-dbl-spacing);
   padding: 0 0 0 var(--nvis-spacing);
 }
 
@@ -59,7 +59,7 @@
 .single-nvis_program article.nvis_program {
   display: flex;
   flex-wrap: wrap;
-  gap: calc(2 * var(--nvis-spacing));
+  gap: var(--nvis-dbl-spacing);
   width: 100%;
 }
 
@@ -77,17 +77,17 @@
 }
 
 .single-nvis_program .program-meta {
-  margin: calc(2 * var(--nvis-spacing)) 0 calc(2 * var(--nvis-spacing));
+  margin: var(--nvis-dbl-spacing) 0 var(--nvis-dbl-spacing);
 }
 
 .program-subnav__menu {
   border-bottom: solid 1px var(--nvis-gray);
   clear: both;
   display: flex;
-  gap: calc(2 * var(--nvis-spacing));
+  gap: var(--nvis-dbl-spacing);
   list-style: none;
   margin: 0;
-  padding: calc(2 * var(--nvis-spacing)) 0 0;
+  padding: var(--nvis-dbl-spacing) 0 0;
 }
 
 .program-subnav__menu li {
@@ -108,7 +108,7 @@
 }
 
 .program-main {
-  width: calc(100% - var(--nvis-sidebar-width) - 2 * var(--nvis-spacing));
+  width: calc(100% - var(--nvis-sidebar-width) - var(--nvis-dbl-spacing));
 }
 
 .program-sidebar {
@@ -118,7 +118,7 @@
 
 .program-sidebar .back-to-top {
   display: inline-block;
-  margin-top: calc(2 * var(--nvis-spacing));
+  margin-top: var(--nvis-dbl-spacing);
 }
 
 .program-sidebar__title {
@@ -137,7 +137,7 @@
 }
 
 .program-deadlines {
-  margin: calc(2 * var(--nvis-spacing)) 0;
+  margin: var(--nvis-dbl-spacing) 0;
 }
 
 .program-deadlines__list {
@@ -150,7 +150,7 @@
 
 .program-contact {
   line-height: 1.5em;
-  margin: calc( 0.5 * var(--nvis-spacing)) 0 calc( 1.5 * var(--nvis-spacing));
+  margin: calc(0.5 * var(--nvis-spacing)) 0 calc(1.5 * var(--nvis-spacing));
 }
 
 .program-contact__picture {
@@ -172,11 +172,11 @@ body.single-nvis_program .program-lead-content {
 
 .program-faculty-staff-list .person-list {
   --image-width: 100px;
-  --spacing: calc(2 * var(--nvis-spacing));
+  --spacing: var(--nvis-dbl-spacing);
 
   display: flex;
   flex-direction: column;
-  gap: calc(2 * var(--nvis-spacing));
+  gap: var(--nvis-dbl-spacing);
   margin: 0 0 calc(4 * var(--nvis-spacing));
 }
 
@@ -211,7 +211,7 @@ body.single-nvis_program .program-lead-content {
 
 .nvis-template .program-subpage-careers .career {
   padding: 0;
-  margin-bottom: calc(2 * var(--nvis-spacing));
+  margin-bottom: var(--nvis-dbl-spacing);
 }
 
 .nvis-template .program-subpage-careers .career-header {
@@ -238,7 +238,7 @@ body.single-nvis_program .program-lead-content {
 .nvis-template .program-subpage-careers .career-content {
   break-after: avoid;
   flex-direction: column;
-  margin: 0 0 calc(2 * var(--nvis-spacing));
+  margin: 0 0 var(--nvis-dbl-spacing);
   page-break-after: avoid;
   width: 100%;
 }
@@ -256,7 +256,7 @@ body.single-nvis_program .program-lead-content {
 }
 
 .faq-category {
-  margin-bottom: calc( 2 * var(--nvis-spacing));
+  margin-bottom: var(--nvis-dbl-spacing);
 }
 
 .faq-category__title {
@@ -264,7 +264,7 @@ body.single-nvis_program .program-lead-content {
 }
 
 .nvis_program .courses-table {
-  margin-bottom: calc(2 * var(--nvis-spacing));
+  margin-bottom: var(--nvis-dbl-spacing);
 }
 
 .nvis_program .courses-table thead th:first-child {
@@ -281,7 +281,7 @@ body.single-nvis_program .program-lead-content {
 
 .related-post {
   display: flex;
-  gap: calc(2 * var(--nvis-spacing));
+  gap: var(--nvis-dbl-spacing);
   margin-bottom: calc(4 * var(--nvis-spacing));
 }
 
@@ -330,7 +330,7 @@ body.single-nvis_program .program-lead-content {
 .person-list .nvis_person {
   display: flex;
   gap: var(--nvis-spacing);
-  padding: calc(2 * var(--nvis-spacing));
+  padding: var(--nvis-dbl-spacing);
 }
 
 .person-list .person-featured-image {
@@ -375,7 +375,7 @@ body.single-nvis_program .program-lead-content {
 }
 
 body.single-nvis_person .person-main {
-  --margin: calc(2 * var(--nvis-spacing));
+  --margin: var(--nvis-dbl-spacing);
 
   display: flex;
   gap: var(--margin);
@@ -396,8 +396,8 @@ body.single-nvis_person .person-sidebar {
 }
 
 .single-person-page-header--classic {
-  padding-bottom: calc(2 * var(--nvis-spacing));
-  margin-bottom: calc(2 * var(--nvis-spacing));
+  padding-bottom: var(--nvis-dbl-spacing);
+  margin-bottom: var(--nvis-dbl-spacing);
   border-bottom: solid 1px var(--nvis-gray);
 }
 
@@ -406,7 +406,7 @@ body.single-nvis_person .person-sidebar {
 }
 
 .single-person-page-header--classic .single-person__meta {
-  margin: 0 0 calc(2 * var(--nvis-spacing));
+  margin: 0 0 var(--nvis-dbl-spacing);
 }
 
 .single-person-page-header--classic .person-job-title {
