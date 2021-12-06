@@ -149,10 +149,27 @@ class ProgramSubpageManager {
      *
      * @return string The slug of the active subpage.
      */
-    public static function get_active_subpage(): string {
-        $subpage = get_query_var(self::query_var);
+    public static function get_active_subpage(string $return_type = 'slug') {
+        $slug = get_query_var(self::query_var);
 
-        return $subpage ? $subpage : 'index';
+        $slug = $slug ? $slug : 'index';
+
+        if ($return_type === 'slug') {
+            return $slug;
+        }
+
+        if ($return_type !== 'object') {
+            // TODO: Trigger error.
+            return [];
+        }
+
+        foreach (self::$subpages as $subpage) {
+            if ($subpage->slug === $slug) {
+                return $subpage;
+            }
+        }
+
+        return false;
     }
 
     /**
