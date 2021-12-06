@@ -185,6 +185,7 @@ body.single-nvis_program .program-lead-content {
 }
 
 .program-faculty-staff-list .person-list .person-featured-image {
+  margin: 0;
   width: var(--image-width);
 }
 
@@ -208,40 +209,46 @@ body.single-nvis_program .program-lead-content {
   margin-bottom: 0;
 }
 
-.program-careers-subpage .career {
+.nvis-template .program-subpage-careers .career {
   padding: 0;
   margin-bottom: calc(2 * var(--nvis-spacing));
 }
 
-.program-careers-subpage .career-header {
-  border-bottom: solid 1px #ccc;
+.nvis-template .program-subpage-careers .career-header {
+  border-bottom : solid 1px #ccc;
   margin-bottom: var(--nvis-spacing);
   padding: 0;
   width: 100%;
 }
 
-body.single-nvis_program .career-header a {
+.nvis-template .program-subpage-careers .career-header a {
+  color: var(--nvis-active-color);
   text-decoration: none;
 }
 
-body.single-nvis_program .career-header a:hover {
+.nvis-template .program-subpage-careers .career-header a:hover {
+  color: inherit;
   text-decoration: underline;
 }
 
-.program-careers-subpage .career-title {
-  margin-bottom: 0;
+.nvis-template .program-subpage-careers .career-title {
+  margin: 0;
 }
 
-.program-careers-subpage .career-content {
+.nvis-template .program-subpage-careers .career-content {
   break-after: avoid;
   flex-direction: column;
-  margin-bottom: var(--nvis-spacing);
+  margin: 0 0 calc(2 * var(--nvis-spacing));
   page-break-after: avoid;
   width: 100%;
 }
 
-.program-careers-subpage .career-footer {
-  width: max-content;
+.nvis-template .program-subpage-careers .career-quick-stats table {
+  margin: 0;
+}
+
+.nvis-template .program-subpage-careers .career-footer {
+  width: fit-content;
 }
 
 .nvis-template .program-faq__question {
@@ -290,20 +297,20 @@ body.single-nvis_program .career-header a:hover {
   width: 70%;
 }
 
-.related-post__image-wrapper {
+.related-post .related-post__image-wrapper {
   width: 30%;
 }
 
-.related-post__header {
+.related-post .related-post__header {
   display: flex;
   flex-direction: column-reverse;
 }
 
-.related-post__title {
-  margin-bottom: var(--nvis-spacing);
+.related-post .related-post__title {
+  margin: 0 0 var(--nvis-spacing);
 }
 
-.related-post__more {
+.related-post .related-post__more {
   margin: var(--nvis-spacing) 0;
 }
 
@@ -351,7 +358,7 @@ body.single-nvis_program .career-header a:hover {
 
 .person-list .person-name {
   font-size: 1.5em;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .person-list .person-position {
