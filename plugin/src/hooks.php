@@ -13,7 +13,7 @@ add_filter('nvis/programs/before_main_content', __NAMESPACE__ . '\before_main_co
 add_filter('nvis/programs/after_main_content', __NAMESPACE__ . '\after_main_content');
 
 /**
- * Updates the title for filtered results in archives.
+ * Updates the title for filtered results in archives and program subpages.
  *
  * Called on filter: document_title_parts
  *
@@ -36,7 +36,16 @@ function document_title_parts(array $title): array {
         }
     }
 
-    // TODO: Add support for Program subpages.
+    if (is_singular(Program::POST_TYPE)) {
+        $subpage = ProgramSubpageManager::get_active_subpage('object');
+
+        if ($subpage->slug !== 'index') {
+            // TODO: Make this customizable. Consider moving to subpage manager.
+            $title['title'] .= ', ' . $subpage->title;
+
+            return $title;
+        }
+    }
 
     return $title;
 }
