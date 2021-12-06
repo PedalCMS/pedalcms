@@ -19,11 +19,13 @@ $defaults = [
 ];
 
 $args = wp_parse_args($args, $defaults);
+$faqs = $args['faqs'];
 
-if ($args['show_subpage']) :
+if ($faqs) {
+    $faqs = \InvisibleUs\Programs\FAQ::normalize_faq_types($faqs, $args['group_by_category']);
+}
 
-  $faqs = \InvisibleUs\Programs\FAQ::normalize_faq_types($args['faqs'], $args['group_by_category']);
-?>
+if ($args['show_subpage']) : ?>
 <div class="program-faqs-subpage program-subpage">
 
   <h2 class="program-subpage__title"><?php echo esc_html($args['subpage_title']); ?>
