@@ -22,7 +22,7 @@ if ($args['show_subpage']) :
   $careers = get_field('related_careers', $post);
 ?>
 
-<div class="program-careers-subpage program-subpage">
+<div <?php nvis_subpage_class(); ?>>
   <h2 class="program-subpage__title"><?php echo esc_html($args['subpage_title']); ?>
   </h2>
 

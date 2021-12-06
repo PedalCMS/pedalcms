@@ -26,7 +26,7 @@ if ($faqs) {
 }
 
 if ($args['show_subpage']) : ?>
-<div class="program-faqs-subpage program-subpage">
+<div <?php nvis_subpage_class(); ?>>
 
   <h2 class="program-subpage__title"><?php echo esc_html($args['subpage_title']); ?>
   </h2>

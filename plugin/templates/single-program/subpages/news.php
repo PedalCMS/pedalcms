@@ -20,7 +20,7 @@ $args = wp_parse_args($args, $defaults);
 
 if ($args['show_subpage']) : ?>
 
-<div class="program-news-subpage program-subpage">
+<div <?php nvis_subpage_class(); ?>>
     <h2 class="program-subpage__title"><?php echo esc_html($args['subpage_title']); ?>
     </h2>
     <div class="program-subpage__content">

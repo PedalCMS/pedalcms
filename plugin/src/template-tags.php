@@ -93,6 +93,41 @@ function nvis_prog_subpage_link(string $subpage, bool $echo = true): string {
 }
 
 /**
+ * Generates the CSS class names for a subpage container.
+ *
+ * @return array The list of class names.
+ */
+function nvis_get_subpage_class(): array {
+    $active = \InvisibleUs\Programs\ProgramSubpageManager::get_active_subpage();
+
+    $classes = [
+        'program-subpage-' . $active,
+        'program-subpage',
+    ];
+
+    /**
+     * Filters the list of CSS class names for the current post.
+     *
+     * @since 0.1
+     *
+     * @param string[] $classes An array of class names.
+     * @param string[] $subpage The slug of the current subpage.
+     */
+    $classes = apply_filters('nvis/programs/subpage_class', $classes, $active);
+
+    return array_unique($classes);
+}
+
+function nvis_subpage_class() {
+    echo sprintf(
+        'class="%s"',
+        esc_attr(implode(' ', nvis_get_subpage_class()))
+    );
+}
+
+
+
+/**
  * Returns the full URL for a given program action.
  *
  * Will check for a local program override before attempting to build it from
