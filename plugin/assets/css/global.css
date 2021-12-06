@@ -81,7 +81,7 @@
 .nvis-expandable summary {
   font-weight: bold;
   cursor: pointer;
-  width: max-content;
+  width: fit-content;
 }
 
 .nvis-expandable summary::marker {
