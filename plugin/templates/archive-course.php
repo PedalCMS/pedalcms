@@ -12,8 +12,13 @@ global $posts;
 
 nvis_prog_get_template_part('common/header'); ?>
 <div class="course-archive-main">
-    <?php nvis_prog_get_template_part('archive-course/page-header'); ?>
-    <?php nvis_prog_get_template_part('archive-course/course-list', ['courses' => $posts]); ?>
-    <?php nvis_prog_get_template_part('common/pagination'); ?>
+    <?php
+    nvis_prog_get_template_part('common/breadcrumbs');
+    nvis_prog_get_template_part('archive-course/page-header');
+    nvis_prog_get_template_part('archive-course/filters');
+    nvis_prog_get_template_part('archive-course/num-results');
+    nvis_prog_get_template_part('archive-course/course-list', ['courses' => $posts]);
+    nvis_prog_get_template_part('common/pagination');
+    ?>
 </div>
 <?php nvis_prog_get_template_part('common/footer');
