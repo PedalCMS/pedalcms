@@ -14,7 +14,10 @@ get_post_meta(get_the_ID());
 nvis_prog_get_template_part('common/header');
 ?>
 <article <?php post_class(); ?>>
-	<?php nvis_prog_get_template_part('single-person/page-header'); ?>
+	<?php
+    nvis_prog_get_template_part('common/breadcrumbs');
+    nvis_prog_get_template_part('single-person/page-header');
+    ?>
 	<div class="program-main entry-content">
 		<?php the_content(); ?>
 	</div>
