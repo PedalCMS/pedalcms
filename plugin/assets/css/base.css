@@ -1,4 +1,18 @@
 /* TODO: Namespace CSS classes? */
+.nvis-sidebar h2 {
+  font-size: 1.75em;
+  margin: 0 0 calc(0.5 * var(--nvis-spacing));
+}
+
+.nvis-sidebar ul {
+  margin: 0 0 var(--nvis-dbl-spacing) 1em;
+  padding: 0;
+}
+
+.nvis-sidebar ul li {
+  line-height: 1.5;
+  margin-bottom: calc(0.5 * var(--nvis-spacing));
+}
 
 .program-actions ul {
   margin: 0;
@@ -119,11 +133,6 @@
 .program-sidebar .back-to-top {
   display: inline-block;
   margin-top: var(--nvis-dbl-spacing);
-}
-
-.program-sidebar__title {
-  font-size: 1.75em;
-  margin-bottom: calc(0.5 * var(--nvis-spacing));
 }
 
 .program-sidebar .button {
@@ -414,8 +423,8 @@ body.single-nvis_person .person-sidebar {
   font-style: italic;
 }
 
-.single-person-page-header--classic .person-featured-image {
-  float: right;
+.single-person-page-header .featured-image img {
+  border-radius: 5px;
 }
 
 @keyframes nvis-fade-in-left {
