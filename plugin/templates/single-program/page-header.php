@@ -20,7 +20,7 @@ defined('ABSPATH') || exit;
       <h1 class="page-title entry-title">
         <?php the_title(); ?>
       </h1>
-      <div class="program-type">
+      <div class="program-type taxonomy">
         <?php
         // TODO: Design a way to get a singular label here.
         the_terms(get_the_ID(), 'nvis_program_type');
