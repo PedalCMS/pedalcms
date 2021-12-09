@@ -60,17 +60,16 @@ function document_title_parts(array $title): array {
 function before_main_content() {
     $pattern = '<%s id="%s" class="%s">';
     $id = apply_filters('nvis/programs/main_content_wrapper_id', 'main-content-wrapper');
-    $classes = apply_filters(
-        'nvis/programs/main_content_wrapper_class',
-        ['nvis-progs-template', 'nvis-template']
-    );
+    $classes = ['nvis-progs-template', 'nvis-template'];
+    $classes[] = 'presentation-mode--' . Plugin::get_option('presentation_mode');
+    $classes = apply_filters('nvis/careers/main_content_wrapper_class', $classes);
     $tag = Plugin::get_option('main_content_wrapper_tag');
 
     echo sprintf(
         $pattern,
         $tag,
         $id,
-        implode(' ', $classes)
+        esc_attr(implode(' ', $classes))
     );
 }
 
