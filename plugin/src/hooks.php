@@ -9,6 +9,7 @@
 namespace InvisibleUs\Programs;
 
 add_filter('document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 3);
+add_filter('body_class', __NAMESPACE__ . '\body_class', 10, 3);
 add_filter('nvis/programs/before_main_content', __NAMESPACE__ . '\before_main_content');
 add_filter('nvis/programs/after_main_content', __NAMESPACE__ . '\after_main_content');
 
@@ -51,6 +52,22 @@ function document_title_parts(array $title): array {
 }
 
 /**
+ * Adds body class name based on presentation mode.
+ *
+ * @param array $classes An array of body class names.
+ * @return array The resulting array of body class names.
+ */
+function body_class(array $classes): array {
+    $presentation_mode = Plugin::get_option('presentation_mode');
+
+    if ($presentation_mode) {
+        $classes[] = 'nvis-present-mode--' . $presentation_mode;
+    }
+
+    return $classes;
+}
+
+/**
  * Action to output opening tag of main content wrapper.
  *
  * Called on: nvis/programs/before_main_content
@@ -61,7 +78,6 @@ function before_main_content() {
     $pattern = '<%s id="%s" class="%s">';
     $id = apply_filters('nvis/programs/main_content_wrapper_id', 'main-content-wrapper');
     $classes = ['nvis-progs-template', 'nvis-template'];
-    $classes[] = 'presentation-mode--' . Plugin::get_option('presentation_mode');
     $classes = apply_filters('nvis/careers/main_content_wrapper_class', $classes);
     $tag = Plugin::get_option('main_content_wrapper_tag');
 
