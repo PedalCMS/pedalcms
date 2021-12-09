@@ -33,6 +33,14 @@ function register_assets() {
         filemtime(Plugin::$path . $base)
     );
 
+    $global_full = '/assets/css/global-full.css';
+    wp_register_style(
+        'nvis-global-full',
+        Plugin::$url . $global_full,
+        ['nvis-global'],
+        filemtime(Plugin::$path . $global_full)
+    );
+
     $full = '/assets/css/full.css';
     wp_register_style(
         'nvis-programs-full',
@@ -60,6 +68,10 @@ function enqueue_assets() {
 
     if (!is_admin()) {
         wp_enqueue_style('nvis-global');
+
+        if ($presentation_mode === 'full') {
+            wp_enqueue_style('nvis-global-full');
+        }
     }
 
     if (!is_admin() && (
