@@ -452,15 +452,3 @@ body.single-nvis_program .program-lead-content {
   font-weight: bold;
   width: 4em;
 }
-
-@keyframes nvis-fade-in-left {
-  0% {
-    opacity: 0;
-    transform: translateX(-10px)
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateX(0)
-  }
-}
