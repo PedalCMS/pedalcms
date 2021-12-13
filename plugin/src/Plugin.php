@@ -83,6 +83,26 @@ class Plugin {
             'description'           => '',
             'fields'                => [
                 [
+                    'key'               => 'field_6197ebda851fd',
+                    'label'             => 'Presentation Mode',
+                    'name'              => 'nvis_presentation_mode',
+                    'type'              => 'radio',
+                    'instructions'      => 'Choose the amount of CSS you want output.',
+                    'wrapper'           => [
+                        'width' => '',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                    'choices' => [
+                        'none' => 'Ghost — Don\'t style anything. No CSS will be loaded.',
+                        'base' => 'Stealth — Only basic styling to handle layout. Blends in with current theme as much as possible.',
+                        'full' => 'Tuxedo — A more refined and opinionated look. Recommended for most sites.',
+                    ],
+                    'default_value'     => 'full',
+                    'layout'            => 'vertical',
+                    'return_format'     => 'value',
+                ],
+                [
                     'key'          => 'field_6113aaf181bb3',
                     'label'        => 'Request Info URL',
                     'name'         => 'nvis_url_request_info',
