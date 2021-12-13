@@ -1,4 +1,105 @@
 /* TODO: Namespace CSS classes? */
+.person-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--nvis-spacing);
+}
+
+.person-list .nvis_person {
+  display: flex;
+  gap: var(--nvis-spacing);
+  padding: var(--nvis-dbl-spacing);
+}
+
+.person-list .person-featured-image {
+  border-radius: 5px;
+  line-height: 0;
+  overflow: hidden;
+  width: 33%;
+}
+
+.person-list .person-featured-image img {
+  height: auto;
+  width: 100%;
+}
+
+.person-list .img-placeholder {
+  background: rgba(0,0,0,0.1);
+  padding: 20px 10px 0;
+}
+
+.person-list .img-placeholder svg {
+  fill: rgba(0,0,0,0.1);
+  height: auto;
+  width: 100%;
+}
+
+.person-list .person-info {
+  width: 66%;
+}
+
+.person-list .person-name {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.person-list .person-position {
+  margin-bottom: calc(1.5 * var(--nvis-spacing));
+}
+
+.person-list .person-job-title {
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.person-list .contact-info {
+  line-height: 1.4;
+}
+
+body.single-nvis_person .person-main {
+  --margin: var(--nvis-dbl-spacing);
+
+  display: flex;
+  gap: var(--margin);
+}
+
+body.single-nvis_person .person-content {
+  width: calc(100% - var(--nvis-sidebar-width) - var(--margin));
+}
+
+body.single-nvis_person .person-sidebar {
+  width: var(--nvis-sidebar-width); 
+}
+
+.single-person-page-header--classic::after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.single-person-page-header--classic {
+  padding-bottom: var(--nvis-dbl-spacing);
+  margin-bottom: var(--nvis-dbl-spacing);
+  border-bottom: solid 1px var(--nvis-gray);
+}
+
+.single-person-page-header--classic .entry-title {
+  margin: calc(3 * var(--nvis-spacing)) 0 0;
+}
+
+.single-person-page-header--classic .single-person__meta {
+  margin: 0 0 var(--nvis-dbl-spacing);
+}
+
+.single-person-page-header--classic .person-job-title {
+  font-size: 1.25em;
+  font-style: italic;
+}
+
+.single-person-page-header .featured-image img {
+  border-radius: 5px;
+}
+
 .program-actions ul {
   margin: 0;
   padding: 0;
@@ -149,6 +250,7 @@
 
 .program-contact__picture {
   margin-bottom: calc(0.5 * var(--nvis-spacing));
+  border-radius: 5px;
 }
 
 .program-contact__name {
@@ -273,6 +375,42 @@ body.single-nvis_program .program-lead-content {
   text-align: center;
 }
 
+.program-subpage-faculty-staff .person-list header {
+  width: 40%;
+}
+
+.program-subpage-faculty-staff .person-list .person-featured-image img {
+  border-radius: 50%;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+}
+
+.program-subpage-faculty-staff .person-list .person-info {
+  padding-top: 0.25em;
+}
+
+.program-subpage-faculty-staff .person-list .person-name {
+  font-size: 1em;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.program-subpage-faculty-staff .person-list .person-job-title {
+  line-height: inherit;
+}
+
+.program-subpage-faculty-staff .person-list .person-department a {
+  color: inherit;
+}
+
+.program-subpage-faculty-staff .person-list .person-department a:hover {
+  color: var(--nvis-active-color);
+}
+
+.program-subpage-faculty-staff .person-list .contact-info {
+  line-height: inherit;
+  padding-top: 0;
+}
+
 .related-post {
   display: flex;
   gap: var(--nvis-dbl-spacing);
@@ -310,106 +448,9 @@ body.single-nvis_program .program-lead-content {
 
 .nvis_person .contact-info .label {
   display: inline-block;
-  font-size: 0.9em;
+  font-size: 0.8em;
   font-weight: bold;
   width: 4em;
-}
-
-.person-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--nvis-spacing);
-}
-
-.person-list .nvis_person {
-  display: flex;
-  gap: var(--nvis-spacing);
-  padding: var(--nvis-dbl-spacing);
-}
-
-.person-list .person-featured-image {
-  width: 33%;
-}
-.person-list .person-featured-image img {
-  height: auto;
-  width: 100%;
-}
-
-.person-list .img-placeholder {
-  background: rgba(0,0,0,0.1);
-  padding: 10px 10px 5px;
-}
-
-.person-list .img-placeholder svg {
-  fill: rgba(0,0,0,0.1);
-  height: auto;
-  width: 100%;
-}
-
-.person-list .person-info {
-  width: 66%;
-}
-
-.person-list .person-name {
-  font-size: 1.5em;
-  margin: 0;
-}
-
-.person-list .person-position {
-  margin-bottom: calc(1.5 * var(--nvis-spacing));
-}
-
-.person-list .person-job-title {
-  font-style: italic;
-  line-height: 1.1;
-}
-
-.person-list .contact-info {
-  line-height: 1.4;
-}
-
-body.single-nvis_person .person-main {
-  --margin: var(--nvis-dbl-spacing);
-
-  display: flex;
-  gap: var(--margin);
-}
-
-body.single-nvis_person .person-content {
-  width: calc(100% - var(--nvis-sidebar-width) - var(--margin));
-}
-
-body.single-nvis_person .person-sidebar {
-  width: var(--nvis-sidebar-width); 
-}
-
-.single-person-page-header--classic::after {
-  display: block;
-  content: '';
-  clear: both;
-}
-
-.single-person-page-header--classic {
-  padding-bottom: var(--nvis-dbl-spacing);
-  margin-bottom: var(--nvis-dbl-spacing);
-  border-bottom: solid 1px var(--nvis-gray);
-}
-
-.single-person-page-header--classic .entry-title {
-  margin: calc(3 * var(--nvis-spacing)) 0 0;
-}
-
-.single-person-page-header--classic .single-person__meta {
-  margin: 0 0 var(--nvis-dbl-spacing);
-}
-
-.single-person-page-header--classic .person-job-title {
-  font-size: 1.25em;
-  font-style: italic;
-}
-
-.single-person-page-header .featured-image img {
-  border-radius: 5px;
 }
 
 @keyframes nvis-fade-in-left {
