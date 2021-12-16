@@ -4,7 +4,7 @@ namespace InvisibleUs\Programs;
 
 /**
  * College custom taxonomy.
- * 
+ *
  * @package NVISPrograms
  * @subpackage ContentModel
  * @since 0.1.0
@@ -14,7 +14,7 @@ class College extends CustomTaxonomy {
     public string $name = 'College';
     public string $plural_name = 'Colleges';
 
-    public $object_types = [Program::POST_TYPE, Person::POST_TYPE];
+    public $object_types = [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE];
 
     public array $args = [
         'query_var'             => 'college',
