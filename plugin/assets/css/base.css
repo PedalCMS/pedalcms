@@ -347,10 +347,6 @@ body.single-nvis_program .program-lead-content {
   width: fit-content;
 }
 
-.nvis-template .program-faq__question {
-  font-size: 1.25em;
-}
-
 .faq-category {
   margin-bottom: var(--nvis-dbl-spacing);
 }
