@@ -137,3 +137,17 @@ function nvis_post_thumbnail_or_fallback($post, $fallback_id, $size = 'medium', 
 }
 
 endif;
+
+if (!function_exists('nvis_get_align_class')) :
+
+function nvis_get_align_class(string $align): string {
+    $align = in_array($align, ['left','right','center','none'], true)
+        ? $align
+        : 'none';
+
+    $class = 'align' . $align;
+
+    return $class;
+}
+
+endif;

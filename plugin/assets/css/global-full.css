@@ -83,9 +83,11 @@ body .nvis-template .button-secondary:hover {
     overflow: hidden;
 }
 
-.archive .nvis-template article h2 {
+.archive .nvis-template article .entry-title {
+    font-size: 1.75em;
     font-weight: bold;
     line-height: 1.1;
+    margin: 0;
 }
 
 .archive .nvis-template article header a {
@@ -98,7 +100,7 @@ body .nvis-template .button-secondary:hover {
     text-decoration: underline;
 }
 
-body.single .nvis-template article:not(article article) {
+.single .nvis-template article:not(article article) {
     --article-padding: var(--header-padding);
 
     padding: 0 var(--article-padding) var(--article-padding); 
@@ -106,32 +108,43 @@ body.single .nvis-template article:not(article article) {
     justify-content: space-between;
 }
 
-body.single .nvis-template .nvis-breadcrumbs {
+.single .nvis-template .nvis-breadcrumbs {
     padding-top: var(--nvis-spacing);
     margin-bottom: -1px;
 }
 
-body .nvis-template .page-header {
+.nvis-template .page-header {
     --header-bg: linear-gradient(#000, #444);
-    --h-margin: calc(-1 * var(--article-padding));
+    --h-margin: calc(-1 * var(--header-padding));
 
-    padding: 0 var(--header-padding);
     background: var(--header-bg);
+    box-sizing: border-box;
     color: #fff;
-    position: relative;
     overflow: hidden;
     margin-left: var(--h-margin);
     margin-right: var(--h-margin);
-    width: calc(100% + (2 * var(--article-padding)));
+    padding: 0 var(--header-padding);
+    position: relative;
+    width: calc(100% + (2 * var(--header-padding)));
 }
 
 .archive .nvis-template .page-header {
     min-height: 200px;
+    margin: 0;
+    width: 100%;
 }
 
-.archive .nvis-template .page-header {
-    margin-bottom: 0;
+.archive .nvis-template .page-header .page-title {
+    margin-bottom: var(--nvis-spacing);
 }
+
+/* .archive .nvis-template .page-header .page-title {
+    background: #000;
+    margin-bottom: var(--nvis-spacing);
+    margin-left: var(--h-margin);
+    margin-right: var(--h-margin);
+    padding: var(--nvis-spacing) var(--header-padding);
+} */
 
 .nvis-template .page-header__backdrop {
     background: var(--header-bg);
@@ -210,7 +223,9 @@ body .nvis-template .page-header {
 
 .nvis-template .page-header .featured-image {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    height: fit-content;
     margin-bottom: var(--nvis-dbl-spacing);
+    width: fit-content;
 }
 
 .nvis-template .page-header .nvis-meta-group {

@@ -113,7 +113,13 @@
   margin-bottom: var(--nvis-spacing);
 }
 
+.archive .page-header .featured-image.alignleft,
+.archive .page-header .featured-image.alignright {
+  margin-bottom: var(--nvis-dbl-spacing);
+}
+
 .archive .nvis-post-filters {
+  clear: both;
   align-items: center;
   background: rgba(0,0,0,0.1);
   display: flex;
