@@ -10,6 +10,7 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
+    'layout'            => 'horizontal',
     'filters_legend'    => 'Filter',
     'button_text'       => 'Search',
     'reset_link_text'   => 'Reset Filters',
@@ -17,6 +18,13 @@ $defaults = [
 ];
 
 $args = wp_parse_args($args, $defaults);
+
+$classes = [
+    'nvis-post-filters',
+    $args['post_type'] .'-filters',
+];
+
+$classes[] = $args['layout'] === 'vertical' ? 'nvis-post-filters--vertical' : 'nvis-post-filters--horizontal';
 
 /**
  * Fires before the search filter form is loaded.
@@ -41,7 +49,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
 ?>
 <form
     action="<?php echo get_post_type_archive_link($args['post_type']); ?>"
-    class="<?php echo $args['post_type']; ?>-filters nvis-post-filters">
+    class="<?php echo implode(' ', $classes); ?>">
     <fieldset>
         <legend><?php echo esc_html($args['filters_legend']); ?>
         </legend>
@@ -57,7 +65,11 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
         do_action('nvis/programs/before_filters_fields', $args);
 
         foreach ($args['filters'] as $filter):
-            nvis_prog_get_template_part('filters/' . $filter);
+            if (is_array($filter) && count($filter) > 1):
+                nvis_prog_get_template_part('filters/' . $filter[0], $filter[1]);
+            elseif (is_string($filter)):
+                nvis_prog_get_template_part('filters/' . $filter);
+            endif;
         endforeach;
 
         /**
