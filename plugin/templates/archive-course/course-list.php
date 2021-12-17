@@ -10,7 +10,7 @@
 defined('ABSPATH') || exit;
 
 ?>
-<section class="course-list">
+<section class="course-list article-list">
     <?php
     if (is_array($args['courses']) && !empty($args['courses'])) :
         foreach ($args['courses'] as $post) :
