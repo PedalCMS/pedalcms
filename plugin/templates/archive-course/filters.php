@@ -12,10 +12,13 @@ defined('ABSPATH') || exit;
 
 $args = [
     'post_type' => 'nvis_course',
+    'layout'    => 'vertical',
     'filters'   => [
         'keyword',
+        'session',
         'subject',
-        'session'
+        'college',
+        'department'
     ]
 ];
 
