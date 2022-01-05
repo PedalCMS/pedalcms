@@ -32,7 +32,7 @@ if ($post) : ?>
 
     <div class="program-info item-info">
         <header>
-            <h2 class="program-title"><a
+            <h2 class="program-title entry-title"><a
                     href="<?php echo get_the_permalink($post); ?>"><?php echo get_the_title($post); ?></a></h2>
             <?php
             if ($args['show_program_type']) :
