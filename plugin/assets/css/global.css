@@ -195,53 +195,6 @@
   padding: 0;
 }
 
-.archive .nvis-post-filters--vertical,
-.archive .nvis-post-filters--vertical fieldset {
-  align-items: flex-start;
-  flex-direction: column;
-}
-
-.archive .nvis-post-filters--vertical {
-  display: inline-block;
-  float: left;
-  margin-right: 3%;
-  margin-top: var(--nvis-dbl-spacing);
-  width: var(--nvis-sidebar-width);
-}
-
-.archive .nvis-post-filters--vertical fieldset {
-  margin-bottom: var(--nvis-spacing);
-}
-
-.archive .nvis-post-filters--vertical .nvis-filters-field {
-  width: 100%;
-}
-
-.archive .nvis-post-filters--vertical fieldset input,
-.archive .nvis-post-filters--vertical fieldset select {
-  font-size: 14px;
-  padding: 0.5em;
-  width: 100%;
-}
-
-.nvis-post-filters--vertical + .num-results {
-  display: inline-block;
-  margin-top: 0;
-  float: left;
-  clear: left;
-  width: var(--nvis-sidebar-width);
-}
-
-.nvis-post-filters--vertical + .num-results + .article-list {
-  display: inline-block;
-  margin-top: var(--nvis-dbl-spacing);
-  width: calc(100% - 3% - var(--nvis-sidebar-width));
-}
-
-.nvis-post-filters--vertical + .num-results + .article-list + .pagination {
-  border-top: solid 1px rgba(0,0,0,0.1);
-}
-
 .archive .nvis-post-filters legend {
   border: none;
   float: left;
