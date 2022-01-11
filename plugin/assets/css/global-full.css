@@ -83,11 +83,15 @@ body .nvis-template .button-secondary:hover {
     overflow: hidden;
 }
 
-.archive .nvis-template article .entry-title {
+.archive .nvis-template .entry-title {
     font-size: 1.75em;
     font-weight: bold;
     line-height: 1.1;
     margin: 0;
+}
+
+.archive .nvis-template .entry-title a {
+    font-weight: bold;
 }
 
 .archive .nvis-template article header a {
