@@ -1,4 +1,38 @@
 /* TODO: Namespace CSS classes? */
+.course-list .nvis_course {
+  border: none;
+  padding: var(--nvis-dbl-spacing);
+  position: relative;
+  margin-bottom: var(--nvis-dbl-spacing);
+}
+
+.course-list .nvis_course .course-name {
+  font-size: 1.25em;
+}
+
+.course-list .course-meta {
+  display: flex;
+  gap: var(--nvis-spacing);
+  margin-bottom: var(--nvis-spacing);
+}
+
+.course-list .course-details {
+  margin-top: var(--nvis-spacing);
+} 
+
+.course-list .course-details {
+  display: flex;
+  gap: var(--nvis-dbl-spacing);
+}
+
+.course-list .course-personnel {
+  width: var(--nvis-sidebar-width);
+}
+
+.course-list .course-details h3 {
+  font-size: 1.25em;
+}
+
 .person-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
