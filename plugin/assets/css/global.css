@@ -197,31 +197,59 @@
   width: auto;
 }
 
-.archive .nvis-post-filters .more-filters-toggle {
-  break-before: always;
-  page-break-before: always;
+.show-hide__trigger {
+  position: absolute;
+  left: -1vw;
 }
 
-.archive .nvis-post-filters .more-filters {
+.show-hide__trigger ~ .show-hide__content {
+  height: auto;
   max-height: 0;
-  display: flex;
   overflow: hidden;
+  transition: all 0.5s;
+}
+
+.show-hide__trigger:checked ~ .show-hide__content {
+  max-height: 400px;
+  transition: all 1s;
+}
+
+.show-hide__trigger + .show-hide__label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.9em;
+  padding: 0 0 0 1em;
+  position: relative;
+}
+
+.show-hide__trigger + .show-hide__label:hover {
+  color: var(--nvis-active-color);
+  text-decoration: underline;
+}
+
+.show-hide__trigger + .show-hide__label::before {
+  content: attr(data-show-label);
+}
+
+.show-hide__trigger:checked + .show-hide__label::before {
+  content: attr(data-hide-label);
+}
+
+.show-hide__trigger + .show-hide__label::after {
+  content: '\25B2';
+  color: var(--nvis-active-color);
+  display: inline-block;
+  font-size: 0.9em;
+  left: 0;
+  position: absolute;
+  top: 2px;
+  transform: rotate(90deg);
   transition: all 0.25s;
-  width: 100%;
 }
 
-.archive .nvis-post-filters .more-filters-toggle + label::before {
-  content: 'More Filters';
-}
-
-.archive .nvis-post-filters .more-filters-toggle:checked ~ .more-filters {
-  max-height: 100px;
-  transition: all 0.25s;
-
-}
-
-.archive .nvis-post-filters .more-filters-toggle:checked + label::before {
-  content: 'Hide Filters';
+.show-hide__trigger:checked + .show-hide__label::after {
+  transform: rotate(180deg);
+  transition: all 0.35s;
 }
 
 .archive .nvis-post-filters .reset-link {
