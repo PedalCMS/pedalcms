@@ -1,19 +1,25 @@
 /* TODO: Namespace CSS classes? */
 .course-list .nvis_course {
   border: none;
-  padding: var(--nvis-dbl-spacing);
+  padding: var(--nvis-spacing);
   position: relative;
-  margin-bottom: var(--nvis-dbl-spacing);
+  margin-bottom: var(--nvis-spacing);
 }
 
-.course-list .nvis_course .course-name {
+.course-list .nvis_course header {
+  /* align-items: flex-end;
+  display: flex;
+  justify-content: space-between; */
+  margin-bottom: var(--nvis-spacing);
+}
+
+.course-list .nvis_course .entry-title {
   font-size: 1.25em;
 }
 
 .course-list .course-meta {
   display: flex;
   gap: var(--nvis-spacing);
-  margin-bottom: var(--nvis-spacing);
 }
 
 .course-list .course-details {
@@ -21,8 +27,14 @@
 } 
 
 .course-list .course-details {
+  --gap: 5%; 
+
   display: flex;
-  gap: var(--nvis-dbl-spacing);
+  gap: var(--gap);
+}
+
+.course-list .course-description {
+  width: calc(100% - var(--gap) - var(--nvis-sidebar-width));
 }
 
 .course-list .course-personnel {

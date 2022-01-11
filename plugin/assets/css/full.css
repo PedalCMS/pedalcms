@@ -137,3 +137,20 @@ body.single-nvis_program .related-post__category a {
 .single-person-page-header .featured-image {
     box-shadow: 0 5px rgba(0,0,0,0.2);
 }
+
+.course-list .nvis_course header {
+    align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+}
+
+.course-list .course-personnel {
+    background: #f3f3f3;
+    border-radius: 5px;
+    height: fit-content;
+    padding: var(--nvis-spacing);
+}
+
+.course-list .course-personnel .post-links {
+    margin: 0 0 0 1em;
+}
