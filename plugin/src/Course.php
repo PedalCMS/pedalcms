@@ -74,22 +74,38 @@ class Course extends CustomPostType {
             'description'           => '',
             'fields'                => [
                 [
+                    'key'               => 'field_61dc7bfe9a8f8',
+                    'label'             => 'Course Description',
+                    'name'              => 'short_description',
+                    'type'              => 'textarea',
+                    'instructions'      => 'The short description of the course. No more than a paragraph.',
+                ],
+                [
+                    'key'               => 'field_61dc6ea8d1509',
+                    'label'             => 'Course Code',
+                    'name'              => 'course_code',
+                    'type'              => 'text',
+                    'instructions'      => 'The short identifier for a course. Usually some combination of subject code and a number.',
+                    'placeholder'       => 'CS101',
+                    'wrapper'           => ['width' => '25'],
+                ],
+                [
                     'key'               => 'field_615226746dddd',
                     'label'             => 'Credit Hours',
                     'name'              => 'credits',
                     'type'              => 'number',
                     'instructions'      => 'Number of credit hours earned for this course. Sometimes also referred to as units.',
                     'placeholder'       => 1,
+                    'wrapper'           => ['width' => '25'],
                 ],
                 [
                     'key'               => 'field_61252546d4a0d',
                     'label'             => 'Course Registration Key',
                     'name'              => 'course_registration_key',
                     'type'              => 'text',
-                    'instructions'      => 'They key, or ID, that you can use to search course registrations for this course via URL parameter.',
+                    'instructions'      => 'They key, or ID, that you can use to search course registration systems for this course via URL parameter.',
                     'wrapper'           => ['width' => '50'],
-                    'default_value'     => '',
-                    'placeholder'       => '61252586f020c'
+                    'placeholder'       => ''
                 ],
                 [
                     'key'               => 'field_612e96a887a06',
