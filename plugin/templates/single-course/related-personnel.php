@@ -9,12 +9,24 @@
 
 defined('ABSPATH') || exit;
 
-$posts = get_field('related_course_personnel');
+$post = nvis_args_or_global('post', $args);
+
+$defaults = [
+    'h_level' => 2,
+    'heading' => 'Instructors'
+];
+
+$args = wp_parse_args($args, $defaults);
+
+$posts = get_field('related_course_personnel', $post);
+$h_tag = nvis_get_heading_tag($args['h_level']);
 
 if (!empty($posts)) :
 ?>
 <div class="course-personnel">
-    <h2>Taught by</h2>
-    <?php nvis_prog_get_template_part('common/posts-links', compact('posts')); ?>
+    <?php
+        echo sprintf('<%s>%s</%s>', $h_tag, esc_html($args['heading']), $h_tag);
+        nvis_prog_get_template_part('common/posts-links', compact('posts'));
+    ?>
 </div>
 <?php endif;
