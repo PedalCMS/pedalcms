@@ -134,6 +134,7 @@
   align-items: center;
   border: none;
   display: flex;
+  flex-wrap: wrap;
   font-size: 0.85em;
   gap: var(--nvis-spacing);
   padding: 0;
@@ -186,7 +187,6 @@
   border-top: solid 1px rgba(0,0,0,0.1);
 }
 
-
 .archive .nvis-post-filters legend {
   border: none;
   float: left;
@@ -195,6 +195,33 @@
   margin: 0;
   padding: 0;
   width: auto;
+}
+
+.archive .nvis-post-filters .more-filters-toggle {
+  break-before: always;
+  page-break-before: always;
+}
+
+.archive .nvis-post-filters .more-filters {
+  max-height: 0;
+  display: flex;
+  overflow: hidden;
+  transition: all 0.25s;
+  width: 100%;
+}
+
+.archive .nvis-post-filters .more-filters-toggle + label::before {
+  content: 'More Filters';
+}
+
+.archive .nvis-post-filters .more-filters-toggle:checked ~ .more-filters {
+  max-height: 100px;
+  transition: all 0.25s;
+
+}
+
+.archive .nvis-post-filters .more-filters-toggle:checked + label::before {
+  content: 'Hide Filters';
 }
 
 .archive .nvis-post-filters .reset-link {
