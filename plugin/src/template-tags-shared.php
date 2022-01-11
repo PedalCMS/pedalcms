@@ -6,7 +6,6 @@
  * @since 0.1.0
  */
 
-
 if (!function_exists('nvis_args_or_global')) :
 /**
  * Returns the args array value if available, global value if not.
@@ -50,19 +49,33 @@ function nvis_sanitize_title_tag(string $tag, string $default): string {
 
 endif;
 
+if (!function_exists('nvis_get_heading_tag')) :
+/**
+ * Returns the tag name of a corresponding heading level.
+ *
+ * @param integer $level The level of heading desired, 1-6.
+ * @return string The resulting heading tag name.
+ */
+function nvis_get_heading_tag(int $level): string {
+    $level = max(1, min(6, $level));
+
+    return 'h' . $level;
+}
+
+endif;
 
 if (!function_exists('nvis_is_filtered_results')):
- /**
+/**
  * Determines if the current view is a filtered archive view.
  *
  * @param mixed $post_type The post_type to test.
  * @return bool
  */
- function nvis_is_filtered_results($post_type): bool {
-     return
-        is_post_type_archive($post_type) &&
-        (is_search() || is_tax());
- }
+function nvis_is_filtered_results($post_type): bool {
+    return
+    is_post_type_archive($post_type) &&
+    (is_search() || is_tax());
+}
 
 endif;
 
