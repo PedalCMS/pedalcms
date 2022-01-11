@@ -206,7 +206,7 @@
   height: auto;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.5s;
+  transition: all 0.25s;
 }
 
 .show-hide__trigger:checked ~ .show-hide__content {
