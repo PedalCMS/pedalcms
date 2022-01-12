@@ -9,16 +9,27 @@
 
 defined('ABSPATH') || exit;
 
-$courses = $args['courses'] ?? null;
+$defaults = [
+    'courses'       => null,
+    'show_credits'  => true,
+    'label_course'  => 'Course',
+    'label_credits' => 'Credits'
+];
 
-if (is_array($courses)): ?>
+$args = wp_parse_args($args, $defaults);
+
+if (is_array($args['courses'])): ?>
 <table class="courses-table">
     <thead class="courses-table__header">
-        <th>Course</th>
-        <th>Credits</th>
+        <th><?php echo esc_html($args['label_course']); ?>
+        </th>
+        <?php if ($args['show_credits']) : ?>
+        <th><?php echo esc_html($args['label_credits']); ?>
+        </th>
+        <?php endif; ?>
     </thead>
     <tbody class="courses-table__body">
-        <?php foreach ($courses as $post) :?>
+        <?php foreach ($args['courses'] as $post) :?>
         <tr class="courses-table__course">
             <td>
                 <?php
@@ -30,8 +41,12 @@ if (is_array($courses)): ?>
                 esc_html_e($post->post_title);
                 ?>
             </td>
+
+            <?php if ($args['show_credits']) : ?>
             <td><?php echo (int) $post->credits; ?>
             </td>
+            <?php endif; ?>
+
         </tr>
         <?php endforeach; ?>
     </tbody>

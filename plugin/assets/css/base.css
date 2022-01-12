@@ -406,11 +406,11 @@ body.single-nvis_program .program-lead-content {
   text-align: left;
 }
 
-.nvis_program .courses-table thead th:last-child {
+.nvis_program .courses-table thead th:nth-child(2) {
   width: 10%;
 }
 
-.nvis_program .courses-table tbody tr td:last-child {
+.nvis_program .courses-table tbody tr td:nth-child(2) {
   text-align: center;
 }
 
