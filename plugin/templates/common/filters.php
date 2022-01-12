@@ -86,7 +86,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
             endif;
         endforeach;
 
-        if ($args['break_filters_after'] > $i) {
+        if ($args['break_filters_after'] > 0 && $i > $args['break_filters_after']) {
             echo '</div>';
         }
 
