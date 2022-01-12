@@ -22,11 +22,11 @@ $args = wp_parse_args($args, $defaults);
     <?php
     if (is_array($args['people']) && !empty($args['people'])) :
         foreach ($args['people'] as $post) :
-            nvis_prog_get_template_part('archive-person/person-item', compact('post', 'show_contact_info_labels'));
+            nvis_prog_get_template_part('archive-person/person-item', ['post' => $post, 'show_contact_info_labels' => $args['show_contact_info_labels']]);
         endforeach;
     else: ?>
 
-    <p class="empty-state-message"><?php echo esc_html($args['lable_no_one_found']); ?>
+    <p class="empty-state-message"><?php echo esc_html($args['label_no_one_found']); ?>
     </p>
 
     <?php endif; ?>
