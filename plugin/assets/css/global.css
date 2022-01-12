@@ -115,7 +115,7 @@
 
 .show-hide__trigger {
   position: absolute;
-  left: -1vw;
+  left: -100vw;
 }
 
 .show-hide__trigger ~ .show-hide__content {
