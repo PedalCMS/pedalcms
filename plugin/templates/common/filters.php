@@ -10,11 +10,14 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'layout'            => 'horizontal',
-    'filters_legend'    => 'Filter',
-    'button_text'       => 'Search',
-    'reset_link_text'   => 'Reset Filters',
-    'missing_data_text' => 'Missing data to render filters.'
+    'break_filters_after' => -1,
+    'label_filters'       => 'Filter',
+    'label_search'        => 'Search',
+    'label_reset_filters' => 'Reset Filters',
+    'label_show'          => 'Show',
+    'label_hide'          => 'Hide',
+    'label_more_filters'  => 'More Filters',
+    'label_missing_data'  => 'Missing data to render filters.'
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -23,8 +26,6 @@ $classes = [
     'nvis-post-filters',
     $args['post_type'] .'-filters',
 ];
-
-$classes[] = $args['layout'] === 'vertical' ? 'nvis-post-filters--vertical' : 'nvis-post-filters--horizontal';
 
 /**
  * Fires before the search filter form is loaded.
@@ -51,9 +52,10 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
     action="<?php echo get_post_type_archive_link($args['post_type']); ?>"
     class="<?php echo implode(' ', $classes); ?>">
     <fieldset>
-        <legend><?php echo esc_html($args['filters_legend']); ?>
+        <legend><?php echo esc_html($args['label_filters']); ?>
         </legend>
-        <?php
+        <div class="filters">
+            <?php
 
         /**
          * Fires before the search filter fields are loaded.
@@ -64,13 +66,29 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
          */
         do_action('nvis/programs/before_filters_fields', $args);
 
-        foreach ($args['filters'] as $filter):
+        foreach ($args['filters'] as $i => $filter):
+            if ($i === $args['break_filters_after']):
+        ?>
+            <input id="more-filters" class="show-hide__trigger" type="checkbox">
+            <label for="more-filters" class="show-hide__label"
+                data-show-label="<?php echo esc_attr($args['label_show']); ?>"
+                data-hide-label="<?php echo esc_attr($args['label_hide']); ?>">
+                <?php echo esc_html($args['label_more_filters']); ?>
+            </label>
+            <div class="more-filters show-hide__content">
+                <?php
+            endif;
+
             if (is_array($filter) && count($filter) > 1):
                 nvis_prog_get_template_part('filters/' . $filter[0], $filter[1]);
             elseif (is_string($filter)):
                 nvis_prog_get_template_part('filters/' . $filter);
             endif;
         endforeach;
+
+        if ($args['break_filters_after'] > $i) {
+            echo '</div>';
+        }
 
         /**
          * Fires after the search filter fields are loaded.
@@ -81,16 +99,19 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
          */
         do_action('nvis/programs/after_filters_fields', $args);
         ?>
+            </div>
     </fieldset>
-    <button class="button" type="submit"><?php echo esc_html($args['button_text']); ?></button>
-    <?php if (nvis_is_filtered_results($args['post_type'])): ?>
-    <a class="reset-link"
-        href="<?php echo get_post_type_archive_link($args['post_type']); ?>"><?php echo esc_html($args['reset_link_text']); ?></a>
-    <?php endif; ?>
+    <div class="actions">
+        <button class="button" type="submit"><?php echo esc_html($args['label_search']); ?></button>
+        <?php if (nvis_is_filtered_results($args['post_type'])): ?>
+        <a class="reset-link"
+            href="<?php echo get_post_type_archive_link($args['post_type']); ?>"><?php echo esc_html($args['label_reset_filters']); ?></a>
+        <?php endif; ?>
+    </div>
 </form>
 <?php
 else:
-    echo esc_html($args['missing_data_text']);
+    echo esc_html($args['label_missing_data']);
 endif;
 
 /**

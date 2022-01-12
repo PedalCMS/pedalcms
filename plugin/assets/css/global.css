@@ -175,10 +175,9 @@
 
 .archive .nvis-post-filters {
   clear: both;
-  align-items: center;
+  align-items: flex-start;
   background: rgba(0,0,0,0.1);
   display: flex;
-  flex-wrap: wrap;
   gap: var(--nvis-spacing);
   line-height: 1.25;
   margin: 0 0 var(--nvis-spacing);
@@ -189,7 +188,7 @@
   align-items: center;
   border: none;
   display: flex;
-  flex-wrap: wrap;
+  align-items: flex-start;
   font-size: 0.85em;
   gap: var(--nvis-spacing);
   padding: 0;
@@ -200,13 +199,32 @@
   float: left;
   font-size: 1em;
   font-weight: bold;
-  margin: 0;
+  margin: 0.5em 0 0;
   padding: 0;
   width: auto;
 }
 
+.archive .nvis-post-filters .filters,
+.archive .nvis-post-filters .more-filters,
+.archive .nvis-post-filters .actions {
+  display: flex;
+  gap: var(--nvis-spacing);
+  align-items: center;
+}
+
+.archive .nvis-post-filters .filters {
+  flex-wrap: wrap;
+}
+
+.archive .nvis-post-filters .more-filters {
+  break-before: always;
+  page-break-before: always;
+}
+
 .archive .nvis-post-filters .reset-link {
   display: inline-block;
+  font-size: 0.9em;
+  white-space: nowrap;
 }
 
 .nvis-meta-group {
