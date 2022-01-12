@@ -164,7 +164,8 @@ body.single-nvis_program .related-post__category a {
 }
 
 .course-main .course-description {
+    --spacing: calc(3 * var(--nvis-spacing));
     border-bottom: solid 1px #ccc;
-    margin-bottom: calc(3 * var(--nvis-spacing));
-    padding-bottom: var(--nvis-dbl-spacing);
+    margin-bottom: var(--spacing);
+    padding-bottom: var(--spacing);
 }
