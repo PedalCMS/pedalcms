@@ -9,17 +9,31 @@
 
 defined('ABSPATH') || exit;
 
-$size = $args['img_size'] ?? 'medium';
-$post = $args['post'] ?? get_post();
+$post = nvis_args_or_global('post', $args);
+
+$defaults = [
+    'img_size'   => 'medium',
+    'attributes' => null,
+    'link_image' => true
+];
+
+$args = wp_parse_args($args, $defaults);
+
 ?>
 <div class="person-featured-image featured-image">
-    <a href="<?php echo esc_url(get_permalink($post)); ?>">
-        <?php
+    <?php
+    if ($args['link_image']):
+        echo sprintf('<a href="%s">', esc_url(get_permalink($post)));
+    endif;
+
     if (has_post_thumbnail($post)):
-        echo get_the_post_thumbnail($post, $size);
+        echo get_the_post_thumbnail($post, $args['size'], $args['attributes']);
     else:
         nvis_prog_get_template_part('single-person/featured-image-placeholder');
     endif;
+
+    if ($args['link_image']):
+        echo '</a>';
+    endif;
     ?>
-    </a>
 </div>
