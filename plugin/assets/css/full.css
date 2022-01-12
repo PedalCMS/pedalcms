@@ -144,6 +144,14 @@ body.single-nvis_program .related-post__category a {
     justify-content: space-between;
 }
 
+.course-list .nvis_course .course-meta {
+    flex-direction: row-reverse;
+}
+
+.course-list .nvis_course .course-credits {
+    font-weight: bold;
+}
+
 .course-list .course-personnel {
     background: #f3f3f3;
     border-radius: 5px;
