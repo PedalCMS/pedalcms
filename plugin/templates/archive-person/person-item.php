@@ -9,16 +9,20 @@
 
 defined('ABSPATH') || exit;
 
-$post = $args['post'] ?? null;
-$img_size = $args['img_size'] ?? 'medium';
-$h_level = $args['h_level'] ?? 2;
-$h_level = max(1, min(6, (int) $h_level));
-$h_tag = 'h' . $h_level;
-$show_labels = $args['show_contact_info_labels'] ?? false;
+$post = nvis_args_or_global('post', $args);
+
+$defaults = [
+    'show_contact_info_labels' => false,
+    'img_size'                 => 'medium',
+    'h_level'                  => 2,
+];
+
+$args = wp_parse_args($args, $defaults);
+$h_tag = nvis_get_heading_tag($args['h_level']);
 
 if ($post) :?>
 <article <?php post_class('', $post); ?>>
-    <?php nvis_prog_get_template_part('single-person/featured-image', compact('post', 'img_size')); ?>
+    <?php nvis_prog_get_template_part('single-person/featured-image', ['post' => $post, 'img_size' => $args['img_size']]); ?>
     <div class="person-info">
         <header>
             <?php echo sprintf('<%s class="person-name">', $h_tag); ?>
@@ -37,7 +41,7 @@ if ($post) :?>
                 ); ?>
             </div>
         </header>
-        <?php nvis_prog_get_template_part('blocks/contact-info', compact('post', 'show_labels')); ?>
+        <?php nvis_prog_get_template_part('blocks/contact-info', ['post' => $post, 'show_labels' => $args['show_contact_info_labels']]); ?>
     </div>
 </article>
 <?php endif;

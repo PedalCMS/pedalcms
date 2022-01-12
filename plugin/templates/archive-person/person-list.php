@@ -9,7 +9,14 @@
 
 defined('ABSPATH') || exit;
 
-$show_contact_info_labels = $args['show_contact_info_labels'] ?? false;
+$defaults = [
+    'people'                   => null,
+    'show_contact_info_labels' => false,
+    'label_no_one_found'       => 'No one was found.'
+];
+
+$args = wp_parse_args($args, $defaults);
+
 ?>
 <section class="person-list">
     <?php
@@ -19,7 +26,8 @@ $show_contact_info_labels = $args['show_contact_info_labels'] ?? false;
         endforeach;
     else: ?>
 
-    <p class="empty-state-message">No one was found.</p>
+    <p class="empty-state-message"><?php echo esc_html($args['lable_no_one_found']); ?>
+    </p>
 
     <?php endif; ?>
 </section>
