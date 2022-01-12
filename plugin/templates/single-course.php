@@ -14,9 +14,14 @@ nvis_prog_get_template_part('common/header'); ?>
     nvis_prog_get_template_part('common/breadcrumbs');
     nvis_prog_get_template_part('single-course/page-header');
     ?>
-	<div class="program-main entry-content">
-		<?php the_content(); ?>
-		<?php nvis_prog_get_template_part('single-course/related-personnel'); ?>
+	<div class="course-main entry-content">
+		<p class="course-description"><?php echo esc_html($post->short_description); ?>
+		</p>
+		<div class="course-content"><?php the_content(); ?>
+		</div>
 	</div>
+	<aside class="course-sidebar nvis-sidebar">
+		<?php nvis_prog_get_template_part('single-course/related-personnel'); ?>
+	</aside>
 </article>
 <?php nvis_prog_get_template_part('common/footer');
