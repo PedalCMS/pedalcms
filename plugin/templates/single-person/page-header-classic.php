@@ -20,6 +20,6 @@ defined('ABSPATH') || exit;
         </h1>
 
         <?php nvis_prog_get_template_part('single-person/person-meta'); ?>
-        <?php nvis_prog_get_template_part('blocks/contact-info', ['post' => get_post(), 'show_labels' => true]); ?>
+        <?php nvis_prog_get_template_part('blocks/contact-info', ['context' => $template, 'post' => get_post(), 'show_labels' => true]); ?>
     </div>
 </header><!-- .page-header -->
