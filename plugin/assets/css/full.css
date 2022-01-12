@@ -162,3 +162,9 @@ body.single-nvis_program .related-post__category a {
 .course-list .course-personnel .post-links {
     margin: 0 0 0 1em;
 }
+
+.course-main .course-description {
+    border-bottom: solid 1px #ccc;
+    margin-bottom: calc(3 * var(--nvis-spacing));
+    padding-bottom: var(--nvis-dbl-spacing);
+}
