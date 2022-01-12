@@ -28,6 +28,19 @@ body .nvis-template .button-secondary:hover {
     color: #fff;
 }
 
+.nvis-template .back-to-top {
+    background: #333;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.25em 0.5em;
+}
+
+.nvis-template .back-to-top:hover {
+    background: var(--nvis-active-color);
+}
+
 .archive .nvis-template .nvis-breadcrumbs {
     margin-bottom: var(--nvis-spacing);
 }
@@ -50,6 +63,15 @@ body .nvis-template .button-secondary:hover {
     font-size: 14px;
     line-height: 1;
     padding: 5px 10px;
+}
+
+.nvis-post-filters .show-hide__label,
+.nvis-post-filters .show-hide__label::after {
+    color: #fff;
+}
+
+.nvis-post-filters .show-hide__label:hover {
+    color: #ccc;
 }
 
 .nvis-post-filters select {
