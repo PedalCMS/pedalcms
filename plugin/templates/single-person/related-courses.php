@@ -9,12 +9,18 @@
 
 defined('ABSPATH') || exit;
 
-$posts = get_field('related_person_courses');
+$defaults = [
+    'posts'                => get_field('related_person_courses'),
+    'label_courses_taught' => 'Courses Taught'
+];
 
-if (!empty($posts)) :
+$args = wp_parse_args($args, $defaults);
+
+if (!empty($args['posts'])) :
 ?>
 <div class="person-courses">
-    <h2>Courses Taught</h2>
-    <?php nvis_prog_get_template_part('common/posts-links', compact('posts')); ?>
+    <h2><?php echo esc_html($args['label_courses_taught']); ?>
+    </h2>
+    <?php nvis_prog_get_template_part('common/posts-links', $args); ?>
 </div>
 <?php endif;

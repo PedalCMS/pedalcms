@@ -9,10 +9,11 @@
 
 defined('ABSPATH') || exit;
 
-$person = get_post(); ?>
+$post = nvis_args_or_global('post', $args);
+?>
 <div class="single-person__meta">
     <div class="person-meta__item">
-        <?php nvis_prog_get_template_part('blocks/job-title', ['job_title' => $person->job_title]); ?>
+        <?php nvis_prog_get_template_part('blocks/job-title', ['job_title' => $post->job_title]); ?>
     </div>
     <?php
     the_terms(
