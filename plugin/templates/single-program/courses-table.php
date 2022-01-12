@@ -32,14 +32,7 @@ if (is_array($args['courses'])): ?>
         <?php foreach ($args['courses'] as $post) :?>
         <tr class="courses-table__course">
             <td>
-                <?php
-                if ($post->course_code) :
-                    esc_html_e($post->course_code);
-                    echo ' – ';
-                endif;
-
-                esc_html_e($post->post_title);
-                ?>
+                <?php echo nvis_prog_get_full_course_title($post); ?>
             </td>
 
             <?php if ($args['show_credits']) : ?>
