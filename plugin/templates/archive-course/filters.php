@@ -11,9 +11,9 @@
 defined('ABSPATH') || exit;
 
 $args = [
-    'post_type' => 'nvis_course',
-    'layout'    => 'vertical',
-    'filters'   => [
+    'post_type'           => 'nvis_course',
+    'break_filters_after' => 3,
+    'filters'             => [
         'keyword',
         'session',
         'subject',
