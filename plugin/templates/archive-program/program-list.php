@@ -7,7 +7,14 @@
  * @version 1.0
  */
 
- defined('ABSPATH') || exit;
+defined('ABSPATH') || exit;
+
+$defaults = [
+    'label_no_programs_found' => 'No programs were found.'
+];
+
+$args = wp_parse_args($args, $defaults);
+
 ?>
 <section class="programs-list">
     <?php if (is_array($args['programs']) && !empty($args['programs'])) :
@@ -16,7 +23,8 @@
         endforeach;
     else: ?>
 
-    <p class="empty-state-message">No programs were found.</p>
+    <p class="empty-state-message"><?php echo esc_html($args['label_no_programs_found']); ?>
+    </p>
 
     <?php endif; ?>
 </section>
