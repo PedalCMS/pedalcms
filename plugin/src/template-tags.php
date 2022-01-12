@@ -267,3 +267,22 @@ function normalize_faq_types(array $faqs, bool $group_by_cat = false): array {
 function nvis_prog_get_people_by_category(array $people): array {
     return \InvisibleUs\Programs\Person::group_by_category($people);
 }
+
+function nvis_prog_get_full_course_title($post = null) {
+    $post = get_post($post);
+    $title = '';
+
+    if ($post->course_code) {
+        $title .= sprintf(
+            '<span class="course-code">%s</span> <span class="separator">&ndash;</span>',
+            esc_html($post->course_code)
+        );
+    }
+
+    $title .= sprintf(
+        '<span class="course-name">%s</span>',
+        esc_html($post->post_title)
+    );
+
+    return $title;
+}
