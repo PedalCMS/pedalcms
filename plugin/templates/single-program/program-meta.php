@@ -9,32 +9,56 @@
 
 defined('ABSPATH') || exit;
 
-?>
-<div class="program-meta nvis-meta-group">
+$post = nvis_args_or_global('post', $args);
 
-  <?php
-  // TODO: Link these somewhere else?
-  the_terms(
-      get_the_ID(),
-      'nvis_instruct_mode',
-      '<span class="instruction-mode nvis-meta-group__item"><span class="label">Instruction Mode<span class="separator">:</span></span> <span class="value">',
-      ', ',
-      '</span></span>'
-  ); ?>
+$defaults = [
+    'show_college'           => true,
+    'show_instruction_mode'  => true,
+    'show_prerequisites'     => true,
+    'label_instruction_mode' => nvis_prog_get_label('instruction_mode'),
+    'label_prerequisites'    => nvis_prog_get_label('prerequisites'),
+    'label_college'          => nvis_prog_get_label('college'),
+    'label_yes'              => nvis_prog_get_label('yes'),
+    'label_no'               => nvis_prog_get_label('no'),
+    'wrapper_class'          => 'nvis-meta-group',
+    'meta_before_fmt'        => '<span class="%s nvis-meta-group__item"><span class="label">%s<span class="separator">:</span></span> <span class="value">',
+    'terms_separator'        => ', ',
+    'meta_after'             => '</span></span>',
+];
 
-  <span class="program-entrance-exam nvis-meta-group__item">
-    <span class="label">Prerequisites<span class="separator">:</span></span>
-    <span class="value"><?php echo get_field('prerequisites') ? 'Yes' : 'No'; ?></span>
-  </span>
+$args = wp_parse_args($args, $defaults);
 
-  <?php
-  // TODO: Link these to the college, not the archive.
-  the_terms(
-      get_the_ID(),
-      'nvis_program_college',
-      '<span class="program-college nvis-meta-group__item"><span class="label">College<span class="separator">:</span></span> <span class="value"> ',
-      ', ',
-      '</span></span>'
-  ); ?>
+$classes = [
+    'program-meta',
+    esc_attr($args['wrapper_class'])
+];
 
-</div>
+echo sprintf('<div class="%s">', implode(' ', $classes));
+
+if ($args['show_instruction_mode']) :
+    the_terms(
+        get_the_ID(),
+        'nvis_instruct_mode',
+        sprintf($args['meta_before_fmt'], 'instruction-mode', $args['label_instruction_mode']),
+        $args['terms_separator'],
+        $args['meta_after']
+    );
+endif;
+
+if ($args['show_prerequisites']) :
+    echo sprintf($args['meta_before_fmt'], 'prerequisites', esc_html($args['label_prerequisites']));
+    echo esc_html(get_field('prerequisites', $post) ? $args['label_yes'] : $args['label_no']);
+    echo $args['meta_after'];
+endif;
+
+if ($args['show_college']) :
+    the_terms(
+        get_the_ID(),
+        'nvis_program_college',
+        sprintf($args['meta_before_fmt'], 'program-college', $args['label_college']),
+        $args['terms_separator'],
+        $args['meta_after']
+    );
+endif;
+
+echo '</div>';
