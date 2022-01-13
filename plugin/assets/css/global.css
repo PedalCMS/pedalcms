@@ -122,12 +122,12 @@
   height: auto;
   max-height: 0;
   overflow: hidden;
-  transition: all 0.25s;
+  transition: max-height 0.25s;
 }
 
 .show-hide__trigger:checked ~ .show-hide__content {
   max-height: 400px;
-  transition: all 1s;
+  transition: max-height 1s;
 }
 
 .show-hide__trigger + .show-hide__label {
@@ -174,11 +174,12 @@
 }
 
 .archive .nvis-post-filters {
-  clear: both;
   align-items: flex-start;
   background: rgba(0,0,0,0.1);
+  clear: both;
   display: flex;
   gap: var(--nvis-spacing);
+  justify-content: space-between;
   line-height: 1.25;
   margin: 0 0 var(--nvis-spacing);
   padding: var(--nvis-spacing);
@@ -208,17 +209,32 @@
 .archive .nvis-post-filters .more-filters,
 .archive .nvis-post-filters .actions {
   display: flex;
-  gap: var(--nvis-spacing);
   align-items: center;
 }
 
 .archive .nvis-post-filters .filters {
+  align-items: center;
+  display: flex;
   flex-wrap: wrap;
+}
+
+.nvis-post-filters .nvis-filters-field {
+  margin-right: var(--nvis-spacing);
 }
 
 .archive .nvis-post-filters .more-filters {
   break-before: always;
   page-break-before: always;
+  transition: all 0.25s;
+}
+
+.nvis-post-filters .show-hide__trigger:checked ~ .more-filters {
+  margin-top: var(--nvis-spacing);
+  transition: max-height 1s, margin 0.25s;
+}
+
+.archive .nvis-post-filters .actions {
+  gap: var(--nvis-spacing);
 }
 
 .archive .nvis-post-filters .reset-link {
