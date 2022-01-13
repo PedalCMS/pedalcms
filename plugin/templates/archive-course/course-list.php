@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
 
 $defaults = [
     'courses'                => null,
-    'label_no_courses_found' => 'No courses were found.'
+    'label_no_courses_found' => nvis_prog_get_label('no_courses_found')
 ];
 
 $args = wp_parse_args($args, $defaults);

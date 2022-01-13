@@ -13,7 +13,7 @@ $defaults = [
     'courses'       => null,
     'show_credits'  => true,
     'label_course'  => 'Course',
-    'label_credits' => 'Credits'
+    'label_credits' => ucfirst(nvis_prog_get_label('credits'))
 ];
 
 $args = wp_parse_args($args, $defaults);

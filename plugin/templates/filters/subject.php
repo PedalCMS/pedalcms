@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $defaults = [
     'taxonomy'  => 'nvis_subject',
     'query_var' => 'subj',
-    'label'     => 'Subject'
+    'label'     => nvis_prog_get_label('subject')
 ];
 
 $args = wp_parse_args($args, $defaults);

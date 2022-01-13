@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $defaults = [
     'taxonomy'  => 'nvis_program_type',
     'query_var' => 'prog_type',
-    'label'     => 'Program Type'
+    'label'     => nvis_prog_get_label('program_type')
 ];
 
 $args = wp_parse_args($args, $defaults);

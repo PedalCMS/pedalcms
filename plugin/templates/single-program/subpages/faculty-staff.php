@@ -13,7 +13,7 @@ $post = nvis_args_or_global('post', $args);
 
 $defaults = [
     'show_subpage'             => nvis_prog_show_subpage('faculty-staff'),
-    'subpage_title'            => 'Faculty &amp; Staff',
+    'subpage_title'            => nvis_prog_get_label('faculty_and_staff'),
     'show_contact_info_labels' => true,
     'personnel'                => get_field('related_faculty_staff', $post),
     'group_by_category'        => get_field('faculty_staff_by_category', $post),

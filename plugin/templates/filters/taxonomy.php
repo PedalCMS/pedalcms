@@ -17,8 +17,8 @@ $defaults = [
     'query_var'            => null,
     'label'                => null,
     'short_label'          => null,
-    'none_selected_prefix' => 'Any ',
-    'missing_data_text'    => 'Missing data to render %s filter'
+    'none_selected_prefix' => nvis_prog_get_label('none_selected_prefix'),
+    'missing_data_text'    => nvis_prog_get_label('missing_filter_data')
 ];
 
 $args = wp_parse_args($args, $defaults);

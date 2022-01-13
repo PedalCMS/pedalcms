@@ -10,14 +10,14 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'break_filters_after' => -1,
-    'label_filters'       => 'Filter',
-    'label_search'        => 'Search',
-    'label_reset_filters' => 'Reset Filters',
-    'label_show'          => 'Show',
-    'label_hide'          => 'Hide',
-    'label_more_filters'  => 'More Filters',
-    'label_missing_data'  => 'Missing data to render filters.'
+    'break_filters_after'        => -1,
+    'label_filter'               => nvis_prog_get_label('filter'),
+    'label_show'                 => nvis_prog_get_label('show'),
+    'label_hide'                 => nvis_prog_get_label('hide'),
+    'label_more_filters'         => nvis_prog_get_label('more_filters'),
+    'label_apply_filters'        => nvis_prog_get_label('apply_filters'),
+    'label_reset_filters'        => nvis_prog_get_label('reset_filters'),
+    'label_missing_filters_data' => nvis_prog_get_label('missing_filters_data'),
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -52,7 +52,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
     action="<?php echo get_post_type_archive_link($args['post_type']); ?>"
     class="<?php echo implode(' ', $classes); ?>">
     <fieldset>
-        <legend><?php echo esc_html($args['label_filters']); ?>
+        <legend><?php echo esc_html($args['label_filter']); ?>
         </legend>
         <div class="filters">
             <?php
@@ -102,7 +102,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
             </div>
     </fieldset>
     <div class="actions">
-        <button class="button" type="submit"><?php echo esc_html($args['label_search']); ?></button>
+        <button class="button" type="submit"><?php echo esc_html($args['label_apply_filters']); ?></button>
         <?php if (nvis_is_filtered_results($args['post_type'])): ?>
         <a class="reset-link"
             href="<?php echo get_post_type_archive_link($args['post_type']); ?>"><?php echo esc_html($args['label_reset_filters']); ?></a>
@@ -111,7 +111,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
 </form>
 <?php
 else:
-    echo esc_html($args['label_missing_data']);
+    echo esc_html($args['label_missing_filters_data']);
 endif;
 
 /**

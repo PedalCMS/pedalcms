@@ -13,7 +13,7 @@ defined('ABSPATH') || exit;
 $defaults = [
     'taxonomy'    => 'nvis_person_cat',
     'query_var'   => 'person_cat',
-    'label'       => 'Category',
+    'label'       => nvis_prog_get_label('person_category'),
 ];
 
 $args = wp_parse_args($args, $defaults);

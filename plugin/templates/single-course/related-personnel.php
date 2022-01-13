@@ -13,7 +13,7 @@ $post = nvis_args_or_global('post', $args);
 
 $defaults = [
     'h_level' => 2,
-    'heading' => 'Instructors'
+    'heading' => nvis_prog_get_label('instructors')
 ];
 
 $args = wp_parse_args($args, $defaults);

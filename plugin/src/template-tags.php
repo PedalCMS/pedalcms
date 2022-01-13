@@ -19,6 +19,10 @@ function nvis_prog_get_template_part(string $template, array $data = []) {
     \InvisibleUs\Programs\TemplateManager::load_template($template, $data);
 }
 
+function nvis_prog_get_label(string $label): string {
+    return \InvisibleUs\Programs\Plugin::get_label($label);
+}
+
 /**
  * Determines whether or not to display Program subpages.
  *

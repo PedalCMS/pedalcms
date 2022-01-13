@@ -200,6 +200,62 @@ class Plugin {
         ]
     ];
 
+    public static $labels = [
+        'more_details'           => 'More Details',
+        'no_posts_found'         => 'No posts found.',
+        'no_courses_found'       => 'No courses were found.',
+        'no_one_found'           => 'No one was found.',
+        'no_programs_found'      => 'No programs were found.',
+        'college'                => 'College',
+        'instruction_mode'       => 'Instruction Mode',
+        'prerequisites'          => 'Prerequisites',
+        'person_category'        => 'Category',
+        'program_type'           => 'Program Type',
+        'session'                => 'Term',
+        'subject'                => 'Subject',
+        'yes'                    => 'Yes',
+        'no'                     => 'No',
+        'phone'                  => 'Phone',
+        'email'                  => 'Email',
+        'office'                 => 'Office',
+        'single_post'            => 'post',
+        'posts'                  => 'posts',
+        'filter'                 => 'Filter',
+        'show'                   => 'Show',
+        'hide'                   => 'Hide',
+        'more_filters'           => 'More Filters',
+        'apply_filters'          => 'Search',
+        'reset_filters'          => 'Reset Filters',
+        'missing_filters_data'   => 'Missing data to render filters.',
+        'missing_filter_data'    => 'Missing data to render %s filter',
+        'filtered_results'       => 'Filtered Results',
+        'showing'                => 'Showing',
+        'showing_of'             => 'Showing %s–%s of %s %s.',
+        'keyword'                => 'Keyword',
+        'none_selected_prefix'   => 'Any ',
+        'credit'                 => 'credit',
+        'credits'                => 'credits',
+        'offered_in'             => 'Offered in',
+        'instructors'            => 'Instructors',
+        'courses_taught'         => 'Courses Taught',
+        'how_to_apply'           => 'How to Apply',
+        'careers'                => 'Careers',
+        'cost'                   => 'Cost',
+        'curriculum'             => 'Curriculum',
+        'faculty_and_staff'      => 'Faculty & Staff',
+        'faqs'                   => 'FAQs',
+        'news'                   => 'News',
+        'application_deadlines'  => 'Application Deadlines',
+        'program_contact'        => 'Program Contact',
+        'contact'                => 'Contact',
+        'course'                 => 'Course',
+        'featured'               => 'Featured',
+        'read_more'              => 'Read More',
+        'program_details'        => 'Program Details',
+        'apply_now'              => 'Apply Now',
+        'request_info'           => 'Request Info'
+    ];
+
     /**
      * Kicks off the whole plugin setup.
      */
@@ -407,6 +463,16 @@ class Plugin {
         $mngr->init();
 
         return;
+    }
+
+    public static function get_label(string $label_name): string {
+        $label = self::get_option('label_' . $label_name);
+
+        if (!$label) {
+            $label = self::$labels[$label_name] ?? "Label {$label_name} not found";
+        }
+
+        return __($label);
     }
 
     /**

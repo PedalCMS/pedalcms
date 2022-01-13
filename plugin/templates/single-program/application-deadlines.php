@@ -9,13 +9,19 @@
 
 defined('ABSPATH') || exit;
 
-$deadlines = nvis_prog_the_application_deadlines();
+$defaults = [
+    'deadlines' => nvis_prog_the_application_deadlines(),
+    'heading'   => nvis_prog_get_label('application_deadlines')
+];
 
-if (is_array($deadlines)) : ?>
+$args = wp_parse_args($args, $defaults);
+
+if (is_array($args['deadlines'])) : ?>
 <div class="program-deadlines">
-  <h2 class="program-deadlines__title program-sidebar__title">Application Deadlines</h2>
+  <h2 class="program-deadlines__title program-sidebar__title"><?php echo esc_html($args['heading']); ?>
+  </h2>
   <dl class="program-deadlines__list">
-    <?php foreach ($deadlines as $deadline) : ?>
+    <?php foreach ($args['deadlines'] as $deadline) : ?>
     <dt><?php echo esc_html($deadline['deadline_label']); ?>
     </dt>
     <dd><?php echo esc_html($deadline['deadline_info']); ?>

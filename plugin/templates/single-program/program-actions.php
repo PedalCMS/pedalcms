@@ -12,15 +12,16 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 
 $defaults = [
-    'add_permalink' => false,
-    'actions'       => [
+    'add_permalink'   => false,
+    'label_permalink' => nvis_prog_get_label('program_details'),
+    'actions'         => [
         [
-            'label' => 'Apply Now',
+            'label' => nvis_prog_get_label('apply_now'),
             'url'   => nvis_prog_get_action_link('apply_now', $post),
             'class' => 'apply-now'
         ],
         [
-            'label' => 'Request Info',
+            'label' => nvis_prog_get_label('request_info'),
             'url'   => nvis_prog_get_action_link('request_info', $post),
             'class' => 'request-info'
         ]
@@ -35,7 +36,7 @@ if ($args['add_permalink']) {
     array_unshift(
         $args['actions'],
         [
-            'label' => 'Program Details',
+            'label' => $args['label_permalink'],
             'url'   => $permalink,
             'class' => 'program-details'
         ]
@@ -44,8 +45,8 @@ if ($args['add_permalink']) {
 
 if (!empty($args['actions'])) : ?>
 <div class="program-actions">
-  <ul>
-    <?php
+    <ul>
+        <?php
     foreach ($args['actions'] as $i => $action) :
       $class = $action['class'] ?? '';
       $class .= ' button ';
@@ -59,6 +60,6 @@ if (!empty($args['actions'])) : ?>
       );
     endforeach;
     ?>
-  </ul>
+    </ul>
 </div>
 <?php endif;

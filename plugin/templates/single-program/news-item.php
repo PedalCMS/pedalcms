@@ -20,6 +20,8 @@ $defaults = [
     'image_align'         => 'right',
     'image_size'          => 'small',
     'image_wrapper_class' => 'related-post__image-wrapper',
+    'label_featured'      => nvis_prog_get_label('featured'),
+    'label_read_more'     => nvis_prog_get_label('read_more'),
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -60,7 +62,7 @@ if ($args['post']) :
             </h3>
 
             <?php if ($args['is_featured'] && $args['show_featured_label']) : ?>
-            <span class="related-post__title-label label">Featured</span>
+            <span class="related-post__title-label label"><?php echo esc_html($args['label_featured']); ?></span>
             <?php endif; ?>
 
             <?php
@@ -79,7 +81,7 @@ if ($args['post']) :
         <p class="related-post__more">
             <a class="related-post__more-link"
                 href="<?php echo esc_url(get_permalink($post)); ?>">
-                Read More
+                <?php echo esc_html($args['label_read_more']); ?>
             </a>
         </p>
         <?php endif; ?>

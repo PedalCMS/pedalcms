@@ -10,9 +10,10 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'action'        => 'contact',
-    'label_contact' => 'Contact',
-    'contacts'      => get_field('related_contacts'),
+    'action'               => 'contact',
+    'heading'              => nvis_prog_get_label('program_contact'),
+    'label_contact_action' => nvis_prog_get_label('contact'),
+    'contacts'             => get_field('related_contacts'),
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -22,7 +23,7 @@ if (is_array($args['contacts']) && !empty($args['contacts'])) :
 ?>
 <div class="program-contacts">
   <h2 class="program-contacts__title program-sidebar__title">
-    <?php echo esc_html(get_option('options_nvis_program_contact_label', 'Program Contact')); ?>
+    <?php echo esc_html($args['heading']); ?>
   </h2>
   <?php
   foreach ($args['contacts'] as $post) :
@@ -34,5 +35,5 @@ if (is_array($args['contacts']) && !empty($args['contacts'])) :
 
 <?php if ($action_url) : ?>
 <a class="<?php echo $args['action']; ?>-button button button-secondary"
-  href="<?php echo esc_url($action_url); ?>"><?php echo $args['label_contact']; ?></a>
+  href="<?php echo esc_url($action_url); ?>"><?php echo $args['label_contact_action']; ?></a>
 <?php endif;

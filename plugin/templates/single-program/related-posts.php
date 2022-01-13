@@ -12,10 +12,12 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 
 $defaults = [
-    'featured_posts'      => null,
-    'posts'               => null,
-    'news_tag'            => get_field('news_tag', $post),
-    'show_all_posts_link' => get_field('news_show_all_link', $post),
+    'featured_posts'       => null,
+    'posts'                => null,
+    'news_tag'             => get_field('news_tag', $post),
+    'show_all_posts_link'  => get_field('news_show_all_link', $post),
+    'label_all_posts'      => nvis_prog_get_label('show_all_posts'),
+    'label_no_posts_found' => nvis_prog_get_label('no_posts_found'),
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -53,10 +55,10 @@ if (!empty($featured_posts) || !empty($posts)) : ?>
 
 <?php if ($args['show_all_posts_link']) :?>
 <a class="button button-secondary"
-    href="<?php echo esc_url(get_term_link($args['news_tag'])); ?>">Show
-    All Posts</a>
+    href="<?php echo esc_url(get_term_link($args['news_tag'])); ?>"><?php echo esc_html($args['label_all_posts']); ?></a>
 <?php endif; ?>
 
 <?php else : ?>
-<p class="empty-state-message">No posts found.</p>
+<p class="empty-state-message"><?php echo esc_html($args['label_no_posts_found']); ?>
+</p>
 <?php endif;

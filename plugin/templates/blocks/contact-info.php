@@ -21,6 +21,9 @@ $defaults = [
     'show_email'    => true,
     'show_office'   => true,
     'show_labels'   => false,
+    'label_phone'   => nvis_prog_get_label('phone'),
+    'label_email'   => nvis_prog_get_label('email'),
+    'label_office'  => nvis_prog_get_label('office'),
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -31,7 +34,8 @@ if ($post):
     <?php if ($args['show_phone'] && $args['office_phone']) : ?>
     <div class="contact-info__field">
         <?php if ($args['show_labels']): ?>
-        <span class="contact-info__label label">Phone<span class="separator">:</span></span>
+        <span class="contact-info__label label"><?php echo esc_html($args['label_phone']); ?><span
+                class="separator">:</span></span>
         <?php endif; ?>
 
         <span class="contact-info__phone"><?php echo esc_html($args['office_phone']); ?></span>
@@ -41,7 +45,8 @@ if ($post):
     <?php if ($args['show_email'] && $args['email_address']) : ?>
     <div class="contact-info__field">
         <?php if ($args['show_labels']): ?>
-        <span class="contact-info__label label">Email<span class="separator">:</span></span>
+        <span class="contact-info__label label"><?php echo esc_html($args['label_email']); ?><span
+                class="separator">:</span></span>
         <?php endif; ?>
 
         <a class="contact-info__email"
@@ -52,7 +57,8 @@ if ($post):
     <?php if ($args['show_office'] && $args['office']) : ?>
     <div class="contact-info__phone">
         <?php if ($args['show_labels']): ?>
-        <span class="contact-info__label label">Office<span class="separator">:</span></span>
+        <span class="contact-info__label label"><?php echo esc_html($args['label_office']); ?><span
+                class="separator">:</span></span>
         <?php endif; ?>
 
         <?php echo esc_html($args['office']); ?>

@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 
 $defaults = [
-    'label_credit'       => 'credit',
+    'label_credit'       => nvis_prog_get_label('credit'),
     'label_credits'      => 'credits',
     'label_offered_in'   => 'Offered in',
 ];

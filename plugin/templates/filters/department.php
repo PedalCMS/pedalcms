@@ -10,9 +10,9 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'taxonomy'    => 'nvis_department',
-    'query_var'   => 'dept',
-    'label'       => 'Department',
+    'taxonomy'  => 'nvis_department',
+    'query_var' => 'dept',
+    'label'     => nvis_prog_get_label('department'),
 ];
 
 $args = wp_parse_args($args, $defaults);

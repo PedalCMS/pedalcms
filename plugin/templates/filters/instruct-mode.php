@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $defaults = [
     'taxonomy'    => 'nvis_instruct_mode',
     'query_var'   => 'inst_mode',
-    'label'       => 'Instruction Mode',
+    'label'       => nvis_prog_get_label('instruction_mode'),
     'short_label' => 'Mode'
 ];
 

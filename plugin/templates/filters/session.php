@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $defaults = [
     'taxonomy'  => 'nvis_session',
     'query_var' => 'sess',
-    'label'     => 'Term'
+    'label'     => nvis_prog_get_label('session')
 ];
 
 $args = wp_parse_args($args, $defaults);

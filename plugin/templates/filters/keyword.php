@@ -10,8 +10,8 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'label'       => 'Keyword',
-    'placeholder' => 'Keyword …'
+    'label'       => nvis_prog_get_label('keyword'),
+    'placeholder' => nvis_prog_get_label('keyword') . ' …'
 ];
 
 $args = wp_parse_args($args, $defaults);

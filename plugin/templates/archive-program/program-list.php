@@ -10,7 +10,7 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'label_no_programs_found' => 'No programs were found.'
+    'label_no_programs_found' => nvis_prog_get_label('no_programs_found')
 ];
 
 $args = wp_parse_args($args, $defaults);

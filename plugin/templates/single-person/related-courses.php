@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
 
 $defaults = [
     'posts'                => get_field('related_person_courses'),
-    'label_courses_taught' => 'Courses Taught'
+    'label_courses_taught' => nvis_prog_get_label('courses_taught')
 ];
 
 $args = wp_parse_args($args, $defaults);

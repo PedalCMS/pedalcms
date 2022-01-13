@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $defaults = [
     'people'                   => null,
     'show_contact_info_labels' => false,
-    'label_no_one_found'       => 'No one was found.'
+    'label_no_one_found'       => nvis_prog_get_label('no_one_found')
 ];
 
 $args = wp_parse_args($args, $defaults);

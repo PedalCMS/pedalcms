@@ -13,7 +13,7 @@ $post = nvis_args_or_global('post', $args);
 
 $defaults = [
     'show_subpage'      => nvis_prog_show_subpage('faqs'),
-    'subpage_title'     => 'FAQs',
+    'subpage_title'     => nvis_prog_get_label('faqs'),
     'group_by_category' => get_field('faqs_by_category', $post),
     'faqs'              => get_field('related_faqs_list', $post),
 ];

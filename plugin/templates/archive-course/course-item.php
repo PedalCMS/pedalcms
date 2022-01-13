@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
 
 $post = nvis_args_or_global('post', $args);
 $defaults = [
-    'label_more_details' => 'More Details'
+    'label_more_details' => nvis_prog_get_label('more_details')
 ];
 
 $args = wp_parse_args($args, $defaults);

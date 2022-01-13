@@ -13,7 +13,7 @@ $post = nvis_args_or_global('post', $args);
 
 $defaults = [
     'show_subpage'         => nvis_prog_show_subpage('cost'),
-    'subpage_title'        => 'Cost',
+    'subpage_title'        => nvis_prog_get_label('cost'),
     'subpage_content'      => get_field('cost_content', $post),
     'estimated_cost'       => get_field('estimated_cost', $post),
     'estimated_cost_label' => get_field('estimated_cost_label', $post)
