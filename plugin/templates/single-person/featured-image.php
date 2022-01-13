@@ -27,7 +27,7 @@ $args = wp_parse_args($args, $defaults);
     endif;
 
     if (has_post_thumbnail($post)):
-        echo get_the_post_thumbnail($post, $args['size'], $args['attributes']);
+        echo get_the_post_thumbnail($post, $args['img_size'], $args['attributes']);
     else:
         nvis_prog_get_template_part('single-person/featured-image-placeholder');
     endif;
