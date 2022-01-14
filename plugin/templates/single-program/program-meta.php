@@ -15,6 +15,7 @@ $defaults = [
     'show_college'           => true,
     'show_instruction_mode'  => true,
     'show_prerequisites'     => true,
+    'link_terms'             => true,
     'label_instruction_mode' => nvis_prog_get_label('instruction_mode'),
     'label_prerequisites'    => nvis_prog_get_label('prerequisites'),
     'label_college'          => nvis_prog_get_label('college'),
@@ -33,16 +34,27 @@ $classes = [
     esc_attr($args['wrapper_class'])
 ];
 
+$allowed_tags = wp_kses_allowed_html('post');
+
+if (!$args['link_terms']) {
+    unset($allowed_tags['a']);
+}
+
+$allowed_tags = array_keys($allowed_tags);
+
 echo sprintf('<div class="%s">', implode(' ', $classes));
 
 if ($args['show_instruction_mode']) :
-    the_terms(
-        get_the_ID(),
+    $terms = get_the_term_list(
+        $post->ID,
         'nvis_instruct_mode',
         sprintf($args['meta_before_fmt'], 'instruction-mode', $args['label_instruction_mode']),
         $args['terms_separator'],
         $args['meta_after']
     );
+    $terms = strip_tags($terms, $allowed_tags);
+
+    echo $terms;
 endif;
 
 if ($args['show_prerequisites']) :
@@ -52,13 +64,16 @@ if ($args['show_prerequisites']) :
 endif;
 
 if ($args['show_college']) :
-    the_terms(
-        get_the_ID(),
+    $terms = get_the_term_list(
+        $post->ID,
         'nvis_program_college',
         sprintf($args['meta_before_fmt'], 'program-college', $args['label_college']),
         $args['terms_separator'],
         $args['meta_after']
     );
+    $terms = strip_tags($terms, $allowed_tags);
+
+    echo $terms;
 endif;
 
 echo '</div>';
