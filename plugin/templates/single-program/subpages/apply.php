@@ -13,7 +13,7 @@ $post = nvis_args_or_global('post', $args);
 
 $defaults = [
     'show_subpage'    => nvis_prog_show_subpage('apply'),
-    'subpage_title'   => nvis_prog_get_label('how to apply'),
+    'subpage_title'   => nvis_prog_get_label('how_to_apply'),
     'subpage_content' => get_field('apply_content', $post)
 ];
 
