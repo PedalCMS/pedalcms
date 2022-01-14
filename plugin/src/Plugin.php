@@ -213,6 +213,7 @@ class Plugin {
         'program_type'           => 'Program Type',
         'session'                => 'Term',
         'subject'                => 'Subject',
+        'department'             => 'Department',
         'yes'                    => 'Yes',
         'no'                     => 'No',
         'phone'                  => 'Phone',
