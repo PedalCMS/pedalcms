@@ -11,18 +11,27 @@ defined('ABSPATH') || exit;
 
 $defaults = [
     'people'                   => null,
+    'layout'                   => 'grid',
+    'show_contact_info'        => true,
     'show_contact_info_labels' => false,
+    'img_size'                 => 'medium',
     'label_no_one_found'       => nvis_prog_get_label('no_one_found')
 ];
 
 $args = wp_parse_args($args, $defaults);
 
+$classes = [
+    'person-list',
+    'person-list--' . $args['layout']
+];
 ?>
-<section class="person-list">
+<section
+    class="<?php echo esc_attr(implode(' ', $classes)); ?>">
     <?php
     if (is_array($args['people']) && !empty($args['people'])) :
         foreach ($args['people'] as $post) :
-            nvis_prog_get_template_part('archive-person/person-item', ['post' => $post, 'show_contact_info_labels' => $args['show_contact_info_labels']]);
+            $args['post'] = $post;
+            nvis_prog_get_template_part('archive-person/person-item', $args);
         endforeach;
     else: ?>
 

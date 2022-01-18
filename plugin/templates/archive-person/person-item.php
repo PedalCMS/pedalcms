@@ -12,6 +12,7 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 
 $defaults = [
+    'show_contact_info'        => true,
     'show_contact_info_labels' => false,
     'img_size'                 => 'medium',
     'h_level'                  => 2,
@@ -41,7 +42,11 @@ if ($post) :?>
                 ); ?>
             </div>
         </header>
-        <?php nvis_prog_get_template_part('blocks/contact-info', ['post' => $post, 'show_labels' => $args['show_contact_info_labels']]); ?>
+        <?php
+        if ($args['show_contact_info']) :
+            nvis_prog_get_template_part('blocks/contact-info', ['post' => $post, 'show_labels' => $args['show_contact_info_labels']]);
+        endif;
+        ?>
     </div>
 </article>
 <?php endif;
