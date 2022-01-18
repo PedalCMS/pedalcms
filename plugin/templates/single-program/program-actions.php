@@ -12,6 +12,7 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 
 $defaults = [
+    'context'         => $template,
     'add_permalink'   => false,
     'label_permalink' => nvis_prog_get_label('program_details'),
     'actions'         => [
@@ -25,7 +26,8 @@ $defaults = [
             'url'   => nvis_prog_get_action_link('request_info', $post),
             'class' => 'request-info'
         ]
-    ]
+    ],
+    'wrapper_class' => 'program-actions'
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -43,23 +45,4 @@ if ($args['add_permalink']) {
     );
 }
 
-if (!empty($args['actions'])) : ?>
-<div class="program-actions">
-    <ul>
-        <?php
-    foreach ($args['actions'] as $i => $action) :
-      $class = $action['class'] ?? '';
-      $class .= ' button ';
-      $class .= $i ? 'button-secondary' : 'button-primary';
-
-      echo sprintf(
-          '<li><a class="%s" href="%s">%s</a></li>',
-          esc_attr($class),
-          esc_url($action['url']),
-          esc_html($action['label'])
-      );
-    endforeach;
-    ?>
-    </ul>
-</div>
-<?php endif;
+nvis_prog_get_template_part('common/action-list', $args);
