@@ -472,8 +472,10 @@ class Plugin {
         $label = self::get_option('label_' . $label_name);
 
         if (!$label) {
-            $label = self::$labels[$label_name] ?? "Label {$label_name} not found";
+            $label = self::$labels[$label_name] ?? "Label '{$label_name}' not found";
         }
+
+        $label = apply_filters('nvis/get_label', $label, 'programs');
 
         return __($label);
     }
