@@ -254,7 +254,9 @@ class Plugin {
         'read_more'              => 'Read More',
         'program_details'        => 'Program Details',
         'apply_now'              => 'Apply Now',
-        'request_info'           => 'Request Info'
+        'request_info'           => 'Request Info',
+        'estimated_cost'         => 'Estimated Cost',
+        'register'               => 'Register'
     ];
 
     /**
