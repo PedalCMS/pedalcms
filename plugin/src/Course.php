@@ -130,7 +130,7 @@ class Course extends CustomPostType {
                     'elements' => [
                         0 => 'featured_image',
                     ],
-                    'return_format' => 'id',
+                    'return_format' => 'object',
                 ],
             ],
         ]
