@@ -12,6 +12,7 @@ add_filter('document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 
 add_filter('body_class', __NAMESPACE__ . '\body_class', 10, 3);
 add_filter('nvis/programs/before_main_content', __NAMESPACE__ . '\before_main_content');
 add_filter('nvis/programs/after_main_content', __NAMESPACE__ . '\after_main_content');
+add_filter('nvis/template_args', __NAMESPACE__ . '\template_arg_options', 10, 2);
 
 /**
  * Updates the title for filtered results in archives and program subpages.
@@ -101,3 +102,60 @@ function after_main_content() {
 
     echo "</{$tag}>";
 }
+
+function template_arg_options($args, $template) {
+    switch ($template) {
+        case 'common/post-featured-image':
+            return featured_image_arg_options($args);
+        default:
+            break;
+    }
+
+    return $args;
+}
+
+function featured_image_arg_options($args) {
+    $presentation_mode = Plugin::get_option('presentation_mode');
+    $zoom_class = 'featured-image--zoom-hover';
+
+    if (is_post_type_archive()) {
+        if ($presentation_mode === 'full') {
+            $args['image_wrapper_class'] = $zoom_class;
+        }
+    }
+
+    if (is_singular() && empty($args['post']) || (!empty($args['post']) && $args['post'] === get_the_ID())) {
+        $args['image_size'] = [450, 336];
+    }
+
+    if (is_post_type_archive(Program::POST_TYPE) || is_singular(Program::POST_TYPE)) {
+        $fallback_image = Plugin::get_option('image_fallback_program');
+
+        if ($fallback_image) {
+            $args['fallback_attachment_id'] = $fallback_image;
+        }
+    }
+
+    return $args;
+}
+
+add_filter('acf/load_field/name=nvis_image_size_single', function ($field) {
+    $sizes = wp_get_registered_image_subsizes();
+    $labels = [];
+
+    foreach ($sizes as $key => $props) {
+        $labels[] = sprintf(
+            '%s (%s &times %s)',
+            $key,
+            $props['width'],
+            $props['height']
+        );
+    }
+
+    $field['choices'] = array_combine(
+        array_keys($sizes),
+        $labels
+    );
+
+    return $field;
+});
