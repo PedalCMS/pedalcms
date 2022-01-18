@@ -20,8 +20,6 @@ nvis_prog_get_template_part('common/header'); ?>
 		<div class="course-content"><?php the_content(); ?>
 		</div>
 	</div>
-	<aside class="course-sidebar nvis-sidebar">
-		<?php nvis_prog_get_template_part('single-course/related-personnel'); ?>
-	</aside>
+	<?php nvis_prog_get_template_part('single-course/sidebar'); ?>
 </article>
 <?php nvis_prog_get_template_part('common/footer');
