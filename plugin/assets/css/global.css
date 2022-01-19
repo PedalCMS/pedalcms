@@ -43,8 +43,42 @@
   text-decoration: none;
 }
 
-.nvis-template .footnote-text {
-  font-size: 0.9em;
+.nvis-sidebar h2 {
+  font-size: 1.5em;
+  line-height: 1.25;
+  margin: 0 0 calc(0.5 * var(--nvis-spacing));
+}
+
+.nvis-sidebar ul {
+  margin: 0 0 var(--nvis-dbl-spacing) 1em;
+  padding: 0;
+}
+
+.nvis-sidebar ul li {
+  line-height: 1.5;
+  margin-bottom: calc(0.5 * var(--nvis-spacing));
+}
+
+.nvis-sidebar .nvis-sidebar__content {
+  position: sticky;
+  top: var(--nvis-dbl-spacing);
+}
+
+.action-list ul {
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+.action-list li {
+  margin: 0;
+  height: auto;
+}
+
+.action-list a.button {
+  display: block;
+  text-align: center;
+  margin-bottom: calc(0.5 * var(--nvis-spacing));
 }
 
 .nvis-template .back-to-top {
@@ -74,27 +108,6 @@
 
 .nvis-template .pagination {
   margin: var(--nvis-dbl-spacing) 0;
-}
-
-.nvis-sidebar h2 {
-  font-size: 1.5em;
-  line-height: 1.25;
-  margin: 0 0 calc(0.5 * var(--nvis-spacing));
-}
-
-.nvis-sidebar ul {
-  margin: 0 0 var(--nvis-dbl-spacing) 1em;
-  padding: 0;
-}
-
-.nvis-sidebar ul li {
-  line-height: 1.5;
-  margin-bottom: calc(0.5 * var(--nvis-spacing));
-}
-
-.nvis-sidebar .nvis-sidebar__content {
-  position: sticky;
-  top: var(--nvis-dbl-spacing);
 }
 
 .nvis-expandable summary {

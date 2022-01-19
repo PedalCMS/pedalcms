@@ -48,10 +48,8 @@
   display: flex;
 }
 
-.single-nvis_course .course-sidebar ul {
-  list-style: none;
+.single-nvis_course .course-sidebar .action-list {
   margin: 0 0 var(--nvis-dbl-spacing);
-  padding: 0;
 }
 
 .single-nvis_course .course-personnel article {
@@ -195,23 +193,6 @@ body.single-nvis_person .person-sidebar {
 
 .single-person-page-header .featured-image img {
   border-radius: 5px;
-}
-
-.program-actions ul {
-  margin: 0;
-  padding: 0;
-  list-style: none !important;
-}
-
-.program-actions li {
-  margin: 0;
-  height: auto;
-}
-
-.program-actions a.button {
-  display: block;
-  text-align: center;
-  margin-bottom: calc(0.5 * var(--nvis-spacing));
 }
 
 .programs-list article.nvis_program {
