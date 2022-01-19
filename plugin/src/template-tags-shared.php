@@ -172,7 +172,12 @@ function nvis_get_the_term_list($post, string $taxonomy, string $before = '', st
         $list = get_the_term_list($post, $taxonomy, $before, $sep, $after);
     } else {
         $terms = get_the_terms($post, $taxonomy);
-        $list = $before . implode($sep, wp_list_pluck($terms, 'name')) . $after;
+
+        if (!is_wp_error($terms)) {
+            $list = $before . implode($sep, wp_list_pluck($terms, 'name')) . $after;
+        } else {
+            return false;
+        }
     }
 
     return apply_filters('nvis/terms_list', $list, $taxonomy, $post);
