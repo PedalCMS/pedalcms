@@ -10,6 +10,7 @@ namespace InvisibleUs\Programs;
 
 add_filter('document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 3);
 add_filter('body_class', __NAMESPACE__ . '\body_class', 10, 3);
+add_filter('term_link', __NAMESPACE__ . '\term_link', 10);
 add_filter('nvis/programs/before_main_content', __NAMESPACE__ . '\before_main_content');
 add_filter('nvis/programs/after_main_content', __NAMESPACE__ . '\after_main_content');
 add_filter('nvis/template_args', __NAMESPACE__ . '\template_arg_options', 10, 2);
@@ -66,6 +67,31 @@ function body_class(array $classes): array {
     }
 
     return $classes;
+}
+
+/**
+ * Changes the behavior of term links when the taxonomy does not support archives.
+ *
+ * Replaces the home_url with the current post type archive link except for
+ * pages and posts.
+ *
+ * Called on: term_link
+ *
+ * @param string $link
+ * @return string
+ */
+function term_link(string $link): string {
+    $query_start = strpos($link, '?');
+
+    if ($query_start !== false) {
+        $post_type = get_post_type();
+
+        if (!in_array($post_type, ['post','page'], true)) {
+            $link = get_post_type_archive_link($post_type) . substr($link, $query_start);
+        }
+    }
+
+    return $link;
 }
 
 /**
