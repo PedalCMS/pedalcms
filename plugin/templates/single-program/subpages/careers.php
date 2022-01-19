@@ -13,7 +13,7 @@ $post = nvis_args_or_global('post', $args);
 
 $defaults = [
     'show_subpage'  => nvis_prog_show_subpage('careers'),
-    'subpage_title' => nvis_prog_get_label('Careers')
+    'subpage_title' => nvis_prog_get_label('careers')
 ];
 
 $args = wp_parse_args($args, $defaults);
