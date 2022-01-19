@@ -14,6 +14,7 @@ $post = nvis_args_or_global('post', $args);
 $defaults = [
     'show_contact_info'        => true,
     'show_contact_info_labels' => false,
+    'link_terms'               => true,
     'img_size'                 => 'medium',
     'h_level'                  => 2,
 ];
@@ -32,14 +33,16 @@ if ($post) :?>
             <div class="person-position">
                 <?php nvis_prog_get_template_part('blocks/job-title', ['job_title' => $post->job_title]); ?>
                 <?php
-                // TODO: Link these somewhere else?
-                the_terms(
-                    $post,
-                    'nvis_department',
-                    '<div class="person-department">',
-                    ', ',
-                    '</div>'
-                ); ?>
+                echo
+                    nvis_get_the_term_list(
+                        $post,
+                        'nvis_department',
+                        '<div class="person-department">',
+                        ', ',
+                        '</div>',
+                        $args['link_terms']
+                    );
+                ?>
             </div>
         </header>
         <?php
