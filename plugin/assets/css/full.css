@@ -1,3 +1,9 @@
+.nvis-template .course-sidebar .person-name {
+    font-family: inherit;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
 .nvis-template .page-header .program-subnav {
     margin: 40px calc(-1 * var(--article-padding)) 0;
 }
