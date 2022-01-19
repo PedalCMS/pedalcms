@@ -17,6 +17,7 @@ $defaults = [
     'show_category'       => true,
     'show_excerpt'        => true,
     'show_permalink'      => true,
+    'link_terms'          => true,
     'image_align'         => 'right',
     'image_size'          => 'small',
     'image_wrapper_class' => 'related-post__image-wrapper',
@@ -67,7 +68,15 @@ if ($args['post']) :
 
             <?php
             if ($args['show_category']) :
-                the_terms($post, 'category', '<span class="related-post__category">', ',', '</span>');
+                echo
+                    nvis_get_the_term_list(
+                        $post,
+                        'category',
+                        '<span class="related-post__category">',
+                        ',',
+                        '</span>',
+                        $args['link_terms']
+                    );
             endif;
             ?>
         </header>
