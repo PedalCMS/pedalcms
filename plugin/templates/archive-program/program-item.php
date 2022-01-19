@@ -16,6 +16,7 @@ $defaults = [
     'show_program_type'    => true,
     'show_program_meta'    => true,
     'show_program_actions' => true,
+    'link_terms'           => false,
     'wrapper_class'        => ''
 ];
 
@@ -36,20 +37,32 @@ if ($post) : ?>
                     href="<?php echo get_the_permalink($post); ?>"><?php echo get_the_title($post); ?></a></h2>
             <?php
             if ($args['show_program_type']) :
-                the_terms($post, 'nvis_program_type', '<div class="program-type">', ',', '</div>');
+                echo nvis_get_the_term_list($post, 'nvis_program_type', '<div class="program-type">', ',', '</div>', $args['link_terms']);
             endif;
             ?>
         </header>
         <?php
         if ($args['show_program_meta']) :
-            nvis_prog_get_template_part('archive-program/program-meta', compact('post'));
+            nvis_prog_get_template_part(
+                'archive-program/program-meta',
+                [
+                    'post'       => $post,
+                    'link_terms' => $args['link_terms']
+                ]
+            );
         endif;
         ?>
     </div>
 
     <?php
     if ($args['show_program_actions']) :
-        nvis_prog_get_template_part('single-program/program-actions', ['post' => $post, 'add_permalink' => true]);
+        nvis_prog_get_template_part(
+            'single-program/program-actions',
+            [
+                'post'          => $post,
+                'add_permalink' => true
+            ]
+        );
     endif;
     ?>
 </article>
