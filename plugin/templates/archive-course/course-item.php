@@ -38,7 +38,15 @@ if ($post) :?>
             <p class="course-description"><?php echo esc_html($post->short_description); ?>
             </p>
 
-            <?php nvis_prog_get_template_part('single-course/related-personnel', ['post' => $post, 'h_level' => 3]); ?>
+            <?php
+            nvis_prog_get_template_part(
+                'single-course/related-personnel',
+                [
+                    'post'    => $post,
+                    'h_level' => 3,
+                    'style'   => 'links'
+                ]
+            ); ?>
         </div>
     </div>
 </article>
