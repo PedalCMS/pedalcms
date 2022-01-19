@@ -8,23 +8,28 @@
  */
 
 defined('ABSPATH') || exit;
+
+$defaults = [
+    'link_terms' => true,
+    'image_size' => 'medium'
+];
+
+$args = wp_parse_args($args, $defaults);
+
 ?>
 <header class="single-program-page-header page-header entry-header">
 
   <?php nvis_prog_get_template_part('common/page-header-backdrop'); ?>
 
   <div class="page-header__content">
-    <?php nvis_prog_get_template_part('common/post-featured-image', ['image_size' => 'medium']); ?>
+    <?php nvis_prog_get_template_part('common/post-featured-image', $args); ?>
 
     <div class="page-header__title-group">
       <h1 class="page-title entry-title">
         <?php the_title(); ?>
       </h1>
       <div class="program-type taxonomy">
-        <?php
-        // TODO: Design a way to get a singular label here.
-        the_terms(get_the_ID(), 'nvis_program_type');
-        ?>
+        <?php echo nvis_get_the_term_list(get_the_ID(), 'nvis_program_type', '', ', ', '', $args['link_terms']);?>
       </div>
     </div>
     <?php nvis_prog_get_template_part('single-program/program-meta'); ?>
