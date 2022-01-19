@@ -164,3 +164,18 @@ function nvis_get_align_class(string $align): string {
 }
 
 endif;
+
+if (!function_exists('nvis_get_the_terms_list')) :
+
+function nvis_get_the_term_list($post, string $taxonomy, string $before = '', string $sep = ', ', string $after = '', bool $link_terms = true): string {
+    if ($link_terms) {
+        $list = get_the_term_list($post, $taxonomy, $before, $sep, $after);
+    } else {
+        $terms = get_the_terms($post, $taxonomy);
+        $list = $before . implode($sep, wp_list_pluck($terms, 'name')) . $after;
+    }
+
+    return apply_filters('nvis/terms_list', $list, $taxonomy, $post);
+}
+
+endif;
