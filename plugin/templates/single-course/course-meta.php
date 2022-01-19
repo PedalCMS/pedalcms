@@ -15,6 +15,7 @@ $defaults = [
     'label_credit'       => nvis_prog_get_label('credit'),
     'label_credits'      => 'credits',
     'label_offered_in'   => 'Offered in',
+    'link_terms'         => false,
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -31,16 +32,13 @@ $args = wp_parse_args($args, $defaults);
     </div>
 
     <?php
-    $terms = get_the_terms($post, 'nvis_session');
-
-    if (!is_wp_error($terms) && !empty($terms)) :
+    echo nvis_get_the_term_list(
+            $post,
+            'nvis_session',
+            sprintf('<div class="course-terms-offered">%s ', esc_html($args['label_offered_in'])),
+            ', ',
+            '</div>',
+            $args['link_terms']
+        );
     ?>
-    <div class="course-terms-offered">
-        <?php
-        echo esc_html($args['label_offered_in']);
-        echo ' ';
-        echo implode(', ', wp_list_pluck($terms, 'name'));
-        ?>
-    </div>
-    <?php endif; ?>
 </div>
