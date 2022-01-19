@@ -41,7 +41,7 @@ if (!empty($args['personnel'])) :
             ]
         );
     elseif ($style === 'links') :
-        nvis_prog_get_template_part('common/post', ['posts' => $args['personnel']]);
+        nvis_prog_get_template_part('common/posts-links', ['posts' => $args['personnel']]);
     endif;
     ?>
 </div>
