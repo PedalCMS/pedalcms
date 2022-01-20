@@ -282,7 +282,8 @@ class Plugin {
         'apply_now'              => 'Apply Now',
         'request_info'           => 'Request Info',
         'estimated_cost'         => 'Estimated Cost',
-        'register'               => 'Register'
+        'register'               => 'Register',
+        'course_info'            => 'View Course'
     ];
 
     /**
