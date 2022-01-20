@@ -11,7 +11,8 @@ defined('ABSPATH') || exit;
 
 $post = nvis_args_or_global('post', $args);
 $defaults = [
-    'label_more_details' => nvis_prog_get_label('more_details')
+    'label_more_details' => nvis_prog_get_label('more_details'),
+    'label_permalink'    => nvis_prog_get_label('course_info')
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -28,26 +29,37 @@ if ($post) :?>
         </h2>
         <?php nvis_prog_get_template_part('single-course/course-meta', compact('post')); ?>
     </header>
-    <input class="show-hide__trigger" type="checkbox"
-        id="<?php echo $more_details_id; ?>">
-    <label class="show-hide__label"
-        for="<?php echo $more_details_id; ?>" data-show-label="Show "
-        data-hide-label="Hide "><?php echo esc_html($args['label_more_details']); ?></label>
-    <div class="show-hide__content">
-        <div class="course-details">
-            <p class="course-description"><?php echo esc_html($post->short_description); ?>
-            </p>
+    <div class="course-content">
+        <input class="show-hide__trigger" type="checkbox"
+            id="<?php echo $more_details_id; ?>">
+        <label class="show-hide__label"
+            for="<?php echo $more_details_id; ?>"
+            data-show-label="Show " data-hide-label="Hide "><?php echo esc_html($args['label_more_details']); ?></label>
+        <div class="show-hide__content">
+            <div class="course-details">
+                <p class="course-description"><?php echo esc_html($post->short_description); ?>
+                </p>
 
-            <?php
-            nvis_prog_get_template_part(
-                'single-course/related-personnel',
-                [
-                    'post'    => $post,
-                    'h_level' => 3,
-                    'style'   => 'links'
-                ]
-            ); ?>
+                <?php
+                nvis_prog_get_template_part(
+    'single-course/related-personnel',
+    [
+        'post'    => $post,
+        'h_level' => 3,
+        'style'   => 'links',
+    ]
+); ?>
+            </div>
         </div>
     </div>
+    <?php
+    nvis_prog_get_template_part(
+    'single-course/course-actions',
+    [
+        'post'            => $post,
+        'add_permalink'   => true,
+        'label_permalink' => $args['label_permalink']
+    ]
+); ?>
 </article>
 <?php endif;
