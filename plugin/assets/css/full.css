@@ -1,9 +1,3 @@
-.nvis-template .course-sidebar .person-name {
-    font-family: inherit;
-    font-size: 1.25em;
-    font-weight: bold;
-}
-
 .nvis-template .page-header .program-subnav {
     margin: 40px calc(-1 * var(--article-padding)) 0;
 }
@@ -145,24 +139,16 @@ body.single-nvis_program .related-post__category a {
 }
 
 .course-list .nvis_course header {
-    align-items: flex-end;
-    display: flex;
-    justify-content: space-between;
+    border-bottom: solid 1px #ccc;
+    padding-bottom: calc(var(--nvis-spacing) / 2);
 }
 
 .course-list .nvis_course .course-meta {
-    flex-direction: row-reverse;
+    font-size: 0.9em;
 }
 
 .course-list .nvis_course .course-credits {
     font-weight: bold;
-}
-
-.course-list .course-personnel {
-    background: #f3f3f3;
-    border-radius: 5px;
-    height: fit-content;
-    padding: var(--nvis-spacing);
 }
 
 .course-list .course-personnel .post-links {
@@ -171,7 +157,14 @@ body.single-nvis_program .related-post__category a {
 
 .course-main .course-description {
     --spacing: calc(3 * var(--nvis-spacing));
+     
     border-bottom: solid 1px #ccc;
     margin-bottom: var(--spacing);
     padding-bottom: var(--spacing);
+}
+
+.nvis-template .course-sidebar .person-name {
+    font-family: inherit;
+    font-size: 1.25em;
+    font-weight: bold;
 }
