@@ -1,22 +1,59 @@
 -include .env
+# ACF_LIC should be set in .env
 PLUGIN_NAME := nvis-program-pages
 PLUGIN_ROOT := plugin
 PLUGIN_VERSION := $$(grep "^ \* Version" $(PLUGIN_ROOT)/$(PLUGIN_NAME).php| awk -F' ' '{print $3}' | cut -d ":" -f2 | sed 's/ //g')
-# ACF_LIC should be set in .env
+BIN := ./node_modules/.bin/
+SASS_DIR := $(PLUGIN_ROOT)/assets/scss
+CSS_DIR := $(PLUGIN_ROOT)/assets/css
 
-# IMPORTANT: Make sure to list all .PHONY commands here.
-.PHONY: install clean release docs setupenv getacf
+# ----------------------------------------------------------------------------
+# BEGIN: Front End Assets
+# ----------------------------------------------------------------------------
+.PHONY: css
+css: | $(CSS_DIR)/global.min.css $(CSS_DIR)/base.min.css $(CSS_DIR)/global-full.min.css $(CSS_DIR)/full.min.css
 
+$(CSS_DIR)/global.min.css: $(SASS_DIR)/global.scss $(SASS_DIR)/_variables.scss $(SASS_DIR)/global/*.scss
+	@echo "Compiling $@\n"
+	$(BIN)sass --update --no-source-map $<:$@ --style compressed
+
+$(CSS_DIR)/base.min.css: $(SASS_DIR)/base.scss $(SASS_DIR)/_variables.scss $(SASS_DIR)/base/*.scss
+	@echo "Compiling $@\n"
+	$(BIN)sass --update --no-source-map $<:$@ --style compressed
+
+$(CSS_DIR)/global-full.min.css: $(SASS_DIR)/global-full.scss $(SASS_DIR)/_variables.scss $(SASS_DIR)/global-full/*.scss
+	@echo "Compiling $@\n"
+	$(BIN)sass --update --no-source-map $<:$@ --style compressed
+
+$(CSS_DIR)/full.min.css: $(SASS_DIR)/full.scss $(SASS_DIR)/_variables.scss $(SASS_DIR)/full/*.scss
+	@echo "Compiling $@\n"
+	$(BIN)sass --update --no-source-map $<:$@ --style compressed
+
+
+# ----------------------------------------------------------------------------
+# BEGIN: Commands
+# ----------------------------------------------------------------------------
+.PHONY: help
+help:
+	@echo "Please view the Makefile for instructions."
+
+.PHONY: watch
+watch:
+	@echo "Watching assets for changes … \n"
+	@while true; do make -q || make; sleep 1; done
+
+.PHONY: install
 install: | clean setupenv
 	npm install
 
+.PHONY: setupenv
 setupenv:
 	@if [ ! -f .env  ]; then \
 		echo "ACF_LIC=\"\"\n" >> .env; \
 	fi
 	@echo "Make sure your ACF Pro license key is configured as ACF_LIC in .env file."
 
-
+.PHONY: getacf
 getacf:
 	@echo "Getting acf pro using license key: $(ACF_LIC)"
 	rm -rf $(PLUGIN_ROOT)/src/acf
@@ -25,16 +62,18 @@ getacf:
 	cd $(PLUGIN_ROOT)/src/ && mv advanced-custom-fields-pro acf
 	rm -rf $(PLUGIN_ROOT)/src/acf.zip
 
+.PHONY: clean
 clean:
 	rm -rf \
-		$(PLUGIN_ROOT)/src/acf
-		build
-		node_modules
-		package-lock.json
-		*.cache
-		docs
-		.phpdoc
+		$(PLUGIN_ROOT)/src/acf \
+		build \
+		node_modules \
+		package-lock.json \
+		*.cache \
+		docs \
+		.phpdoc \
 
+.PHONY: release
 release: getacf
 	@echo "Building release file: $(PLUGIN_NAME).$(PLUGIN_VERSION).zip"
 	rm -rf $(PLUGIN_NAME).$(PLUGIN_VERSION).zip
@@ -50,6 +89,7 @@ release: getacf
 	fi
 	@echo "\n\n\033[92mRelease file built successfully. Check the build directory.\033[0m\n\n"
 
+.PHONY: docs
 docs:
 	@echo "\nBuilding code docs...\n"
 	rm -rf docs

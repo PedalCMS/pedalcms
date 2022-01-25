@@ -1,0 +1,54 @@
+body .nvis-template .button {
+    background-color: var(--nvis-active-color);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 1;
+    padding: var(--nvis-spacing) var(--nvis-dbl-spacing);
+    text-transform: none;
+}
+
+body .nvis-template .button-secondary {
+    background-color: transparent;
+    border: solid 2px;
+    color: var(--nvis-active-color);
+}
+
+body .nvis-template .button:hover,
+body .nvis-template .button-secondary:hover {
+    background-color: #333;
+    border-color: #333;
+    color: #fff;
+}
+
+.archive .nvis-template .entry-title {
+    font-size: 1.75em;
+    font-weight: bold;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.archive .nvis-template .entry-title a {
+    font-weight: bold;
+}
+
+.archive .nvis-template article header a {
+    color: var(--nvis-active-color);
+    text-decoration: none;
+}
+
+.archive .nvis-template article header a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.single .nvis-template article:not(article article) {
+    --article-padding: var(--header-padding);
+
+    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+    border-radius: 0 0 3px 3px;
+    gap: var(--nvis-spacing);
+    justify-content: space-between;
+    padding: 0 var(--article-padding) var(--article-padding); 
+}

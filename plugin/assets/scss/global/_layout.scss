@@ -1,0 +1,32 @@
+.nvis-template {
+  margin: var(--nvis-dbl-spacing) auto;
+  width: 100%;
+}
+
+.nvis-sidebar .nvis-sidebar__content {
+  position: sticky;
+  top: var(--nvis-dbl-spacing);
+}
+
+.nvis-template .page-header {
+  width: 100%;
+  margin: 0 0 var(--nvis-dbl-spacing);
+}
+
+.nvis-breadcrumbs {
+  margin-bottom: var(--nvis-spacing);
+}
+
+.nvis-template .num-results {
+  font-size: 0.9em;
+  margin: var(--nvis-dbl-spacing) 0;
+}
+
+.nvis-template .pagination {
+  margin: var(--nvis-dbl-spacing) 0;
+}
+
+.archive .page-header .featured-image.alignleft,
+.archive .page-header .featured-image.alignright {
+  margin-bottom: var(--nvis-dbl-spacing);
+}

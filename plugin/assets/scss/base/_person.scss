@@ -1,0 +1,108 @@
+.nvis_person .contact-info .label {
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: bold;
+  width: 4em;
+}
+
+.person-list--grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--nvis-spacing);
+}
+
+.person-list .nvis_person {
+  display: flex;
+  gap: var(--nvis-spacing);
+  padding: var(--nvis-dbl-spacing);
+}
+
+.person-list .person-featured-image {
+  border-radius: 5px;
+  height: fit-content;
+  line-height: 0;
+  overflow: hidden;
+  width: 33%;
+}
+
+.person-list .person-featured-image img {
+  height: auto;
+  width: 100%;
+}
+
+.person-list .img-placeholder {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 20px 10px 0;
+}
+
+.person-list .img-placeholder svg {
+  fill: rgba(0, 0, 0, 0.1);
+  height: auto;
+  width: 100%;
+}
+
+.person-list .person-info {
+  width: 66%;
+}
+
+.person-list .person-name {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.person-list .person-position {
+  margin-bottom: calc(1.5 * var(--nvis-spacing));
+}
+
+.person-list .person-job-title {
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.person-list .contact-info {
+  line-height: 1.4;
+}
+
+body.single-nvis_person .person-main {
+  --margin: var(--nvis-dbl-spacing);
+
+  display: flex;
+  gap: var(--margin);
+}
+
+body.single-nvis_person .person-content {
+  width: calc(100% - var(--nvis-sidebar-width) - var(--margin));
+}
+
+body.single-nvis_person .person-sidebar {
+  width: var(--nvis-sidebar-width);
+}
+
+.single-person-page-header--classic::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.single-person-page-header--classic {
+  padding-bottom: var(--nvis-dbl-spacing);
+  margin-bottom: var(--nvis-dbl-spacing);
+  border-bottom: solid 1px var(--nvis-gray);
+}
+
+.single-person-page-header--classic .entry-title {
+  margin: calc(3 * var(--nvis-spacing)) 0 0;
+}
+
+.single-person-page-header--classic .single-person__meta {
+  margin: 0 0 var(--nvis-dbl-spacing);
+}
+
+.single-person-page-header--classic .person-job-title {
+  font-size: 1.25em;
+  font-style: italic;
+}
+
+.single-person-page-header .featured-image img {
+  border-radius: 5px;
+}

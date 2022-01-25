@@ -1,0 +1,78 @@
+.nvis-template .back-to-top {
+    background: #333;
+    border-radius: 3px;
+    color: #fff;
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.25em 0.5em;
+}
+
+.nvis-template .back-to-top:hover {
+    background: var(--nvis-active-color);
+}
+
+.archive .nvis-post-filters {
+    background: #000;
+}
+
+.archive .nvis-post-filters legend {
+    color: #ccc;
+}
+
+.nvis-post-filters input[type="text"],
+.nvis-post-filters input[type="search"],
+.nvis-post-filters select,
+.nvis-post-filters option {
+    background-color: #333;
+    border: solid 1px #999;
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1;
+    padding: 5px 10px;
+}
+
+.nvis-post-filters .show-hide__label,
+.nvis-post-filters .show-hide__label::after {
+    color: #fff;
+}
+
+.nvis-post-filters .show-hide__label:hover {
+    color: #ccc;
+}
+
+.nvis-post-filters select {
+    width: fit-content;
+}
+
+.nvis-template .nvis-post-filters button {
+    font-size: 14px;
+    line-height: 1;
+    padding: 8px 16px;
+}
+
+.nvis-template .nvis-post-filters .reset-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nvis-template .nvis-post-filters .reset-link:hover {
+    text-decoration: underline;
+}
+
+.featured-image--zoom-hover {
+    overflow: hidden;
+    height: fit-content;
+}
+
+.featured-image--zoom-hover img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.25s;
+}
+
+.featured-image--zoom-hover img:hover {
+    filter: saturate(1.1) brightness(1.15);
+    transform: scale(1.2);
+    transition: all 1.5s;
+}

@@ -1,0 +1,175 @@
+.program-faculty-staff-list .person-list {
+  --image-width: 100px;
+  --spacing: var(--nvis-dbl-spacing);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--nvis-dbl-spacing);
+  margin: 0 0 calc(4 * var(--nvis-spacing));
+}
+
+.program-faculty-staff-list .person-list .nvis_person {
+  padding: 0;
+}
+
+.program-faculty-staff-list .person-list .person-featured-image {
+  margin: 0;
+  width: var(--image-width);
+}
+
+.program-faculty-staff-list .person-list .person-info {
+  display: flex;
+  flex-grow: 2;
+}
+
+.program-faculty-staff-list .person-list header {
+  width: 50%;
+}
+
+.program-faculty-staff-list .person-list .contact-info {
+  padding: 0.5em 0 0;
+  width: 50%;
+}
+
+.program-estimated-cost .program-estimated-cost__label {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.nvis-template .program-subpage-careers .career {
+  padding: 0;
+  margin-bottom: var(--nvis-dbl-spacing);
+}
+
+.nvis-template .program-subpage-careers .career-header {
+  border-bottom: solid 1px #ccc;
+  margin-bottom: var(--nvis-spacing);
+  padding: 0;
+  width: 100%;
+}
+
+.nvis-template .program-subpage-careers .career-header a {
+  color: var(--nvis-active-color);
+  text-decoration: none;
+}
+
+.nvis-template .program-subpage-careers .career-header a:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.nvis-template .program-subpage-careers .career-title {
+  margin: 0;
+}
+
+.nvis-template .program-subpage-careers .career-content {
+  break-after: avoid;
+  flex-direction: column;
+  margin: 0 0 var(--nvis-dbl-spacing);
+  page-break-after: avoid;
+  width: 100%;
+}
+
+.nvis-template .program-subpage-careers .career-quick-stats table {
+  margin: 0;
+}
+
+.nvis-template .program-subpage-careers .career-footer {
+  width: fit-content;
+}
+
+.faq-category {
+  margin-bottom: var(--nvis-dbl-spacing);
+}
+
+.faq-category__title {
+  margin-bottom: var(--nvis-spacing);
+}
+
+.nvis_program .courses-table {
+  margin-bottom: var(--nvis-dbl-spacing);
+}
+
+.nvis_program .courses-table thead th:first-child {
+  text-align: left;
+}
+
+.nvis_program .courses-table thead th:nth-child(2) {
+  width: 10%;
+}
+
+.nvis_program .courses-table tbody tr td:nth-child(2) {
+  text-align: center;
+}
+
+.program-subpage-faculty-staff .person-list header {
+  width: 40%;
+}
+
+.program-subpage-faculty-staff .person-list .person-featured-image img {
+  border-radius: 50%;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.program-subpage-faculty-staff .person-list .person-info {
+  padding-top: 0.25em;
+}
+
+.program-subpage-faculty-staff .person-list .person-name {
+  font-size: 1em;
+  font-family: inherit;
+  font-weight: bold;
+}
+
+.program-subpage-faculty-staff .person-list .person-job-title {
+  line-height: inherit;
+}
+
+.program-subpage-faculty-staff .person-list .person-department a {
+  color: inherit;
+}
+
+.program-subpage-faculty-staff .person-list .person-department a:hover {
+  color: var(--nvis-active-color);
+}
+
+.program-subpage-faculty-staff .person-list .contact-info {
+  line-height: inherit;
+  padding-top: 0;
+}
+
+.related-post {
+  display: flex;
+  gap: var(--nvis-dbl-spacing);
+  margin-bottom: calc(4 * var(--nvis-spacing));
+}
+
+.related-post .featured-image {
+  margin: 0;
+}
+
+.related-post--has-image.related-post--image-right {
+  flex-direction: row-reverse;
+}
+
+.related-post .related-post__wrapper {
+  width: 70%;
+}
+
+.related-post .related-post__image-wrapper {
+  width: 30%;
+}
+
+.related-post .related-post__header {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.related-post .related-post__title {
+  margin: 0 0 var(--nvis-spacing);
+}
+
+.related-post .related-post__more {
+  margin: var(--nvis-spacing) 0;
+}

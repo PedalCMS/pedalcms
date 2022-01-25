@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "prettier": "^2.3.2",
+    "sass": "^1.49.0",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-order": "^4.1.0"

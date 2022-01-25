@@ -4,93 +4,13 @@ body .nvis-template {
     max-width: 1200px;
 }
 
-body .nvis-template .button {
-    background-color: var(--nvis-active-color);
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 0;
-    line-height: 1;
-    padding: var(--nvis-spacing) var(--nvis-dbl-spacing);
-    text-transform: none;
-}
-
-body .nvis-template .button-secondary {
-    background-color: transparent;
-    border: solid 2px;
-    color: var(--nvis-active-color);
-}
-
-body .nvis-template .button:hover,
-body .nvis-template .button-secondary:hover {
-    background-color: #333;
-    border-color: #333;
-    color: #fff;
-}
-
-.nvis-template .back-to-top {
-    background: #333;
-    border-radius: 3px;
-    color: #fff;
-    display: inline-block;
-    text-decoration: none;
-    padding: 0.25em 0.5em;
-}
-
-.nvis-template .back-to-top:hover {
-    background: var(--nvis-active-color);
-}
-
 .archive .nvis-template .nvis-breadcrumbs {
     margin-bottom: var(--nvis-spacing);
 }
 
-.archive .nvis-post-filters {
-    background: #000;
-}
-
-.archive .nvis-post-filters legend {
-    color: #ccc;
-}
-
-.nvis-post-filters input[type="text"],
-.nvis-post-filters input[type="search"],
-.nvis-post-filters select,
-.nvis-post-filters option {
-    background-color: #333;
-    border: solid 1px #999;
-    color: #ccc;
-    font-size: 14px;
-    line-height: 1;
-    padding: 5px 10px;
-}
-
-.nvis-post-filters .show-hide__label,
-.nvis-post-filters .show-hide__label::after {
-    color: #fff;
-}
-
-.nvis-post-filters .show-hide__label:hover {
-    color: #ccc;
-}
-
-.nvis-post-filters select {
-    width: fit-content;
-}
-
-.nvis-template .nvis-post-filters button {
-    font-size: 14px;
-    line-height: 1;
-    padding: 8px 16px;
-}
-
-.nvis-template .nvis-post-filters .reset-link {
-    color: #fff;
-    text-decoration: none;
-}
-
-.nvis-template .nvis-post-filters .reset-link:hover {
-    text-decoration: underline;
+.single .nvis-template .nvis-breadcrumbs {
+    padding-top: var(--nvis-spacing);
+    margin-bottom: -1px;
 }
 
 .nvis-template .num-results {
@@ -103,40 +23,6 @@ body .nvis-template .button-secondary:hover {
     border-radius: 3px;
     box-shadow: 3px 0 5px 0 rgba(0,0,0,0.1);
     overflow: hidden;
-}
-
-.archive .nvis-template .entry-title {
-    font-size: 1.75em;
-    font-weight: bold;
-    line-height: 1.1;
-    margin: 0;
-}
-
-.archive .nvis-template .entry-title a {
-    font-weight: bold;
-}
-
-.archive .nvis-template article header a {
-    color: var(--nvis-active-color);
-    text-decoration: none;
-}
-
-.archive .nvis-template article header a:hover {
-    color: #333;
-    text-decoration: underline;
-}
-
-.single .nvis-template article:not(article article) {
-    --article-padding: var(--header-padding);
-
-    padding: 0 var(--article-padding) var(--article-padding); 
-    gap: var(--nvis-spacing);
-    justify-content: space-between;
-}
-
-.single .nvis-template .nvis-breadcrumbs {
-    padding-top: var(--nvis-spacing);
-    margin-bottom: -1px;
 }
 
 .nvis-template .page-header {
@@ -163,14 +49,6 @@ body .nvis-template .button-secondary:hover {
 .archive .nvis-template .page-header .page-title {
     margin-bottom: var(--nvis-spacing);
 }
-
-/* .archive .nvis-template .page-header .page-title {
-    background: #000;
-    margin-bottom: var(--nvis-spacing);
-    margin-left: var(--h-margin);
-    margin-right: var(--h-margin);
-    padding: var(--nvis-spacing) var(--header-padding);
-} */
 
 .nvis-template .page-header__backdrop {
     background: var(--header-bg);
@@ -253,7 +131,6 @@ body .nvis-template .button-secondary:hover {
     margin-bottom: var(--nvis-dbl-spacing);
     width: fit-content;
 }
-
 .nvis-template .page-header .nvis-meta-group {
     background-color: rgba(0, 0, 0, 0.67);
     margin: calc(3 * var(--nvis-spacing)) 0;
@@ -276,9 +153,4 @@ body .nvis-template .button-secondary:hover {
     color: #000;
     text-decoration: none;
     text-shadow: none;
-}
-
-.single .nvis-template article:not(article article) {
-    box-shadow: 0 5px 5px rgba(0,0,0,0.1);
-    border-radius: 0 0 3px 3px;
 }

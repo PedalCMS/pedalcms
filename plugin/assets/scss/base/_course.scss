@@ -1,0 +1,109 @@
+.course-meta {
+  display: flex;
+  gap: var(--nvis-dbl-spacing);
+}
+
+.course-list .nvis_course {
+  border: none;
+  display: flex;
+  flex-flow: column wrap;
+  gap: var(--nvis-spacing);
+  padding: var(--nvis-spacing);
+  position: relative;
+  margin-bottom: var(--nvis-spacing);
+}
+
+.course-list .nvis_course header,
+.course-list .nvis_course .course-content {
+  width: calc(100% - var(--nvis-dbl-spacing) - var(--nvis-sidebar-width));
+}
+
+.course-list .nvis_course header {
+  margin: 0;
+  vertical-align: top;
+}
+
+.course-list .nvis_course .entry-title {
+  font-size: 1.25em;
+}
+
+.course-list .nvis_course .course-actions {
+  break-before: always;
+  page-break-before: always;
+  width: var(--nvis-sidebar-width);
+}
+
+.course-list .nvis_course .course-actions .button {
+  font-size: 1rem;
+}
+
+.course-list .course-details {
+  margin-top: var(--nvis-spacing);
+}
+
+.course-list .course-details {
+  --gap: 5%;
+
+  display: flex;
+  gap: var(--gap);
+}
+
+.course-list .course-description {
+  width: 75%;
+}
+
+.course-list .course-personnel {
+  width: 25%;
+  margin-bottom: var(--nvis-spacing);
+}
+
+.course-list .course-details h3 {
+  font-size: 1.25em;
+}
+
+.single-nvis_course article.nvis_course {
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.single-nvis_course .course-sidebar .action-list {
+  margin: 0 0 var(--nvis-dbl-spacing);
+}
+
+.single-nvis_course .course-personnel article {
+  margin-bottom: var(--nvis-dbl-spacing);
+  padding: 0;
+}
+
+.nvis-template .single-course-page-header {
+  padding-bottom: var(--header-padding);
+}
+
+.single-nvis_course .course-main {
+  width: calc(100% - 5% - var(--nvis-sidebar-width));
+}
+
+.single-nvis_course .course-sidebar {
+  width: var(--nvis-sidebar-width);
+}
+
+.single-nvis_course .course-sidebar .nvis_person {
+  flex-direction: column;
+  gap: 2px;
+}
+
+.single-nvis_course .course-sidebar .person-featured-image {
+  max-width: 150px;
+  width: auto;
+}
+
+.single-nvis_course .course-sidebar .person-info {
+  font-size: 0.9em;
+  height: fit-content;
+  width: 100%;
+}
+
+.single-nvis_course .course-sidebar .person-position {
+  margin: 0;
+}

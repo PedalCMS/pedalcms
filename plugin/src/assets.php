@@ -17,7 +17,7 @@ add_action('wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets');
  * @return void
  */
 function register_assets() {
-    $global = '/assets/css/global.css';
+    $global = '/assets/css/global.min.css';
     wp_register_style(
         'nvis-global',
         Plugin::$url . $global,
@@ -25,7 +25,7 @@ function register_assets() {
         filemtime(Plugin::$path . $global)
     );
 
-    $base = '/assets/css/base.css';
+    $base = '/assets/css/base.min.css';
     wp_register_style(
         'nvis-programs-base',
         Plugin::$url . $base,
@@ -33,7 +33,7 @@ function register_assets() {
         filemtime(Plugin::$path . $base)
     );
 
-    $global_full = '/assets/css/global-full.css';
+    $global_full = '/assets/css/global-full.min.css';
     wp_register_style(
         'nvis-global-full',
         Plugin::$url . $global_full,
@@ -41,7 +41,7 @@ function register_assets() {
         filemtime(Plugin::$path . $global_full)
     );
 
-    $full = '/assets/css/full.css';
+    $full = '/assets/css/full.min.css';
     wp_register_style(
         'nvis-programs-full',
         Plugin::$url . $full,

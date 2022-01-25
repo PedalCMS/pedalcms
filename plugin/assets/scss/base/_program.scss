@@ -1,0 +1,148 @@
+.programs-list article.nvis_program {
+  display: flex;
+  gap: var(--nvis-dbl-spacing);
+  justify-content: space-between;
+  margin: 0 0 var(--nvis-dbl-spacing);
+  padding: 0 0 0 var(--nvis-spacing);
+}
+
+.programs-list .featured-image {
+  flex: 30%;
+  margin-left: calc(-1 * var(--nvis-spacing));
+  margin-right: 0;
+}
+
+.programs-list .featured-image img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.programs-list .program-info {
+  flex: 2 1 50%;
+  padding: var(--nvis-spacing) 0;
+}
+
+.programs-list .program-title {
+  margin: 0;
+}
+
+.programs-list .program-meta {
+  margin: var(--nvis-spacing) 0 0;
+}
+
+.programs-list .program-actions {
+  flex: 20%;
+  padding: var(--nvis-spacing);
+  padding-left: 0;
+}
+
+.single-nvis_program article.nvis_program {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nvis-dbl-spacing);
+  width: 100%;
+}
+
+.page-header .page-title {
+  margin: calc(3 * var(--nvis-spacing)) 0 0;
+  clear: none;
+}
+
+.page-header__title-group {
+  margin: calc(3 * var(--nvis-spacing)) 0 0;
+}
+
+.page-header__title-group .page-title {
+  margin-top: 0;
+}
+
+.single-nvis_program .program-meta {
+  margin: var(--nvis-dbl-spacing) 0 var(--nvis-dbl-spacing);
+}
+
+.program-subnav__menu {
+  border-bottom: solid 1px var(--nvis-gray);
+  clear: both;
+  display: flex;
+  gap: var(--nvis-dbl-spacing);
+  list-style: none;
+  margin: 0;
+  padding: var(--nvis-dbl-spacing) 0 0;
+}
+
+.program-subnav__menu li {
+  margin: 0;
+  padding: 0;
+}
+
+.program-subnav__menu li a {
+  border-bottom: solid 3px transparent;
+  display: inline-block;
+  font-size: 1.1em;
+  padding: 0 0 0.25em;
+  text-decoration: none !important;
+}
+
+.program-subnav__menu .active-subpage a {
+  border-color: var(--nvis-active-color);
+}
+
+.program-main {
+  width: calc(100% - var(--nvis-sidebar-width) - var(--nvis-dbl-spacing));
+}
+
+.program-sidebar {
+  font-size: 0.9em;
+  width: var(--nvis-sidebar-width);
+}
+
+.program-sidebar .back-to-top {
+  display: inline-block;
+  margin-top: var(--nvis-dbl-spacing);
+}
+
+.program-sidebar .button {
+  display: block;
+  text-align: center;
+  margin-bottom: calc(0.5 * var(--nvis-spacing));
+}
+
+.program-sidebar .program-actions ul {
+  margin: 0 0 calc(1.25 * var(--nvis-spacing));
+}
+
+.program-deadlines {
+  margin: var(--nvis-dbl-spacing) 0;
+}
+
+.program-deadlines__list {
+  line-height: 1.25;
+}
+
+.program-deadlines__list dd {
+  margin: 0 0 calc(0.5 * var(--nvis-spacing));
+}
+
+.program-contact {
+  line-height: 1.5em;
+  margin: calc(0.5 * var(--nvis-spacing)) 0 calc(1.5 * var(--nvis-spacing));
+}
+
+.program-contact__picture {
+  margin-bottom: calc(0.5 * var(--nvis-spacing));
+  border-radius: 5px;
+}
+
+.program-contact__name {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.program-contact .person-job-title {
+  font-style: italic;
+}
+
+body.single-nvis_program .program-lead-content {
+  margin-bottom: calc(4 * var(--nvis-spacing));
+}
