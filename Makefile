@@ -7,11 +7,19 @@ BIN := ./node_modules/.bin/
 SASS_DIR := $(PLUGIN_ROOT)/assets/scss
 CSS_DIR := $(PLUGIN_ROOT)/assets/css
 
+GREEN := \033[92m
+RED := \033[0;31m
+COLOR_END := \033[0m
+
 # ----------------------------------------------------------------------------
 # BEGIN: Front End Assets
 # ----------------------------------------------------------------------------
 .PHONY: css
 css: | $(CSS_DIR)/global.min.css $(CSS_DIR)/base.min.css $(CSS_DIR)/global-full.min.css $(CSS_DIR)/full.min.css
+
+.PHONY: lint-css
+lint-css:
+	@$(BIN)stylelint $(SASS_DIR)/* --fix && echo "$(GREEN)No issues detected. Congrats!$(COLOR_END)" || true
 
 $(CSS_DIR)/global.min.css: $(SASS_DIR)/global.scss $(SASS_DIR)/_variables.scss $(SASS_DIR)/global/*.scss
 	@echo "Compiling $@\n"
@@ -85,10 +93,10 @@ release: getacf
 	PLUGIN_VERSION=$(PLUGIN_VERSION) && cd build && zip -r $(PLUGIN_NAME).$$PLUGIN_VERSION.zip *
 	rm -rf build/$(PLUGIN_NAME)
 	@if [ ! -f build/$(PLUGIN_NAME).$(PLUGIN_VERSION).zip  ]; then \
-		echo "\n\n\033[0;31mPlugin file not found. Something went wrong.\033[0m\n\n"; \
+		echo "\n\n$(RED)Plugin file not found. Something went wrong.$(COLOR_END)\n\n"; \
 		exit 1; \
 	fi
-	@echo "\n\n\033[92mRelease file built successfully. Check the build directory.\033[0m\n\n"
+	@echo "\n\n$(GREEN)Release file built successfully. Check the build directory.$(COLOR_END)\n\n"
 
 .PHONY: docs
 docs:
@@ -96,7 +104,7 @@ docs:
 	rm -rf docs
 	phpdoc
 	@if [ ! -f docs/index.html  ]; then \
-		echo "\n\n\033[0;31mPHPDocumentor failed. Check the output.\033[0m\n\n"; \
+		echo "\n\n$(RED)PHPDocumentor failed. Check the output.$(COLOR_END)\n\n"; \
 		exit 1; \
 	fi
-	@echo "\n\n\033[92mDocs built successfully. Check the docs directory.\033[0m\n\n"
+	@echo "\n\n$(GREEN)Docs built successfully. Check the docs directory.$(COLOR_END)\n\n"
