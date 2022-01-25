@@ -12,6 +12,6 @@ indent_style = space
 indent_size = 4
 
 # Assets
-[*.{js,css}]
+[*.{js,css,scss}]
 indent_style = space
 indent_size = 2
