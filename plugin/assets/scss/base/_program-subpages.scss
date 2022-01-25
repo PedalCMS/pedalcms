@@ -1,7 +1,6 @@
 .program-faculty-staff-list .person-list {
   --image-width: 100px;
   --spacing: var(--nvis-dbl-spacing);
-
   display: flex;
   flex-direction: column;
   gap: var(--nvis-dbl-spacing);
@@ -38,8 +37,8 @@
 }
 
 .nvis-template .program-subpage-careers .career {
-  padding: 0;
   margin-bottom: var(--nvis-dbl-spacing);
+  padding: 0;
 }
 
 .nvis-template .program-subpage-careers .career-header {
@@ -117,8 +116,8 @@
 }
 
 .program-subpage-faculty-staff .person-list .person-name {
-  font-size: 1em;
   font-family: inherit;
+  font-size: 1em;
   font-weight: bold;
 }
 

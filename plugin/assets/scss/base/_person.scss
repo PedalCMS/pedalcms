@@ -7,8 +7,8 @@
 
 .person-list--grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: var(--nvis-spacing);
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .person-list .nvis_person {
@@ -65,7 +65,6 @@
 
 body.single-nvis_person .person-main {
   --margin: var(--nvis-dbl-spacing);
-
   display: flex;
   gap: var(--margin);
 }
@@ -79,15 +78,15 @@ body.single-nvis_person .person-sidebar {
 }
 
 .single-person-page-header--classic::after {
-  display: block;
-  content: "";
   clear: both;
+  content: '';
+  display: block;
 }
 
 .single-person-page-header--classic {
-  padding-bottom: var(--nvis-dbl-spacing);
-  margin-bottom: var(--nvis-dbl-spacing);
   border-bottom: solid 1px var(--nvis-gray);
+  margin-bottom: var(--nvis-dbl-spacing);
+  padding-bottom: var(--nvis-dbl-spacing);
 }
 
 .single-person-page-header--classic .entry-title {

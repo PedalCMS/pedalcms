@@ -8,9 +8,9 @@
   display: flex;
   flex-flow: column wrap;
   gap: var(--nvis-spacing);
+  margin-bottom: var(--nvis-spacing);
   padding: var(--nvis-spacing);
   position: relative;
-  margin-bottom: var(--nvis-spacing);
 }
 
 .course-list .nvis_course header,
@@ -38,14 +38,10 @@
 }
 
 .course-list .course-details {
-  margin-top: var(--nvis-spacing);
-}
-
-.course-list .course-details {
   --gap: 5%;
-
   display: flex;
   gap: var(--gap);
+  margin-top: var(--nvis-spacing);
 }
 
 .course-list .course-description {
@@ -53,8 +49,8 @@
 }
 
 .course-list .course-personnel {
-  width: 25%;
   margin-bottom: var(--nvis-spacing);
+  width: 25%;
 }
 
 .course-list .course-details h3 {
@@ -62,9 +58,9 @@
 }
 
 .single-nvis_course article.nvis_course {
-  width: 100%;
-  flex-wrap: wrap;
   display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .single-nvis_course .course-sidebar .action-list {

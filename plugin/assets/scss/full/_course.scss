@@ -1,30 +1,29 @@
 .course-list .nvis_course header {
-    border-bottom: solid 1px #ccc;
-    padding-bottom: calc(var(--nvis-spacing) / 2);
+  border-bottom: solid 1px #ccc;
+  padding-bottom: calc(var(--nvis-spacing) / 2);
 }
 
 .course-list .nvis_course .course-meta {
-    font-size: 0.9em;
+  font-size: 0.9em;
 }
 
 .course-list .nvis_course .course-credits {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .course-list .course-personnel .post-links {
-    margin: 0 0 0 1em;
+  margin: 0 0 0 1em;
 }
 
 .course-main .course-description {
-    --spacing: calc(3 * var(--nvis-spacing));
-     
-    border-bottom: solid 1px #ccc;
-    margin-bottom: var(--spacing);
-    padding-bottom: var(--spacing);
+  --spacing: calc(3 * var(--nvis-spacing));
+  border-bottom: solid 1px #ccc;
+  margin-bottom: var(--spacing);
+  padding-bottom: var(--spacing);
 }
 
 .nvis-template .course-sidebar .person-name {
-    font-family: inherit;
-    font-size: 1.25em;
-    font-weight: bold;
+  font-family: inherit;
+  font-size: 1.25em;
+  font-weight: bold;
 }

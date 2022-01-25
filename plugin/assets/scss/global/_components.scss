@@ -5,14 +5,14 @@
 }
 
 .action-list li {
-  margin: 0;
   height: auto;
+  margin: 0;
 }
 
 .action-list a.button {
   display: block;
-  text-align: center;
   margin-bottom: calc(0.5 * var(--nvis-spacing));
+  text-align: center;
 }
 
 .nvis-template .back-to-top {
@@ -20,15 +20,15 @@
 }
 
 .nvis-template .back-to-top::before {
-  content: "\27A6";
+  content: '\27A6';
   display: inline-block;
   margin: 0 0.2em 0 0;
   transform: rotate(-90deg) scale(1.25, 1.5);
 }
 
 .nvis-expandable summary {
-  font-weight: bold;
   cursor: pointer;
+  font-weight: bold;
   width: fit-content;
 }
 
@@ -43,8 +43,8 @@
 }
 
 .show-hide__trigger {
-  position: absolute;
   left: -100vw;
+  position: absolute;
 }
 
 .show-hide__trigger ~ .show-hide__content {
@@ -81,8 +81,8 @@
 }
 
 .show-hide__trigger + .show-hide__label::after {
-  content: "\25B2";
   color: var(--nvis-active-color);
+  content: '\25B2';
   display: inline-block;
   font-size: 0.9em;
   left: 0;
@@ -111,9 +111,9 @@
 
 .archive .nvis-post-filters fieldset {
   align-items: center;
+  align-items: flex-start;
   border: none;
   display: flex;
-  align-items: flex-start;
   font-size: 0.85em;
   gap: var(--nvis-spacing);
   padding: 0;
@@ -132,8 +132,8 @@
 .archive .nvis-post-filters .filters,
 .archive .nvis-post-filters .more-filters,
 .archive .nvis-post-filters .actions {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 .archive .nvis-post-filters .filters {
@@ -187,7 +187,6 @@
 
 .nvis-template [data-tooltip] {
   --background: rgba(0, 0, 0, 0.9);
-
   border-bottom: dotted 1px;
   cursor: help;
   position: relative;
@@ -196,14 +195,14 @@
 .nvis-template [data-tooltip]::after {
   border: 10px solid var(--background);
   border-color: transparent var(--background) transparent transparent;
-  content: "";
+  content: '';
   display: none;
   left: 125%;
   margin-left: -5px;
   position: absolute;
   top: 50%;
-  transition: all 0.25s;
   transform: translateY(-50%);
+  transition: all 0.25s;
   z-index: 1000;
 }
 
@@ -215,16 +214,16 @@
   display: none;
   font-size: 1rem;
   font-weight: normal;
-  line-height: 1.2;
   left: 125%;
+  line-height: 1.2;
   margin-left: 15px;
   opacity: 0;
   padding: 10px;
   position: absolute;
   text-align: left;
   top: 0;
-  transition: all 0.25s;
   transform: translateY(-50%);
+  transition: all 0.25s;
   width: 200px;
   z-index: 1000;
 }
