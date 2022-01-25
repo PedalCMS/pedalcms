@@ -80,6 +80,7 @@ release: getacf
 	rm -rf build
 	mkdir build
 	cp -av $(PLUGIN_ROOT) build
+	rm -rf build/$(SASS_DIR)
 	mv build/$(PLUGIN_ROOT) build/$(PLUGIN_NAME)
 	PLUGIN_VERSION=$(PLUGIN_VERSION) && cd build && zip -r $(PLUGIN_NAME).$$PLUGIN_VERSION.zip *
 	rm -rf build/$(PLUGIN_NAME)
