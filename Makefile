@@ -4,6 +4,7 @@ BIN := ./node_modules/.bin
 PLUGIN_NAME := nvis-program-pages
 PLUGIN_ROOT := plugin
 PLUGIN_VERSION := $$(grep "^ \* Version" $(PLUGIN_ROOT)/$(PLUGIN_NAME).php| awk -F' ' '{print $3}' | cut -d ":" -f2 | sed 's/ //g')
+INCLUDES_DIR := $(PLUGIN_ROOT)/src
 ASSETS_DIR := $(PLUGIN_ROOT)/assets
 SASS_DIR := $(ASSETS_DIR)/scss
 CSS_DIR := $(ASSETS_DIR)/css
@@ -77,16 +78,16 @@ setupenv:
 .PHONY: getacf
 getacf:
 	@echo "Downloading ACF Pro using license key: $(ACF_LIC)"
-	rm -rf $(PLUGIN_ROOT)/src/acf
-	wget -O $(PLUGIN_ROOT)/src/acf.zip "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=$(ACF_LIC)"
-	cd $(PLUGIN_ROOT)/src/ && unzip acf.zip
-	cd $(PLUGIN_ROOT)/src/ && mv advanced-custom-fields-pro acf
-	rm -rf $(PLUGIN_ROOT)/src/acf.zip
+	rm -rf $(INCLUDES_DIR)/acf
+	wget -O $(INCLUDES_DIR)/acf.zip "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=$(ACF_LIC)"
+	cd $(INCLUDES_DIR)/ && unzip acf.zip
+	cd $(INCLUDES_DIR)/ && mv advanced-custom-fields-pro acf
+	rm -rf $(INCLUDES_DIR)/acf.zip
 
 .PHONY: clean
 clean:
 	rm -rf \
-		$(PLUGIN_ROOT)/src/acf \
+		$(INCLUDES_DIR)/acf \
 		build \
 		node_modules \
 		package-lock.json \
