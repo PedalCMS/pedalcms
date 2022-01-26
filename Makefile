@@ -19,11 +19,14 @@ COLOR_END := \033[0m
 .PHONY: production
 production: | prodprep lint-css css
 
-.PHONY: prodvars
+.PHONY: prodprep
 prodprep:
 	@echo "\nCleaning up CSS directory …"
 	@rm -rf $(CSS_DIR)/*.*
 	$(eval SOURCE_MAP := --no-source-map)
+
+.PHONY: assets
+assets: css
 
 .PHONY: css
 css: | $(CSS_DIR)/global.min.css $(CSS_DIR)/base.min.css $(CSS_DIR)/global-full.min.css $(CSS_DIR)/full.min.css
