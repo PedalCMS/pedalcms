@@ -1,11 +1,12 @@
 -include .env
 # ACF_LIC should be set in .env
+BIN := ./node_modules/.bin
 PLUGIN_NAME := nvis-program-pages
 PLUGIN_ROOT := plugin
 PLUGIN_VERSION := $$(grep "^ \* Version" $(PLUGIN_ROOT)/$(PLUGIN_NAME).php| awk -F' ' '{print $3}' | cut -d ":" -f2 | sed 's/ //g')
-BIN := ./node_modules/.bin/
-SASS_DIR := $(PLUGIN_ROOT)/assets/scss
-CSS_DIR := $(PLUGIN_ROOT)/assets/css
+ASSETS_DIR := $(PLUGIN_ROOT)/assets
+SASS_DIR := $(ASSETS_DIR)/scss
+CSS_DIR := $(ASSETS_DIR)/css
 
 GREEN := \033[92m
 RED := \033[0;31m
@@ -14,29 +15,41 @@ COLOR_END := \033[0m
 # ----------------------------------------------------------------------------
 # BEGIN: Front End Assets
 # ----------------------------------------------------------------------------
+.PHONY: production
+production: | prodprep lint-css css
+
+.PHONY: prodvars
+prodprep:
+	@echo "\nCleaning up CSS directory …"
+	@rm -rf $(CSS_DIR)/*.*
+	$(eval SOURCE_MAP := --no-source-map)
+
 .PHONY: css
 css: | $(CSS_DIR)/global.min.css $(CSS_DIR)/base.min.css $(CSS_DIR)/global-full.min.css $(CSS_DIR)/full.min.css
 
 .PHONY: lint-css
 lint-css:
-	@$(BIN)stylelint $(SASS_DIR)/* --fix && echo "$(GREEN)No issues detected. Congrats!$(COLOR_END)" || true
+	@echo "Linting SCSS files …"
+	@$(BIN)/stylelint $(SASS_DIR)/* --fix && echo "$(GREEN)🎉 No issues detected. Congrats!$(COLOR_END)" || true
 
-$(CSS_DIR)/global.min.css: $(SASS_DIR)/global.scss $(SASS_DIR)/_variables.scss $(SASS_DIR)/global/*.scss
-	@echo "Compiling $@\n"
-	$(BIN)sass --update --no-source-map $<:$@ --style compressed
+SASS_VARS := $(SASS_DIR)/_variables.scss
 
-$(CSS_DIR)/base.min.css: $(SASS_DIR)/base.scss $(SASS_DIR)/_variables.scss $(SASS_DIR)/base/*.scss
-	@echo "Compiling $@\n"
-	$(BIN)sass --update --no-source-map $<:$@ --style compressed
+define COMPILE_SASS
+@echo "Compiling $@...";
+@$(BIN)/sass --update $(SOURCE_MAP) $1:$2 --style compressed;
+endef
 
-$(CSS_DIR)/global-full.min.css: $(SASS_DIR)/global-full.scss $(SASS_DIR)/_variables.scss $(SASS_DIR)/global-full/*.scss
-	@echo "Compiling $@\n"
-	$(BIN)sass --update --no-source-map $<:$@ --style compressed
+$(CSS_DIR)/global.min.css: $(SASS_DIR)/global.scss $(SASS_DIR)/global/*.scss $(SASS_VARS)
+	$(call COMPILE_SASS,$<,$@)
 
-$(CSS_DIR)/full.min.css: $(SASS_DIR)/full.scss $(SASS_DIR)/_variables.scss $(SASS_DIR)/full/*.scss
-	@echo "Compiling $@\n"
-	$(BIN)sass --update --no-source-map $<:$@ --style compressed
+$(CSS_DIR)/base.min.css: $(SASS_DIR)/base.scss $(SASS_DIR)/base/*.scss $(SASS_VARS)
+	$(call COMPILE_SASS,$<,$@)
 
+$(CSS_DIR)/global-full.min.css: $(SASS_DIR)/global-full.scss $(SASS_DIR)/global-full/*.scss $(SASS_VARS)
+	$(call COMPILE_SASS,$<,$@)
+
+$(CSS_DIR)/full.min.css: $(SASS_DIR)/full.scss $(SASS_DIR)/full/*.scss $(SASS_VARS)
+	$(call COMPILE_SASS,$<,$@)
 
 # ----------------------------------------------------------------------------
 # BEGIN: Commands
@@ -48,7 +61,7 @@ help:
 .PHONY: watch
 watch:
 	@echo "Watching assets for changes … \n"
-	@while true; do make -q || make; sleep 1; done
+	@while true; do $(MAKE) -q || $(MAKE); sleep 1; done
 
 .PHONY: install
 install: | clean setupenv
@@ -59,11 +72,11 @@ setupenv:
 	@if [ ! -f .env  ]; then \
 		echo "ACF_LIC=\"\"\n" >> .env; \
 	fi
-	@echo "Make sure your ACF Pro license key is configured as ACF_LIC in .env file."
+	@echo "📝 Make sure your ACF Pro license key is configured as ACF_LIC in .env file."
 
 .PHONY: getacf
 getacf:
-	@echo "Getting acf pro using license key: $(ACF_LIC)"
+	@echo "Downloading ACF Pro using license key: $(ACF_LIC)"
 	rm -rf $(PLUGIN_ROOT)/src/acf
 	wget -O $(PLUGIN_ROOT)/src/acf.zip "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=$(ACF_LIC)"
 	cd $(PLUGIN_ROOT)/src/ && unzip acf.zip
@@ -93,10 +106,10 @@ release: getacf
 	PLUGIN_VERSION=$(PLUGIN_VERSION) && cd build && zip -r $(PLUGIN_NAME).$$PLUGIN_VERSION.zip *
 	rm -rf build/$(PLUGIN_NAME)
 	@if [ ! -f build/$(PLUGIN_NAME).$(PLUGIN_VERSION).zip  ]; then \
-		echo "\n\n$(RED)Plugin file not found. Something went wrong.$(COLOR_END)\n\n"; \
+		echo "\n\n$(RED)🙁 Plugin file not found. Something went wrong.$(COLOR_END)\n\n"; \
 		exit 1; \
 	fi
-	@echo "\n\n$(GREEN)Release file built successfully. Check the build directory.$(COLOR_END)\n\n"
+	@echo "\n\n$(GREEN)🚀 Release file built successfully! Check the 'build' directory.$(COLOR_END)\n\n"
 
 .PHONY: docs
 docs:
@@ -104,7 +117,7 @@ docs:
 	rm -rf docs
 	phpdoc
 	@if [ ! -f docs/index.html  ]; then \
-		echo "\n\n$(RED)PHPDocumentor failed. Check the output.$(COLOR_END)\n\n"; \
+		echo "\n\n$(RED)🙁 PHPDocumentor failed. Check the output.$(COLOR_END)\n\n"; \
 		exit 1; \
 	fi
-	@echo "\n\n$(GREEN)Docs built successfully. Check the docs directory.$(COLOR_END)\n\n"
+	@echo "\n\n$(GREEN)📔 Docs built successfully!  Check the 'docs' directory.$(COLOR_END)\n\n"
