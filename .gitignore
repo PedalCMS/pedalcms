@@ -5,6 +5,7 @@ plugin/src/acf
 *.zip
 
 # Developer Artifacts.
+*.map
 .env
 /build
 /node_modules
