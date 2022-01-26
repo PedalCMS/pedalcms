@@ -64,8 +64,8 @@ help:
 
 .PHONY: watch
 watch:
-	@echo "Watching assets for changes … \n"
-	@while true; do $(MAKE) -q || $(MAKE); sleep 1; done
+	@echo "Watching assets for changes ... \n"
+	@while true; do $(MAKE) -q assets|| $(MAKE) assets; sleep 1; done
 
 .PHONY: install
 install: | clean setupenv
