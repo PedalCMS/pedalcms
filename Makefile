@@ -26,10 +26,10 @@ prodprep:
 	$(eval SOURCE_MAP := --no-source-map)
 
 .PHONY: assets
-assets: css
+assets: lint-css build-css
 
-.PHONY: css
-css: | $(CSS_DIR)/global.min.css $(CSS_DIR)/base.min.css $(CSS_DIR)/global-full.min.css $(CSS_DIR)/full.min.css
+.PHONY: build-css
+build-css: | $(CSS_DIR)/global.min.css $(CSS_DIR)/base.min.css $(CSS_DIR)/global-full.min.css $(CSS_DIR)/full.min.css
 
 .PHONY: lint-css
 lint-css:
@@ -64,8 +64,14 @@ help:
 
 .PHONY: watch
 watch:
-	@echo "Watching assets for changes ... \n"
-	@while true; do $(MAKE) -q assets|| $(MAKE) assets; sleep 1; done
+	@which fswatch > /dev/null || (echo "$(RED)⚠️  ERROR: Command 'fswatch' not found. Make sure it is installed and in your system path.$(COLOR_END)\n" && exit 1;)
+	@$(MAKE) assets;
+	@echo "\n🔎 Watching assets for changes … \n"
+	@echo "[To $(RED)STOP$(COLOR_END), double-press $(GREEN)CTRL-C$(COLOR_END)]\n"
+	@while true; do \
+		fswatch -1 $(ASSETS_DIR) | xargs echo '{}' > /dev/null && $(MAKE) assets; \
+		sleep 1; \
+	done
 
 .PHONY: install
 install: | clean setupenv
