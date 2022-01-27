@@ -8,6 +8,8 @@ INCLUDES_DIR := $(PLUGIN_ROOT)/src
 ASSETS_DIR := $(PLUGIN_ROOT)/assets
 SASS_DIR := $(ASSETS_DIR)/scss
 CSS_DIR := $(ASSETS_DIR)/css
+JS_SRC_DIR := $(ASSETS_DIR)/js/src
+JS_OUT_DIR := $(ASSETS_DIR)/js
 
 GREEN := \033[92m
 RED := \033[0;31m
@@ -16,44 +18,73 @@ COLOR_END := \033[0m
 # ----------------------------------------------------------------------------
 # BEGIN: Front End Assets
 # ----------------------------------------------------------------------------
+
+CSS_SOURCE_MAP :=
+JS_SOURCE_MAP := --source-maps=true
+LINT_SUCCESS_MSG := $(GREEN)No issues detected. Congrats!$(COLOR_END)
+
 .PHONY: production
-production: | prodprep lint-css css
+production: | prodprep build-css build-js
 
 .PHONY: prodprep
-prodprep:
-	@echo "\nCleaning up CSS directory …"
+prodprep: | clean-assets
+	$(eval CSS_SOURCE_MAP := --no-source-map)
+	$(eval JS_SOURCE_MAP := --source-maps=false)
+
+.PHONY: clean-assets
+clean-assets:
+	@echo "\nCleaning up CSS output directory ..."
 	@rm -rf $(CSS_DIR)/*.*
-	$(eval SOURCE_MAP := --no-source-map)
+	@echo "Cleaning up JS output directory ...\n"
+	@rm -rf $(JS_OUT_DIR)/*.*
 
 .PHONY: assets
-assets: lint-css build-css
+assets: | build-css build-js
 
-.PHONY: build-css
-build-css: | $(CSS_DIR)/global.min.css $(CSS_DIR)/base.min.css $(CSS_DIR)/global-full.min.css $(CSS_DIR)/full.min.css
+.PHONY: lint
+lint: | lint-css lint-js
 
 .PHONY: lint-css
 lint-css:
-	@echo "Linting SCSS files …"
-	@$(BIN)/stylelint $(SASS_DIR)/* --fix && echo "$(GREEN)🎉 No issues detected. Congrats!$(COLOR_END)" || true
+	$(call LINT_CSS,$(SASS_DIR))
 
-SASS_VARS := $(SASS_DIR)/_variables.scss
+.PHONY: lint-js
+lint-js:
+	$(call LINT_JS,$(JS_SRC_DIR))
 
-define COMPILE_SASS
-@echo "Compiling $@...";
-@$(BIN)/sass --update $(SOURCE_MAP) $1:$2 --style compressed;
+JS_SRC = $(wildcard $(JS_SRC_DIR)/*.js)
+JS_OUT = $(JS_SRC:$(JS_SRC_DIR)/%.js=$(JS_OUT_DIR)/%.min.js)
+
+.PHONY: build-js
+build-js: $(JS_OUT)
+
+$(JS_OUT_DIR)/%.min.js: $(JS_SRC_DIR)/%.js package.json
+	$(call LINT_JS,$<)
+	@echo "Compiling $< ..."
+	@$(BIN)/babel $< -o $@ --minified --no-comments $(JS_SOURCE_MAP) && echo "$(GREEN)Compiled $@$(COLOR_END)"
+
+SASS_VARS := $(SASS_DIR)/common/_variables.scss
+SASS = $(wildcard $(SASS_DIR)/*.scss)
+CSS = $(SASS:$(SASS_DIR)/%.scss=$(CSS_DIR)/%.min.css)
+
+.PHONY: build-css
+build-css: $(CSS)
+
+.SECONDEXPANSION:
+$(CSS_DIR)/%.min.css: $(SASS_DIR)/%.scss $$(wildcard $(SASS_DIR)/%/*.scss) $(SASS_VARS)
+	$(call LINT_CSS,$?)
+	@echo "Compiling $<..."
+	@$(BIN)/sass --update $(CSS_SOURCE_MAP) $<:$@ --style compressed
+
+define LINT_CSS
+@echo "Linting $1...";
+@$(BIN)/stylelint $1 --fix && echo "🎉 $(LINT_SUCCESS_MSG)" || true;
 endef
 
-$(CSS_DIR)/global.min.css: $(SASS_DIR)/global.scss $(SASS_DIR)/global/*.scss $(SASS_VARS)
-	$(call COMPILE_SASS,$<,$@)
-
-$(CSS_DIR)/base.min.css: $(SASS_DIR)/base.scss $(SASS_DIR)/base/*.scss $(SASS_VARS)
-	$(call COMPILE_SASS,$<,$@)
-
-$(CSS_DIR)/global-full.min.css: $(SASS_DIR)/global-full.scss $(SASS_DIR)/global-full/*.scss $(SASS_VARS)
-	$(call COMPILE_SASS,$<,$@)
-
-$(CSS_DIR)/full.min.css: $(SASS_DIR)/full.scss $(SASS_DIR)/full/*.scss $(SASS_VARS)
-	$(call COMPILE_SASS,$<,$@)
+define LINT_JS
+@echo "Linting $1...";
+@$(BIN)/eslint $1 --fix && echo "🙌 $(LINT_SUCCESS_MSG)" || true;
+endef
 
 # ----------------------------------------------------------------------------
 # BEGIN: Commands
@@ -65,6 +96,7 @@ help:
 .PHONY: watch
 watch:
 	@which fswatch > /dev/null || (echo "$(RED)⚠️  ERROR: Command 'fswatch' not found. Make sure it is installed and in your system path.$(COLOR_END)\n" && exit 1;)
+	@clear;
 	@$(MAKE) assets;
 	@echo "\n🔎 Watching assets for changes … \n"
 	@echo "[To $(RED)STOP$(COLOR_END), double-press $(GREEN)CTRL-C$(COLOR_END)]\n"
