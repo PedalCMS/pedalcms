@@ -81,7 +81,7 @@ define LINT_CSS
 @echo "\nLinting:";
 @IFS=' ' read -r -a FILES <<< "$1"; \
 for FILE in "$${FILES[@]}"; do \
-	echo "$$FILE"; \
+	echo "—> $$FILE"; \
 done;
 @$(BIN)/stylelint $1 --fix && $(call CONGRATULATE_MSG,No CSS issues detected.) || true;
 endef
@@ -90,7 +90,7 @@ define LINT_JS
 @echo "\nLinting ...";
 @IFS=' ' read -r -a FILES <<< "$1"; \
 for FILE in "$${FILES[@]}"; do \
-	echo "$$FILE"; \
+	echo "—> $$FILE"; \
 done;
 @$(BIN)/eslint $1 --fix && $(call CONGRATULATE_MSG,No JS issues detected.) || true;
 endef
@@ -99,7 +99,7 @@ define CONGRATULATE_MSG
 (EMOJIS=(🎉 🙌 😃 🎊 🥳 👏 ✊ 🤘 👍 😁 🤩 😎 🍾) && \
 INDEX=$$(($$RANDOM % $${#EMOJIS[@]})) && \
 EMOJI=$${EMOJIS[$$INDEX]} && \
-EXCLAIMS=('Yay' 'Congrats' 'Hooray' 'Well done' 'Nice' 'Good job' 'Dope' 'Way to go' 'Awesome' 'Fantastic' 'Amazing' 'Boom' 'Wonderful' 'Super' 'Excellent' 'You rock') && \
+EXCLAIMS=('Yay' 'Congrats' 'Hooray' 'Well done' 'Nice' 'Good job' 'Dope' 'Way to go' 'Awesome' 'Fantastic' 'Amazing' 'Boom' 'Wonderful' 'Super' 'Excellent' 'You rock' 'Bravo') && \
 INDEX=$$(($$RANDOM % $${#EXCLAIMS[@]})) && \
 EXCLAIM=$${EXCLAIMS[$$INDEX]} && \
 echo "$(GREEN)$$EMOJI $1 $$EXCLAIM!$(COLOR_END)\n")
