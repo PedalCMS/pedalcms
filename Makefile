@@ -93,7 +93,7 @@ define LINT_JS
 for FILE in "$${FILES[@]}"; do \
 	echo "$$FILE"; \
 done;
-$(BIN)/eslint $1 --fix && $(call CONGRATULATE_MSG,No JS issues detected.) || true;
+@$(BIN)/eslint $1 --fix && $(call CONGRATULATE_MSG,No JS issues detected.) || true;
 endef
 
 define CONGRATULATE_MSG
