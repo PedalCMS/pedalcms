@@ -25,6 +25,7 @@ LINT_SUCCESS_MSG := $(GREEN)No issues detected. Congrats!$(COLOR_END)
 
 .PHONY: production
 production: | prodprep build-css build-js
+	@echo "\nAll done!\n"
 
 .PHONY: prodprep
 prodprep: | clean-assets
@@ -33,10 +34,10 @@ prodprep: | clean-assets
 
 .PHONY: clean-assets
 clean-assets:
-	@echo "\nCleaning up CSS output directory ..."
-	@rm -rf $(CSS_DIR)/*.*
-	@echo "Cleaning up JS output directory ...\n"
-	@rm -rf $(JS_OUT_DIR)/*.*
+	@echo "\n🗑  Cleaning up asset output directories ..."
+	@rm -rf $(CSS_DIR)/*.* && \
+	rm -rf $(JS_OUT_DIR)/*.* && \
+	echo "Done."
 
 .PHONY: assets
 assets: | build-css build-js
@@ -50,7 +51,7 @@ lint-css:
 
 .PHONY: lint-js
 lint-js:
-	$(call LINT_JS,$(JS_SRC_DIR))
+	$(call LINT_JS,$(JS_SRC_DIR)/*.js)
 
 JS_SRC = $(wildcard $(JS_SRC_DIR)/*.js)
 JS_OUT = $(JS_SRC:$(JS_SRC_DIR)/%.js=$(JS_OUT_DIR)/%.min.js)
@@ -76,14 +77,33 @@ $(CSS_DIR)/%.min.css: $(SASS_DIR)/%.scss $$(wildcard $(SASS_DIR)/%/*.scss) $(SAS
 	@echo "Compiling $<..."
 	@$(BIN)/sass --update $(CSS_SOURCE_MAP) $<:$@ --style compressed
 
+
 define LINT_CSS
-@echo "Linting $1...";
-@$(BIN)/stylelint $1 --fix && echo "🎉 $(LINT_SUCCESS_MSG)" || true;
+@echo "\nLinting:";
+@IFS=' ' read -r -a FILES <<< "$1"; \
+for FILE in "$${FILES[@]}"; do \
+	echo "$$FILE"; \
+done;
+@$(BIN)/stylelint $1 --fix && $(call CONGRATULATE_MSG,No CSS issues detected.) || true;
 endef
 
 define LINT_JS
-@echo "Linting $1...";
-@$(BIN)/eslint $1 --fix && echo "🙌 $(LINT_SUCCESS_MSG)" || true;
+@echo "\nLinting ...";
+@IFS=' ' read -r -a FILES <<< "$1"; \
+for FILE in "$${FILES[@]}"; do \
+	echo "$$FILE"; \
+done;
+$(BIN)/eslint $1 --fix && $(call CONGRATULATE_MSG,No JS issues detected.) || true;
+endef
+
+define CONGRATULATE_MSG
+(EMOJIS=(🎉 🙌 😃 🎊 🥳 👏 ✊ 🤘 👍 😁 🤩 😎 🍾) && \
+INDEX=$$(($$RANDOM % $${#EMOJIS[@]})) && \
+EMOJI=$${EMOJIS[$$INDEX]} && \
+EXCLAIMS=('Yay' 'Congrats' 'Hooray' 'Well done' 'Nice' 'Good job' 'Dope' 'Way to go' 'Awesome' 'Fantastic' 'Amazing' 'Boom' 'Wonderful' 'Super' 'Excellent' 'You rock') && \
+INDEX=$$(($$RANDOM % $${#EXCLAIMS[@]})) && \
+EXCLAIM=$${EXCLAIMS[$$INDEX]} && \
+echo "$(GREEN)$$EMOJI $1 $$EXCLAIM!$(COLOR_END)\n")
 endef
 
 # ----------------------------------------------------------------------------
