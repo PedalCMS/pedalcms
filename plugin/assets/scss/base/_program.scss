@@ -1,9 +1,17 @@
+@use '../common/variables' as *;
+
 .programs-list article.nvis_program {
   display: flex;
-  gap: var(--nvis-dbl-spacing);
+  flex-direction: column;
+  gap: var(--nvis-spacing);
   justify-content: space-between;
   margin: 0 0 var(--nvis-dbl-spacing);
   padding: 0 0 0 var(--nvis-spacing);
+
+  @media (min-width: $screen-md-min) {
+    flex-direction: row;
+    gap: var(--nvis-dbl-spacing);
+  }
 }
 
 .programs-list .featured-image {
@@ -20,7 +28,11 @@
 
 .programs-list .program-info {
   flex: 2 1 50%;
-  padding: var(--nvis-spacing) 0;
+  padding: 0;
+
+  @media (min-width: $screen-md-min) {
+    padding: var(--nvis-spacing) 0;
+  }
 }
 
 .programs-list .program-title {
@@ -42,19 +54,6 @@
   flex-wrap: wrap;
   gap: var(--nvis-dbl-spacing);
   width: 100%;
-}
-
-.page-header .page-title {
-  clear: none;
-  margin: calc(3 * var(--nvis-spacing)) 0 0;
-}
-
-.page-header__title-group {
-  margin: calc(3 * var(--nvis-spacing)) 0 0;
-}
-
-.page-header__title-group .page-title {
-  margin-top: 0;
 }
 
 .single-nvis_program .program-meta {

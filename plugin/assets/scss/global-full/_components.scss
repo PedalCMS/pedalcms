@@ -53,26 +53,28 @@
 .nvis-template .nvis-post-filters .reset-link {
   color: #fff;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-.nvis-template .nvis-post-filters .reset-link:hover {
-  text-decoration: underline;
-}
+@media (hover: hover) {
+  .featured-image--zoom-hover {
+    height: fit-content;
+    overflow: hidden;
 
-.featured-image--zoom-hover {
-  height: fit-content;
-  overflow: hidden;
-}
+    img {
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.25s;
+      width: 100%;
 
-.featured-image--zoom-hover img {
-  height: 100%;
-  object-fit: cover;
-  transition: all 0.25s;
-  width: 100%;
-}
-
-.featured-image--zoom-hover img:hover {
-  filter: saturate(1.1) brightness(1.15);
-  transform: scale(1.2);
-  transition: all 1.5s;
+      &:hover {
+        filter: saturate(1.1) brightness(1.15);
+        transform: scale(1.2);
+        transition: all 1.5s;
+      }
+    }
+  }
 }

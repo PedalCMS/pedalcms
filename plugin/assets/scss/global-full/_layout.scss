@@ -1,6 +1,13 @@
+@use '../common/variables' as *;
+
+
 body .nvis-template {
-  --header-padding: calc(3 * var(--nvis-spacing));
+  --header-padding: var(--nvis-dbl-spacing);
   max-width: 1200px;
+
+  @media (min-width: $screen-md-min) {
+    --header-padding: calc(3 * var(--nvis-spacing));
+  }
 }
 
 .archive .nvis-template .nvis-breadcrumbs {
@@ -40,8 +47,11 @@ body .nvis-template {
 
 .archive .nvis-template .page-header {
   margin: 0;
-  min-height: 200px;
   width: 100%;
+
+  @media (min-width: $screen-md-min) {
+    min-height: 200px;
+  }
 }
 
 .archive .nvis-template .page-header .page-title {
@@ -107,9 +117,13 @@ body .nvis-template {
 
 .nvis-template .page-title {
   color: #fff;
-  font-size: 42px;
+  font-size: 32px;
   font-weight: bold;
   text-shadow: 1px 1px 5px #000;
+
+  @media (min-width: $screen-md-min) {
+    font-size: 42px;
+  }
 }
 
 .nvis-template .archive-description {

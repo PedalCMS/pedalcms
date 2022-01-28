@@ -1,3 +1,5 @@
+@use '../common/variables' as *;
+
 .action-list ul {
   list-style: none !important;
   margin: 0;
@@ -98,25 +100,30 @@
 }
 
 .archive .nvis-post-filters {
-  align-items: flex-start;
   background: rgba(0, 0, 0, 0.1);
   clear: both;
-  display: flex;
-  gap: var(--nvis-spacing);
-  justify-content: space-between;
   line-height: 1.25;
   margin: 0 0 var(--nvis-spacing);
   padding: var(--nvis-spacing);
+
+  @media (min-width: $screen-md-min) {
+    align-items: flex-start;
+    display: flex;
+    gap: var(--nvis-spacing);
+    justify-content: space-between;
+  }
 }
 
 .archive .nvis-post-filters fieldset {
-  align-items: center;
-  align-items: flex-start;
   border: none;
-  display: flex;
   font-size: 0.85em;
-  gap: var(--nvis-spacing);
   padding: 0;
+
+  @media (min-width: $screen-md-min) {
+    align-items: flex-start;
+    display: flex;
+    gap: var(--nvis-spacing);
+  }
 }
 
 .archive .nvis-post-filters legend {
@@ -132,18 +139,44 @@
 .archive .nvis-post-filters .filters,
 .archive .nvis-post-filters .more-filters,
 .archive .nvis-post-filters .actions {
-  align-items: center;
-  display: flex;
+
+  @media (min-width: $screen-md-min) {
+    align-items: center;
+    display: flex;
+  }
 }
 
 .archive .nvis-post-filters .filters {
-  align-items: center;
+  align-items: flex-start;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+
+  @media (max-width: $screen-sm-max) {
+    padding-bottom: calc(0.5 * var(--nvis-spacing));
+    width: 100%;
+  }
+
+  @media (min-width: $screen-md-min) {
+    align-items: center;
+    flex-flow: row wrap;
+  }
 }
 
 .nvis-post-filters .nvis-filters-field {
   margin-right: var(--nvis-spacing);
+
+  @media (max-width: $screen-sm-max) {
+    margin: calc(0.5 * var(--nvis-spacing)) 0;
+    width: 100%;
+  }
+
+  input,
+  select {
+
+    @media (max-width: $screen-sm-max) {
+      width: 100%;
+    }
+  }
 }
 
 .archive .nvis-post-filters .more-filters {

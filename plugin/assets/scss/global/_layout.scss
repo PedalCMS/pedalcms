@@ -1,6 +1,12 @@
+@use '../common/variables' as *;
+
 .nvis-template {
   margin: var(--nvis-dbl-spacing) auto;
   width: 100%;
+}
+
+.nvis-breadcrumbs {
+  margin-bottom: var(--nvis-spacing);
 }
 
 .nvis-sidebar .nvis-sidebar__content {
@@ -13,9 +19,23 @@
   width: 100%;
 }
 
-.nvis-breadcrumbs {
-  margin-bottom: var(--nvis-spacing);
+.page-header .page-title {
+  clear: none;
+  margin: var(--nvis-dbl-spacing) 0 0;
+
+  @media (min-width: $screen-md-min) {
+    margin: calc(3 * var(--nvis-spacing)) 0 0;
+  }
 }
+
+.page-header__title-group {
+  margin: calc(3 * var(--nvis-spacing)) 0 0;
+}
+
+.page-header__title-group .page-title {
+  margin-top: 0;
+}
+
 
 .nvis-template .num-results {
   font-size: 0.9em;

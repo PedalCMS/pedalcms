@@ -1,3 +1,5 @@
+@use '../common/variables' as *;
+
 .course-meta {
   display: flex;
   gap: var(--nvis-dbl-spacing);
@@ -6,16 +8,23 @@
 .course-list .nvis_course {
   border: none;
   display: flex;
-  flex-flow: column wrap;
+  flex-direction: column;
   gap: var(--nvis-spacing);
   margin-bottom: var(--nvis-spacing);
   padding: var(--nvis-spacing);
   position: relative;
-}
 
-.course-list .nvis_course header,
-.course-list .nvis_course .course-content {
-  width: calc(100% - var(--nvis-dbl-spacing) - var(--nvis-sidebar-width));
+  @media (min-width: $screen-md-min) {
+    flex-wrap: wrap;
+  }
+
+  header,
+  .course-content {
+
+    @media (min-width: $screen-md-min) {
+      width: calc(100% - var(--nvis-dbl-spacing) - var(--nvis-sidebar-width));
+    }
+  }
 }
 
 .course-list .nvis_course header {
@@ -28,9 +37,12 @@
 }
 
 .course-list .nvis_course .course-actions {
-  break-before: always;
-  page-break-before: always;
-  width: var(--nvis-sidebar-width);
+
+  @media (min-width: $screen-md-min) {
+    break-before: always;
+    page-break-before: always;
+    width: var(--nvis-sidebar-width);
+  }
 }
 
 .course-list .nvis_course .course-actions .button {
@@ -39,18 +51,27 @@
 
 .course-list .course-details {
   --gap: 5%;
-  display: flex;
-  gap: var(--gap);
   margin-top: var(--nvis-spacing);
+
+  @media (min-width: $screen-md-min) {
+    display: flex;
+    gap: var(--gap);
+  }
 }
 
 .course-list .course-description {
-  width: 75%;
+
+  @media (min-width: $screen-md-min) {
+    width: 75%;
+  }
 }
 
 .course-list .course-personnel {
   margin-bottom: var(--nvis-spacing);
-  width: 25%;
+
+  @media (min-width: $screen-md-min) {
+    width: 25%;
+  }
 }
 
 .course-list .course-details h3 {
@@ -77,7 +98,10 @@
 }
 
 .single-nvis_course .course-main {
-  width: calc(100% - 5% - var(--nvis-sidebar-width));
+
+  @media (min-width: $screen-md-min) {
+    width: calc(100% - 5% - var(--nvis-sidebar-width));
+  }
 }
 
 .single-nvis_course .course-sidebar {
