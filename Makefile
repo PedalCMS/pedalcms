@@ -21,7 +21,6 @@ COLOR_END := \033[0m
 
 CSS_SOURCE_MAP :=
 JS_SOURCE_MAP := --source-maps=true
-LINT_SUCCESS_MSG := $(GREEN)No issues detected. Congrats!$(COLOR_END)
 
 .PHONY: production
 production: | prodprep build-css build-js
