@@ -12,8 +12,10 @@ JS_SRC_DIR := $(ASSETS_DIR)/js/src
 JS_OUT_DIR := $(ASSETS_DIR)/js
 
 GREEN := \033[92m
+YELLOW := \033[0;33m
+CYAN := \033[0;36m
 RED := \033[0;31m
-COLOR_END := \033[0m
+FMT_END := \033[0m
 
 # ----------------------------------------------------------------------------
 # BEGIN: Front End Assets
@@ -61,7 +63,7 @@ build-js: $(JS_OUT)
 $(JS_OUT_DIR)/%.min.js: $(JS_SRC_DIR)/%.js package.json
 	$(call LINT_JS,$<)
 	@echo "Compiling $< ..."
-	@$(BIN)/babel $< -o $@ --minified --no-comments $(JS_SOURCE_MAP) && echo "$(GREEN)Compiled $@$(COLOR_END)"
+	@$(BIN)/babel $< -o $@ --minified --no-comments $(JS_SOURCE_MAP) && echo "$(GREEN)Compiled $@$(FMT_END)"
 
 SASS_VARS := $(SASS_DIR)/common/_variables.scss
 SASS = $(wildcard $(SASS_DIR)/*.scss)
@@ -102,7 +104,7 @@ EMOJI=$${EMOJIS[$$INDEX]} && \
 EXCLAIMS=('Yay' 'Congrats' 'Hooray' 'Well done' 'Nice' 'Good job' 'Dope' 'Way to go' 'Awesome' 'Fantastic' 'Amazing' 'Boom' 'Wonderful' 'Super' 'Excellent' 'You rock' 'Bravo') && \
 INDEX=$$(($$RANDOM % $${#EXCLAIMS[@]})) && \
 EXCLAIM=$${EXCLAIMS[$$INDEX]} && \
-echo "$(GREEN)$$EMOJI $1 $$EXCLAIM!$(COLOR_END)\n")
+echo "$(GREEN)$$EMOJI $1 $$EXCLAIM!$(FMT_END)\n")
 endef
 
 # ----------------------------------------------------------------------------
@@ -114,11 +116,11 @@ help:
 
 .PHONY: watch
 watch:
-	@which fswatch > /dev/null || (echo "$(RED)⚠️  ERROR: Command 'fswatch' not found. Make sure it is installed and in your system path.$(COLOR_END)\n" && exit 1;)
+	@which fswatch > /dev/null || (echo "$(RED)⚠️  ERROR: Command 'fswatch' not found. Make sure it is installed and in your system path.$(FMT_END)\n" && exit 1;)
 	@clear;
 	@$(MAKE) assets;
 	@echo "\n🔎 Watching assets for changes … \n"
-	@echo "[To $(RED)STOP$(COLOR_END), double-press $(GREEN)CTRL-C$(COLOR_END)]\n"
+	@echo "[To $(RED)STOP$(FMT_END), double-press $(GREEN)CTRL-C$(FMT_END)]\n"
 	@while true; do \
 		fswatch -1 $(ASSETS_DIR) | xargs echo '{}' > /dev/null && $(MAKE) assets; \
 		sleep 1; \
@@ -137,12 +139,15 @@ setupenv:
 
 .PHONY: getacf
 getacf:
-	@echo "Downloading ACF Pro using license key: $(ACF_LIC)"
-	rm -rf $(INCLUDES_DIR)/acf
-	wget -O $(INCLUDES_DIR)/acf.zip "http://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=$(ACF_LIC)"
-	cd $(INCLUDES_DIR)/ && unzip acf.zip
-	cd $(INCLUDES_DIR)/ && mv advanced-custom-fields-pro acf
-	rm -rf $(INCLUDES_DIR)/acf.zip
+	@echo "$(CYAN)Downloading ACF Pro using license key: $(ACF_LIC)$(FMT_END)\n"
+	@rm -rf $(INCLUDES_DIR)/acf
+	@wget -O $(INCLUDES_DIR)/acf.zip "https://connect.advancedcustomfields.com/index.php?p=pro&a=download&k=$(ACF_LIC)"
+	@echo "Unzipping ACF ..."
+	@cd $(INCLUDES_DIR)/ && unzip -q acf.zip
+	@echo "Removing zip file ..."
+	@rm -rf $(INCLUDES_DIR)/acf.zip
+	@cd $(INCLUDES_DIR)/ && mv advanced-custom-fields-pro acf && cd acf
+	@echo "\n$(GREEN)ACF downloaded successfully to: $(INCLUDES_DIR)/acf$(FMT_END)\n"
 
 .PHONY: clean
 clean:
@@ -157,20 +162,28 @@ clean:
 
 .PHONY: release
 release: getacf
-	@echo "Building release file: $(PLUGIN_NAME).$(PLUGIN_VERSION).zip"
-	rm -rf $(PLUGIN_NAME).$(PLUGIN_VERSION).zip
-	rm -rf build
-	mkdir build
-	cp -av $(PLUGIN_ROOT) build
-	rm -rf build/$(SASS_DIR)
-	mv build/$(PLUGIN_ROOT) build/$(PLUGIN_NAME)
-	PLUGIN_VERSION=$(PLUGIN_VERSION) && cd build && zip -r $(PLUGIN_NAME).$$PLUGIN_VERSION.zip *
-	rm -rf build/$(PLUGIN_NAME)
+	@echo "$(CYAN)Building release file: $(PLUGIN_NAME).$(PLUGIN_VERSION).zip$(FMT_END)\n"
+	@echo "Cleaning up environment ..."
+	@rm -rf $(PLUGIN_NAME).$(PLUGIN_VERSION).zip
+	@rm -rf build
+	@mkdir build
+	@echo "Copying files to the build directory ..."
+	@cp -av $(PLUGIN_ROOT) build > /dev/null
+	@echo "Removing asset source directories..."
+	@rm -rf build/$(SASS_DIR)
+	@rm -rf build/$(JS_SRC_DIR)
+	@mv build/$(PLUGIN_ROOT) build/$(PLUGIN_NAME)
+	@echo "Creating the zip file ..."
+	@PLUGIN_VERSION=$(PLUGIN_VERSION) && \
+		cd build && \
+		zip -rq $(PLUGIN_NAME).$$PLUGIN_VERSION.zip *
+	@echo "Deleting temporary directory ..."
+	@rm -rf build/$(PLUGIN_NAME)
 	@if [ ! -f build/$(PLUGIN_NAME).$(PLUGIN_VERSION).zip  ]; then \
-		echo "\n\n$(RED)🙁 Plugin file not found. Something went wrong.$(COLOR_END)\n\n"; \
+		echo "\n\n$(RED)🙁 Plugin file not found. Something went wrong.$(FMT_END)\n\n"; \
 		exit 1; \
 	fi
-	@echo "\n\n$(GREEN)🚀 Release file built successfully! Check the 'build' directory.$(COLOR_END)\n\n"
+	@echo "\n\n$(GREEN)🚀 Release file built successfully! Check the 'build' directory.$(FMT_END)\n\n"
 
 .PHONY: docs
 docs:
@@ -178,7 +191,7 @@ docs:
 	rm -rf docs
 	phpdoc
 	@if [ ! -f docs/index.html  ]; then \
-		echo "\n\n$(RED)🙁 PHPDocumentor failed. Check the output.$(COLOR_END)\n\n"; \
+		echo "\n\n$(RED)🙁 PHPDocumentor failed. Check the output.$(FMT_END)\n\n"; \
 		exit 1; \
 	fi
-	@echo "\n\n$(GREEN)📔 Docs built successfully!  Check the 'docs' directory.$(COLOR_END)\n\n"
+	@echo "\n\n$(GREEN)📔 Docs built successfully!  Check the 'docs' directory.$(FMT_END)\n\n"
