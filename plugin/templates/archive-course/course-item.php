@@ -12,12 +12,14 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 $defaults = [
     'label_more_details' => nvis_prog_get_label('more_details'),
-    'label_permalink'    => nvis_prog_get_label('course_info')
+    'label_permalink'    => nvis_prog_get_label('course_info'),
+    'label_show'         => nvis_prog_get_label('show'),
+    'label_hide'         => nvis_prog_get_label('hide'),
 ];
 
 $args = wp_parse_args($args, $defaults);
 
-$more_details_id = "show-hide-" . $post->ID;
+$more_details_id = "more-details-" . $post->ID;
 
 if ($post) :?>
 <article <?php post_class('', $post); ?>>
@@ -30,12 +32,12 @@ if ($post) :?>
         <?php nvis_prog_get_template_part('single-course/course-meta', compact('post')); ?>
     </header>
     <div class="course-content">
-        <input class="show-hide__trigger" type="checkbox"
-            id="<?php echo $more_details_id; ?>">
-        <label class="show-hide__label"
-            for="<?php echo $more_details_id; ?>"
-            data-show-label="Show " data-hide-label="Hide "><?php echo esc_html($args['label_more_details']); ?></label>
-        <div class="show-hide__content">
+        <button class="nvis-toggle__trigger --show-hide__label" aria-expanded="false"
+            data-target="<?php echo $more_details_id; ?>"
+            data-show-label="<?php echo esc_attr($args['label_show']); ?> "
+            data-hide-label="<?php echo esc_attr($args['label_hide']); ?> "><?php echo esc_html($args['label_more_details']); ?></button>
+        <div id="<?php echo $more_details_id; ?>"
+            class="--show-hide__content nvis-toggle__content" hidden>
             <div class="course-details">
                 <p class="course-description"><?php echo esc_html($post->short_description); ?>
                 </p>

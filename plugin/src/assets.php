@@ -48,6 +48,15 @@ function register_assets() {
         ['nvis-global', 'nvis-programs-base'],
         filemtime(Plugin::$path . $full)
     );
+
+    $global = '/assets/js/global.min.js';
+    wp_register_script(
+        'nvis-global',
+        Plugin::$url . $global,
+        [],
+        filemtime(Plugin::$path . $global),
+        true
+    );
 }
 
 /**
@@ -85,5 +94,9 @@ function enqueue_assets() {
         if ($presentation_mode === 'full') {
             wp_enqueue_style('nvis-programs-full');
         }
+    }
+
+    if (!is_admin()) {
+        wp_enqueue_script('nvis-global');
     }
 }

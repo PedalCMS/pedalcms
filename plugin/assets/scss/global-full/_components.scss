@@ -5,10 +5,21 @@
   display: inline-block;
   padding: 0.25em 0.5em;
   text-decoration: none;
+
+  &:hover {
+    background: var(--nvis-active-color);
+  }
 }
 
-.nvis-template .back-to-top:hover {
-  background: var(--nvis-active-color);
+.nvis-post-filters .nvis-toggle__trigger {
+  &,
+  &::after {
+    color: #fff;
+
+    &:hover {
+      color: #ccc;
+    }
+  }
 }
 
 .archive .nvis-post-filters {
@@ -29,15 +40,6 @@
   font-size: 14px;
   line-height: 1;
   padding: 5px 10px;
-}
-
-.nvis-post-filters .show-hide__label,
-.nvis-post-filters .show-hide__label::after {
-  color: #fff;
-}
-
-.nvis-post-filters .show-hide__label:hover {
-  color: #ccc;
 }
 
 .nvis-post-filters select {

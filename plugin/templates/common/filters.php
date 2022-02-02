@@ -69,14 +69,14 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
         foreach ($args['filters'] as $i => $filter):
             if ($i === $args['break_filters_after']):
         ?>
-            <input id="more-filters" class="show-hide__trigger" type="checkbox">
-            <label for="more-filters" class="show-hide__label"
-                data-show-label="<?php echo esc_attr($args['label_show']); ?>"
-                data-hide-label="<?php echo esc_attr($args['label_hide']); ?>">
+            <button data-target="more-filters" class="nvis-toggle__trigger" aria-expanded="false"
+                data-show-label="<?php echo esc_attr($args['label_show']); ?> "
+                data-hide-label="<?php echo esc_attr($args['label_hide']); ?> ">
                 <?php echo esc_html($args['label_more_filters']); ?>
-            </label>
-            <div class="more-filters show-hide__content">
-                <?php
+            </button>
+            <div id="more-filters" class="more-filters nvis-toggle__content" hidden>
+                <div class="more-filters__content">
+                    <?php
             endif;
 
             if (is_array($filter) && count($filter) > 1):
@@ -87,7 +87,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
         endforeach;
 
         if ($args['break_filters_after'] > 0 && $i > $args['break_filters_after']) {
-            echo '</div>';
+            echo '</div></div>';
         }
 
         /**
@@ -99,7 +99,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
          */
         do_action('nvis/programs/after_filters_fields', $args);
         ?>
-            </div>
+                </div>
     </fieldset>
     <div class="actions">
         <button class="button" type="submit"><?php echo esc_html($args['label_apply_filters']); ?></button>
