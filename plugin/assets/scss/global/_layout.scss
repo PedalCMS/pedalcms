@@ -10,8 +10,27 @@
 }
 
 .nvis-sidebar .nvis-sidebar__content {
-  position: sticky;
-  top: var(--nvis-dbl-spacing);
+  transition: padding 0.2s;
+
+  .back-to-top {
+    opacity: 0;
+    transition: all 0.25s;
+
+    &:focus,
+    &:active {
+      opacity: 1;
+    }
+  }
+
+  &.stuck {
+    padding-top: var(--nvis-spacing);
+    transition: padding 0.2s;
+
+    .back-to-top {
+      opacity: 1;
+      transition: all 0.25s;
+    }
+  }
 }
 
 .nvis-template .page-header {

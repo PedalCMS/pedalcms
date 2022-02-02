@@ -17,6 +17,11 @@
   text-align: center;
 }
 
+.nvis-sticky {
+  position: sticky;
+  top: -1px;
+}
+
 .nvis-template .back-to-top {
   text-decoration: underline;
 }
