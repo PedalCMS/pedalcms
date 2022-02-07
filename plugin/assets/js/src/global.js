@@ -69,7 +69,15 @@
 
 	function initScrollSticky() {
 		const observer = new IntersectionObserver(
-			([e]) => e.target.classList.toggle('stuck', e.intersectionRatio < 1),
+			([e]) => {
+				const stuckClass = 'stuck';
+
+				if (e.target.getBoundingClientRect().top === -1) {
+					e.target.classList.add(stuckClass);
+				} else {
+					e.target.classList.remove(stuckClass);
+				}
+			},
 			{ threshold: [1] }
 		);
 
