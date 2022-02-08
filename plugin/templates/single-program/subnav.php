@@ -9,9 +9,25 @@
 
 defined('ABSPATH') || exit;
 
+$defaults = [
+    'h_level'             => 2,
+    'label_about_program' => nvis_prog_get_label('about_program')
+];
+
+$args = wp_parse_args($args, $defaults);
+
+$h_tag = nvis_get_heading_tag($args['h_level']);
+
 if (nvis_prog_show_subpages()) : $subpages = nvis_prog_get_subpages(); ?>
 
 <nav class="program-subnav">
+  <?php
+  echo sprintf(
+    '<%s class="program-subnav__heading">%s</%s>',
+    $h_tag,
+    esc_html($args['label_about_program']),
+    $h_tag
+); ?>
   <ul class="program-subnav__menu menu">
     <?php
       foreach ($subpages as $slug => $label) :
