@@ -1,23 +1,4 @@
-.nvis-template .page-header .program-subnav {
-  margin: 40px calc(-1 * var(--article-padding)) 0;
-}
-
-.nvis-template .page-header .program-subnav__menu {
-  background-color: rgba(0, 0, 0, 0.67);
-  padding: 5px var(--article-padding) 0;
-}
-
-.nvis-template .page-header .program-subnav a:hover {
-  border-color: #aaa;
-}
-
-.program-subnav__menu .active-subpage a {
-  border-color: #fff;
-}
-
-.nvis-template .program-main {
-  width: calc(100% - var(--nvis-sidebar-width) - 4 * var(--nvis-spacing));
-}
+@use '../common/variables' as *;
 
 .archive .programs-list {
   padding: 0;
@@ -65,4 +46,42 @@
 
 .program-subpage .program-lead-content {
   margin-bottom: calc(4 * var(--nvis-spacing));
+}
+
+.nvis-template .page-header .program-subnav {
+  margin: 0 calc(-1 * var(--article-padding));
+
+  @media (min-width: $screen-md-min) {
+    margin-top: calc(3 * var(--nvis-dbl-spacing));
+  }
+
+  &__heading {
+
+    @media (max-width: $screen-sm-max) {
+      background-color: rgba(0, 0, 0, 0.67);
+      color: #fff;
+      margin: 0;
+      padding: 0.5rem var(--article-padding);
+    }
+  }
+
+  &__menu {
+    background-color: rgba(0, 0, 0, 0.67);
+    padding: 5px var(--article-padding) 0;
+  }
+
+  a:hover {
+    border-color: #aaa;
+  }
+
+  .active-subpage a {
+    border-color: #fff;
+  }
+}
+
+.nvis-template .program-main {
+
+  @media (min-width: $screen-md-min) {
+    width: calc(100% - var(--nvis-sidebar-width) - 4 * var(--nvis-spacing));
+  }
 }

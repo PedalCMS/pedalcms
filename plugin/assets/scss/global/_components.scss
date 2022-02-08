@@ -24,29 +24,31 @@
 
 .nvis-template .back-to-top {
   text-decoration: underline;
+
+  &::before {
+    content: '\27A6';
+    display: inline-block;
+    margin: 0 0.2em 0 0;
+    transform: rotate(-90deg) scale(1.25, 1.5);
+  }
 }
 
-.nvis-template .back-to-top::before {
-  content: '\27A6';
-  display: inline-block;
-  margin: 0 0.2em 0 0;
-  transform: rotate(-90deg) scale(1.25, 1.5);
-}
+.nvis-expandable {
+  summary {
+    cursor: pointer;
+    font-weight: bold;
+    width: fit-content;
 
-.nvis-expandable summary {
-  cursor: pointer;
-  font-weight: bold;
-  width: fit-content;
-}
+    &::marker {
+      color: var(--nvis-active-color);
+      font-size: 0.95em;
+    }
+  }
 
-.nvis-expandable summary::marker {
-  color: var(--nvis-active-color);
-  font-size: 0.95em;
-}
-
-.nvis-expandable[open] .nvis-expandable__contents {
-  animation: nvis-fade-in-left 0.25s ease-in-out;
-  margin-bottom: var(--nvis-spacing);
+  &[open] .nvis-expandable__contents {
+    animation: nvis-fade-in-left 0.25s ease-in-out;
+    margin-bottom: var(--nvis-spacing);
+  }
 }
 
 .nvis-toggle__trigger {
@@ -214,21 +216,28 @@
 
 .nvis-meta-group {
   display: flex;
-  gap: calc(2.5 * var(--nvis-spacing));
+  flex-direction: column;
+  gap: var(--nvis-spacing);
+
+  @media (min-width: $screen-lg-min) {
+    flex-direction: row;
+    gap: calc(2.5 * var(--nvis-spacing));
+  }
 }
 
 .nvis-meta-group__item {
   display: block;
   font-size: 0.9em;
+
+  .label {
+    display: block;
+  }
+
+  .value {
+    font-weight: bold;
+  }
 }
 
-.nvis-meta-group__item .label {
-  display: block;
-}
-
-.nvis-meta-group__item .value {
-  font-weight: bold;
-}
 
 .nvis-template [data-tooltip] {
   --background: rgba(0, 0, 0, 0.9);

@@ -1,3 +1,5 @@
+@use '../common/variables' as *;
+
 :root {
   --nvis-active-color: #206bba;
   --nvis-gray: #999;
@@ -22,6 +24,12 @@
   --nvis-chart-color-alt-6: #85c2ff;
   --nvis-chart-color-alt-7: #f585ad;
   --nvis-chart-color-alt-8: #856685;
+}
+
+@media (max-width: $screen-md-max) {
+  :root {
+    --nvis-sidebar-width: 25%;
+  }
 }
 
 @keyframes nvis-fade-in-left {

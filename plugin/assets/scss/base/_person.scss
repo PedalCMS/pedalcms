@@ -1,3 +1,5 @@
+@use '../common/variables' as *;
+
 .nvis_person .contact-info .label {
   display: inline-block;
   font-size: 0.8em;
@@ -8,13 +10,20 @@
 .person-list--grid {
   display: grid;
   gap: var(--nvis-spacing);
-  grid-template-columns: repeat(2, 1fr);
+
+  @media (min-width: $screen-md-min) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .person-list .nvis_person {
   display: flex;
   gap: var(--nvis-spacing);
-  padding: var(--nvis-dbl-spacing);
+  padding: var(--nvis-spacing);
+
+  @media (min-width: $screen-md-min) {
+    padding: var(--nvis-dbl-spacing);
+  }
 }
 
 .person-list .person-featured-image {
@@ -66,15 +75,32 @@
 body.single-nvis_person .person-main {
   --margin: var(--nvis-dbl-spacing);
   display: flex;
+  flex-wrap: wrap;
   gap: var(--margin);
 }
 
 body.single-nvis_person .person-content {
-  width: calc(100% - var(--nvis-sidebar-width) - var(--margin));
+  width: 100%;
+
+  @media (min-width: $screen-md-min) {
+    width: calc(100% - var(--nvis-sidebar-width) - var(--margin));
+  }
 }
 
 body.single-nvis_person .person-sidebar {
-  width: var(--nvis-sidebar-width);
+  width: 100%;
+
+  @media (min-width: $screen-md-min) {
+    width: var(--nvis-sidebar-width);
+  }
+}
+
+.single-person-page-header--classic .page-header__content {
+
+  @media (max-width: $screen-sm-max) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .single-person-page-header--classic::after {
@@ -90,7 +116,13 @@ body.single-nvis_person .person-sidebar {
 }
 
 .single-person-page-header--classic .entry-title {
-  margin: calc(3 * var(--nvis-spacing)) 0 0;
+  clear: both;
+  order: 0;
+
+  @media (min-width: $screen-md-min) {
+    clear: none;
+    margin: calc(3 * var(--nvis-spacing)) 0 0;
+  }
 }
 
 .single-person-page-header--classic .single-person__meta {
@@ -102,6 +134,20 @@ body.single-nvis_person .person-sidebar {
   font-style: italic;
 }
 
+.single-person-page-header .featured-image {
+  order: 1;
+
+  @media (max-width: $screen-sm-max) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
 .single-person-page-header .featured-image img {
   border-radius: 5px;
+}
+
+.single-person-page-header .contact-info {
+  margin-bottom: var(--nvis-dbl-spacing);
+  order: 2;
 }

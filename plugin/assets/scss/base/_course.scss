@@ -89,7 +89,6 @@
 }
 
 .single-nvis_course .course-personnel article {
-  margin-bottom: var(--nvis-dbl-spacing);
   padding: 0;
 }
 
@@ -98,6 +97,7 @@
 }
 
 .single-nvis_course .course-main {
+  width: 100%;
 
   @media (min-width: $screen-md-min) {
     width: calc(100% - 5% - var(--nvis-sidebar-width));
@@ -105,16 +105,28 @@
 }
 
 .single-nvis_course .course-sidebar {
-  width: var(--nvis-sidebar-width);
+  width: 100%;
+
+  @media (min-width: $screen-md-min) {
+    width: var(--nvis-sidebar-width);
+  }
+}
+
+.single-nvis_course .course-sidebar .person-list {
+  --person-image-width: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nvis-dbl-spacing);
 }
 
 .single-nvis_course .course-sidebar .nvis_person {
   flex-direction: column;
   gap: 2px;
+  min-width: var(--person-image-width);
 }
 
 .single-nvis_course .course-sidebar .person-featured-image {
-  max-width: 150px;
+  max-width: var(--person-image-width);
   width: auto;
 }
 

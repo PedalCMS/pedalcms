@@ -1,34 +1,4 @@
-.program-faculty-staff-list .person-list {
-  --image-width: 100px;
-  --spacing: var(--nvis-dbl-spacing);
-  display: flex;
-  flex-direction: column;
-  gap: var(--nvis-dbl-spacing);
-  margin: 0 0 calc(4 * var(--nvis-spacing));
-}
-
-.program-faculty-staff-list .person-list .nvis_person {
-  padding: 0;
-}
-
-.program-faculty-staff-list .person-list .person-featured-image {
-  margin: 0;
-  width: var(--image-width);
-}
-
-.program-faculty-staff-list .person-list .person-info {
-  display: flex;
-  flex-grow: 2;
-}
-
-.program-faculty-staff-list .person-list header {
-  width: 50%;
-}
-
-.program-faculty-staff-list .person-list .contact-info {
-  padding: 0.5em 0 0;
-  width: 50%;
-}
+@use '../common/variables' as *;
 
 .program-estimated-cost .program-estimated-cost__label {
   font-size: 1.25em;
@@ -90,29 +60,59 @@
   margin-bottom: var(--nvis-dbl-spacing);
 }
 
-.nvis_program .courses-table thead th:first-child {
-  text-align: left;
-}
+.nvis_program .courses-table thead {
+  th:first-child {
+    text-align: left;
+  }
 
-.nvis_program .courses-table thead th:nth-child(2) {
-  width: 10%;
+  th:nth-child(2) {
+    width: 10%;
+  }
 }
 
 .nvis_program .courses-table tbody tr td:nth-child(2) {
   text-align: center;
 }
 
-.program-subpage-faculty-staff .person-list header {
-  width: 40%;
+.program-faculty-staff-list .person-list {
+  --image-width: 100px;
+  --spacing: var(--nvis-dbl-spacing);
+  display: flex;
+  flex-direction: column;
+  gap: var(--nvis-dbl-spacing);
+  margin: 0 0 calc(4 * var(--nvis-spacing));
 }
 
-.program-subpage-faculty-staff .person-list .person-featured-image img {
-  border-radius: 50%;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+.program-faculty-staff-list .person-list .nvis_person {
+  padding: 0;
 }
 
-.program-subpage-faculty-staff .person-list .person-info {
+.program-faculty-staff-list .person-list .person-featured-image {
+  margin: 0;
+  width: var(--image-width);
+
+  img {
+    border-radius: 50%;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+  }
+}
+
+.program-faculty-staff-list .person-list .person-info {
+  display: flex;
+  flex-grow: 2;
   padding-top: 0.25em;
+
+  @media (max-width: $screen-md-max) {
+    flex-direction: column;
+    margin-bottom: var(--nvis-dbl-spacing);
+  }
+}
+
+.program-faculty-staff-list .person-list header {
+
+  @media (min-width: $screen-md-min) {
+    width: 50%;
+  }
 }
 
 .program-subpage-faculty-staff .person-list .person-name {
@@ -138,37 +138,65 @@
   padding-top: 0;
 }
 
-.related-post {
-  display: flex;
-  gap: var(--nvis-dbl-spacing);
-  margin-bottom: calc(4 * var(--nvis-spacing));
+.program-faculty-staff-list .person-list .contact-info {
+
+  @media (min-width: $screen-md-min) {
+    padding: 0.5em 0 0;
+    width: 50%;
+  }
 }
 
-.related-post .featured-image {
+.program-subpage-news .related-post {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--nvis-spacing);
+  margin-bottom: calc(4 * var(--nvis-spacing));
+
+  @media (min-width: $screen-lg-min) {
+    gap: var(--nvis-dbl-spacing);
+  }
+
+
+  &--has-image.related-post--image-right {
+    flex-direction: row-reverse;
+  }
+}
+
+.program-subpage-news .related-post .featured-image {
   margin: 0;
 }
 
-.related-post--has-image.related-post--image-right {
-  flex-direction: row-reverse;
+.program-subpage-news .related-post .related-post__wrapper {
+
+  @media (min-width: $screen-lg-min) {
+    width: calc(70% - var(--nvis-dbl-spacing));
+  }
 }
 
-.related-post .related-post__wrapper {
-  width: 70%;
+.program-subpage-news .related-post .related-post__image-wrapper {
+
+  @media (min-width: $screen-lg-min) {
+    width: 30%;
+  }
 }
 
-.related-post .related-post__image-wrapper {
-  width: 30%;
-}
-
-.related-post .related-post__header {
+.program-subpage-news .related-post .related-post__header {
   display: flex;
   flex-direction: column-reverse;
 }
 
-.related-post .related-post__title {
+.program-subpage-news .related-post .related-post__title {
   margin: 0 0 var(--nvis-spacing);
 }
 
-.related-post .related-post__more {
+.program-subpage-news .related-post .related-post__more {
   margin: var(--nvis-spacing) 0;
+}
+
+.program-subpage-news .all-posts-link {
+
+  @media (max-width: $screen-sm-max) {
+    display: block;
+    text-align: center;
+  }
 }
