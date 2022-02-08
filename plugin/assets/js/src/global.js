@@ -72,7 +72,7 @@
 			([e]) => {
 				const stuckClass = 'stuck';
 
-				if (e.target.getBoundingClientRect().top === -1) {
+				if (e.target.getBoundingClientRect().top < 0) {
 					e.target.classList.add(stuckClass);
 				} else {
 					e.target.classList.remove(stuckClass);
