@@ -10,6 +10,7 @@ namespace InvisibleUs\Programs;
 
 add_filter('document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 3);
 add_filter('body_class', __NAMESPACE__ . '\body_class', 10, 3);
+add_filter('post_class', __NAMESPACE__ . '\post_class', 10, 3);
 add_filter('term_link', __NAMESPACE__ . '\term_link', 10);
 add_filter('nvis/programs/before_main_content', __NAMESPACE__ . '\before_main_content');
 add_filter('nvis/programs/after_main_content', __NAMESPACE__ . '\after_main_content');
@@ -64,6 +65,20 @@ function body_class(array $classes): array {
 
     if ($presentation_mode) {
         $classes[] = 'nvis-present-mode--' . $presentation_mode;
+    }
+
+    return $classes;
+}
+
+/**
+ * Adds a class for the current program subpage.
+ *
+ * @param array $classes The list of post classes.
+ * @return array The filtered list of post classes.
+ */
+function post_class(array $classes): array {
+    if (!is_admin() && is_singular(Program::POST_TYPE)) {
+        $classes[] = 'subpage-' . ProgramSubpageManager::get_active_subpage();
     }
 
     return $classes;
