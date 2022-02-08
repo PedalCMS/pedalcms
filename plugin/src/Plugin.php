@@ -265,6 +265,8 @@ class Plugin {
         'offered_in'             => 'Offered in',
         'instructors'            => 'Instructors',
         'courses_taught'         => 'Courses Taught',
+
+        'about_program'          => 'About this Program',
         'how_to_apply'           => 'How to Apply',
         'careers'                => 'Careers',
         'cost'                   => 'Cost',
@@ -278,6 +280,7 @@ class Plugin {
         'course'                 => 'Course',
         'featured'               => 'Featured',
         'read_more'              => 'Read More',
+        'show_all_posts'         => 'Show All Posts',
         'program_details'        => 'Program Details',
         'apply_now'              => 'Apply Now',
         'request_info'           => 'Request Info',
