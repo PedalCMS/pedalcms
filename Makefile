@@ -54,8 +54,8 @@ lint-css:
 lint-js:
 	$(call LINT_JS,$(JS_SRC_DIR)/*.js)
 
-JS_SRC = $(wildcard $(JS_SRC_DIR)/*.js)
-JS_OUT = $(JS_SRC:$(JS_SRC_DIR)/%.js=$(JS_OUT_DIR)/%.min.js)
+JS_SRC := $(wildcard $(JS_SRC_DIR)/*.js)
+JS_OUT := $(JS_SRC:$(JS_SRC_DIR)/%.js=$(JS_OUT_DIR)/%.min.js)
 
 .PHONY: build-js
 build-js: $(JS_OUT)
@@ -66,8 +66,8 @@ $(JS_OUT_DIR)/%.min.js: $(JS_SRC_DIR)/%.js package.json
 	@$(BIN)/babel $< -o $@ --minified --no-comments $(JS_SOURCE_MAP) && echo "$(GREEN)Compiled $@$(FMT_END)"
 
 SASS_VARS := $(SASS_DIR)/common/_variables.scss
-SASS = $(wildcard $(SASS_DIR)/*.scss)
-CSS = $(SASS:$(SASS_DIR)/%.scss=$(CSS_DIR)/%.min.css)
+SASS := $(wildcard $(SASS_DIR)/*.scss)
+CSS := $(SASS:$(SASS_DIR)/%.scss=$(CSS_DIR)/%.min.css)
 
 .PHONY: build-css
 build-css: $(CSS)
@@ -160,8 +160,16 @@ clean:
 		docs \
 		.phpdoc \
 
+.PHONY: gitcheck
+gitcheck:
+	@if [ -n $(git status --porcelain) ]; then \
+		echo "$(YELLOW)⚠️  You have uncommited changes. See below:$(FMT_END)\n"; \
+		git status; \
+		exit 1; \
+	fi
+
 .PHONY: release
-release: getacf
+release: gitcheck getacf
 	@echo "$(CYAN)Building release file: $(PLUGIN_NAME).$(PLUGIN_VERSION).zip$(FMT_END)\n"
 	@echo "Cleaning up environment ..."
 	@rm -rf $(PLUGIN_NAME).$(PLUGIN_VERSION).zip
