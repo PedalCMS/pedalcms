@@ -146,9 +146,13 @@
   float: left;
   font-size: 1em;
   font-weight: bold;
-  margin: 0.5em 0 0;
+  margin: 0.5em 0;
   padding: 0;
   width: auto;
+
+  @media (min-width: $screen-md-min) {
+    margin: 0.5em 0 0;
+  }
 }
 
 .archive .nvis-post-filters .filters,
@@ -165,9 +169,10 @@
   align-items: flex-start;
   display: flex;
   flex-direction: column;
+  gap: var(--nvis-spacing);
 
   @media (max-width: $screen-sm-max) {
-    padding-bottom: calc(0.5 * var(--nvis-spacing));
+    padding-bottom: var(--nvis-spacing);
     width: 100%;
   }
 
@@ -178,10 +183,8 @@
 }
 
 .nvis-post-filters .nvis-filters-field {
-  margin-right: var(--nvis-spacing);
 
   @media (max-width: $screen-sm-max) {
-    margin: calc(0.5 * var(--nvis-spacing)) 0;
     width: 100%;
   }
 
@@ -196,12 +199,22 @@
 
 .archive .nvis-post-filters .more-filters {
   break-before: always;
+  gap: var(--nvis-spacing);
   page-break-before: always;
   transition: all 0.25s;
+
+  @media (max-width: $screen-sm-max) {
+    width: 100%;
+  }
 }
 
-.nvis-post-filters .more-filters:not([hidden]) {
-  margin-top: var(--nvis-spacing);
+.nvis-post-filters .more-filters__content {
+  display: flex;
+  gap: var(--nvis-spacing);
+
+  @media (max-width: $screen-sm-max) {
+    flex-direction: column;
+  }
 }
 
 .archive .nvis-post-filters .actions {
