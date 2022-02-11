@@ -65,7 +65,7 @@ $(JS_OUT_DIR)/%.min.js: $(JS_SRC_DIR)/%.js package.json
 	@echo "Compiling $< ..."
 	@$(BIN)/babel $< -o $@ --minified --no-comments $(JS_SOURCE_MAP) && echo "$(GREEN)Compiled $@$(FMT_END)"
 
-SASS_VARS := $(SASS_DIR)/common/_variables.scss
+SASS_VARS := $(wildcard $(SASS_DIR)/common/*.scss)
 SASS := $(wildcard $(SASS_DIR)/*.scss)
 CSS := $(SASS:$(SASS_DIR)/%.scss=$(CSS_DIR)/%.min.css)
 
