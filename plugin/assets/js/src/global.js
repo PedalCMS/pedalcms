@@ -17,14 +17,21 @@
 		}
 
 		toggle() {
-			if (this.target.hidden) {
-				this.show();
-			} else {
-				this.hide();
+			if (!this.target) {
+				return false;
 			}
+
+			if (this.target.hidden) {
+				return this.show();
+			}
+			return this.hide();
 		}
 
 		show() {
+			if (!this.target) {
+				return false;
+			}
+
 			const target = this.target;
 
 			this.trigger.setAttribute('aria-expanded', 'true');
@@ -41,6 +48,10 @@
 		}
 
 		hide() {
+			if (!this.target) {
+				return false;
+			}
+
 			const target = this.target;
 
 			this.trigger.setAttribute('aria-expanded', 'false');
@@ -53,12 +64,15 @@
 					once: true,
 				}
 			);
+
+			return true;
 		}
 	}
 
 	function nvisInit() {
 		initToggles();
 		initScrollSticky();
+		maybeToggleHiddenFilters();
 	}
 
 	function initToggles() {
@@ -84,6 +98,37 @@
 		document
 			.querySelectorAll('.nvis-sticky')
 			.forEach((el) => observer.observe(el));
+	}
+
+	function maybeToggleHiddenFilters() {
+		const id = 'more-filters';
+		const triggerSelector = `.nvis-toggle__trigger[data-target="${id}"]`;
+		const moreFilters = document.getElementById(id);
+
+		if (!moreFilters) {
+			return false;
+		}
+
+		const filters = [
+			...moreFilters.querySelectorAll('select'),
+			...moreFilters.querySelectorAll('input'),
+		];
+		const toggleButton = document.querySelector(triggerSelector);
+
+		if (!(toggleButton && filters.length)) {
+			return false;
+		}
+
+		const params = new URLSearchParams(window.location.search);
+
+		filters.forEach((f) => {
+			if (params.get(f.name)) {
+				const trigger = new ElementToggleTrigger(toggleButton);
+				return trigger.show();
+			}
+		});
+
+		return false;
 	}
 
 	window.addEventListener('load', nvisInit);
