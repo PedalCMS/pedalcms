@@ -13,11 +13,13 @@ $post = nvis_args_or_global('post', $args);
 
 $defaults = [
     'show_college'           => true,
+    'show_department'        => true,
     'show_instruction_mode'  => true,
     'show_prerequisites'     => true,
     'link_terms'             => true,
     'label_instruction_mode' => nvis_prog_get_label('instruction_mode'),
     'label_prerequisites'    => nvis_prog_get_label('prerequisites'),
+    'label_department'       => nvis_prog_get_label('department'),
     'label_college'          => nvis_prog_get_label('college'),
     'label_yes'              => nvis_prog_get_label('yes'),
     'label_no'               => nvis_prog_get_label('no'),
@@ -58,6 +60,17 @@ if ($args['show_college']) :
         $post->ID,
         'nvis_program_college',
         sprintf($args['meta_before_fmt'], 'program-college', $args['label_college']),
+        $args['terms_separator'],
+        $args['meta_after'],
+        $args['link_terms']
+    );
+endif;
+
+if ($args['show_department']) :
+    echo nvis_get_the_term_list(
+        $post->ID,
+        'nvis_department',
+        sprintf($args['meta_before_fmt'], 'department', $args['label_department']),
         $args['terms_separator'],
         $args['meta_after'],
         $args['link_terms']

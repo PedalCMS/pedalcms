@@ -12,11 +12,13 @@ defined('ABSPATH') || exit;
 
 $args = [
     'post_type' => 'nvis_program',
+    'break_filters_after' => 3,
     'filters'   => [
         'keyword',
         'program-type',
         'instruct-mode',
-        'college'
+        'college',
+        'department'
     ]
 ];
 
