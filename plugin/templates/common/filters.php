@@ -69,7 +69,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
         foreach ($args['filters'] as $i => $filter):
             if ($i === $args['break_filters_after']):
         ?>
-            <button data-target="more-filters" class="nvis-toggle__trigger" aria-expanded="false"
+            <button type="button" data-target="more-filters" class="nvis-toggle__trigger" aria-expanded="false"
                 data-show-label="<?php echo esc_attr($args['label_show']); ?> "
                 data-hide-label="<?php echo esc_attr($args['label_hide']); ?> ">
                 <?php echo esc_html($args['label_more_filters']); ?>
