@@ -34,7 +34,6 @@
 
 .nvis-template .program-subpage-careers .career-content {
   break-after: avoid;
-  flex-direction: column;
   margin: 0 0 var(--nvis-dbl-spacing);
   page-break-after: avoid;
   width: 100%;
@@ -140,7 +139,7 @@
 
 .program-faculty-staff-list .person-list .contact-info {
 
-  @media (min-width: $screen-md-min) {
+  @media (min-width: $screen-lg-min) {
     padding: 0.5em 0 0;
     width: 50%;
   }

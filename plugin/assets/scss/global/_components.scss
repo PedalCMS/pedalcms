@@ -229,8 +229,8 @@
 
 .nvis-meta-group {
   display: flex;
-  flex-direction: column;
-  gap: var(--nvis-spacing);
+  flex-wrap: wrap;
+  gap: var(--nvis-dbl-spacing);
 
   @media (min-width: $screen-lg-min) {
     flex-direction: row;
