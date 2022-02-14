@@ -20,16 +20,19 @@
 
 .nvis-sidebar .nvis-sidebar__content {
 
-  @media (min-width: $screen-md-min) {
+  @media (min-width: $screen-lg-min) {
     transition: padding 0.2s;
 
     .back-to-top {
       opacity: 0;
-      transition: all 0.25s;
+      overflow: hidden;
+      transform: scale(0);
+      transition: opacity 0.25s, transform 0s 0.25s;
 
       &:focus,
       &:active {
         opacity: 1;
+        transform: scale(1);
       }
     }
 
@@ -39,7 +42,8 @@
 
       .back-to-top {
         opacity: 1;
-        transition: all 0.25s;
+        transform: scale(1);
+        transition: opacity 0.25s;
       }
     }
   }

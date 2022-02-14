@@ -82,25 +82,30 @@
 	}
 
 	function initScrollSticky() {
-		const observer = new IntersectionObserver(
-			([e]) => updateStickyElement(e.target),
-			{ threshold: [1] }
-		);
+		const stickySelector = '.nvis-sticky';
 
-		document.querySelectorAll('.nvis-sticky').forEach((el) => {
-			updateStickyElement(el);
-			observer.observe(el);
+		updateStickyElements();
+
+		const observer = new IntersectionObserver(updateStickyElements, {
+			threshold: [1],
 		});
+
+		document
+			.querySelectorAll(stickySelector)
+			.forEach((el) => observer.observe(el));
 	}
 
-	function updateStickyElement(el) {
-		const stuckClass = 'stuck';
+	function updateStickyElements() {
+		const stickySelector = '.nvis-sticky',
+			stuckClass = 'stuck';
 
-		if (el.getBoundingClientRect().top < 0) {
-			el.classList.add(stuckClass);
-		} else {
-			el.classList.remove(stuckClass);
-		}
+		document.querySelectorAll(stickySelector).forEach((el) => {
+			if (el.getBoundingClientRect().top < 0) {
+				el.classList.add(stuckClass);
+			} else {
+				el.classList.remove(stuckClass);
+			}
+		});
 	}
 
 	function maybeToggleHiddenFilters() {
