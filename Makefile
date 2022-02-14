@@ -162,14 +162,14 @@ clean:
 
 .PHONY: gitcheck
 gitcheck:
-	@if [ -n $(git status --porcelain) ]; then \
+	@if status=$$(git status --porcelain) && [ -n "$$status" ]; then \
 		echo "$(YELLOW)⚠️  You have uncommited changes. See below:$(FMT_END)\n"; \
 		git status; \
 		exit 1; \
 	fi
 
 .PHONY: release
-release: gitcheck getacf
+release: getacf
 	@echo "$(CYAN)Building release file: $(PLUGIN_NAME).$(PLUGIN_VERSION).zip$(FMT_END)\n"
 	@echo "Cleaning up environment ..."
 	@rm -rf $(PLUGIN_NAME).$(PLUGIN_VERSION).zip
