@@ -83,21 +83,24 @@
 
 	function initScrollSticky() {
 		const observer = new IntersectionObserver(
-			([e]) => {
-				const stuckClass = 'stuck';
-
-				if (e.target.getBoundingClientRect().top < 0) {
-					e.target.classList.add(stuckClass);
-				} else {
-					e.target.classList.remove(stuckClass);
-				}
-			},
+			([e]) => updateStickyElement(e.target),
 			{ threshold: [1] }
 		);
 
-		document
-			.querySelectorAll('.nvis-sticky')
-			.forEach((el) => observer.observe(el));
+		document.querySelectorAll('.nvis-sticky').forEach((el) => {
+			updateStickyElement(el);
+			observer.observe(el);
+		});
+	}
+
+	function updateStickyElement(el) {
+		const stuckClass = 'stuck';
+
+		if (el.getBoundingClientRect().top < 0) {
+			el.classList.add(stuckClass);
+		} else {
+			el.classList.remove(stuckClass);
+		}
 	}
 
 	function maybeToggleHiddenFilters() {
