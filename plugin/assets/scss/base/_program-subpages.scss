@@ -7,7 +7,8 @@
 }
 
 .nvis-template .program-subpage-careers .career {
-  margin-bottom: var(--nvis-dbl-spacing);
+  display: block;
+  margin-bottom: calc(2 * var(--nvis-dbl-spacing));
   padding: 0;
 }
 
@@ -33,9 +34,7 @@
 }
 
 .nvis-template .program-subpage-careers .career-content {
-  break-after: avoid;
   margin: 0 0 var(--nvis-dbl-spacing);
-  page-break-after: avoid;
   width: 100%;
 }
 

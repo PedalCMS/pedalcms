@@ -26,10 +26,10 @@
   text-decoration: underline;
 
   &::before {
-    content: '\27A6';
+    content: '\25B2';
     display: inline-block;
-    margin: 0 0.2em 0 0;
-    transform: rotate(-90deg) scale(1.25, 1.5);
+    margin: 0 0.5em 0 0;
+    transform: scale(1.5, 1);
   }
 }
 
@@ -39,7 +39,8 @@
     font-weight: bold;
     width: fit-content;
 
-    &::marker {
+    &::marker,
+    &::-webkit-details-marker {
       color: var(--nvis-active-color);
       font-size: 0.95em;
     }
@@ -136,8 +137,7 @@
 
   @media (min-width: $screen-md-min) {
     align-items: flex-start;
-    display: flex;
-    gap: var(--nvis-spacing);
+    display: inline;
   }
 }
 
@@ -151,7 +151,7 @@
   width: auto;
 
   @media (min-width: $screen-md-min) {
-    margin: 0.5em 0 0;
+    margin: 0.5em var(--nvis-spacing) 0 0;
   }
 }
 
@@ -198,14 +198,9 @@
 }
 
 .archive .nvis-post-filters .more-filters {
-  break-before: always;
   gap: var(--nvis-spacing);
-  page-break-before: always;
   transition: all 0.25s;
-
-  @media (max-width: $screen-sm-max) {
-    width: 100%;
-  }
+  width: 100%;
 }
 
 .nvis-post-filters .more-filters__content {
@@ -228,19 +223,20 @@
 }
 
 .nvis-meta-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--nvis-dbl-spacing);
+  display: grid;
+  gap: var(--nvis-spacing);
+  grid-template-columns: repeat(auto-fill, minmax(120px, max-content));
 
-  @media (min-width: $screen-lg-min) {
-    flex-direction: row;
-    gap: calc(2.5 * var(--nvis-spacing));
+  @media (min-width: $screen-md-min) {
+    // gap: var(--nvis-dbl-spacing);
   }
 }
 
 .nvis-meta-group__item {
-  display: block;
+  display: inline-block;
   font-size: 0.9em;
+  min-width: 120px;
+  padding: 0 var(--nvis-dbl-spacing) 0 0;
 
   .label {
     display: block;

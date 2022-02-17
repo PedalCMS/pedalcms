@@ -5,7 +5,7 @@
   border-radius: 3px;
   color: #fff;
   display: inline-block;
-  padding: 0.25em 0.5em;
+  padding: 0.25em 0.75em;
   text-decoration: none;
 
   &:hover {
@@ -41,12 +41,19 @@
     border: solid 1px #999;
     color: #ccc;
     font-size: 14px;
-    line-height: 1;
+    line-height: 1.2;
     padding: 5px 10px;
   }
 }
 
 .nvis-post-filters select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICA8cGF0aCBmaWxsPSJncmF5IiBkPSJNMTAsMjMyLjdsNDkwLDUzNC41bDQ5MC01MzQuNUgxMHoiIC8+DQo8L3N2Zz4=');
+  background-position: center right 4px;
+  background-repeat: no-repeat;
+  background-size: 12px;
+  padding-right: 20px;
   width: fit-content;
 }
 
@@ -68,15 +75,17 @@
 .nvis-meta-group {
   background-color: rgba(0, 0, 0, 0.67);
   border-radius: 3px;
+  height: max-content;
+  line-height: 1.1;
   margin: 0 0 var(--nvis-dbl-spacing) 0;
   padding: 5px 10px;
   text-shadow: 1px 1px 5px #000;
 
   @media (min-width: $screen-md-min) {
     margin: calc(3 * var(--nvis-spacing)) 0;
-    width: max-content;
   }
 }
+
 
 @media (hover: hover) {
   .featured-image--zoom-hover {

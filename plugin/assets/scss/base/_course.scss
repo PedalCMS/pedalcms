@@ -7,42 +7,43 @@
 
 .course-list .nvis_course {
   border: none;
-  display: flex;
-  flex-direction: column;
   gap: var(--nvis-spacing);
   margin-bottom: var(--nvis-spacing);
   padding: var(--nvis-spacing);
   position: relative;
 
   @media (min-width: $screen-md-min) {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: min-content 1fr;
   }
 
-  header,
-  .course-content {
-
-    @media (min-width: $screen-md-min) {
-      width: calc(100% - var(--nvis-dbl-spacing) - var(--nvis-sidebar-width));
-    }
+  @media (min-width: $screen-lg-min) {
+    grid-template-columns: 4fr 1fr;
   }
 }
 
-.course-list .nvis_course header {
-  margin: 0;
-  vertical-align: top;
+.course-list .nvis_course header,
+.course-list .nvis_course .course-content {
+  margin: 0 0 var(--nvis-spacing);
+
+  @media (min-width: $screen-md-min) {
+    margin: 0;
+  }
 }
 
 .course-list .nvis_course .entry-title {
   font-size: 1.25em;
 }
 
-.course-list .nvis_course .course-actions {
+.course-list .nvis_course .course-content {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
 
-  @media (min-width: $screen-md-min) {
-    break-before: always;
-    page-break-before: always;
-    width: var(--nvis-sidebar-width);
-  }
+.course-list .nvis_course .course-actions {
+  grid-column: 2/3;
+  grid-row: 1/3;
 }
 
 .course-list .nvis_course .course-actions .button {

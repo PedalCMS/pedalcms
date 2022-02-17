@@ -51,9 +51,9 @@
 .nvis-template .page-header .program-subnav {
   margin: 0 calc(-1 * var(--article-padding));
 
-  @media (min-width: $screen-md-min) {
-    margin-top: calc(3 * var(--nvis-dbl-spacing));
-  }
+  // @media (min-width: $screen-md-min) {
+  //   margin-top: calc(3 * var(--nvis-dbl-spacing));
+  // }
 
   &__heading {
 
