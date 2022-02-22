@@ -228,7 +228,7 @@
   grid-template-columns: repeat(auto-fill, minmax(120px, max-content));
 
   @media (min-width: $screen-md-min) {
-    // gap: var(--nvis-dbl-spacing);
+    // gap: var(--nvis-spacing-2x);
   }
 }
 
@@ -236,7 +236,7 @@
   display: inline-block;
   font-size: 0.9em;
   min-width: 120px;
-  padding: 0 var(--nvis-dbl-spacing) 0 0;
+  padding: 0 var(--nvis-spacing-2x) 0 0;
 
   .label {
     display: block;

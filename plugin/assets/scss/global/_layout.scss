@@ -1,7 +1,7 @@
 @use '../common/variables' as *;
 
 .nvis-template {
-  margin: var(--nvis-dbl-spacing) auto;
+  margin: var(--nvis-spacing-2x) auto;
   width: 100%;
 }
 
@@ -13,8 +13,8 @@
 
   @media (max-width: $screen-sm-max) {
     border-top: solid 10px #eee;
-    margin-top: var(--nvis-dbl-spacing);
-    padding-top: var(--nvis-dbl-spacing);
+    margin-top: var(--nvis-spacing-2x);
+    padding-top: var(--nvis-spacing-2x);
   }
 }
 
@@ -50,24 +50,24 @@
 }
 
 .nvis-template .page-header {
-  margin: 0 0 var(--nvis-dbl-spacing);
+  margin: 0 0 var(--nvis-spacing-2x);
   width: 100%;
 }
 
 .page-header .page-title {
   clear: none;
-  margin: var(--nvis-dbl-spacing) 0 0;
+  margin: var(--nvis-spacing-2x) 0 0;
 
   @media (min-width: $screen-md-min) {
-    margin: calc(3 * var(--nvis-spacing)) 0 0;
+    margin: var(--nvis-spacing-3x) 0 0;
   }
 }
 
 .page-header__title-group {
-  margin: var(--nvis-dbl-spacing) 0;
+  margin: var(--nvis-spacing-2x) 0;
 
   @media (min-width: $screen-md-min) {
-    margin: calc(3 * var(--nvis-spacing)) 0 0;
+    margin: var(--nvis-spacing-3x) 0 0;
   }
 }
 
@@ -78,14 +78,14 @@
 
 .nvis-template .num-results {
   font-size: 0.9em;
-  margin: var(--nvis-dbl-spacing) 0;
+  margin: var(--nvis-spacing-2x) 0;
 }
 
 .nvis-template .pagination {
-  margin: var(--nvis-dbl-spacing) 0;
+  margin: var(--nvis-spacing-2x) 0;
 }
 
 .archive .page-header .featured-image.alignleft,
 .archive .page-header .featured-image.alignright {
-  margin-bottom: var(--nvis-dbl-spacing);
+  margin-bottom: var(--nvis-spacing-2x);
 }

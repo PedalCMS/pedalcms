@@ -22,7 +22,7 @@
   padding: var(--nvis-spacing);
 
   @media (min-width: $screen-md-min) {
-    padding: var(--nvis-dbl-spacing);
+    padding: var(--nvis-spacing-2x);
   }
 }
 
@@ -73,7 +73,7 @@
 }
 
 body.single-nvis_person .person-main {
-  --margin: var(--nvis-dbl-spacing);
+  --margin: var(--nvis-spacing-2x);
   display: flex;
   flex-wrap: wrap;
   gap: var(--margin);
@@ -111,8 +111,8 @@ body.single-nvis_person .person-sidebar {
 
 .single-person-page-header--classic {
   border-bottom: solid 1px var(--nvis-gray);
-  margin-bottom: var(--nvis-dbl-spacing);
-  padding-bottom: var(--nvis-dbl-spacing);
+  margin-bottom: var(--nvis-spacing-2x);
+  padding-bottom: var(--nvis-spacing-2x);
 }
 
 .single-person-page-header--classic .entry-title {
@@ -121,12 +121,12 @@ body.single-nvis_person .person-sidebar {
 
   @media (min-width: $screen-md-min) {
     clear: none;
-    margin: calc(3 * var(--nvis-spacing)) 0 0;
+    margin: var(--nvis-spacing-3x) 0 0;
   }
 }
 
 .single-person-page-header--classic .single-person__meta {
-  margin: 0 0 var(--nvis-dbl-spacing);
+  margin: 0 0 var(--nvis-spacing-2x);
 }
 
 .single-person-page-header--classic .person-job-title {
@@ -148,6 +148,6 @@ body.single-nvis_person .person-sidebar {
 }
 
 .single-person-page-header .contact-info {
-  margin-bottom: var(--nvis-dbl-spacing);
+  margin-bottom: var(--nvis-spacing-2x);
   order: 2;
 }

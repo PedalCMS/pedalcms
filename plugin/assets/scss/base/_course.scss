@@ -2,7 +2,7 @@
 
 .course-meta {
   display: flex;
-  gap: var(--nvis-dbl-spacing);
+  gap: var(--nvis-spacing-2x);
 }
 
 .course-list .nvis_course {
@@ -86,7 +86,7 @@
 }
 
 .single-nvis_course .course-sidebar .action-list {
-  margin: 0 0 var(--nvis-dbl-spacing);
+  margin: 0 0 var(--nvis-spacing-2x);
 }
 
 .single-nvis_course .course-personnel article {
@@ -117,7 +117,7 @@
   --person-image-width: 150px;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--nvis-dbl-spacing);
+  gap: var(--nvis-spacing-2x);
 }
 
 .single-nvis_course .course-sidebar .nvis_person {

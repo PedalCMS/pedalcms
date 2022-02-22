@@ -77,12 +77,12 @@
   border-radius: 3px;
   height: max-content;
   line-height: 1.1;
-  margin: 0 0 var(--nvis-dbl-spacing) 0;
+  margin: 0 0 var(--nvis-spacing-2x) 0;
   padding: 5px 10px;
   text-shadow: 1px 1px 5px #000;
 
   @media (min-width: $screen-md-min) {
-    margin: calc(3 * var(--nvis-spacing)) 0;
+    margin: var(--nvis-spacing-3x) 0;
   }
 }
 

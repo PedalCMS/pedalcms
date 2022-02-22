@@ -2,11 +2,11 @@
 
 
 body .nvis-template {
-  --header-padding: var(--nvis-dbl-spacing);
+  --header-padding: var(--nvis-spacing-2x);
   max-width: 1200px;
 
   @media (min-width: $screen-md-min) {
-    --header-padding: calc(3 * var(--nvis-spacing));
+    --header-padding: var(--nvis-spacing-3x);
   }
 }
 
@@ -140,7 +140,7 @@ body .nvis-template {
 .nvis-template .page-header .featured-image {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   height: fit-content;
-  margin-bottom: var(--nvis-dbl-spacing);
+  margin-bottom: var(--nvis-spacing-2x);
   width: fit-content;
 }
 

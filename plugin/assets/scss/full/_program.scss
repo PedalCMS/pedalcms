@@ -5,7 +5,7 @@
 }
 
 .archive .programs-list article {
-  margin-bottom: calc(3 * var(--nvis-spacing));
+  margin-bottom: var(--nvis-spacing-3x);
 }
 
 .archive .programs-list .featured-image {
@@ -45,14 +45,14 @@
 }
 
 .program-subpage .program-lead-content {
-  margin-bottom: calc(4 * var(--nvis-spacing));
+  margin-bottom: var(--nvis-spacing-4x);
 }
 
 .nvis-template .page-header .program-subnav {
   margin: 0 calc(-1 * var(--article-padding));
 
   // @media (min-width: $screen-md-min) {
-  //   margin-top: calc(3 * var(--nvis-dbl-spacing));
+  //   margin-top: calc(3 * var(--nvis-spacing-2x));
   // }
 
   &__heading {

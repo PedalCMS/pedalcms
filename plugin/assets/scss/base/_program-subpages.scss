@@ -8,7 +8,7 @@
 
 .nvis-template .program-subpage-careers .career {
   display: block;
-  margin-bottom: calc(2 * var(--nvis-dbl-spacing));
+  margin-bottom: calc(2 * var(--nvis-spacing-2x));
   padding: 0;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .nvis-template .program-subpage-careers .career-content {
-  margin: 0 0 var(--nvis-dbl-spacing);
+  margin: 0 0 var(--nvis-spacing-2x);
   width: 100%;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .faq-category {
-  margin-bottom: var(--nvis-dbl-spacing);
+  margin-bottom: var(--nvis-spacing-2x);
 }
 
 .faq-category__title {
@@ -55,7 +55,7 @@
 }
 
 .nvis_program .courses-table {
-  margin-bottom: var(--nvis-dbl-spacing);
+  margin-bottom: var(--nvis-spacing-2x);
 }
 
 .nvis_program .courses-table thead {
@@ -74,11 +74,11 @@
 
 .program-faculty-staff-list .person-list {
   --image-width: 100px;
-  --spacing: var(--nvis-dbl-spacing);
+  --spacing: var(--nvis-spacing-2x);
   display: flex;
   flex-direction: column;
-  gap: var(--nvis-dbl-spacing);
-  margin: 0 0 calc(4 * var(--nvis-spacing));
+  gap: var(--nvis-spacing-2x);
+  margin: 0 0 var(--nvis-spacing-4x);
 }
 
 .program-faculty-staff-list .person-list .nvis_person {
@@ -102,7 +102,7 @@
 
   @media (max-width: $screen-md-max) {
     flex-direction: column;
-    margin-bottom: var(--nvis-dbl-spacing);
+    margin-bottom: var(--nvis-spacing-2x);
   }
 }
 
@@ -148,10 +148,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--nvis-spacing);
-  margin-bottom: calc(4 * var(--nvis-spacing));
+  margin-bottom: var(--nvis-spacing-4x);
 
   @media (min-width: $screen-lg-min) {
-    gap: var(--nvis-dbl-spacing);
+    gap: var(--nvis-spacing-2x);
   }
 
 
@@ -167,7 +167,7 @@
 .program-subpage-news .related-post .related-post__wrapper {
 
   @media (min-width: $screen-lg-min) {
-    width: calc(70% - var(--nvis-dbl-spacing));
+    width: calc(70% - var(--nvis-spacing-2x));
   }
 }
 

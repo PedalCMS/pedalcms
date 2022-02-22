@@ -6,7 +6,9 @@
   --nvis-green: #417d2b;
   --nvis-red: #9d2e2a;
   --nvis-spacing: 1rem;
-  --nvis-dbl-spacing: calc(2 * var(--nvis-spacing));
+  --nvis-spacing-2x: calc(2 * var(--nvis-spacing));
+  --nvis-spacing-3x: calc(3 * var(--nvis-spacing));
+  --nvis-spacing-4x: calc(4 * var(--nvis-spacing));
   --nvis-sidebar-width: 20%;
   --nvis-chart-color-1: #09c;
   --nvis-chart-color-2: #f93;

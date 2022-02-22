@@ -5,12 +5,12 @@
   flex-direction: column;
   gap: var(--nvis-spacing);
   justify-content: space-between;
-  margin: 0 0 var(--nvis-dbl-spacing);
+  margin: 0 0 var(--nvis-spacing-2x);
   padding: 0 0 0 var(--nvis-spacing);
 
   @media (min-width: $screen-md-min) {
     flex-direction: row;
-    gap: var(--nvis-dbl-spacing);
+    gap: var(--nvis-spacing-2x);
   }
 }
 
@@ -52,7 +52,7 @@
 .single-nvis_program article.nvis_program {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--nvis-dbl-spacing);
+  gap: var(--nvis-spacing-2x);
   width: 100%;
 }
 
@@ -99,10 +99,10 @@ article.nvis_program[class*='subpage-']:not(.subpage-index) .single-program-page
 
   @media (min-width: $screen-md-min) {
     display: grid;
-    gap: var(--nvis-dbl-spacing);
+    gap: var(--nvis-spacing-2x);
     grid-template-columns: minmax(20px, 3fr) 2fr;
     grid-template-rows: min-content 1fr min-content;
-    padding-top: calc(3 * var(--nvis-spacing));
+    padding-top: var(--nvis-spacing-3x);
 
     .page-header__title-group {
       grid-column: 1/2;
@@ -133,7 +133,7 @@ article.nvis_program[class*='subpage-']:not(.subpage-index) .single-program-page
 .single-nvis_program .program-meta {
 
   @media (min-width: $screen-md-min) {
-    margin: var(--nvis-dbl-spacing) 0;
+    margin: var(--nvis-spacing-2x) 0;
   }
 }
 
@@ -143,7 +143,7 @@ article.nvis_program[class*='subpage-']:not(.subpage-index) .single-program-page
   @media (max-width: $screen-sm-max) {
     display: block;
     font-size: 1.5rem;
-    margin: var(--nvis-dbl-spacing) 0 0.5rem;
+    margin: var(--nvis-spacing-2x) 0 0.5rem;
   }
 }
 
@@ -155,7 +155,7 @@ article.nvis_program[class*='subpage-']:not(.subpage-index) .single-program-page
 
   @media (min-width: $screen-md-min) {
     display: flex;
-    gap: var(--nvis-dbl-spacing);
+    gap: var(--nvis-spacing-2x);
   }
 
   @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
@@ -191,7 +191,7 @@ article.nvis_program[class*='subpage-']:not(.subpage-index) .single-program-page
 .program-main {
 
   @media (min-width: $screen-md-min) {
-    width: calc(100% - var(--nvis-sidebar-width) - var(--nvis-dbl-spacing));
+    width: calc(100% - var(--nvis-sidebar-width) - var(--nvis-spacing-2x));
   }
 }
 
@@ -205,7 +205,7 @@ article.nvis_program[class*='subpage-']:not(.subpage-index) .single-program-page
 }
 
 .program-sidebar .back-to-top {
-  margin-top: var(--nvis-dbl-spacing);
+  margin-top: var(--nvis-spacing-2x);
 }
 
 .program-sidebar .button {
@@ -219,7 +219,7 @@ article.nvis_program[class*='subpage-']:not(.subpage-index) .single-program-page
 }
 
 .program-deadlines {
-  margin: var(--nvis-dbl-spacing) 0;
+  margin: var(--nvis-spacing-2x) 0;
 }
 
 .program-deadlines__list {
@@ -250,5 +250,5 @@ article.nvis_program[class*='subpage-']:not(.subpage-index) .single-program-page
 }
 
 body.single-nvis_program .program-lead-content {
-  margin-bottom: calc(4 * var(--nvis-spacing));
+  margin-bottom: var(--nvis-spacing-4x);
 }

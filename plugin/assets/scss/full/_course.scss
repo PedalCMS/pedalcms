@@ -16,7 +16,7 @@
 }
 
 .course-main .course-description {
-  --spacing: calc(3 * var(--nvis-spacing));
+  --spacing: var(--nvis-spacing-3x);
   border-bottom: solid 1px #ccc;
   margin-bottom: var(--spacing);
   padding-bottom: var(--spacing);
