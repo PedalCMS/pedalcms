@@ -27,20 +27,20 @@ body .nvis-template .button-secondary:hover {
   font-weight: bold;
   line-height: 1.1;
   margin: 0;
-}
 
-.archive .nvis-template .entry-title a {
-  font-weight: bold;
+  a {
+    font-weight: bold;
+  }
 }
 
 .archive .nvis-template article header a {
   color: var(--nvis-active-color);
   text-decoration: none;
-}
 
-.archive .nvis-template article header a:hover {
-  color: #333;
-  text-decoration: underline;
+  &:hover {
+    color: #333;
+    text-decoration: underline;
+  }
 }
 
 .single .nvis-template article:not(article article) {
@@ -48,6 +48,5 @@ body .nvis-template .button-secondary:hover {
   border-radius: 0 0 3px 3px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
   gap: var(--nvis-spacing);
-  justify-content: space-between;
   padding: 0 var(--article-padding) var(--article-padding);
 }

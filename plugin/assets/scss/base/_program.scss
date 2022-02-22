@@ -143,7 +143,7 @@ article.nvis_program[class*='subpage-']:not(.subpage-index) .single-program-page
   @media (max-width: $screen-sm-max) {
     display: block;
     font-size: 1.5rem;
-    margin: 0 0 0.5rem;
+    margin: var(--nvis-dbl-spacing) 0 0.5rem;
   }
 }
 
@@ -152,7 +152,6 @@ article.nvis_program[class*='subpage-']:not(.subpage-index) .single-program-page
   clear: both;
   list-style: none;
   margin: 0;
-  padding: var(--nvis-dbl-spacing) 0 0;
 
   @media (min-width: $screen-md-min) {
     display: flex;
