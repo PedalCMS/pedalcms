@@ -25,7 +25,7 @@ CSS_SOURCE_MAP :=
 JS_SOURCE_MAP := --source-maps=true
 
 .PHONY: production
-production: | prodprep build-css build-js
+production: | prodprep build-css autoprefix build-js
 	@echo "\nAll done!\n"
 
 .PHONY: prodprep
@@ -78,6 +78,10 @@ $(CSS_DIR)/%.min.css: $(SASS_DIR)/%.scss $$(wildcard $(SASS_DIR)/%/*.scss) $(SAS
 	@echo "Compiling $<..."
 	@$(BIN)/sass --update $(CSS_SOURCE_MAP) $<:$@ --style compressed
 
+.PHONY: autoprefix
+autoprefix:
+	@echo "Auto-prefixing all CSS …"
+	@npx postcss plugin/assets/css/*.css --use autoprefixer --replace --no-map
 
 define LINT_CSS
 @echo "\nLinting:";
