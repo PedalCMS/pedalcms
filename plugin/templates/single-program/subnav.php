@@ -10,8 +10,9 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'h_level'             => 2,
-    'label_about_program' => nvis_prog_get_label('about_program')
+    'h_level'              => 2,
+    'label_about_program'  => nvis_prog_get_label('about_program'),
+    'label_program_subnav' => nvis_prog_get_label('program_subnav')
 ];
 
 $args = wp_parse_args($args, $defaults);
@@ -20,7 +21,7 @@ $h_tag = nvis_get_heading_tag($args['h_level']);
 
 if (nvis_prog_show_subpages()) : $subpages = nvis_prog_get_subpages(); ?>
 
-<nav class="program-subnav">
+<nav class="program-subnav" aria-label="<?php echo esc_attr( $args['label_program_subnav'] ); ?>">
   <?php
   echo sprintf(
     '<%s class="program-subnav__heading">%s</%s>',
@@ -35,7 +36,7 @@ if (nvis_prog_show_subpages()) : $subpages = nvis_prog_get_subpages(); ?>
     ?>
     <li
       class="<?php echo nvis_prog_is_active_subpage($slug) ? 'active-subpage' : ''; ?>">
-      <span><a href="<?php nvis_prog_subpage_link($slug); ?>"><?php echo $label; ?></a></span>
+      <span><a href="<?php nvis_prog_subpage_link($slug); ?>"><?php echo esc_html($label); ?></a></span>
     </li>
     <?php endif; endforeach; ?>
   </ul>

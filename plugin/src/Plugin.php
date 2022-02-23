@@ -265,7 +265,7 @@ class Plugin {
         'offered_in'             => 'Offered in',
         'instructors'            => 'Instructors',
         'courses_taught'         => 'Courses Taught',
-
+        'program_subnav'         => 'Program Subnav',
         'about_program'          => 'About this Program',
         'how_to_apply'           => 'How to Apply',
         'careers'                => 'Careers',
