@@ -17,7 +17,7 @@ $defaults = [
     'link_image' => true
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 ?>
 <div class="person-featured-image featured-image">

@@ -18,7 +18,7 @@ $defaults = [
     'label_no_one_found'       => nvis_prog_get_label('no_one_found')
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 $classes = [
     'person-list',

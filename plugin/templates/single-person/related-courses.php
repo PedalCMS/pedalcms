@@ -14,7 +14,7 @@ $defaults = [
     'label_courses_taught' => nvis_prog_get_label('courses_taught')
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if (!empty($args['posts'])) :
 ?>

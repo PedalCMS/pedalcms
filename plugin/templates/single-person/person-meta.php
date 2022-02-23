@@ -15,7 +15,7 @@ $defaults = [
     'link_terms' => false,
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 ?>
 <div class="single-person__meta">

@@ -14,7 +14,7 @@ $defaults = [
     'placeholder' => nvis_prog_get_label('keyword') . ' …'
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 ?>
 <div class="nvis-filter-keyword nvis-filters-field">

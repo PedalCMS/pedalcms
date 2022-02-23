@@ -25,7 +25,7 @@ $defaults = [
     'label_read_more'     => nvis_prog_get_label('read_more'),
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 $args['context'] = $template;
 $args['link_image'] = true;
 

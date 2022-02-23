@@ -18,7 +18,7 @@ $defaults = [
     'faqs'              => get_field('related_faqs_list', $post),
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 $faqs = $args['faqs'];
 
 if ($faqs) {

@@ -13,7 +13,7 @@ $defaults = [
     'label_no_programs_found' => nvis_prog_get_label('no_programs_found')
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 ?>
 <section class="programs-list">

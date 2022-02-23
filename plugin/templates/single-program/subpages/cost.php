@@ -25,7 +25,7 @@ $defaults = [
     'label_estimated_cost' => $label_est_cost
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if ($args['show_subpage']) : ?>
 

@@ -18,7 +18,7 @@ $defaults = [
     'personnel' => get_field('related_course_personnel', $post)
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 $style = in_array($args['style'], ['full','links'], true) ? $args['style'] : $defaults['style'];
 $h_tag = nvis_get_heading_tag($args['h_level']);

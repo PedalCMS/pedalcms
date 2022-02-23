@@ -17,7 +17,7 @@ $defaults = [
     'label_hide'         => nvis_prog_get_label('hide'),
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 $more_details_id = "more-details-" . $post->ID;
 

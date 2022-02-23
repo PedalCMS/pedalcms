@@ -16,7 +16,7 @@ $defaults = [
     'subpage_title'   => nvis_prog_get_label('news'),
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if ($args['show_subpage']) : ?>
 

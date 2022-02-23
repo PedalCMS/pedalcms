@@ -15,7 +15,7 @@ $defaults = [
     'show_image'       => true,
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 ?>
 <section

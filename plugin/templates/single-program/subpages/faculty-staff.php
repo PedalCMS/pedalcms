@@ -20,7 +20,7 @@ $defaults = [
     'image_size'               => 'thumbnail'
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if ($args['show_subpage']) : ?>
 <div <?php nvis_subpage_class(); ?>>

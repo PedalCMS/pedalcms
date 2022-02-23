@@ -10,7 +10,7 @@ $defaults = [
     'curriculum_sections' => get_field('curriculum_sections', $post)
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if ($args['show_subpage']) : ?>
 

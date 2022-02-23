@@ -29,7 +29,7 @@ $defaults = [
     'wp_query'               => null,
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 $wp_query = $args['wp_query'];
 
 if (!$wp_query) {

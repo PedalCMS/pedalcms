@@ -16,6 +16,6 @@ $defaults = [
     'label'       => nvis_prog_get_label('person_category'),
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 nvis_prog_get_template_part('filters/taxonomy', $args);

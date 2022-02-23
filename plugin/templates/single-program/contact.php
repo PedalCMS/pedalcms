@@ -16,7 +16,7 @@ $defaults = [
     'contacts'             => get_field('related_contacts'),
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 $action_url = nvis_prog_get_action_link($args['action']);
 
 if (is_array($args['contacts']) && !empty($args['contacts'])) :

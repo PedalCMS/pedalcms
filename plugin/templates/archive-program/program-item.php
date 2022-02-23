@@ -20,7 +20,7 @@ $defaults = [
     'wrapper_class'        => ''
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if ($post) : ?>
 <article <?php post_class($args['wrapper_class'], $post); ?>>

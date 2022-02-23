@@ -20,7 +20,7 @@ if ($register_url) {
     ];
 }
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if ($args['add_permalink']) {
     $permalink = $args['add_permalink'] === true ? get_permalink($post) : $args['add_permalink'];

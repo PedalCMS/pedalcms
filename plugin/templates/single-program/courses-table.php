@@ -16,7 +16,7 @@ $defaults = [
     'label_credits' => ucfirst(nvis_prog_get_label('credits'))
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if (is_array($args['courses'])): ?>
 <table class="courses-table">

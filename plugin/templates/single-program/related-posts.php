@@ -20,7 +20,7 @@ $defaults = [
     'label_no_posts_found' => nvis_prog_get_label('no_posts_found'),
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 $featured_posts = $args['featured_posts'] ?? get_field('news_featured_posts', $post);
 $posts = $args['posts'];

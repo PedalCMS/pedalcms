@@ -14,7 +14,7 @@ $defaults = [
     'label_no_courses_found' => nvis_prog_get_label('no_courses_found')
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 ?>
 <section class="course-list article-list">

@@ -20,7 +20,7 @@ $defaults = [
     'label_missing_filters_data' => nvis_prog_get_label('missing_filters_data'),
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 $classes = [
     'nvis-post-filters',

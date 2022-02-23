@@ -11,7 +11,7 @@ $defaults = [
     'fallback_to_post' => true,
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if (empty($args['attachment_id']) && $args['fallback_to_post']) {
     $args['attachment_id'] = get_post_thumbnail_id($post);

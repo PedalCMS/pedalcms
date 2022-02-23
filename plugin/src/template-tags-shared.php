@@ -28,6 +28,17 @@ function nvis_args_or_global(string $key, array $args) {
 
 endif;
 
+if (!function_exists('nvis_parse_template_args')) :
+
+function nvis_parse_template_args(array $args, array $defaults, string $template): array {
+    $defaults = apply_filters( 'nvis/template_defaults', $defaults, $template );
+
+    return wp_parse_args( $args, $defaults );
+}
+
+endif;
+
+
 
 if (!function_exists('nvis_sanitize_title_tag')) :
 /**

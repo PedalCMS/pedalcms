@@ -21,7 +21,7 @@ $defaults = [
     'missing_data_text'    => nvis_prog_get_label('missing_filter_data')
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 $short_label = $args['short_label'] ?? $args['label'];
 

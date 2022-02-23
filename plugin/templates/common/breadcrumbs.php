@@ -21,7 +21,7 @@ $defaults = [
     'breadcrumb_wrapper_class' => 'breadcrumbs'
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if ($args['show_breadcrumbs']) :
 /**

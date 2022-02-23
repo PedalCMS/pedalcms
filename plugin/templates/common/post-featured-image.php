@@ -21,7 +21,7 @@ $defaults = [
     'fallback_attachment_id' => ''
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 $align_class = in_array($args['image_align'], ['left','right','center','none'], true)
     ? $args['image_align']

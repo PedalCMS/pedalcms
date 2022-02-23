@@ -26,7 +26,7 @@ $defaults = [
     'label_office'  => nvis_prog_get_label('office'),
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if ($post):
 ?>

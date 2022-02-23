@@ -15,7 +15,7 @@ $defaults = [
     'label_program_subnav' => nvis_prog_get_label('program_subnav')
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 $h_tag = nvis_get_heading_tag($args['h_level']);
 

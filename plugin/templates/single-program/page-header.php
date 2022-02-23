@@ -14,7 +14,7 @@ $defaults = [
     'image_size' => 'medium'
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 ?>
 <header class="single-program-page-header page-header entry-header">

@@ -14,7 +14,7 @@ $defaults = [
     'heading'   => nvis_prog_get_label('application_deadlines')
 ];
 
-$args = wp_parse_args($args, $defaults);
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 if (is_array($args['deadlines'])) : ?>
 <div class="program-deadlines">
