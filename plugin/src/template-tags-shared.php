@@ -176,7 +176,7 @@ function nvis_get_align_class(string $align): string {
 
 endif;
 
-if (!function_exists('nvis_get_the_terms_list')) :
+if (!function_exists('nvis_get_the_term_list')) :
 
 function nvis_get_the_term_list($post, string $taxonomy, string $before = '', string $sep = ', ', string $after = '', bool $link_terms = true): string {
     if ($link_terms) {
