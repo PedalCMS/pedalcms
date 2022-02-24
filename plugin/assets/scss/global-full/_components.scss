@@ -43,6 +43,10 @@
     font-size: 14px;
     line-height: 1.2;
     padding: 5px 10px;
+
+    &:focus {
+      border-color: #fff;
+    }
   }
 }
 
