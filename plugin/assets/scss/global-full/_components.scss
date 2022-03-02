@@ -74,6 +74,10 @@
   &:hover {
     text-decoration: underline;
   }
+
+  &:focus {
+    outline: dotted 2px currentColor;
+  }
 }
 
 .nvis-meta-group {

@@ -51,10 +51,6 @@
 .nvis-template .page-header .program-subnav {
   margin: 0 calc(-1 * var(--article-padding));
 
-  // @media (min-width: $screen-md-min) {
-  //   margin-top: calc(3 * var(--nvis-spacing-2x));
-  // }
-
   &__heading {
 
     @media (max-width: $screen-sm-max) {
@@ -70,8 +66,14 @@
     padding: 5px var(--article-padding) 0;
   }
 
-  a:hover {
-    border-color: #aaa;
+  a {
+    &:hover {
+      border-color: #aaa;
+    }
+
+    &:focus {
+      outline: dotted 2px currentColor;
+    }
   }
 
   .active-subpage a {
