@@ -53,6 +53,7 @@
 }
 
 .nvis-toggle__trigger {
+  --focus-outline: dotted 2px currentColor;
   background: none;
   border: none;
   color: inherit;
@@ -68,11 +69,18 @@
     text-decoration: underline;
   }
 
-  &:active,
   &:focus {
     background: none;
     color: inherit;
-    outline: dotted 2px currentColor;
+    outline: var(--focus-outline);
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: var(--focus-outline);
   }
 
   &::after {
@@ -83,7 +91,7 @@
     left: 0;
     position: absolute;
     top: 2px;
-    transform: rotate(90deg);
+    transform: rotate(90deg) scaleX(1.4);
     transition: all 0.25s;
   }
 
@@ -99,7 +107,7 @@
     }
 
     &::after {
-      transform: rotate(180deg);
+      transform: rotate(180deg) scaleX(1.4);
       transition: all 0.35s;
     }
   }
@@ -107,13 +115,12 @@
 
 .nvis-toggle__content {
   overflow: hidden;
-  transition: height 0.25s ease;
+  transition: height 0.25s;
 
   &:not([hidden]) {
-    transition: height 0.25s ease;
+    transition: height 0.25s;
   }
 }
-
 
 .archive .nvis-post-filters {
   background: rgba(0, 0, 0, 0.1);
@@ -199,7 +206,6 @@
 
 .archive .nvis-post-filters .more-filters {
   gap: var(--nvis-spacing);
-  transition: all 0.25s;
   width: 100%;
 }
 
@@ -224,19 +230,14 @@
 
 .nvis-meta-group {
   display: grid;
-  gap: var(--nvis-spacing);
-  grid-template-columns: repeat(auto-fill, minmax(120px, max-content));
-
-  @media (min-width: $screen-md-min) {
-    // gap: var(--nvis-spacing-2x);
-  }
+  gap: var(--nvis-spacing) var(--nvis-spacing-2x);
+  grid-template-columns: repeat(auto-fit, minmax(120px, max-content));
+  justify-content: space-around;
 }
 
 .nvis-meta-group__item {
   display: inline-block;
   font-size: 0.9em;
-  min-width: 120px;
-  padding: 0 var(--nvis-spacing-2x) 0 0;
 
   .label {
     display: block;

@@ -47,6 +47,14 @@
     &:focus {
       border-color: #fff;
     }
+
+    &:focus:not(:focus-visible) {
+      border-color: revert;
+    }
+
+    &:focus-visible {
+      border-color: #fff;
+    }
   }
 }
 
@@ -68,6 +76,7 @@
 }
 
 .nvis-template .nvis-post-filters .reset-link {
+  --focus-outline: dotted 2px currentColor;
   color: #fff;
   text-decoration: none;
 
@@ -76,7 +85,15 @@
   }
 
   &:focus {
-    outline: dotted 2px currentColor;
+    outline: var(--focus-outline);
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: var(--focus-outline);
   }
 }
 

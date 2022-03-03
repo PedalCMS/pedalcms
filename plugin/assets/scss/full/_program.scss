@@ -67,12 +67,22 @@
   }
 
   a {
+    --focus-outline: dotted 2px currentColor;
+
     &:hover {
       border-color: #aaa;
     }
 
     &:focus {
-      outline: dotted 2px currentColor;
+      outline: var(--focus-outline);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: var(--focus-outline);
     }
   }
 
