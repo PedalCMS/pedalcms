@@ -42,9 +42,15 @@
 
 			target.style.height = '0px';
 
-			window.setTimeout(function () {
-				target.style.height = height;
-			}, 0);
+			window.setTimeout(() => (target.style.height = height), 0);
+
+			target.addEventListener(
+				'transitionend',
+				() => (target.style.overflow = 'visible'),
+				{
+					once: true,
+				}
+			);
 		}
 
 		hide() {
@@ -56,6 +62,7 @@
 
 			this.trigger.setAttribute('aria-expanded', 'false');
 			target.style.height = '0px';
+			target.style.overflow = 'hidden';
 
 			target.addEventListener(
 				'transitionend',
