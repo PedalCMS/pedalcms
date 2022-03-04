@@ -6,12 +6,13 @@ section:target > h2 {
   position: relative;
 
   &:before {
+    bottom: 50%;
     color: rgba(0, 0, 0, 0.5);
     content: '▲';
     font-size: 16px;
-    left: -1.25em;
+    left: -1em;
     position: absolute;
-    top: 0.5em;
+    top: 50%;
     transform: rotate(90deg);
   }
 }
