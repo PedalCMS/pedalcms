@@ -5,6 +5,7 @@
   --nvis-gray: #999;
   --nvis-green: #417d2b;
   --nvis-red: #9d2e2a;
+  --nvis-highlight: #ffedc2;
   --nvis-spacing: 1rem;
   --nvis-spacing-2x: calc(2 * var(--nvis-spacing));
   --nvis-spacing-3x: calc(3 * var(--nvis-spacing));
@@ -43,5 +44,19 @@
   100% {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@keyframes nvis-flash-highlight {
+  0% {
+    background: var(--nvis-highlight);
+  }
+
+  25% {
+    background: var(--nvis-highlight);
+  }
+
+  100% {
+    background: transparent;
   }
 }

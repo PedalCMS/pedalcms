@@ -1,3 +1,21 @@
+:target:not(article) {
+  animation: nvis-flash-highlight 1.75s ease-out 0.1s;
+}
+
+section:target > h2 {
+  position: relative;
+
+  &:before {
+    color: rgba(0, 0, 0, 0.5);
+    content: '▲';
+    font-size: 16px;
+    left: -1.25em;
+    position: absolute;
+    top: 0.5em;
+    transform: rotate(90deg);
+  }
+}
+
 body .nvis-template .button {
   background-color: var(--nvis-active-color);
   color: #fff;
