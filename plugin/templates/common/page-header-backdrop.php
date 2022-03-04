@@ -22,7 +22,9 @@ if ($args['show_backdrop']) :
         '<div class="page-header__backdrop">%s</div>',
         wp_get_attachment_image(
             $args['attachment_id'],
-            $args['backdrop_size']
+            $args['backdrop_size'],
+            false,
+            ['alt' => '', 'title' => '']
         )
     );
 endif;
