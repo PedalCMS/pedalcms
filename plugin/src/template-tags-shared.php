@@ -199,3 +199,18 @@ function nvis_get_the_term_list($post, string $taxonomy, string $before = '', st
 }
 
 endif;
+
+if (!function_exists('nvis_toggletip')) :
+
+function nvis_toggletip($content, $aria_label) {
+    echo sprintf('
+        <span class="toggletip">
+            <button class="toggletip__toggle" type="button" aria-label="%s" data-toggletip-content="%s">?</button>
+            <span role="status"></span>
+        </span>',
+        esc_attr($aria_label),
+        esc_attr($content)
+    );
+}
+
+endif;

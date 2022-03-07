@@ -76,8 +76,100 @@
 		}
 	}
 
+	class ToggleTip {
+		static msgAttribute = 'data-toggletip-content';
+		static activeAttribute = 'data-active';
+		bubbleClass = 'toggletip__tip';
+		toggle = null;
+		message = '';
+		liveRegion = null;
+
+		constructor(toggle) {
+			this.message = toggle.getAttribute(ToggleTip.msgAttribute);
+			this.liveRegion = toggle.nextElementSibling;
+			this.toggle = toggle;
+
+			toggle.addEventListener('click', this.handleEvent);
+			document.addEventListener('click', this.handleEvent);
+			document.addEventListener('blur', this.handleEvent);
+			document.addEventListener('keyup', this.handleEvent);
+		}
+
+		handleEvent(event) {
+			const active = ToggleTip.getActive();
+
+			if (
+				event.type === 'click' &&
+				event.target.getAttribute(ToggleTip.msgAttribute)
+			) {
+				const toggle = new ToggleTip(event.target);
+
+				if (active) {
+					active.hide();
+				}
+
+				toggle.show();
+				event.preventDefault();
+				return;
+			}
+
+			if (!active) {
+				return;
+			}
+
+			if (event.type === 'keyup' && event.code === 'Escape') {
+				active.hide();
+				event.preventDefault();
+				return;
+			}
+
+			if (event.type === 'click' || event.type === 'blur') {
+				if (typeof window.toggleTipDebug === 'undefined') {
+					active.hide();
+					event.preventDefault();
+				}
+			}
+		}
+
+		static getActive() {
+			const el = document.querySelector(
+				`button[${ToggleTip.msgAttribute}][${ToggleTip.activeAttribute}]`
+			);
+
+			if (el) {
+				return new ToggleTip(el);
+			}
+
+			return null;
+		}
+
+		setActive(isActive) {
+			if (isActive) {
+				this.toggle.setAttribute(ToggleTip.activeAttribute, '');
+			} else {
+				this.toggle.removeAttribute(ToggleTip.activeAttribute);
+			}
+		}
+
+		show() {
+			const contents = `<span class="${this.bubbleClass}">${this.message}</span>`;
+			const r = this.liveRegion;
+
+			this.hide();
+
+			this.setActive(true);
+			window.setTimeout(() => (r.innerHTML = contents), 100);
+		}
+
+		hide() {
+			this.setActive(false);
+			this.liveRegion.innerHTML = '';
+		}
+	}
+
 	function nvisInit() {
 		initToggles();
+		initToggleTips();
 		initScrollSticky();
 		maybeToggleHiddenFilters();
 	}
@@ -86,6 +178,12 @@
 		document
 			.querySelectorAll('.nvis-toggle__trigger')
 			.forEach((el) => new ElementToggleTrigger(el));
+	}
+
+	function initToggleTips() {
+		document
+			.querySelectorAll(`button[${ToggleTip.msgAttribute}]`)
+			.forEach((el) => new ToggleTip(el));
 	}
 
 	function initScrollSticky() {

@@ -248,54 +248,62 @@
   }
 }
 
-
-.nvis-template [data-tooltip] {
-  --background: rgba(0, 0, 0, 0.9);
-  border-bottom: dotted 1px;
-  cursor: help;
+.nvis-template .toggletip {
+  --size: 22px;
+  display: inline-block;
+  margin-left: 2px;
   position: relative;
 }
 
-.nvis-template [data-tooltip]::after {
-  border: 10px solid var(--background);
-  border-color: transparent var(--background) transparent transparent;
-  content: '';
-  display: none;
-  left: 125%;
-  margin-left: -5px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: all 0.25s;
-  z-index: 1000;
+.nvis-template .toggletip__toggle {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  border: solid 3px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  height: var(--size);
+  justify-content: center;
+  padding: 0;
+  width: var(--size);
+
+  &:focus,
+  &:active {
+    box-shadow: 0 0 0 4px var(--nvis-active-color);
+  }
 }
 
-.nvis-template [data-tooltip]::before {
-  background: var(--background);
+.nvis-template .toggletip__tip {
+  --background: rgba(0, 0, 0, 0.9);
+  background-color: var(--background);
   border-radius: 5px;
   color: #fff;
-  content: attr(data-tooltip);
-  display: none;
   font-size: 1rem;
   font-weight: normal;
-  left: 125%;
+  left: calc(1.5 * var(--size));
   line-height: 1.2;
-  margin-left: 15px;
-  opacity: 0;
   padding: 10px;
   position: absolute;
   text-align: left;
   top: 0;
-  transform: translateY(-50%);
+  transform: translateY(calc(-50% + 0.5 * var(--size)));
   transition: all 0.25s;
   width: 200px;
   z-index: 1000;
-}
 
-.nvis-template [data-tooltip]:hover::after,
-.nvis-template [data-tooltip]:hover::before {
-  display: block;
-  left: 100%;
-  opacity: 1;
-  transition: all 0.25s;
+  &::before {
+    border: 10px solid var(--background);
+    border-color: transparent var(--background) transparent transparent;
+    content: '';
+    left: -20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.25s;
+    z-index: 1000;
+  }
 }
