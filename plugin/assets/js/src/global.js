@@ -89,13 +89,12 @@
 			this.liveRegion = toggle.nextElementSibling;
 			this.toggle = toggle;
 
-			toggle.addEventListener('click', this.handleEvent);
-			document.addEventListener('click', this.handleEvent);
-			document.addEventListener('blur', this.handleEvent);
-			document.addEventListener('keyup', this.handleEvent);
+			document.addEventListener('click', ToggleTip.handleEvent);
+			document.addEventListener('blur', ToggleTip.handleEvent);
+			document.addEventListener('keyup', ToggleTip.handleEvent);
 		}
 
-		handleEvent(event) {
+		static handleEvent(event) {
 			const active = ToggleTip.getActive();
 
 			if (
