@@ -50,7 +50,7 @@ if ($args['show_subpage']) : ?>
         </h3>
         <div class="person-category__list person-list">
           <?php
-            foreach ($cat->people as $person) :
+            foreach ($cat->people as $person) : $person = get_post($person);
               nvis_prog_get_template_part(
                   'archive-person/person-item',
                   [
