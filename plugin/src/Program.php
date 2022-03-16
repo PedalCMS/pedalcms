@@ -29,6 +29,8 @@ class Program extends CustomPostType {
      */
     public string $plural_name = 'Programs';
 
+    private static $subpage_manager = null;
+
     /**
      * The args to pass to register_post_type.
      *
@@ -259,6 +261,553 @@ class Program extends CustomPostType {
         ]
     ];
 
+    public static $subpages = [
+        'index' => [
+            'title' => 'Overview',
+            'order' => -1,
+            'builtin' => true
+        ],
+        'curriculum' => [
+            'title' => 'Curriculum',
+            'order' => 10,
+            'builtin' => true,
+            'fields' => [
+                [
+                    'key'           => 'field_6112835dfeb44',
+                    'label'         => 'Show Curriculum Section?',
+                    'name'          => 'show_curriculum_section',
+                    'type'          => 'true_false',
+                    'instructions'  => '',
+                    'message'       => '',
+                    'default_value' => true,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'           => 'field_615f0ea5ecd84',
+                    'label'         => 'Curriculum Lead Content',
+                    'name'          => 'curriculum_lead',
+                    'type'          => 'wysiwyg',
+                    'instructions'  => 'This content goes before the list of curriculum sections.',
+                    'default_value' => '',
+                    'tabs'          => 'all',
+                    'toolbar'       => 'full',
+                    'media_upload'  => 1,
+                    'delay'         => 1,
+                ],
+                [
+                    'key'          => 'field_615f0c5a22deb',
+                    'label'        => 'Curriculum Sections',
+                    'name'         => 'curriculum_sections',
+                    'type'         => 'repeater',
+                    'instructions' => '',
+                    'collapsed'    => 'field_615f0c8022dec',
+                    'layout'       => 'block',
+                    'button_label' => 'Add Section',
+                    'sub_fields'   => [
+                        [
+                            'key'          => 'field_615f0c8022dec',
+                            'label'        => 'Section Title',
+                            'name'         => 'section_title',
+                            'type'         => 'text',
+                            'instructions' => '',
+                            'placeholder'  => 'Math Requirements, etc.',
+                            'prepend'      => '',
+                            'append'       => '',
+                            'maxlength'    => '',
+                        ],
+                        [
+                            'key'               => 'field_615f0cd622ded',
+                            'label'             => 'Section Content',
+                            'name'              => 'section_content',
+                            'type'              => 'wysiwyg',
+                            'instructions'      => 'Some preamble or instructions about the courses below. For example, "Choose two of the following."',
+                            'required'          => 0,
+                            'conditional_logic' => 0,
+                            'wrapper'           => [
+                                'width' => '',
+                                'class' => '',
+                                'id'    => '',
+                            ],
+                            'tabs'          => 'all',
+                            'toolbar'       => 'basic',
+                            'media_upload'  => 0,
+                            'delay'         => 1,
+                        ],
+                        [
+                            'key'          => 'field_615f0d7322dee',
+                            'label'        => 'Section Courses',
+                            'name'         => 'section_courses',
+                            'type'         => 'relationship',
+                            'instructions' => '',
+                            'post_type'    => [
+                                0 => 'nvis_course',
+                            ],
+                            'filters'  => [
+                                0 => 'search',
+                                1 => 'taxonomy',
+                            ],
+                            'return_format' => 'object',
+                        ],
+                    ],
+                ],
+            ]
+        ],
+        'careers' => [
+            'title' => 'Careers',
+            'aria_label' => 'Careers related to the current program',
+            'order' => 20,
+            'builtin' => true,
+            'fields' => [
+                [
+                    'key'           => 'field_61118a6ecb6c0',
+                    'label'         => 'Show Careers Section?',
+                    'name'          => 'show_careers_section',
+                    'type'          => 'true_false',
+                    'instructions'  => '',
+                    'message'       => '',
+                    'default_value' => true,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'           => 'field_611275a9d4b74',
+                    'label'         => 'Careers Lead Content',
+                    'name'          => 'careers_lead',
+                    'type'          => 'wysiwyg',
+                    'instructions'  => '',
+                    'default_value' => '',
+                    'tabs'          => 'all',
+                    'toolbar'       => 'full',
+                    'media_upload'  => 1,
+                    'delay'         => 1,
+                ],
+                [
+                    'key'          => 'field_6112754dd4b73',
+                    'label'        => 'Related Careers',
+                    'name'         => 'related_careers',
+                    'type'         => 'relationship',
+                    'instructions' => '',
+                    'post_type'    => [
+                        0 => 'nvis_career',
+                    ],
+                    'taxonomy' => '',
+                    'filters'  => [
+                        0 => 'search',
+                        1 => 'taxonomy',
+                    ],
+                    'elements'      => '',
+                    'min'           => '',
+                    'max'           => '',
+                    'return_format' => 'object',
+                ]
+            ]
+        ],
+        'faculty-staff' => [
+            'title' => 'Faculty & Staff',
+            'aria_label' => 'Faculty & staff related to the current program',
+            'order' => 30,
+            'builtin' => true,
+            'fields' => [
+                [
+                    'key'           => 'field_613b63fa499ce',
+                    'label'         => 'Show Faculty & Staff Section?',
+                    'name'          => 'show_faculty_staff_section',
+                    'type'          => 'true_false',
+                    'instructions'  => '',
+                    'message'       => '',
+                    'default_value' => true,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'           => 'field_613b6446aae76',
+                    'label'         => 'Faculty & Staff Lead Content',
+                    'name'          => 'faculty_staff_lead',
+                    'type'          => 'wysiwyg',
+                    'instructions'  => '',
+                    'default_value' => '',
+                    'tabs'          => 'all',
+                    'toolbar'       => 'full',
+                    'media_upload'  => 1,
+                    'delay'         => 1,
+                ],
+                [
+                    'key'           => 'field_613b6ecd4687a',
+                    'label'         => 'Group by category?',
+                    'name'          => 'faculty_staff_by_category',
+                    'type'          => 'true_false',
+                    'instructions'  => '',
+                    'message'       => '',
+                    'default_value' => true,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'          => 'field_613b6de416aa1',
+                    'label'        => 'Related Faculty & Staff',
+                    'name'         => 'related_faculty_staff',
+                    'type'         => 'relationship',
+                    'instructions' => '',
+                    'post_type'    => [
+                        0 => 'nvis_person',
+                    ],
+                    'taxonomy' => '',
+                    'filters'  => [
+                        0 => 'search',
+                    ],
+                    'elements' => [
+                        0 => 'featured_image',
+                    ],
+                    'min'           => '',
+                    'max'           => '',
+                    'return_format' => 'object',
+                ]
+            ]
+        ],
+        'cost' => [
+            'title' => 'Cost',
+            'order' => 40,
+            'builtin' => true,
+            'fields' => [
+                [
+                    'key'           => 'field_6124eebb8a99e',
+                    'label'         => 'Show Cost Section?',
+                    'name'          => 'show_cost_section',
+                    'type'          => 'true_false',
+                    'instructions'  => '',
+                    'message'       => '',
+                    'default_value' => true,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],[
+                    'key'           => 'field_617848545496b',
+                    'label'         => 'Estimated Cost Label',
+                    'name'          => 'estimated_cost_label',
+                    'type'          => 'text',
+                    'instructions'  => '',
+                    'placeholder'   => 'Estimated Cost',
+                ],
+                [
+                    'key'               => 'field_6178492a5496c',
+                    'label'             => 'Estimated Cost',
+                    'name'              => 'estimated_cost',
+                    'type'              => 'text',
+                    'instructions'      => 'Leave blank to omit this field.'
+                ],
+                [
+                    'key'           => 'field_61327ef17bf0d',
+                    'label'         => 'Cost Content',
+                    'name'          => 'cost_content',
+                    'type'          => 'wysiwyg',
+                    'instructions'  => '',
+                    'default_value' => '',
+                    'tabs'          => 'all',
+                    'toolbar'       => 'full',
+                    'media_upload'  => 1,
+                    'delay'         => 1,
+                ],
+            ]
+        ],
+        'apply' => [
+            'title' => 'How to Apply',
+            'order' => 50,
+            'builtin' => true,
+            'fields' => [
+                [
+                    'key'           => 'field_611d69fb7f47f',
+                    'label'         => 'Show Apply Section?',
+                    'name'          => 'show_apply_section',
+                    'type'          => 'true_false',
+                    'instructions'  => '',
+                    'message'       => '',
+                    'default_value' => true,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'           => 'field_611d6bfe199d9',
+                    'label'         => 'Apply Content',
+                    'name'          => 'apply_content',
+                    'type'          => 'wysiwyg',
+                    'instructions'  => '',
+                    'default_value' => '',
+                    'tabs'          => 'all',
+                    'toolbar'       => 'full',
+                    'media_upload'  => 1,
+                    'delay'         => 1,
+                ],
+            ]
+        ],
+        'faqs' => [
+            'title' => 'FAQs',
+            'aria_label' => 'FAQs related to the current program',
+            'order' => 60,
+            'builtin' => true,
+            'fields' => [
+                [
+                    'key'           => 'field_61118aa8cb6c2',
+                    'label'         => 'Show FAQs Section?',
+                    'name'          => 'show_faqs_section',
+                    'type'          => 'true_false',
+                    'instructions'  => '',
+                    'message'       => '',
+                    'default_value' => true,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'           => 'field_6113d61abfe26',
+                    'label'         => 'Group FAQs by category?',
+                    'name'          => 'faqs_by_category',
+                    'type'          => 'true_false',
+                    'instructions'  => '',
+                    'message'       => '',
+                    'default_value' => true,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'           => 'field_6112760bd4b75',
+                    'label'         => 'FAQs Lead Content',
+                    'name'          => 'faqs_lead',
+                    'type'          => 'wysiwyg',
+                    'instructions'  => '',
+                    'default_value' => '',
+                    'tabs'          => 'all',
+                    'toolbar'       => 'full',
+                    'media_upload'  => 1,
+                    'delay'         => 1,
+                ],
+                [
+                    'key'          => 'field_61701a9d36062',
+                    'label'        => 'Related FAQs',
+                    'name'         => 'related_faqs_list',
+                    'type'         => 'repeater',
+                    'instructions' => '',
+                    'collapsed'    => 'field_61701ac036063',
+                    'layout'       => 'row',
+                    'button_label' => 'Add Question',
+                    'sub_fields'   => [
+                        [
+                            'key'           => 'field_61701ac036063',
+                            'label'         => 'FAQ Type',
+                            'name'          => 'faq_type',
+                            'type'          => 'radio',
+                            'instructions'  => 'Select the type of FAQ you would like to add.',
+                            'required'      => 1,
+                            'layout'        => 'vertical',
+                            'return_format' => 'value',
+                            'choices'       => [
+                                'global' => 'Global',
+                                'local'  => 'Program Specific',
+                            ],
+                        ],
+                        [
+                            'key'               => 'field_61701bf236064',
+                            'label'             => 'Global FAQ',
+                            'name'              => 'faq_post',
+                            'type'              => 'post_object',
+                            'instructions'      => 'Select the global question.',
+                            'required'          => 1,
+                            'taxonomy'          => '',
+                            'allow_null'        => 0,
+                            'multiple'          => 0,
+                            'return_format'     => 'object',
+                            'ui'                => 1,
+                            'post_type'         => [
+                                0 => 'nvis_faq',
+                            ],
+                            'conditional_logic' => [
+                                [
+                                    [
+                                        'field'    => 'field_61701ac036063',
+                                        'operator' => '==',
+                                        'value'    => 'global',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            'key'               => 'field_61701c8536065',
+                            'label'             => 'Question',
+                            'name'              => 'question',
+                            'type'              => 'text',
+                            'instructions'      => 'Enter the question text.',
+                            'placeholder'       => 'What is the question?',
+                            'required'          => 1,
+                            'conditional_logic' => [
+                                [
+                                    [
+                                        'field'    => 'field_61701ac036063',
+                                        'operator' => '==',
+                                        'value'    => 'local',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            'key'               => 'field_61701cc336066',
+                            'label'             => 'Answer',
+                            'name'              => 'answer',
+                            'type'              => 'wysiwyg',
+                            'instructions'      => '',
+                            'required'          => 1,
+                            'default_value'     => '',
+                            'tabs'              => 'all',
+                            'toolbar'           => 'basic',
+                            'media_upload'      => 0,
+                            'delay'             => 1,
+                            'conditional_logic' => [
+                                [
+                                    [
+                                        'field'    => 'field_61701ac036063',
+                                        'operator' => '==',
+                                        'value'    => 'local',
+                                    ],
+                                ],
+                            ],
+                        ],
+                        [
+                            'key'               => 'field_61701cf336067',
+                            'label'             => 'Category',
+                            'name'              => 'faq_category',
+                            'type'              => 'taxonomy',
+                            'instructions'      => '',
+                            'required'          => 1,
+                            'taxonomy'          => 'nvis_faq_cat',
+                            'field_type'        => 'select',
+                            'allow_null'        => 0,
+                            'add_term'          => 0,
+                            'save_terms'        => 0,
+                            'load_terms'        => 0,
+                            'return_format'     => 'object',
+                            'multiple'          => 0,
+                            'conditional_logic' => [
+                                [
+                                    [
+                                        'field'    => 'field_6113d61abfe26',
+                                        'operator' => '==',
+                                        'value'    => '1',
+                                    ],
+                                    [
+                                        'field'    => 'field_61701ac036063',
+                                        'operator' => '==',
+                                        'value'    => 'local',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ]
+        ],
+        'news' => [
+            'title' => 'News',
+            'aria_label' => 'News related to the current program',
+            'order' => 70,
+            'builtin' => true,
+            'fields' => [
+                [
+                    'key'           => 'field_611fdfdc20be6',
+                    'label'         => 'Show News Section?',
+                    'name'          => 'show_news_section',
+                    'type'          => 'true_false',
+                    'instructions'  => '',
+                    'message'       => '',
+                    'default_value' => true,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'           => 'field_611fe01c20be7',
+                    'label'         => 'News Tag',
+                    'name'          => 'news_tag',
+                    'type'          => 'taxonomy',
+                    'instructions'  => 'The tag that should associate posts with this program.',
+                    'taxonomy'      => 'post_tag',
+                    'field_type'    => 'select',
+                    'allow_null'    => 1,
+                    'add_term'      => 1,
+                    'save_terms'    => 0,
+                    'load_terms'    => 0,
+                    'return_format' => 'id',
+                    'multiple'      => 0,
+                    'wrapper'       => [
+                        'width' => '33',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                ],
+                [
+                    'key'           => 'field_6124f029ff016',
+                    'label'         => 'Number of Posts',
+                    'name'          => 'news_num_posts',
+                    'type'          => 'number',
+                    'instructions'  => 'Number of posts to show on this subpage. Set to -1 to show all.',
+                    'default_value' => 10,
+                    'placeholder'   => '10',
+                    'min'           => -1,
+                    'step'          => 1,
+                    'wrapper'       => [
+                        'width' => '33',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                ],
+                [
+                    'key'           => 'field_6124f184ff017',
+                    'label'         => 'Show link to all posts?',
+                    'name'          => 'news_show_all_link',
+                    'type'          => 'true_false',
+                    'instructions'  => 'Link to the tag archive view at the bottom of the list?',
+                    'default_value' => 1,
+                    'ui'            => 1,
+                    'wrapper'       => [
+                        'width' => '33',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                ],
+                [
+                    'key'          => 'field_61263568d2f46',
+                    'label'        => 'Featured Posts',
+                    'name'         => 'news_featured_posts',
+                    'type'         => 'post_object',
+                    'instructions' => 'Select posts to keep at the top of the news subpage.',
+                    'post_type'    => [
+                        0 => 'post',
+                    ],
+                    'allow_null'    => 1,
+                    'multiple'      => 1,
+                    'return_format' => 'object',
+                    'ui'            => 1,
+                ],
+                [
+                    'key'           => 'field_611fdfd220be5',
+                    'label'         => 'News Lead Content',
+                    'name'          => 'news_lead',
+                    'type'          => 'wysiwyg',
+                    'instructions'  => 'Content to appear at the top of the page, before the posts.',
+                    'default_value' => '',
+                    'tabs'          => 'all',
+                    'toolbar'       => 'full',
+                    'media_upload'  => 1,
+                    'delay'         => 1,
+                ]
+            ]
+        ]
+    ];
+
     public function setup_hooks(): void {
         add_action('pre_get_posts', [static::class, 'update_sort_order']);
     }
@@ -332,6 +881,7 @@ class Program extends CustomPostType {
         }
 
         // Then, check if either the college or the program type has overriden.
+        // TODO: Make these references.
         $terms = ['college','program_type'];
 
         foreach ($terms as $name) {
@@ -348,5 +898,18 @@ class Program extends CustomPostType {
 
         // If all else fails, just return the global setting.
         return Plugin::get_option('application_deadlines');
+    }
+
+    public static function setup_subpage_manager() {
+        self::$subpage_manager = new SubpageManager(Program::POST_TYPE);
+
+        foreach(Program::$subpages as $slug => $args) {
+            $subpage = new Subpage($slug, $args);
+            self::$subpage_manager->add_subpage($subpage);
+        }
+    }
+
+    public static function subpage_manager() {
+        return self::$subpage_manager;
     }
 }

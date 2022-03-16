@@ -31,12 +31,16 @@ if (nvis_prog_show_subpages()) : $subpages = nvis_prog_get_subpages(); ?>
 ); ?>
   <ul class="program-subnav__menu menu">
     <?php
-      foreach ($subpages as $slug => $label) :
-        if (nvis_prog_show_subpage($slug)) :
+      foreach ($subpages as $subpage) :
+        if (nvis_prog_show_subpage($subpage)) :
     ?>
     <li
-      class="<?php echo nvis_prog_is_active_subpage($slug) ? 'active-subpage' : ''; ?>">
-      <span><a href="<?php nvis_prog_subpage_link($slug); ?>"><?php echo esc_html($label); ?></a></span>
+      class="<?php echo nvis_prog_is_active_subpage($subpage->slug) ? 'active-subpage' : ''; ?>">
+      <span>
+        <a href="<?php nvis_prog_subpage_link($subpage->slug); ?>" aria-label="<?php echo esc_attr($subpage->aria_label); ?>">
+          <?php echo esc_html($subpage->title); ?>
+        </a>
+      </span>
     </li>
     <?php endif; endforeach; ?>
   </ul>

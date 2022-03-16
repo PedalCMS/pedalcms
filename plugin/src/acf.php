@@ -83,7 +83,7 @@ function get_program_acf_fields(): array {
 
     $group['fields'] = array_merge(
         $group['fields'],
-        ProgramSubpageManager::get_enabled_subpage_fields()
+        Program::subpage_manager()->get_enabled_subpage_fields()
     );
 
     return $group;

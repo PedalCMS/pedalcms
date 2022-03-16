@@ -23,6 +23,13 @@ function nvis_prog_get_label(string $label): string {
     return \InvisibleUs\Programs\Plugin::get_label($label);
 }
 
+function nvis_prog_register_program_subpage(string $slug, array $args = []) {
+    $args['builtin'] = false;
+    $subpage = new \InvisibleUs\Programs\Subpage($slug, $args);
+
+    return \InvisibleUs\Programs\Program::subpage_manager()->add_subpage($subpage);
+}
+
 /**
  * Determines whether or not to display Program subpages.
  *
@@ -36,38 +43,39 @@ function nvis_prog_show_subpages(): bool {
 /**
  * Returns the registered list of Program subpages.
  *
- * Alias of ProgramSubpageManager::get_subpages()
+ * Alias of SubpageManager::get_subpages()
  *
  * @param bool $with_index Whether or not to include the index.
  * @param string $return_type Can be 'hash' or 'objects'.
  * @return array List of subpages
  */
-function nvis_prog_get_subpages(bool $with_index = true, string $return_type = 'hash'): array {
-    return \InvisibleUs\Programs\ProgramSubpageManager::get_subpages($with_index, $return_type);
+function nvis_prog_get_subpages(bool $with_index = true, string $return_type = 'objects'): array {
+    return \InvisibleUs\Programs\Program::subpage_manager()->get_subpages($with_index, $return_type);
 }
 
 /**
  * Returns the active subpage by slug.
  *
- * Alias of ProgramSubpageManager::get_active_subpage(). Should only be called
+ * Alias of SubpageManager::get_active_subpage(). Should only be called
  * in the context of a single program.
  *
- * @return string The slug of the active subpage.
+ * @param string $return_type The format of the returned subpage. Either 'slug' or 'object'.
+ * @return mixed The active subpage, either slug or the full object. False if active page not found.
  */
-function nvis_prog_get_active_subpage(): string {
-    return \InvisibleUs\Programs\ProgramSubpageManager::get_active_subpage();
+function nvis_prog_get_active_subpage(string $return_type = 'slug') {
+    return \InvisibleUs\Programs\Program::subpage_manager()->get_active_subpage($return_type);
 }
 
 /**
  * Determines whether a particular subpage should be rendered.
  *
- * Alias of ProgramSubpageManager::maybe_show_subpage().
+ * Alias of SubpageManager::maybe_show_subpage().
  *
- * @param string $subpage
+ * @param mixed $subpage Either a InvisibleUs\Programs\Subpage or the slug of one.
  * @return boolean
  */
-function nvis_prog_show_subpage(string $subpage): bool {
-    return \InvisibleUs\Programs\ProgramSubpageManager::maybe_show_subpage($subpage);
+function nvis_prog_show_subpage($subpage): bool {
+    return \InvisibleUs\Programs\Program::subpage_manager()->maybe_show_subpage($subpage);
 }
 
 /**
@@ -79,7 +87,7 @@ function nvis_prog_show_subpage(string $subpage): bool {
  * @return boolean
  */
 function nvis_prog_is_active_subpage(string $subpage): bool {
-    return \InvisibleUs\Programs\ProgramSubpageManager::is_active_subpage($subpage);
+    return \InvisibleUs\Programs\Program::subpage_manager()->is_active_subpage($subpage);
 }
 
 /**
@@ -93,7 +101,7 @@ function nvis_prog_is_active_subpage(string $subpage): bool {
  * @return string The subpage URL.
  */
 function nvis_prog_subpage_link(string $subpage, bool $echo = true): string {
-    return \InvisibleUs\Programs\ProgramSubpageManager::get_subpage_link($subpage, $echo);
+    return \InvisibleUs\Programs\Program::subpage_manager()->get_subpage_link($subpage, $echo);
 }
 
 /**
@@ -102,7 +110,7 @@ function nvis_prog_subpage_link(string $subpage, bool $echo = true): string {
  * @return array The list of class names.
  */
 function nvis_get_subpage_class(): array {
-    $active = \InvisibleUs\Programs\ProgramSubpageManager::get_active_subpage();
+    $active = \InvisibleUs\Programs\Program::subpage_manager()->get_active_subpage();
 
     $classes = [
         'program-subpage-' . $active,

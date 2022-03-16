@@ -40,17 +40,6 @@ function document_title_parts(array $title): array {
         }
     }
 
-    if (is_singular(Program::POST_TYPE)) {
-        $subpage = ProgramSubpageManager::get_active_subpage('object');
-
-        if ($subpage->slug !== 'index') {
-            // TODO: Make this customizable. Consider moving to subpage manager.
-            $title['title'] .= ', ' . $subpage->title;
-
-            return $title;
-        }
-    }
-
     return $title;
 }
 
@@ -78,7 +67,9 @@ function body_class(array $classes): array {
  */
 function post_class(array $classes): array {
     if (!is_admin() && is_singular(Program::POST_TYPE)) {
-        $classes[] = 'subpage-' . ProgramSubpageManager::get_active_subpage();
+        $classes[] = 
+            'subpage-' . 
+            Program::subpage_manager()->get_active_subpage();
     }
 
     return $classes;

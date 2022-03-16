@@ -301,7 +301,7 @@ class Plugin {
         self::$url = plugins_url(self::$name);
         self::$template_path = self::$path . self::$template_path;
 
-        self::setup_subpage_manager();
+        Program::setup_subpage_manager();
         $this->init_field_group();
 
         add_action('init', [self::class, 'plugin_init']);
@@ -354,13 +354,13 @@ class Plugin {
      * @return void
      */
     public function init_field_group(): void {
-        $subpages = ProgramSubpageManager::get_subpages(false);
+        $subpages = Program::subpage_manager()->get_builtin_subpages(false);
         $def_vals = [];
 
         $enable_subpages = [
-            'key'           => 'field_612f7a95b683c',
+            'key'           => 'field_6231f0679deb5',
             'label'         => 'Enable Program Subpages',
-            'name'          => 'nvis_enable_program_subpages',
+            'name'          => 'nvis_enable_subpages_nvis_program',
             'type'          => 'checkbox',
             'instructions'  => '',
             'choices'       => $subpages,
@@ -469,31 +469,6 @@ class Plugin {
         );
 
         add_filter('template_include', [$NVIS_TemplateManager, 'maybe_use_template'], PHP_INT_MAX);
-
-        return;
-    }
-
-    /**
-     * Creates and configures the ProgramSubpageManager.
-     *
-     * @return void
-     */
-    public static function setup_subpage_manager(): void {
-        // TODO: Allow the order to be customized.
-        $mngr = new ProgramSubpageManager([
-            (object) [
-                'slug'  => 'index',
-                'title' => 'Overview'
-            ],
-            new CurriculumProgramSubpage(),
-            new CareersProgramSubpage(),
-            new FacultyStaffProgramSubpage(),
-            new CostProgramSubpage(),
-            new ApplyProgramSubpage(),
-            new FAQProgramSubpage(),
-            new NewsProgramSubpage()
-        ]);
-        $mngr->init();
 
         return;
     }

@@ -1,0 +1,449 @@
+<?php
+
+namespace InvisibleUs\Programs;
+
+/**
+ * Handles all functionality related to Subpages.
+ *
+ * @package NVISPrograms
+ * @subpackage Subpages
+ * @since 0.1.0
+ */
+class SubpageManager {
+    /**
+     * The query var to register.
+     *
+     * @var string
+     */
+    private $post_type = '';
+
+    /**
+     * The query var to register.
+     *
+     * @var string
+     */
+    private $query_var = 'nvis_subpage';
+
+    /**
+     * List of Subpage objects.
+     *
+     * @var array
+     */
+    private $subpages = [];
+
+    /**
+     * List of builtin Subpage objects, whether enabled or not.
+     * @var array
+     */
+    private $builtin = [];
+
+
+
+    /**
+     * Constructor
+     *
+     * @param array $subpages List of Subpage objects.
+     */
+    public function __construct(string $post_type, string $query_var = '') {
+        $this->post_type = $post_type;
+
+        if ($query_var) {
+            $this->query_var = $query_var;
+        }
+
+        $this->setup_hooks();
+
+        return;
+    }
+
+    public function setup_hooks(): void {
+        add_action('wp', [&$this, 'maybe_override_rel_canonical']);
+        add_filter('rewrite_rules_array', [&$this, 'insert_rules']);
+        add_filter('query_vars', [&$this, 'add_query_var']);
+        add_filter('document_title_parts', [&$this, 'maybe_update_title'], 20);
+
+        return;
+    }
+
+    public function add_subpage(Subpage $subpage) {
+        $enabled = $this->get_enabled_subpages();
+
+        if ($subpage->is_builtin()) {
+            $this->builtin[] = $subpage;
+            $this->sort('builtin');
+
+            if ($subpage->slug !== 'index' && !in_array($subpage->slug, $enabled)) {
+                return new \WP_Error(
+                    'warning',
+                    'Subpage is not enabled.',
+                    $subpage
+                );
+            }
+        }
+
+        $this->subpages[] = apply_filters('nvis/programs/add_subpage', $subpage, $this->post_type, $this);
+        $this->sort();
+
+        return $subpage;
+    }
+
+    private function check_list(string $list) {
+        $lists = ['subpages', 'builtin'];
+        if (!in_array($list, $lists)) {
+            return new \WP_Error(
+                'error',
+                'Trying to access unknown list: ' . $list
+            );
+        }
+
+        return $list;
+    }
+
+    public function sort(string $list='subpages') {
+        $list = $this->check_list($list);
+
+        if (is_wp_error($list)) {
+            return $list;
+        }
+
+        usort($this->$list, function($a, $b) {
+            if ($a->order === $b->order) {
+                return 0;
+            }
+
+            return ($a->order < $b->order) ? -1 : 1;
+        });
+    }
+
+    /**
+     * Returns the list of current subpages.
+     *
+     * @param bool $with_index Whether or not to include the index.
+     * @param string $return_type Can be 'hash' or 'objects'.
+     * @return mixed List of subpages or WP_Error.
+     */
+    public function get_subpages(bool $with_index = true, string $return_type = 'hash') {
+        return $this->_get_subpages($with_index, $return_type, 'subpages');
+    }
+
+    /**
+     * Returns the list of builtin subpages.
+     *
+     * @param bool $with_index Whether or not to include the index.
+     * @param string $return_type Can be 'hash' or 'objects'.
+     * @return mixed List of subpages or WP_Error.
+     */
+    public function get_builtin_subpages(bool $with_index = true, string $return_type = 'hash') {
+        return $this->_get_subpages($with_index, $return_type, 'builtin');
+    }
+
+    /**
+     * Returns a list of subpages, either all builtin or all registered and enabled.
+     *
+     * @param bool $with_index Whether or not to include the index.
+     * @param string $return_type Can be 'hash' or 'objects'.
+     * @return mixed List of subpages or WP_Error.
+     */
+    public function _get_subpages(bool $with_index = true, string $return_type = 'hash', $list = 'subpages') {
+        $list = $this->check_list($list);
+
+        if (is_wp_error($list)) {
+            return $list;
+        }
+
+        if ($return_type === 'hash') {
+            $hash = array_combine(
+                wp_list_pluck($this->$list, 'slug'),
+                wp_list_pluck($this->$list, 'title')
+            );
+
+            if (!$with_index) {
+                array_shift($hash);
+            }
+
+            return $hash;
+        }
+
+        if ($return_type !== 'objects') {
+            return new \WP_Error(
+                'error',
+                'Unrecognized return type: ' . $return_type
+            );
+        }
+
+        return apply_filters('nvis/programs/get_subpages', $this->$list, $this->post_type, $list);
+    }
+
+    /**
+     * Register our custom query variable.
+     *
+     * @param array $vars The existing query vars.
+     * @return array The resulting query vars after we add ours.
+     */
+    public function add_query_var(array $vars): array {
+        $vars[] = $this->query_var;
+
+        return $vars;
+    }
+
+    /**
+     * Adds rewrite rules for programs subpages.
+     *
+     * @param array $rules The existing rewrite rules.
+     * @return array The resulting rewrite rules with ours added.
+     */
+    public function insert_rules(array $rules): array {
+        $subpage_rules = [];
+        $post_obj = get_post_type_object($this->post_type);
+        $pretty_pattern = '%s/([^/]+)/%s/?$';
+        $real_pattern = 'index.php?%s=$matches[1]&%s=%s';
+
+        if (!$post_obj->rewrite) {
+            return $rules;
+        }
+
+        foreach ($this->subpages as $subpage) {
+            if ($subpage->slug === 'index') {
+                continue;
+            }
+
+            $index = sprintf($pretty_pattern, $post_obj->rewrite['slug'], $subpage->slug);
+            $subpage_rules[$index] = sprintf(
+                $real_pattern,
+                $this->post_type,
+                $this->query_var,
+                $subpage->slug
+            );
+        }
+
+        return $subpage_rules + $rules;
+    }
+
+    public function maybe_update_title(array $title) {
+        if (is_singular($this->post_type)) {
+            $subpage = $this->get_active_subpage('object');
+
+            if ($subpage && $subpage->slug !== 'index') {
+                // TODO: Make this customizable.
+                $title['title'] .= ', ' . $subpage->title;
+
+                return $title;
+            }
+        }
+
+        return $title;
+    }
+
+    /**
+     * Decides whether or not to override the canonical tag.
+     *
+     * @return void
+     */
+    public function maybe_override_rel_canonical(): void {
+        if (is_singular($this->post_type) && $this->get_active_subpage() !== 'index') {
+            remove_filter('wp_head', 'rel_canonical');
+            add_filter('wp_head', [&$this, 'subpage_canonical']);
+        }
+
+        return;
+    }
+
+    /**
+     * Renders a custom canonical link for subpages.
+     *
+     * @return void
+     */
+    public function subpage_canonical(): void {
+        echo sprintf(
+            '<link rel="canonical" href="%s" />',
+            self::get_subpage_link($this->get_active_subpage(), false)
+        );
+
+        return;
+    }
+
+    /**
+     * Returns the active subpage.
+     *
+     * This function should only be called in the context of a single post
+     * matching the current post_type.
+     *
+     * @param string $return_type The format of the returned subpage. Either 'slug' or 'object'.
+     * @return mixed The active subpage, either slug or the full object. False if active page not found.
+     */
+    public function get_active_subpage(string $return_type = 'slug') {
+        $slug = get_query_var($this->query_var);
+
+        $slug = $slug ? $slug : 'index';
+
+        if ($return_type === 'slug') {
+            return $slug;
+        }
+
+        if ($return_type !== 'object') {
+            return false;
+        }
+
+        return $this->get_subpage($slug);
+    }
+
+    /**
+     * Tests whether the subpage is currently active.
+     *
+     * @param string $subpage The slug of the subpage to test.
+     * @return boolean
+     */
+    public function is_active_subpage(string $subpage): bool {
+        return $this->get_active_subpage() === $subpage;
+    }
+
+    public function get_subpage($subpage, $search_builtin = false) {
+        if ($subpage instanceof Subpage) {
+            return $subpage;
+        } else if (is_string($subpage)) {
+            $i = array_search(
+                $subpage,
+                wp_list_pluck($this->subpages, 'slug')
+            );
+
+            if ($i !== false) {
+                return $this->subpages[$i];
+            }
+
+            if ($search_builtin) {
+                $i = array_search(
+                    $subpage,
+                    wp_list_pluck($this->builtin, 'slug')
+                );
+
+                if ($i !== false) {
+                    return $this->builtin[$i];
+                }
+            }
+
+            $error = 'Subpage not found.';
+        } else {
+            $error = gettype($subpage) . ' type is not allowed.';
+        }
+
+        return new \WP_Error(
+            'error',
+            $error,
+            $subpage
+        );
+    }
+
+
+    /**
+     * Determines whether a particular subpage should be rendered.
+     *
+     * @param mixed $subpage Either a InvisibleUs\Programs\Subpage or the slug of one.
+     * @return boolean
+     */
+    public function maybe_show_subpage($subpage): bool {
+        $subpage = $this->get_subpage($subpage);
+
+        if (is_wp_error($subpage)) {
+            return false;
+        }
+
+        $show = true;
+
+        if ($subpage->slug !== 'index' && $subpage->is_builtin()) {
+            $field_safe = str_replace('-', '_', $subpage->slug);
+
+            $show = (bool) get_field(sprintf('show_%s_section', $field_safe));
+        }
+
+        /**
+         * Filters the decision to show a particular subpage.
+         *
+         * @since 0.1
+         *
+         * @param bool $show_subpage Whether to show the subpage.
+         * @param string $subpage The subpage in question.
+         */
+        return apply_filters('nvis/programs/maybe_show_subpage', $show, $subpage);
+    }
+
+    /**
+     * Gets the list of currently enabled subpages.
+     *
+     * The order of these should not be trusted.
+     *
+     * @return array List of subpages by slug.
+     */
+    public function get_enabled_subpages(): array {
+        // TODO: Make this dynamic based on post type.
+        $enabled = get_option('options_nvis_enable_subpages_' . $this->post_type);
+
+        if (!is_array($enabled)) {
+            $enabled = [];
+        }
+
+        /**
+         * Filters the list of currently enabled subpages.
+         *
+         * @since 0.1
+         *
+         * @param array $filters The subpages by slug.
+         */
+        return apply_filters('nvis/programs/enabled_subpages', $enabled, $this->post_type, $this->subpages);
+    }
+
+    /**
+     * Generates a URL for a given subpage.
+     *
+     * This function should only be called in the context of a single post
+     * matching the current post_type.
+     *
+     * @param string $subpage The slug of the subpage.
+     * @param boolean $echo Whether or not to output the URL.
+     * @return string The subpage URL.
+     */
+    public static function get_subpage_link(string $subpage, bool $echo = true): string {
+        $link = $subpage === 'index' ?
+            get_the_permalink() :
+            sprintf('%s%s/', get_the_permalink(), $subpage);
+
+        /**
+         * Filters the subpage link.
+         *
+         * @since 0.1
+         *
+         * @param string $url The url of the subpage.
+         * @param string $subpage The slug of the corresponding subpage.
+         */
+        $link = apply_filters('nvis/programs/get_subpage_link', $link, $subpage);
+
+        if ($echo) {
+            echo $link;
+        }
+
+        return $link;
+    }
+
+    /**
+     * Returns a list of ACF fields from all enabled subpages.
+     *
+     * @return array List of ACF fields.
+     */
+    public function get_enabled_subpage_fields(): array {
+        $fields = [];
+
+        foreach ($this->subpages as $subpage) {
+            if (!empty($subpage->fields)) {
+                $fields[] =         [
+                    'key'       => sprintf('field_%s_%s', $this->post_type, $subpage->slug),
+                    'label'     => $subpage->tab_label,
+                    'type'      => 'tab',
+                    'placement' => 'top',
+                    'endpoint'  => 0,
+                ];
+                $fields = array_merge($fields, $subpage->fields);
+            }
+        }
+
+        return $fields;
+    }
+}
