@@ -6,10 +6,14 @@
  * @since 0.1.0
  */
 
+if (!function_exists('nvis_prog_get_template_part')) :
 /**
  * Outputs a template.
  *
  * Alias of TemplateManager::load_template()
+ * 
+ * @since 0.1.0
+ * @see TemplateManager::load_template
  *
  * @param string $template The requested template file. Can include subdir.
  * @param array $data Data to pass to the requested template.
@@ -19,10 +23,38 @@ function nvis_prog_get_template_part(string $template, array $data = []) {
     \InvisibleUs\Programs\TemplateManager::load_template($template, $data);
 }
 
+endif;
+
+if (!function_exists('nvis_prog_get_label')) :
+/**
+ * Alias of {@see InvisibleUs\Programs\Plugin::get_label()}.
+ *
+ * @param string $label The machine name of the label.
+ * @return string The human readable version of label.
+ */
 function nvis_prog_get_label(string $label): string {
     return \InvisibleUs\Programs\Plugin::get_label($label);
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_register_program_subpage')) :
+/**
+ * Registers a new program subpage. 
+ * 
+ * You must also provide a template to render the subpage. It should be located 
+ * here:
+ * {$theme-name}/nvis-program-pages/single-program/subpages/{$slug}.php
+ * 
+ * By default, all registered subpages are enabled for all programs. It is up
+ * to you to handle cases where these should be displayed on a program by 
+ * program basis. See filter 'nvis/programs/maybe_show_subpage'. 
+ * 
+ * @param string $slug
+ * @param array $args
+ * @return mixed The \InvisibleUs\Programs\Subpage object on success. WP_Error on failure.
+ */
 function nvis_prog_register_program_subpage(string $slug, array $args = []) {
     $args['builtin'] = false;
     $subpage = new \InvisibleUs\Programs\Subpage($slug, $args);
@@ -30,20 +62,29 @@ function nvis_prog_register_program_subpage(string $slug, array $args = []) {
     return \InvisibleUs\Programs\Program::subpage_manager()->add_subpage($subpage);
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_show_subpages')) :
 /**
  * Determines whether or not to display Program subpages.
  *
  * @return bool
  */
 function nvis_prog_show_subpages(): bool {
-    // TODO: Make this work.
-    return true;
+    return count(
+        \InvisibleUs\Programs\Program::subpage_manager()->get_subpages()
+    );
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_get_subpages')) :
 /**
  * Returns the registered list of Program subpages.
  *
- * Alias of SubpageManager::get_subpages()
+ * Alias of {@see \InvisibleUs\Programs\SubpageManager::get_subpages()}
  *
  * @param bool $with_index Whether or not to include the index.
  * @param string $return_type Can be 'hash' or 'objects'.
@@ -53,10 +94,14 @@ function nvis_prog_get_subpages(bool $with_index = true, string $return_type = '
     return \InvisibleUs\Programs\Program::subpage_manager()->get_subpages($with_index, $return_type);
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_get_active_subpage')) :
 /**
  * Returns the active subpage by slug.
  *
- * Alias of SubpageManager::get_active_subpage(). Should only be called
+ * Alias of {@see \InvisibleUs\Programs\SubpageManager::get_active_subpage()}. Should only be called
  * in the context of a single program.
  *
  * @param string $return_type The format of the returned subpage. Either 'slug' or 'object'.
@@ -66,34 +111,46 @@ function nvis_prog_get_active_subpage(string $return_type = 'slug') {
     return \InvisibleUs\Programs\Program::subpage_manager()->get_active_subpage($return_type);
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_show_subpage')) :
 /**
  * Determines whether a particular subpage should be rendered.
  *
- * Alias of SubpageManager::maybe_show_subpage().
+ * Alias of {@see \InvisibleUs\Programs\SubpageManager::maybe_show_subpage()}.
  *
- * @param mixed $subpage Either a InvisibleUs\Programs\Subpage or the slug of one.
+ * @param mixed $subpage Either a {@see InvisibleUs\Programs\Subpage} or the slug of one.
  * @return boolean
  */
 function nvis_prog_show_subpage($subpage): bool {
     return \InvisibleUs\Programs\Program::subpage_manager()->maybe_show_subpage($subpage);
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_is_active_subpage')) :
 /**
- * Tests whether the subpage is currently active.
+ * Tests whether a subpage is currently active.
  *
- * Alias of ProgramSubpageManager::is_active_subpage()
+ * Alias of {@see InvisibleUs\Programs\SubpageManager::is_active_subpage()}
  *
- * @param string $subpage The slug of the page to test.
+ * @param string $subpage The slug of the subpage to test.
  * @return boolean
  */
 function nvis_prog_is_active_subpage(string $subpage): bool {
     return \InvisibleUs\Programs\Program::subpage_manager()->is_active_subpage($subpage);
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_subpage_link')) :
 /**
  * Generates a URL for a given subpage.
  *
- * Alias of ProgramSubpageManager::get_subpage_link(). Should only be called
+ * Alias of {@see {@see InvisibleUs\Programs\SubpageManager::get_subpage_link()}. Should only be called
  * in the context of a single program.
  *
  * @param string $subpage The slug of the subpage.
@@ -104,6 +161,10 @@ function nvis_prog_subpage_link(string $subpage, bool $echo = true): string {
     return \InvisibleUs\Programs\Program::subpage_manager()->get_subpage_link($subpage, $echo);
 }
 
+endif;
+
+
+if (!function_exists('nvis_get_subpage_class')) :
 /**
  * Generates the CSS class names for a subpage container.
  *
@@ -130,6 +191,11 @@ function nvis_get_subpage_class(): array {
     return array_unique($classes);
 }
 
+endif; 
+
+
+if (!function_exists('nvis_subpage_class')) :
+
 function nvis_subpage_class() {
     echo sprintf(
         'class="%s"',
@@ -137,8 +203,10 @@ function nvis_subpage_class() {
     );
 }
 
+endif;
 
 
+if (!function_exists('nvis_prog_get_action_link')) :
 /**
  * Returns the full URL for a given program action.
  *
@@ -146,7 +214,7 @@ function nvis_subpage_class() {
  * the plugin wide pattern setting.
  *
  * @param string $action The name of the action.
- * @param mixed $program The ID of the program or a Post object.
+ * @param mixed $program The ID of the program or a WP_Post object.
  * @return string The URL of the program action.
  */
 function nvis_prog_get_action_link(string $action, $program = null): string {
@@ -175,6 +243,10 @@ function nvis_prog_get_action_link(string $action, $program = null): string {
     return '';
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_get_course_action_link')) :
 /**
  * Returns the full URL for a given course action.
  *
@@ -182,7 +254,7 @@ function nvis_prog_get_action_link(string $action, $program = null): string {
  * the plugin wide pattern setting.
  *
  * @param string $action The name of the action.
- * @param mixed $program The ID of the course or a Post object.
+ * @param mixed $program The ID of the course or a WP_Post object.
  * @return string The URL of the course action.
  */
 function nvis_prog_get_course_action_link(string $action, $course): string {
@@ -216,11 +288,15 @@ function nvis_prog_get_course_action_link(string $action, $course): string {
     return '';
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_the_application_deadlines')) :
 /**
  * Gets a list of application deadlines based on override hierarchy.
  *
- * Alias of Program::get_application_deadlines(). Hierarchy is Program,
- * College, Program Type, Global.
+ * Alias of {@see InvisibleUs\Programs\Program::get_application_deadlines()}. 
+ * Hierarchy is Program, College, Program Type, Global.
  *
  * @param mixed $program Program to check for news posts. Either ID or WP_Post.
  * @return array An ACF repeater field with deadline_label and deadline_info subfields.
@@ -229,10 +305,15 @@ function nvis_prog_the_application_deadlines($program = null): array {
     return \InvisibleUs\Programs\Program::get_application_deadlines($program);
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_get_related_posts')) :
 /**
  * Get the news posts for a given program by related tag.
  *
- * Alias of Program::get_related_posts(). Meta field news_tag must be set first.
+ * Alias of {@see InvisibleUs\Programs\Program::get_related_posts()}. Meta 
+ * field news_tag must be set first.
  *
  * @param mixed $program Program to check for news posts. Either ID or WP_Post.
  * @param array $not_in List of ids to exclude from the results.
@@ -242,10 +323,14 @@ function nvis_prog_get_related_posts($post = null, array $not_in): array {
     return \InvisibleUs\Programs\Program::get_related_posts($post, $not_in);
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_get_faqs_by_category')) :
 /**
  * Takes a list of FAQs and returns them indexed by category.
  *
- * Alias of FAQ::group_by_category()
+ * Alias of {@see InvisibleUs\Programs\FAQ::group_by_category()}.
  *
  * @param array $faqs A list of FAQs of the type WP_Post.
  * @return array The category indexed list of FAQs.
@@ -254,32 +339,49 @@ function nvis_prog_get_faqs_by_category(array $faqs): array {
     return \InvisibleUs\Programs\FAQ::group_by_category($faqs);
 }
 
+endif;
+
+
+if (!function_exists('normalize_faq_types')) :
 /**
  * Normalizes a list of FAQs of mixed type.
  *
- * Alias of FAQ::normalize_faq_types()
+ * Alias of {@see InvisibleUs\Programs\FAQ::normalize_faq_types()}.
  *
  * @param array $faqs A list of FAQs of mixed type WP_Post.
- * @param bool $group_by_cat Group by FAQCategory?
+ * @param bool $group_by_cat Whether to group by {@see InvisibleUs\Programs\FAQCategory}.
  * @return array The list of FAQs, either grouped by category or not.
  */
 function normalize_faq_types(array $faqs, bool $group_by_cat = false): array {
     return \InvisibleUs\Programs\FAQ::normalize_faq_types($faqs, $group_by_cat);
 }
 
+endif;
 
+
+if (!function_exists('nvis_prog_get_people_by_category')) :
 /**
  * Takes a list of People and returns them indexed by category.
  *
- * Alias of Person::group_by_category()
+ * Alias of {@see InvisibleUs\Programs\Person::group_by_category()}.
  *
- * @param array $people A list of People of the type WP_Post.
+ * @param array $people A list of personnel of the type WP_Post.
  * @return array The category indexed list of people.
  */
 function nvis_prog_get_people_by_category(array $people): array {
     return \InvisibleUs\Programs\Person::group_by_category($people);
 }
 
+endif;
+
+
+if (!function_exists('nvis_prog_get_full_course_title')) :
+/**
+ * Prefixes the course title with the course code. 
+ *
+ * @param mixed $post Either the ID of a post or a WP_Post object.
+ * @return void
+ */
 function nvis_prog_get_full_course_title($post = null) {
     $post = get_post($post);
     $title = '';
@@ -298,3 +400,5 @@ function nvis_prog_get_full_course_title($post = null) {
 
     return $title;
 }
+
+endif;
