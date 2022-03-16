@@ -362,8 +362,9 @@ class SubpageManager {
          *
          * @param bool $show_subpage Whether to show the subpage.
          * @param string $subpage The subpage in question.
+         * @param string $post_type The post_type this subpage belongs to.
          */
-        return apply_filters('nvis/programs/maybe_show_subpage', $show, $subpage);
+        return apply_filters('nvis/programs/maybe_show_subpage', $show, $subpage, $this->post_type);
     }
 
     /**
