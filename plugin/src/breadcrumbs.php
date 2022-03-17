@@ -1,6 +1,12 @@
 <?php
 /**
- * Breadcrumb adapter functions for NavXT, YoastSEO, and All in One SEO.
+ * Breadcrumb adapter functions for supported third-party breadcrumb generators. 
+ * 
+ * Currently, that list includes:
+ * - Breadcrumb NavXT
+ * - YoastSEO
+ * - All in One SEO
+ * - Rank Math
  *
  * @package NVISPrograms
  * @since 0.1.0
