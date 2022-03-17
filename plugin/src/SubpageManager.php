@@ -12,6 +12,8 @@ namespace InvisibleUs\Programs;
 class SubpageManager {
     /**
      * The query var to register.
+     * 
+     * @since 0.1.0
      *
      * @var string
      */
@@ -19,20 +21,27 @@ class SubpageManager {
 
     /**
      * The query var to register.
+     * 
+     * @since 0.1.0
      *
      * @var string
      */
     private $query_var = 'nvis_subpage';
 
     /**
-     * List of Subpage objects.
+     * List of registered {@see \InvisibleUs\Programs\Subpage} objects, all of which are enabled.
      *
+     * @since 0.1.0
+     * 
      * @var array
      */
     private $subpages = [];
 
     /**
-     * List of builtin Subpage objects, whether enabled or not.
+     * List of all builtin {@see \InvisibleUs\Programs\Subpage} objects, whether enabled or not.
+     * 
+     * @since 0.1.0
+     * 
      * @var array
      */
     private $builtin = [];
@@ -41,8 +50,11 @@ class SubpageManager {
 
     /**
      * Constructor
+     * 
+     * @since 0.1.0
      *
-     * @param array $subpages List of Subpage objects.
+     * @param string $post_type The post_type to the subpages will belong to.
+     * @param string $query_var The HTTP query parameter to register. Hidden when using pretty permalinks.
      */
     public function __construct(string $post_type, string $query_var = '') {
         $this->post_type = $post_type;
@@ -56,6 +68,13 @@ class SubpageManager {
         return;
     }
 
+    /**
+     * Registers all the hooks for the class.
+     * 
+     * @since 0.1.0
+     *
+     * @return void
+     */
     public function setup_hooks(): void {
         add_action('wp', [&$this, 'maybe_override_rel_canonical']);
         add_filter('rewrite_rules_array', [&$this, 'insert_rules']);
@@ -65,6 +84,17 @@ class SubpageManager {
         return;
     }
 
+    /**
+     * Registers a Subpage for the current post type. 
+     * 
+     * @since 0.1.0
+     * 
+     * Builin subpages are tested against a plugin setting before being added 
+     * to the active list but all are added to the builtin list.
+     *
+     * @param Subpage $subpage The subpage to register. 
+     * @return mixed The registered {@see \InvisibleUs\Programs\Subpage} object on success. WP_Error on failure.
+     */
     public function add_subpage(Subpage $subpage) {
         if ($subpage->is_builtin()) {
             $enabled = $this->get_enabled_subpages();
@@ -81,12 +111,28 @@ class SubpageManager {
             }
         }
 
-        $this->subpages[] = apply_filters('nvis/programs/add_subpage', $subpage, $this->post_type, $this);
+        /**
+         * Filters the subpage to be registered.
+         *
+         * @since 0.1
+         *
+         * @param Subpage $subpage The subpage to be registered.
+         * @param string $post_type The post_type this subpage belongs to.
+         */
+        $this->subpages[] = apply_filters('nvis/programs/add_subpage', $subpage, $this->post_type);
         $this->sort();
 
         return $subpage;
     }
 
+    /**
+     * Checks that a given list is valid.
+     * 
+     * @since 0.1.0
+     *
+     * @param string $list The list to validate.
+     * @return mixed The list argument returned if valid, WP_Error otherwise.
+     */
     private function check_list(string $list) {
         $lists = ['subpages', 'builtin'];
         if (!in_array($list, $lists)) {
@@ -99,6 +145,14 @@ class SubpageManager {
         return $list;
     }
 
+    /**
+     * Sorts a given list by the subpages order property. 
+     * 
+     * @since 0.1.0
+     *
+     * @param string $list The list of subpages to sort. Defaults to 'subpages'.
+     * @return mixed Either true on success or WP_Error if given a bad list.
+     */
     public function sort(string $list='subpages') {
         $list = $this->check_list($list);
 
@@ -113,10 +167,14 @@ class SubpageManager {
 
             return ($a->order < $b->order) ? -1 : 1;
         });
+
+        return true;
     }
 
     /**
      * Returns the list of current subpages.
+     * 
+     * @since 0.1.0
      *
      * @param bool $with_index Whether or not to include the index.
      * @param string $return_type Can be 'hash' or 'objects'.
@@ -128,6 +186,8 @@ class SubpageManager {
 
     /**
      * Returns the list of builtin subpages.
+     * 
+     * @since 0.1.0
      *
      * @param bool $with_index Whether or not to include the index.
      * @param string $return_type Can be 'hash' or 'objects'.
@@ -139,6 +199,8 @@ class SubpageManager {
 
     /**
      * Returns a list of subpages, either all builtin or all registered and enabled.
+     * 
+     * @since 0.1.0
      *
      * @param bool $with_index Whether or not to include the index.
      * @param string $return_type Can be 'hash' or 'objects'.
@@ -176,6 +238,10 @@ class SubpageManager {
 
     /**
      * Register our custom query variable.
+     * 
+     * Called on filter: `query_vars`
+     * 
+     * @since 0.1.0
      *
      * @param array $vars The existing query vars.
      * @return array The resulting query vars after we add ours.
@@ -188,6 +254,10 @@ class SubpageManager {
 
     /**
      * Adds rewrite rules for programs subpages.
+     * 
+     * Called on filter: `rewrite_rules_array`
+     * 
+     * @since 0.1.0
      *
      * @param array $rules The existing rewrite rules.
      * @return array The resulting rewrite rules with ours added.
@@ -219,7 +289,17 @@ class SubpageManager {
         return $subpage_rules + $rules;
     }
 
-    public function maybe_update_title(array $title) {
+    /**
+     * Updates the 'title' document title part for Subpages.
+     * 
+     * Called on filter: `document_title_parts`
+     * 
+     * @since 0.1.0
+     *
+     * @param array $title The current title parts.
+     * @return array $title The potentially filtered 
+     */
+    public function maybe_update_title(array $title): array {
         if (is_singular($this->post_type)) {
             $subpage = $this->get_active_subpage('object');
 
@@ -240,6 +320,10 @@ class SubpageManager {
 
     /**
      * Decides whether or not to override the canonical tag.
+     * 
+     * Called on action: `wp`
+     * 
+     * @since 0.1.0
      *
      * @return void
      */
@@ -254,6 +338,10 @@ class SubpageManager {
 
     /**
      * Renders a custom canonical link for subpages.
+     * 
+     * Called on filter: `wp_head`
+     * 
+     * @since 0.1.0
      *
      * @return void
      */
@@ -271,8 +359,10 @@ class SubpageManager {
      *
      * This function should only be called in the context of a single post
      * matching the current post_type.
+     * 
+     * @since 0.1.0
      *
-     * @param string $return_type The format of the returned subpage. Either 'slug' or 'object'.
+     * @param string $return_type The format of the returned subpage. Either 'slug' or 'object'. Defaults to 'slug'.
      * @return mixed The active subpage, either slug or the full object. False if active page not found.
      */
     public function get_active_subpage(string $return_type = 'slug') {
@@ -293,6 +383,8 @@ class SubpageManager {
 
     /**
      * Tests whether the subpage is currently active.
+     * 
+     * @since 0.1.0
      *
      * @param string $subpage The slug of the subpage to test.
      * @return boolean
@@ -301,6 +393,19 @@ class SubpageManager {
         return $this->get_active_subpage() === $subpage;
     }
 
+    /**
+     * Retrieves a {@see \InvisibleUs\Programs\Subpage} object from the list of
+     * registered subpages. 
+     * 
+     * If supplied a Subpage object, it will simply return it whether or not 
+     * the subpage has been registered. Caveat emptor.
+     * 
+     * @since 0.1.0
+     *
+     * @param mixed $subpage Either a string slug of a subpage or a {@see \InvisibleUs\Programs\Subpage} object.
+     * @param boolean $search_builtin Whether or no to include builtin subpages which may be disabled. Defaults to false. 
+     * @return mixed A Subpage object on success, WP_Error on failure. 
+     */
     public function get_subpage($subpage, $search_builtin = false) {
         if ($subpage instanceof Subpage) {
             return $subpage;
@@ -340,6 +445,8 @@ class SubpageManager {
 
     /**
      * Determines whether a particular subpage should be rendered.
+     * 
+     * @since 0.1.0
      *
      * @param mixed $subpage Either a InvisibleUs\Programs\Subpage or the slug of one.
      * @return boolean
@@ -374,7 +481,9 @@ class SubpageManager {
     /**
      * Gets the list of currently enabled subpages.
      *
-     * The order of these should not be trusted.
+     * The order of these should _not_ be trusted.
+     * 
+     * @since 0.1.0
      *
      * @return array List of subpages by slug.
      */
@@ -401,6 +510,8 @@ class SubpageManager {
      *
      * This function should only be called in the context of a single post
      * matching the current post_type.
+     * 
+     * @since 0.1.0
      *
      * @param string $subpage The slug of the subpage.
      * @param boolean $echo Whether or not to output the URL.
@@ -430,6 +541,8 @@ class SubpageManager {
 
     /**
      * Returns a list of ACF fields from all enabled subpages.
+     * 
+     * @since 0.1.0
      *
      * @return array List of ACF fields.
      */

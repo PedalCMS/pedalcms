@@ -12,11 +12,17 @@ namespace InvisibleUs\Programs;
 class Program extends CustomPostType {
     /**
      * The post type to register.
+     * 
+     * @since 0.1.0
+     * 
+     * @var string
      */
     public const POST_TYPE = 'nvis_program';
 
     /**
      * The proper name.
+     * 
+     * @since 0.1.0
      *
      * @var string
      */
@@ -24,6 +30,8 @@ class Program extends CustomPostType {
 
     /**
      * The plural version of the proper name.
+     * 
+     * @since 0.1.0
      *
      * @var string
      */
@@ -35,6 +43,8 @@ class Program extends CustomPostType {
      * The args to pass to register_post_type.
      *
      * Gets updated throughout the setup process.
+     * 
+     * @since 0.1.0
      *
      * @var array
      */
@@ -56,6 +66,8 @@ class Program extends CustomPostType {
 
     /**
      * A list of field group arrays to pass to acf_add_local_field_group.
+     * 
+     * @since 0.1.0
      *
      * @var array
      */
@@ -261,6 +273,15 @@ class Program extends CustomPostType {
         ]
     ];
 
+    /**
+     * The list of subpages to register.
+     * 
+     * Includes subpage ACF field definitions.
+     * 
+     * @since 0.1.0
+     *
+     * @var array
+     */
     public static $subpages = [
         'index' => [
             'title' => 'Overview',
@@ -816,6 +837,8 @@ class Program extends CustomPostType {
      * Changes the sort order for Programs.
      *
      * Called on filter: pre_get_posts
+     * 
+     * @since 0.1.0
      *
      * @param WP_Query $query The current WP_Query
      * @return void
@@ -834,9 +857,11 @@ class Program extends CustomPostType {
      * Get the news posts for a given program by related tag.
      *
      * Meta field news_tag must be set first.
+     * 
+     * @since 0.1.0
      *
      * @param mixed $program Program to check for news posts. Either ID or WP_Post.
-     * @param array $not_in List of ids to exclude from the results.
+     * @param array $not_in List of ids to exclude from the results. Defaults to none.
      * @return array List of WP_Posts that match the Program's tag.
      */
     public static function get_related_posts($program = null, array $not_in = []): array {
@@ -866,8 +891,10 @@ class Program extends CustomPostType {
      * Gets a list of application deadlines based on override hierarchy.
      *
      * Hierarchy is Program, College, Program Type, Global.
+     * 
+     * @since 0.1.0
      *
-     * @param mixed $program Program to check for news posts. Either ID or WP_Post.
+     * @param mixed $program Program to check for news posts. Either ID or WP_Post. Defaults to current program.
      * @return array An ACF repeater field with deadline_label and deadline_info subfields.
      */
     public static function get_application_deadlines($program = null): array {
@@ -900,6 +927,13 @@ class Program extends CustomPostType {
         return Plugin::get_option('application_deadlines');
     }
 
+    /**
+     * Initializes the subpage manager and adds builtin subpages.
+     * 
+     * @since 0.1.0
+     *
+     * @return void
+     */
     public static function setup_subpage_manager() {
         self::$subpage_manager = new SubpageManager(Program::POST_TYPE);
 
@@ -909,6 +943,13 @@ class Program extends CustomPostType {
         }
     }
 
+    /**
+     * Returns the subpage manager. 
+     * 
+     * @since 0.1.0
+     *
+     * @return SubpageManager The program subpage manager.
+     */
     public static function subpage_manager() {
         return self::$subpage_manager;
     }
