@@ -286,7 +286,8 @@ class Plugin {
         'request_info'           => 'Request Info',
         'estimated_cost'         => 'Estimated Cost',
         'register'               => 'Register',
-        'course_info'            => 'View Course'
+        'course_info'            => 'View Course',
+        'back_to_top'            => 'Back to Top'
     ];
 
     /**
