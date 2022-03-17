@@ -224,8 +224,12 @@ class SubpageManager {
             $subpage = $this->get_active_subpage('object');
 
             if ($subpage && $subpage->slug !== 'index') {
-                // TODO: Make this customizable.
-                $title['title'] .= ', ' . $subpage->title;
+                // TODO: Add document_title property to Subpage and filter this.
+                $title['title'] = sprintf(
+                    '%s, %s',
+                    $subpage->title,
+                    $title['title']
+                );
 
                 return $title;
             }
