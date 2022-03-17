@@ -66,9 +66,9 @@ class SubpageManager {
     }
 
     public function add_subpage(Subpage $subpage) {
-        $enabled = $this->get_enabled_subpages();
-
         if ($subpage->is_builtin()) {
+            $enabled = $this->get_enabled_subpages();
+
             $this->builtin[] = $subpage;
             $this->sort('builtin');
 
