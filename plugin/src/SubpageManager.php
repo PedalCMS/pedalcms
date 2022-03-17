@@ -304,11 +304,24 @@ class SubpageManager {
             $subpage = $this->get_active_subpage('object');
 
             if ($subpage && $subpage->slug !== 'index') {
-                // TODO: Add document_title property to Subpage and filter this.
-                $title['title'] = sprintf(
-                    '%s, %s',
-                    $subpage->title,
-                    $title['title']
+                /**
+                 * Filters the 'title' part of document_title_part for subpages.
+                 * 
+                 * @since 0.1
+                 * 
+                 * @param string $title_part The resulting 'title' part.
+                 * @param string $subpage_doc_title The document_title property of the subpage.
+                 * @param string $current_title The original 'title' part for the parent post.
+                 * @param Subpage $subpage The current/active Subpage object.
+                 * @param array $title_parts The complete title parts from `document_title_parts` filter.
+                 */
+                $title['title'] = apply_filters( 
+                    'nvis/programs/subpage_document_title_part', 
+                    $subpage->document_title . ', ' . $title['title'],
+                    $subpage->document_title, 
+                    $title['title'],
+                    $subpage,
+                    $title
                 );
 
                 return $title;
