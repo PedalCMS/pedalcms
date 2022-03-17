@@ -309,19 +309,38 @@ if (!function_exists('nvis_toggletip')) :
  *
  * @param string $content The contents of the tip popup.
  * @param string $aria_label The `aria-label` attribute of the toggle button.
- * @return void
+ * @param bool $echo Whther to output the result. 
+ * @return string The generated HTML string.
  */
-function nvis_toggletip(string $content, string $aria_label) {
-    // TODO: Filter the character used for button.
-    // TODO: Add an $echo arg.
-    echo sprintf('
+function nvis_toggletip(string $content, string $aria_label, bool $echo = true): string {
+    
+    /**
+     * Filters the text that appears on the ToggleTip button. 
+     * 
+     * Note that the expected button text is a single character. Any HTML can 
+     * be used, including SVG or an img tag, but anything other than a single
+     * character will likely impact the styling of the button. You should 
+     * escape any HTML before returning it. 
+     * 
+     * @param string $button_text The button text. 
+     */
+    $button_text = apply_filters( 'nvis/toggletip_button_text', '?' );
+
+    $toggletip = sprintf('
         <span class="toggletip">
-            <button class="toggletip__toggle" type="button" aria-label="%s" data-toggletip-content="%s">?</button>
+            <button class="toggletip__toggle" type="button" aria-label="%s" data-toggletip-content="%s">%s</button>
             <span role="status"></span>
         </span>',
         esc_attr($aria_label),
-        esc_attr($content)
+        esc_attr($content),
+        $button_text
     );
+
+    if ($echo) {
+        echo $toggletip;
+    }
+
+    return $toggletip;
 }
 
 endif;
