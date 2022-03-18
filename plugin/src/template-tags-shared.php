@@ -168,7 +168,6 @@ function nvis_back_to_top_link(string $target = '', bool $echo = true): string {
     if (!$target) {
         $target = nvis_article_id_attr('', false);
     }
-    // TODO: Replace filtered string with plugin label.
     /**
      * Filters the text that appears in the text portion of Back to Top links.
      * 
@@ -180,6 +179,10 @@ function nvis_back_to_top_link(string $target = '', bool $echo = true): string {
      * @param $text The text to filter.
      */ 
     $text = apply_filters('nvis/back_to_top_text', 'Back to Top');
+    /**
+     * NOTE: The text here cannot be replaced with a call to Plugin::get_label
+     * since this is a shared function between both plugins.
+     */
 
     $link = sprintf(
         '<a class="back-to-top" href="#%s">%s</a>',
