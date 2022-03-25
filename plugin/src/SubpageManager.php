@@ -46,7 +46,15 @@ class SubpageManager {
      */
     private $builtin = [];
 
-
+    /**
+     * The current active Subpage object. 
+     * 
+     * A cache var that is initialized the first time get_active_subpage is 
+     * called with the 'object' return type.
+     *
+     * @var Subpage
+     */
+    private $active_subpage = null;
 
     /**
      * Constructor
@@ -391,7 +399,11 @@ class SubpageManager {
             return false;
         }
 
-        return $this->get_subpage($slug);
+        if (!$this->active_subpage) {
+            $this->active_subpage = $this->get_subpage($slug);
+        }
+
+        return $this->active_subpage;
     }
 
     /**
@@ -564,7 +576,7 @@ class SubpageManager {
 
         foreach ($this->subpages as $subpage) {
             if (!empty($subpage->fields)) {
-                $fields[] =         [
+                $fields[] = [
                     'key'       => sprintf('field_%s_%s', $this->post_type, $subpage->slug),
                     'label'     => $subpage->tab_label,
                     'type'      => 'tab',
