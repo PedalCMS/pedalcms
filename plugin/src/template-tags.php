@@ -161,6 +161,25 @@ function nvis_prog_is_active_subpage(string $subpage): bool {
 endif;
 
 
+if (!function_exists('nvis_prog_subpage_title')) : 
+/**
+ * Gets the content current subpage content title.
+ *
+ * @return string The current subpage title.
+ */
+function nvis_prog_subpage_title(): string {
+    $subpage = nvis_prog_get_active_subpage('object');
+
+    if (is_wp_error($subpage)) {
+        return $subpage->get_error_message();
+    }
+
+    return $subpage->title;
+}
+
+endif; 
+
+
 if (!function_exists('nvis_prog_subpage_link')) :
 /**
  * Generates a URL for a given subpage.
