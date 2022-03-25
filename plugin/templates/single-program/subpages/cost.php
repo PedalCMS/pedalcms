@@ -19,7 +19,6 @@ if (empty($label_est_cost)) {
 
 $defaults = [
     'show_subpage'         => nvis_prog_show_subpage('cost'),
-    'subpage_title'        => nvis_prog_get_label('cost'),
     'subpage_content'      => get_field('cost_content', $post),
     'estimated_cost'       => get_field('estimated_cost', $post),
     'label_estimated_cost' => $label_est_cost
@@ -30,9 +29,8 @@ $args = nvis_parse_template_args($args, $defaults, $template);
 if ($args['show_subpage']) : ?>
 
 <div <?php nvis_subpage_class(); ?>>
-  <h2 class="program-subpage__title"><?php echo esc_html($args['subpage_title']); ?>
-  </h2>
-
+  <h2 class="program-subpage__title"><?php echo esc_html(nvis_prog_subpage_title()); ?></h2>
+  
   <div class="program-subpage__content">
 
     <?php if ($args['estimated_cost']) : ?>

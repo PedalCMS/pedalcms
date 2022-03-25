@@ -13,7 +13,6 @@ $post = nvis_args_or_global('post', $args);
 
 $defaults = [
     'show_subpage'      => nvis_prog_show_subpage('faqs'),
-    'subpage_title'     => nvis_prog_get_label('faqs'),
     'group_by_category' => get_field('faqs_by_category', $post),
     'faqs'              => get_field('related_faqs_list', $post),
 ];
@@ -27,9 +26,7 @@ if ($faqs) {
 
 if ($args['show_subpage']) : ?>
 <div <?php nvis_subpage_class(); ?>>
-
-  <h2 class="program-subpage__title"><?php echo esc_html($args['subpage_title']); ?>
-  </h2>
+  <h2 class="program-subpage__title"><?php echo esc_html(nvis_prog_subpage_title()); ?></h2>
 
   <div class="program-subpage__content">
 
