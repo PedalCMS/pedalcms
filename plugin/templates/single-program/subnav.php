@@ -38,7 +38,7 @@ if (nvis_prog_show_subpages()) : $subpages = nvis_prog_get_subpages(); ?>
       class="<?php echo nvis_prog_is_active_subpage($subpage->slug) ? 'active-subpage' : ''; ?>">
       <span>
         <a href="<?php nvis_prog_subpage_link($subpage->slug); ?>" aria-label="<?php echo esc_attr($subpage->aria_label); ?>">
-          <?php echo esc_html($subpage->title); ?>
+          <?php echo esc_html($subpage->tab_label); ?>
         </a>
       </span>
     </li>
