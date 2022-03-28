@@ -5,6 +5,7 @@ PLUGIN_NAME := nvis-program-pages
 PLUGIN_ROOT := plugin
 PLUGIN_VERSION := $$(grep "^ \* Version" $(PLUGIN_ROOT)/$(PLUGIN_NAME).php| awk -F' ' '{print $3}' | cut -d ":" -f2 | sed 's/ //g')
 INCLUDES_DIR := $(PLUGIN_ROOT)/src
+LANGUAGES_DIR := $(PLUGIN_ROOT)/languages
 ASSETS_DIR := $(PLUGIN_ROOT)/assets
 SASS_DIR := $(ASSETS_DIR)/scss
 CSS_DIR := $(ASSETS_DIR)/css
@@ -164,8 +165,29 @@ clean:
 		docs \
 		.phpdoc \
 
+.PHONY: pot
+pot:
+	@which wp > /dev/null || (echo "$(RED)⚠️  ERROR: WP CLI not found. Make sure it is installed and in your system path.$(FMT_END)\n" && exit 1;)
+	@if [ -f $(LANGUAGES_DIR)/$(PLUGIN_NAME).pot ]; then \
+		echo "Removing existing POT file…"; \
+		rm $(LANGUAGES_DIR)/$(PLUGIN_NAME).pot; \
+	fi
+	@echo "Generating $(LANGUAGES_DIR)/$(PLUGIN_NAME).pot file…"
+	@wp i18n make-pot $(PLUGIN_ROOT) $(LANGUAGES_DIR)/$(PLUGIN_NAME).pot --slug=$(PLUGIN_NAME) --exclude=$(INCLUDES_DIR)/acf
+
+.PHONY: mo
+mo:
+	@which msgfmt > /dev/null || (echo "$(RED)⚠️  ERROR: Command 'msgfmt' not found. Make sure it is installed and in your system path.$(FMT_END)\n" && exit 1;)
+	@echo "Generating .mo files…"
+	@for FILE in $$(find $(LANGUAGES_DIR) -name '*.po') ; do \
+		MOFILE=$${FILE/.po/.mo} && \
+		echo "-> $$MOFILE" && \
+		msgfmt -o $$MOFILE $$FILE; \
+	done;
+
 .PHONY: gitcheck
 gitcheck:
+	@which git > /dev/null || (echo "$(RED)⚠️  ERROR: Command 'git' not found. Make sure it is installed and in your system path.$(FMT_END)\n" && exit 1;)
 	@if status=$$(git status --porcelain) && [ -n "$$status" ]; then \
 		echo "$(YELLOW)⚠️  You have uncommited changes. See below:$(FMT_END)\n"; \
 		git status; \
@@ -199,6 +221,7 @@ release: gitcheck getacf
 
 .PHONY: docs
 docs:
+	@which phpdoc > /dev/null || (echo "$(RED)⚠️  ERROR: Command 'phpdoc' not found. Make sure it is installed and in your system path.$(FMT_END)\n" && exit 1;)
 	@echo "\nBuilding code docs...\n"
 	rm -rf docs
 	phpdoc
