@@ -16,20 +16,6 @@ class Person extends CustomPostType {
     public const POST_TYPE = 'nvis_person';
 
     /**
-     * The proper name.
-     *
-     * @var string
-     */
-    public string $name = 'Person';
-
-    /**
-     * The plural version of the proper name.
-     *
-     * @var string
-     */
-    public string $plural_name = 'Personnel';
-
-    /**
      * The replacement text for enter_title_here filter.
      *
      * @var string
@@ -58,12 +44,54 @@ class Person extends CustomPostType {
         'hierarchical'        => false,
         'show_in_rest'        => true,
         'supports'            => ['title', 'editor', 'thumbnail', 'custom-fields'],
-        'template'            => [
+    ];
+
+    public function register(): void {
+        if (!self::is_block_editor_enabled()) {
+            $this->args['show_in_rest'] = false;
+        }
+
+        parent::register();
+    }
+
+    protected function setup_labels(): void {
+        $this->args['labels'] = [
+            'name'                     => _x( 'Personnel', 'post type general name', 'nvis-program-pages' ),
+            'singular_name'            => _x( 'Person', 'post type singular name', 'nvis-program-pages' ),
+            'add_new_item'             => __( 'Add New Person', 'nvis-program-pages' ),
+            'edit_item'                => __( 'Edit Person', 'nvis-program-pages' ),
+            'new_item'                 => __( 'New Person', 'nvis-program-pages' ),
+            'view_item'                => __( 'View Person', 'nvis-program-pages' ),
+            'view_items'               => __( 'View Personnel', 'nvis-program-pages' ),
+            'search_items'             => __( 'Search Personnel', 'nvis-program-pages' ),
+            'not_found'                => __( 'No personnel found.', 'nvis-program-pages' ),
+            'not_found_in_trash'       => __( 'No personnel found in Trash.', 'nvis-program-pages' ),
+            'parent_item_colon'        => __( 'Parent Person:', 'nvis-program-pages' ),
+            'all_items'                => __( 'All Personnel', 'nvis-program-pages' ),
+            'archives'                 => __( 'Person Archives', 'nvis-program-pages' ),
+            'attributes'               => __( 'Person Attributes', 'nvis-program-pages' ),
+            'insert_into_item'         => __( 'Insert into person post', 'nvis-program-pages' ),
+            'uploaded_to_this_item'    => __( 'Uploaded to this person', 'nvis-program-pages' ),
+            'filter_items_list'        => __( 'Filter personnel list', 'nvis-program-pages' ),
+            'items_list_navigation'    => __( 'Personnel list navigation', 'nvis-program-pages' ),
+            'items_list'               => __( 'Personnel list', 'nvis-program-pages' ),
+            'item_published'           => __( 'Person published.', 'nvis-program-pages' ),
+            'item_published_privately' => __( 'Person published privately.', 'nvis-program-pages' ),
+            'item_reverted_to_draft'   => __( 'Person reverted to draft.', 'nvis-program-pages' ),
+            'item_scheduled'           => __( 'Person scheduled.', 'nvis-program-pages' ),
+            'item_updated'             => __( 'Person updated.', 'nvis-program-pages' ),
+            'item_link'                => _x( 'Person Link', 'navigation link block title', 'nvis-program-pages' ),
+            'item_link_description'    => _x( 'A link to a person.', 'navigation link block description', 'nvis-program-pages' ),
+        ];
+    }
+
+    protected function setup_template() {
+        $this->args['template'] = [
             [ 'core/columns', [], [
                 [ 'core/column', ['width' => '66.66%'], [
                     ['nvis/job-title'],
                     [ 'core/paragraph', [
-                        'placeholder' => 'Add some bio text …'
+                        'placeholder' => __('Add some bio text …', 'nvis-program-pages'),
                     ] ],
                 ] ],
                 [ 'core/column', ['width' => '33.33%'], [
@@ -71,53 +99,54 @@ class Person extends CustomPostType {
                     ['nvis/contact-info']
                 ] ],
             ] ],
-        ]
-    ];
+        ];
+    }
 
-    public static array $post_meta = [
-        'job_title' => [
-            'label'             => 'Job Title',
-            'description'       => 'The current position this team member holds',
-            'type'              => 'string',
-            'default'           => '',
-            'single'            => true,
-            'sanitize_callback' => 'sanitize_text_field',
-            'show_in_rest'      => true
-        ],
-        'office_phone' => [
-            'label'             => 'Office Phone',
-            'description'       => '',
-            'type'              => 'string',
-            'default'           => '',
-            'single'            => true,
-            'sanitize_callback' => 'sanitize_text_field',
-            'show_in_rest'      => true
-        ],
-        'email_address' => [
-            'label'             => 'Email Address',
-            'description'       => '',
-            'type'              => 'string',
-            'default'           => '',
-            'single'            => true,
-            'sanitize_callback' => 'sanitize_email',
-            'show_in_rest'      => true
-        ],
-        'office' => [
-            'label'             => 'Office',
-            'description'       => '',
-            'type'              => 'string',
-            'default'           => '',
-            'single'            => true,
-            'sanitize_callback' => 'sanitize_text_field',
-            'show_in_rest'      => true
-        ]
-    ];
+    protected function setup_post_meta() {
+        $this->post_meta = [
+            'job_title' => [
+                'label'             => __('Job Title', 'nvis-program-pages'),
+                'description'       => __('The current position this team member holds', 'nvis-program-pages'),
+                'type'              => 'string',
+                'default'           => '',
+                'single'            => true,
+                'sanitize_callback' => 'sanitize_text_field',
+                'show_in_rest'      => true
+            ],
+            'office_phone' => [
+                'label'             => __('Office Phone', 'nvis-program-pages'),
+                'description'       => '',
+                'type'              => 'string',
+                'default'           => '',
+                'single'            => true,
+                'sanitize_callback' => 'sanitize_text_field',
+                'show_in_rest'      => true
+            ],
+            'email_address' => [
+                'label'             => __('Email Address', 'nvis-program-pages'),
+                'description'       => '',
+                'type'              => 'string',
+                'default'           => '',
+                'single'            => true,
+                'sanitize_callback' => 'sanitize_email',
+                'show_in_rest'      => true
+            ],
+            'office' => [
+                'label'             => __('Office', 'nvis-program-pages'),
+                'description'       => '',
+                'type'              => 'string',
+                'default'           => '',
+                'single'            => true,
+                'sanitize_callback' => 'sanitize_text_field',
+                'show_in_rest'      => true
+            ]
+        ];
+    }
 
-
-    public static $field_groups = [
-        [
+    protected function setup_field_group() {
+        $field_group = [
             'key'      => 'group_61140677b6acb',
-            'title'    => 'Contact Info',
+            'title'    => __('Contact Info', 'nvis-program-pages'),
             'location' => [
                 [
                     [
@@ -136,14 +165,14 @@ class Person extends CustomPostType {
             'fields'                => [
                 [
                     'key'               => 'field_611406a953e0e',
-                    'label'             => 'Job Title',
+                    'label'             => __('Job Title', 'nvis-program-pages'),
                     'name'              => 'job_title',
                     'type'              => 'text',
                     'instructions'      => '',
                 ],
                 [
                     'key'               => 'field_611406db53e0f',
-                    'label'             => 'Office Phone',
+                    'label'             => __('Office Phone', 'nvis-program-pages'),
                     'name'              => 'office_phone',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -151,23 +180,23 @@ class Person extends CustomPostType {
                 ],
                 [
                     'key'               => 'field_6114072c53e10',
-                    'label'             => 'Email Address',
+                    'label'             => __('Email Address', 'nvis-program-pages'),
                     'name'              => 'email_address',
                     'type'              => 'email',
                     'instructions'      => '',
                 ],
                 [
                     'key'               => 'field_6140ba895cb46',
-                    'label'             => 'Office',
+                    'label'             => __('Office', 'nvis-program-pages'),
                     'name'              => 'office',
                     'type'              => 'text',
                     'instructions'      => '',
-                    'placeholder'       => 'Main Building, 448C'
+                    'placeholder'       => _x('Main Building, 448C', 'office field placeholder', 'nvis-program-pages'),
                 ],
                 [
                     'key'               => 'field_615f36c2ba5cf',
-                    'label'             => 'Courses Taught',
-                    'name'              => 'related_person_courses',
+                    'label'             => __('Courses Taught', 'nvis-program-pages'),
+                    'name'              => 'related_person_persons',
                     'type'              => 'relationship',
                     'instructions'      => '',
                     'post_type'         => [0 => Course::POST_TYPE],
@@ -179,15 +208,9 @@ class Person extends CustomPostType {
                     'return_format' => 'id',
                 ],
             ],
-        ]
-    ];
+        ];
 
-    public function register(): void {
-        if (!self::is_block_editor_enabled()) {
-            $this->args['show_in_rest'] = false;
-        }
-
-        parent::register();
+        $this->field_groups[] = $field_group;
     }
 
     public function setup_hooks(): void {
@@ -238,14 +261,18 @@ class Person extends CustomPostType {
      * @return array The ACF Field Group.
      */
     public static function get_field_group(): array {
+        $instance = static::get_instance();
+
+        $group = $instance->field_groups[0] ?? [];
+
         if (!self::is_block_editor_enabled()) {
-            return self::$field_groups[0];
+            return $group;
         }
 
-        $group = self::$field_groups[0];
         // The courses relationship field is the last one.
         $group['fields'] = array_slice($group['fields'], -1);
 
         return $group;
     }
+
 }

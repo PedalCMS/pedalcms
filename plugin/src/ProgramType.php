@@ -4,15 +4,13 @@ namespace InvisibleUs\Programs;
 
 /**
  * Program Type custom taxonomy.
- * 
+ *
  * @package NVISPrograms
  * @subpackage ContentModel
  * @since 0.1.0
  */
 class ProgramType extends CustomTaxonomy {
     public const TAXONOMY = 'nvis_program_type';
-    public string $name = 'Program Type';
-    public string $plural_name = 'Program Types';
 
     public $object_types = [Program::POST_TYPE];
 
@@ -32,10 +30,38 @@ class ProgramType extends CustomTaxonomy {
         'show_tagcloud'         => false,
     ];
 
-    public static $field_groups = [
-        [
+    protected function setup_labels(): void {
+        $this->args['labels'] = [
+            'name'                       => _x( 'Program Types', 'taxonomy general name' , 'nvis-program-pages'),
+            'singular_name'              => _x( 'Program Type', 'taxonomy singular name', 'nvis-program-pages' ),
+            'search_items'               => __( 'Search Program Types' , 'nvis-program-pages'),
+            'popular_items'              => __( 'Popular Program Types', 'nvis-program-pages' ),
+            'all_items'                  => __( 'All Program Types' , 'nvis-program-pages'),
+            'parent_item'                => __( 'Parent Program Type' , 'nvis-program-pages'),
+            'parent_item_colon'          => __( 'Parent Program Type:' , 'nvis-program-pages'),
+            'edit_item'                  => __( 'Edit Program Type' , 'nvis-program-pages'),
+            'view_item'                  => __( 'View Program Type' , 'nvis-program-pages'),
+            'update_item'                => __( 'Update Program Type' , 'nvis-program-pages'),
+            'add_new_item'               => __( 'Add New Program Type', 'nvis-program-pages' ),
+            'new_item_name'              => __( 'New Program Type Name', 'nvis-program-pages' ),
+            'separate_items_with_commas' => __( 'Separate program types with commas' , 'nvis-program-pages'),
+            'add_or_remove_items'        => __( 'Add or remove program types', 'nvis-program-pages' ),
+            'choose_from_most_used'      => __( 'Choose from the most used program types' , 'nvis-program-pages'),
+            'not_found'                  => __( 'No program types found.' , 'nvis-program-pages'),
+            'no_terms'                   => __( 'No program types' , 'nvis-program-pages'),
+            'filter_by_item'             => __( 'Filter by program type' , 'nvis-program-pages'),
+            'items_list_navigation'      => __( 'Program Type list navigation' , 'nvis-program-pages'),
+            'items_list'                 => __( 'Program Type list', 'nvis-program-pages' ),
+            'back_to_items'              => __( '&larr; Go to Program Types' , 'nvis-program-pages'),
+            'item_link'                  => _x( 'Program Type Link', 'navigation link block title' , 'nvis-program-pages'),
+            'item_link_description'      => _x( 'A link to a program type.', 'navigation link block description', 'nvis-program-pages' ),
+        ];
+    }
+
+    protected function setup_field_group(): void {
+        $field_group = [
             'key'         => 'group_6123fad662541',
-            'title'       => 'Application Deadlines',
+            'title'       => __('Application Deadlines', 'nvis-program-pages'),
             'description' => '',
             'location'    => [
                 [
@@ -55,22 +81,22 @@ class ProgramType extends CustomTaxonomy {
             'fields'                => [
                 [
                     'key'          => 'field_61156b547d402',
-                    'label'        => 'Application Deadlines',
+                    'label'        => __('Application Deadlines', 'nvis-program-pages'),
                     'name'         => 'nvis_application_deadlines',
                     'type'         => 'repeater',
                     'instructions' => '',
                     'collapsed'    => 'field_61156b777d403',
                     'layout'       => 'block',
-                    'button_label' => 'Add Deadline',
+                    'button_label' => _x('Add Deadline', 'new deadline button label', 'nvis-program-pages'),
                     'sub_fields'   => [
                         [
                             'key'          => 'field_61156b777d403',
-                            'label'        => 'Deadline Label',
+                            'label'        => __('Deadline Label', 'nvis-program-pages'),
                             'name'         => 'deadline_label',
                             'type'         => 'text',
                             'instructions' => '',
                             'required'     => 1,
-                            'placeholder'  => 'Fall, Spring, etc.',
+                            'placeholder'  => _x('Fall, Spring, etc.', 'deadline label field placeholder', 'nvis-program-pages'),
                             'maxlength'    => '',
                         ],
                         [
@@ -79,12 +105,14 @@ class ProgramType extends CustomTaxonomy {
                             'name'         => 'deadline_info',
                             'type'         => 'text',
                             'instructions' => '',
-                            'placeholder'  => 'e.g. June 24th',
+                            'placeholder'  => _x('e.g. June 24th', 'deadline info field placeholder', 'nvis-program-pages'),
                             'maxlength'    => '',
                         ],
                     ],
                 ],
             ],
-        ]
-    ];
+        ];
+
+        $this->field_groups[] = $field_group;
+    }
 }

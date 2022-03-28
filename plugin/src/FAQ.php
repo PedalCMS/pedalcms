@@ -16,34 +16,6 @@ class FAQ extends CustomPostType {
     public const POST_TYPE = 'nvis_faq';
 
     /**
-     * The proper name.
-     *
-     * @var string
-     */
-    public string $name = 'FAQ';
-
-    /**
-     * The plural version of the proper name.
-     *
-     * @var string
-     */
-    public string $plural_name = 'FAQs';
-
-    /**
-     * Whether or not it is safe to lowercase the name.
-     *
-     * @var boolean
-     */
-    public bool $lowercase_safe = false;
-
-    /**
-     * The Text to
-     *
-     * @var string
-     */
-    public static string $enter_title_text = 'Enter the Question';
-
-    /**
      * The args to pass to register_post_type.
      *
      * Gets updated throughout the setup process.
@@ -65,6 +37,39 @@ class FAQ extends CustomPostType {
         'hierarchical'        => false,
         'supports'            => ['title', 'editor'],
     ];
+
+    protected function setup_labels(): void {
+        self::$enter_title_text = __('Enter the Question', 'nvis-program-pages');
+
+        $this->args['labels'] = [
+            'name'                     => _x( 'FAQs', 'post type general name', 'nvis-program-pages' ),
+            'singular_name'            => _x( 'FAQ', 'post type singular name', 'nvis-program-pages' ),
+            'add_new_item'             => __( 'Add New FAQ', 'nvis-program-pages' ),
+            'edit_item'                => __( 'Edit FAQ', 'nvis-program-pages' ),
+            'new_item'                 => __( 'New FAQ', 'nvis-program-pages' ),
+            'view_item'                => __( 'View FAQ', 'nvis-program-pages' ),
+            'view_items'               => __( 'View FAQs', 'nvis-program-pages' ),
+            'search_items'             => __( 'Search FAQs', 'nvis-program-pages' ),
+            'not_found'                => __( 'No FAQs found.', 'nvis-program-pages' ),
+            'not_found_in_trash'       => __( 'No FAQs found in Trash.', 'nvis-program-pages' ),
+            'parent_item_colon'        => __( 'Parent FAQ:', 'nvis-program-pages' ),
+            'all_items'                => __( 'All FAQs', 'nvis-program-pages' ),
+            'archives'                 => __( 'FAQ Archives', 'nvis-program-pages' ),
+            'attributes'               => __( 'FAQ Attributes', 'nvis-program-pages' ),
+            'insert_into_item'         => __( 'Insert into FAQ', 'nvis-program-pages' ),
+            'uploaded_to_this_item'    => __( 'Uploaded to this FAQ', 'nvis-program-pages' ),
+            'filter_items_list'        => __( 'Filter FAQs list', 'nvis-program-pages' ),
+            'items_list_navigation'    => __( 'FAQs list navigation', 'nvis-program-pages' ),
+            'items_list'               => __( 'FAQs list', 'nvis-program-pages' ),
+            'item_published'           => __( 'FAQ published.', 'nvis-program-pages' ),
+            'item_published_privately' => __( 'FAQ published privately.', 'nvis-program-pages' ),
+            'item_reverted_to_draft'   => __( 'FAQ reverted to draft.', 'nvis-program-pages' ),
+            'item_scheduled'           => __( 'FAQ scheduled.', 'nvis-program-pages' ),
+            'item_updated'             => __( 'FAQ updated.', 'nvis-program-pages' ),
+            'item_link'                => _x( 'FAQ Link', 'navigation link block title', 'nvis-program-pages' ),
+            'item_link_description'    => _x( 'A link to an FAQ.', 'navigation link block description', 'nvis-program-pages' ),
+        ];
+    }
 
     /**
      * Takes a list of FAQs and returns them indexed by category.

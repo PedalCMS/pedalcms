@@ -56,12 +56,12 @@ function acf_settings_url(string $url) {
 function acf_init(): void {
     acf_add_options_page(Plugin::$options_page);
 
-    acf_add_local_field_group((new Plugin())::$field_groups[0]);
+    acf_add_local_field_group(Plugin::get_field_group());
 
     $field_groups = [
-        get_program_acf_fields(),
-        ProgramType::$field_groups[0],
-        Course::$field_groups[0],
+        Program::get_field_group(),
+        ProgramType::get_field_group(),
+        Course::get_field_group(),
         Person::get_field_group()
     ];
 
@@ -70,23 +70,6 @@ function acf_init(): void {
     }
 
     return;
-}
-
-/**
- * Merges all subpage fields into the program field group.
- *
- * @return array
- */
-function get_program_acf_fields(): array {
-    // TODO: Move this to Program class.
-    $group = Program::$field_groups[0];
-
-    $group['fields'] = array_merge(
-        $group['fields'],
-        Program::subpage_manager()->get_enabled_subpage_fields()
-    );
-
-    return $group;
 }
 
 /**

@@ -32,5 +32,33 @@ class InstructionMode extends CustomTaxonomy {
         'show_tagcloud'         => false,
     ];
 
-    public $field_groups = [];
+    protected function setup_labels(): void {
+        $this->args['labels'] = [
+            'name'                       => _x( 'Instruction Modes', 'taxonomy general name' , 'nvis-program-pages'), 
+            'singular_name'              => _x( 'Instruction Mode', 'taxonomy singular name', 'nvis-program-pages' ),
+            'search_items'               => __( 'Search Instruction Modes' , 'nvis-program-pages'), 
+            'popular_items'              => __( 'Popular Instruction Modes', 'nvis-program-pages' ),
+            'all_items'                  => __( 'All Instruction Modes' , 'nvis-program-pages'), 
+            'parent_item'                => __( 'Parent Instruction Mode' , 'nvis-program-pages'), 
+            'parent_item_colon'          => __( 'Parent Instruction Mode:' , 'nvis-program-pages'), 
+            'edit_item'                  => __( 'Edit Instruction Mode' , 'nvis-program-pages'), 
+            'view_item'                  => __( 'View Instruction Mode' , 'nvis-program-pages'), 
+            'update_item'                => __( 'Update Instruction Mode' , 'nvis-program-pages'), 
+            'add_new_item'               => __( 'Add New Instruction Mode', 'nvis-program-pages' ),
+            'new_item_name'              => __( 'New Instruction Mode Name', 'nvis-program-pages' ),
+            'separate_items_with_commas' => __( 'Separate instruction modes with commas' , 'nvis-program-pages'), 
+            'add_or_remove_items'        => __( 'Add or remove instruction modes', 'nvis-program-pages' ),
+            'choose_from_most_used'      => __( 'Choose from the most used instruction modes' , 'nvis-program-pages'), 
+            'not_found'                  => __( 'No instruction modes found.' , 'nvis-program-pages'), 
+            'no_terms'                   => __( 'No instruction modes' , 'nvis-program-pages'), 
+            'filter_by_item'             => __( 'Filter by instruction mode' , 'nvis-program-pages'), 
+            'items_list_navigation'      => __( 'Instruction Mode list navigation' , 'nvis-program-pages'), 
+            'items_list'                 => __( 'Instruction Mode list', 'nvis-program-pages' ),
+            /* translators: Tab heading when selecting from the most used terms. */
+            'most_used'                  => _x( 'Most Used', 'instruction modes' , 'nvis-program-pages'), 
+            'back_to_items'              => __( '&larr; Go to Instruction Modes' , 'nvis-program-pages'), 
+            'item_link'                  => _x( 'Instruction Mode Link', 'navigation link block title' , 'nvis-program-pages'), 
+            'item_link_description'      => _x( 'A link to a instruction mode.', 'navigation link block description', 'nvis-program-pages' ),
+        ];
+    }
 }

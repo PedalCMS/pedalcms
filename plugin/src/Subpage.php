@@ -142,10 +142,10 @@ class Subpage {
      * 
      * @since 0.1.0
      *
-     * @param [type] $string
+     * @param string $string
      * @return void
      */
-    private function unslugify($string) {
+    private function unslugify(string $string) {
         return ucwords(
             str_replace(
                 ['-','_'], 
