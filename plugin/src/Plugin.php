@@ -86,10 +86,10 @@ class Plugin {
     public static function install_capabilities() {
         $role = get_role('administrator');
         $post_type_args = [
-            (object) (new Program())->args,
-            (object) (new Person())->args,
-            (object) (new Course())->args,
-            (object) (new FAQ())->args,
+            (object) Program::get_instance()->args,
+            (object) Person::get_instance()->args,
+            (object) Course::get_instance()->args,
+            (object) FAQ::get_instance()->args,
         ];
 
         foreach ($post_type_args as $args) {
