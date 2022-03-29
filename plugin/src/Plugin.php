@@ -506,7 +506,8 @@ class Plugin {
         if (!$label) {
             $label = self::$labels[$label_key] ??
                 sprintf(
-                    'Label "%s" not found',
+                    /* translators: the argument is the key of the label */
+                    __('Label "%s" not found', 'nvis-program-pages'),
                     $label_key
                 );
         }
