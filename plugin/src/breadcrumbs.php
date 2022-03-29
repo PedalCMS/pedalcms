@@ -39,10 +39,9 @@ function get_archive_crumb(): array {
     $found = false;
 
     $post_types = [
-        // TODO: Add these to the objects and reference them.
-        Program::POST_TYPE => 'Programs',
-        Person::POST_TYPE  => 'Directory',
-        Course::POST_TYPE  => 'Course Catalog',
+        Program::POST_TYPE => Program::get_breadcrumb_label(),
+        Person::POST_TYPE  => Person::get_breadcrumb_label(),
+        Course::POST_TYPE  => Course::get_breadcrumb_label(),
     ];
 
     foreach ($post_types as $post_type => $text) {
@@ -113,7 +112,8 @@ function navxt_replace_archive_trail(object $trail) {
         $trail->breadcrumbs = [];
         $crumb = get_archive_crumb();
 
-        $trail->add(new \bcn_breadcrumb('Filtered Results', null, [], null, null, false));
+        $label = Plugin::get_label('filtered_results');
+        $trail->add(new \bcn_breadcrumb($label, null, [], null, null, false));
         $trail->add(new \bcn_breadcrumb($crumb['text'], null, [], $crumb['url'], null, true));
 
         if ($trail->opt['bhome_display']) {
@@ -140,8 +140,9 @@ function navxt_breadcrumb_linked(bool $linked, array $types, int $id = null): bo
     $post_type = Program::POST_TYPE;
 
     if ($linked) {
-        // If "Link Current Item" turned on, this will be true and
-        // we have nothing to do.
+        /* If "Link Current Item" turned on, this will be true and
+         * we have nothing to do. 
+         */
         return true;
     }
 
@@ -203,8 +204,10 @@ function yoast_replace_trail(array $crumbs): array {
     return [
         $home,
         get_archive_crumb(),
-        // TODO: Make text filterable.
-        ['text' => 'Filtered Results', 'url' => null]
+        [
+            'text' => Plugin::get_label('filtered_results'),
+            'url' => null
+        ]
     ];
 }
 
@@ -264,7 +267,10 @@ function aioseo_replace_trail(array $crumbs): array {
 
     $crumbs[] = aioseo()->breadcrumbs->getPostTypeArchiveCrumb(get_queried_object());
     // TODO: Make label filterable.
-    $crumbs[] = ['label' => 'Filtered Results', 'link' => ''];
+    $crumbs[] = [
+        'label' => Plugin::get_label('filtered_results'),
+        'link' => ''
+    ];
 
     return $crumbs;
 }
@@ -325,7 +331,10 @@ function rankmath_replace_trail(array $crumbs): array {
     }
 
     $new_crumbs[] = array_values(get_archive_crumb());
-    $new_crumbs[] = ['Filtered Results', ''];
+    $new_crumbs[] = [
+        Plugin::get_label('filtered_results'),
+        ''
+    ];
 
     return $new_crumbs;
 }

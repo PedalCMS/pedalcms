@@ -23,18 +23,19 @@ abstract class CustomContentObject {
      * @var string
      */
     public string $name = '';
+
     /**
-     * plural name, display style
+     * plural name, display style.
      * @var string
      */
     public string $plural_name = '';
 
     /**
-     * The labels array which becomes part of args.
+     * The label to use in breadcrumb trails.
      *
-     * @var array
+     * @var string
      */
-    public array $labels = [];
+    public string $breadcrumb_label = '';
 
     /**
      * The args array passed to the appropriate register function.
@@ -95,14 +96,14 @@ abstract class CustomContentObject {
         $this->setup_field_group();
         $this->setup_labels();
         $this->setup_help();
-        $this->name = $this->labels['singular_name'] ?? '';
-        $this->plural_name = $this->labels['name'] ?? '';
+        $this->name = $this->args['labels']['singular_name'] ?? '';
+        $this->plural_name = $this->args['labels']['name'] ?? '';
     }
 
     /**
      * Singleton pattern instance function.
-     * 
-     * Do _NOT_ call this function before the `init` hook. Many text labels are 
+     *
+     * Do _NOT_ call this function before the `init` hook. Many text labels are
      * created on instantiation and that cannot happen before the text domain
      * is loaded.
      *
@@ -253,5 +254,23 @@ abstract class CustomContentObject {
         $instance = static::get_instance();
 
         return $instance->field_groups[0] ?? [];
+    }
+
+    abstract public static function get_content_type(): string;
+
+    public static function get_breadcrumb_label(): string {
+        $instance = static::get_instance();
+
+        $breadcrumb_label = $instance->breadcrumb_label ?
+            $instance->breadcrumb_label :
+            $instance->plural_name;
+
+        return apply_filters(
+            'nvis/content_type_breadcrumb_label',
+            $breadcrumb_label,
+            $instance->system_name,
+            static::get_content_type(),
+            $instance
+        );
     }
 }

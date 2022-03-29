@@ -39,6 +39,8 @@ class Course extends CustomPostType {
     ];
 
     protected function setup_labels(): void {
+        $this->breadcrumb_label = __('Course Catalog','nvis-program-pages');
+        
         $this->args['labels'] = [
             'name'                     => _x( 'Courses', 'post type general name', 'nvis-program-pages' ),
             'singular_name'            => _x( 'Course', 'post type singular name', 'nvis-program-pages' ),

@@ -106,4 +106,8 @@ abstract class CustomTaxonomy extends CustomContentObject {
             'hide_empty'    => false
         ]);
     }
+
+    public static function get_content_type():string {
+        return 'taxonomy';
+    }
 }

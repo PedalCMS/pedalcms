@@ -330,4 +330,8 @@ abstract class CustomPostType extends CustomContentObject {
 
         return $groups;
     }
+
+    public static function get_content_type():string {
+        return 'post_type';
+    }
 }
