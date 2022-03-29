@@ -55,8 +55,6 @@ class Person extends CustomPostType {
     }
 
     protected function setup_labels(): void {
-        $this->document_title_label = __('Directory', 'person breadcrumb label', 'nvis-program-pages');
-
         $this->args['labels'] = [
             'name'                     => _x( 'Personnel', 'post type general name', 'nvis-program-pages' ),
             'singular_name'            => _x( 'Person', 'post type singular name', 'nvis-program-pages' ),
@@ -70,7 +68,7 @@ class Person extends CustomPostType {
             'not_found_in_trash'       => __( 'No personnel found in Trash.', 'nvis-program-pages' ),
             'parent_item_colon'        => __( 'Parent Person:', 'nvis-program-pages' ),
             'all_items'                => __( 'All Personnel', 'nvis-program-pages' ),
-            'archives'                 => __( 'Person Archives', 'nvis-program-pages' ),
+            'archives'                 => __( 'Directory', 'nvis-program-pages' ),
             'attributes'               => __( 'Person Attributes', 'nvis-program-pages' ),
             'insert_into_item'         => __( 'Insert into person post', 'nvis-program-pages' ),
             'uploaded_to_this_item'    => __( 'Uploaded to this person', 'nvis-program-pages' ),

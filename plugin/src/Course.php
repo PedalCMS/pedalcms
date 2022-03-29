@@ -39,8 +39,6 @@ class Course extends CustomPostType {
     ];
 
     protected function setup_labels(): void {
-        $this->document_title_label = __('Course Catalog','nvis-program-pages');
-        
         $this->args['labels'] = [
             'name'                     => _x( 'Courses', 'post type general name', 'nvis-program-pages' ),
             'singular_name'            => _x( 'Course', 'post type singular name', 'nvis-program-pages' ),
@@ -54,7 +52,7 @@ class Course extends CustomPostType {
             'not_found_in_trash'       => __( 'No courses found in Trash.', 'nvis-program-pages' ),
             'parent_item_colon'        => __( 'Parent Course:', 'nvis-program-pages'),
             'all_items'                => __( 'All Courses', 'nvis-program-pages' ),
-            'archives'                 => __( 'Course Archives', 'nvis-program-pages' ),
+            'archives'                 => __( 'Course Catalog', 'nvis-program-pages' ),
             'attributes'               => __( 'Course Attributes', 'nvis-program-pages' ),
             'insert_into_item'         => __( 'Insert into course', 'nvis-program-pages' ),
             'uploaded_to_this_item'    => __( 'Uploaded to this course', 'nvis-program-pages' ),

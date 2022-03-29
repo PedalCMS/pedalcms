@@ -105,6 +105,7 @@ abstract class CustomContentObject {
         $this->setup_help();
         $this->name = $this->args['labels']['singular_name'] ?? '';
         $this->plural_name = $this->args['labels']['name'] ?? '';
+        $this->document_title_label = $this->args['labels']['archives'] ?? '';
     }
 
     /**
