@@ -26,15 +26,15 @@ add_filter('nvis/template_args', __NAMESPACE__ . '\template_arg_options', 10, 2)
 function document_title_parts(array $title): array {
     $post_types = [
         // TODO: Add these to the objects and reference them.
-        Program::POST_TYPE => 'Programs',
-        Person::POST_TYPE  => 'Directory',
-        Course::POST_TYPE  => 'Course Catalog',
+        Program::POST_TYPE => Program::get_document_title_label(),
+        Person::POST_TYPE  => Person::get_document_title_label(),
+        Course::POST_TYPE  => Course::get_document_title_label(),
     ];
 
     foreach ($post_types as $post_type => $replacement) {
         if (nvis_is_filtered_results($post_type)) {
             // TODO: centralize this text so it can be called here and in breadcrumbs.
-            $title['title'] = $replacement . ' Filtered Results';
+            $title['title'] = $replacement . ' ' . Plugin::get_label('filtered_results');
 
             return $title;
         }

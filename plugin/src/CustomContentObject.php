@@ -31,6 +31,13 @@ abstract class CustomContentObject {
     public string $plural_name = '';
 
     /**
+     * The label to use in document title.
+     *
+     * @var string
+     */
+    public string $document_title_label = '';
+
+    /**
      * The label to use in breadcrumb trails.
      *
      * @var string
@@ -258,12 +265,33 @@ abstract class CustomContentObject {
 
     abstract public static function get_content_type(): string;
 
+    public static function get_document_title_label(): string {
+        $instance = static::get_instance();
+
+        $document_title_label = $instance->document_title_label ?
+            $instance->document_title_label :
+            $instance->plural_name;
+
+        return apply_filters(
+            'nvis/content_type_document_title_label',
+            $document_title_label,
+            $instance->system_name,
+            static::get_content_type(),
+            $instance
+        );
+    }
+
+
     public static function get_breadcrumb_label(): string {
         $instance = static::get_instance();
 
-        $breadcrumb_label = $instance->breadcrumb_label ?
-            $instance->breadcrumb_label :
-            $instance->plural_name;
+        if ($instance->breadcrumb_label) {
+            $breadcrumb_label = $instance->breadcrumb_label;
+        } else if ($instance->document_title_label) {
+            $breadcrumb_label = $instance->document_title_label;
+        } else {
+            $breadcrumb_label = $instance->plural_name;
+        }
 
         return apply_filters(
             'nvis/content_type_breadcrumb_label',

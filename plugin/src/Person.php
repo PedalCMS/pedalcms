@@ -55,7 +55,7 @@ class Person extends CustomPostType {
     }
 
     protected function setup_labels(): void {
-        $this->breadcrumb_label = __('Directory', 'person breadcrumb label', 'nvis-program-pages');
+        $this->document_title_label = __('Directory', 'person breadcrumb label', 'nvis-program-pages');
 
         $this->args['labels'] = [
             'name'                     => _x( 'Personnel', 'post type general name', 'nvis-program-pages' ),
