@@ -527,7 +527,7 @@ class Plugin {
      * @return mixed The value of the setting.
      */
     public static function get_option(string $option) {
-        $value = get_field('nvis_' . $option, 'option');
+        $value = get_option('options_nvis_' . $option);
 
         /**
          * Filters the value of an option. The last part is the name of the option.
