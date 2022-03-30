@@ -8,9 +8,8 @@
 
 namespace InvisibleUs\Programs;
 
-add_action('plugins_loaded', __NAMESPACE__ . '\maybe_load_acf');
-add_action('acf/init', __NAMESPACE__ . '\acf_init');
 add_action('plugins_loaded', __NAMESPACE__ . '\maybe_load_acf', 0);
+add_action('acf/init', __NAMESPACE__ . '\acf_init');
 add_filter('acf/update_value/type=relationship', __NAMESPACE__ . '\maybe_update_bidirectional_relationship', 10, 3);
 
 
@@ -56,9 +55,8 @@ function acf_settings_url(string $url) {
 function acf_init(): void {
     acf_add_options_page(Plugin::$options_page);
 
-    acf_add_local_field_group(Plugin::get_field_group());
-
     $field_groups = [
+        Plugin::get_field_group(),
         Program::get_field_group(),
         ProgramType::get_field_group(),
         Course::get_field_group(),
