@@ -53,7 +53,6 @@ function get_archive_crumb(): array {
     }
 
     if ($found) {
-        // TODO: Make this filterable.
         return [
             'text' => nvis_get_post_type_label($post_type, 'breadcrumb_label', 'name'),
             'url'  => get_post_type_archive_link($post_type)
@@ -75,6 +74,22 @@ function get_program_subpage_crumb(): array {
         'text' => $subpage->breadcrumb_label,
         'url'  => nvis_prog_subpage_link($subpage->slug, false)
     ];
+}
+
+/**
+ * Gets the breadcrumb label that is indicates that post type archive is filtered. 
+ *
+ * @return string The breadcrumb label.
+ */
+function get_filtered_results_breadcrumb_label(): string {
+    /**
+     * Filters the breadcrumb label that is indicates that post type archive is filtered. 
+     * 
+     * @since 0.1
+     * 
+     * @param $label The breadcrumb label. 
+     */
+     return apply_filters('nvis/filtered_results_breadcrumb_label', Plugin::get_label('filtered_results'));
 }
 
 /**
@@ -112,7 +127,7 @@ function navxt_replace_archive_trail(object $trail) {
         $trail->breadcrumbs = [];
         $crumb = get_archive_crumb();
 
-        $label = Plugin::get_label('filtered_results');
+        $label = get_filtered_results_breadcrumb_label();
         $trail->add(new \bcn_breadcrumb($label, null, [], null, null, false));
         $trail->add(new \bcn_breadcrumb($crumb['text'], null, [], $crumb['url'], null, true));
 
@@ -205,7 +220,7 @@ function yoast_replace_trail(array $crumbs): array {
         $home,
         get_archive_crumb(),
         [
-            'text' => Plugin::get_label('filtered_results'),
+            'text' => get_filtered_results_breadcrumb_label(),
             'url' => null
         ]
     ];
@@ -266,9 +281,9 @@ function aioseo_replace_trail(array $crumbs): array {
     }
 
     $crumbs[] = aioseo()->breadcrumbs->getPostTypeArchiveCrumb(get_queried_object());
-    // TODO: Make label filterable.
+    
     $crumbs[] = [
-        'label' => Plugin::get_label('filtered_results'),
+        'label' => get_filtered_results_breadcrumb_label(),
         'link' => ''
     ];
 
@@ -332,7 +347,7 @@ function rankmath_replace_trail(array $crumbs): array {
 
     $new_crumbs[] = array_values(get_archive_crumb());
     $new_crumbs[] = [
-        Plugin::get_label('filtered_results'),
+        get_filtered_results_breadcrumb_label(),
         ''
     ];
 
