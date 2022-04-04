@@ -10,19 +10,14 @@
 defined('ABSPATH') || exit;
 
 $post_type = get_post_type();
-$post_type = get_post_type_object($post_type);
 
-if ($post_type) {
-    $label_single_post = strtolower($post_type->labels->singular_name);
-    $label_posts = strtolower($post_type->labels->name);
-} else {
-    $label_single_post = nvis_prog_get_label('single_post');
-    $label_posts = nvis_prog_get_label('posts');
+if (!$post_type) {
+    $post_type = 'post';
 }
 
 $defaults = [
-    'label_single_post'      => $label_single_post,
-    'label_posts'            => $label_posts,
+    'label_single_post'      => nvis_get_post_type_label($post_type,'singular_name'),
+    'label_posts'            => nvis_get_post_type_label($post_type,'name'),
     'label_filtered_results' => nvis_prog_get_label('filtered_results'),
     'label_showing'          => nvis_prog_get_label('showing'),
     'label_showing_of'       => nvis_prog_get_label('showing_of'),

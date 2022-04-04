@@ -39,12 +39,12 @@ function get_archive_crumb(): array {
     $found = false;
 
     $post_types = [
-        Program::POST_TYPE => Program::get_breadcrumb_label(),
-        Person::POST_TYPE  => Person::get_breadcrumb_label(),
-        Course::POST_TYPE  => Course::get_breadcrumb_label(),
+        Program::POST_TYPE,
+        Person::POST_TYPE,
+        Course::POST_TYPE
     ];
 
-    foreach ($post_types as $post_type => $text) {
+    foreach ($post_types as $post_type) {
         if (is_post_type_archive($post_type)) {
             $found = true;
 
@@ -55,7 +55,7 @@ function get_archive_crumb(): array {
     if ($found) {
         // TODO: Make this filterable.
         return [
-            'text' => $text,
+            'text' => nvis_get_post_type_label($post_type, 'breadcrumb_label', 'name'),
             'url'  => get_post_type_archive_link($post_type)
         ];
     }
