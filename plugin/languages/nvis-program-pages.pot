@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-03-29T20:07:28+00:00\n"
+"POT-Creation-Date: 2022-04-04T19:53:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: nvis-program-pages\n"
@@ -127,165 +127,160 @@ msgctxt "navigation link block description"
 msgid "A link to a college."
 msgstr ""
 
-#: src/Course.php:42
+#: src/Course.php:43
+msgctxt "post type general name"
 msgid "Course Catalog"
 msgstr ""
 
-#: src/Course.php:45
-msgctxt "post type general name"
-msgid "Courses"
-msgstr ""
-
-#: src/Course.php:46
+#: src/Course.php:44
 msgctxt "post type singular name"
 msgid "Course"
 msgstr ""
 
-#: src/Course.php:47
+#: src/Course.php:45
 msgid "Add New Course"
 msgstr ""
 
-#: src/Course.php:48
+#: src/Course.php:46
 msgid "Edit Course"
 msgstr ""
 
-#: src/Course.php:49
+#: src/Course.php:47
 msgid "New Course"
 msgstr ""
 
-#: src/Course.php:50
-#: src/Plugin.php:404
+#: src/Course.php:48
 msgid "View Course"
 msgstr ""
 
-#: src/Course.php:51
+#: src/Course.php:49
 msgid "View Courses"
 msgstr ""
 
-#: src/Course.php:52
+#: src/Course.php:50
 msgid "Search Courses"
 msgstr ""
 
-#: src/Course.php:53
+#: src/Course.php:51
 msgid "No courses found."
 msgstr ""
 
-#: src/Course.php:54
+#: src/Course.php:52
 msgid "No courses found in Trash."
 msgstr ""
 
-#: src/Course.php:55
+#: src/Course.php:53
 msgid "Parent Course:"
 msgstr ""
 
-#: src/Course.php:56
+#: src/Course.php:54
 msgid "All Courses"
 msgstr ""
 
-#: src/Course.php:57
-msgid "Course Archives"
+#: src/Course.php:55
+msgid "Course Catalog"
 msgstr ""
 
-#: src/Course.php:58
+#: src/Course.php:56
 msgid "Course Attributes"
 msgstr ""
 
-#: src/Course.php:59
+#: src/Course.php:57
 msgid "Insert into course"
 msgstr ""
 
-#: src/Course.php:60
+#: src/Course.php:58
 msgid "Uploaded to this course"
 msgstr ""
 
-#: src/Course.php:61
+#: src/Course.php:59
 msgid "Filter courses list"
 msgstr ""
 
-#: src/Course.php:62
+#: src/Course.php:60
 msgid "Courses list navigation"
 msgstr ""
 
-#: src/Course.php:63
+#: src/Course.php:61
 msgid "Courses list"
 msgstr ""
 
-#: src/Course.php:64
+#: src/Course.php:62
 msgid "Course published."
 msgstr ""
 
-#: src/Course.php:65
+#: src/Course.php:63
 msgid "Course published privately."
 msgstr ""
 
-#: src/Course.php:66
+#: src/Course.php:64
 msgid "Course reverted to draft."
 msgstr ""
 
-#: src/Course.php:67
+#: src/Course.php:65
 msgid "Course scheduled."
 msgstr ""
 
-#: src/Course.php:68
+#: src/Course.php:66
 msgid "Course updated."
 msgstr ""
 
-#: src/Course.php:69
+#: src/Course.php:67
 msgctxt "navigation link block title"
 msgid "Course Link"
 msgstr ""
 
-#: src/Course.php:70
+#: src/Course.php:68
 msgctxt "navigation link block description"
 msgid "A link to a course."
 msgstr ""
 
-#: src/Course.php:77
+#: src/Course.php:75
 msgid "Course Info"
 msgstr ""
 
-#: src/Course.php:97
+#: src/Course.php:95
 msgid "Course Description"
 msgstr ""
 
-#: src/Course.php:100
+#: src/Course.php:98
 msgid "The short description of the course. No more than a paragraph."
 msgstr ""
 
-#: src/Course.php:104
+#: src/Course.php:102
 msgid "Course Code"
 msgstr ""
 
-#: src/Course.php:107
+#: src/Course.php:105
 msgid "The short identifier for a course. Usually some combination of subject code and a number."
 msgstr ""
 
-#: src/Course.php:113
+#: src/Course.php:111
 msgid "Credit Hours"
 msgstr ""
 
-#: src/Course.php:116
+#: src/Course.php:114
 msgid "Number of credit hours earned for this course. Sometimes also referred to as units."
 msgstr ""
 
-#: src/Course.php:122
+#: src/Course.php:120
 msgid "Course Registration Key"
 msgstr ""
 
-#: src/Course.php:125
+#: src/Course.php:123
 msgid "They key, or ID, that you can use to search course registration systems for this course via URL parameter."
 msgstr ""
 
-#: src/Course.php:131
+#: src/Course.php:129
 msgid "Registration Search URL"
 msgstr ""
 
-#: src/Course.php:134
+#: src/Course.php:132
 msgid "Enter a URL for the \"Search Sections\" link. Overrides global setting."
 msgstr ""
 
-#: src/Course.php:139
-#: src/Plugin.php:388
+#: src/Course.php:137
+#: src/Plugin.php:377
 msgid "Instructors"
 msgstr ""
 
@@ -682,174 +677,177 @@ msgstr ""
 msgid "Instruction Mode list"
 msgstr ""
 
-#. translators: Tab heading when selecting from the most used terms.
-#: src/InstructionMode.php:58
-msgctxt "instruction modes"
-msgid "Most Used"
-msgstr ""
-
-#: src/InstructionMode.php:59
+#: src/InstructionMode.php:57
 msgid "&larr; Go to Instruction Modes"
 msgstr ""
 
-#: src/InstructionMode.php:60
+#: src/InstructionMode.php:58
 msgctxt "navigation link block title"
 msgid "Instruction Mode Link"
 msgstr ""
 
-#: src/InstructionMode.php:61
+#: src/InstructionMode.php:59
 msgctxt "navigation link block description"
 msgid "A link to a instruction mode."
 msgstr ""
 
-#: src/Person.php:61
-msgctxt "post type general name"
-msgid "Personnel"
+#: src/InstructionMode.php:60
+msgctxt "dropdown list none selected"
+msgid "Any Mode"
 msgstr ""
 
-#: src/Person.php:62
+#: src/Person.php:51
+msgid "Enter the Full Name"
+msgstr ""
+
+#: src/Person.php:54
+msgctxt "post type general name"
+msgid "Directory"
+msgstr ""
+
+#: src/Person.php:55
 msgctxt "post type singular name"
 msgid "Person"
 msgstr ""
 
-#: src/Person.php:63
+#: src/Person.php:56
 msgid "Add New Person"
 msgstr ""
 
-#: src/Person.php:64
+#: src/Person.php:57
 msgid "Edit Person"
 msgstr ""
 
-#: src/Person.php:65
+#: src/Person.php:58
 msgid "New Person"
 msgstr ""
 
-#: src/Person.php:66
+#: src/Person.php:59
 msgid "View Person"
 msgstr ""
 
-#: src/Person.php:67
+#: src/Person.php:60
 msgid "View Personnel"
 msgstr ""
 
-#: src/Person.php:68
+#: src/Person.php:61
 msgid "Search Personnel"
 msgstr ""
 
-#: src/Person.php:69
+#: src/Person.php:62
 msgid "No personnel found."
 msgstr ""
 
-#: src/Person.php:70
+#: src/Person.php:63
 msgid "No personnel found in Trash."
 msgstr ""
 
-#: src/Person.php:71
+#: src/Person.php:64
 msgid "Parent Person:"
 msgstr ""
 
-#: src/Person.php:72
+#: src/Person.php:65
 msgid "All Personnel"
 msgstr ""
 
-#: src/Person.php:73
-msgid "Person Archives"
+#: src/Person.php:66
+msgid "Directory"
 msgstr ""
 
-#: src/Person.php:74
+#: src/Person.php:67
 msgid "Person Attributes"
 msgstr ""
 
-#: src/Person.php:75
+#: src/Person.php:68
 msgid "Insert into person post"
 msgstr ""
 
-#: src/Person.php:76
+#: src/Person.php:69
 msgid "Uploaded to this person"
 msgstr ""
 
-#: src/Person.php:77
+#: src/Person.php:70
 msgid "Filter personnel list"
 msgstr ""
 
-#: src/Person.php:78
+#: src/Person.php:71
 msgid "Personnel list navigation"
 msgstr ""
 
-#: src/Person.php:79
+#: src/Person.php:72
 msgid "Personnel list"
 msgstr ""
 
-#: src/Person.php:80
+#: src/Person.php:73
 msgid "Person published."
 msgstr ""
 
-#: src/Person.php:81
+#: src/Person.php:74
 msgid "Person published privately."
 msgstr ""
 
-#: src/Person.php:82
+#: src/Person.php:75
 msgid "Person reverted to draft."
 msgstr ""
 
-#: src/Person.php:83
+#: src/Person.php:76
 msgid "Person scheduled."
 msgstr ""
 
-#: src/Person.php:84
+#: src/Person.php:77
 msgid "Person updated."
 msgstr ""
 
-#: src/Person.php:85
+#: src/Person.php:78
 msgctxt "navigation link block title"
 msgid "Person Link"
 msgstr ""
 
-#: src/Person.php:86
+#: src/Person.php:79
 msgctxt "navigation link block description"
 msgid "A link to a person."
 msgstr ""
 
-#: src/Person.php:96
+#: src/Person.php:89
 msgid "Add some bio text …"
 msgstr ""
 
-#: src/Person.php:110
-#: src/Person.php:170
+#: src/Person.php:103
+#: src/Person.php:163
 msgid "Job Title"
 msgstr ""
 
-#: src/Person.php:111
+#: src/Person.php:104
 msgid "The current position this team member holds"
 msgstr ""
 
-#: src/Person.php:119
-#: src/Person.php:177
+#: src/Person.php:112
+#: src/Person.php:170
 msgid "Office Phone"
 msgstr ""
 
-#: src/Person.php:128
-#: src/Person.php:185
+#: src/Person.php:121
+#: src/Person.php:178
 msgid "Email Address"
 msgstr ""
 
-#: src/Person.php:137
-#: src/Person.php:192
-#: src/Plugin.php:367
+#: src/Person.php:130
+#: src/Person.php:185
+#: src/Plugin.php:358
 msgid "Office"
 msgstr ""
 
-#: src/Person.php:151
+#: src/Person.php:144
 msgid "Contact Info"
 msgstr ""
 
-#: src/Person.php:196
+#: src/Person.php:189
 msgctxt "office field placeholder"
 msgid "Main Building, 448C"
 msgstr ""
 
-#: src/Person.php:200
-#: src/Plugin.php:389
+#: src/Person.php:193
+#: src/Plugin.php:378
 msgid "Courses Taught"
 msgstr ""
 
@@ -949,6 +947,11 @@ msgctxt "navigation link block description"
 msgid "A link to a personnel category."
 msgstr ""
 
+#: src/PersonCategory.php:58
+msgctxt "dropdown list none selected"
+msgid "Any Category"
+msgstr ""
+
 #: src/Plugin.php:140
 #: src/Plugin.php:333
 msgid "Program Pages Settings"
@@ -1022,7 +1025,7 @@ msgid "Program Contact"
 msgstr ""
 
 #: src/Plugin.php:221
-#: src/Plugin.php:392
+#: src/Plugin.php:381
 #: src/Program.php:231
 #: src/ProgramType.php:64
 #: src/ProgramType.php:84
@@ -1101,208 +1104,156 @@ msgid "More Details"
 msgstr ""
 
 #: src/Plugin.php:351
-msgid "No posts found."
-msgstr ""
-
-#: src/Plugin.php:352
-msgid "No courses were found."
-msgstr ""
-
-#: src/Plugin.php:353
 msgid "No one was found."
 msgstr ""
 
-#: src/Plugin.php:354
+#: src/Plugin.php:352
 msgid "No programs were found."
 msgstr ""
 
-#: src/Plugin.php:355
-#: src/Program.php:128
-msgid "College"
-msgstr ""
-
-#: src/Plugin.php:356
-#: src/Program.php:160
-msgid "Instruction Mode"
-msgstr ""
-
-#: src/Plugin.php:357
+#: src/Plugin.php:353
 #: src/Program.php:175
 msgid "Prerequisites"
 msgstr ""
 
-#: src/Plugin.php:358
-#: src/Program.php:718
-msgid "Category"
-msgstr ""
-
-#: src/Plugin.php:359
-#: src/Program.php:144
-msgid "Program Type"
-msgstr ""
-
-#: src/Plugin.php:360
-msgid "Term"
-msgstr ""
-
-#: src/Plugin.php:361
-msgid "Subject"
-msgstr ""
-
-#: src/Plugin.php:362
-msgid "Department"
-msgstr ""
-
-#: src/Plugin.php:363
+#: src/Plugin.php:354
 msgid "Yes"
 msgstr ""
 
-#: src/Plugin.php:364
+#: src/Plugin.php:355
 msgid "No"
 msgstr ""
 
-#: src/Plugin.php:365
+#: src/Plugin.php:356
 msgctxt "noun"
 msgid "Phone"
 msgstr ""
 
-#: src/Plugin.php:366
+#: src/Plugin.php:357
 msgctxt "noun"
 msgid "Email"
 msgstr ""
 
-#: src/Plugin.php:368
-msgid "post"
-msgstr ""
-
-#: src/Plugin.php:369
-msgid "posts"
-msgstr ""
-
-#: src/Plugin.php:370
+#: src/Plugin.php:359
 msgid "Filter"
 msgstr ""
 
-#: src/Plugin.php:371
+#: src/Plugin.php:360
 msgid "Show"
 msgstr ""
 
-#: src/Plugin.php:372
+#: src/Plugin.php:361
 msgid "Hide"
 msgstr ""
 
-#: src/Plugin.php:373
+#: src/Plugin.php:362
 msgid "More Filters"
 msgstr ""
 
-#: src/Plugin.php:374
+#: src/Plugin.php:363
 msgid "Search"
 msgstr ""
 
-#: src/Plugin.php:375
+#: src/Plugin.php:364
 msgid "Reset Filters"
 msgstr ""
 
-#: src/Plugin.php:376
+#: src/Plugin.php:365
 msgid "Missing data to render filters."
 msgstr ""
 
-#. translators: The argument is the name of the filter. It will be translated separately.
-#: src/Plugin.php:378
+#. translators: The placeholder is the name of the filter. It will be translated separately.
+#: src/Plugin.php:367
 msgid "Missing data to render %s filter"
 msgstr ""
 
-#: src/Plugin.php:379
+#: src/Plugin.php:368
 msgid "Filtered Results"
 msgstr ""
 
-#: src/Plugin.php:380
+#: src/Plugin.php:369
 msgid "Showing"
 msgstr ""
 
-#. translators: Number of results (e.g. 'Showing 1-10 of 120 posts'). Note: the last argument will be translated separately.
-#: src/Plugin.php:382
+#. translators: Number of results (e.g. 'Showing 1-10 of 120 posts'). Note: the last placeholder is the name of the post_type.
+#: src/Plugin.php:371
 msgid "Showing %1$s–%2$s of %3$s %4$s."
 msgstr ""
 
-#: src/Plugin.php:383
+#: src/Plugin.php:372
 msgid "Keyword"
 msgstr ""
 
-#: src/Plugin.php:384
+#: src/Plugin.php:373
 msgid "Any "
 msgstr ""
 
-#: src/Plugin.php:385
+#: src/Plugin.php:374
 msgid "credit"
 msgstr ""
 
-#: src/Plugin.php:386
+#: src/Plugin.php:375
 msgid "credits"
 msgstr ""
 
-#: src/Plugin.php:387
+#: src/Plugin.php:376
 msgid "Offered in"
 msgstr ""
 
-#: src/Plugin.php:390
+#: src/Plugin.php:379
 msgid "Program Subnav"
 msgstr ""
 
-#: src/Plugin.php:391
+#: src/Plugin.php:380
 msgid "About this Program"
 msgstr ""
 
-#: src/Plugin.php:393
+#: src/Plugin.php:382
 msgid "Program Contact"
 msgstr ""
 
-#: src/Plugin.php:394
+#: src/Plugin.php:383
 msgid "Contact"
 msgstr ""
 
-#: src/Plugin.php:395
-msgid "Course"
-msgstr ""
-
-#: src/Plugin.php:396
+#: src/Plugin.php:384
 msgid "Featured"
 msgstr ""
 
-#: src/Plugin.php:397
+#: src/Plugin.php:385
 msgid "Read More"
 msgstr ""
 
-#: src/Plugin.php:398
+#: src/Plugin.php:386
 msgid "Show All Posts"
 msgstr ""
 
-#: src/Plugin.php:399
+#: src/Plugin.php:387
 msgid "Program Details"
 msgstr ""
 
-#: src/Plugin.php:400
+#: src/Plugin.php:388
 msgid "Apply Now"
 msgstr ""
 
-#: src/Plugin.php:401
+#: src/Plugin.php:389
 msgid "Request Info"
 msgstr ""
 
-#: src/Plugin.php:402
+#: src/Plugin.php:390
 msgid "Estimated Cost"
 msgstr ""
 
-#: src/Plugin.php:403
+#: src/Plugin.php:391
 msgid "Register"
 msgstr ""
 
-#: src/Plugin.php:405
+#: src/Plugin.php:392
 msgid "Back to Top"
 msgstr ""
 
 #. translators: the argument is the key of the label
-#: src/Plugin.php:510
+#: src/Plugin.php:497
 msgid "Label \"%s\" not found"
 msgstr ""
 
@@ -1357,7 +1308,7 @@ msgid "All Programs"
 msgstr ""
 
 #: src/Program.php:74
-msgid "Program Archives"
+msgid "Programs"
 msgstr ""
 
 #: src/Program.php:75
@@ -1425,6 +1376,18 @@ msgstr ""
 
 #: src/Program.php:121
 msgid "Program GUID"
+msgstr ""
+
+#: src/Program.php:128
+msgid "College"
+msgstr ""
+
+#: src/Program.php:144
+msgid "Program Type"
+msgstr ""
+
+#: src/Program.php:160
+msgid "Instruction Mode"
 msgstr ""
 
 #: src/Program.php:185
@@ -1672,6 +1635,10 @@ msgstr ""
 
 #: src/Program.php:696
 msgid "Answer"
+msgstr ""
+
+#: src/Program.php:718
+msgid "Category"
 msgstr ""
 
 #: src/Program.php:751
