@@ -19,32 +19,6 @@ abstract class CustomContentObject {
     private static array $instances = [];
 
     /**
-     * singular name, display style.
-     * @var string
-     */
-    public string $name = '';
-
-    /**
-     * plural name, display style.
-     * @var string
-     */
-    public string $plural_name = '';
-
-    /**
-     * The label to use in document title.
-     *
-     * @var string
-     */
-    public string $document_title_label = '';
-
-    /**
-     * The label to use in breadcrumb trails.
-     *
-     * @var string
-     */
-    public string $breadcrumb_label = '';
-
-    /**
      * The args array passed to the appropriate register function.
      *
      * @var array
@@ -103,9 +77,6 @@ abstract class CustomContentObject {
         $this->setup_field_group();
         $this->setup_labels();
         $this->setup_help();
-        $this->name = $this->args['labels']['singular_name'] ?? '';
-        $this->plural_name = $this->args['labels']['name'] ?? '';
-        $this->document_title_label = $this->args['labels']['archives'] ?? '';
     }
 
     /**
@@ -136,7 +107,7 @@ abstract class CustomContentObject {
     }
 
     /**
-     * Called by the final class to create the appropriate labels for this content type.
+     * Adds the appropriate labels for this content type to the args.
      *
      * @return void
      */
@@ -265,41 +236,4 @@ abstract class CustomContentObject {
     }
 
     abstract public static function get_content_type(): string;
-
-    public static function get_document_title_label(): string {
-        $instance = static::get_instance();
-
-        $document_title_label = $instance->document_title_label ?
-            $instance->document_title_label :
-            $instance->plural_name;
-
-        return apply_filters(
-            'nvis/content_type_document_title_label',
-            $document_title_label,
-            $instance->system_name,
-            static::get_content_type(),
-            $instance
-        );
-    }
-
-
-    public static function get_breadcrumb_label(): string {
-        $instance = static::get_instance();
-
-        if ($instance->breadcrumb_label) {
-            $breadcrumb_label = $instance->breadcrumb_label;
-        } else if ($instance->document_title_label) {
-            $breadcrumb_label = $instance->document_title_label;
-        } else {
-            $breadcrumb_label = $instance->plural_name;
-        }
-
-        return apply_filters(
-            'nvis/content_type_breadcrumb_label',
-            $breadcrumb_label,
-            $instance->system_name,
-            static::get_content_type(),
-            $instance
-        );
-    }
 }
