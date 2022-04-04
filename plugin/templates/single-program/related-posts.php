@@ -17,7 +17,7 @@ $defaults = [
     'news_tag'             => get_field('news_tag', $post),
     'show_all_posts_link'  => get_field('news_show_all_link', $post),
     'label_all_posts'      => nvis_prog_get_label('show_all_posts'),
-    'label_no_posts_found' => nvis_prog_get_label('no_posts_found'),
+    'label_no_posts_found' => nvis_get_post_type_label('post', 'not_found'),
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

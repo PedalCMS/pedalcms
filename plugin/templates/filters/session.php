@@ -12,7 +12,6 @@ defined('ABSPATH') || exit;
 $defaults = [
     'taxonomy'  => 'nvis_session',
     'query_var' => 'sess',
-    'label'     => nvis_prog_get_label('session')
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

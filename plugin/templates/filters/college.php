@@ -11,8 +11,7 @@ defined('ABSPATH') || exit;
 
 $defaults = [
     'taxonomy'  => 'nvis_program_college',
-    'query_var' => 'college',
-    'label'     => nvis_prog_get_label('college')
+    'query_var' => 'college'
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

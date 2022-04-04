@@ -12,8 +12,7 @@ defined('ABSPATH') || exit;
 
 $defaults = [
     'taxonomy'    => 'nvis_person_cat',
-    'query_var'   => 'person_cat',
-    'label'       => nvis_prog_get_label('person_category'),
+    'query_var'   => 'person_cat'
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

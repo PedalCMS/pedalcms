@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
 
 $defaults = [
     'courses'                => null,
-    'label_no_courses_found' => nvis_prog_get_label('no_courses_found')
+    'label_no_courses_found' => nvis_get_post_type_label('nvis_course', 'not_found')
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

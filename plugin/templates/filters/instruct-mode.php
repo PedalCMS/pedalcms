@@ -12,8 +12,6 @@ defined('ABSPATH') || exit;
 $defaults = [
     'taxonomy'    => 'nvis_instruct_mode',
     'query_var'   => 'inst_mode',
-    'label'       => nvis_prog_get_label('instruction_mode'),
-    'short_label' => 'Mode'
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

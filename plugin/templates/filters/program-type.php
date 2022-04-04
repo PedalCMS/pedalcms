@@ -12,7 +12,6 @@ defined('ABSPATH') || exit;
 $defaults = [
     'taxonomy'  => 'nvis_program_type',
     'query_var' => 'prog_type',
-    'label'     => nvis_prog_get_label('program_type')
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

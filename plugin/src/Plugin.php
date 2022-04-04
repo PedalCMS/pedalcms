@@ -348,25 +348,14 @@ class Plugin {
     private static function setup_labels() {
         self::$labels = [
             'more_details'           => __('More Details', 'nvis-program-pages'),
-            'no_posts_found'         => __('No posts found.', 'nvis-program-pages'),
-            'no_courses_found'       => __('No courses were found.', 'nvis-program-pages'),
             'no_one_found'           => __('No one was found.', 'nvis-program-pages'),
             'no_programs_found'      => __('No programs were found.', 'nvis-program-pages'),
-            'college'                => __('College', 'nvis-program-pages'),
-            'instruction_mode'       => __('Instruction Mode', 'nvis-program-pages'),
             'prerequisites'          => __('Prerequisites', 'nvis-program-pages'),
-            'person_category'        => __('Category', 'nvis-program-pages'),
-            'program_type'           => __('Program Type', 'nvis-program-pages'),
-            'session'                => __('Term', 'nvis-program-pages'),
-            'subject'                => __('Subject', 'nvis-program-pages'),
-            'department'             => __('Department', 'nvis-program-pages'),
             'yes'                    => __('Yes', 'nvis-program-pages'),
             'no'                     => __('No', 'nvis-program-pages'),
             'phone'                  => _x('Phone', 'noun', 'nvis-program-pages'),
             'email'                  => _x('Email', 'noun', 'nvis-program-pages'),
             'office'                 => __('Office', 'nvis-program-pages'),
-            'single_post'            => __('post', 'nvis-program-pages'),
-            'posts'                  => __('posts', 'nvis-program-pages'),
             'filter'                 => __('Filter', 'nvis-program-pages'),
             'show'                   => __('Show', 'nvis-program-pages'),
             'hide'                   => __('Hide', 'nvis-program-pages'),
@@ -374,11 +363,11 @@ class Plugin {
             'apply_filters'          => __('Search', 'nvis-program-pages'),
             'reset_filters'          => __('Reset Filters', 'nvis-program-pages'),
             'missing_filters_data'   => __('Missing data to render filters.', 'nvis-program-pages'),
-            /* translators: The argument is the name of the filter. It will be translated separately. */
+            /* translators: The placeholder is the name of the filter. It will be translated separately. */
             'missing_filter_data'    => __('Missing data to render %s filter', 'nvis-program-pages'),
             'filtered_results'       => __('Filtered Results', 'nvis-program-pages'),
             'showing'                => __('Showing', 'nvis-program-pages'),
-            /* translators: Number of results (e.g. 'Showing 1-10 of 120 posts'). Note: the last argument will be translated separately.  */
+            /* translators: Number of results (e.g. 'Showing 1-10 of 120 posts'). Note: the last placeholder is the name of the post_type.  */
             'showing_of'             => __('Showing %1$s–%2$s of %3$s %4$s.', 'nvis-program-pages'),
             'keyword'                => __('Keyword', 'nvis-program-pages'),
             'none_selected_prefix'   => __('Any ', 'nvis-program-pages'),
@@ -392,7 +381,6 @@ class Plugin {
             'application_deadlines'  => __('Application Deadlines', 'nvis-program-pages'),
             'program_contact'        => __('Program Contact', 'nvis-program-pages'),
             'contact'                => __('Contact', 'nvis-program-pages'),
-            'course'                 => __('Course', 'nvis-program-pages'),
             'featured'               => __('Featured', 'nvis-program-pages'),
             'read_more'              => __('Read More', 'nvis-program-pages'),
             'show_all_posts'         => __('Show All Posts', 'nvis-program-pages'),
@@ -401,7 +389,6 @@ class Plugin {
             'request_info'           => __('Request Info', 'nvis-program-pages'),
             'estimated_cost'         => __('Estimated Cost', 'nvis-program-pages'),
             'register'               => __('Register', 'nvis-program-pages'),
-            'course_info'            => __('View Course', 'nvis-program-pages'),
             'back_to_top'            => __('Back to Top', 'nvis-program-pages'),
         ];
     }

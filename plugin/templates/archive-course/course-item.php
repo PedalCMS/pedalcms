@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 $defaults = [
     'label_more_details' => nvis_prog_get_label('more_details'),
-    'label_permalink'    => nvis_prog_get_label('course_info'),
+    'label_permalink'    => nvis_get_post_type_label('nvis_course', 'view_item'),
     'label_show'         => nvis_prog_get_label('show'),
     'label_hide'         => nvis_prog_get_label('hide'),
 ];
