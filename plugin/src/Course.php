@@ -154,4 +154,46 @@ class Course extends CustomPostType {
 
         $this->field_groups[] = $field_group;
     }
+
+    /**
+     * Returns the full URL for a given course action.
+     *
+     * Will check for a local course override before attempting to build it from
+     * the plugin wide pattern setting.
+     * 
+     * @since 0.1.0
+     *
+     * @param string $action The name of the action.
+     * @param mixed $program The ID of the course or a WP_Post object. Defaults to the current course.
+     * @return string The URL of the course action.
+     */
+    public static function get_action_link(string $action, $course = null): string {
+        $course = get_post($course);
+
+        $url = get_field('url_' . $action, $course);
+
+        if ($url) {
+            return $url;
+        }
+
+        $url = \InvisibleUs\Programs\Plugin::get_option('course_url_' . $action);
+
+        if ($url) {
+            $url = str_replace(
+                [
+                    '{$course_cat_key}',
+                    '{$course_reg_key}'
+                ],
+                [
+                    get_field('course_catalog_key', $course),
+                    get_field('course_registration_key', $course)
+                ],
+                $url
+            );
+
+            return $url;
+        }
+
+        return '';
+    }
 }

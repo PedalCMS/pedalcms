@@ -265,29 +265,7 @@ if (!function_exists('nvis_prog_get_action_link')) :
  * @return string The URL of the program action.
  */
 function nvis_prog_get_action_link(string $action, $program = null): string {
-    // TODO: Move this to Program class?
-    $program = get_post($program);
-
-    // Check for a local override.
-    $url = get_field('url_' . $action, $program);
-
-    if ($url) {
-        return $url;
-    }
-
-    $url = \InvisibleUs\Programs\Plugin::get_option('url_' . $action);
-
-    if ($url) {
-        $url = str_replace(
-            ['{$program_guid}', '{$program_slug}'],
-            [get_field('program_guid', $program), $program->post_name],
-            $url
-        );
-
-        return $url;
-    }
-
-    return '';
+    return \InvisibleUs\Programs\Program::get_action_link($action, $program);
 }
 
 endif;
@@ -307,34 +285,7 @@ if (!function_exists('nvis_prog_get_course_action_link')) :
  * @return string The URL of the course action.
  */
 function nvis_prog_get_course_action_link(string $action, $course = null): string {
-    // TODO: Move this to Course class?
-    $course = get_post($course);
-
-    $url = get_field('url_' . $action, $course);
-
-    if ($url) {
-        return $url;
-    }
-
-    $url = \InvisibleUs\Programs\Plugin::get_option('course_url_' . $action);
-
-    if ($url) {
-        $url = str_replace(
-            [
-                '{$course_cat_key}',
-                '{$course_reg_key}'
-            ],
-            [
-                get_field('course_catalog_key', $course),
-                get_field('course_registration_key', $course)
-            ],
-            $url
-        );
-
-        return $url;
-    }
-
-    return '';
+    return \InvisibleUs\Programs\Course::get_action_link($action, $course);
 }
 
 endif;

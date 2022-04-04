@@ -905,6 +905,43 @@ class Program extends CustomPostType {
     }
 
     /**
+     * Returns the full URL for a given program action.
+     *
+     * Will check for a local program override before attempting to build it from
+     * the plugin wide pattern setting.
+     * 
+     * @since 0.1.0
+     *
+     * @param string $action The name of the action.
+     * @param mixed $program The ID of the program or a WP_Post object. Defaults to the current program.
+     * @return string The URL of the program action.
+     */
+    public static function get_action_link(string $action, $program = null): string {
+        $program = get_post($program);
+
+        // Check for a local override.
+        $url = get_field('url_' . $action, $program);
+
+        if ($url) {
+            return $url;
+        }
+
+        $url = \InvisibleUs\Programs\Plugin::get_option('url_' . $action);
+
+        if ($url) {
+            $url = str_replace(
+                ['{$program_guid}', '{$program_slug}'],
+                [get_field('program_guid', $program), $program->post_name],
+                $url
+            );
+
+            return $url;
+        }
+
+        return '';
+    }
+
+    /**
      * Gets a list of application deadlines based on override hierarchy.
      *
      * Hierarchy is Program, College, Program Type, Global.
