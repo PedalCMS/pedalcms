@@ -55,6 +55,7 @@ class PersonCategory extends CustomTaxonomy {
             'back_to_items'              => __( '&larr; Go to Personnel Categories' , 'nvis-program-pages'), 
             'item_link'                  => _x( 'Personnel Category Link', 'navigation link block title' , 'nvis-program-pages'), 
             'item_link_description'      => _x( 'A link to a personnel category.', 'navigation link block description', 'nvis-program-pages' ),
+            'none_selected'              => _x( 'Any Category', 'dropdown list none selected', 'nvis-program-pages'),
         ];
     }
 }
