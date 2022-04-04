@@ -32,16 +32,34 @@ function document_title_parts(array $title): array {
 
     foreach ($post_types as $post_type) {
         if (nvis_is_filtered_results($post_type)) {
+            /**
+             * Filters the format of the document title part of filtered post type archives.
+             * 
+             * @param $format The format of the document title part.
+             * @param $post_type The current post type.
+             */
             $format = apply_filters(
                 'nvis/filter_results_document_title_format', 
                 '%1$s, %2$s', 
                 $post_type
             );
 
+            /**
+             * Filters the label indicating 'Filtered Results' in the document title.
+             * 
+             * @param $label The filtered results label.
+             * @param $post_type The current post type.
+             */
+            $filtered_label = apply_filters( 
+                'nvis/filtered_results_document_title_label', 
+                Plugin::get_label('filtered_results'),
+                $post_type
+            );
+
             $title['title'] = sprintf(
                 $format,
-                nvis_get_post_type_label($post_type, 'document_title_label', 'name'),
-                Plugin::get_label('filtered_results')
+                post_type_archive_title('', false),
+                $filtered_label
             );
 
             return $title;
