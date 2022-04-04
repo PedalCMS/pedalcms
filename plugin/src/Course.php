@@ -40,7 +40,7 @@ class Course extends CustomPostType {
 
     protected function setup_labels(): void {
         $this->args['labels'] = [
-            'name'                     => _x( 'Courses', 'post type general name', 'nvis-program-pages' ),
+            'name'                     => _x( 'Course Catalog', 'post type general name', 'nvis-program-pages' ),
             'singular_name'            => _x( 'Course', 'post type singular name', 'nvis-program-pages' ),
             'add_new_item'             => __( 'Add New Course', 'nvis-program-pages' ),
             'edit_item'                => __( 'Edit Course', 'nvis-program-pages' ),
