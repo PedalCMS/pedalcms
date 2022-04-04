@@ -16,13 +16,6 @@ class Person extends CustomPostType {
     public const POST_TYPE = 'nvis_person';
 
     /**
-     * The replacement text for enter_title_here filter.
-     *
-     * @var string
-     */
-    public static string $enter_title_text = 'Enter the Full Name';
-
-    /**
      * The args to pass to register_post_type.
      *
      * Gets updated throughout the setup process.
@@ -55,6 +48,8 @@ class Person extends CustomPostType {
     }
 
     protected function setup_labels(): void {
+        self::$enter_title_text = __('Enter the Full Name', 'nvis-program-pages');
+
         $this->args['labels'] = [
             'name'                     => _x( 'Directory', 'post type general name', 'nvis-program-pages' ),
             'singular_name'            => _x( 'Person', 'post type singular name', 'nvis-program-pages' ),
