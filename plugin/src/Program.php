@@ -71,7 +71,7 @@ class Program extends CustomPostType {
             'not_found_in_trash'       => __( 'No programs found in Trash.', 'nvis-program-pages' ),
             'parent_item_colon'        => __( 'Parent Program:', 'nvis-program-pages' ),
             'all_items'                => __( 'All Programs', 'nvis-program-pages' ),
-            'archives'                 => __( 'Program Archives', 'nvis-program-pages' ),
+            'archives'                 => __( 'Programs', 'nvis-program-pages' ),
             'attributes'               => __( 'Program Attributes', 'nvis-program-pages' ),
             'insert_into_item'         => __( 'Insert into program', 'nvis-program-pages' ),
             'uploaded_to_this_item'    => __( 'Uploaded to this program', 'nvis-program-pages' ),
