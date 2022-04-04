@@ -87,6 +87,57 @@ function nvis_sanitize_title_tag(string $tag, string $default): string {
 endif;
 
 
+if (!function_exists('nvis_get_post_type_label')) :
+/**
+ * Gets a single particular label for the post type.
+ *
+ * @param string $post_type The post type key.
+ * @param string $label_key The key of the label (See {@link https://developer.wordpress.org/reference/functions/get_post_type_labels/})
+ * @param string $fallback_key A label key to use as a fallback if label_key doesn't exist.
+ * @return mixed The label matching label_key on success. Null on failure.
+ */
+function nvis_get_post_type_label($post_type, string $label_key, string $fallback_key = '') {
+    $post_type = $post_type ? $post_type : get_post_type();
+    $post_type = get_post_type_object($post_type);
+
+    if (!$post_type) {
+        return null;
+    }
+
+    return 
+        $post_type->labels->{$label_key} ??
+        $post_type->labels->{$fallback_key} ??
+        null;
+}
+
+endif;
+
+
+if (!function_exists('nvis_get_taxonomy_label')) :
+/**
+ * Gets a single particular label for the taxonomy.
+ *
+ * @param string $taxonomy The taxonomy key.
+ * @param string $label_key The key of the label (See {@link https://developer.wordpress.org/reference/functions/get_taxonomy_labels/})
+ * @param string $fallback_key A label key to use as a fallback if label_key doesn't exist.
+ * @return mixed The label matching label_key on success. Null on failure.
+ */
+function nvis_get_taxonomy_label(string $taxonomy, string $label_key, string $fallback_key = '') {
+    $taxonomy = get_taxonomy($taxonomy);
+
+    if (!$taxonomy) {
+        return null;
+    }
+
+    return 
+        $taxonomy->labels->{$label_key} ?? 
+        $taxonomy->labels->{$fallback_key} ?? 
+        null;
+}
+
+endif;
+
+
 if (!function_exists('nvis_get_heading_tag')) :
 /**
  * Returns the tag name of a corresponding heading level.
