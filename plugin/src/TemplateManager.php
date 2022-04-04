@@ -56,7 +56,6 @@ class TemplateManager {
         self::$theme_folder = $theme_folder;
 
         if ($templates) {
-            // TODO: Fix method name casing to match project standard.
             $this->register_templates($templates);
         }
 
@@ -99,7 +98,10 @@ class TemplateManager {
      */
     public static function locate_template(string $template): string {
         if (!self::$theme_folder) {
-            // TODO: Error handling.
+            if (WP_DEBUG && WP_DEBUG_LOG) {
+                error_log(__FUNCTION__ . ': Theme folder not set in ' . static::class);
+            }
+            
             return false;
         }
 
@@ -155,7 +157,9 @@ class TemplateManager {
             );
             include $path;
         } else {
-            // TODO: Error handling
+            if (WP_DEBUG && WP_DEBUG_LOG) {
+                error_log(__FUNCTION__ . ': File not found ' . $template);
+            }
         }
     }
 }
