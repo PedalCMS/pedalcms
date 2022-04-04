@@ -54,11 +54,10 @@ class InstructionMode extends CustomTaxonomy {
             'filter_by_item'             => __( 'Filter by instruction mode' , 'nvis-program-pages'), 
             'items_list_navigation'      => __( 'Instruction Mode list navigation' , 'nvis-program-pages'), 
             'items_list'                 => __( 'Instruction Mode list', 'nvis-program-pages' ),
-            /* translators: Tab heading when selecting from the most used terms. */
-            'most_used'                  => _x( 'Most Used', 'instruction modes' , 'nvis-program-pages'), 
             'back_to_items'              => __( '&larr; Go to Instruction Modes' , 'nvis-program-pages'), 
             'item_link'                  => _x( 'Instruction Mode Link', 'navigation link block title' , 'nvis-program-pages'), 
             'item_link_description'      => _x( 'A link to a instruction mode.', 'navigation link block description', 'nvis-program-pages' ),
+            'none_selected'              => _x( 'Any Mode', 'dropdown list none selected', 'nvis-program-pages'),
         ];
     }
 }
