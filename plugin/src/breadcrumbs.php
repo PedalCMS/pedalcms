@@ -54,7 +54,7 @@ function get_archive_crumb(): array {
 
     if ($found) {
         return [
-            'text' => nvis_get_post_type_label($post_type, 'breadcrumb_label', 'name'),
+            'text' => nvis_get_post_type_label($post_type, 'breadcrumb_label') ?? post_type_archive_title('', false),
             'url'  => get_post_type_archive_link($post_type)
         ];
     }
