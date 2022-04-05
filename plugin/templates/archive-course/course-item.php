@@ -32,36 +32,36 @@ if ($post) :?>
         <?php nvis_prog_get_template_part('single-course/course-meta', compact('post')); ?>
     </header>
     <div class="course-content">
-        <button class="nvis-toggle__trigger --show-hide__label" aria-expanded="false"
+        <button class="nvis-toggle__trigger" aria-expanded="false"
             data-target="<?php echo $more_details_id; ?>"
             data-show-label="<?php echo esc_attr($args['label_show']); ?> "
             data-hide-label="<?php echo esc_attr($args['label_hide']); ?> "><?php echo esc_html($args['label_more_details']); ?></button>
         <div id="<?php echo $more_details_id; ?>"
-            class="--show-hide__content nvis-toggle__content" hidden>
+            class="nvis-toggle__content" hidden>
             <div class="course-details">
                 <p class="course-description"><?php echo esc_html($post->short_description); ?>
                 </p>
 
                 <?php
                 nvis_prog_get_template_part(
-    'single-course/related-personnel',
-    [
-        'post'    => $post,
-        'h_level' => 3,
-        'style'   => 'links',
-    ]
-); ?>
+                    'single-course/related-personnel',
+                    [
+                        'post'    => $post,
+                        'h_level' => 3,
+                        'style'   => 'links',
+                    ]
+                ); ?>
             </div>
         </div>
     </div>
     <?php
     nvis_prog_get_template_part(
-    'single-course/course-actions',
-    [
-        'post'            => $post,
-        'add_permalink'   => true,
-        'label_permalink' => $args['label_permalink']
-    ]
-); ?>
+        'single-course/course-actions',
+        [
+            'post'            => $post,
+            'add_permalink'   => true,
+            'label_permalink' => $args['label_permalink']
+        ]
+    ); ?>
 </article>
 <?php endif;
