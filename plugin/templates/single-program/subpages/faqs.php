@@ -36,7 +36,6 @@ if ($args['show_subpage']) : ?>
       <?php
       if (!empty($faqs)) :
         if ($args['group_by_category']) :
-          // TODO: Skip categorization if there is only one cat?
           foreach ($faqs as $cat) :
       ?>
       <div class="faq-category">

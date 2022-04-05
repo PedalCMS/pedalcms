@@ -34,8 +34,7 @@ if ($args['show_subpage']) : ?>
       if (!empty($args['personnel'])) :
         $h_level = 3;
 
-        if ($args['group_by_category']):
-          // TODO: Skip categorization if there is only one cat?
+        if ($args['group_by_category']) :
           $cats = nvis_prog_get_people_by_category($args['personnel']);
           $h_level = 4;
 

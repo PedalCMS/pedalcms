@@ -962,7 +962,6 @@ class Program extends CustomPostType {
         }
 
         // Then, check if either the college or the program type has overriden.
-        // TODO: Make these references.
         $terms = ['college','program_type'];
 
         foreach ($terms as $name) {
