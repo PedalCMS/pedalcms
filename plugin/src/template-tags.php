@@ -41,6 +41,34 @@ function nvis_prog_get_label(string $label): string {
 endif;
 
 
+if (!function_exists('nvis_prog_get_post_types')) :
+/**
+ * Gets the list of post types registered by this plugin.
+ * 
+ * @since 0.1.0
+ *
+ * @return array An array of post type keys.
+ */
+function nvis_prog_get_post_types(): array {
+    return \InvisibleUs\Program\Plugin::post_types();
+}
+
+endif;
+
+if (!function_exists('nvis_prog_get_option')) :
+/**
+ * Gets a plugin option setting.
+ *
+ * @param string $option The option key.
+ * @return mixed The option value.
+ */
+function nvis_prog_get_option(string $option) {
+    return \InvisibleUs\Programs\Plugin::get_option($option);
+}
+
+endif;
+
+
 if (!function_exists('nvis_prog_register_program_subpage')) :
 /**
  * Registers a new program subpage. 
@@ -395,6 +423,7 @@ if (!function_exists('nvis_prog_get_full_course_title')) :
  * @return void
  */
 function nvis_prog_get_full_course_title($post = null) {
+    // TODO: Move this to Course.
     $post = get_post($post);
     $title = '';
 

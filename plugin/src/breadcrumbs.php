@@ -38,13 +38,7 @@ add_filter('rank_math/frontend/breadcrumb/items', __NAMESPACE__ . '\rankmath_upd
 function get_archive_crumb(): array {
     $found = false;
 
-    $post_types = [
-        Program::POST_TYPE,
-        Person::POST_TYPE,
-        Course::POST_TYPE
-    ];
-
-    foreach ($post_types as $post_type) {
+    foreach (Plugin::post_types() as $post_type) {
         if (is_post_type_archive($post_type)) {
             $found = true;
 
@@ -118,9 +112,7 @@ function navxt_add_subpage(object $trail): void {
  * @return void
  */
 function navxt_replace_archive_trail(object $trail) {
-    $post_types = [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE];
-
-    if (nvis_is_filtered_results($post_types)) {
+    if (nvis_is_filtered_results(Plugin::post_types())) {
         if ($trail->opt['bhome_display']) {
             $home = array_pop($trail->breadcrumbs);
         }
@@ -186,9 +178,7 @@ function yoast_update_trail(array $crumbs): array {
         return yoast_add_subpage($crumbs);
     }
 
-    $post_types = [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE];
-
-    if (nvis_is_filtered_results($post_types)) {
+    if (nvis_is_filtered_results(Plugin::post_types())) {
         return yoast_replace_trail($crumbs);
     }
 
@@ -239,9 +229,7 @@ function aioseo_update_trail(array $crumbs): array {
         return aioseo_add_subpage($crumbs);
     }
 
-    $post_types = [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE];
-
-    if (nvis_is_filtered_results($post_types)) {
+    if (nvis_is_filtered_results(Plugin::post_types())) {
         return aioseo_replace_trail($crumbs);
     }
 
@@ -305,9 +293,7 @@ function rankmath_update_trail(array $crumbs, \RankMath\Frontend\Breadcrumbs $cl
         return rankmath_add_subpage($crumbs);
     }
 
-    $post_types = [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE];
-
-    if (nvis_is_filtered_results($post_types)) {
+    if (nvis_is_filtered_results(Plugin::post_types())) {
         return rankmath_replace_trail($crumbs);
     }
 

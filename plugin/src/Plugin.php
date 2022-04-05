@@ -61,6 +61,13 @@ class Plugin {
     public static $field_groups = [];
 
     /**
+     * Stores the list of post types registered by this plugin.
+     *
+     * @var array
+     */
+    private static $post_types = [];
+
+    /**
      * Kicks off the whole plugin setup.
      */
     public function __construct() {
@@ -412,7 +419,23 @@ class Plugin {
         Department::get_instance()->register();
         FAQCategory::get_instance()->register();
 
+        self::$post_types = [
+            Program::POST_TYPE,
+            Person::POST_TYPE,
+            Course::POST_TYPE,
+            FAQ::POST_TYPE
+        ];
+
         return;
+    }
+
+    /**
+     * Gets the list of post types registered by this plugin.
+     *
+     * @return array An array of post type keys.
+     */
+    public static function post_types(): array {
+        return self::$post_types;
     }
 
     /**
