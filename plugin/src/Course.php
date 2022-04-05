@@ -156,6 +156,35 @@ class Course extends CustomPostType {
     }
 
     /**
+     * Prefixes the course title with the course code. 
+     * 
+     * @since 0.1.0
+     *
+     * @param mixed $post Either the ID of a post or a WP_Post object. Deafults to the current course.
+     * @return string The full title.
+     */
+    public static function get_full_title($post = null): string {
+        $post = get_post($post);
+        $title = '';
+
+        if ($post->course_code) {
+            $title .= sprintf(
+                '<span class="course-code">%s</span> <span class="separator">&ndash;</span>',
+                esc_html($post->course_code)
+            );
+        }
+
+        $title .= sprintf(
+            '<span class="course-name">%s</span>',
+            // TODO: should this be a call to get_the_title?
+            esc_html($post->post_title)
+        );
+
+        // TODO: Filter this or consider .
+        return $title;
+    }
+
+    /**
      * Returns the full URL for a given course action.
      *
      * Will check for a local course override before attempting to build it from

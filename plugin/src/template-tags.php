@@ -420,26 +420,10 @@ if (!function_exists('nvis_prog_get_full_course_title')) :
  * @since 0.1.0
  *
  * @param mixed $post Either the ID of a post or a WP_Post object. Deafults to the current course.
- * @return void
+ * @return string The full title.
  */
 function nvis_prog_get_full_course_title($post = null) {
-    // TODO: Move this to Course.
-    $post = get_post($post);
-    $title = '';
-
-    if ($post->course_code) {
-        $title .= sprintf(
-            '<span class="course-code">%s</span> <span class="separator">&ndash;</span>',
-            esc_html($post->course_code)
-        );
-    }
-
-    $title .= sprintf(
-        '<span class="course-name">%s</span>',
-        esc_html($post->post_title)
-    );
-
-    return $title;
+    return \InvisibleUs\Programs\Course::get_full_title($post);
 }
 
 endif;
