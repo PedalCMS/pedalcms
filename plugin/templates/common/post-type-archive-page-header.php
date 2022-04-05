@@ -33,7 +33,11 @@ $args = nvis_parse_template_args($args, $defaults, $template);
       endif;
 
       if ($args['show_image']) :
-        // TODO: Load the image.
+        if (is_tax() && !nvis_is_filtered_results(nvis_prog_get_post_types())) :
+          nvis_prog_get_template_part('common/term-featured-image', $args);
+        else:
+          nvis_prog_get_template_part('common/post-type-featured-image', $args);
+        endif;
       endif;
       ?>
     </div>
