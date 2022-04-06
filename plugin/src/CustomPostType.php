@@ -56,14 +56,14 @@ abstract class CustomPostType extends CustomContentObject {
         return;
     }
 
-    /** 
+    /**
      * Used to initialize the post_meta for post types that use it.
-     * 
+     *
      * @return void
-     * 
+     *
      */
     protected function setup_post_meta() {
-        
+
     }
 
     /**
@@ -126,8 +126,6 @@ abstract class CustomPostType extends CustomContentObject {
 
             return;
         }
-
-        $this->args = [];
 
         $this->register_meta();
         $this->setup_hooks();
