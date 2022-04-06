@@ -289,10 +289,12 @@ class Program extends CustomPostType {
             ]
         ];
 
-        $field_group['fields'] = array_merge(
-            $field_group['fields'],
-            Program::$subpage_manager->get_enabled_subpage_fields()
-        );
+        if (Program::$subpage_manager) {
+            $field_group['fields'] = array_merge(
+                $field_group['fields'],
+                Program::$subpage_manager->get_enabled_subpage_fields()
+            );
+        }
 
         $this->field_groups[] = $field_group;
     }
