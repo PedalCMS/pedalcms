@@ -10,14 +10,6 @@ $defaults = [
 
 $args = nvis_parse_template_args($args, $defaults, $template);
 $featured_img = $args['featured_img'];
-
-if (!$featured_img) {
-    $post_type = get_post_type_object($args['post_type']);
-    
-    if ($post_type) {
-        $featured_img = nvis_prog_get_option('featured_image_' . $post_type->name);
-    }
-}
     
 $classes = [
     'featured-image',
