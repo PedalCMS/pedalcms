@@ -74,7 +74,7 @@ if (!function_exists('nvis_sanitize_title_tag')) :
  * @param string $default The fallback tag.
  * @return string The safe html title tag.
  */
-function nvis_sanitize_title_tag(string $tag, string $default): string {
+function nvis_sanitize_title_tag($tag, string $default): string {
     $allowed_tags = ['h1','h2','h3','h4','h5','h6','p','div'];
 
     if (!in_array($tag, $allowed_tags, true)) {
@@ -289,7 +289,7 @@ if (!function_exists('nvis_get_align_class')) :
  * @param string $align The desired alignment. Defaults to 'none'.
  * @return string The alignment class.
  */
-function nvis_get_align_class(string $align): string {
+function nvis_get_align_class($align): string {
     $align = in_array($align, ['left','right','center','none'], true)
         ? $align
         : 'none';
