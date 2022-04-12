@@ -83,10 +83,11 @@ function enqueue_assets() {
         }
     }
 
-    if (!is_admin() && (
-        is_singular([Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE]) ||
-        is_post_type_archive([Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE])
-    )) {
+    // TODO: Replace these lists with call to Plugin::post_types().
+    if (
+        !is_admin() &&
+        (is_singular(Plugin::post_types()) || is_post_type_archive(Plugin::post_types()))
+    ) {
         if ($presentation_mode !== 'none') {
             wp_enqueue_style('nvis-programs-base');
         }
