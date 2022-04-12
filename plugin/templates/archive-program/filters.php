@@ -10,16 +10,18 @@
 
 defined('ABSPATH') || exit;
 
-$args = [
+$defaults = [
     'post_type' => 'nvis_program',
     'break_filters_after' => 3,
     'filters'   => [
         'keyword',
         'program-type',
-        'instruct-mode',
+        'instruction-mode',
         'college',
         'department'
     ]
 ];
+
+$args = nvis_parse_template_args($args, $defaults, $template);
 
 nvis_prog_get_template_part('common/filters', $args);
