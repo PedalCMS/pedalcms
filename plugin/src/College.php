@@ -10,7 +10,7 @@ namespace InvisibleUs\Programs;
  * @since 0.1.0
  */
 class College extends CustomTaxonomy {
-    public const TAXONOMY = 'nvis_program_college';
+    public const TAXONOMY = 'nvis_college';
 
     public $object_types = [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE];
 

@@ -10,7 +10,7 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'taxonomy'  => 'nvis_program_college',
+    'taxonomy'  => 'nvis_college',
     'query_var' => 'college'
 ];
 
