@@ -11,10 +11,10 @@ defined('ABSPATH') || exit;
 
 $defaults = [
     'link_terms' => true,
-    'image_size' => 'medium'
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);
+$args['context'] = $template;
 
 ?>
 <header class="single-program-page-header page-header entry-header">
