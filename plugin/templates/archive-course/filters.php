@@ -17,6 +17,7 @@ $args = [
         'keyword',
         'session',
         'subject',
+        'instruction-mode',
         'college',
         'department'
     ]
