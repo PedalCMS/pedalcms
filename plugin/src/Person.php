@@ -53,6 +53,7 @@ class Person extends CustomPostType {
         $this->args['labels'] = [
             'name'                     => _x( 'Directory', 'post type general name', 'nvis-program-pages' ),
             'singular_name'            => _x( 'Person', 'post type singular name', 'nvis-program-pages' ),
+            'plural_not_collective'    => _x( 'Personnel', 'post type plural name not collective', 'nvis-program-pages' ),
             'add_new_item'             => __( 'Add New Person', 'nvis-program-pages' ),
             'edit_item'                => __( 'Edit Person', 'nvis-program-pages' ),
             'new_item'                 => __( 'New Person', 'nvis-program-pages' ),
