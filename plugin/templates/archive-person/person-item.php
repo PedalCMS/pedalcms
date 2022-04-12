@@ -14,6 +14,7 @@ $post = nvis_args_or_global('post', $args);
 $defaults = [
     'show_contact_info'        => true,
     'show_contact_info_labels' => false,
+    'show_image'               => true,
     'link_terms'               => true,
     'img_size'                 => 'medium',
     'h_level'                  => 2,
@@ -24,7 +25,11 @@ $h_tag = nvis_get_heading_tag($args['h_level']);
 
 if ($post) :?>
 <article <?php post_class('', $post); ?>>
-    <?php nvis_prog_get_template_part('single-person/featured-image', ['post' => $post, 'img_size' => $args['img_size']]); ?>
+    <?php 
+    if ($args['show_image']) :
+        nvis_prog_get_template_part('single-person/featured-image', ['post' => $post, 'img_size' => $args['img_size']]); 
+    endif;
+    ?>
     <div class="person-info">
         <header>
             <?php echo sprintf('<%s class="person-name">', $h_tag); ?>
