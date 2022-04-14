@@ -110,8 +110,6 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
     </div>
 </form>
 <?php
-else:
-    echo esc_html($args['label_missing_filters_data']);
 endif;
 
 /**
