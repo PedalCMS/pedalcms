@@ -13,7 +13,7 @@ $defaults = [
     'action'               => 'contact',
     'heading'              => nvis_prog_get_label('program_contact'),
     'label_contact_action' => nvis_prog_get_label('contact'),
-    'contacts'             => get_field('related_contacts'),
+    'contacts'             => post_type_exists('nvis_person') ? get_field('related_contacts') : [],
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

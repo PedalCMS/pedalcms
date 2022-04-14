@@ -14,7 +14,7 @@ $post = nvis_args_or_global('post', $args);
 $defaults = [
     'show_subpage'             => nvis_prog_show_subpage('faculty-staff'),
     'show_contact_info_labels' => true,
-    'personnel'                => get_field('related_faculty_staff', $post),
+    'personnel'                => post_type_exists('nvis_person') ? get_field('related_faculty_staff', $post) : [],
     'group_by_category'        => get_field('faculty_staff_by_category', $post),
     'image_size'               => 'thumbnail'
 ];
