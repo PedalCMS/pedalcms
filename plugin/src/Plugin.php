@@ -61,11 +61,32 @@ class Plugin {
     public static $field_groups = [];
 
     /**
-     * Stores the list of post types registered by this plugin.
+     * Stores the list of post types available in this plugin.
      *
      * @var array
      */
     private static $post_types = [];
+
+    /**
+     * Stores the list of post types currently enabled and registered by this plugin.
+     *
+     * @var array
+     */
+    private static $post_types_enabled = [];
+
+    /**
+     * Stores the list of taxonomies available in this plugin.
+     *
+     * @var array
+     */
+    private static $taxonomies = [];
+
+    /**
+     * Stores the list of taxonomies currently enabled and registered by this plugin.
+     *
+     * @var array
+     */
+    private static $taxonomies_enabled = [];
 
     /**
      * Kicks off the whole plugin setup.
@@ -280,7 +301,7 @@ class Plugin {
                 [
                     'key'          => 'field_61e1ea5a45930',
                     'label'        => __('Featured Image Size', 'nvis-program-pages'),
-                    'name'         => 'nvis_image_size_single',
+                    'name'         => 'nvis_image_size_header',
                     'type'         => 'select',
                     'instructions' => '',
                     'choices'      => [
@@ -295,7 +316,7 @@ class Plugin {
                 ],
                 [
                     'key'           => 'field_61e1deb86546b',
-                    'label'         => __('Deafult Program Image', 'nvis-program-pages'),
+                    'label'         => __('Default Program Image', 'nvis-program-pages'),
                     'name'          => 'nvis_image_fallback_program',
                     'type'          => 'image',
                     'instructions'  => __('The fallback featured image for Programs that don\'t have one.', 'nvis-program-pages'),
@@ -407,35 +428,136 @@ class Plugin {
      */
     public static function register_content_model(): void {
         Program::get_instance()->register();
-        Course::get_instance()->register();
-        FAQ::get_instance()->register();
-        Person::get_instance()->register();
-        ProgramType::get_instance()->register();
-        College::get_instance()->register();
-        InstructionMode::get_instance()->register();
-        Subject::get_instance()->register();
-        Session::get_instance()->register();
-        PersonCategory::get_instance()->register();
-        Department::get_instance()->register();
-        FAQCategory::get_instance()->register();
+        self::$post_types[] = Program::POST_TYPE;
+        self::$post_types_enabled[] = Program::POST_TYPE;
 
-        self::$post_types = [
-            Program::POST_TYPE,
-            Person::POST_TYPE,
-            Course::POST_TYPE,
-            FAQ::POST_TYPE
-        ];
+        self::$post_types[] = Course::POST_TYPE;
+        if (self::get_option('course_enable')) {
+            Course::get_instance()->register();
+            self::$post_types_enabled[] = Course::POST_TYPE;
+        }
+
+        self::$post_types[] = Person::POST_TYPE;
+        if (self::get_option('person_enable')) {
+            Person::get_instance()->register();
+            self::$post_types_enabled[] = Person::POST_TYPE;
+        }
+
+        self::$post_types[] = FAQ::POST_TYPE;
+        $enabled_subpages = Program::subpage_manager()->get_enabled_subpages();
+
+        if (is_array($enabled_subpages) && in_array('faqs', $enabled_subpages)) {
+            FAQ::get_instance()->register();
+            self::$post_types_enabled[] = FAQ::POST_TYPE;
+        }
+
+        self::$taxonomies[] = ProgramType::TAXONOMY;
+        if (self::get_option('program_type_enable')) {
+            ProgramType::get_instance()->register();
+            self::$taxonomies_enabled[] = ProgramType::TAXONOMY;
+        }
+
+        self::$taxonomies[] = College::TAXONOMY;
+        if (self::get_option('college_enable')) {
+            College::get_instance()->register();
+            self::$taxonomies_enabled[] = College::TAXONOMY;
+        }
+
+        self::$taxonomies[] = InstructionMode::TAXONOMY;
+        if (self::get_option('instruct_mode_enable')) {
+            InstructionMode::get_instance()->register();
+            self::$taxonomies_enabled[] = InstructionMode::TAXONOMY;
+        }
+
+        self::$taxonomies[] = Subject::TAXONOMY;
+        if (self::get_option('subject_enable')) {
+            Subject::get_instance()->register();
+            self::$taxonomies_enabled[] = Subject::TAXONOMY;
+        }
+
+        self::$taxonomies[] = Session::TAXONOMY;
+        if (self::get_option('session_enable')) {
+            Session::get_instance()->register();
+            self::$taxonomies_enabled[] = Session::TAXONOMY;
+        }
+
+        self::$taxonomies[] = PersonCategory::TAXONOMY;
+        if (self::get_option('person_cat_enable')) {
+            PersonCategory::get_instance()->register();
+            self::$taxonomies_enabled[] = PersonCategory::TAXONOMY;
+        }
+
+        self::$taxonomies[] = Department::TAXONOMY;
+        if (self::get_option('department_enable')) {
+            Department::get_instance()->register();
+            self::$taxonomies_enabled[] = Department::TAXONOMY;
+        }
+
+        self::$taxonomies[] = FAQCategory::TAXONOMY;
+        if (self::get_option('faq_cat_enable')) {
+            FAQCategory::get_instance()->register();
+            self::$taxonomies_enabled[] = FAQCategory::TAXONOMY;
+        }
 
         return;
     }
 
     /**
-     * Gets the list of post types registered by this plugin.
+     * Gets the list of post types available or registered by this plugin.
      *
+     * @since 0.1.0
+     *
+     * @param bool $enabled_only Whether or not to only return enabled post types.
      * @return array An array of post type keys.
      */
-    public static function post_types(): array {
+    public static function post_types(bool $enabled_only = true): array {
+        if ($enabled_only) {
+            return self::$post_types_enabled;
+        }
+
         return self::$post_types;
+    }
+
+    /**
+     * Gets the list of taxonomies available or registered by this plugin.
+     *
+     * @since 0.1.0
+     *
+     * @param bool $enabled_only Whether or not to only return enabled taxonomies.
+     * @return array An array of taxonomy keys.
+     */
+    public static function taxonomies(bool $enabled_only = true): array {
+        if ($enabled_only) {
+            return self::$taxonomies_enabled;
+        }
+
+        return self::$taxonomies;
+    }
+
+    /**
+     * Returns an associate array of taxonomies indexed by their search filter name.
+     *
+     * @return array The search filter to taxonomy map.
+     */
+    public static function get_tax_filters_map(): array {
+        static $map = null;
+
+        if (!$map) {
+            $filters = array_map(
+                function($a) {
+                    return str_replace(
+                        ['nvis_', '_'],
+                        ['', '-'],
+                        $a
+                    );
+                },
+                self::$taxonomies
+            );
+
+            $map = array_combine($filters, self::$taxonomies);
+        }
+
+        return $map;
     }
 
     /**
