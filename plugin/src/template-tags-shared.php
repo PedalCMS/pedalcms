@@ -263,7 +263,7 @@ if (!function_exists('nvis_post_thumbnail_or_fallback')) :
  * @param string|array $attrs Optional. Query string or array of attributes. Default empty.
  * @return string The img tag.
  */
-function nvis_post_thumbnail_or_fallback($post = null, int $fallback_id, string $size = 'medium', $attrs = ''): string {
+function nvis_post_thumbnail_or_fallback($post = null, $fallback_id, $size = 'medium', $attrs = ''): string {
     $post = get_post($post);
 
     if (has_post_thumbnail($post)) {
@@ -321,7 +321,7 @@ if (!function_exists('nvis_get_the_term_list')) :
  * @return string|false|WP_Error A list of terms on success, false if there are no terms,
  *                               WP_Error on failure.
  */
-function nvis_get_the_term_list(int $post, string $taxonomy, string $before = '', string $sep = ', ', string $after = '', bool $link_terms = true): string {
+function nvis_get_the_term_list($post, $taxonomy, string $before = '', string $sep = ', ', string $after = '', bool $link_terms = true) {
     if ($link_terms) {
         $list = get_the_term_list($post, $taxonomy, $before, $sep, $after);
     } else {
