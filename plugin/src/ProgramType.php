@@ -80,19 +80,19 @@ class ProgramType extends CustomTaxonomy {
             'active'                => true,
             'fields'                => [
                 [
-                    'key'          => 'field_61156b547d402',
+                    'key'          => 'field_6258620b066a4',
                     'label'        => __('Application Deadlines', 'nvis-program-pages'),
-                    'name'         => 'nvis_application_deadlines',
+                    'name'         => 'application_deadlines',
                     'type'         => 'repeater',
                     'instructions' => '',
-                    'collapsed'    => 'field_61156b777d403',
+                    'collapsed'    => 'field_62586243abee2',
                     'layout'       => 'block',
                     'button_label' => _x('Add Deadline', 'new deadline button label', 'nvis-program-pages'),
                     'sub_fields'   => [
                         [
-                            'key'          => 'field_61156b777d403',
+                            'key'          => 'field_62586243abee2',
                             'label'        => __('Deadline Label', 'nvis-program-pages'),
-                            'name'         => 'deadline_label',
+                            'name'         => 'label',
                             'type'         => 'text',
                             'instructions' => '',
                             'required'     => 1,
@@ -100,9 +100,9 @@ class ProgramType extends CustomTaxonomy {
                             'maxlength'    => '',
                         ],
                         [
-                            'key'          => 'field_61156bbe7d404',
+                            'key'          => 'field_625862518454f',
                             'label'        => 'Deadline Info',
-                            'name'         => 'deadline_info',
+                            'name'         => 'info',
                             'type'         => 'text',
                             'instructions' => '',
                             'placeholder'  => _x('e.g. June 24th', 'deadline info field placeholder', 'nvis-program-pages'),

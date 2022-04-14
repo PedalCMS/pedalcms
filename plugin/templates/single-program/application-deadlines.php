@@ -22,9 +22,9 @@ if (is_array($args['deadlines'])) : ?>
   </h2>
   <dl class="program-deadlines__list">
     <?php foreach ($args['deadlines'] as $deadline) : ?>
-    <dt><?php echo esc_html($deadline['deadline_label']); ?>
+    <dt><?php echo esc_html($deadline['label']); ?>
     </dt>
-    <dd><?php echo esc_html($deadline['deadline_info']); ?>
+    <dd><?php echo esc_html($deadline['info']); ?>
     </dd>
     <?php endforeach; ?>
   </dl>

@@ -12,9 +12,9 @@ namespace InvisibleUs\Programs;
 class Program extends CustomPostType {
     /**
      * The post type to register.
-     * 
+     *
      * @since 0.1.0
-     * 
+     *
      * @var string
      */
     public const POST_TYPE = 'nvis_program';
@@ -25,7 +25,7 @@ class Program extends CustomPostType {
      * The args to pass to register_post_type.
      *
      * Gets updated throughout the setup process.
-     * 
+     *
      * @since 0.1.0
      *
      * @var array
@@ -48,15 +48,15 @@ class Program extends CustomPostType {
 
     /**
      * The list of subpages to register.
-     * 
+     *
      * Includes subpage ACF field definitions.
-     * 
+     *
      * @since 0.1.0
      *
      * @var array
      */
     public static $subpages = [];
-    
+
     protected function setup_labels(): void {
         $this->args['labels'] = [
             'name'                     => _x( 'Programs', 'post type general name', 'nvis-program-pages' ),
@@ -239,7 +239,7 @@ class Program extends CustomPostType {
                         [
                             'key'          => 'field_61156b777d403',
                             'label'        => __('Deadline Label','nvis-program-pages'),
-                            'name'         => 'deadline_label',
+                            'name'         => 'label',
                             'type'         => 'text',
                             'instructions' => '',
                             'required'     => 1,
@@ -249,7 +249,7 @@ class Program extends CustomPostType {
                         [
                             'key'          => 'field_61156bbe7d404',
                             'label'        => __('Deadline Info','nvis-program-pages'),
-                            'name'         => 'deadline_info',
+                            'name'         => 'info',
                             'type'         => 'text',
                             'instructions' => '',
                             'placeholder'  => _x('e.g. June 24th', 'deadline info field placeholder', 'nvis-program-pages'),
@@ -857,7 +857,7 @@ class Program extends CustomPostType {
      * Changes the sort order for Programs.
      *
      * Called on filter: pre_get_posts
-     * 
+     *
      * @since 0.1.0
      *
      * @param WP_Query $query The current WP_Query
@@ -876,7 +876,7 @@ class Program extends CustomPostType {
      * Get the news posts for a given program by related tag.
      *
      * Meta field news_tag must be set first.
-     * 
+     *
      * @since 0.1.0
      *
      * @param mixed $program Program to check for news posts. Either ID or WP_Post.
@@ -911,7 +911,7 @@ class Program extends CustomPostType {
      *
      * Will check for a local program override before attempting to build it from
      * the plugin wide pattern setting.
-     * 
+     *
      * @since 0.1.0
      *
      * @param string $action The name of the action.
@@ -947,7 +947,7 @@ class Program extends CustomPostType {
      * Gets a list of application deadlines based on override hierarchy.
      *
      * Hierarchy is Program, College, Program Type, Global.
-     * 
+     *
      * @since 0.1.0
      *
      * @param mixed $program Program to check for news posts. Either ID or WP_Post. Defaults to current program.
@@ -979,12 +979,17 @@ class Program extends CustomPostType {
         }
 
         // If all else fails, just return the global setting.
-        return Plugin::get_option('application_deadlines');
+        $deadlines = get_field('nvis_program_application_deadlines', 'option');
+        if (is_array($deadlines)) {
+            return $deadlines;
+        }
+
+        return [];
     }
 
     /**
      * Initializes the subpage manager and adds builtin subpages.
-     * 
+     *
      * @since 0.1.0
      *
      * @return void
@@ -1000,8 +1005,8 @@ class Program extends CustomPostType {
     }
 
     /**
-     * Returns the subpage manager. 
-     * 
+     * Returns the subpage manager.
+     *
      * @since 0.1.0
      *
      * @return SubpageManager The program subpage manager.
