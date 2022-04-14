@@ -36,7 +36,7 @@ if ($post) : ?>
             <h2 class="program-title entry-title"><a
                     href="<?php echo get_the_permalink($post); ?>"><?php echo get_the_title($post); ?></a></h2>
             <?php
-            if ($args['show_program_type']) :
+            if ($args['show_program_type'] && taxonomy_exists('nvis_program_type')) :
                 echo nvis_get_the_term_list($post, 'nvis_program_type', '<div class="program-type">', ',', '</div>', $args['link_terms']);
             endif;
             ?>

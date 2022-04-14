@@ -15,7 +15,7 @@ $args = [
     'break_filters_after' => 2,
     'filters'   => [
         'keyword',
-        'person-category',
+        'person-cat',
         'college',
         'department'
     ]

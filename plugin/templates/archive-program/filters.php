@@ -16,7 +16,7 @@ $defaults = [
     'filters'   => [
         'keyword',
         'program-type',
-        'instruction-mode',
+        'instruct-mode',
         'college',
         'department'
     ]

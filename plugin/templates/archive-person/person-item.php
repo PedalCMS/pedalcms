@@ -25,9 +25,9 @@ $h_tag = nvis_get_heading_tag($args['h_level']);
 
 if ($post) :?>
 <article <?php post_class('', $post); ?>>
-    <?php 
+    <?php
     if ($args['show_image']) :
-        nvis_prog_get_template_part('single-person/featured-image', ['post' => $post, 'img_size' => $args['img_size']]); 
+        nvis_prog_get_template_part('single-person/featured-image', ['post' => $post, 'img_size' => $args['img_size']]);
     endif;
     ?>
     <div class="person-info">
@@ -38,15 +38,17 @@ if ($post) :?>
             <div class="person-position">
                 <?php nvis_prog_get_template_part('blocks/job-title', ['job_title' => $post->job_title]); ?>
                 <?php
-                echo
-                    nvis_get_the_term_list(
-                        $post,
-                        'nvis_department',
-                        '<div class="person-department">',
-                        ', ',
-                        '</div>',
-                        $args['link_terms']
-                    );
+                if (taxonomy_exists('nvis_department')) :
+                    echo
+                        nvis_get_the_term_list(
+                            $post,
+                            'nvis_department',
+                            '<div class="person-department">',
+                            ', ',
+                            '</div>',
+                            $args['link_terms']
+                        );
+                endif;
                 ?>
             </div>
         </header>

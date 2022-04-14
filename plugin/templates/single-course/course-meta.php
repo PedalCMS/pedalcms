@@ -32,7 +32,8 @@ $args = nvis_parse_template_args($args, $defaults, $template);
     </div>
 
     <?php
-    echo nvis_get_the_term_list(
+    if (taxonomy_exists('nvis_session')) :
+        echo nvis_get_the_term_list(
             $post,
             'nvis_session',
             sprintf('<div class="course-terms-offered">%s ', esc_html($args['label_offered_in'])),
@@ -40,5 +41,6 @@ $args = nvis_parse_template_args($args, $defaults, $template);
             '</div>',
             $args['link_terms']
         );
+    endif;
     ?>
 </div>

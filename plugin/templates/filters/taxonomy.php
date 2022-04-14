@@ -23,6 +23,10 @@ $defaults = [
 
 $args = nvis_parse_template_args($args, $defaults, $template);
 
+if (!taxonomy_exists($args['taxonomy'])) {
+    return;
+}
+
 $label = $args['label'] ?? nvis_get_taxonomy_label($args['taxonomy'], 'singular_name');
 $short_label = $args['short_label'] ?? $label;
 $none_selected = $args['label_none_selected'] ?? 
