@@ -117,6 +117,7 @@ class FAQ extends CustomPostType {
 
         if ($group_by_cat) {
             $groups = [];
+            // TODO: Filter this.
             $uncat_term = (object) [
                 'slug' => 'uncategorized',
                 'name' => 'Uncategorized',
@@ -127,7 +128,7 @@ class FAQ extends CustomPostType {
                 $term = $faq['faq_category'];
                 unset($faq['faq_category']);
 
-                if (!$term) {
+                if (!$term || is_wp_error($term)) {
                     $term = $uncat_term;
                 }
 
