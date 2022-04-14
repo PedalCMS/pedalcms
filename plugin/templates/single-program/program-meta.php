@@ -38,7 +38,7 @@ $classes = [
 
 echo sprintf('<div class="%s">', implode(' ', $classes));
 
-if ($args['show_instruction_mode']) :
+if ($args['show_instruction_mode'] && taxonomy_exists('nvis_instruct_mode')) :
     echo nvis_get_the_term_list(
         $post->ID,
         'nvis_instruct_mode',
@@ -55,7 +55,7 @@ if ($args['show_prerequisites']) :
     echo $args['meta_after'];
 endif;
 
-if ($args['show_college']) :
+if ($args['show_college'] && taxonomy_exists('nvis_college')) :
     echo nvis_get_the_term_list(
         $post->ID,
         'nvis_college',
@@ -66,7 +66,7 @@ if ($args['show_college']) :
     );
 endif;
 
-if ($args['show_department']) :
+if ($args['show_department'] && taxonomy_exists('nvis_department')) :
     echo nvis_get_the_term_list(
         $post->ID,
         'nvis_department',

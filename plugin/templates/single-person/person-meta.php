@@ -23,14 +23,16 @@ $args = nvis_parse_template_args($args, $defaults, $template);
         <?php nvis_prog_get_template_part('blocks/job-title', ['job_title' => $post->job_title]); ?>
     </div>
     <?php
-    echo
-        nvis_get_the_term_list(
-            $post,
-            'nvis_department',
-            '<div class="person-department person-meta__item">',
-            ', ',
-            '</div>',
-            $args['link_terms']
-        );
+    if (taxonomy_exists('nvis_department')) :
+        echo
+            nvis_get_the_term_list(
+                $post,
+                'nvis_department',
+                '<div class="person-department person-meta__item">',
+                ', ',
+                '</div>',
+                $args['link_terms']
+            );
+    endif;
     ?>
 </div>
