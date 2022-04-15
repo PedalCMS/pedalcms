@@ -207,48 +207,48 @@ class SubpageManager {
 
     /**
      * Returns a list of subpages, either all builtin or all registered and enabled.
-     * 
+     *
      * @since 0.1.0
      *
      * @param bool $with_index Whether or not to include the index.
      * @param string $return_type Can be 'hash' or 'objects'.
      * @return mixed List of subpages or WP_Error.
      */
-    public function _get_subpages(bool $with_index = true, string $return_type = 'hash', $list = 'subpages') {
-        $list = $this->check_list($list);
+    public function _get_subpages(bool $with_index = true, string $return_type = 'hash', $list_name = 'subpages') {
+        $list_name = $this->check_list($list_name);
 
-        if (is_wp_error($list)) {
-            return $list;
+        if (is_wp_error($list_name)) {
+            return $list_name;
         }
+
+        $subpages = $this->{$list_name};
+
+        if (!$with_index) {
+            array_shift($subpages);
+        }
+
+        $subpages = apply_filters('nvis/programs/get_subpages', $subpages, $list_name, $this->post_type);
 
         if ($return_type === 'hash') {
-            $hash = array_combine(
-                wp_list_pluck($this->$list, 'slug'),
-                wp_list_pluck($this->$list, 'title')
+            return array_combine(
+                wp_list_pluck($subpages, 'slug'),
+                wp_list_pluck($subpages, 'title')
             );
-
-            if (!$with_index) {
-                array_shift($hash);
-            }
-
-            return $hash;
-        }
-
-        if ($return_type !== 'objects') {
+        } else if ($return_type !== 'objects') {
             return new \WP_Error(
                 'error',
                 'Unrecognized return type: ' . $return_type
             );
         }
 
-        return apply_filters('nvis/programs/get_subpages', $this->$list, $this->post_type, $list);
+        return $subpages;
     }
 
     /**
      * Register our custom query variable.
-     * 
+     *
      * Called on filter: `query_vars`
-     * 
+     *
      * @since 0.1.0
      *
      * @param array $vars The existing query vars.
