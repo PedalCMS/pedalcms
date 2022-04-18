@@ -107,12 +107,22 @@ class Plugin {
         self::$_init = true;
     }
 
+    /**
+     * Handles install tasks for the plugin.
+     *
+     * @return void
+     */
     public static function install() {
         self::register_content_model();
         self::install_capabilities();
         flush_rewrite_rules();
     }
 
+    /**
+     * Adds capabilities for the entire content model to the Administrator role. 
+     *
+     * @return void
+     */
     public static function install_capabilities() {
         $role = get_role('administrator');
         $post_type_args = [
@@ -358,6 +368,11 @@ class Plugin {
         return static::$field_groups[0] ?? [];
     }
 
+    /**
+     * Sets up the options page config.
+     *
+     * @return void
+     */
     private static function setup_options_page() {
         self::$options_page_slug = 'nvis-program-pages-settings';
 
@@ -539,7 +554,7 @@ class Plugin {
     }
 
     /**
-     * Returns an associate array of taxonomies indexed by their search filter name.
+     * Returns an associative array of taxonomies indexed by their search filter name.
      *
      * @return array The search filter to taxonomy map.
      */
@@ -636,6 +651,12 @@ class Plugin {
         return;
     }
 
+    /**
+     * Returns a label from the plugin wide registry. 
+     *
+     * @param string $label_key The key of the label to retrieve.
+     * @return string The requested label on success, "label not found" message on failure.
+     */
     public static function get_label(string $label_key): string {
         $label = self::get_option('label_' . $label_key);
 
