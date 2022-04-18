@@ -51,6 +51,8 @@ class Plugin {
      */
     public static $options_page;
 
+    public static $options_page_slug;
+
     public static $labels = [];
 
     /**
@@ -357,10 +359,12 @@ class Plugin {
     }
 
     private static function setup_options_page() {
+        self::$options_page_slug = 'nvis-program-pages-settings';
+
         self::$options_page = [
             'page_title'  => __('Program Pages Settings', 'nvis-program-pages'),
             'menu_title'  => _x('Program Pages', 'menu item title', 'nvis-program-pages'),
-            'menu_slug'   => 'nvis-program-pages-settings',
+            'menu_slug'   => self::$options_page_slug,
             'capability'  => 'manage_options',
             'parent_slug' => 'options-general.php',
             'position'    => 7,
