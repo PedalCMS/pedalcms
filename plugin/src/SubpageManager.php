@@ -127,8 +127,10 @@ class SubpageManager {
          * @param Subpage $subpage The subpage to be registered.
          * @param string $post_type The post_type this subpage belongs to.
          */
-        $this->subpages[] = apply_filters('nvis/programs/add_subpage', $subpage, $this->post_type);
-        $this->sort();
+         $subpage = apply_filters('nvis/programs/add_subpage', $subpage, $this->post_type);
+         $subpage->before_add();
+         $this->subpages[] = $subpage;
+         $this->sort();
 
         return $subpage;
     }

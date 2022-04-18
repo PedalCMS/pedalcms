@@ -81,7 +81,7 @@ class Subpage {
      *
      * @var integer
      */
-    public int $order = 0;
+    public int $order = 1000;
 
     /**
      * Whether or not this subpage is native to this plugin or user registered.
@@ -114,14 +114,15 @@ class Subpage {
      */
     public function __construct(string $slug, array $args = []) {
         $this->slug = sanitize_title($slug, '', 'save');
-        $this->title = $args['title'] ?? $this->unslugify($slug);
-        $this->document_title = $args['document_title'] ?? $this->title;
-        $this->tab_label = $args['tab_label'] ?? $this->title;
-        $this->breadcrumb_label = $args['breadcrumb_label'] ?? $this->title;
-        $this->aria_label = $args['aria_label'] ?? $this->title;
-        $this->order = $args['order'] ?? 1000;
-        $this->builtin = $args['builtin'] ?? false;
+        $this->builtin = $args['builtin'] ?? $this->builtin;
         $this->fields = $args['fields'] ?? [];
+        $this->order = $args['order'] ?? $this->order;
+
+        $this->title = $args['title'] ?? $this->unslugify($this->slug);
+        $this->document_title = $args['document_title'] ?? $this->document_title;
+        $this->tab_label = $args['tab_label'] ?? $this->tab_label;
+        $this->breadcrumb_label = $args['breadcrumb_label'] ?? $this->breadcrumb_label;
+        $this->aria_label = $args['aria_label'] ?? $this->aria_label;
     }
 
     /**
@@ -153,5 +154,37 @@ class Subpage {
                 $string
             )
         );
+    }
+
+    /**
+     * Called by {@see SubpageManager} after filters but before registering the Subpage. 
+     *
+     * @return void
+     */
+    public function before_add() {
+        $this->setup_label_fallbacks();
+    }
+
+    /**
+     * Sets any empty labels to the title property.
+     *
+     * @return void
+     */
+    private function setup_label_fallbacks() {
+        if (!$this->document_title) {
+            $this->document_title = $this->title;
+        }
+
+        if (!$this->tab_label) {
+            $this->tab_label = $this->title;
+        }
+
+        if (!$this->breadcrumb_label) {
+            $this->breadcrumb_label = $this->title;
+        }
+
+        if (!$this->aria_label) {
+            $this->aria_label = $this->title;
+        }
     }
 }
