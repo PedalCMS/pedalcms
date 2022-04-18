@@ -11,7 +11,10 @@ namespace InvisibleUs\Programs;
 add_action('plugins_loaded', __NAMESPACE__ . '\maybe_load_acf', 0);
 add_action('acf/init', __NAMESPACE__ . '\acf_init');
 add_filter('acf/update_value/type=relationship', __NAMESPACE__ . '\maybe_update_bidirectional_relationship', 10, 3);
-
+add_filter('acf/load_field/name=nvis_image_size_header', __NAMESPACE__ . '\choices_image_size_header');
+add_filter('acf/load_field/name=search_filters', __NAMESPACE__ . '\choices_search_filters');
+add_action('acf/save_post', __NAMESPACE__ . '\save_options', 20);
+add_action('admin_init', __NAMESPACE__ . '\maybe_flush_rules');
 
 /**
  * Loads bundled ACF Pro if ACF not already loaded.
@@ -202,4 +205,94 @@ function remove_relationship(int $remove_post, array $from_posts, string $field_
     }
 
     return;
+}
+
+/**
+ * Adds the list of registered image sizes to the choices. 
+ * 
+ * Called on filter: `acf/load_field/name=nvis_image_size_header`
+ *
+ * @param array $field The ACF field config.
+ * @return array The filtered field config.
+ */
+function choices_image_size_header(array $field): array {
+    $sizes = wp_get_registered_image_subsizes();
+    $labels = [];
+
+    foreach ($sizes as $key => $props) {
+        $labels[] = sprintf(
+            '%s (%s &times; %s)',
+            $key,
+            $props['width'],
+            $props['height']
+        );
+    }
+
+    $field['choices'] = array_combine(
+        array_keys($sizes),
+        $labels
+    );
+
+    $field['choices']['custom'] = __('Custom', 'nvis-program-pages');
+
+    return $field;
+}
+
+/**
+ * Removes search filters choices that correspond to disabled taxonomies.
+ * 
+ * Called on filter: `acf/load_field/name=search_filters`
+ * 
+ * Because the search filter fields are all part of field groups, they all 
+ * share the name `search_filters` and this will operate on all of them.
+ *
+ * @param array $field The ACF field config.
+ * @return array The filtered field config.
+ */
+function choices_search_filters(array $field): array {
+    $choices = [];
+    $tax_filters_map = Plugin::get_tax_filters_map();
+
+    foreach ($field['choices'] as $filter => $label) {
+        if (array_key_exists($filter, $tax_filters_map)) {
+            if (taxonomy_exists($tax_filters_map[$filter])) {
+                $choices[$filter] = $label;
+            }
+        } else {
+            $choices[$filter] = $label;
+        }
+    }
+
+    $field['choices'] = $choices;
+
+    return $field;
+}
+
+/**
+ * Creates the `nvis_flush_rules` transient when saving the plugin settings page. 
+ * 
+ * Called on action: `acf/save_post`
+ *
+ * @param int|string $post_id The post id of the 
+ * @return void
+ */
+function save_options($post_id) {
+    if ($post_id === 'options') {
+        if ($_GET['page'] === Plugin::$options_page_slug) {
+            set_transient('nvis_flush_rules', true);
+        }
+    }
+}
+
+/**
+ * Flushes the rewrite rules when `nvis_flush_rules` transient is present.
+ * 
+ * Called on action: `admin_init`
+ *
+ * @return void
+ */
+function maybe_flush_rules() {
+    if (delete_transient('nvis_flush_rules')) {
+        flush_rewrite_rules();
+    }
 }
