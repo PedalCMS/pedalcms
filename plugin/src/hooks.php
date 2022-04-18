@@ -27,6 +27,7 @@ add_filter('taxonomy_labels_nvis_department', __NAMESPACE__ . '\options_departme
 add_filter('taxonomy_labels_nvis_faq_cat', __NAMESPACE__ . '\options_faq_cat_labels');
 add_filter('nvis/template_defaults', __NAMESPACE__ . '\options_template_defaults', 5, 2);
 add_filter('nvis/template_args', __NAMESPACE__ . '\options_template_args', 5, 2);
+add_filter('nvis/programs/add_subpage', __NAMESPACE__ . '\options_subpage_labels', 5, 2);
 
 
 /**
@@ -332,7 +333,7 @@ function options_post_type_description($description,  $post_type_obj) {
  */
 function options_template_defaults($defaults, $template) {
     $post_type = str_replace('nvis_', '', get_post_type());
-    $presentation_mode = \InvisibleUs\Programs\Plugin::get_option('presentation_mode');
+    $presentation_mode = Plugin::get_option('presentation_mode');
 
     switch($template) {
         case 'common/breadcrumbs':
@@ -349,6 +350,15 @@ function options_template_defaults($defaults, $template) {
             break;
         case 'common/post-featured-image':
             $defaults = options_post_featured_image($defaults, $post_type, $presentation_mode);
+
+            break;
+        case 'single-program/contact':
+            $label = 'label_program_contact';
+            $value = Plugin::get_option("{$post_type}_{$label}");
+
+            if ($value) {
+                $defaults[$label] = $value;
+            }
 
             break;
         default:
@@ -432,4 +442,28 @@ function options_page_header_backdrop($defaults, $post_type, $presentation_mode)
     }
 
     return $defaults;
+}
+
+
+function options_subpage_labels($subpage, $post_type) {
+    $option_prefix = sprintf(
+        '%s_subpage_%s_',
+        str_replace('nvis_', '', $post_type),
+        str_replace('-', '_', $subpage->slug)
+    );
+
+    $labels = [
+        'title',
+        'tab_label'
+    ];
+
+    foreach ($labels as $label) {
+        $value = Plugin::get_option($option_prefix . $label);
+
+        if ($value) {
+            $subpage->{$label} = $value;
+        }
+    }
+
+    return $subpage;
 }

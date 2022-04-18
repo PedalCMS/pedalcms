@@ -10,10 +10,10 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'action'               => 'contact',
-    'heading'              => nvis_prog_get_label('program_contact'),
-    'label_contact_action' => nvis_prog_get_label('contact'),
-    'contacts'             => post_type_exists('nvis_person') ? get_field('related_contacts') : [],
+    'action'                => 'contact',
+    'label_program_contact' => nvis_prog_get_label('program_contact'),
+    'label_contact_action'  => nvis_prog_get_label('contact'),
+    'contacts'              => post_type_exists('nvis_person') ? get_field('related_contacts') : [],
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);
@@ -23,7 +23,7 @@ if (is_array($args['contacts']) && !empty($args['contacts'])) :
 ?>
 <div class="program-contacts">
   <h2 class="program-contacts__title program-sidebar__title">
-    <?php echo esc_html($args['heading']); ?>
+    <?php echo esc_html($args['label_program_contact']); ?>
   </h2>
   <?php
   foreach ($args['contacts'] as $post) :
