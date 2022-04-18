@@ -38,7 +38,7 @@ if ($args['show_subpage']) :
             ]
         );
       else:
-        nvis_prog_get_template_part('common/post-links', ['posts' => $careers]);
+        nvis_prog_get_template_part('common/posts-links', ['posts' => $careers]);
       endif;
     endif;
   ?>
