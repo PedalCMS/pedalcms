@@ -54,7 +54,8 @@ if ($args['show_subpage']) : ?>
                       'post'                     => $person,
                       'h_level'                  => $h_level,
                       'img_size'                 => $args['image_size'],
-                      'show_contact_info_labels' => $args['show_contact_info_labels']
+                      'show_contact_info_labels' => $args['show_contact_info_labels'],
+                      'context'                  => $template
                   ]
               );
             endforeach;
