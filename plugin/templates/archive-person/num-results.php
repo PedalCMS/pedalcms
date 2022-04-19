@@ -9,4 +9,4 @@
 
 defined('ABSPATH') || exit;
 
-nvis_prog_get_template_part('common/num-results', ['label' => 'people', 'label_single' => 'person']);
+nvis_prog_get_template_part('common/num-results');
