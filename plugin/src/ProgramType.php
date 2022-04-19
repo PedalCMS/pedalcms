@@ -101,7 +101,7 @@ class ProgramType extends CustomTaxonomy {
                         ],
                         [
                             'key'          => 'field_625862518454f',
-                            'label'        => 'Deadline Info',
+                            'label'        => __('Deadline Info', 'nvis-program-pages'),
                             'name'         => 'info',
                             'type'         => 'text',
                             'instructions' => '',
