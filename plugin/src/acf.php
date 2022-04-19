@@ -13,6 +13,7 @@ add_action('acf/init', __NAMESPACE__ . '\acf_init');
 add_filter('acf/update_value/type=relationship', __NAMESPACE__ . '\maybe_update_bidirectional_relationship', 10, 3);
 add_filter('acf/load_field/name=nvis_image_size_header', __NAMESPACE__ . '\choices_image_size_header');
 add_filter('acf/load_field/name=search_filters', __NAMESPACE__ . '\choices_search_filters');
+add_filter('acf/load_field/name=post_type', __NAMESPACE__ . '\choices_post_type');
 add_action('acf/save_post', __NAMESPACE__ . '\save_options', 20);
 add_action('admin_init', __NAMESPACE__ . '\maybe_flush_rules');
 
@@ -208,8 +209,8 @@ function remove_relationship(int $remove_post, array $from_posts, string $field_
 }
 
 /**
- * Adds the list of registered image sizes to the choices. 
- * 
+ * Adds the list of registered image sizes to the choices.
+ *
  * Called on filter: `acf/load_field/name=nvis_image_size_header`
  *
  * @param array $field The ACF field config.
@@ -240,10 +241,10 @@ function choices_image_size_header(array $field): array {
 
 /**
  * Removes search filters choices that correspond to disabled taxonomies.
- * 
+ *
  * Called on filter: `acf/load_field/name=search_filters`
- * 
- * Because the search filter fields are all part of field groups, they all 
+ *
+ * Because the search filter fields are all part of field groups, they all
  * share the name `search_filters` and this will operate on all of them.
  *
  * @param array $field The ACF field config.
@@ -269,11 +270,42 @@ function choices_search_filters(array $field): array {
 }
 
 /**
- * Creates the `nvis_flush_rules` transient when saving the plugin settings page. 
- * 
+ * Adds the list of public registered post types (except attachment) to the choices.
+ *
+ * Called on filter: `acf/load_field/name=post_type`
+ *
+ * @param array $field The ACF field config.
+ * @return array The filtered field config.
+ */
+function choices_post_type(array $field): array {
+    $post_types = get_post_types(
+        ['public' => true],
+        'objects'
+    );
+
+    $choices['none'] = 'None';
+
+    foreach ($post_types as $post_type) {
+        $choices[$post_type->name] = sprintf(
+            '%s (%s)',
+            $post_type->label,
+            $post_type->name
+        );
+    }
+
+    unset($choices['attachment']);
+
+    $field['choices'] = $choices;
+
+    return $field;
+}
+
+/**
+ * Creates the `nvis_flush_rules` transient when saving the plugin settings page.
+ *
  * Called on action: `acf/save_post`
  *
- * @param int|string $post_id The post id of the 
+ * @param int|string $post_id The post id of the
  * @return void
  */
 function save_options($post_id) {
@@ -286,7 +318,7 @@ function save_options($post_id) {
 
 /**
  * Flushes the rewrite rules when `nvis_flush_rules` transient is present.
- * 
+ *
  * Called on action: `admin_init`
  *
  * @return void
