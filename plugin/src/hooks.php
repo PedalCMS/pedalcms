@@ -11,6 +11,7 @@ namespace InvisibleUs\Programs;
 add_filter('document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 3);
 add_action('wp_head', __NAMESPACE__ . '\options_wp_head', 7);
 add_filter('body_class', __NAMESPACE__ . '\body_class', 10, 3);
+add_filter('admin_body_class', __NAMESPACE__ . '\admin_body_class', 10, 3);
 add_filter('post_class', __NAMESPACE__ . '\post_class', 10, 3);
 add_filter('term_link', __NAMESPACE__ . '\term_link', 10);
 add_filter('nvis/programs/before_main_content', __NAMESPACE__ . '\before_main_content');
@@ -117,6 +118,25 @@ function body_class(array $classes): array {
 
     if ($presentation_mode) {
         $classes[] = 'nvis-present-mode--' . $presentation_mode;
+    }
+
+    return $classes;
+}
+
+/**
+ * Adds body class name based on presentation mode to options screen.
+ *
+ * @param string $classes A string of body class names.
+ * @return string The resulting string of body class names.
+ */
+function admin_body_class(string $classes): string {
+    $current_screen = get_current_screen();
+    if ($current_screen->id === 'settings_page_' . Plugin::$options_page_slug) {
+        $presentation_mode = Plugin::get_option('presentation_mode');
+    
+        if ($presentation_mode) {
+            $classes .= ' nvis-present-mode--' . $presentation_mode;
+        }
     }
 
     return $classes;
