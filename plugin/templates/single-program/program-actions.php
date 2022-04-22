@@ -19,12 +19,12 @@ $defaults = [
         [
             'label' => nvis_prog_get_label('apply_now_action'),
             'url'   => nvis_prog_get_action_link('apply_now', $post),
-            'class' => 'apply-now'
+            'key'   => 'apply_now'
         ],
         [
             'label' => nvis_prog_get_label('request_info_action'),
             'url'   => nvis_prog_get_action_link('request_info', $post),
-            'class' => 'request-info'
+            'key'   => 'request_info'
         ]
     ],
     'wrapper_class' => 'program-actions'
@@ -40,7 +40,7 @@ if ($args['add_permalink']) {
         [
             'label' => $args['label_permalink'],
             'url'   => $permalink,
-            'class' => 'program-details'
+            'key'   => 'program_details'
         ]
     );
 }
