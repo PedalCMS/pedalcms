@@ -390,7 +390,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => '',
+                    'placeholder'   => __('Program Contact', 'nvis-program-pages'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -497,18 +497,10 @@ $field_group = [
                     'type'              => 'image',
                     'instructions'      => __('The background image of the archive page header (Tuxedo Mode only).', 'nvis-program-pages'),
                     'required'          => 0,
-                    'conditional_logic' => [
-                        [
-                            [
-                                'field'    => 'field_625433ee9f135',
-                                'operator' => '==',
-                                'value'    => 'full',
-                            ],
-                        ],
-                    ],
+                    'conditional_logic' => 0,
                     'wrapper' => [
                         'width' => '',
-                        'class' => '',
+                        'class' => 'present-mode-full',
                         'id'    => '',
                     ],
                     'return_format' => 'id',
@@ -1094,15 +1086,7 @@ $field_group = [
             'type'              => 'group',
             'instructions'      => __('Configuration options for individual courses.', 'nvis-program-pages'),
             'required'          => 0,
-            'conditional_logic' => [
-                [
-                    [
-                        'field'    => 'field_624f2bf176f96',
-                        'operator' => '==',
-                        'value'    => '1',
-                    ],
-                ],
-            ],
+            'conditional_logic' => 0,
             'wrapper' => [
                 'width' => '',
                 'class' => '',
@@ -1244,15 +1228,7 @@ $field_group = [
                     'type'              => 'image',
                     'instructions'      => __('The background image of the archive page header (Tuxedo Mode only).', 'nvis-program-pages'),
                     'required'          => 0,
-                    'conditional_logic' => [
-                        [
-                            [
-                                'field'    => 'field_625433ee9f135',
-                                'operator' => '==',
-                                'value'    => 'full',
-                            ],
-                        ],
-                    ],
+                    'conditional_logic' => 0,
                     'wrapper' => [
                         'width' => '',
                         'class' => '',
@@ -1369,15 +1345,7 @@ $field_group = [
             'type'              => 'group',
             'instructions'      => __('Configuration options for individual personnel.', 'nvis-program-pages'),
             'required'          => 0,
-            'conditional_logic' => [
-                [
-                    [
-                        'field'    => 'field_624f2b2a695af',
-                        'operator' => '==',
-                        'value'    => '1',
-                    ],
-                ],
-            ],
+            'conditional_logic' => 0,
             'wrapper' => [
                 'width' => '',
                 'class' => '',
@@ -1418,15 +1386,7 @@ $field_group = [
             'type'              => 'group',
             'instructions'      => __('Configuration options for searching and browsing the list of personnel.', 'nvis-program-pages'),
             'required'          => 0,
-            'conditional_logic' => [
-                [
-                    [
-                        'field'    => 'field_624f2b2a695af',
-                        'operator' => '==',
-                        'value'    => '1',
-                    ],
-                ],
-            ],
+            'conditional_logic' => 0,
             'wrapper' => [
                 'width' => '',
                 'class' => '',
@@ -1503,15 +1463,7 @@ $field_group = [
                     'type'              => 'image',
                     'instructions'      => __('The background image of the archive page header (Tuxedo Mode only).', 'nvis-program-pages'),
                     'required'          => 0,
-                    'conditional_logic' => [
-                        [
-                            [
-                                'field'    => 'field_625433ee9f135',
-                                'operator' => '==',
-                                'value'    => 'full',
-                            ],
-                        ],
-                    ],
+                    'conditional_logic' => 0,
                     'wrapper' => [
                         'width' => '',
                         'class' => '',
@@ -1753,7 +1705,7 @@ $field_group = [
             'label'             => __('Instruction Mode', 'nvis-program-pages'),
             'name'              => 'nvis_instruct_mode',
             'type'              => 'group',
-            'instructions'      => '',
+            'instructions'      => 'Examples include In-person, Online, Hybrid',
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -1901,7 +1853,7 @@ $field_group = [
             'label'             => __('Session', 'nvis-program-pages'),
             'name'              => 'nvis_session',
             'type'              => 'group',
-            'instructions'      => '',
+            'instructions'      => __('Also commonly referred to as "term." (e.g. Fall, Spring, Summer)', 'nvis-program-pages'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
