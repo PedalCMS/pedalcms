@@ -372,6 +372,10 @@ function options_template_defaults($defaults, $template) {
             $defaults = options_post_featured_image($defaults, $post_type, $presentation_mode);
 
             break;
+        case 'single-program/program-actions':
+            $defaults = options_program_actions($defaults);
+
+            break;
         case 'single-program/contact':
             $defaults = options_program_contact($defaults);
 
@@ -482,6 +486,20 @@ function options_subpage_labels($subpage, $post_type) {
 
     return $subpage;
 }
+
+
+function options_program_actions($defaults) {
+    foreach ($defaults['actions'] as &$action) {
+        $value = Plugin::get_option("program_label_{$action['key']}_action");
+
+        if ($value) {
+            $action['label'] = $value;
+        }
+    }
+
+    return $defaults;
+}
+
 
 function options_program_contact($defaults) {
     $labels = [
