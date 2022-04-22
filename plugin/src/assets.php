@@ -76,7 +76,9 @@ function enqueue_assets() {
     }
 
     if (!is_admin()) {
-        wp_enqueue_style('nvis-global');
+        if ($presentation_mode !== 'none') {
+            wp_enqueue_style('nvis-global');
+        }
 
         if ($presentation_mode === 'full') {
             wp_enqueue_style('nvis-global-full');
