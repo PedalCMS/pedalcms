@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $defaults = [
     'action'                => 'contact',
     'label_program_contact' => nvis_prog_get_label('program_contact'),
-    'label_contact_action'  => nvis_prog_get_label('contact'),
+    'label_contact_action'  => nvis_prog_get_label('contact_action'),
     'contacts'              => post_type_exists('nvis_person') ? get_field('related_contacts') : [],
 ];
 

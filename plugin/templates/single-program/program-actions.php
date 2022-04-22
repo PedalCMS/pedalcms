@@ -17,12 +17,12 @@ $defaults = [
     'label_permalink' => nvis_prog_get_label('program_details'),
     'actions'         => [
         [
-            'label' => nvis_prog_get_label('apply_now'),
+            'label' => nvis_prog_get_label('apply_now_action'),
             'url'   => nvis_prog_get_action_link('apply_now', $post),
             'class' => 'apply-now'
         ],
         [
-            'label' => nvis_prog_get_label('request_info'),
+            'label' => nvis_prog_get_label('request_info_action'),
             'url'   => nvis_prog_get_action_link('request_info', $post),
             'class' => 'request-info'
         ]
