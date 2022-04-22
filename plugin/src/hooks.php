@@ -373,12 +373,7 @@ function options_template_defaults($defaults, $template) {
 
             break;
         case 'single-program/contact':
-            $label = 'label_program_contact';
-            $value = Plugin::get_option("{$post_type}_{$label}");
-
-            if ($value) {
-                $defaults[$label] = $value;
-            }
+            $defaults = options_program_contact($defaults);
 
             break;
         default:
@@ -486,4 +481,21 @@ function options_subpage_labels($subpage, $post_type) {
     }
 
     return $subpage;
+}
+
+function options_program_contact($defaults) {
+    $labels = [
+        'label_program_contact',
+        'label_contact_action',
+    ];
+
+    foreach ($labels as $label) {
+        $value = Plugin::get_option('program_' . $label);
+    
+        if ($value) {
+            $defaults[$label] = $value;
+        }
+    }
+
+    return $defaults;
 }
