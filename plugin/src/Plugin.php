@@ -487,7 +487,7 @@ class Plugin {
                 );
         }
 
-        $label = apply_filters('nvis/get_label', $label, 'programs');
+        $label = apply_filters('nvis/get_label', $label, $label_key, 'programs');
 
         return $label;
     }
