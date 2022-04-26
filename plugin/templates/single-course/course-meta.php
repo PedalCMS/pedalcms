@@ -13,7 +13,7 @@ $post = nvis_args_or_global('post', $args);
 
 $defaults = [
     'label_credit'       => nvis_prog_get_label('credit'),
-    'label_credits'      => 'credits',
+    'label_credits'      => nvis_prog_get_label('credits'),
     'label_offered_in'   => nvis_prog_get_label('offered_in'),
     'link_terms'         => false,
 ];
