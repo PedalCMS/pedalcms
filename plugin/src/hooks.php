@@ -28,6 +28,7 @@ add_filter('taxonomy_labels_nvis_department', __NAMESPACE__ . '\options_departme
 add_filter('taxonomy_labels_nvis_faq_cat', __NAMESPACE__ . '\options_faq_cat_labels');
 add_filter('nvis/template_defaults', __NAMESPACE__ . '\options_template_defaults', 5, 2);
 add_filter('nvis/template_args', __NAMESPACE__ . '\options_template_args', 5, 2);
+add_filter('nvis/get_label', __NAMESPACE__ . '\options_plugin_labels', 5, 3);
 add_filter('nvis/programs/add_subpage', __NAMESPACE__ . '\options_subpage_labels', 5, 2);
 
 
@@ -510,6 +511,25 @@ function options_action_list($args) {
     }
 
     return $args;
+}
+
+function options_plugin_labels($label, $label_key, $plugin) {
+    $course_labels = [
+        'credit',
+        'credits'
+    ];
+
+    if ($plugin === 'programs' && in_array($label_key, $course_labels)) {
+
+        $value = Plugin::get_option('course_label_' . $label_key);
+
+        if ($value) {
+            $label = $value;
+        }
+
+    }
+
+    return $label;
 }
 
 
