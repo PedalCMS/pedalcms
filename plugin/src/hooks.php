@@ -92,7 +92,7 @@ function options_wp_head() {
 
         if ($value) {
             $vars[] = sprintf(
-                $var_ptrn, 
+                $var_ptrn,
                 str_replace('_', '-', $option),
                 $value
             );
@@ -133,7 +133,7 @@ function admin_body_class(string $classes): string {
     $current_screen = get_current_screen();
     if ($current_screen->id === 'settings_page_' . Plugin::$options_page_slug) {
         $presentation_mode = Plugin::get_option('presentation_mode');
-    
+
         if ($presentation_mode) {
             $classes .= ' nvis-present-mode--' . $presentation_mode;
         }
@@ -271,6 +271,9 @@ function options_template_args($args, $template) {
     switch ($template) {
         case 'common/filters':
             return options_search_filters($args);
+
+        case 'common/action-list':
+            return options_action_list($args);
         default:
             break;
     }
@@ -299,7 +302,7 @@ function options_search_filters($args) {
             $args['filters'][] = $filter;
         }
     }
-    
+
     $args['break_filters_after'] = (int) Plugin::get_option($post_type . '_archive_filters_showing');
 
     return $args;
@@ -370,10 +373,6 @@ function options_template_defaults($defaults, $template) {
             break;
         case 'common/post-featured-image':
             $defaults = options_post_featured_image($defaults, $post_type, $presentation_mode);
-
-            break;
-        case 'single-program/program-actions':
-            $defaults = options_program_actions($defaults);
 
             break;
         case 'single-program/contact':
@@ -488,16 +487,29 @@ function options_subpage_labels($subpage, $post_type) {
 }
 
 
-function options_program_actions($defaults) {
-    foreach ($defaults['actions'] as &$action) {
-        $value = Plugin::get_option("program_label_{$action['key']}_action");
+function options_action_list($args) {
+    switch ($args['context']) {
+        case 'single-program/program-actions':
+            $prefix = 'program';
+            break;
+        case 'single-course/course-actions':
+            $prefix = 'course';
+            break;
+        default:
+            $prefix = false;
+    }
 
-        if ($value) {
-            $action['label'] = $value;
+    if ($prefix) {
+        foreach ($args['actions'] as &$action) {
+            $value = Plugin::get_option("{$prefix}_label_{$action['key']}_action");
+
+            if ($value) {
+                $action['label'] = $value;
+            }
         }
     }
 
-    return $defaults;
+    return $args;
 }
 
 
@@ -509,7 +521,7 @@ function options_program_contact($defaults) {
 
     foreach ($labels as $label) {
         $value = Plugin::get_option('program_' . $label);
-    
+
         if ($value) {
             $defaults[$label] = $value;
         }
