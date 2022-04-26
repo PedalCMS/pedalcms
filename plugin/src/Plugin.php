@@ -253,7 +253,7 @@ class Plugin {
             'apply_now_action'       => __('Apply Now', 'nvis-program-pages'),
             'request_info_action'    => __('Request Info', 'nvis-program-pages'),
             'estimated_cost'         => __('Estimated Cost', 'nvis-program-pages'),
-            'register'               => __('Register', 'nvis-program-pages'),
+            'register_action'        => __('Register', 'nvis-program-pages'),
             'back_to_top'            => __('Back to Top', 'nvis-program-pages'),
         ];
     }

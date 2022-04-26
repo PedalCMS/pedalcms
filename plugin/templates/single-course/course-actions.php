@@ -14,9 +14,9 @@ $register_url = nvis_prog_get_course_action_link('reg_search', $post);
 
 if ($register_url) {
     $defaults['actions'][] = [
-        'label' => nvis_prog_get_label('register'),
+        'label' => nvis_prog_get_label('register_action'),
         'url'   => $register_url,
-        'class' => 'register'
+        'key' => 'register'
     ];
 }
 
@@ -30,7 +30,7 @@ if ($args['add_permalink']) {
         [
             'label' => $args['label_permalink'],
             'url'   => $permalink,
-            'class' => 'course-action-details'
+            'key' => 'course_info'
         ]
     );
 }
