@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $defaults = [
     'courses'       => null,
     'show_credits'  => true,
-    'label_course'  => nvis_get_post_type_label('nvis_course', 'singular'),
+    'label_course'  => nvis_get_post_type_label('nvis_course', 'singular_name'),
     'label_credits' => ucfirst(nvis_prog_get_label('credits'))
 ];
 
