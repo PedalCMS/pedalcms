@@ -11,7 +11,7 @@ defined('ABSPATH') || exit;
 
 ?>
 <header class="single-person-page-header single-person-page-header--classic page-header entry-header">
-    <?php nvis_prog_get_template_part('common/page-header-backdrop', ['attachment_id' => 107892]); ?>
+    <?php nvis_prog_get_template_part('common/page-header-backdrop'); ?>
     <div class="page-header__content">
         <?php nvis_prog_get_template_part('common/post-featured-image', ['image_align' => 'left']); ?>
 
