@@ -331,10 +331,8 @@ class Plugin {
         }
 
         self::$taxonomies[] = FAQCategory::TAXONOMY;
-        if (self::get_option('faq_cat_enable')) {
-            FAQCategory::get_instance()->register();
-            self::$taxonomies_enabled[] = FAQCategory::TAXONOMY;
-        }
+        FAQCategory::get_instance()->register();
+        self::$taxonomies_enabled[] = FAQCategory::TAXONOMY;
 
         return;
     }
