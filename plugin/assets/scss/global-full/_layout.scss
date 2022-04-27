@@ -111,7 +111,7 @@ body .nvis-template {
 
 .nvis-template .page-header__title-group .taxonomy a:hover {
   background: var(--nvis-active-color);
-  color: #fff;
+  color: var(--nvis-active-color-text);
   text-decoration: none;
   text-shadow: none;
 }

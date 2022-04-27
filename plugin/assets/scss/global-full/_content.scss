@@ -19,7 +19,7 @@ section:target > h2 {
 
 body .nvis-template .button {
   background-color: var(--nvis-active-color);
-  color: #fff;
+  color: var(--nvis-active-color-text);
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 0;
