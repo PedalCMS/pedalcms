@@ -12,10 +12,10 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 
 $defaults = [
-    'h_level'   => 2,
-    'style'     => 'full',
-    'heading'   => nvis_prog_get_label('instructors'),
-    'personnel' => get_field('related_course_personnel', $post)
+    'h_level'                   => 2,
+    'style'                     => 'full',
+    'label_instructors' => nvis_prog_get_label('instructors'),
+    'personnel'                 => get_field('related_course_personnel', $post)
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);
@@ -27,7 +27,7 @@ if (!empty($args['personnel'])) :
 ?>
 <div class="course-personnel">
     <?php
-    echo sprintf('<%s>%s</%s>', $h_tag, esc_html($args['heading']), $h_tag);
+    echo sprintf('<%s>%s</%s>', $h_tag, esc_html($args['label_instructors']), $h_tag);
 
     if ($style === 'full') :
         nvis_prog_get_template_part(
@@ -37,7 +37,8 @@ if (!empty($args['personnel'])) :
                 'layout'            => 'list',
                 'show_contact_info' => false,
                 'h_level'           => 3,
-                'img_size'          => 'thumbnail'
+                'img_size'          => 'thumbnail',
+                'context'           => $template
             ]
         );
     elseif ($style === 'links') :
