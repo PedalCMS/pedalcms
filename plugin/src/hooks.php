@@ -380,6 +380,14 @@ function options_template_defaults($defaults, $template) {
             $defaults = options_program_contact($defaults);
 
             break;
+        case 'single-program/courses-table':
+            $show_credits = Plugin::get_option('program_subpage_curriculum_show_credits');
+
+            if (in_array($show_credits,['0','1'])) {
+                $defaults['show_credits'] = (bool) $show_credits;
+            }
+
+            break;
         default:
             break;
     }
