@@ -54,8 +54,9 @@ function nvis_parse_template_args(array $args, array $defaults, string $template
      * 
      * @param array $defaults The set of defaults for the template.
      * @param string $template The current template. 
+     * @param array $args The args passed to the template.
      */
-    $defaults = apply_filters( 'nvis/template_defaults', $defaults, $template );
+    $defaults = apply_filters( 'nvis/template_defaults', $defaults, $template, $args );
 
     return wp_parse_args( $args, $defaults );
 }
