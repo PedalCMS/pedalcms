@@ -19,6 +19,7 @@
 .person-list .nvis_person {
   display: flex;
   gap: var(--nvis-spacing);
+  margin-bottom: 0 !important;
   padding: var(--nvis-spacing);
 
   @media (min-width: $screen-md-min) {
