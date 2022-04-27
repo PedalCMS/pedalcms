@@ -388,10 +388,18 @@ function options_template_defaults($defaults, $template) {
             }
 
             break;
-
         case 'single-person/related-courses':
             $label = 'label_courses_taught';
             $value = Plugin::get_option('person_' . $label);
+
+            if ($value) {
+                $defaults[$label] = $value;
+            }
+
+            break;
+        case 'single-course/related-personnel':
+            $label = 'label_instructors';
+            $value = Plugin::get_option('course_' . $label);
 
             if ($value) {
                 $defaults[$label] = $value;
