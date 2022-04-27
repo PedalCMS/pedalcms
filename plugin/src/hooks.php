@@ -388,7 +388,7 @@ function options_template_defaults($defaults, $template) {
             }
 
             break;
-        
+
         case 'single-person/related-courses':
             $label = 'label_courses_taught';
             $value = Plugin::get_option('person_' . $label);
@@ -464,18 +464,17 @@ function options_page_header_backdrop($defaults, $post_type, $presentation_mode)
     $defaults['attachment_id'] = Plugin::get_option($post_type . '_archive_header_background');
 
     if (is_singular()) {
-        $img = get_post_thumbnail_id();
+        $img = Plugin::get_option($post_type . '_header_background');
 
         if ($img) {
             $defaults['attachment_id'] = $img;
-        } else {
+        } else if ($defaults['fallback_to_post']) {
             $img = Plugin::get_option($post_type . '_default_featured_image');
 
             if ($img) {
                 $defaults['attachment_id'] = $img;
             }
         }
-
     }
 
     return $defaults;
