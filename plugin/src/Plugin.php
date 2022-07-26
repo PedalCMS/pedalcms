@@ -113,6 +113,7 @@ class Plugin {
      * @return void
      */
     public static function install() {
+        Program::setup_subpage_manager();
         self::register_content_model();
         self::install_capabilities();
         flush_rewrite_rules();
