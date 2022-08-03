@@ -50,7 +50,7 @@ if (!function_exists('nvis_prog_get_post_types')) :
  * @return array An array of post type keys.
  */
 function nvis_prog_get_post_types(): array {
-    return \InvisibleUs\Program\Plugin::post_types();
+    return \InvisibleUs\Programs\Plugin::post_types();
 }
 
 endif;
