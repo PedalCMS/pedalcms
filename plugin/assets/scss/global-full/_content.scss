@@ -69,3 +69,7 @@ body .nvis-template .button-secondary:hover {
   gap: var(--nvis-spacing);
   padding: 0 var(--article-padding) var(--article-padding);
 }
+
+.nvis-sidebar h3 {
+  opacity: 0.85;
+}
