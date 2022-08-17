@@ -356,7 +356,13 @@ function options_post_type_description($description,  $post_type_obj) {
  * @return array The filtered defaults.
  */
 function options_template_defaults($defaults, $template) {
-    $post_type = str_replace('nvis_', '', get_post_type());
+    $post_type = get_post_type();
+
+    if (!in_array($post_type, Plugin::post_types())) {
+        return $defaults;
+    }
+
+    $post_type = str_replace('nvis_', '', $post_type);
     $presentation_mode = Plugin::get_option('presentation_mode');
 
     switch($template) {
@@ -451,6 +457,7 @@ function options_post_featured_image($defaults, $post_type, $presentation_mode) 
 
         if (is_singular()) {
             $defaults['image_size'] = Plugin::get_option('image_size_header');
+            
             if ($defaults['image_size'] === 'custom') {
                 $defaults['image_size'] = [
                     (int) Plugin::get_option('image_size_header_w'),
