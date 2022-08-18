@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-04-04T19:53:44+00:00\n"
+"POT-Creation-Date: 2022-08-18T15:11:29+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: nvis-program-pages\n"
@@ -29,6 +29,10 @@ msgstr ""
 
 #. Author of the plugin
 msgid "Invisible Us"
+msgstr ""
+
+#: src/acf.php:237
+msgid "Custom"
 msgstr ""
 
 #: src/College.php:35
@@ -138,149 +142,157 @@ msgid "Course"
 msgstr ""
 
 #: src/Course.php:45
-msgid "Add New Course"
+msgctxt "post type plural name not collective"
+msgid "Courses"
 msgstr ""
 
 #: src/Course.php:46
-msgid "Edit Course"
+msgid "Add New Course"
 msgstr ""
 
 #: src/Course.php:47
-msgid "New Course"
+msgid "Edit Course"
 msgstr ""
 
 #: src/Course.php:48
-msgid "View Course"
+msgid "New Course"
 msgstr ""
 
 #: src/Course.php:49
-msgid "View Courses"
+msgid "View Course"
 msgstr ""
 
 #: src/Course.php:50
-msgid "Search Courses"
+msgid "View Courses"
 msgstr ""
 
 #: src/Course.php:51
-msgid "No courses found."
+msgid "Search Courses"
 msgstr ""
 
 #: src/Course.php:52
-msgid "No courses found in Trash."
+msgid "No courses found."
 msgstr ""
 
 #: src/Course.php:53
-msgid "Parent Course:"
+msgid "No courses found in Trash."
 msgstr ""
 
 #: src/Course.php:54
-msgid "All Courses"
+msgid "Parent Course:"
 msgstr ""
 
 #: src/Course.php:55
-msgid "Course Catalog"
+msgid "All Courses"
 msgstr ""
 
 #: src/Course.php:56
-msgid "Course Attributes"
+#: src/field-group-plugin.php:1125
+#: src/field-group-plugin.php:1187
+msgid "Course Catalog"
 msgstr ""
 
 #: src/Course.php:57
-msgid "Insert into course"
+msgid "Course Attributes"
 msgstr ""
 
 #: src/Course.php:58
-msgid "Uploaded to this course"
+msgid "Insert into course"
 msgstr ""
 
 #: src/Course.php:59
-msgid "Filter courses list"
+msgid "Uploaded to this course"
 msgstr ""
 
 #: src/Course.php:60
-msgid "Courses list navigation"
+msgid "Filter courses list"
 msgstr ""
 
 #: src/Course.php:61
-msgid "Courses list"
+msgid "Courses list navigation"
 msgstr ""
 
 #: src/Course.php:62
-msgid "Course published."
+msgid "Courses list"
 msgstr ""
 
 #: src/Course.php:63
-msgid "Course published privately."
+msgid "Course published."
 msgstr ""
 
 #: src/Course.php:64
-msgid "Course reverted to draft."
+msgid "Course published privately."
 msgstr ""
 
 #: src/Course.php:65
-msgid "Course scheduled."
+msgid "Course reverted to draft."
 msgstr ""
 
 #: src/Course.php:66
-msgid "Course updated."
+msgid "Course scheduled."
 msgstr ""
 
 #: src/Course.php:67
+msgid "Course updated."
+msgstr ""
+
+#: src/Course.php:68
 msgctxt "navigation link block title"
 msgid "Course Link"
 msgstr ""
 
-#: src/Course.php:68
+#: src/Course.php:69
 msgctxt "navigation link block description"
 msgid "A link to a course."
 msgstr ""
 
-#: src/Course.php:75
+#: src/Course.php:76
 msgid "Course Info"
 msgstr ""
 
-#: src/Course.php:95
+#: src/Course.php:96
 msgid "Course Description"
 msgstr ""
 
-#: src/Course.php:98
+#: src/Course.php:99
 msgid "The short description of the course. No more than a paragraph."
 msgstr ""
 
-#: src/Course.php:102
+#: src/Course.php:103
 msgid "Course Code"
 msgstr ""
 
-#: src/Course.php:105
+#: src/Course.php:106
 msgid "The short identifier for a course. Usually some combination of subject code and a number."
 msgstr ""
 
-#: src/Course.php:111
+#: src/Course.php:112
 msgid "Credit Hours"
 msgstr ""
 
-#: src/Course.php:114
+#: src/Course.php:115
 msgid "Number of credit hours earned for this course. Sometimes also referred to as units."
 msgstr ""
 
-#: src/Course.php:120
+#: src/Course.php:121
 msgid "Course Registration Key"
 msgstr ""
 
-#: src/Course.php:123
+#: src/Course.php:124
 msgid "They key, or ID, that you can use to search course registration systems for this course via URL parameter."
 msgstr ""
 
-#: src/Course.php:129
+#: src/Course.php:130
 msgid "Registration Search URL"
 msgstr ""
 
-#: src/Course.php:132
+#: src/Course.php:133
 msgid "Enter a URL for the \"Search Sections\" link. Overrides global setting."
 msgstr ""
 
-#: src/Course.php:137
-#: src/Plugin.php:377
+#: src/Course.php:138
+#: src/field-group-plugin.php:1419
+#: src/Plugin.php:243
 msgid "Instructors"
 msgstr ""
 
@@ -595,6 +607,621 @@ msgctxt "navigation link block description"
 msgid "A link to a FAQ category."
 msgstr ""
 
+#: src/field-group-plugin.php:5
+#: src/Plugin.php:199
+msgid "Program Pages Settings"
+msgstr ""
+
+#: src/field-group-plugin.php:27
+msgid "General"
+msgstr ""
+
+#: src/field-group-plugin.php:43
+msgid "Presentation Mode"
+msgstr ""
+
+#: src/field-group-plugin.php:46
+msgid "Choose the amount of design and styling you want applied (CSS). Additional options will be available when Tuxedo Mode is active."
+msgstr ""
+
+#: src/field-group-plugin.php:68
+msgid "Active Color"
+msgstr ""
+
+#: src/field-group-plugin.php:71
+msgid "The color to be used for links and buttons."
+msgstr ""
+
+#: src/field-group-plugin.php:85
+msgid "Button Text Color"
+msgstr ""
+
+#: src/field-group-plugin.php:88
+msgid "The color to be used for text on buttons. Set this if white does not provide enough contrast to your active color."
+msgstr ""
+
+#: src/field-group-plugin.php:102
+msgid "Header Image Size"
+msgstr ""
+
+#: src/field-group-plugin.php:132
+msgid "Width"
+msgstr ""
+
+#: src/field-group-plugin.php:161
+msgid "Height"
+msgstr ""
+
+#: src/field-group-plugin.php:190
+msgid "Display Breadcrumbs"
+msgstr ""
+
+#: src/field-group-plugin.php:193
+msgid "Disable this if you have two showing up."
+msgstr ""
+
+#: src/field-group-plugin.php:209
+msgid "Main Content Wrapper Tag"
+msgstr ""
+
+#: src/field-group-plugin.php:212
+msgid "Switch to \"main\" to fix accessibility issues with some themes."
+msgstr ""
+
+#: src/field-group-plugin.php:235
+#: src/field-group-plugin.php:278
+#: src/Program.php:74
+msgid "Programs"
+msgstr ""
+
+#: src/field-group-plugin.php:251
+msgid "Configure Program Listings"
+msgstr ""
+
+#: src/field-group-plugin.php:254
+msgid "Configuration options for searching and browsing the list of programs."
+msgstr ""
+
+#: src/field-group-plugin.php:266
+#: src/field-group-plugin.php:1175
+#: src/field-group-plugin.php:1478
+msgid "Archive Title"
+msgstr ""
+
+#: src/field-group-plugin.php:269
+#: src/field-group-plugin.php:1178
+#: src/field-group-plugin.php:1481
+msgid "The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default."
+msgstr ""
+
+#: src/field-group-plugin.php:285
+#: src/field-group-plugin.php:1194
+#: src/field-group-plugin.php:1497
+msgid "Lead Copy"
+msgstr ""
+
+#: src/field-group-plugin.php:288
+#: src/field-group-plugin.php:1197
+#: src/field-group-plugin.php:1500
+msgid "The content that appears in the archive page header."
+msgstr ""
+
+#: src/field-group-plugin.php:304
+#: src/field-group-plugin.php:1213
+msgid "Header Image"
+msgstr ""
+
+#: src/field-group-plugin.php:307
+#: src/field-group-plugin.php:1216
+#: src/field-group-plugin.php:1519
+msgid "The image to be displayed in the page header of the archive."
+msgstr ""
+
+#: src/field-group-plugin.php:328
+#: src/field-group-plugin.php:1237
+#: src/field-group-plugin.php:1540
+#: src/field-group-plugin.php:1635
+msgid "Header Background Image"
+msgstr ""
+
+#: src/field-group-plugin.php:331
+#: src/field-group-plugin.php:1240
+#: src/field-group-plugin.php:1543
+msgid "The background image of the archive page header (Tuxedo Mode only)."
+msgstr ""
+
+#: src/field-group-plugin.php:352
+#: src/field-group-plugin.php:1261
+#: src/field-group-plugin.php:1564
+msgid "Search Filters"
+msgstr ""
+
+#: src/field-group-plugin.php:355
+msgid "Select the list of search filters you want enabled. (Disabled taxonomies will not show up in this list)."
+msgstr ""
+
+#: src/field-group-plugin.php:385
+#: src/field-group-plugin.php:1296
+#: src/field-group-plugin.php:1597
+msgid "Number of Filters Visible"
+msgstr ""
+
+#: src/field-group-plugin.php:388
+#: src/field-group-plugin.php:1299
+#: src/field-group-plugin.php:1600
+msgid "The rest of the filters will be hidden behind \"Show More Filters\" toggle switch. Set to zero to show all filters."
+msgstr ""
+
+#: src/field-group-plugin.php:406
+msgid "Show Images in List View"
+msgstr ""
+
+#: src/field-group-plugin.php:409
+msgid "Should lists of posts include their featured images?"
+msgstr ""
+
+#: src/field-group-plugin.php:427
+msgid "Configure Programs"
+msgstr ""
+
+#: src/field-group-plugin.php:430
+msgid "Configuration options for individual programs."
+msgstr ""
+
+#: src/field-group-plugin.php:442
+msgid "Default Post Featured Image"
+msgstr ""
+
+#: src/field-group-plugin.php:445
+msgid "The default featured image of individual posts."
+msgstr ""
+
+#: src/field-group-plugin.php:466
+#: src/Plugin.php:247
+#: src/Program.php:231
+#: src/ProgramType.php:64
+#: src/ProgramType.php:84
+msgid "Application Deadlines"
+msgstr ""
+
+#: src/field-group-plugin.php:485
+#: src/Program.php:241
+#: src/ProgramType.php:94
+msgid "Deadline Label"
+msgstr ""
+
+#: src/field-group-plugin.php:497
+msgid "Fall, Spring, etc."
+msgstr ""
+
+#: src/field-group-plugin.php:504
+#: src/Program.php:251
+#: src/ProgramType.php:104
+msgid "Deadline Info"
+msgstr ""
+
+#: src/field-group-plugin.php:516
+msgid "e.g. June 24th"
+msgstr ""
+
+#: src/field-group-plugin.php:525
+msgid "Request Info Button Text"
+msgstr ""
+
+#: src/field-group-plugin.php:528
+msgid "The text to be displayed in the Request Info button."
+msgstr ""
+
+#: src/field-group-plugin.php:537
+#: src/Plugin.php:255
+msgid "Request Info"
+msgstr ""
+
+#: src/field-group-plugin.php:544
+#: src/Program.php:197
+msgid "Request Info URL"
+msgstr ""
+
+#: src/field-group-plugin.php:547
+msgid "Enter a URL pattern to create unique request info URLs for each program. You can use the following tags: {$program_guid} {$program_slug}"
+msgstr ""
+
+#: src/field-group-plugin.php:560
+msgid "Apply Now Button Text"
+msgstr ""
+
+#: src/field-group-plugin.php:563
+msgid "The text to be displayed in the Apply Now button."
+msgstr ""
+
+#: src/field-group-plugin.php:572
+#: src/Plugin.php:254
+msgid "Apply Now"
+msgstr ""
+
+#: src/field-group-plugin.php:579
+#: src/Program.php:205
+msgid "Apply Now URL"
+msgstr ""
+
+#: src/field-group-plugin.php:582
+msgid "Enter a URL pattern to create unique apply now URLs for each program. You can use the following tags: {$program_guid} {$program_slug}"
+msgstr ""
+
+#: src/field-group-plugin.php:595
+msgid "Primary Contact Heading"
+msgstr ""
+
+#: src/field-group-plugin.php:598
+msgid "Appears above the list of contacts in the sidebar."
+msgstr ""
+
+#: src/field-group-plugin.php:607
+#: src/Plugin.php:248
+msgid "Program Contact"
+msgstr ""
+
+#: src/field-group-plugin.php:614
+msgid "Contact Button Text"
+msgstr ""
+
+#: src/field-group-plugin.php:617
+msgid "The text to be displayed in the Contact button."
+msgstr ""
+
+#: src/field-group-plugin.php:626
+#: src/Plugin.php:249
+msgid "Contact"
+msgstr ""
+
+#: src/field-group-plugin.php:633
+msgid "Contact URL"
+msgstr ""
+
+#: src/field-group-plugin.php:636
+msgid "Enter a URL pattern to create unique contact URLs for each program. You can use the following tags: {$program_guid} {$program_slug}"
+msgstr ""
+
+#: src/field-group-plugin.php:651
+msgid "Subpages"
+msgstr ""
+
+#: src/field-group-plugin.php:667
+msgid "Enabled Subpages"
+msgstr ""
+
+#: src/field-group-plugin.php:670
+msgid "This enables subpages for all programs but any subpage can be disabled per program as well."
+msgstr ""
+
+#: src/field-group-plugin.php:697
+#: src/field-group-plugin.php:748
+#: src/field-group-plugin.php:767
+msgid "Careers"
+msgstr ""
+
+#: src/field-group-plugin.php:700
+msgid "Configuration options for the Careers program subpage."
+msgstr ""
+
+#: src/field-group-plugin.php:712
+msgid "Career Post Type"
+msgstr ""
+
+#: src/field-group-plugin.php:715
+msgid "Select the post type to associate careers with programs."
+msgstr ""
+
+#: src/field-group-plugin.php:736
+#: src/field-group-plugin.php:791
+#: src/field-group-plugin.php:865
+#: src/field-group-plugin.php:920
+#: src/field-group-plugin.php:975
+#: src/field-group-plugin.php:1030
+#: src/field-group-plugin.php:1085
+msgid "Page Title"
+msgstr ""
+
+#: src/field-group-plugin.php:755
+#: src/field-group-plugin.php:810
+#: src/field-group-plugin.php:884
+#: src/field-group-plugin.php:939
+#: src/field-group-plugin.php:994
+#: src/field-group-plugin.php:1049
+#: src/field-group-plugin.php:1104
+msgid "Tab Label"
+msgstr ""
+
+#: src/field-group-plugin.php:776
+#: src/field-group-plugin.php:803
+#: src/field-group-plugin.php:822
+msgid "Curriculum"
+msgstr ""
+
+#: src/field-group-plugin.php:829
+msgid "Show Credits"
+msgstr ""
+
+#: src/field-group-plugin.php:832
+msgid "Whether or not to display the credits column in courses tables."
+msgstr ""
+
+#: src/field-group-plugin.php:850
+#: src/field-group-plugin.php:877
+#: src/field-group-plugin.php:896
+msgid "Faculty & Staff"
+msgstr ""
+
+#: src/field-group-plugin.php:905
+#: src/field-group-plugin.php:932
+#: src/field-group-plugin.php:951
+msgid "Cost"
+msgstr ""
+
+#: src/field-group-plugin.php:960
+#: src/field-group-plugin.php:987
+#: src/field-group-plugin.php:1006
+msgid "How to Apply"
+msgstr ""
+
+#: src/field-group-plugin.php:1015
+#: src/field-group-plugin.php:1042
+#: src/field-group-plugin.php:1061
+msgid "FAQs"
+msgstr ""
+
+#: src/field-group-plugin.php:1070
+#: src/field-group-plugin.php:1097
+#: src/field-group-plugin.php:1116
+msgid "News"
+msgstr ""
+
+#: src/field-group-plugin.php:1141
+#: src/field-group-plugin.php:1444
+msgid "Enable this Feature"
+msgstr ""
+
+#: src/field-group-plugin.php:1144
+#: src/field-group-plugin.php:1447
+msgid "If you're not going to use this feature, you should disable it."
+msgstr ""
+
+#: src/field-group-plugin.php:1160
+msgid "Configure Course Catalog"
+msgstr ""
+
+#: src/field-group-plugin.php:1163
+msgid "Configuration options for searching and browsing the list of courses."
+msgstr ""
+
+#: src/field-group-plugin.php:1264
+#: src/field-group-plugin.php:1567
+msgid "Select the list of search filters you want enabled."
+msgstr ""
+
+#: src/field-group-plugin.php:1319
+msgid "Configure Courses"
+msgstr ""
+
+#: src/field-group-plugin.php:1322
+msgid "Configuration options for individual courses."
+msgstr ""
+
+#: src/field-group-plugin.php:1334
+msgid "Course Credits Label"
+msgstr ""
+
+#: src/field-group-plugin.php:1337
+msgid "The unit of measure for course hours. Sometimes called units."
+msgstr ""
+
+#: src/field-group-plugin.php:1346
+#: src/Plugin.php:241
+msgid "credits"
+msgstr ""
+
+#: src/field-group-plugin.php:1353
+msgid "Course Credits Label, Singular"
+msgstr ""
+
+#: src/field-group-plugin.php:1356
+msgid "The unit of measure for course hours. Singular version."
+msgstr ""
+
+#: src/field-group-plugin.php:1365
+#: src/Plugin.php:240
+msgid "credit"
+msgstr ""
+
+#: src/field-group-plugin.php:1372
+msgid "Course Registration Button Text"
+msgstr ""
+
+#: src/field-group-plugin.php:1375
+msgid "The text to be displayed in the Register button."
+msgstr ""
+
+#: src/field-group-plugin.php:1384
+#: src/Plugin.php:257
+msgid "Register"
+msgstr ""
+
+#: src/field-group-plugin.php:1391
+msgid "Course Registration Search URL"
+msgstr ""
+
+#: src/field-group-plugin.php:1394
+msgid "Enter a URL pattern to create unique \"Search Sections\" URLs for each course. You can use the following tag: {$course_reg_key}"
+msgstr ""
+
+#: src/field-group-plugin.php:1407
+msgid "Instructors Heading"
+msgstr ""
+
+#: src/field-group-plugin.php:1410
+msgid "The heading over the list of instructors."
+msgstr ""
+
+#: src/field-group-plugin.php:1428
+#: src/field-group-plugin.php:1490
+#: src/Person.php:67
+msgid "Directory"
+msgstr ""
+
+#: src/field-group-plugin.php:1463
+msgid "Configure Faculty & Staff Directory"
+msgstr ""
+
+#: src/field-group-plugin.php:1466
+msgid "Configuration options for searching and browsing the list of personnel."
+msgstr ""
+
+#: src/field-group-plugin.php:1516
+msgid "Featured Image"
+msgstr ""
+
+#: src/field-group-plugin.php:1620
+msgid "Configure Personnel"
+msgstr ""
+
+#: src/field-group-plugin.php:1623
+msgid "Configuration options for individual personnel."
+msgstr ""
+
+#: src/field-group-plugin.php:1638
+msgid "The background image of the personnel page header (Tuxedo Mode only)."
+msgstr ""
+
+#: src/field-group-plugin.php:1659
+msgid "Courses Taught Heading"
+msgstr ""
+
+#: src/field-group-plugin.php:1662
+msgid "The heading above this list of courses a faculty member teaches."
+msgstr ""
+
+#: src/field-group-plugin.php:1671
+#: src/Person.php:194
+#: src/Plugin.php:244
+msgid "Courses Taught"
+msgstr ""
+
+#: src/field-group-plugin.php:1680
+msgid "Taxonomies"
+msgstr ""
+
+#: src/field-group-plugin.php:1696
+#: src/field-group-plugin.php:1742
+#: src/Program.php:144
+msgid "Program Type"
+msgstr ""
+
+#: src/field-group-plugin.php:1711
+#: src/field-group-plugin.php:1785
+#: src/field-group-plugin.php:1859
+#: src/field-group-plugin.php:1933
+#: src/field-group-plugin.php:2007
+#: src/field-group-plugin.php:2081
+#: src/field-group-plugin.php:2155
+#: src/field-group-plugin.php:2229
+msgid "Enable this Taxonomy"
+msgstr ""
+
+#: src/field-group-plugin.php:1730
+#: src/field-group-plugin.php:1804
+#: src/field-group-plugin.php:1878
+#: src/field-group-plugin.php:1952
+#: src/field-group-plugin.php:2026
+#: src/field-group-plugin.php:2100
+#: src/field-group-plugin.php:2174
+#: src/field-group-plugin.php:2246
+msgid "Singular Label"
+msgstr ""
+
+#: src/field-group-plugin.php:1749
+#: src/field-group-plugin.php:1823
+#: src/field-group-plugin.php:1897
+#: src/field-group-plugin.php:1971
+#: src/field-group-plugin.php:2045
+#: src/field-group-plugin.php:2119
+#: src/field-group-plugin.php:2193
+#: src/field-group-plugin.php:2265
+msgid "Plural Label"
+msgstr ""
+
+#: src/field-group-plugin.php:1761
+msgid "Program Types"
+msgstr ""
+
+#: src/field-group-plugin.php:1770
+#: src/field-group-plugin.php:1816
+#: src/Program.php:128
+msgid "College"
+msgstr ""
+
+#: src/field-group-plugin.php:1835
+msgid "Colleges"
+msgstr ""
+
+#: src/field-group-plugin.php:1844
+#: src/field-group-plugin.php:1890
+#: src/Program.php:160
+msgid "Instruction Mode"
+msgstr ""
+
+#: src/field-group-plugin.php:1909
+msgid "Instruction Modes"
+msgstr ""
+
+#: src/field-group-plugin.php:1918
+#: src/field-group-plugin.php:1964
+msgid "Subject"
+msgstr ""
+
+#: src/field-group-plugin.php:1983
+msgid "Subjects"
+msgstr ""
+
+#: src/field-group-plugin.php:1992
+#: src/field-group-plugin.php:2038
+msgid "Session"
+msgstr ""
+
+#: src/field-group-plugin.php:1995
+msgid "Also commonly referred to as \"term.\" (e.g. Fall, Spring, Summer)"
+msgstr ""
+
+#: src/field-group-plugin.php:2057
+msgid "Sessions"
+msgstr ""
+
+#: src/field-group-plugin.php:2066
+#: src/field-group-plugin.php:2112
+msgid "Personnel Category"
+msgstr ""
+
+#: src/field-group-plugin.php:2131
+msgid "Personnel Categories"
+msgstr ""
+
+#: src/field-group-plugin.php:2140
+#: src/field-group-plugin.php:2186
+msgid "Department"
+msgstr ""
+
+#: src/field-group-plugin.php:2205
+msgid "Departments"
+msgstr ""
+
+#: src/field-group-plugin.php:2214
+#: src/field-group-plugin.php:2258
+msgid "FAQ Category"
+msgstr ""
+
+#: src/field-group-plugin.php:2277
+msgid "FAQ Categories"
+msgstr ""
+
 #: src/InstructionMode.php:37
 msgctxt "taxonomy general name"
 msgid "Instruction Modes"
@@ -711,144 +1338,140 @@ msgid "Person"
 msgstr ""
 
 #: src/Person.php:56
-msgid "Add New Person"
+msgctxt "post type plural name not collective"
+msgid "Personnel"
 msgstr ""
 
 #: src/Person.php:57
-msgid "Edit Person"
+msgid "Add New Person"
 msgstr ""
 
 #: src/Person.php:58
-msgid "New Person"
+msgid "Edit Person"
 msgstr ""
 
 #: src/Person.php:59
-msgid "View Person"
+msgid "New Person"
 msgstr ""
 
 #: src/Person.php:60
-msgid "View Personnel"
+msgid "View Person"
 msgstr ""
 
 #: src/Person.php:61
-msgid "Search Personnel"
+msgid "View Personnel"
 msgstr ""
 
 #: src/Person.php:62
-msgid "No personnel found."
+msgid "Search Personnel"
 msgstr ""
 
 #: src/Person.php:63
-msgid "No personnel found in Trash."
+msgid "No personnel found."
 msgstr ""
 
 #: src/Person.php:64
-msgid "Parent Person:"
+msgid "No personnel found in Trash."
 msgstr ""
 
 #: src/Person.php:65
-msgid "All Personnel"
+msgid "Parent Person:"
 msgstr ""
 
 #: src/Person.php:66
-msgid "Directory"
-msgstr ""
-
-#: src/Person.php:67
-msgid "Person Attributes"
+msgid "All Personnel"
 msgstr ""
 
 #: src/Person.php:68
-msgid "Insert into person post"
+msgid "Person Attributes"
 msgstr ""
 
 #: src/Person.php:69
-msgid "Uploaded to this person"
+msgid "Insert into person post"
 msgstr ""
 
 #: src/Person.php:70
-msgid "Filter personnel list"
+msgid "Uploaded to this person"
 msgstr ""
 
 #: src/Person.php:71
-msgid "Personnel list navigation"
+msgid "Filter personnel list"
 msgstr ""
 
 #: src/Person.php:72
-msgid "Personnel list"
+msgid "Personnel list navigation"
 msgstr ""
 
 #: src/Person.php:73
-msgid "Person published."
+msgid "Personnel list"
 msgstr ""
 
 #: src/Person.php:74
-msgid "Person published privately."
+msgid "Person published."
 msgstr ""
 
 #: src/Person.php:75
-msgid "Person reverted to draft."
+msgid "Person published privately."
 msgstr ""
 
 #: src/Person.php:76
-msgid "Person scheduled."
+msgid "Person reverted to draft."
 msgstr ""
 
 #: src/Person.php:77
-msgid "Person updated."
+msgid "Person scheduled."
 msgstr ""
 
 #: src/Person.php:78
+msgid "Person updated."
+msgstr ""
+
+#: src/Person.php:79
 msgctxt "navigation link block title"
 msgid "Person Link"
 msgstr ""
 
-#: src/Person.php:79
+#: src/Person.php:80
 msgctxt "navigation link block description"
 msgid "A link to a person."
 msgstr ""
 
-#: src/Person.php:89
+#: src/Person.php:90
 msgid "Add some bio text …"
 msgstr ""
 
-#: src/Person.php:103
-#: src/Person.php:163
+#: src/Person.php:104
+#: src/Person.php:164
 msgid "Job Title"
 msgstr ""
 
-#: src/Person.php:104
+#: src/Person.php:105
 msgid "The current position this team member holds"
 msgstr ""
 
-#: src/Person.php:112
-#: src/Person.php:170
+#: src/Person.php:113
+#: src/Person.php:171
 msgid "Office Phone"
 msgstr ""
 
-#: src/Person.php:121
-#: src/Person.php:178
+#: src/Person.php:122
+#: src/Person.php:179
 msgid "Email Address"
 msgstr ""
 
-#: src/Person.php:130
-#: src/Person.php:185
-#: src/Plugin.php:358
+#: src/Person.php:131
+#: src/Person.php:186
+#: src/Plugin.php:224
 msgid "Office"
 msgstr ""
 
-#: src/Person.php:144
+#: src/Person.php:145
 msgid "Contact Info"
 msgstr ""
 
-#: src/Person.php:189
+#: src/Person.php:190
 msgctxt "office field placeholder"
 msgid "Main Building, 448C"
-msgstr ""
-
-#: src/Person.php:193
-#: src/Plugin.php:378
-msgid "Courses Taught"
 msgstr ""
 
 #: src/PersonCategory.php:35
@@ -952,308 +1575,138 @@ msgctxt "dropdown list none selected"
 msgid "Any Category"
 msgstr ""
 
-#: src/Plugin.php:140
-#: src/Plugin.php:333
-msgid "Program Pages Settings"
-msgstr ""
-
-#: src/Plugin.php:161
-msgid "Presentation Mode"
-msgstr ""
-
-#: src/Plugin.php:164
-msgid "Choose the amount of CSS you want output."
-msgstr ""
-
-#: src/Plugin.php:171
-msgid "Ghost — Don't style anything. No CSS will be loaded."
-msgstr ""
-
-#: src/Plugin.php:172
-msgid "Stealth — Only basic styling to handle layout. Blends in with current theme as much as possible."
-msgstr ""
-
-#: src/Plugin.php:173
-msgid "Tuxedo — A more refined and opinionated look. Recommended for most sites."
-msgstr ""
-
-#: src/Plugin.php:181
-#: src/Program.php:197
-msgid "Request Info URL"
-msgstr ""
-
-#: src/Plugin.php:184
-msgid "Enter a URL pattern to create unique request info URLs for each program. You can use the following tags: {$program_guid} {$program_slug}"
-msgstr ""
-
-#: src/Plugin.php:189
-#: src/Program.php:205
-msgid "Apply Now URL"
-msgstr ""
-
-#: src/Plugin.php:192
-msgid "Enter a URL pattern to create unique apply now URLs for each program. You can use the following tags: {$program_guid} {$program_slug}"
-msgstr ""
-
-#: src/Plugin.php:197
-msgid "Contact URL"
-msgstr ""
-
 #: src/Plugin.php:200
-msgid "Enter a URL pattern to create unique contact URLs for each program. You can use the following tags: {$program_guid} {$program_slug}"
-msgstr ""
-
-#: src/Plugin.php:205
-msgid "Course Registration Search URL"
-msgstr ""
-
-#: src/Plugin.php:208
-msgid "Enter a URL pattern to create unique \"Search Sections\" URLs for each course. You can use the following tag: {$course_reg_key}"
-msgstr ""
-
-#: src/Plugin.php:213
-msgid "Program Contact Label"
-msgstr ""
-
-#: src/Plugin.php:216
-msgid "This is the label that Appears above the primary contact on each Program page."
-msgstr ""
-
-#: src/Plugin.php:217
-msgctxt "program contact label field placeholder"
-msgid "Program Contact"
-msgstr ""
-
-#: src/Plugin.php:221
-#: src/Plugin.php:381
-#: src/Program.php:231
-#: src/ProgramType.php:64
-#: src/ProgramType.php:84
-msgid "Application Deadlines"
-msgstr ""
-
-#: src/Plugin.php:227
-msgctxt "New deadline button text"
-msgid "Add Deadline"
-msgstr ""
-
-#: src/Plugin.php:231
-#: src/Program.php:241
-#: src/ProgramType.php:94
-msgid "Deadline Label"
-msgstr ""
-
-#: src/Plugin.php:236
-#: src/Program.php:246
-#: src/ProgramType.php:99
-msgctxt "deadline label field placeholder"
-msgid "Fall, Spring, etc."
-msgstr ""
-
-#: src/Plugin.php:241
-#: src/Program.php:251
-msgid "Deadline Info"
-msgstr ""
-
-#: src/Plugin.php:245
-#: src/Program.php:255
-#: src/ProgramType.php:108
-msgctxt "deadline info field placeholder"
-msgid "e.g. June 24th"
-msgstr ""
-
-#: src/Plugin.php:252
-msgid "Enable Block Editor for Personnel"
-msgstr ""
-
-#: src/Plugin.php:255
-msgid "Use the block editor to edit personnel profiles."
-msgstr ""
-
-#: src/Plugin.php:262
-msgid "Main Content Wrapper Tag"
-msgstr ""
-
-#: src/Plugin.php:265
-msgid "Switch to \"main\" to fix accessibility issues with some themes."
-msgstr ""
-
-#: src/Plugin.php:275
-msgid "Featured Image Size"
-msgstr ""
-
-#: src/Plugin.php:291
-msgid "Deafult Program Image"
-msgstr ""
-
-#: src/Plugin.php:294
-msgid "The fallback featured image for Programs that don't have one."
-msgstr ""
-
-#: src/Plugin.php:307
-msgid "Enable Program Subpages"
-msgstr ""
-
-#: src/Plugin.php:334
 msgctxt "menu item title"
 msgid "Program Pages"
 msgstr ""
 
-#: src/Plugin.php:350
+#: src/Plugin.php:216
 msgid "More Details"
 msgstr ""
 
-#: src/Plugin.php:351
+#: src/Plugin.php:217
 msgid "No one was found."
 msgstr ""
 
-#: src/Plugin.php:352
+#: src/Plugin.php:218
 msgid "No programs were found."
 msgstr ""
 
-#: src/Plugin.php:353
+#: src/Plugin.php:219
 #: src/Program.php:175
 msgid "Prerequisites"
 msgstr ""
 
-#: src/Plugin.php:354
+#: src/Plugin.php:220
 msgid "Yes"
 msgstr ""
 
-#: src/Plugin.php:355
+#: src/Plugin.php:221
 msgid "No"
 msgstr ""
 
-#: src/Plugin.php:356
+#: src/Plugin.php:222
 msgctxt "noun"
 msgid "Phone"
 msgstr ""
 
-#: src/Plugin.php:357
+#: src/Plugin.php:223
 msgctxt "noun"
 msgid "Email"
 msgstr ""
 
-#: src/Plugin.php:359
+#: src/Plugin.php:225
 msgid "Filter"
 msgstr ""
 
-#: src/Plugin.php:360
+#: src/Plugin.php:226
 msgid "Show"
 msgstr ""
 
-#: src/Plugin.php:361
+#: src/Plugin.php:227
 msgid "Hide"
 msgstr ""
 
-#: src/Plugin.php:362
+#: src/Plugin.php:228
 msgid "More Filters"
 msgstr ""
 
-#: src/Plugin.php:363
+#: src/Plugin.php:229
 msgid "Search"
 msgstr ""
 
-#: src/Plugin.php:364
+#: src/Plugin.php:230
 msgid "Reset Filters"
 msgstr ""
 
-#: src/Plugin.php:365
+#: src/Plugin.php:231
 msgid "Missing data to render filters."
 msgstr ""
 
 #. translators: The placeholder is the name of the filter. It will be translated separately.
-#: src/Plugin.php:367
+#: src/Plugin.php:233
 msgid "Missing data to render %s filter"
 msgstr ""
 
-#: src/Plugin.php:368
+#: src/Plugin.php:234
 msgid "Filtered Results"
 msgstr ""
 
-#: src/Plugin.php:369
+#: src/Plugin.php:235
 msgid "Showing"
 msgstr ""
 
 #. translators: Number of results (e.g. 'Showing 1-10 of 120 posts'). Note: the last placeholder is the name of the post_type.
-#: src/Plugin.php:371
+#: src/Plugin.php:237
 msgid "Showing %1$s–%2$s of %3$s %4$s."
 msgstr ""
 
-#: src/Plugin.php:372
+#: src/Plugin.php:238
 msgid "Keyword"
 msgstr ""
 
-#: src/Plugin.php:373
+#: src/Plugin.php:239
 msgid "Any "
 msgstr ""
 
-#: src/Plugin.php:374
-msgid "credit"
-msgstr ""
-
-#: src/Plugin.php:375
-msgid "credits"
-msgstr ""
-
-#: src/Plugin.php:376
+#: src/Plugin.php:242
 msgid "Offered in"
 msgstr ""
 
-#: src/Plugin.php:379
+#: src/Plugin.php:245
 msgid "Program Subnav"
 msgstr ""
 
-#: src/Plugin.php:380
+#: src/Plugin.php:246
 msgid "About this Program"
 msgstr ""
 
-#: src/Plugin.php:382
-msgid "Program Contact"
-msgstr ""
-
-#: src/Plugin.php:383
-msgid "Contact"
-msgstr ""
-
-#: src/Plugin.php:384
+#: src/Plugin.php:250
 msgid "Featured"
 msgstr ""
 
-#: src/Plugin.php:385
+#: src/Plugin.php:251
 msgid "Read More"
 msgstr ""
 
-#: src/Plugin.php:386
+#: src/Plugin.php:252
 msgid "Show All Posts"
 msgstr ""
 
-#: src/Plugin.php:387
+#: src/Plugin.php:253
 msgid "Program Details"
 msgstr ""
 
-#: src/Plugin.php:388
-msgid "Apply Now"
-msgstr ""
-
-#: src/Plugin.php:389
-msgid "Request Info"
-msgstr ""
-
-#: src/Plugin.php:390
+#: src/Plugin.php:256
 msgid "Estimated Cost"
 msgstr ""
 
-#: src/Plugin.php:391
-msgid "Register"
-msgstr ""
-
-#: src/Plugin.php:392
+#: src/Plugin.php:258
 msgid "Back to Top"
 msgstr ""
 
 #. translators: the argument is the key of the label
-#: src/Plugin.php:497
+#: src/Plugin.php:484
 msgid "Label \"%s\" not found"
 msgstr ""
 
@@ -1305,10 +1758,6 @@ msgstr ""
 
 #: src/Program.php:73
 msgid "All Programs"
-msgstr ""
-
-#: src/Program.php:74
-msgid "Programs"
 msgstr ""
 
 #: src/Program.php:75
@@ -1378,18 +1827,6 @@ msgstr ""
 msgid "Program GUID"
 msgstr ""
 
-#: src/Program.php:128
-msgid "College"
-msgstr ""
-
-#: src/Program.php:144
-msgid "Program Type"
-msgstr ""
-
-#: src/Program.php:160
-msgid "Instruction Mode"
-msgstr ""
-
 #: src/Program.php:185
 msgid "Overview Content"
 msgstr ""
@@ -1424,275 +1861,287 @@ msgctxt "new deadline button label"
 msgid "Add Deadline"
 msgstr ""
 
+#: src/Program.php:246
+#: src/ProgramType.php:99
+msgctxt "deadline label field placeholder"
+msgid "Fall, Spring, etc."
+msgstr ""
+
+#: src/Program.php:255
+#: src/ProgramType.php:108
+msgctxt "deadline info field placeholder"
+msgid "e.g. June 24th"
+msgstr ""
+
 #: src/Program.php:271
 msgid "Program Contacts"
 msgstr ""
 
-#: src/Program.php:303
+#: src/Program.php:305
 msgctxt "Proper subpage title"
 msgid "Overview"
 msgstr ""
 
-#: src/Program.php:308
+#: src/Program.php:310
 msgctxt "Proper subpage title"
 msgid "Curriculum"
 msgstr ""
 
-#: src/Program.php:314
+#: src/Program.php:316
 msgid "Show Curriculum Section?"
 msgstr ""
 
-#: src/Program.php:326
+#: src/Program.php:328
 msgctxt "Curriculum"
 msgid "Lead Content"
 msgstr ""
 
-#: src/Program.php:329
+#: src/Program.php:331
 msgid "This content goes before the list of curriculum sections."
 msgstr ""
 
-#: src/Program.php:338
+#: src/Program.php:340
 msgid "Curriculum Sections"
 msgstr ""
 
-#: src/Program.php:344
+#: src/Program.php:346
 msgctxt "New section button label"
 msgid "Add Section"
 msgstr ""
 
-#: src/Program.php:348
+#: src/Program.php:350
 msgid "Section Title"
 msgstr ""
 
-#: src/Program.php:352
+#: src/Program.php:354
 msgid "Math Requirements, etc."
 msgstr ""
 
-#: src/Program.php:359
+#: src/Program.php:361
 msgid "Section Content"
 msgstr ""
 
-#: src/Program.php:362
+#: src/Program.php:364
 msgid "Some preamble or instructions about the courses below. For example, \"Choose two of the following.\""
 msgstr ""
 
-#: src/Program.php:377
+#: src/Program.php:379
 msgid "Section Courses"
 msgstr ""
 
-#: src/Program.php:395
+#: src/Program.php:397
 msgctxt "Proper subpage title"
 msgid "Careers"
 msgstr ""
 
-#: src/Program.php:396
+#: src/Program.php:398
 msgid "Careers related to the current program"
 msgstr ""
 
-#: src/Program.php:402
+#: src/Program.php:404
 msgid "Show Careers Section?"
 msgstr ""
 
-#: src/Program.php:414
+#: src/Program.php:416
 msgctxt "Careers"
 msgid "Lead Content"
 msgstr ""
 
-#: src/Program.php:426
+#: src/Program.php:428
 msgid "Related Careers"
 msgstr ""
 
-#: src/Program.php:446
+#: src/Program.php:448
 msgctxt "Proper subpage title"
 msgid "Faculty & Staff"
 msgstr ""
 
-#: src/Program.php:447
+#: src/Program.php:449
 msgid "Faculty & staff related to the current program"
 msgstr ""
 
-#: src/Program.php:453
+#: src/Program.php:455
 msgid "Show Faculty & Staff Section?"
 msgstr ""
 
-#: src/Program.php:465
+#: src/Program.php:467
 msgctxt "Faculty & Staff"
 msgid "Lead Content"
 msgstr ""
 
-#: src/Program.php:477
+#: src/Program.php:479
 msgid "Group by category?"
 msgstr ""
 
-#: src/Program.php:489
+#: src/Program.php:491
 msgid "Related Faculty & Staff"
 msgstr ""
 
-#: src/Program.php:510
+#: src/Program.php:512
 msgctxt "Proper subpage title"
 msgid "Cost"
 msgstr ""
 
-#: src/Program.php:516
+#: src/Program.php:518
 msgid "Show Cost Section?"
 msgstr ""
 
-#: src/Program.php:527
+#: src/Program.php:529
 msgid "Estimated Cost Label"
 msgstr ""
 
-#: src/Program.php:531
+#: src/Program.php:533
 msgctxt "field placeholder"
 msgid "Estimated Cost"
 msgstr ""
 
-#: src/Program.php:535
+#: src/Program.php:537
 msgctxt "field label"
 msgid "Estimated Cost"
 msgstr ""
 
-#: src/Program.php:538
+#: src/Program.php:540
 msgid "Leave blank to omit this field."
 msgstr ""
 
-#: src/Program.php:542
+#: src/Program.php:544
 msgid "Cost Content"
 msgstr ""
 
-#: src/Program.php:555
+#: src/Program.php:557
 msgctxt "Proper subpage title"
 msgid "How to Apply"
 msgstr ""
 
-#: src/Program.php:561
+#: src/Program.php:563
 msgid "Show Apply Section?"
 msgstr ""
 
-#: src/Program.php:573
+#: src/Program.php:575
 msgid "Apply Content"
 msgstr ""
 
-#: src/Program.php:586
+#: src/Program.php:588
 msgctxt "Proper subpage title"
 msgid "FAQs"
 msgstr ""
 
-#: src/Program.php:587
+#: src/Program.php:589
 msgid "FAQs related to the current program"
 msgstr ""
 
-#: src/Program.php:593
+#: src/Program.php:595
 msgid "Show FAQs Section?"
 msgstr ""
 
-#: src/Program.php:605
+#: src/Program.php:607
 msgid "Group FAQs by category?"
 msgstr ""
 
-#: src/Program.php:617
+#: src/Program.php:619
 msgctxt "FAQs"
 msgid "Lead Content"
 msgstr ""
 
-#: src/Program.php:629
+#: src/Program.php:631
 msgid "Related FAQs"
 msgstr ""
 
-#: src/Program.php:635
+#: src/Program.php:637
 msgctxt "new question button label"
 msgid "Add Question"
 msgstr ""
 
-#: src/Program.php:639
+#: src/Program.php:641
 msgid "FAQ Type"
 msgstr ""
 
-#: src/Program.php:642
+#: src/Program.php:644
 msgid "Select the type of FAQ you would like to add."
 msgstr ""
 
-#: src/Program.php:653
+#: src/Program.php:655
 msgctxt "faqs relevant to all programs"
 msgid "Global FAQ"
 msgstr ""
 
-#: src/Program.php:656
+#: src/Program.php:658
 msgid "Select the global question."
 msgstr ""
 
-#: src/Program.php:678
+#: src/Program.php:680
 msgid "Question"
 msgstr ""
 
-#: src/Program.php:681
+#: src/Program.php:683
 msgid "Enter the question text."
 msgstr ""
 
-#: src/Program.php:682
+#: src/Program.php:684
 msgctxt "question field placeholder"
 msgid "What is the question?"
 msgstr ""
 
-#: src/Program.php:696
+#: src/Program.php:698
 msgid "Answer"
 msgstr ""
 
-#: src/Program.php:718
+#: src/Program.php:720
 msgid "Category"
 msgstr ""
 
-#: src/Program.php:751
+#: src/Program.php:753
 msgctxt "Proper subpage title"
 msgid "News"
 msgstr ""
 
-#: src/Program.php:752
+#: src/Program.php:754
 msgid "News related to the current program"
 msgstr ""
 
-#: src/Program.php:758
+#: src/Program.php:760
 msgid "Show News Section?"
 msgstr ""
 
-#: src/Program.php:770
+#: src/Program.php:772
 msgctxt "tag of related news"
 msgid "News Tag"
 msgstr ""
 
-#: src/Program.php:773
+#: src/Program.php:775
 msgid "The tag that should associate posts with this program."
 msgstr ""
 
-#: src/Program.php:790
+#: src/Program.php:792
 msgid "Number of Posts"
 msgstr ""
 
-#: src/Program.php:793
+#: src/Program.php:795
 msgid "Number of posts to show on this subpage. Set to -1 to show all."
 msgstr ""
 
-#: src/Program.php:806
+#: src/Program.php:808
 msgid "Show link to all posts?"
 msgstr ""
 
-#: src/Program.php:809
+#: src/Program.php:811
 msgid "Link to the tag archive view at the bottom of the list?"
 msgstr ""
 
-#: src/Program.php:820
+#: src/Program.php:822
 msgid "Featured Posts"
 msgstr ""
 
-#: src/Program.php:823
+#: src/Program.php:825
 msgid "Select posts to keep at the top of the news subpage."
 msgstr ""
 
-#: src/Program.php:834
+#: src/Program.php:836
 msgctxt "News"
 msgid "Lead Content"
 msgstr ""
 
-#: src/Program.php:837
+#: src/Program.php:839
 msgid "Content to appear at the top of the page, before the posts."
 msgstr ""
 
