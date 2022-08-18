@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name: Program Pages
+ * Plugin Name: Invisible Us: Program Marketing Essentials
  * Plugin URI: https://invisible.us
- * Description: Creates program listing capabilities.
+ * Description: A student recruitment powerhouse that includes: program listings, course catalog, faculty & staff directory, and more.
  * Requires PHP: 7.4
  * Requires at least: 5.6
  * Version: 0.1
