@@ -192,7 +192,7 @@ class Person extends CustomPostType {
                 [
                     'key'               => 'field_615f36c2ba5cf',
                     'label'             => __('Courses Taught', 'nvis-program-pages'),
-                    'name'              => 'related_person_persons',
+                    'name'              => 'related_person_courses',
                     'type'              => 'relationship',
                     'instructions'      => '',
                     'post_type'         => [0 => Course::POST_TYPE],
