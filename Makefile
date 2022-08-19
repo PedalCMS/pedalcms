@@ -195,7 +195,7 @@ gitcheck:
 	fi
 
 .PHONY: release
-release: gitcheck getacf
+release: gitcheck
 	@echo "$(CYAN)Building release file: $(PLUGIN_NAME).$(PLUGIN_VERSION).zip$(FMT_END)\n"
 	@echo "Cleaning up environment ..."
 	@rm -rf $(PLUGIN_NAME).$(PLUGIN_VERSION).zip
