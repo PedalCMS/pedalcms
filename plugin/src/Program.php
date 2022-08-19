@@ -426,7 +426,7 @@ class Program extends CustomPostType {
                     [
                         'key'          => 'field_6112754dd4b73',
                         'label'        => __('Related Careers','nvis-program-pages'),
-                        'name'         => 'related_careers',
+                        'name'         => 'related_program_careers',
                         'type'         => 'relationship',
                         'instructions' => '',
                         'post_type'    => [

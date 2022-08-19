@@ -85,6 +85,7 @@ function acf_init(): void {
  */
 function get_related_field_name(string $field_name) {
     $bidirectional = [
+        'related_program_careers' => 'related_career_programs',
         'related_course_personnel' => 'related_person_courses',
     ];
 
