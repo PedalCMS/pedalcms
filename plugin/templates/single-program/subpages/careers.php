@@ -18,7 +18,7 @@ $defaults = [
 $args = nvis_parse_template_args($args, $defaults, $template);
 
 if ($args['show_subpage']) :
-  $careers = get_field('related_careers', $post);
+  $careers = get_field('related_program_careers', $post);
 ?>
 
 <div <?php nvis_subpage_class(); ?>>
