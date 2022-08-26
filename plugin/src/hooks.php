@@ -42,7 +42,7 @@ add_filter('nvis/programs/add_subpage', __NAMESPACE__ . '\options_subpage_labels
 function document_title_parts(array $title): array {
 
     if (nvis_is_filtered_results(Plugin::post_types())) {
-        $post_type = get_post_type();
+        $post_type = get_query_var('post_type');
         /**
          * Filters the format of the document title part of filtered post type archives.
          *
@@ -174,7 +174,7 @@ function term_link(string $link): string {
     $query_start = strpos($link, '?');
 
     if ($query_start !== false) {
-        $post_type = get_post_type();
+        $post_type = get_query_var('post_type');
 
         if (!in_array($post_type, ['post','page'], true)) {
             $link = get_post_type_archive_link($post_type) . substr($link, $query_start);
@@ -283,11 +283,11 @@ function options_template_args($args, $template) {
 }
 
 function options_search_filters($args) {
-    $post_type = str_replace('nvis_', '', get_post_type());
+    $post_type = str_replace('nvis_', '', get_query_var('post_type'));
     $enabled = Plugin::get_option($post_type . '_archive_search_filters');
 
     if (!is_array($enabled)) {
-        $enabled = [];
+        return $args;
     }
 
     $args['filters'] = [];
@@ -356,7 +356,7 @@ function options_post_type_description($description,  $post_type_obj) {
  * @return array The filtered defaults.
  */
 function options_template_defaults($defaults, $template) {
-    $post_type = get_post_type();
+    $post_type = get_query_var('post_type');
 
     if (!in_array($post_type, Plugin::post_types())) {
         return $defaults;
@@ -457,7 +457,7 @@ function options_post_featured_image($defaults, $post_type, $presentation_mode) 
 
         if (is_singular()) {
             $defaults['image_size'] = Plugin::get_option('image_size_header');
-            
+
             if ($defaults['image_size'] === 'custom') {
                 $defaults['image_size'] = [
                     (int) Plugin::get_option('image_size_header_w'),
