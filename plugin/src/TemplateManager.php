@@ -101,7 +101,7 @@ class TemplateManager {
             if (WP_DEBUG && WP_DEBUG_LOG) {
                 error_log(__FUNCTION__ . ': Theme folder not set in ' . static::class);
             }
-            
+
             return false;
         }
 
@@ -147,7 +147,7 @@ class TemplateManager {
              *
              * @since 0.1.0
              *
-             * @param array  $template_path The array of template args.
+             * @param array  $args The array of template args.
              * @param string $template The template name.
              */
             $args = apply_filters(
@@ -155,7 +155,26 @@ class TemplateManager {
                 $args,
                 $template
             );
+
+            /**
+             * Fires before every template is loaded.
+             *
+             * @since 0.1.0
+             *
+             * @param array  $args The array of template args.
+             */
+            do_action('nvis/before_template/' . $template, $args);
+
             include $path;
+
+            /**
+             * Fires after every template is loaded.
+             *
+             * @since 0.1.0
+             *
+             * @param array  $args The array of template args.
+             */
+            do_action('nvis/after_template/' . $template, $args);
         } else {
             if (WP_DEBUG && WP_DEBUG_LOG) {
                 error_log(__FUNCTION__ . ': File not found ' . $template);
