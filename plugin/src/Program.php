@@ -864,7 +864,13 @@ class Program extends CustomPostType {
      * @return void
      */
     public static function update_sort_order(\WP_Query $query): void {
-        if ($query->is_main_query() && is_post_type_archive(self::POST_TYPE)) {
+        $update_order =
+            $query->is_main_query() &&
+            !is_admin() &&
+            !$query->get('orderby') &&
+            $query->is_post_type_archive(self::POST_TYPE);
+
+        if ($update_order) {
             $query->set('order', 'ASC');
             $query->set('orderby', 'title');
         }
