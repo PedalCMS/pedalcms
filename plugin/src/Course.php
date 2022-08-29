@@ -156,6 +156,35 @@ class Course extends CustomPostType {
         $this->field_groups[] = $field_group;
     }
 
+    public function setup_hooks(): void {
+        add_action('pre_get_posts', [static::class, 'update_sort_order']);
+    }
+
+    /**
+     * Changes the sort order for Programs.
+     *
+     * Called on filter: pre_get_posts
+     *
+     * @since 0.1.0
+     *
+     * @param WP_Query $query The current WP_Query
+     * @return void
+     */
+    public static function update_sort_order(\WP_Query $query): void {
+        $update_order =
+            $query->is_main_query() &&
+            !is_admin() &&
+            !$query->get('orderby') &&
+            $query->is_post_type_archive(self::POST_TYPE);
+
+        if ($update_order) {
+            $query->set('order', 'ASC');
+            $query->set('orderby', 'title');
+        }
+
+        return;
+    }
+
     /**
      * Prefixes the course title with the course code. 
      * 
