@@ -181,4 +181,12 @@ class TemplateManager {
             }
         }
     }
+
+    public static function convert_obj_name_to_template($obj_name) {
+        return str_replace(
+            ['nvis_', '_'],
+            ['', '-'],
+            $obj_name
+        );
+    }
 }
