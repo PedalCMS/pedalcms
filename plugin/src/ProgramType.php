@@ -16,10 +16,9 @@ class ProgramType extends CustomTaxonomy {
 
     public array $args = [
         'query_var'             => 'prog_type',
-        'rewrite'               => ['slug' => 'type'],
+        'rewrite'               => ['slug' => 'program-type'],
         'description'           => '',
         'sort'                  => true,
-        'rewrite'               => false,
         'hierarchical'          => true,
         'public'                => true,
         'show_ui'               => true,
@@ -61,7 +60,7 @@ class ProgramType extends CustomTaxonomy {
     protected function setup_field_group(): void {
         $field_group = [
             'key'         => 'group_6123fad662541',
-            'title'       => __('Application Deadlines', 'nvis-program-pages'),
+            'title'       => __('Program Type Info', 'nvis-program-pages'),
             'description' => '',
             'location'    => [
                 [
@@ -74,7 +73,7 @@ class ProgramType extends CustomTaxonomy {
             ],
             'menu_order'            => 0,
             'position'              => 'normal',
-            'style'                 => 'default',
+            'style'                 => 'seamless',
             'label_placement'       => 'top',
             'instruction_placement' => 'label',
             'active'                => true,
