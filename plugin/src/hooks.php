@@ -376,11 +376,11 @@ function options_template_defaults($defaults, $template) {
 
             break;
         case 'common/term-featured-image':
-            $defaults = option_header_image_size($defaults);
+            $defaults = options_header_image_size($defaults);
 
             break;
         case 'common/post-type-featured-image':
-            $defaults = option_header_image_size($defaults);
+            $defaults = options_header_image_size($defaults);
             $defaults['featured_img'] = Plugin::get_option($post_type . '_archive_featured_image');
 
             break;
@@ -447,14 +447,14 @@ function options_post_featured_image($defaults, $post_type, $presentation_mode) 
         }
 
         if (is_singular()) {
-            $defaults = option_header_image_size($defaults);
+            $defaults = options_header_image_size($defaults);
         }
     }
 
     return $defaults;
 }
 
-function option_header_image_size($defaults) {
+function options_header_image_size($defaults) {
     $size = Plugin::get_option('image_size_header');
 
     if ($size) {
