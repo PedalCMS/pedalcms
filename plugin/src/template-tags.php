@@ -55,6 +55,29 @@ function nvis_prog_get_post_types(): array {
 
 endif;
 
+if (!function_exists('nvis_prog_get_archive_title')):
+/**
+ * Gets the current archive title. 
+ * 
+ * This function merely subverts `get_the_archive_title`  when it is a post
+ * type archive to prevent "Archives:" from being prepended to the title.
+ *
+ * @return string
+ */
+function nvis_prog_get_archive_title(): string {
+    $title = '';
+
+    if (is_post_type_archive(\InvisibleUs\Programs\Plugin::post_types())) {
+        $title = post_type_archive_title('', false);
+    } else {
+        $title = get_the_archive_title();
+    }
+
+    return $title;
+}
+
+endif;
+
 if (!function_exists('nvis_prog_get_option')) :
 /**
  * Gets a plugin option setting.

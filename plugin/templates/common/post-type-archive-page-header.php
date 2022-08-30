@@ -10,9 +10,10 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'archive_title'    => post_type_archive_title('', false),
+    'archive_title'    => nvis_prog_get_archive_title(),
     'show_description' => true,
     'show_image'       => true,
+    'image_align'      => 'right',
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);
