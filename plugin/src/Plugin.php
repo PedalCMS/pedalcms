@@ -418,44 +418,33 @@ class Plugin {
      * @return void
      */
     public static function setup_template_manager(): void {
-        $person_template = 'single-person';
+        $templates = [];
+        $post_types = Plugin::post_types();
+        $taxonomies = Plugin::taxonomies();
 
-        if (!Person::is_block_editor_enabled()) {
-            $person_template .= '-classic';
+        foreach ($post_types as $post_type) {
+            $template = TemplateManager::convert_obj_name_to_template($post_type);
+            $templates[] = [
+                'name'     => 'single-' . $template,
+                'callback' => 'is_singular',
+                'args'     => [$post_type]
+            ];
+            $templates[] = [
+                'name'     => 'archive-' . $template,
+                'callback' => 'is_post_type_archive',
+                'args'     => [$post_type]
+            ];
         }
 
-        $templates = [
-            [
-                'name'     => 'single-program',
-                'callback' => 'is_singular',
-                'args'     => [Program::POST_TYPE]
-            ],
-            [
-                'name'     => 'archive-program',
-                'callback' => 'is_post_type_archive',
-                'args'     => [Program::POST_TYPE]
-            ],
-            [
-                'name'     => 'single-course',
-                'callback' => 'is_singular',
-                'args'     => [Course::POST_TYPE]
-            ],
-            [
-                'name'     => 'archive-course',
-                'callback' => 'is_post_type_archive',
-                'args'     => [Course::POST_TYPE]
-            ],
-            [
-                'name'     => 'archive-person',
-                'callback' => 'is_post_type_archive',
-                'args'     => [Person::POST_TYPE]
-            ],
-            [
-                'name'     => $person_template,
-                'callback' => 'is_singular',
-                'args'     => [Person::POST_TYPE]
-            ]
-        ];
+        foreach ($taxonomies as $taxonomy) {
+            $template = TemplateManager::convert_obj_name_to_template($taxonomy);
+            $templates[] = [
+                'name'     => 'taxonomy-' . $template,
+                'callback' => 'is_tax',
+                'args'     => [$taxonomy]
+            ];
+        }
+
 
         $NVIS_TemplateManager = new TemplateManager(
             self::$template_path,
