@@ -63,8 +63,11 @@ function acf_init(): void {
         Plugin::get_field_group(),
         Program::get_field_group(),
         ProgramType::get_field_group(),
+        College::get_field_group(),
+        Department::get_field_group(),
         Course::get_field_group(),
-        Person::get_field_group()
+        Person::get_field_group(),
+        PersonCategory::get_field_group(),
     ];
 
     foreach ($field_groups as $group) {
