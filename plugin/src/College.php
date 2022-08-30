@@ -16,10 +16,9 @@ class College extends CustomTaxonomy {
 
     public array $args = [
         'query_var'             => 'college',
-        'rewrite'               => false,
+        'rewrite'               => ['slug' => 'college'],
         'description'           => '',
         'sort'                  => true,
-        'rewrite'               => false,
         'hierarchical'          => false,
         'public'                => true,
         'show_ui'               => true,

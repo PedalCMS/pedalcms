@@ -17,7 +17,7 @@ class Department extends CustomTaxonomy {
     public array $args = [
         'query_var'             => 'dept',
         'description'           => '',
-        'sort'                  => true,
+        'sort'                  => ['slug' => 'department'],
         'rewrite'               => false,
         'hierarchical'          => true,
         'public'                => true,
