@@ -1,4 +1,5 @@
 <?php
+namespace InvisibleUs\Programs;
 
 $field_group = [
     'key'      => 'group_624ed9cd20260',
@@ -1696,7 +1697,7 @@ $field_group = [
             'label'             => __('Program Type', 'nvis-program-pages'),
             'name'              => 'nvis_program_type',
             'type'              => 'group',
-            'instructions'      => '',
+            'instructions'      => __('Used by Programs.', 'nvis-program-pages'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -1704,7 +1705,7 @@ $field_group = [
                 'class' => '',
                 'id'    => '',
             ],
-            'layout'     => 'table',
+            'layout'     => 'row',
             'sub_fields' => [
                 [
                     'key'               => 'field_6255c2091ea8a',
@@ -1712,6 +1713,25 @@ $field_group = [
                     'name'              => 'enable',
                     'type'              => 'true_false',
                     'instructions'      => '',
+                    'required'          => 0,
+                    'conditional_logic' => 0,
+                    'wrapper'           => [
+                        'width' => '',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                    'message'       => '',
+                    'default_value' => 1,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'               => 'field_630e5d63b6a25',
+                    'label'             => __('Enable Archive', 'nvis-program-pages'),
+                    'name'              => 'enable_archive',
+                    'type'              => 'true_false',
+                    'instructions'      => __('If disabled, links will point to a filtered programs view.', 'nvis-program-pages'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1770,7 +1790,7 @@ $field_group = [
             'label'             => __('College', 'nvis-program-pages'),
             'name'              => 'nvis_college',
             'type'              => 'group',
-            'instructions'      => '',
+            'instructions'      => __('Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'nvis-program-pages'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -1778,7 +1798,7 @@ $field_group = [
                 'class' => '',
                 'id'    => '',
             ],
-            'layout'     => 'table',
+            'layout'     => 'row',
             'sub_fields' => [
                 [
                     'key'               => 'field_6255d51d49336',
@@ -1786,6 +1806,25 @@ $field_group = [
                     'name'              => 'enable',
                     'type'              => 'true_false',
                     'instructions'      => '',
+                    'required'          => 0,
+                    'conditional_logic' => 0,
+                    'wrapper'           => [
+                        'width' => '',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                    'message'       => '',
+                    'default_value' => 1,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'               => 'field_630e5de55cf04',
+                    'label'             => __('Enable Archive', 'nvis-program-pages'),
+                    'name'              => 'enable_archive',
+                    'type'              => 'true_false',
+                    'instructions'      => __('If disabled, links will point to a filtered programs view.', 'nvis-program-pages'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1836,6 +1875,31 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                ],        
+                [
+                    'key'               => 'field_630e706b11afc',
+                    'label'             => __('Use with:', 'nvis-program-pages'),
+                    'name'              => 'object_type',
+                    'type'              => 'checkbox',
+                    'instructions'      => __('Choose the the features to use this taxonomy with.', 'nvis-program-pages'),
+                    'required'          => 0,
+                    'conditional_logic' => 0,
+                    'wrapper'           => [
+                        'width' => '',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                    'choices' => [
+                        Program::POST_TYPE => 'Programs',
+                        Course::POST_TYPE => 'Course Catalog',
+                        Person::POST_TYPE => 'Faculty & Staff Directory',
+                    ],
+                    'allow_null'        => 0,
+                    'other_choice'      => 0,
+                    'default_value'     => [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE],
+                    'layout'            => 'vertical',
+                    'return_format'     => 'value',
+                    'save_other_choice' => 0,
                 ],
             ],
         ],
@@ -1844,7 +1908,7 @@ $field_group = [
             'label'             => __('Instruction Mode', 'nvis-program-pages'),
             'name'              => 'nvis_instruct_mode',
             'type'              => 'group',
-            'instructions'      => 'Examples include In-person, Online, Hybrid',
+            'instructions'      => __('Used by Programs. (e.g. In-person, Online, Hybrid)', 'nvis-program-pages'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -1852,7 +1916,7 @@ $field_group = [
                 'class' => '',
                 'id'    => '',
             ],
-            'layout'     => 'table',
+            'layout'     => 'row',
             'sub_fields' => [
                 [
                     'key'               => 'field_6255df25cb5cf',
@@ -1918,7 +1982,7 @@ $field_group = [
             'label'             => __('Subject', 'nvis-program-pages'),
             'name'              => 'nvis_subject',
             'type'              => 'group',
-            'instructions'      => '',
+            'instructions'      => __('Used in the Course Catalog.', 'nvis-program-pages'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -1926,7 +1990,7 @@ $field_group = [
                 'class' => '',
                 'id'    => '',
             ],
-            'layout'     => 'table',
+            'layout'     => 'row',
             'sub_fields' => [
                 [
                     'key'               => 'field_6255df6ccb5d3',
@@ -1992,7 +2056,7 @@ $field_group = [
             'label'             => __('Session', 'nvis-program-pages'),
             'name'              => 'nvis_session',
             'type'              => 'group',
-            'instructions'      => __('Also commonly referred to as "term." (e.g. Fall, Spring, Summer)', 'nvis-program-pages'),
+            'instructions'      => __('Used in the Course Catalog. Also commonly referred to as "term." (e.g. Fall, Spring, Summer)', 'nvis-program-pages'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -2000,7 +2064,7 @@ $field_group = [
                 'class' => '',
                 'id'    => '',
             ],
-            'layout'     => 'table',
+            'layout'     => 'row',
             'sub_fields' => [
                 [
                     'key'               => 'field_6255dfa3cb5d7',
@@ -2066,7 +2130,7 @@ $field_group = [
             'label'             => __('Personnel Category', 'nvis-program-pages'),
             'name'              => 'nvis_person_cat',
             'type'              => 'group',
-            'instructions'      => '',
+            'instructions'      => __('Used in the Faculty & Staff Directory.'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -2074,7 +2138,7 @@ $field_group = [
                 'class' => '',
                 'id'    => '',
             ],
-            'layout'     => 'table',
+            'layout'     => 'row',
             'sub_fields' => [
                 [
                     'key'               => 'field_6255dfe6cb5db',
@@ -2082,6 +2146,25 @@ $field_group = [
                     'name'              => 'enable',
                     'type'              => 'true_false',
                     'instructions'      => '',
+                    'required'          => 0,
+                    'conditional_logic' => 0,
+                    'wrapper'           => [
+                        'width' => '',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                    'message'       => '',
+                    'default_value' => 1,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'               => 'field_630e5ee33fe9b',
+                    'label'             => __('Enable Archive', 'nvis-program-pages'),
+                    'name'              => 'enable_archive',
+                    'type'              => 'true_false',
+                    'instructions'      => __('If disabled, links will point to a filtered personnel directory view.', 'nvis-program-pages'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -2140,7 +2223,7 @@ $field_group = [
             'label'             => __('Department', 'nvis-program-pages'),
             'name'              => 'nvis_department',
             'type'              => 'group',
-            'instructions'      => '',
+            'instructions'      => __('Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'nvis-program-pages'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -2148,7 +2231,7 @@ $field_group = [
                 'class' => '',
                 'id'    => '',
             ],
-            'layout'     => 'table',
+            'layout'     => 'row',
             'sub_fields' => [
                 [
                     'key'               => 'field_6255e021cb5df',
@@ -2156,6 +2239,25 @@ $field_group = [
                     'name'              => 'enable',
                     'type'              => 'true_false',
                     'instructions'      => '',
+                    'required'          => 0,
+                    'conditional_logic' => 0,
+                    'wrapper'           => [
+                        'width' => '',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                    'message'       => '',
+                    'default_value' => 1,
+                    'ui'            => 1,
+                    'ui_on_text'    => '',
+                    'ui_off_text'   => '',
+                ],
+                [
+                    'key'               => 'field_630e66adbf615',
+                    'label'             => __('Enable Archive', 'nvis-program-pages'),
+                    'name'              => 'enable_archive',
+                    'type'              => 'true_false',
+                    'instructions'      => __('If disabled, links will point to a filtered programs view.', 'nvis-program-pages'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -2206,6 +2308,31 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                ],        
+                [
+                    'key'               => 'field_630e6ba4ce6d5',
+                    'label'             => __('Use with:', 'nvis-program-pages'),
+                    'name'              => 'object_type',
+                    'type'              => 'checkbox',
+                    'instructions'      => __('Choose the the features to use this taxonomy with.', 'nvis-program-pages'),
+                    'required'          => 0,
+                    'conditional_logic' => 0,
+                    'wrapper'           => [
+                        'width' => '',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                    'choices' => [
+                        Program::POST_TYPE => 'Programs',
+                        Course::POST_TYPE => 'Course Catalog',
+                        Person::POST_TYPE => 'Faculty & Staff Directory',
+                    ],
+                    'allow_null'        => 0,
+                    'other_choice'      => 0,
+                    'default_value'     => [Program::POST_TYPE, Course::POST_TYPE, Person::POST_TYPE],
+                    'layout'            => 'vertical',
+                    'return_format'     => 'value',
+                    'save_other_choice' => 0,
                 ],
             ],
         ],
@@ -2214,7 +2341,7 @@ $field_group = [
             'label'             => __('FAQ Category', 'nvis-program-pages'),
             'name'              => 'nvis_faq_cat',
             'type'              => 'group',
-            'instructions'      => '',
+            'instructions'      => __('Used by Programs.', 'nvis-program-pages'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -2222,25 +2349,8 @@ $field_group = [
                 'class' => '',
                 'id'    => '',
             ],
-            'layout'     => 'table',
+            'layout'     => 'row',
             'sub_fields' => [
-                [
-                    'key'               => 'field_6255e041cb5e3',
-                    'label'             => __('Enable this Taxonomy', 'nvis-program-pages'),
-                    'name'              => 'enable',
-                    'type'              => 'message',
-                    'instructions'      => '',
-                    'required'          => 0,
-                    'conditional_logic' => 0,
-                    'wrapper'           => [
-                        'width' => '',
-                        'class' => '',
-                        'id'    => '',
-                    ],
-                    'message' => 'This taxonomy is required.',
-					'new_lines' => 'wpautop',
-					'esc_html' => 0,
-                ],
                 [
                     'key'               => 'field_6255e041cb5e4',
                     'label'             => __('Singular Label', 'nvis-program-pages'),

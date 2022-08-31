@@ -7,7 +7,8 @@
  */
 
 namespace InvisibleUs\Programs;
-
+add_filter('register_taxonomy_args', __NAMESPACE__ . '\options_register_taxonomy_args', 5, 2);
+add_filter('registered_taxonomy', __NAMESPACE__ . '\options_registered_taxonomy', 5, 2);
 add_filter('document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 3);
 add_action('wp_head', __NAMESPACE__ . '\options_wp_head', 7);
 add_filter('body_class', __NAMESPACE__ . '\body_class', 10, 3);
@@ -31,6 +32,68 @@ add_filter('nvis/template_args', __NAMESPACE__ . '\options_template_args', 5, 2)
 add_filter('nvis/get_label', __NAMESPACE__ . '\options_plugin_labels', 5, 3);
 add_filter('nvis/programs/add_subpage', __NAMESPACE__ . '\options_subpage_labels', 5, 2);
 
+/**
+ * Modifies the taxonomy args based on plugin options.
+ *
+ * @param array $args Array of arguments for registering a taxonomy.
+ *                       See the register_taxonomy() function for accepted arguments.
+ * @param string $taxonomy Taxonomy key.
+ * @return array
+ */
+function options_register_taxonomy_args(array $args, string $taxonomy): array {
+    $archive_taxonomies = [
+        College::TAXONOMY,
+        Department::TAXONOMY,
+        ProgramType::TAXONOMY,
+        PersonCategory::TAXONOMY,
+    ];
+
+    if (!in_array($taxonomy, $archive_taxonomies)) {
+        return $args;
+    }
+
+    $taxonomy = str_replace('nvis_', '', $taxonomy);
+    $enable_archive = Plugin::get_option($taxonomy . '_enable_archive');
+
+    if ($enable_archive !== false) {
+        /*
+         * The first test determines whether an option has been saved.
+         * The second test checks the value before acting.
+         */
+        if (!$enable_archive) {
+            $args['rewrite'] = false;
+        }
+    }
+
+    return $args;
+}
+
+function options_registered_taxonomy(string $taxonomy, $object_type) {
+    $multi_obj_taxonomies = [
+        College::TAXONOMY,
+        Department::TAXONOMY
+    ];
+
+    if (!in_array($taxonomy, $multi_obj_taxonomies)) {
+        return;
+    }
+
+    $tax = str_replace('nvis_', '', $taxonomy);
+    $obj_type_option = Plugin::get_option($tax . '_object_type');
+
+    if ($obj_type_option !== false) {
+        $diff = array_diff($object_type, $obj_type_option);
+        if (!empty($diff)) {
+            $post_types = Plugin::post_types();
+
+            foreach($diff as $post_type) {
+                if (in_array($post_type, $post_types)) {
+                    unregister_taxonomy_for_object_type($taxonomy, $post_type);
+                }
+            }
+        }
+    }
+}
 
 /**
  * Updates the title for filtered results in archives and program subpages.
