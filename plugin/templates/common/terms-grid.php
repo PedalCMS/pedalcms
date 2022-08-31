@@ -44,7 +44,7 @@ if (!empty($args['terms'])) :
         <?php
         if ($args['show_image']) :
             $args['term'] = $term;
-            nvis_car_get_template_part('common/term-featured-image', $args);
+            nvis_prog_get_template_part('common/term-featured-image', $args);
         endif;
         ?>
 
