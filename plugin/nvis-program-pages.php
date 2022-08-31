@@ -23,6 +23,7 @@ $includes = [
     '/src/acf.php',
     '/src/assets.php',
     '/src/hooks.php',
+    '/src/shortcodes.php',
     '/src/breadcrumbs.php',
 ];
 
