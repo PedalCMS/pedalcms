@@ -49,6 +49,14 @@ function register_assets() {
         filemtime(Plugin::$path . $full)
     );
 
+    $terms_grid = '/assets/css/terms-grid.min.css';
+    wp_register_style(
+        'nvis-terms-grid',
+        Plugin::$url . $terms_grid,
+        ['nvis-global'],
+        filemtime(Plugin::$path . $terms_grid)
+    );
+
     $global = '/assets/js/global.min.js';
     wp_register_script(
         'nvis-global',
@@ -82,6 +90,16 @@ function enqueue_assets() {
 
         if ($presentation_mode === 'full') {
             wp_enqueue_style('nvis-global-full');
+        }
+    }
+
+    if (!is_admin() && $presentation_mode !== 'none') {
+        if (is_singular()) {
+            $post = get_post();
+
+            if (strpos($post->post_content, '[nvis_terms_grid ')) {
+                wp_enqueue_style('nvis-terms-grid');
+            }
         }
     }
 

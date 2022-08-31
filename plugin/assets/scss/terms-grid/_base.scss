@@ -1,0 +1,101 @@
+@use 'sass:math';
+
+@use '../common/variables' as *;
+
+.terms-grid {
+  --gap: var(--nvis-spacing-2x);
+  list-style: none !important;
+  margin: var(--gap) 0;
+  padding: 0;
+
+  @media (min-width: $screen-md-min) {
+    display: grid;
+    gap: var(--gap);
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.terms-grid .term {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 0 0 var(--nvis-spacing);
+
+  @media (max-width: $screen-sm-max) {
+    margin-bottom: var(--gap);
+  }
+}
+
+.terms-grid[data-columns='3'],
+.terms-grid[data-columns='4'] {
+
+  @media (min-width: $screen-lg-min) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.terms-grid[data-columns='4'] {
+  $col-break-4: math.div($screen-xl-min + $screen-lg-min, 2);
+
+  @media (min-width: $col-break-4) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.terms-grid .term__title-group {
+  margin: 0.5rem 0 1rem;
+  order: 2;
+}
+
+.terms-grid .term__title {
+  font-size: 1.25em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.terms-grid .term__num-posts {
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-top: 0.2em;
+  white-space: nowrap;
+}
+
+.terms-grid[data-columns='3'] .term__title,
+.terms-grid[data-columns='4'] .term__title {
+
+  @media (min-width: $screen-lg-min) {
+    line-height: 1.25;
+    min-height: 2.5em;
+  }
+}
+
+.terms-grid .term__image {
+  background: rgba(0, 0, 0, 0.1);
+  height: 0;
+  order: 1;
+  overflow: hidden;
+  padding-bottom: 66.667%;
+  position: relative;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    transition: all 0.75s;
+    width: 100%;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.terms-grid .term__description {
+  font-size: 0.9em;
+  margin: 0 0 calc(2 * var(--nvis-spacing));
+  order: 3;
+}
+
+.terms-grid .term__posts-link {
+  line-height: 1.5;
+  order: 5;
+}
