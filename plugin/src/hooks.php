@@ -237,7 +237,11 @@ function term_link(string $link): string {
     $query_start = strpos($link, '?');
 
     if ($query_start !== false) {
-        $post_type = get_query_var('post_type');
+        if (is_admin()) {
+            $post_type = $_GET['post_type'];
+        } else {
+            $post_type = get_query_var('post_type');
+        }
 
         if (!in_array($post_type, ['post','page'], true)) {
             $link = get_post_type_archive_link($post_type) . substr($link, $query_start);
