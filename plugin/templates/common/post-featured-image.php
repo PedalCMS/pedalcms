@@ -48,14 +48,14 @@ if ($show_image) :
     );
 
     if ($args['link_image']) :
-        echo sprintf(
+        printf(
             '<div class="%s"><a href="%s">%s</a></div>',
             implode(' ', $classes),
             get_the_permalink($post),
             $image
         );
     else:
-        echo sprintf(
+        printf(
             '<div class="%s">%s</div>',
             implode(' ', $classes),
             $image

@@ -164,7 +164,7 @@ function options_wp_head() {
     };
 
     if (!empty($vars)) {
-        echo sprintf(
+        printf(
             $style_tag,
             implode(';', $vars)
         );
@@ -310,7 +310,7 @@ function before_main_content() {
     $classes = apply_filters('nvis/careers/main_content_wrapper_class', $classes);
     $tag = Plugin::get_option('main_content_wrapper_tag');
 
-    echo sprintf(
+    printf(
         $pattern,
         $tag,
         $id,

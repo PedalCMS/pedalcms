@@ -52,6 +52,6 @@ if ($args['taxonomy'] && $args['query_var'] && $label) : ?>
 </div>
 <?php else : ?>
 <div>
-    <?php echo sprintf($args['missing_data_text'], $args['taxonomy']); ?>
+    <?php printf($args['missing_data_text'], $args['taxonomy']); ?>
 </div>
 <?php endif;

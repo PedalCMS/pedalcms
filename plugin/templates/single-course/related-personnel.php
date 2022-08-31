@@ -27,7 +27,7 @@ if (!empty($args['personnel'])) :
 ?>
 <div class="course-personnel">
     <?php
-    echo sprintf('<%s>%s</%s>', $h_tag, esc_html($args['label_instructors']), $h_tag);
+    printf('<%s>%s</%s>', $h_tag, esc_html($args['label_instructors']), $h_tag);
 
     if ($style === 'full') :
         nvis_prog_get_template_part(

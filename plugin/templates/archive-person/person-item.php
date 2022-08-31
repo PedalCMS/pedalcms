@@ -32,9 +32,9 @@ if ($post) :?>
     ?>
     <div class="person-info">
         <header>
-            <?php echo sprintf('<%s class="person-name">', $h_tag); ?>
+            <?php printf('<%s class="person-name">', $h_tag); ?>
             <a href="<?php echo get_the_permalink($post); ?>"><?php echo get_the_title($post); ?></a>
-            <?php echo sprintf('</%s>', $h_tag); ?>
+            <?php printf('</%s>', $h_tag); ?>
             <div class="person-position">
                 <?php nvis_prog_get_template_part('blocks/job-title', ['job_title' => $post->job_title]); ?>
                 <?php

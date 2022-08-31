@@ -16,7 +16,7 @@ if (!empty($args['actions'])) : ?>
           $class .= ' button ';
           $class .= $i ? 'button-secondary' : 'button-primary';
 
-          echo sprintf(
+          printf(
               '<li><a class="%s" href="%s">%s</a></li>',
               esc_attr($class),
               esc_url($action['url']),

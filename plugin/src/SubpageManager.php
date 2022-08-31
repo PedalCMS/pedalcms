@@ -369,7 +369,7 @@ class SubpageManager {
      * @return void
      */
     public function subpage_canonical(): void {
-        echo sprintf(
+        printf(
             '<link rel="canonical" href="%s" />',
             self::get_subpage_link($this->get_active_subpage(), false)
         );

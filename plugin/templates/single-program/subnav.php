@@ -23,7 +23,7 @@ if (nvis_prog_show_subpages()) : $subpages = nvis_prog_get_subpages(); ?>
 
 <nav class="program-subnav" aria-label="<?php echo esc_attr( $args['label_program_subnav'] ); ?>">
   <?php
-  echo sprintf(
+  printf(
     '<%s class="program-subnav__heading">%s</%s>',
     $h_tag,
     esc_html($args['label_about_program']),

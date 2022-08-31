@@ -36,7 +36,7 @@ $classes = [
     esc_attr($args['wrapper_class'])
 ];
 
-echo sprintf('<div class="%s">', implode(' ', $classes));
+printf('<div class="%s">', implode(' ', $classes));
 
 if ($args['show_instruction_mode'] && taxonomy_exists('nvis_instruct_mode')) :
     echo nvis_get_the_term_list(
@@ -50,7 +50,7 @@ if ($args['show_instruction_mode'] && taxonomy_exists('nvis_instruct_mode')) :
 endif;
 
 if ($args['show_prerequisites']) :
-    echo sprintf($args['meta_before_fmt'], 'prerequisites', esc_html($args['label_prerequisites']));
+    printf($args['meta_before_fmt'], 'prerequisites', esc_html($args['label_prerequisites']));
     echo esc_html(get_field('prerequisites', $post) ? $args['label_yes'] : $args['label_no']);
     echo $args['meta_after'];
 endif;

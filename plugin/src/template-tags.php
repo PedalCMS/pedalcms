@@ -293,7 +293,7 @@ if (!function_exists('nvis_subpage_class')) :
  * @return void
  */
 function nvis_subpage_class() {
-    echo sprintf(
+    printf(
         'class="%s"',
         esc_attr(implode(' ', nvis_get_subpage_class()))
     );

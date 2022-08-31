@@ -37,5 +37,5 @@ if ($img) {
         );
     }
 
-    echo sprintf('<div class="%s">%s</div>', implode(' ', $classes), $img);
+    printf('<div class="%s">%s</div>', implode(' ', $classes), $img);
 }

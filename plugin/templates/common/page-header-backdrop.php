@@ -18,7 +18,7 @@ if (empty($args['attachment_id']) && $args['fallback_to_post']) {
 }
 
 if ($args['show_backdrop'] && $args['attachment_id']) :
-    echo sprintf(
+    printf(
         '<div class="page-header__backdrop">%s</div>',
         wp_get_attachment_image(
             $args['attachment_id'],

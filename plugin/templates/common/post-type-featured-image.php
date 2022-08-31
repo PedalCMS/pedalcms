@@ -22,4 +22,4 @@ $classes[] = $featured_img ? 'post-type-image--placeholder' : '';
 
 $img = $featured_img ? wp_get_attachment_image($featured_img, $args['image_size']) : '';
 
-echo sprintf('<div class="%s">%s</div>', implode(' ', $classes), $img);
+printf('<div class="%s">%s</div>', implode(' ', $classes), $img);

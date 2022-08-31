@@ -23,7 +23,7 @@ $args = nvis_parse_template_args($args, $defaults, $template);
 <div class="person-featured-image featured-image">
     <?php
     if ($args['link_image']):
-        echo sprintf('<a href="%s">', esc_url(get_permalink($post)));
+        printf('<a href="%s">', esc_url(get_permalink($post)));
     endif;
 
     if (has_post_thumbnail($post)):
