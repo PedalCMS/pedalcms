@@ -143,7 +143,7 @@ function document_title_parts(array $title): array {
 }
 
 function options_wp_head() {
-    $style_tag = '<style>body .nvis-template{%s}</style>';
+    $style_tag = '<style>html body{%s}</style>';
     $var_ptrn = '--nvis-%s: %s';
     $options = [
         'active_color',
