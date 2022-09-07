@@ -14,6 +14,7 @@ add_filter('acf/update_value/type=relationship', __NAMESPACE__ . '\maybe_update_
 add_filter('acf/load_field/name=nvis_image_size_header', __NAMESPACE__ . '\choices_image_size_header');
 add_filter('acf/load_field/name=search_filters', __NAMESPACE__ . '\choices_search_filters');
 add_filter('acf/load_field/name=post_type', __NAMESPACE__ . '\choices_post_type');
+add_filter('acf/prepare_field/name=department', __NAMESPACE__ . '\choices_department');
 add_action('acf/save_post', __NAMESPACE__ . '\save_options', 20);
 add_action('admin_init', __NAMESPACE__ . '\maybe_flush_rules');
 
@@ -300,6 +301,17 @@ function choices_post_type(array $field): array {
     unset($choices['attachment']);
 
     $field['choices'] = $choices;
+
+    return $field;
+}
+
+function choices_department($field) {
+    if ($field['type'] === 'select') {
+        if ($field['value']) {
+            $term = get_term($field['value']);
+            $field['choices'][$term->term_id] = $term->name;
+        }
+    }
 
     return $field;
 }
