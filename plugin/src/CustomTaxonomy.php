@@ -110,4 +110,28 @@ abstract class CustomTaxonomy extends CustomContentObject {
     public static function get_content_type():string {
         return 'taxonomy';
     }
+
+    public static function get_by_meta(string $key = '', string $value = '', string $compare = '=', bool $singular = false) {
+        $terms = get_terms([
+            'taxonomy' => static::TAXONOMY,
+            'hide_empty' => false,
+            'meta_key' => $key,
+            'meta_value' => $value,
+            'meta_compare' => $compare
+        ]);
+
+        if (is_wp_error($terms)) {
+            return $terms;
+        }
+
+        if ($singular) {
+            if (!empty($terms)) {
+                return $terms[0];
+            }
+
+            return null;
+        }
+
+        return $terms;
+    }
 }
