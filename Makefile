@@ -7,10 +7,13 @@ PLUGIN_VERSION := $$(grep "^ \* Version" $(PLUGIN_ROOT)/$(PLUGIN_NAME).php| awk 
 INCLUDES_DIR := $(PLUGIN_ROOT)/src
 LANGUAGES_DIR := $(PLUGIN_ROOT)/languages
 ASSETS_DIR := $(PLUGIN_ROOT)/assets
+ADMIN_ASSETS_DIR := $(PLUGIN_ROOT)/admin
 SASS_DIR := $(ASSETS_DIR)/scss
 CSS_DIR := $(ASSETS_DIR)/css
 JS_SRC_DIR := $(ASSETS_DIR)/js/src
 JS_OUT_DIR := $(ASSETS_DIR)/js
+ADMIN_JS_SRC_DIR := $(ADMIN_ASSETS_DIR)/js/src
+ADMIN_JS_OUT_DIR := $(ADMIN_ASSETS_DIR)/js
 
 GREEN := \033[92m
 YELLOW := \033[0;33m
@@ -26,7 +29,7 @@ CSS_SOURCE_MAP :=
 JS_SOURCE_MAP := --source-maps=true
 
 .PHONY: production
-production: | prodprep build-css autoprefix build-js
+production: | prodprep build-css autoprefix build-js build-admin-js
 	@echo "\nAll done!\n"
 
 .PHONY: prodprep
@@ -39,13 +42,14 @@ clean-assets:
 	@echo "\n🗑  Cleaning up asset output directories ..."
 	@rm -rf $(CSS_DIR)/*.* && \
 	rm -rf $(JS_OUT_DIR)/*.* && \
+	rm -rf $(ADMIN_JS_OUT_DIR)/*.* && \
 	echo "Done."
 
 .PHONY: assets
-assets: | build-css build-js
+assets: | build-css build-js build-admin-js
 
 .PHONY: lint
-lint: | lint-css lint-js
+lint: | lint-css lint-js lint-admin-js
 
 .PHONY: lint-css
 lint-css:
@@ -55,6 +59,10 @@ lint-css:
 lint-js:
 	$(call LINT_JS,$(JS_SRC_DIR)/*.js)
 
+.PHONY: lint-admin-js
+lint-admin-js:
+	$(call LINT_JS,$(ADMIN_JS_SRC_DIR)/*.js)
+
 JS_SRC := $(wildcard $(JS_SRC_DIR)/*.js)
 JS_OUT := $(JS_SRC:$(JS_SRC_DIR)/%.js=$(JS_OUT_DIR)/%.min.js)
 
@@ -62,6 +70,17 @@ JS_OUT := $(JS_SRC:$(JS_SRC_DIR)/%.js=$(JS_OUT_DIR)/%.min.js)
 build-js: $(JS_OUT)
 
 $(JS_OUT_DIR)/%.min.js: $(JS_SRC_DIR)/%.js package.json
+	$(call LINT_JS,$<)
+	@echo "Compiling $< ..."
+	@$(BIN)/babel $< -o $@ --minified --no-comments $(JS_SOURCE_MAP) && echo "$(GREEN)Compiled $@$(FMT_END)"
+
+ADMIN_JS_SRC := $(wildcard $(ADMIN_JS_SRC_DIR)/*.js)
+ADMIN_JS_OUT := $(ADMIN_JS_SRC:$(ADMIN_JS_SRC_DIR)/%.js=$(ADMIN_JS_OUT_DIR)/%.min.js)
+
+.PHONY: build-admin-js
+build-admin-js: $(ADMIN_JS_OUT)
+
+$(ADMIN_JS_OUT_DIR)/%.min.js: $(ADMIN_JS_SRC_DIR)/%.js package.json
 	$(call LINT_JS,$<)
 	@echo "Compiling $< ..."
 	@$(BIN)/babel $< -o $@ --minified --no-comments $(JS_SOURCE_MAP) && echo "$(GREEN)Compiled $@$(FMT_END)"
@@ -127,7 +146,7 @@ watch:
 	@echo "\n🔎 Watching assets for changes … \n"
 	@echo "[To $(RED)STOP$(FMT_END), double-press $(GREEN)CTRL-C$(FMT_END)]\n"
 	@while true; do \
-		fswatch -1 $(ASSETS_DIR) | xargs echo '{}' > /dev/null && $(MAKE) assets; \
+		fswatch -1 $(ASSETS_DIR) $(ADMIN_ASSETS_DIR) | xargs echo '{}' > /dev/null && $(MAKE) assets; \
 		sleep 1; \
 	done
 

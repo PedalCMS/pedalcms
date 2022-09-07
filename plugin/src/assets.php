@@ -132,7 +132,8 @@ function admin_enqueue_assets() {
         in_array(get_post_type(), Plugin::post_types());
 
     if ($is_post_edit) {
-        $nvis_acf = '/admin/js/nvis-acf.js';
+        $nvis_acf = '/admin/js/nvis-acf.min.js';
+
         wp_enqueue_script(
             'nvis-acf',
             Plugin::$url . $nvis_acf,
@@ -144,9 +145,9 @@ function admin_enqueue_assets() {
         $nvis_acf_data = [
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('nvis_acf_data'),
-            'label_not_found' => __('No departments found.', 'nvis-program-pages')
+            'label_not_found' => __('No departments found', 'nvis-program-pages')
         ];
     
-        wp_localize_script('nvis-acf', 'nvis_acf_data', $nvis_acf_data);
+        wp_localize_script('nvis-acf', 'nvisACFData', $nvis_acf_data);
     }
 }
