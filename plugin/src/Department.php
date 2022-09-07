@@ -116,4 +116,17 @@ class Department extends CustomTaxonomy {
 
         $this->field_groups[] = $field_group;
     }
+
+    public static function get_by_college($term) {
+        $term = get_term($term, College::TAXONOMY);
+        
+        if ($term && !is_wp_error($term)) {
+            return self::get_by_meta('college', $term->term_id);
+        }
+
+        return new WP_Error(
+            'not_found',
+            'The requested college was not found'
+        );
+    }
 }
