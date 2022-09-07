@@ -121,7 +121,7 @@ class Program extends CustomPostType {
                     'label'        => __('Program GUID','nvis-program-pages'),
                     'name'         => 'program_guid',
                     'type'         => 'text',
-                    'instructions' => 'The globally unique identifier for the program. Typically, used campus-wide across systems.',
+                    'instructions' => __('The globally unique identifier for the program. Typically, used campus-wide across systems.', 'nvis-program-pages'),
                 ],
                 [
                     'key'           => 'field_611279af182d2',
@@ -138,6 +138,30 @@ class Program extends CustomPostType {
                     'load_terms'    => 1,
                     'return_format' => 'object',
                     'multiple'      => 0,
+                ],
+                [
+                    'key'           => 'field_630fb69367bc5',
+                    'label'         => __('Department','nvis-program-pages'),
+                    'name'          => 'department',
+                    'type'          => 'select',
+                    'instructions'  => '',
+                    'placeholder'   => __('Select department', 'nvis-program-pages'),
+                    'default_value' => 0,
+                    'required'      => 0,
+                    'taxonomy'      => Department::TAXONOMY,
+                    'field_type'    => 'select',
+                    'allow_null'    => 0,
+                    'add_term'      => 0,
+                    'save_terms'    => 1,
+                    'load_terms'    => 1,
+                    'return_format' => 'object',
+                    'multiple'      => 0,
+                    'ui'            => 0,
+                    'ajax'          => 0,
+                    'disable'       => 1,
+                    'choices'       => [
+                        0 => __('(Select college first)', 'nvis-program-pages')
+                    ]
                 ],
                 [
                     'key'           => 'field_61127c46a8faf',
