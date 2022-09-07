@@ -10,6 +10,7 @@ namespace InvisibleUs\Programs;
 
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\register_assets', 0);
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets');
+add_action('admin_enqueue_scripts', __NAMESPACE__ . '\admin_enqueue_assets');
 
 /**
  * Registers frontend assets.
@@ -120,5 +121,32 @@ function enqueue_assets() {
 
     if (!is_admin()) {
         wp_enqueue_script('nvis-global');
+    }
+}
+
+function admin_enqueue_assets() {
+    global $pagenow;
+    
+    $is_post_edit = 
+        in_array($pagenow, ['post.php', 'post-new.php']) &&
+        in_array(get_post_type(), Plugin::post_types());
+
+    if ($is_post_edit) {
+        $nvis_acf = '/admin/js/nvis-acf.js';
+        wp_enqueue_script(
+            'nvis-acf',
+            Plugin::$url . $nvis_acf,
+            ['acf'],
+            filemtime(Plugin::$path . $nvis_acf),
+            true
+        );
+    
+        $nvis_acf_data = [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('nvis_acf_data'),
+            'label_not_found' => __('No departments found.', 'nvis-program-pages')
+        ];
+    
+        wp_localize_script('nvis-acf', 'nvis_acf_data', $nvis_acf_data);
     }
 }
