@@ -234,7 +234,7 @@ abstract class CustomPostType extends CustomContentObject {
      * @param integer $limit Max number of posts to return.
      * @return WP_Post|WP_Error|false WP_Post object on success, false if not found, WP_Error otherwise.
      */
-    public static function get_by_meta(string $key = '', string $value = '', string $compare = '=', int $limit = 1) {
+    public static function get_by_meta(string $key = '', string $value = '', string $compare = '=', bool $singular = false) {
         $posts = get_posts([
             'post_type'     => static::POST_TYPE,
             'numberposts'   => $limit,
@@ -252,13 +252,15 @@ abstract class CustomPostType extends CustomContentObject {
             return $posts;
         }
 
-        if (!empty($posts)) {
-            if (1 === $limit) {
+        if ($singular) {
+            if (!empty($posts)) {
                 return $posts[0];
             }
+
+            return null;
         }
 
-        return false;
+        return $posts;
     }
 
     /**
