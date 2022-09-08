@@ -152,9 +152,9 @@ class Program extends CustomPostType {
                     'field_type'    => 'select',
                     'allow_null'    => 0,
                     'add_term'      => 0,
-                    'save_terms'    => 1,
-                    'load_terms'    => 1,
-                    'return_format' => 'object',
+                    'save_terms'    => 0,
+                    'load_terms'    => 0,
+                    'return_format' => 'id',
                     'multiple'      => 0,
                     'ui'            => 0,
                     'ajax'          => 0,
@@ -875,6 +875,7 @@ class Program extends CustomPostType {
 
     public function setup_hooks(): void {
         add_action('pre_get_posts', [static::class, 'update_sort_order']);
+        add_action('wp_after_insert_post', [static::class, 'save_terms'], 10, 2);
     }
 
     /**
@@ -900,6 +901,12 @@ class Program extends CustomPostType {
         }
 
         return;
+    }
+
+    public static function save_terms($post_id, $post) {
+        if ($post->post_type === self::POST_TYPE) {
+            Department::save_terms($post);
+        }
     }
 
     /**
