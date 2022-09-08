@@ -14,7 +14,8 @@ add_filter('acf/update_value/type=relationship', __NAMESPACE__ . '\maybe_update_
 add_filter('acf/load_field/name=nvis_image_size_header', __NAMESPACE__ . '\choices_image_size_header');
 add_filter('acf/load_field/name=search_filters', __NAMESPACE__ . '\choices_search_filters');
 add_filter('acf/load_field/name=post_type', __NAMESPACE__ . '\choices_post_type');
-add_filter('acf/prepare_field/name=department', __NAMESPACE__ . '\choices_department');
+add_filter('acf/prepare_field/name=department', __NAMESPACE__ . '\prepare_department');
+add_filter('acf/prepare_field/type=taxonomy', __NAMESPACE__ . '\prepare_taxonomy_field');
 add_action('acf/save_post', __NAMESPACE__ . '\save_options', 20);
 add_action('admin_init', __NAMESPACE__ . '\maybe_flush_rules');
 
@@ -305,7 +306,36 @@ function choices_post_type(array $field): array {
     return $field;
 }
 
-function choices_department($field) {
+
+function prepare_taxonomy_field($field) {
+    if (!in_array($field['taxonomy'], Plugin::taxonomies(false))) {
+        return $field;
+    }
+
+    $tax = str_replace('nvis_', '', $field['taxonomy']);
+    $enabled = Plugin::get_option($tax . '_enable');
+
+    /* 
+     * Boolean false is returned if the option was not found. Check for that 
+     * before disabling this field. 
+     */
+    if ($enabled !== false && !$enabled) {
+        return false;
+    }
+
+    return $field;
+}
+
+
+function prepare_department($field) {
+    if (!prepare_taxonomy_field($field)) {
+        return false;
+    }
+
+    if (!Department::depends_on_college()) {
+        $field['type'] = 'taxonomy';
+    }
+
     if ($field['type'] === 'select') {
         if ($field['value']) {
             $term = get_term($field['value']);
@@ -315,6 +345,7 @@ function choices_department($field) {
 
     return $field;
 }
+
 
 /**
  * Creates the `nvis_flush_rules` transient when saving the plugin settings page.
