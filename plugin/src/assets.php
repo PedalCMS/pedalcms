@@ -131,7 +131,7 @@ function admin_enqueue_assets() {
         in_array($pagenow, ['post.php', 'post-new.php']) &&
         in_array(get_post_type(), Plugin::post_types());
 
-    if ($is_post_edit) {
+    if ($is_post_edit && Department::depends_on_college()) {
         $nvis_acf = '/admin/js/nvis-acf.min.js';
 
         wp_enqueue_script(
