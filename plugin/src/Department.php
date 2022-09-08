@@ -19,12 +19,13 @@ class Department extends CustomTaxonomy {
         'description'           => '',
         'sort'                  => ['slug' => 'department'],
         'rewrite'               => false,
-        'hierarchical'          => true,
+        'hierarchical'          => false,
         'public'                => true,
         'show_ui'               => true,
-        'show_in_quick_edit'    => true,
+        'meta_box_cb'           => false,
+        'show_in_quick_edit'    => false,
         'show_admin_column'     => true,
-        'show_in_nav_menus'     => false,
+        'show_in_nav_menus'     => true,
         'show_tagcloud'         => false,
     ];
 
@@ -78,6 +79,28 @@ class Department extends CustomTaxonomy {
             ],
             'fields' => [
                 [
+                    'key'               => 'field_630faf40e6008',
+                    'label'             => 'College',
+                    'name'              => 'college',
+                    'type'              => 'taxonomy',
+                    'instructions'      => '',
+                    'required'          => 0,
+                    'conditional_logic' => 0,
+                    'wrapper'           => [
+                        'width' => '',
+                        'class' => '',
+                        'id'    => '',
+                    ],
+                    'taxonomy'      => 'nvis_college',
+                    'add_term'      => 0,
+                    'save_terms'    => 0,
+                    'load_terms'    => 0,
+                    'return_format' => 'id',
+                    'field_type'    => 'select',
+                    'allow_null'    => 0,
+                    'multiple'      => 0,
+                ],
+                [
                     'key'           => 'field_6304c88d7d4aa',
                     'label'         => __('Featured Image', 'nvis-career-profiles'),
                     'name'          => 'featured_image',
@@ -117,16 +140,31 @@ class Department extends CustomTaxonomy {
         $this->field_groups[] = $field_group;
     }
 
+    public static function depends_on_college() {
+        return 
+            Plugin::get_option('college_enable') &&
+            Plugin::get_option('department_depends_college');
+    }
+
     public static function get_by_college($term) {
         $term = get_term($term, College::TAXONOMY);
-        
+
         if ($term && !is_wp_error($term)) {
             return self::get_by_meta('college', $term->term_id);
         }
 
         return new WP_Error(
             'not_found',
-            'The requested college was not found'
+            __('The requested college was not found', 'nvis-program-pages')
         );
+    }
+
+    public static function save_terms($post=null) {
+        $post = get_post($post);
+        $term_id = get_field('department', $post);
+
+        if ($term_id) {
+            wp_set_object_terms( $post->ID, (int) $term_id, self::TAXONOMY, false);
+        }
     }
 }
