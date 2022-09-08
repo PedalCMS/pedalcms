@@ -289,16 +289,22 @@ class Plugin {
             self::$post_types_enabled[] = FAQ::POST_TYPE;
         }
 
-        self::$taxonomies[] = ProgramType::TAXONOMY;
-        if (self::get_option('program_type_enable')) {
-            ProgramType::get_instance()->register();
-            self::$taxonomies_enabled[] = ProgramType::TAXONOMY;
-        }
-
         self::$taxonomies[] = College::TAXONOMY;
         if (self::get_option('college_enable')) {
             College::get_instance()->register();
             self::$taxonomies_enabled[] = College::TAXONOMY;
+        }
+
+        self::$taxonomies[] = Department::TAXONOMY;
+        if (self::get_option('department_enable')) {
+            Department::get_instance()->register();
+            self::$taxonomies_enabled[] = Department::TAXONOMY;
+        }
+
+        self::$taxonomies[] = ProgramType::TAXONOMY;
+        if (self::get_option('program_type_enable')) {
+            ProgramType::get_instance()->register();
+            self::$taxonomies_enabled[] = ProgramType::TAXONOMY;
         }
 
         self::$taxonomies[] = InstructionMode::TAXONOMY;
@@ -323,12 +329,6 @@ class Plugin {
         if (self::get_option('person_cat_enable')) {
             PersonCategory::get_instance()->register();
             self::$taxonomies_enabled[] = PersonCategory::TAXONOMY;
-        }
-
-        self::$taxonomies[] = Department::TAXONOMY;
-        if (self::get_option('department_enable')) {
-            Department::get_instance()->register();
-            self::$taxonomies_enabled[] = Department::TAXONOMY;
         }
 
         self::$taxonomies[] = FAQCategory::TAXONOMY;
