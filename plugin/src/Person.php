@@ -142,7 +142,7 @@ class Person extends CustomPostType {
     protected function setup_field_group() {
         $field_group = [
             'key'      => 'group_61140677b6acb',
-            'title'    => __('Contact Info', 'nvis-program-pages'),
+            'title'    => __('Person Info', 'nvis-program-pages'),
             'location' => [
                 [
                     [
@@ -153,8 +153,8 @@ class Person extends CustomPostType {
                 ],
             ],
             'menu_order'            => 0,
-            'position'              => 'acf_after_title',
-            'style'                 => 'default',
+            'position'              => 'normal',
+            'style'                 => 'seamless',
             'label_placement'       => 'top',
             'instruction_placement' => 'label',
             'active'                => true,
@@ -183,11 +183,66 @@ class Person extends CustomPostType {
                 ],
                 [
                     'key'               => 'field_6140ba895cb46',
-                    'label'             => __('Office', 'nvis-program-pages'),
+                    'label'             => __('Office Location', 'nvis-program-pages'),
                     'name'              => 'office',
                     'type'              => 'text',
                     'instructions'      => '',
                     'placeholder'       => _x('Main Building, 448C', 'office field placeholder', 'nvis-program-pages'),
+                ],
+                [
+                    'key'           => 'field_631b3c6e7dc61',
+                    'label'         => __('Category','nvis-program-pages'),
+                    'name'          => 'person_category',
+                    'type'          => 'taxonomy',
+                    'instructions'  => '',
+                    'required'      => 0,
+                    'taxonomy'      => PersonCategory::TAXONOMY,
+                    'field_type'    => 'radio',
+                    'allow_null'    => 0,
+                    'add_term'      => 0,
+                    'save_terms'    => 1,
+                    'load_terms'    => 1,
+                    'return_format' => 'object',
+                ],
+                [
+                    'key'           => 'field_611279af182d2',
+                    'label'         => __('College','nvis-program-pages'),
+                    'name'          => 'college',
+                    'type'          => 'taxonomy',
+                    'instructions'  => '',
+                    'required'      => 0,
+                    'taxonomy'      => College::TAXONOMY,
+                    'field_type'    => 'select',
+                    'allow_null'    => 0,
+                    'add_term'      => 0,
+                    'save_terms'    => 1,
+                    'load_terms'    => 1,
+                    'return_format' => 'object',
+                    'multiple'      => 0,
+                ],
+                [
+                    'key'           => 'field_630fb69367bc5',
+                    'label'         => __('Department','nvis-program-pages'),
+                    'name'          => 'department',
+                    'type'          => 'select',
+                    'instructions'  => '',
+                    'placeholder'   => __('Select department', 'nvis-program-pages'),
+                    'default_value' => 0,
+                    'required'      => 0,
+                    'taxonomy'      => Department::TAXONOMY,
+                    'field_type'    => 'select',
+                    'allow_null'    => 0,
+                    'add_term'      => 0,
+                    'save_terms'    => 0,
+                    'load_terms'    => 0,
+                    'return_format' => 'id',
+                    'multiple'      => 0,
+                    'ui'            => 0,
+                    'ajax'          => 0,
+                    'disable'       => 1,
+                    'choices'       => [
+                        0 => __('(Select college first)', 'nvis-program-pages')
+                    ]
                 ],
                 [
                     'key'               => 'field_615f36c2ba5cf',
@@ -211,6 +266,7 @@ class Person extends CustomPostType {
 
     public function setup_hooks(): void {
         add_action('pre_get_posts', [static::class, 'update_sort_order']);
+        add_action('wp_after_insert_post', [static::class, 'save_terms'], 10, 2);
 
         return;
     }
@@ -236,6 +292,12 @@ class Person extends CustomPostType {
         }
 
         return;
+    }
+
+    public static function save_terms($post_id, $post) {
+        if ($post->post_type === self::POST_TYPE) {
+            Department::save_terms($post);
+        }
     }
 
     /**
