@@ -289,6 +289,12 @@ class Plugin {
             self::$post_types_enabled[] = FAQ::POST_TYPE;
         }
 
+        self::$taxonomies[] = PersonCategory::TAXONOMY;
+        if (self::get_option('person_cat_enable')) {
+            PersonCategory::get_instance()->register();
+            self::$taxonomies_enabled[] = PersonCategory::TAXONOMY;
+        }
+
         self::$taxonomies[] = College::TAXONOMY;
         if (self::get_option('college_enable')) {
             College::get_instance()->register();
@@ -323,12 +329,6 @@ class Plugin {
         if (self::get_option('session_enable')) {
             Session::get_instance()->register();
             self::$taxonomies_enabled[] = Session::TAXONOMY;
-        }
-
-        self::$taxonomies[] = PersonCategory::TAXONOMY;
-        if (self::get_option('person_cat_enable')) {
-            PersonCategory::get_instance()->register();
-            self::$taxonomies_enabled[] = PersonCategory::TAXONOMY;
         }
 
         self::$taxonomies[] = FAQCategory::TAXONOMY;
