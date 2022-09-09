@@ -129,7 +129,7 @@ class Program extends CustomPostType {
                     'name'          => 'college',
                     'type'          => 'taxonomy',
                     'instructions'  => '',
-                    'required'      => 1,
+                    'required'      => 0,
                     'taxonomy'      => College::TAXONOMY,
                     'field_type'    => 'select',
                     'allow_null'    => 0,
