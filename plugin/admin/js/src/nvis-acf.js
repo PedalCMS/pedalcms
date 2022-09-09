@@ -62,7 +62,7 @@
 			const field = acf.getField(nvisACF.departmentsFieldKey);
 			const $select = $('select', field.$el);
 
-			$select.val(null).empty().trigger('change');
+			$select.val(null).empty();
 
 			if (typeof newOptions !== 'undefined') {
 				if (newOptions.length) {
@@ -71,22 +71,18 @@
 					newOptions.forEach(function (opt) {
 						const selected = opt.term_id === nvisACF.departmentLoaded;
 
-						$select
-							.append(new Option(opt.name, opt.term_id, selected, selected))
-							.trigger('change');
+						$select.append(
+							new Option(opt.name, opt.term_id, selected, selected)
+						);
 					});
 
 					field.enable();
 				} else {
-					$select
-						.append(new Option(nvisACFData.label_not_found, 0))
-						.trigger('change');
+					$select.append(new Option(nvisACFData.label_not_found, 0));
 
 					field.disable();
 				}
 			}
-
-			$select.trigger('change');
 		},
 	});
 
