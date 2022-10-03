@@ -196,11 +196,12 @@ class Plugin {
         self::$options_page_slug = 'nvis-program-pages-settings';
 
         self::$options_page = [
-            'page_title'  => __('Program Pages Settings', 'nvis-program-pages'),
-            'menu_title'  => _x('Program Pages', 'menu item title', 'nvis-program-pages'),
+            'page_title'  => __('Program Marketing Essentials Settings', 'nvis-program-pages'),
+            'menu_title'  => _x('Settings', 'menu item title', 'nvis-program-pages'),
             'menu_slug'   => self::$options_page_slug,
             'capability'  => 'manage_options',
-            'parent_slug' => 'options-general.php',
+            // 'parent_slug' => 'options-general.php',
+            'parent_slug' => 'edit.php?post_type=nvis_program',
             'position'    => 7,
             'redirect'    => false,
         ];
