@@ -39,7 +39,7 @@ namespace InvisibleUs\Programs;
 defined('ABSPATH') || exit;
 
 $includes = [
-    '/src/freemius.php',
+    // '/src/freemius.php',
     '/src/_autoload.php',
     '/src/acf.php',
     '/src/ajax.php',
