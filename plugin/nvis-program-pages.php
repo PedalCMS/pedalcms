@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Plugin Name: Invisible Us: Program Marketing Essentials
- * Plugin URI: https://invisible.us
+ * Plugin Name: Pedal CMS
+ * Plugin URI: https://verifiedstudios.com
  * Description: A student recruitment powerhouse that includes: program listings, course catalog, faculty & staff directory, and more.
  * Requires PHP: 7.4
  * Requires at least: 5.6
  * Version: 0.1
- * Author: invisibleus
- * Author URI: https://invisible.us
+ * Author: pedalcms
+ * Author URI: https://verifiedstudios.com
  * Text Domain: nvis-program-pages
  * License: GPL 2.0 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
