@@ -196,7 +196,7 @@ class Plugin {
         self::$options_page_slug = 'nvis-program-pages-settings';
 
         self::$options_page = [
-            'page_title'  => __('Program Marketing Essentials Settings', 'nvis-program-pages'),
+            'page_title'  => __('Pedal CMS Settings', 'nvis-program-pages'),
             'menu_title'  => _x('Settings', 'menu item title', 'nvis-program-pages'),
             'menu_slug'   => self::$options_page_slug,
             'capability'  => 'manage_options',
