@@ -81,7 +81,7 @@ function options_registered_taxonomy(string $taxonomy, $object_type) {
     $tax = str_replace('nvis_', '', $taxonomy);
     $obj_type_option = Plugin::get_option($tax . '_object_type');
 
-    if ($obj_type_option !== false) {
+    if (is_array($obj_type_option)) {
         $diff = array_diff($object_type, $obj_type_option);
         if (!empty($diff)) {
             $post_types = Plugin::post_types();
