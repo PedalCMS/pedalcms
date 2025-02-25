@@ -9,7 +9,7 @@
 if (!function_exists('nvis_args_or_global')) :
 /**
  * Returns the args array value if available, global value if not.
- * 
+ *
  * @since 0.1.0
  *
  * @param string $key The key to test.
@@ -34,14 +34,14 @@ endif;
 if (!function_exists('nvis_parse_template_args')) :
 /**
  * Merges user defined arguments into defaults array for the given template.
- * 
+ *
  * The only purpose this function serves is to provide a single point at which
- * to filter the default arguments of a template. The actual work is performed 
+ * to filter the default arguments of a template. The actual work is performed
  * by `wp_parse_args`.
- * 
+ *
  * @since 0.1
  *
- * @param array $args The user defined args. 
+ * @param array $args The user defined args.
  * @param array $defaults The template defaults.
  * @param string $template The calling template.
  * @return array The final merged args.
@@ -49,11 +49,11 @@ if (!function_exists('nvis_parse_template_args')) :
 function nvis_parse_template_args(array $args, array $defaults, string $template): array {
     /**
      * Allows users to override the template defaults.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @param array $defaults The set of defaults for the template.
-     * @param string $template The current template. 
+     * @param string $template The current template.
      * @param array $args The args passed to the template.
      */
     $defaults = apply_filters( 'nvis/template_defaults', $defaults, $template, $args );
@@ -68,7 +68,7 @@ endif;
 if (!function_exists('nvis_sanitize_title_tag')) :
 /**
  * Checks a tag against an allowed list.
- * 
+ *
  * @since 0.1
  *
  * @param string $tag The tag to check.
@@ -105,7 +105,7 @@ function nvis_get_post_type_label($post_type, string $label_key, string $fallbac
         return null;
     }
 
-    return 
+    return
         $post_type->labels->{$label_key} ??
         $post_type->labels->{$fallback_key} ??
         null;
@@ -130,9 +130,9 @@ function nvis_get_taxonomy_label(string $taxonomy, string $label_key, string $fa
         return null;
     }
 
-    return 
-        $taxonomy->labels->{$label_key} ?? 
-        $taxonomy->labels->{$fallback_key} ?? 
+    return
+        $taxonomy->labels->{$label_key} ??
+        $taxonomy->labels->{$fallback_key} ??
         null;
 }
 
@@ -142,7 +142,7 @@ endif;
 if (!function_exists('nvis_get_heading_tag')) :
 /**
  * Returns the tag name of a corresponding heading level.
- * 
+ *
  * @since 0.1
  *
  * @param integer $level The level of heading desired, 1-6.
@@ -160,7 +160,7 @@ endif;
 if (!function_exists('nvis_is_filtered_results')):
 /**
  * Determines if the current view is a filtered archive view.
- * 
+ *
  * @since 0.1
  *
  * @param mixed $post_type The post_type to test, either a single string or an array of post_type strings.
@@ -180,7 +180,7 @@ if (!function_exists('nvis_article_id_attr')):
  * Generates the id attribute for the article element of a post.
  *
  * @since 0.1
- * 
+ *
  * @param mixed $post_id The id of the post.
  * @param bool $echo Whether to output the result.
  * @return string The id attribute string, not including the id declaration.
@@ -208,8 +208,8 @@ endif;
 
 if (!function_exists('nvis_back_to_top_link')):
 /**
- * Generates a back-to-top HTML link. 
- * 
+ * Generates a back-to-top HTML link.
+ *
  * @since 0.1
  *
  * @param string $target The id of an existing HTML element without the `#`
@@ -222,14 +222,14 @@ function nvis_back_to_top_link(string $target = '', bool $echo = true): string {
     }
     /**
      * Filters the text that appears in the text portion of Back to Top links.
-     * 
-     * The text will get run through `esc_html()` so you should not do that 
+     *
+     * The text will get run through `esc_html()` so you should not do that
      * when you filter it.
-     * 
+     *
      * @since 0.1
-     * 
+     *
      * @param $text The text to filter.
-     */ 
+     */
     $text = apply_filters('nvis/back_to_top_text', 'Back to Top');
     /**
      * NOTE: The text here cannot be replaced with a call to Plugin::get_label
@@ -255,7 +255,7 @@ endif;
 if (!function_exists('nvis_post_thumbnail_or_fallback')) :
 /**
  * Generates an HTML img tag for a post, either the post_thumbnail or provided fallback.
- * 
+ *
  * @since 0.1
  *
  * @param mixed $post Post ID or WP_Post object. Default is global `$post`.
@@ -285,8 +285,8 @@ if (!function_exists('nvis_get_align_class')) :
 /**
  * Gets a WordPress native alignment CSS class name.
  *
- * @since 0.1 
- * 
+ * @since 0.1
+ *
  * @param string $align The desired alignment. Defaults to 'none'.
  * @return string The alignment class.
  */
@@ -305,15 +305,15 @@ endif;
 
 if (!function_exists('nvis_get_the_term_list')) :
 /**
- * Retrieves a post's terms in a list with the specified format. 
- * 
+ * Retrieves a post's terms in a list with the specified format.
+ *
  * The purpose of this function is to offer an option _NOT_ to link the terms.
- * If linked terms are desired, the work is handed off the WP's native 
- * `get_the_term_list`. The format of the arguments match that function 
- * exactly. 
- * 
+ * If linked terms are desired, the work is handed off the WP's native
+ * `get_the_term_list`. The format of the arguments match that function
+ * exactly.
+ *
  * @since 0.1
- * 
+ *
  * @param int|WP_Post $post Post ID or object.
  * @param string $taxonomy  Taxonomy name.
  * @param string $before    Optional. String to use before the terms. Default empty.
@@ -340,10 +340,10 @@ function nvis_get_the_term_list($post, $taxonomy, string $before = '', string $s
     }
 
     /**
-     * Filters the HTML formatted term list. 
-     * 
+     * Filters the HTML formatted term list.
+     *
      * @since 0.1
-     * 
+     *
      * @param string $list The formatted HTML, either linked or not.
      * @param string $taxonomy The taxonomy name of the terms.
      * @param int|WP_Post $post Post ID or object.
@@ -357,27 +357,27 @@ endif;
 if (!function_exists('nvis_toggletip')) :
 
 /**
- * Generates the HTML for a ToggleTip. 
- * 
+ * Generates the HTML for a ToggleTip.
+ *
  * This feature relies on the registered JS file 'nvis-global'. Make sure that
- * this file is enqueued when using ToggleTips. 
+ * this file is enqueued when using ToggleTips.
  *
  * @param string $content The contents of the tip popup.
  * @param string $aria_label The `aria-label` attribute of the toggle button.
- * @param bool $echo Whther to output the result. 
+ * @param bool $echo Whther to output the result.
  * @return string The generated HTML string.
  */
 function nvis_toggletip(string $content, string $aria_label, bool $echo = true): string {
-    
+
     /**
-     * Filters the text that appears on the ToggleTip button. 
-     * 
-     * Note that the expected button text is a single character. Any HTML can 
+     * Filters the text that appears on the ToggleTip button.
+     *
+     * Note that the expected button text is a single character. Any HTML can
      * be used, including SVG or an img tag, but anything other than a single
-     * character will likely impact the styling of the button. You should 
-     * escape any HTML before returning it. 
-     * 
-     * @param string $button_text The button text. 
+     * character will likely impact the styling of the button. You should
+     * escape any HTML before returning it.
+     *
+     * @param string $button_text The button text.
      */
     $button_text = apply_filters( 'nvis/toggletip_button_text', '?' );
 
