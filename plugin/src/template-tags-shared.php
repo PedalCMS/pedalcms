@@ -264,7 +264,7 @@ if (!function_exists('nvis_post_thumbnail_or_fallback')) :
  * @param string|array $attrs Optional. Query string or array of attributes. Default empty.
  * @return string The img tag.
  */
-function nvis_post_thumbnail_or_fallback($post = null, $fallback_id, $size = 'medium', $attrs = ''): string {
+function nvis_post_thumbnail_or_fallback($post = null, $fallback_id = null, $size = 'medium', $attrs = ''): string {
     $post = get_post($post);
 
     if (has_post_thumbnail($post)) {
