@@ -34,7 +34,7 @@
  * 
  */
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 defined('ABSPATH') || exit;
 
