@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Pedal CMS
  * Plugin URI: https://verifiedstudios.com
- * Description: A student recruitment powerhouse that includes: program listings, course catalog, faculty & staff directory, and more.
+ * Description: A program marketing powerhouse that includes: program listings, course offerings, team  directory, and more.
  * Requires PHP: 7.4
  * Requires at least: 5.6
  * Version: 0.1
