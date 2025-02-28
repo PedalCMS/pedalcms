@@ -2,7 +2,7 @@
 /**
  * The template for displaying personnel archives, aka the Directory.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

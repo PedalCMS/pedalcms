@@ -2,7 +2,7 @@
 /**
  * The template for displaying the Careers Program Subpage.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

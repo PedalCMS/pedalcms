@@ -2,7 +2,7 @@
 /**
  * The template for displaying the single Person page header when using the Block Editor.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

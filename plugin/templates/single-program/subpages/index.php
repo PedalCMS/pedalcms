@@ -2,7 +2,7 @@
 /**
  * The template for displaying the Program Overview Subpage.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

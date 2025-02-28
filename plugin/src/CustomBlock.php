@@ -6,7 +6,7 @@ namespace PedalCMS\Core;
  * Base class for common custom block tasks in WordPress.
  *
  * @version 0.1.0
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage StandardLib
  * @since 0.1.0
  */

@@ -2,7 +2,7 @@
 /**
  * Template for displaying the Course archive page header.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

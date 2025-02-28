@@ -6,7 +6,7 @@ namespace PedalCMS\Core;
  * Handles all functionality related to our extended template system.
  *
  * @version 0.1.0
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage StandardLib
  * @since 0.1.0
  */

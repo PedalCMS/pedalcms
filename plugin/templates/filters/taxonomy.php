@@ -4,7 +4,7 @@
  *
  * An abstract template. Only meant to be referenced by other filter templates.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

@@ -2,7 +2,7 @@
 /**
  * The template for displaying Program action buttons.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

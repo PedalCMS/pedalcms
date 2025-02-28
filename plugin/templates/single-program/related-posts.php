@@ -2,7 +2,7 @@
 /**
  * The template for displaying a list of posts, for use on the News subpage.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

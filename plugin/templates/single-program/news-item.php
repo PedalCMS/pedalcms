@@ -2,7 +2,7 @@
 /**
  * The template for displaying a single Post item, for use on the News subpage.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

@@ -2,7 +2,7 @@
 /**
  * Displays a Person Category taxonomy dropdown filter.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

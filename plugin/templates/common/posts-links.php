@@ -2,7 +2,7 @@
 /**
  * Displays a simple list of post links.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

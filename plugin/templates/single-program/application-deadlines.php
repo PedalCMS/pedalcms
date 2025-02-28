@@ -2,7 +2,7 @@
 /**
  * The template for displaying the Program's application deadlines.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

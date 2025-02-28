@@ -4,7 +4,7 @@
  *
  * Primarily used to render the ContactInfo block but can be used anywhere.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

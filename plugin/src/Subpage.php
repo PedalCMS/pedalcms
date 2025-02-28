@@ -5,7 +5,7 @@ namespace PedalCMS\Core;
 /**
  * Manages config of each subpage.
  * 
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Subpages
  * @since 0.1.0
  */

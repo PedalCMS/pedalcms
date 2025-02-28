@@ -2,7 +2,7 @@
 /**
  * The template for displaying Courses taught by a Person.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

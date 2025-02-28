@@ -2,7 +2,7 @@
 /**
  * Displays a variety of meta items, for use in a single Person view.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

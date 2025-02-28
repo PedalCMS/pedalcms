@@ -2,7 +2,7 @@
 /**
  * Displays a Program Type taxonomy dropdown filter.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

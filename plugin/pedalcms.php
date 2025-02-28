@@ -30,7 +30,7 @@
  * 
  * --- 
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * 
  */
 

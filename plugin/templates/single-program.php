@@ -2,7 +2,7 @@
 /**
  * The template for displaying a single program.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

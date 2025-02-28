@@ -5,7 +5,7 @@ namespace PedalCMS\Core;
 /**
  * Instruction Mode custom taxonomy.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage ContentModel
  * @since 0.1.0
  */

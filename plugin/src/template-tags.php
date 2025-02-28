@@ -2,7 +2,7 @@
 /**
  * Template tags specifically for this plugin.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @since 0.1.0
  */
 

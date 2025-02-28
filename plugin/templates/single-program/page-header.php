@@ -2,7 +2,7 @@
 /**
  * The template for displaying the single Program page header.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

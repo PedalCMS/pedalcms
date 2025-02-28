@@ -5,7 +5,7 @@ namespace PedalCMS\Core;
 /**
  * Course custom post type.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage ContentModel
  * @since 0.1.0
  */

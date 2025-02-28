@@ -2,7 +2,7 @@
 /**
  * The template for displaying a single curriculum section, for use on Curriculum subpage.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

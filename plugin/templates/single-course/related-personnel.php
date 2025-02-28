@@ -2,7 +2,7 @@
 /**
  * The template for displaying a list of people who teach a Course.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

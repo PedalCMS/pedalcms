@@ -2,7 +2,7 @@
 /**
  * The template for displaying a person when classic editor enabled on personnel.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

@@ -5,7 +5,7 @@ namespace PedalCMS\Core;
 /**
  * Handles all global settings and setup.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @since 0.1.0
  */
 class Plugin {

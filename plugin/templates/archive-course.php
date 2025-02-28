@@ -2,7 +2,7 @@
 /**
  * The template for displaying course archives.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

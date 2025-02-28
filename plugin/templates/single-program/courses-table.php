@@ -2,7 +2,7 @@
 /**
  * The template for displaying a table of Courses, for use on Curriculum subpage.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

@@ -7,7 +7,7 @@
  * - WP-PageNavi
  * - WP-Paginate
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

@@ -2,7 +2,7 @@
 /**
  * Template for displaying number of results in archives and filtered search.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

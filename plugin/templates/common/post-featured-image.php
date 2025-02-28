@@ -2,7 +2,7 @@
 /**
  * The template for displaying the featured image of a post.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

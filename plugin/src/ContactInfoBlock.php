@@ -7,7 +7,7 @@ namespace PedalCMS\Core;
  * 
  * Used with Person post types.
  * 
- * @package NVISPrograms
+ * @package PedalCMS
  * @since 0.1.0
  */
 class ContactInfoBlock extends CustomBlock {

@@ -2,7 +2,7 @@
 /**
  * Displays a list of Course items, for use in an archive.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

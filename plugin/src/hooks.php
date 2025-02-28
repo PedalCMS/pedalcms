@@ -2,7 +2,7 @@
 /**
  * Various global hook functions.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @since 0.1.0
  */
 

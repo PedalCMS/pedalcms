@@ -2,7 +2,7 @@
 /**
  * The template for displaying lead content on a Program Subpage.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

@@ -8,7 +8,7 @@
  * - All in One SEO
  * - Rank Math
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

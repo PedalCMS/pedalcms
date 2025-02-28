@@ -2,7 +2,7 @@
 /**
  * Template for displaying number of results in Course archives.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

@@ -2,7 +2,7 @@
 /**
  * The template for displaying the a featured image for a Person.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

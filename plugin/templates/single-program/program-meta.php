@@ -2,7 +2,7 @@
 /**
  * The template for displaying Program meta items, for use on single Program.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

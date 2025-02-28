@@ -2,7 +2,7 @@
 /**
  * Displays a keyword search box filter.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

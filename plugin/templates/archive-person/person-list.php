@@ -2,7 +2,7 @@
 /**
  * Displays a list of Person items, for use in an archive.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

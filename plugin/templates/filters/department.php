@@ -2,7 +2,7 @@
 /**
  * Displays a Department taxonomy dropdown filter.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */

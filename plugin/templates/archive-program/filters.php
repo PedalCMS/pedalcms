@@ -2,7 +2,7 @@
 /**
  * A template for displaying the Program archive search and filter form.
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  *

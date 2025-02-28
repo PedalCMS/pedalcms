@@ -4,7 +4,7 @@
  *
  * A thin wrapper around get_footer().
  *
- * @package NVISPrograms
+ * @package PedalCMS
  * @subpackage Templates
  * @version 1.0
  */
