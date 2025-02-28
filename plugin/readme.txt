@@ -1,11 +1,11 @@
-=== Invisible Us: Program Marketing Essentials ===
+=== Pedal CMS ===
 Requires at least: 5.6
 Tested up to: 6.0
 Requires PHP: 7.4
 Stable tag: main
 License: GPL-2.0+
 
-A student recruitment powerhouse that includes: program listings, course catalog, faculty & staff directory, and more.
+A program marketing powerhouse that includes: program listings, course offerings, team directory, and more.
 
 == Description ==
 See https://invisibe.us
@@ -24,4 +24,4 @@ See https://invisibe.us
 1. Download `pedalcms.zip` from your account
 2. Extract the `pedalcms` directory on your computer
 3. Upload the `pedalcms` directory to the plugins directory of your WordPress install (usually `/wp-content/plugins/`)
-4. Activate Invisible Us: Program Marketing Essentials from the Plugins dashboard
+4. Activate Pedal CMS from the Plugins dashboard
