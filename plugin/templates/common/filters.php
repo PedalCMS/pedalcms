@@ -66,7 +66,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
          */
         do_action('nvis/programs/before_filters_fields', $args);
 
-        foreach ($args['filters'] as $i => $filter):
+        foreach ($filters as $i => $filter):
             if ($i === $args['break_filters_after']):
         ?>
             <button type="button" data-target="more-filters" class="nvis-toggle__trigger" aria-expanded="false"
