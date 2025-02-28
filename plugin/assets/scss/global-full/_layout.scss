@@ -2,21 +2,21 @@
 
 
 body .pdl-template {
-  --header-padding: var(--nvis-spacing-2x);
+  --header-padding: var(--pdl-spacing-2x);
   max-width: 1200px;
 
   @media (min-width: $screen-md-min) {
-    --header-padding: var(--nvis-spacing-3x);
+    --header-padding: var(--pdl-spacing-3x);
   }
 }
 
-.archive .pdl-template .nvis-breadcrumbs {
-  margin-bottom: var(--nvis-spacing);
+.archive .pdl-template .pdl-breadcrumbs {
+  margin-bottom: var(--pdl-spacing);
 }
 
-.single .pdl-template .nvis-breadcrumbs {
+.single .pdl-template .pdl-breadcrumbs {
   margin-bottom: -1px;
-  padding-top: var(--nvis-spacing);
+  padding-top: var(--pdl-spacing);
 }
 
 .pdl-template .num-results {
@@ -28,7 +28,7 @@ body .pdl-template {
   border: solid 1px #ddd;
   border-radius: 3px;
   box-shadow: 3px 0 5px 0 rgba(0, 0, 0, 0.1);
-  margin: 0 0 var(--nvis-spacing-2x);
+  margin: 0 0 var(--pdl-spacing-2x);
   overflow: hidden;
 }
 
@@ -56,7 +56,7 @@ body .pdl-template {
 }
 
 .archive .pdl-template .page-header .page-title {
-  margin-bottom: var(--nvis-spacing);
+  margin-bottom: var(--pdl-spacing);
 }
 
 .pdl-template .page-header__backdrop {
@@ -110,8 +110,8 @@ body .pdl-template {
 }
 
 .pdl-template .page-header__title-group .taxonomy a:hover {
-  background: var(--nvis-active-color);
-  color: var(--nvis-active-color-text);
+  background: var(--pdl-active-color);
+  color: var(--pdl-active-color-text);
   text-decoration: none;
   text-shadow: none;
 }
@@ -141,18 +141,18 @@ body .pdl-template {
 .pdl-template .page-header .featured-image {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   height: fit-content;
-  margin-bottom: var(--nvis-spacing-2x);
+  margin-bottom: var(--pdl-spacing-2x);
   width: fit-content;
 }
 
-.pdl-template .page-header .nvis-meta-group a {
+.pdl-template .page-header .pdl-meta-group a {
   border-radius: 2px;
   display: inline-block;
   padding: 2px;
   text-decoration: underline;
 }
 
-.pdl-template .page-header .nvis-meta-group a:hover {
+.pdl-template .page-header .pdl-meta-group a:hover {
   background: #fff;
   color: #000;
   text-decoration: none;

@@ -1,6 +1,6 @@
 .course-list .pdl_course header {
   border-bottom: solid 1px #ccc;
-  padding-bottom: calc(var(--nvis-spacing) / 2);
+  padding-bottom: calc(var(--pdl-spacing) / 2);
 }
 
 .course-list .pdl_course .course-meta {
@@ -16,7 +16,7 @@
 }
 
 .course-main .course-description {
-  --spacing: var(--nvis-spacing-3x);
+  --spacing: var(--pdl-spacing-3x);
   border-bottom: solid 1px #ccc;
   margin-bottom: var(--spacing);
   padding-bottom: var(--spacing);

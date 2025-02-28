@@ -8,19 +8,19 @@
 
 .pdl-template .program-subpage-careers .career {
   display: block;
-  margin-bottom: calc(2 * var(--nvis-spacing-2x));
+  margin-bottom: calc(2 * var(--pdl-spacing-2x));
   padding: 0;
 }
 
 .pdl-template .program-subpage-careers .career-header {
   border-bottom: solid 1px #ccc;
-  margin-bottom: var(--nvis-spacing);
+  margin-bottom: var(--pdl-spacing);
   padding: 0;
   width: 100%;
 }
 
 .pdl-template .program-subpage-careers .career-header a {
-  color: var(--nvis-active-color);
+  color: var(--pdl-active-color);
   text-decoration: none;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .pdl-template .program-subpage-careers .career-content {
-  margin: 0 0 var(--nvis-spacing-2x);
+  margin: 0 0 var(--pdl-spacing-2x);
   width: 100%;
 }
 
@@ -47,15 +47,15 @@
 }
 
 .faq-category {
-  margin-bottom: var(--nvis-spacing-2x);
+  margin-bottom: var(--pdl-spacing-2x);
 }
 
 .faq-category__title {
-  margin-bottom: var(--nvis-spacing);
+  margin-bottom: var(--pdl-spacing);
 }
 
 .pdl_program .courses-table {
-  margin-bottom: var(--nvis-spacing-2x);
+  margin-bottom: var(--pdl-spacing-2x);
 }
 
 .pdl_program .courses-table thead {
@@ -74,11 +74,11 @@
 
 .program-faculty-staff-list .person-list {
   --image-width: 100px;
-  --spacing: var(--nvis-spacing-2x);
+  --spacing: var(--pdl-spacing-2x);
   display: flex;
   flex-direction: column;
-  gap: var(--nvis-spacing-2x);
-  margin: 0 0 var(--nvis-spacing-4x);
+  gap: var(--pdl-spacing-2x);
+  margin: 0 0 var(--pdl-spacing-4x);
 }
 
 .program-faculty-staff-list .person-list .pdl_person {
@@ -102,7 +102,7 @@
 
   @media (max-width: $screen-md-max) {
     flex-direction: column;
-    margin-bottom: var(--nvis-spacing-2x);
+    margin-bottom: var(--pdl-spacing-2x);
   }
 }
 
@@ -128,7 +128,7 @@
 }
 
 .program-subpage-faculty-staff .person-list .person-department a:hover {
-  color: var(--nvis-active-color);
+  color: var(--pdl-active-color);
 }
 
 .program-subpage-faculty-staff .person-list .contact-info {
@@ -147,11 +147,11 @@
 .program-subpage-news .related-post {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--nvis-spacing);
-  margin-bottom: var(--nvis-spacing-4x);
+  gap: var(--pdl-spacing);
+  margin-bottom: var(--pdl-spacing-4x);
 
   @media (min-width: $screen-lg-min) {
-    gap: var(--nvis-spacing-2x);
+    gap: var(--pdl-spacing-2x);
   }
 
 
@@ -167,7 +167,7 @@
 .program-subpage-news .related-post .related-post__wrapper {
 
   @media (min-width: $screen-lg-min) {
-    width: calc(70% - var(--nvis-spacing-2x));
+    width: calc(70% - var(--pdl-spacing-2x));
   }
 }
 
@@ -184,11 +184,11 @@
 }
 
 .program-subpage-news .related-post .related-post__title {
-  margin: 0 0 var(--nvis-spacing);
+  margin: 0 0 var(--pdl-spacing);
 }
 
 .program-subpage-news .related-post .related-post__more {
-  margin: var(--nvis-spacing) 0;
+  margin: var(--pdl-spacing) 0;
 }
 
 .program-subpage-news .all-posts-link {

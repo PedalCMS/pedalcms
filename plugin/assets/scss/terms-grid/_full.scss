@@ -1,4 +1,4 @@
-.nvis-present-mode--full .terms-grid .term {
+.pdl-present-mode--full .terms-grid .term {
   border: solid 1px #ccc;
   border-radius: 5px;
   box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
@@ -7,7 +7,7 @@
   position: relative;
 }
 
-.nvis-present-mode--full .terms-grid .term__title-group {
+.pdl-present-mode--full .terms-grid .term__title-group {
   background: #000;
   border-bottom: solid 1px #333;
   margin: 0;
@@ -24,42 +24,42 @@
   }
 }
 
-.nvis-present-mode--full .terms-grid .term__num-posts {
+.pdl-present-mode--full .terms-grid .term__num-posts {
   color: #999;
 }
 
-.nvis-present-mode--full .terms-grid .term:hover img {
+.pdl-present-mode--full .terms-grid .term:hover img {
   filter: saturate(1.1) brightness(1.15);
   opacity: 1;
   transform: scale(1.2);
   transition: all 1.5s;
 }
 
-.nvis-present-mode--full .terms-grid .term__description {
+.pdl-present-mode--full .terms-grid .term__description {
   flex-grow: 1;
   height: auto;
-  margin: var(--nvis-spacing);
+  margin: var(--pdl-spacing);
 }
 
-.nvis-present-mode--full .terms-grid .term__posts-link {
+.pdl-present-mode--full .terms-grid .term__posts-link {
   font-size: 0.9em;
-  padding: 1em var(--nvis-spacing);
+  padding: 1em var(--pdl-spacing);
 }
 
-.nvis-present-mode--full .term__image + .term__posts-link {
+.pdl-present-mode--full .term__image + .term__posts-link {
   bottom: 0;
   left: 0;
   position: absolute;
   z-index: 100;
 
   a {
-    background: var(--nvis-active-color);
+    background: var(--pdl-active-color);
     border: solid 2px transparent;
     border-radius: 3px;
     color: #fff;
     display: inline-block;
     font-weight: bold;
-    padding: 0.75em var(--nvis-spacing);
+    padding: 0.75em var(--pdl-spacing);
     text-decoration: none;
     transition: all 0.25s;
 

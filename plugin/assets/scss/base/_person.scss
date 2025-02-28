@@ -9,7 +9,7 @@
 
 .person-list--grid {
   display: grid;
-  gap: var(--nvis-spacing);
+  gap: var(--pdl-spacing);
 
   @media (min-width: $screen-md-min) {
     grid-template-columns: repeat(2, 1fr);
@@ -18,12 +18,12 @@
 
 .person-list .pdl_person {
   display: flex;
-  gap: var(--nvis-spacing);
+  gap: var(--pdl-spacing);
   margin-bottom: 0 !important;
-  padding: var(--nvis-spacing);
+  padding: var(--pdl-spacing);
 
   @media (min-width: $screen-md-min) {
-    padding: var(--nvis-spacing-2x);
+    padding: var(--pdl-spacing-2x);
   }
 }
 
@@ -61,7 +61,7 @@
 }
 
 .person-list .person-position {
-  margin-bottom: calc(1.5 * var(--nvis-spacing));
+  margin-bottom: calc(1.5 * var(--pdl-spacing));
 }
 
 .person-list .person-job-title {
@@ -74,7 +74,7 @@
 }
 
 body.single-pdl_person .person-main {
-  --margin: var(--nvis-spacing-2x);
+  --margin: var(--pdl-spacing-2x);
   display: flex;
   flex-wrap: wrap;
   gap: var(--margin);
@@ -84,7 +84,7 @@ body.single-pdl_person .person-content {
   width: 100%;
 
   @media (min-width: $screen-md-min) {
-    width: calc(100% - var(--nvis-sidebar-width) - var(--margin));
+    width: calc(100% - var(--pdl-sidebar-width) - var(--margin));
   }
 }
 
@@ -92,7 +92,7 @@ body.single-pdl_person .person-sidebar {
   width: 100%;
 
   @media (min-width: $screen-md-min) {
-    width: var(--nvis-sidebar-width);
+    width: var(--pdl-sidebar-width);
   }
 }
 
@@ -111,9 +111,9 @@ body.single-pdl_person .person-sidebar {
 }
 
 .single-person-page-header--classic {
-  border-bottom: solid 1px var(--nvis-gray);
-  margin-bottom: var(--nvis-spacing-2x);
-  padding-bottom: var(--nvis-spacing-2x);
+  border-bottom: solid 1px var(--pdl-gray);
+  margin-bottom: var(--pdl-spacing-2x);
+  padding-bottom: var(--pdl-spacing-2x);
 }
 
 .single-person-page-header--classic .entry-title {
@@ -122,12 +122,12 @@ body.single-pdl_person .person-sidebar {
 
   @media (min-width: $screen-md-min) {
     clear: none;
-    margin: var(--nvis-spacing-3x) 0 0;
+    margin: var(--pdl-spacing-3x) 0 0;
   }
 }
 
 .single-person-page-header--classic .single-person__meta {
-  margin: 0 0 var(--nvis-spacing-2x);
+  margin: 0 0 var(--pdl-spacing-2x);
 }
 
 .single-person-page-header--classic .person-job-title {
@@ -149,6 +149,6 @@ body.single-pdl_person .person-sidebar {
 }
 
 .single-person-page-header .contact-info {
-  margin-bottom: var(--nvis-spacing-2x);
+  margin-bottom: var(--pdl-spacing-2x);
   order: 2;
 }

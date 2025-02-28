@@ -1,5 +1,5 @@
 :target:not(article) {
-  animation: nvis-flash-highlight 1.75s ease-out 0.1s;
+  animation: pdl-flash-highlight 1.75s ease-out 0.1s;
 }
 
 section:target > h2 {
@@ -18,13 +18,13 @@ section:target > h2 {
 }
 
 body .pdl-template .button {
-  background-color: var(--nvis-active-color);
-  color: var(--nvis-active-color-text);
+  background-color: var(--pdl-active-color);
+  color: var(--pdl-active-color-text);
   font-size: 16px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 1;
-  padding: var(--nvis-spacing) var(--nvis-spacing-2x);
+  padding: var(--pdl-spacing) var(--pdl-spacing-2x);
   text-decoration: none !important;
   text-transform: none;
 }
@@ -32,7 +32,7 @@ body .pdl-template .button {
 body .pdl-template .button-secondary {
   background-color: transparent;
   border: solid 2px;
-  color: var(--nvis-active-color);
+  color: var(--pdl-active-color);
 }
 
 body .pdl-template .button:hover,
@@ -54,7 +54,7 @@ body .pdl-template .button-secondary:hover {
 }
 
 .archive .pdl-template article header a {
-  color: var(--nvis-active-color);
+  color: var(--pdl-active-color);
   text-decoration: none;
 
   &:hover {
@@ -67,10 +67,10 @@ body .pdl-template .button-secondary:hover {
   --article-padding: var(--header-padding);
   border-radius: 0 0 3px 3px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-  gap: var(--nvis-spacing);
+  gap: var(--pdl-spacing);
   padding: 0 var(--article-padding) var(--article-padding);
 }
 
-.nvis-sidebar h3 {
+.pdl-sidebar h3 {
   opacity: 0.85;
 }

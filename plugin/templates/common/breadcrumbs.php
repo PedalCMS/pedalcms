@@ -35,7 +35,7 @@ if ($args['show_breadcrumbs']) :
 do_action('pdl/before_breadcrumbs', $args);
 ?>
 <div id="<?php echo esc_attr($args['breadcrumb_wrapper_id']); ?>"
-    class="nvis-breadcrumbs <?php echo esc_attr($args['breadcrumb_wrapper_class']); ?>">
+    class="pdl-breadcrumbs <?php echo esc_attr($args['breadcrumb_wrapper_class']); ?>">
     <?php
     if (function_exists('bcn_display')) {
         bcn_display();

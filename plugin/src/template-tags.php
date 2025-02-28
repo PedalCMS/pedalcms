@@ -450,3 +450,58 @@ function pdl_get_full_course_title($post = null) {
 }
 
 endif;
+
+if (!function_exists('pdl_get_icon')) :
+    /**
+     * Gets an HTML string containing an inline SVG and wrapper tag.
+     *
+     * @since 0.1.0
+     *
+     * @link https://heroicons.com/
+     *
+     * @param string $icon The slug style name of a heroicon.
+     * @param array $args Arguments to control the size and style of the icon.
+     * @return string|false The resulting HTML string on success, false on failure.
+     */
+    function pdl_get_icon(string $icon, array $args = []): string|false {
+        $defaults = [
+            'style' => 'solid',
+            'size'  => 24,
+            'class' => ''
+        ];
+
+        $args = wp_parse_args($args, $defaults);
+
+        $style = sanitize_file_name($args['style']);
+        $size  = (int) $args['size'];
+
+        $icon = sanitize_file_name($icon);
+        $file =  sprintf(
+            '%sassets/img/heroicons/%d/%s/%s.svg',
+            plugin_dir_path(__DIR__),
+            $size,
+            $style,
+            $icon
+        );
+
+        $classes = explode(' ', $args['class']);
+        $classes = array_map('sanitize_html_class', $classes);
+
+        $classes = [
+            'pdl-icon',
+            'pdl-icon-' . $icon,
+            'pdl-icon-' . $style,
+            implode(' ', $classes)
+        ];
+
+        if (file_exists($file)) {
+            return sprintf(
+                '<span class="%s">%s</span>',
+                implode(' ', $classes),
+                file_get_contents($file)
+            );
+        }
+
+        return false;
+    }
+endif;

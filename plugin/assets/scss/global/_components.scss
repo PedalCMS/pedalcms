@@ -13,11 +13,11 @@
 
 .action-list a.button {
   display: block;
-  margin-bottom: calc(0.5 * var(--nvis-spacing));
+  margin-bottom: calc(0.5 * var(--pdl-spacing));
   text-align: center;
 }
 
-.nvis-sticky {
+.pdl-sticky {
   position: sticky;
   top: -1px;
 }
@@ -33,7 +33,7 @@
   }
 }
 
-.nvis-expandable {
+.pdl-expandable {
   summary {
     cursor: pointer;
     font-weight: bold;
@@ -41,18 +41,18 @@
 
     &::marker,
     &::-webkit-details-marker {
-      color: var(--nvis-active-color);
+      color: var(--pdl-active-color);
       font-size: 0.95em;
     }
   }
 
-  &[open] .nvis-expandable__contents {
-    animation: nvis-fade-in-left 0.25s ease-in-out;
-    margin-bottom: var(--nvis-spacing);
+  &[open] .pdl-expandable__contents {
+    animation: pdl-fade-in-left 0.25s ease-in-out;
+    margin-bottom: var(--pdl-spacing);
   }
 }
 
-.nvis-toggle__trigger {
+.pdl-toggle__trigger {
   --focus-outline: dotted 2px currentColor;
   background: none;
   border: none;
@@ -65,7 +65,7 @@
 
   &:hover {
     background: none;
-    color: var(--nvis-active-color);
+    color: var(--pdl-active-color);
     text-decoration: underline;
   }
 
@@ -84,7 +84,7 @@
   }
 
   &::after {
-    color: var(--nvis-active-color);
+    color: var(--pdl-active-color);
     content: '\25B2';
     display: inline-block;
     font-size: 0.9em;
@@ -113,7 +113,7 @@
   }
 }
 
-.nvis-toggle__content {
+.pdl-toggle__content {
   overflow: hidden;
   transition: height 0.25s;
 
@@ -122,23 +122,25 @@
   }
 }
 
-.archive .nvis-post-filters {
-  background: rgba(0, 0, 0, 0.1);
+.archive .pdl-post-filters {
+  background: rgb(0 0 0 / 0.1) !important;
   clear: both;
+  gap: var(--pdl-spacing-half);
   line-height: 1.25;
-  margin: 0 0 var(--nvis-spacing);
-  padding: var(--nvis-spacing);
+  margin: 0 0 var(--pdl-spacing);
+  padding: var(--pdl-spacing-half) var(--pdl-spacing) var(--pdl-spacing);
+  position: relative;
 
   @media (min-width: $screen-md-min) {
     align-items: flex-start;
     display: flex;
-    gap: var(--nvis-spacing);
     justify-content: space-between;
   }
 }
 
-.archive .nvis-post-filters fieldset {
+.archive .pdl-post-filters fieldset {
   border: none;
+  flex-grow: 1;
   font-size: 0.85em;
   padding: 0;
 
@@ -148,23 +150,9 @@
   }
 }
 
-.archive .nvis-post-filters legend {
-  border: none;
-  float: left;
-  font-size: 1em;
-  font-weight: bold;
-  margin: 0.5em 0;
-  padding: 0;
-  width: auto;
-
-  @media (min-width: $screen-md-min) {
-    margin: 0.5em var(--nvis-spacing) 0 0;
-  }
-}
-
-.archive .nvis-post-filters .filters,
-.archive .nvis-post-filters .more-filters__content,
-.archive .nvis-post-filters .actions {
+.archive .pdl-post-filters .filters,
+.archive .pdl-post-filters .more-filters__content,
+.archive .pdl-post-filters .actions {
 
   @media (min-width: $screen-md-min) {
     align-items: center;
@@ -172,70 +160,145 @@
   }
 }
 
-.archive .nvis-post-filters .filters {
+.archive .pdl-post-filters .filters {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  gap: var(--nvis-spacing);
+  gap: var(--pdl-spacing-half);
 
   @media (max-width: $screen-sm-max) {
-    padding-bottom: var(--nvis-spacing);
     width: 100%;
   }
 
   @media (min-width: $screen-md-min) {
     align-items: center;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
   }
 }
 
-.nvis-post-filters .nvis-filters-field {
+.pdl-post-filters .pdl-filters-field {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-bottom: 0.5em;
 
   @media (max-width: $screen-sm-max) {
     width: 100%;
   }
 
-  input,
-  select {
+  &__label {
+    color: #555;
+    margin-bottom: 0.25em;
+  }
 
-    @media (max-width: $screen-sm-max) {
-      width: 100%;
+  input[type='text'],
+  input[type='search'],
+  select {
+    height: auto;
+    max-width: 100%;
+    min-height: unset;
+    width: 100%;
+  }
+}
+
+.pdl-filters-field {
+
+  @media (min-width: $screen-md-min) {
+
+    @for $i from 1 to 6 {
+      .pdl-post-filters-#{$i} & {
+        max-width: calc(100% / $i + 5%);
+      }
     }
   }
 }
 
-.archive .nvis-post-filters .more-filters {
-  gap: var(--nvis-spacing);
+.pdl-post-filters .pdl-filter-keyword {
+  min-width: 25%;
+}
+
+.archive .pdl-post-filters .more-filters {
+  gap: var(--pdl-spacing);
   width: 100%;
 }
 
-.nvis-post-filters .more-filters__content {
+.pdl-post-filters .more-filters__content {
   display: flex;
-  gap: var(--nvis-spacing);
+  gap: var(--pdl-spacing);
 
   @media (max-width: $screen-sm-max) {
     flex-direction: column;
   }
 }
 
-.archive .nvis-post-filters .actions {
-  gap: var(--nvis-spacing);
+.archive .pdl-post-filters .actions {
+  align-items: center;
+  display: flex;
+  font-size: 0.85em;
+  gap: var(--pdl-spacing);
+  padding-top: var(--pdl-spacing);
+
+  @media (min-width: $screen-md-min) {
+    padding-top: 1.5em;
+  }
 }
 
-.archive .nvis-post-filters .reset-link {
-  display: inline-block;
-  font-size: 0.9em;
+.archive .pdl-post-filters .search-button {
+  border: solid 1px var(--pdl-active-color);
+  height: auto;
+  line-height: 1.25;
+  min-height: unset;
+  padding: 0.3em 0.75em;
   white-space: nowrap;
+
+  &:hover {
+    background: #333;
+    border-color: #333;
+  }
+
+  &:active {
+    background: #111;
+    border-color: #111;
+  }
+
+  .pdl-icon.loading {
+    display: none;
+  }
+
+  &[disabled] {
+    background: #666;
+    border-color: #666;
+    color: #ccc;
+
+    .pdl-icon.loading {
+      animation: 1.5s infinite linear pdl-rotate;
+      display: inline-block;
+    }
+
+    .pdl-icon.normal {
+      display: none;
+    }
+  }
 }
 
-.nvis-meta-group {
+.archive .pdl-post-filters .reset-link {
+  display: inline-block;
+  white-space: nowrap;
+
+  &--inactive {
+    color: #777;
+    cursor: default;
+  }
+}
+
+.pdl-meta-group {
   display: grid;
-  gap: var(--nvis-spacing) var(--nvis-spacing-2x);
+  gap: var(--pdl-spacing) var(--pdl-spacing-2x);
   grid-template-columns: repeat(auto-fit, minmax(120px, max-content));
   justify-content: space-around;
 }
 
-.nvis-meta-group__item {
+.pdl-meta-group__item {
   display: inline-block;
   font-size: 0.9em;
 
@@ -273,7 +336,7 @@
 
   &:focus,
   &:active {
-    box-shadow: 0 0 0 4px var(--nvis-active-color);
+    box-shadow: 0 0 0 4px var(--pdl-active-color);
   }
 }
 

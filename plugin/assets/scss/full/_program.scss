@@ -14,7 +14,7 @@
   border-bottom: solid 1px #ddd;
   display: flex;
   flex-direction: column-reverse;
-  padding: 0 0 var(--nvis-spacing);
+  padding: 0 0 var(--pdl-spacing);
 }
 
 .archive .programs-list .program-title {
@@ -32,7 +32,7 @@
 
 .archive .programs-list .item-meta .label {
   display: table-cell;
-  padding-right: var(--nvis-spacing);
+  padding-right: var(--pdl-spacing);
 }
 
 .archive .programs-list .item-meta .value {
@@ -41,7 +41,7 @@
 }
 
 .program-subpage .program-lead-content {
-  margin-bottom: var(--nvis-spacing-4x);
+  margin-bottom: var(--pdl-spacing-4x);
 }
 
 .pdl-template .page-header .program-subnav {
@@ -90,6 +90,6 @@
 .pdl-template .program-main {
 
   @media (min-width: $screen-md-min) {
-    width: calc(100% - var(--nvis-sidebar-width) - 4 * var(--nvis-spacing));
+    width: calc(100% - var(--pdl-sidebar-width) - 4 * var(--pdl-spacing));
   }
 }

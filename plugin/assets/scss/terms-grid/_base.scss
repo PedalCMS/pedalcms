@@ -3,7 +3,7 @@
 @use '../common/variables' as *;
 
 .terms-grid {
-  --gap: var(--nvis-spacing-2x);
+  --gap: var(--pdl-spacing-2x);
   list-style: none !important;
   margin: var(--gap) 0;
   padding: 0;
@@ -18,7 +18,7 @@
 .terms-grid .term {
   display: flex;
   flex-flow: column nowrap;
-  padding: 0 0 var(--nvis-spacing);
+  padding: 0 0 var(--pdl-spacing);
 
   @media (max-width: $screen-sm-max) {
     margin-bottom: var(--gap);
@@ -91,7 +91,7 @@
 
 .terms-grid .term__description {
   font-size: 0.9em;
-  margin: 0 0 calc(2 * var(--nvis-spacing));
+  margin: 0 0 calc(2 * var(--pdl-spacing));
   order: 3;
 }
 

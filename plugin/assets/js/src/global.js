@@ -166,16 +166,17 @@
 		}
 	}
 
-	function nvisInit() {
+	function pdlInit() {
 		initToggles();
 		initToggleTips();
 		initScrollSticky();
+		addSearchFormListeners();
 		maybeToggleHiddenFilters();
 	}
 
 	function initToggles() {
 		document
-			.querySelectorAll('.nvis-toggle__trigger')
+			.querySelectorAll('.pdl-toggle__trigger')
 			.forEach((el) => new ElementToggleTrigger(el));
 	}
 
@@ -186,7 +187,7 @@
 	}
 
 	function initScrollSticky() {
-		const stickySelector = '.nvis-sticky';
+		const stickySelector = '.pdl-sticky';
 
 		updateStickyElements();
 
@@ -200,7 +201,7 @@
 	}
 
 	function updateStickyElements() {
-		const stickySelector = '.nvis-sticky',
+		const stickySelector = '.pdl-sticky',
 			stuckClass = 'stuck';
 
 		document.querySelectorAll(stickySelector).forEach((el) => {
@@ -212,9 +213,27 @@
 		});
 	}
 
+	function addSearchFormListeners() {
+		const form = document.getElementById('search-filter-form');
+
+		if (!form) {
+			return;
+		}
+
+		form.addEventListener('change', () => {
+			form.addEventListener('submit', (e) => {
+				const submitButton = e.target.querySelector('button[type="submit"]');
+
+				if (submitButton) {
+					submitButton.setAttribute('disabled', 'disabled');
+				}
+			});
+		});
+	}
+
 	function maybeToggleHiddenFilters() {
 		const id = 'more-filters';
-		const triggerSelector = `.nvis-toggle__trigger[data-target="${id}"]`;
+		const triggerSelector = `.pdl-toggle__trigger[data-target="${id}"]`;
 		const moreFilters = document.getElementById(id);
 
 		if (!moreFilters) {
@@ -243,5 +262,5 @@
 		return false;
 	}
 
-	window.addEventListener('load', nvisInit);
+	window.addEventListener('load', pdlInit);
 })();

@@ -1,42 +1,43 @@
 @use '../common/variables' as *;
 
 :root {
-  --nvis-active-color: #206bba;
-  --nvis-active-color-text: #fff;
-  --nvis-gray: #999;
-  --nvis-green: #417d2b;
-  --nvis-red: #9d2e2a;
-  --nvis-highlight: #ffedc2;
-  --nvis-spacing: 1rem;
-  --nvis-spacing-2x: calc(2 * var(--nvis-spacing));
-  --nvis-spacing-3x: calc(3 * var(--nvis-spacing));
-  --nvis-spacing-4x: calc(4 * var(--nvis-spacing));
-  --nvis-sidebar-width: 20%;
-  --nvis-chart-color-1: #09c;
-  --nvis-chart-color-2: #f93;
-  --nvis-chart-color-3: #c30;
-  --nvis-chart-color-4: #393;
-  --nvis-chart-color-5: #939;
-  --nvis-chart-color-6: #69f;
-  --nvis-chart-color-7: #e37;
-  --nvis-chart-color-8: #303;
-  --nvis-chart-color-alt-1: #80cce6;
-  --nvis-chart-color-alt-2: #ffc285;
-  --nvis-chart-color-alt-3: #e08566;
-  --nvis-chart-color-alt-4: #85c285;
-  --nvis-chart-color-alt-5: #c285c2;
-  --nvis-chart-color-alt-6: #85c2ff;
-  --nvis-chart-color-alt-7: #f585ad;
-  --nvis-chart-color-alt-8: #856685;
+  --pdl-active-color: #206bba;
+  --pdl-active-color-text: #fff;
+  --pdl-gray: #999;
+  --pdl-green: #417d2b;
+  --pdl-red: #9d2e2a;
+  --pdl-highlight: #ffedc2;
+  --pdl-spacing: 1rem;
+  --pdl-spacing-half: calc(0.5 * var(--pdl-spacing));
+  --pdl-spacing-2x: calc(2 * var(--pdl-spacing));
+  --pdl-spacing-3x: calc(3 * var(--pdl-spacing));
+  --pdl-spacing-4x: calc(4 * var(--pdl-spacing));
+  --pdl-sidebar-width: 20%;
+  --pdl-chart-color-1: #09c;
+  --pdl-chart-color-2: #f93;
+  --pdl-chart-color-3: #c30;
+  --pdl-chart-color-4: #393;
+  --pdl-chart-color-5: #939;
+  --pdl-chart-color-6: #69f;
+  --pdl-chart-color-7: #e37;
+  --pdl-chart-color-8: #303;
+  --pdl-chart-color-alt-1: #80cce6;
+  --pdl-chart-color-alt-2: #ffc285;
+  --pdl-chart-color-alt-3: #e08566;
+  --pdl-chart-color-alt-4: #85c285;
+  --pdl-chart-color-alt-5: #c285c2;
+  --pdl-chart-color-alt-6: #85c2ff;
+  --pdl-chart-color-alt-7: #f585ad;
+  --pdl-chart-color-alt-8: #856685;
 }
 
 @media (max-width: $screen-md-max) {
   :root {
-    --nvis-sidebar-width: 25%;
+    --pdl-sidebar-width: 25%;
   }
 }
 
-@keyframes nvis-fade-in-left {
+@keyframes pdl-fade-in-left {
   0% {
     opacity: 0;
     transform: translateX(-10px);
@@ -48,16 +49,30 @@
   }
 }
 
-@keyframes nvis-flash-highlight {
+@keyframes pdl-flash-highlight {
   0% {
-    background: var(--nvis-highlight);
+    background: var(--pdl-highlight);
   }
 
   25% {
-    background: var(--nvis-highlight);
+    background: var(--pdl-highlight);
   }
 
   100% {
     background: transparent;
+  }
+}
+
+@keyframes pdl-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

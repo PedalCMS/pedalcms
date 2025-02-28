@@ -2,14 +2,14 @@
 
 .course-meta {
   display: flex;
-  gap: var(--nvis-spacing-2x);
+  gap: var(--pdl-spacing-2x);
 }
 
 .pdl-template .course-list .pdl_course {
   border: none;
-  gap: var(--nvis-spacing);
-  margin-bottom: var(--nvis-spacing);
-  padding: var(--nvis-spacing);
+  gap: var(--pdl-spacing);
+  margin-bottom: var(--pdl-spacing);
+  padding: var(--pdl-spacing);
   position: relative;
 
   @media (min-width: $screen-md-min) {
@@ -25,7 +25,7 @@
 
 .course-list .pdl_course header,
 .course-list .pdl_course .course-content {
-  margin: 0 0 var(--nvis-spacing);
+  margin: 0 0 var(--pdl-spacing);
 
   @media (min-width: $screen-md-min) {
     margin: 0;
@@ -52,7 +52,7 @@
 
 .course-list .course-details {
   --gap: 5%;
-  margin-top: var(--nvis-spacing);
+  margin-top: var(--pdl-spacing);
 
   @media (min-width: $screen-md-min) {
     display: flex;
@@ -68,7 +68,7 @@
 }
 
 .course-list .course-personnel {
-  margin-bottom: var(--nvis-spacing);
+  margin-bottom: var(--pdl-spacing);
 
   @media (min-width: $screen-md-min) {
     width: 25%;
@@ -86,7 +86,7 @@
 }
 
 .single-pdl_course .course-sidebar .action-list {
-  margin: 0 0 var(--nvis-spacing-2x);
+  margin: 0 0 var(--pdl-spacing-2x);
 }
 
 .single-pdl_course .course-personnel article {
@@ -101,7 +101,7 @@
   width: 100%;
 
   @media (min-width: $screen-md-min) {
-    width: calc(100% - 5% - var(--nvis-sidebar-width));
+    width: calc(100% - 5% - var(--pdl-sidebar-width));
   }
 }
 
@@ -109,7 +109,7 @@
   width: 100%;
 
   @media (min-width: $screen-md-min) {
-    width: var(--nvis-sidebar-width);
+    width: var(--pdl-sidebar-width);
   }
 }
 
@@ -117,7 +117,7 @@
   --person-image-width: 150px;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--nvis-spacing-2x);
+  gap: var(--pdl-spacing-2x);
 }
 
 .single-pdl_course .course-sidebar .pdl_person {

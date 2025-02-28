@@ -399,3 +399,33 @@ function pdl_toggletip(string $content, string $aria_label, bool $echo = true): 
 }
 
 endif;
+
+
+if (!function_exists('pdl_get_html_class_attr')) :
+    /**
+     * Gets an HTML class attribute string from one or more supplied classes.
+     *
+     * @since 0.1.0
+     *
+     * @param string|array ...$args One or more html class strings or arrays of them.
+     * @return string A sanitized single HTML class attribute string.
+     */
+    function pdl_get_html_class_attr(...$args): string {
+        $class = array_reduce(
+            $args,
+            function ($carry, $item) {
+                if (is_array($item)) {
+                    $item = array_map('sanitize_html_class', $item);
+                    $item = implode(' ', $item);
+                } else {
+                    $item = sanitize_html_class($item);
+                }
+
+                return $carry . $item . ' ';
+            }
+        );
+
+        return trim($class);
+    }
+
+endif;

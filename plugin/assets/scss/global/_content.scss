@@ -17,30 +17,30 @@
   justify-content: space-between;
 }
 
-.nvis-sidebar h2 {
+.pdl-sidebar h2 {
   font-size: 1.5em;
   line-height: 1.25;
-  margin: 0 0 calc(0.5 * var(--nvis-spacing));
+  margin: 0 0 calc(0.5 * var(--pdl-spacing));
 }
 
-.nvis-sidebar h3 {
+.pdl-sidebar h3 {
   font-size: 1em;
   font-weight: bold;
   line-height: 1.25;
-  margin: 0 0 calc(0.5 * var(--nvis-spacing));
+  margin: 0 0 calc(0.5 * var(--pdl-spacing));
 }
 
-.nvis-sidebar ul {
-  margin: 0 0 var(--nvis-spacing-2x) 1em;
+.pdl-sidebar ul {
+  margin: 0 0 var(--pdl-spacing-2x) 1em;
   padding: 0;
 }
 
-.nvis-sidebar ul li {
+.pdl-sidebar ul li {
   line-height: 1.5;
-  margin-bottom: calc(0.5 * var(--nvis-spacing));
+  margin-bottom: calc(0.5 * var(--pdl-spacing));
 }
 
-.nvis-sidebar .empty-state-message {
+.pdl-sidebar .empty-state-message {
   font-size: 1.25em;
   opacity: 0.85;
   padding: 0.5em 0;

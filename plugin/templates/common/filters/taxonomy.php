@@ -35,10 +35,10 @@ $none_selected = $args['label_none_selected'] ??
 
 if ($args['taxonomy'] && $args['query_var'] && $label) : ?>
 <div
-    class="nvis-filter-<?php echo esc_attr($args['query_var']); ?> nvis-filters-field">
+    class="pdl-filter-<?php echo esc_attr($args['query_var']); ?> pdl-filters-field">
     <label
         for="<?php echo esc_attr($args['query_var']); ?>"
-        class="screen-reader-text"><?php echo esc_html($label); ?></label>
+        class="pdl-filters-field__label"><?php echo esc_html($label); ?></label>
     <?php
     wp_dropdown_categories([
         'taxonomy'          => $args['taxonomy'],

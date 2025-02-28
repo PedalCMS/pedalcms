@@ -23,8 +23,8 @@ $defaults = [
     'label_college'          => pdl_get_taxonomy_label('pdl_college', 'singular_name'),
     'label_yes'              => pdl_get_label('yes'),
     'label_no'               => pdl_get_label('no'),
-    'wrapper_class'          => 'nvis-meta-group',
-    'meta_before_fmt'        => '<span class="%s nvis-meta-group__item"><span class="label">%s<span class="separator">:</span></span> <span class="value">',
+    'wrapper_class'          => 'pdl-meta-group',
+    'meta_before_fmt'        => '<span class="%s pdl-meta-group__item"><span class="label">%s<span class="separator">:</span></span> <span class="value">',
     'terms_separator'        => ', ',
     'meta_after'             => '</span></span>',
 ];
