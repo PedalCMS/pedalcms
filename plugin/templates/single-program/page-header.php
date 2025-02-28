@@ -19,10 +19,10 @@ $args['context'] = $template;
 ?>
 <header class="single-program-page-header page-header entry-header">
 
-  <?php nvis_prog_get_template_part('common/page-header-backdrop'); ?>
+  <?php pdl_get_template_part('common/page-header-backdrop'); ?>
 
   <div class="page-header__content">
-    <?php nvis_prog_get_template_part('common/post-featured-image', $args); ?>
+    <?php pdl_get_template_part('common/post-featured-image', $args); ?>
 
     <div class="page-header__title-group">
       <h1 class="page-title entry-title">
@@ -34,7 +34,7 @@ $args['context'] = $template;
       </div>
       <?php endif; ?>
     </div>
-    <?php nvis_prog_get_template_part('single-program/program-meta'); ?>
-    <?php nvis_prog_get_template_part('single-program/subnav'); ?>
+    <?php pdl_get_template_part('single-program/program-meta'); ?>
+    <?php pdl_get_template_part('single-program/subnav'); ?>
   </div>
 </header><!-- .page-header -->

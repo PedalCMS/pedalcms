@@ -9,18 +9,18 @@
 
 defined('ABSPATH') || exit;
 
-nvis_prog_get_template_part('common/header');
+pdl_get_template_part('common/header');
 ?>
 <article <?php post_class(); ?>>
 
-	<?php nvis_prog_get_template_part('common/breadcrumbs'); ?>
-	<?php nvis_prog_get_template_part('single-person/page-header-classic'); ?>
+	<?php pdl_get_template_part('common/breadcrumbs'); ?>
+	<?php pdl_get_template_part('single-person/page-header-classic'); ?>
 
 	<div class="person-main">
 		<div class="person-content entry-content">
 			<?php the_content(); ?>
 		</div>
-		<?php nvis_prog_get_template_part('single-person/sidebar'); ?>
+		<?php pdl_get_template_part('single-person/sidebar'); ?>
 	</div>
 </article>
-<?php nvis_prog_get_template_part('common/footer');
+<?php pdl_get_template_part('common/footer');

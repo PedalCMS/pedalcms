@@ -11,10 +11,10 @@ defined('ABSPATH') || exit;
 
 $post = nvis_args_or_global('post', $args);
 $defaults = [
-    'label_more_details' => nvis_prog_get_label('more_details'),
+    'label_more_details' => pdl_get_label('more_details'),
     'label_permalink'    => nvis_get_post_type_label('nvis_course', 'view_item'),
-    'label_show'         => nvis_prog_get_label('show'),
-    'label_hide'         => nvis_prog_get_label('hide'),
+    'label_show'         => pdl_get_label('show'),
+    'label_hide'         => pdl_get_label('hide'),
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);
@@ -26,10 +26,10 @@ if ($post) :?>
     <header>
         <h2 class="entry-title course-title">
             <a href="<?php echo get_the_permalink($post); ?>">
-                <?php echo nvis_prog_get_full_course_title($post); ?>
+                <?php echo pdl_get_full_course_title($post); ?>
             </a>
         </h2>
-        <?php nvis_prog_get_template_part('single-course/course-meta', compact('post')); ?>
+        <?php pdl_get_template_part('single-course/course-meta', compact('post')); ?>
     </header>
     <div class="course-content">
         <button class="nvis-toggle__trigger" aria-expanded="false"
@@ -43,7 +43,7 @@ if ($post) :?>
                 </p>
 
                 <?php
-                nvis_prog_get_template_part(
+                pdl_get_template_part(
                     'single-course/related-personnel',
                     [
                         'post'    => $post,
@@ -55,7 +55,7 @@ if ($post) :?>
         </div>
     </div>
     <?php
-    nvis_prog_get_template_part(
+    pdl_get_template_part(
         'single-course/course-actions',
         [
             'post'            => $post,

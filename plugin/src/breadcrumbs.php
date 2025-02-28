@@ -62,11 +62,11 @@ function get_archive_crumb(): array {
  * @return array Associative array with 'text' and 'url' keys.
  */
 function get_program_subpage_crumb(): array {
-    $subpage = nvis_prog_get_active_subpage('object');
+    $subpage = pdl_get_active_subpage('object');
 
     return [
         'text' => $subpage->breadcrumb_label,
-        'url'  => nvis_prog_subpage_link($subpage->slug, false)
+        'url'  => pdl_subpage_link($subpage->slug, false)
     ];
 }
 

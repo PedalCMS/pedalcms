@@ -8,11 +8,11 @@
  */
 defined('ABSPATH') || exit;
 
-nvis_prog_get_template_part('common/header'); ?>
+pdl_get_template_part('common/header'); ?>
 <article <?php post_class(); ?>>
 	<?php
-    nvis_prog_get_template_part('common/breadcrumbs');
-    nvis_prog_get_template_part('single-course/page-header');
+    pdl_get_template_part('common/breadcrumbs');
+    pdl_get_template_part('single-course/page-header');
     ?>
 	<div class="course-main entry-content">
 		<p class="course-description"><?php echo esc_html($post->short_description); ?>
@@ -20,6 +20,6 @@ nvis_prog_get_template_part('common/header'); ?>
 		<div class="course-content"><?php the_content(); ?>
 		</div>
 	</div>
-	<?php nvis_prog_get_template_part('single-course/sidebar'); ?>
+	<?php pdl_get_template_part('single-course/sidebar'); ?>
 </article>
-<?php nvis_prog_get_template_part('common/footer');
+<?php pdl_get_template_part('common/footer');

@@ -16,7 +16,7 @@ $defaults = [
     'posts'                => null,
     'news_tag'             => get_field('news_tag', $post),
     'show_all_posts_link'  => get_field('news_show_all_link', $post),
-    'label_all_posts'      => nvis_prog_get_label('show_all_posts'),
+    'label_all_posts'      => pdl_get_label('show_all_posts'),
     'label_no_posts_found' => nvis_get_post_type_label('post', 'not_found'),
 ];
 
@@ -29,7 +29,7 @@ if (empty($posts) && $posts !== false) {
     $not_in = !empty($featured_posts) ?
         array_column($featured_posts, 'ID') :
         [];
-    $posts = nvis_prog_get_related_posts($post, $not_in);
+    $posts = pdl_get_related_posts($post, $not_in);
 }
 
 if (!empty($featured_posts) || !empty($posts)) : ?>
@@ -38,7 +38,7 @@ if (!empty($featured_posts) || !empty($posts)) : ?>
 <div class="related-post-list related-post-list--featured">
     <?php
     foreach ($featured_posts as $p) :
-        nvis_prog_get_template_part('single-program/news-item', ['post' => $p, 'is_featured' => true]);
+        pdl_get_template_part('single-program/news-item', ['post' => $p, 'is_featured' => true]);
     endforeach;
     ?>
 </div>
@@ -48,7 +48,7 @@ if (!empty($featured_posts) || !empty($posts)) : ?>
 <div class="related-post-list">
     <?php
     foreach ($posts as $p) :
-        nvis_prog_get_template_part('single-program/news-item', ['post' => $p]);
+        pdl_get_template_part('single-program/news-item', ['post' => $p]);
     endforeach; ?>
 </div>
 <?php endif; ?>

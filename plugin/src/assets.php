@@ -80,7 +80,7 @@ function enqueue_assets() {
         $presentation_mode = 'base';
     }
 
-    if (nvis_prog_is_active_subpage('careers') && $presentation_mode !== 'none') {
+    if (pdl_is_active_subpage('careers') && $presentation_mode !== 'none') {
         wp_enqueue_style('nvis-careers-base');
     }
 

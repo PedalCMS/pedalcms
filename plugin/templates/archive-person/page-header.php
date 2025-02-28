@@ -11,4 +11,4 @@ defined('ABSPATH') || exit;
 
 $args['context'] = $template;
 
-nvis_prog_get_template_part('common/post-type-archive-page-header', $args);
+pdl_get_template_part('common/post-type-archive-page-header', $args);

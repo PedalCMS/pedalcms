@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$subpage = nvis_prog_get_active_subpage();
+$subpage = pdl_get_active_subpage();
 
 if ($subpage) :
   $field = str_replace('-', '_', $subpage) . '_lead';

@@ -21,7 +21,7 @@ $args = nvis_parse_template_args($args, $defaults, $template);
     <?php
     if (is_array($args['courses']) && !empty($args['courses'])) :
         foreach ($args['courses'] as $post) :
-            nvis_prog_get_template_part('archive-course/course-item', compact('post'));
+            pdl_get_template_part('archive-course/course-item', compact('post'));
         endforeach;
     else: ?>
 

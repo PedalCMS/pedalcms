@@ -23,7 +23,7 @@ defined('ABSPATH') || exit;
 
     <?php
     if (isset($args['section_content'])) :
-        nvis_prog_get_template_part('single-program/courses-table', ['courses' => $args['section_courses']]);
+        pdl_get_template_part('single-program/courses-table', ['courses' => $args['section_courses']]);
     endif;
     ?>
 </div>

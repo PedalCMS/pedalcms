@@ -17,8 +17,8 @@ $defaults = [
     'query_var'            => null,
     'label'                => null,
     'label_none_selected'  => null,
-    'none_selected_prefix' => nvis_prog_get_label('none_selected_prefix'),
-    'missing_data_text'    => nvis_prog_get_label('missing_filter_data')
+    'none_selected_prefix' => pdl_get_label('none_selected_prefix'),
+    'missing_data_text'    => pdl_get_label('missing_filter_data')
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

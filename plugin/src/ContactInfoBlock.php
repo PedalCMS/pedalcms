@@ -26,7 +26,7 @@ class ContactInfoBlock extends CustomBlock {
         $post = get_post();
 
         ob_start();
-        nvis_prog_get_template_part(
+        pdl_get_template_part(
             'blocks/contact-info',
             compact('post')
         );

@@ -4,17 +4,17 @@ namespace PedalCMS\Core;
 
 define('NVISP_FREEMIUS_START', dirname(__FILE__) . '/freemius/start.php');
 
-if (!function_exists('nvis_prog_freemius') && file_exists(NVISP_FREEMIUS_START)) :
+if (!function_exists('pdl_freemius') && file_exists(NVISP_FREEMIUS_START)) :
 
 /**
  * Helper function for easy Freemius SDK access.
  *
  * @return void
  */
-function nvis_prog_freemius() {
-    global $nvis_prog_freemius;
+function pdl_freemius() {
+    global $pdl_freemius;
 
-    if (!isset($nvis_prog_freemius)) {
+    if (!isset($pdl_freemius)) {
         require_once NVISP_FREEMIUS_START;
 
         $fs_args = [
@@ -42,16 +42,16 @@ function nvis_prog_freemius() {
             $fs_args['secret_key'] = NVISP_FREEMIUS_SECRET_KEY;
         }
 
-        $nvis_prog_freemius = fs_dynamic_init($fs_args);
+        $pdl_freemius = fs_dynamic_init($fs_args);
     }
 
-    return $nvis_prog_freemius;
+    return $pdl_freemius;
 }
 
 // Init Freemius.
-nvis_prog_freemius();
+pdl_freemius();
 
 // Signal that SDK was initiated.
-do_action('nvis_prog_freemius_loaded');
+do_action('pdl_freemius_loaded');
 
 endif;

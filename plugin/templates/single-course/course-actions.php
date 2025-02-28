@@ -5,16 +5,16 @@ $post = nvis_args_or_global('post', $args);
 $defaults = [
     'context'         => $template,
     'add_permalink'   => false,
-    'label_permalink' => nvis_prog_get_label('course_info'),
+    'label_permalink' => pdl_get_label('course_info'),
     'wrapper_class'   => 'course-actions',
     'actions'         => [],
 ];
 
-$register_url = nvis_prog_get_course_action_link('reg_search', $post);
+$register_url = pdl_get_course_action_link('reg_search', $post);
 
 if ($register_url) {
     $defaults['actions'][] = [
-        'label' => nvis_prog_get_label('register_action'),
+        'label' => pdl_get_label('register_action'),
         'url'   => $register_url,
         'key' => 'register'
     ];
@@ -35,4 +35,4 @@ if ($args['add_permalink']) {
     );
 }
 
-nvis_prog_get_template_part('common/action-list', $args);
+pdl_get_template_part('common/action-list', $args);

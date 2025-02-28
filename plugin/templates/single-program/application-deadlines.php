@@ -10,8 +10,8 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'deadlines' => nvis_prog_the_application_deadlines(),
-    'heading'   => nvis_prog_get_label('application_deadlines')
+    'deadlines' => pdl_the_application_deadlines(),
+    'heading'   => pdl_get_label('application_deadlines')
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

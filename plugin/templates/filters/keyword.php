@@ -10,8 +10,8 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'label'       => nvis_prog_get_label('keyword'),
-    'placeholder' => nvis_prog_get_label('keyword') . ' …'
+    'label'       => pdl_get_label('keyword'),
+    'placeholder' => pdl_get_label('keyword') . ' …'
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

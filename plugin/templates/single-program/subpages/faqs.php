@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 
 $defaults = [
-    'show_subpage'      => nvis_prog_show_subpage('faqs'),
+    'show_subpage'      => pdl_show_subpage('faqs'),
     'group_by_category' => get_field('faqs_by_category', $post),
     'faqs'              => get_field('related_faqs_list', $post),
 ];
@@ -26,11 +26,11 @@ if ($faqs) {
 
 if ($args['show_subpage']) : ?>
 <div <?php nvis_subpage_class(); ?>>
-  <h2 class="program-subpage__title"><?php echo esc_html(nvis_prog_subpage_title()); ?></h2>
+  <h2 class="program-subpage__title"><?php echo esc_html(pdl_subpage_title()); ?></h2>
 
   <div class="program-subpage__content">
 
-    <?php nvis_prog_get_template_part('single-program/subpages/lead-content'); ?>
+    <?php pdl_get_template_part('single-program/subpages/lead-content'); ?>
 
     <div class="program-faq-list">
       <?php
@@ -46,7 +46,7 @@ if ($args['show_subpage']) : ?>
         <div class="faq-category__faqs">
           <?php
             foreach ($cat->faqs as $faq) :
-              nvis_prog_get_template_part('single-program/faq-item', compact('faq'));
+              pdl_get_template_part('single-program/faq-item', compact('faq'));
             endforeach;
             ?>
         </div>
@@ -55,7 +55,7 @@ if ($args['show_subpage']) : ?>
           endforeach;
         else:
           foreach ($faqs as $faq) :
-            nvis_prog_get_template_part('single-program/faq-item', compact('faq'));
+            pdl_get_template_part('single-program/faq-item', compact('faq'));
           endforeach;
         endif;
       endif;

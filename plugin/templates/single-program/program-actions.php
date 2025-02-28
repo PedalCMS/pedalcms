@@ -14,16 +14,16 @@ $post = nvis_args_or_global('post', $args);
 $defaults = [
     'context'         => $template,
     'add_permalink'   => false,
-    'label_permalink' => nvis_prog_get_label('program_details'),
+    'label_permalink' => pdl_get_label('program_details'),
     'actions'         => [
         [
-            'label' => nvis_prog_get_label('apply_now_action'),
-            'url'   => nvis_prog_get_action_link('apply_now', $post),
+            'label' => pdl_get_label('apply_now_action'),
+            'url'   => pdl_get_action_link('apply_now', $post),
             'key'   => 'apply_now'
         ],
         [
-            'label' => nvis_prog_get_label('request_info_action'),
-            'url'   => nvis_prog_get_action_link('request_info', $post),
+            'label' => pdl_get_label('request_info_action'),
+            'url'   => pdl_get_action_link('request_info', $post),
             'key'   => 'request_info'
         ]
     ],
@@ -45,4 +45,4 @@ if ($args['add_permalink']) {
     );
 }
 
-nvis_prog_get_template_part('common/action-list', $args);
+pdl_get_template_part('common/action-list', $args);

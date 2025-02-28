@@ -14,7 +14,7 @@ $post = nvis_args_or_global('post', $args);
 $defaults = [
     'h_level'                   => 2,
     'style'                     => 'full',
-    'label_instructors' => nvis_prog_get_label('instructors'),
+    'label_instructors' => pdl_get_label('instructors'),
     'personnel'                 => get_field('related_course_personnel', $post)
 ];
 
@@ -30,7 +30,7 @@ if (!empty($args['personnel'])) :
     printf('<%s>%s</%s>', $h_tag, esc_html($args['label_instructors']), $h_tag);
 
     if ($style === 'full') :
-        nvis_prog_get_template_part(
+        pdl_get_template_part(
             'archive-person/person-list',
             [
                 'people'            => $args['personnel'],
@@ -42,7 +42,7 @@ if (!empty($args['personnel'])) :
             ]
         );
     elseif ($style === 'links') :
-        nvis_prog_get_template_part('common/posts-links', ['posts' => $args['personnel']]);
+        pdl_get_template_part('common/posts-links', ['posts' => $args['personnel']]);
     endif;
     ?>
 </div>

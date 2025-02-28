@@ -21,8 +21,8 @@ $defaults = [
     'image_align'         => 'right',
     'image_size'          => 'small',
     'image_wrapper_class' => 'related-post__image-wrapper',
-    'label_featured'      => nvis_prog_get_label('featured'),
-    'label_read_more'     => nvis_prog_get_label('read_more'),
+    'label_featured'      => pdl_get_label('featured'),
+    'label_read_more'     => pdl_get_label('read_more'),
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);
@@ -49,7 +49,7 @@ if ($args['post']) :
 
     <?php
     if ($args['show_image'] && has_post_thumbnail($post)) :
-        nvis_prog_get_template_part('common/post-featured-image', $args);
+        pdl_get_template_part('common/post-featured-image', $args);
     endif;
     ?>
 

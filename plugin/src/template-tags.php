@@ -6,7 +6,7 @@
  * @since 0.1.0
  */
 
-if (!function_exists('nvis_prog_get_template_part')) :
+if (!function_exists('pdl_get_template_part')) :
 /**
  * Outputs a template.
  *
@@ -19,13 +19,13 @@ if (!function_exists('nvis_prog_get_template_part')) :
  * @param array $data Data to pass to the requested template.
  * @return void
  */
-function nvis_prog_get_template_part(string $template, array $data = []) {
+function pdl_get_template_part(string $template, array $data = []) {
     \PedalCMS\Core\TemplateManager::load_template($template, $data);
 }
 
 endif;
 
-if (!function_exists('nvis_prog_get_label')) :
+if (!function_exists('pdl_get_label')) :
 /**
  * Alias of {@see PedalCMS\Core\Plugin::get_label()}.
  * 
@@ -34,14 +34,14 @@ if (!function_exists('nvis_prog_get_label')) :
  * @param string $label The machine name of the label.
  * @return string The human readable version of label.
  */
-function nvis_prog_get_label(string $label): string {
+function pdl_get_label(string $label): string {
     return \PedalCMS\Core\Plugin::get_label($label);
 }
 
 endif;
 
 
-if (!function_exists('nvis_prog_get_post_types')) :
+if (!function_exists('pdl_get_post_types')) :
 /**
  * Gets the list of post types registered by this plugin.
  * 
@@ -49,13 +49,13 @@ if (!function_exists('nvis_prog_get_post_types')) :
  *
  * @return array An array of post type keys.
  */
-function nvis_prog_get_post_types(): array {
+function pdl_get_post_types(): array {
     return \PedalCMS\Core\Plugin::post_types();
 }
 
 endif;
 
-if (!function_exists('nvis_prog_get_archive_title')):
+if (!function_exists('pdl_get_archive_title')):
 /**
  * Gets the current archive title. 
  * 
@@ -64,7 +64,7 @@ if (!function_exists('nvis_prog_get_archive_title')):
  *
  * @return string
  */
-function nvis_prog_get_archive_title(): string {
+function pdl_get_archive_title(): string {
     $title = '';
 
     if (is_post_type_archive(\PedalCMS\Core\Plugin::post_types())) {
@@ -78,21 +78,21 @@ function nvis_prog_get_archive_title(): string {
 
 endif;
 
-if (!function_exists('nvis_prog_get_option')) :
+if (!function_exists('pdl_get_option')) :
 /**
  * Gets a plugin option setting.
  *
  * @param string $option The option key.
  * @return mixed The option value.
  */
-function nvis_prog_get_option(string $option) {
+function pdl_get_option(string $option) {
     return \PedalCMS\Core\Plugin::get_option($option);
 }
 
 endif;
 
 
-if (!function_exists('nvis_prog_register_program_subpage')) :
+if (!function_exists('pdl_register_program_subpage')) :
 /**
  * Registers a new program subpage. 
  * 
@@ -110,7 +110,7 @@ if (!function_exists('nvis_prog_register_program_subpage')) :
  * @param array $args Array of args for registering a subpage. See {@see \PedalCMS\Core\Subpage::_constructor()} for list.
  * @return mixed The Subpage object on success. WP_Error on failure.
  */
-function nvis_prog_register_program_subpage(string $slug, array $args = []) {
+function pdl_register_program_subpage(string $slug, array $args = []) {
     // TODO: Consider moving this out of template tags.
     $args['builtin'] = false;
     $subpage = new \PedalCMS\Core\Subpage($slug, $args);
@@ -121,7 +121,7 @@ function nvis_prog_register_program_subpage(string $slug, array $args = []) {
 endif;
 
 
-if (!function_exists('nvis_prog_show_subpages')) :
+if (!function_exists('pdl_show_subpages')) :
 /**
  * Determines whether or not to display Program subpages.
  * 
@@ -129,7 +129,7 @@ if (!function_exists('nvis_prog_show_subpages')) :
  *
  * @return bool
  */
-function nvis_prog_show_subpages(): bool {
+function pdl_show_subpages(): bool {
     return count(
         \PedalCMS\Core\Program::subpage_manager()->get_subpages()
     );
@@ -138,7 +138,7 @@ function nvis_prog_show_subpages(): bool {
 endif;
 
 
-if (!function_exists('nvis_prog_get_subpages')) :
+if (!function_exists('pdl_get_subpages')) :
 /**
  * Returns the registered list of Program subpages.
  *
@@ -150,14 +150,14 @@ if (!function_exists('nvis_prog_get_subpages')) :
  * @param string $return_type Can be 'hash' or 'objects'. Defaults to 'objects'.
  * @return array List of subpages
  */
-function nvis_prog_get_subpages(bool $with_index = true, string $return_type = 'objects'): array {
+function pdl_get_subpages(bool $with_index = true, string $return_type = 'objects'): array {
     return \PedalCMS\Core\Program::subpage_manager()->get_subpages($with_index, $return_type);
 }
 
 endif;
 
 
-if (!function_exists('nvis_prog_get_active_subpage')) :
+if (!function_exists('pdl_get_active_subpage')) :
 /**
  * Returns the active subpage by slug.
  *
@@ -169,14 +169,14 @@ if (!function_exists('nvis_prog_get_active_subpage')) :
  * @param string $return_type The format of the returned subpage. Either 'slug' or 'object'. Defaults to 'slug'.
  * @return mixed The active subpage, either slug or the full object. False if active page not found.
  */
-function nvis_prog_get_active_subpage(string $return_type = 'slug') {
+function pdl_get_active_subpage(string $return_type = 'slug') {
     return \PedalCMS\Core\Program::subpage_manager()->get_active_subpage($return_type);
 }
 
 endif;
 
 
-if (!function_exists('nvis_prog_show_subpage')) :
+if (!function_exists('pdl_show_subpage')) :
 /**
  * Determines whether a particular subpage should be rendered.
  *
@@ -187,14 +187,14 @@ if (!function_exists('nvis_prog_show_subpage')) :
  * @param mixed $subpage Either a {@see PedalCMS\Core\Subpage} or the slug of one.
  * @return boolean
  */
-function nvis_prog_show_subpage($subpage): bool {
+function pdl_show_subpage($subpage): bool {
     return \PedalCMS\Core\Program::subpage_manager()->maybe_show_subpage($subpage);
 }
 
 endif;
 
 
-if (!function_exists('nvis_prog_is_active_subpage')) :
+if (!function_exists('pdl_is_active_subpage')) :
 /**
  * Tests whether a subpage is currently active.
  *
@@ -205,21 +205,21 @@ if (!function_exists('nvis_prog_is_active_subpage')) :
  * @param string $subpage The slug of the subpage to test.
  * @return boolean
  */
-function nvis_prog_is_active_subpage(string $subpage): bool {
+function pdl_is_active_subpage(string $subpage): bool {
     return \PedalCMS\Core\Program::subpage_manager()->is_active_subpage($subpage);
 }
 
 endif;
 
 
-if (!function_exists('nvis_prog_subpage_title')) : 
+if (!function_exists('pdl_subpage_title')) : 
 /**
  * Gets the content current subpage content title.
  *
  * @return string The current subpage title.
  */
-function nvis_prog_subpage_title(): string {
-    $subpage = nvis_prog_get_active_subpage('object');
+function pdl_subpage_title(): string {
+    $subpage = pdl_get_active_subpage('object');
 
     if (is_wp_error($subpage)) {
         return $subpage->get_error_message();
@@ -231,7 +231,7 @@ function nvis_prog_subpage_title(): string {
 endif; 
 
 
-if (!function_exists('nvis_prog_subpage_link')) :
+if (!function_exists('pdl_subpage_link')) :
 /**
  * Generates a URL for a given subpage.
  *
@@ -244,7 +244,7 @@ if (!function_exists('nvis_prog_subpage_link')) :
  * @param boolean $echo Whether or not to output the URL. Defaults to true.
  * @return string The subpage URL.
  */
-function nvis_prog_subpage_link(string $subpage, bool $echo = true): string {
+function pdl_subpage_link(string $subpage, bool $echo = true): string {
     return \PedalCMS\Core\Program::subpage_manager()->get_subpage_link($subpage, $echo);
 }
 
@@ -302,7 +302,7 @@ function nvis_subpage_class() {
 endif;
 
 
-if (!function_exists('nvis_prog_get_action_link')) :
+if (!function_exists('pdl_get_action_link')) :
 /**
  * Returns the full URL for a given program action.
  *
@@ -315,14 +315,14 @@ if (!function_exists('nvis_prog_get_action_link')) :
  * @param mixed $program The ID of the program or a WP_Post object. Defaults to the current program.
  * @return string The URL of the program action.
  */
-function nvis_prog_get_action_link(string $action, $program = null): string {
+function pdl_get_action_link(string $action, $program = null): string {
     return \PedalCMS\Core\Program::get_action_link($action, $program);
 }
 
 endif;
 
 
-if (!function_exists('nvis_prog_get_course_action_link')) :
+if (!function_exists('pdl_get_course_action_link')) :
 /**
  * Returns the full URL for a given course action.
  *
@@ -335,14 +335,14 @@ if (!function_exists('nvis_prog_get_course_action_link')) :
  * @param mixed $program The ID of the course or a WP_Post object. Defaults to the current course.
  * @return string The URL of the course action.
  */
-function nvis_prog_get_course_action_link(string $action, $course = null): string {
+function pdl_get_course_action_link(string $action, $course = null): string {
     return \PedalCMS\Core\Course::get_action_link($action, $course);
 }
 
 endif;
 
 
-if (!function_exists('nvis_prog_the_application_deadlines')) :
+if (!function_exists('pdl_the_application_deadlines')) :
 /**
  * Gets a list of application deadlines based on override hierarchy.
  *
@@ -354,14 +354,14 @@ if (!function_exists('nvis_prog_the_application_deadlines')) :
  * @param mixed $program Program to check for news posts. Either ID or WP_Post. Defaults to the current program.
  * @return array An ACF repeater field with deadline_label and deadline_info subfields.
  */
-function nvis_prog_the_application_deadlines($program = null): array {
+function pdl_the_application_deadlines($program = null): array {
     return \PedalCMS\Core\Program::get_application_deadlines($program);
 }
 
 endif;
 
 
-if (!function_exists('nvis_prog_get_related_posts')) :
+if (!function_exists('pdl_get_related_posts')) :
 /**
  * Get the news posts for a given program by related tag.
  *
@@ -374,14 +374,14 @@ if (!function_exists('nvis_prog_get_related_posts')) :
  * @param array $not_in List of ids to exclude from the results. Deafults to empty array.
  * @return array List of WP_Posts that match the Program's tag.
  */
-function nvis_prog_get_related_posts($post = null, array $not_in = []): array {
+function pdl_get_related_posts($post = null, array $not_in = []): array {
     return \PedalCMS\Core\Program::get_related_posts($post, $not_in);
 }
 
 endif;
 
 
-if (!function_exists('nvis_prog_get_faqs_by_category')) :
+if (!function_exists('pdl_get_faqs_by_category')) :
 /**
  * Takes a list of FAQs and returns them indexed by category.
  *
@@ -392,7 +392,7 @@ if (!function_exists('nvis_prog_get_faqs_by_category')) :
  * @param array $faqs A list of FAQs of the type WP_Post.
  * @return array The category indexed list of FAQs.
  */
-function nvis_prog_get_faqs_by_category(array $faqs): array {
+function pdl_get_faqs_by_category(array $faqs): array {
     return \PedalCMS\Core\FAQ::group_by_category($faqs);
 }
 
@@ -418,7 +418,7 @@ function normalize_faq_types(array $faqs, bool $group_by_cat = false): array {
 endif;
 
 
-if (!function_exists('nvis_prog_get_people_by_category')) :
+if (!function_exists('pdl_get_people_by_category')) :
 /**
  * Takes a list of People and returns them indexed by category.
  *
@@ -429,14 +429,14 @@ if (!function_exists('nvis_prog_get_people_by_category')) :
  * @param array $people A list of personnel of the type WP_Post.
  * @return array The category indexed list of people.
  */
-function nvis_prog_get_people_by_category(array $people): array {
+function pdl_get_people_by_category(array $people): array {
     return \PedalCMS\Core\Person::group_by_category($people);
 }
 
 endif;
 
 
-if (!function_exists('nvis_prog_get_full_course_title')) :
+if (!function_exists('pdl_get_full_course_title')) :
 /**
  * Prefixes the course title with the course code. 
  * 
@@ -445,7 +445,7 @@ if (!function_exists('nvis_prog_get_full_course_title')) :
  * @param mixed $post Either the ID of a post or a WP_Post object. Deafults to the current course.
  * @return string The full title.
  */
-function nvis_prog_get_full_course_title($post = null) {
+function pdl_get_full_course_title($post = null) {
     return \PedalCMS\Core\Course::get_full_title($post);
 }
 

@@ -12,7 +12,7 @@ defined('ABSPATH') || exit;
 $post = nvis_args_or_global('post', $args);
 
 $defaults = [
-    'show_subpage'             => nvis_prog_show_subpage('faculty-staff'),
+    'show_subpage'             => pdl_show_subpage('faculty-staff'),
     'show_contact_info_labels' => true,
     'personnel'                => post_type_exists('nvis_person') ? get_field('related_faculty_staff', $post) : [],
     'group_by_category'        => get_field('faculty_staff_by_category', $post),
@@ -23,11 +23,11 @@ $args = nvis_parse_template_args($args, $defaults, $template);
 
 if ($args['show_subpage']) : ?>
 <div <?php nvis_subpage_class(); ?>>
-  <h2 class="program-subpage__title"><?php echo esc_html(nvis_prog_subpage_title()); ?></h2>
+  <h2 class="program-subpage__title"><?php echo esc_html(pdl_subpage_title()); ?></h2>
 
   <div class="program-subpage__content">
 
-    <?php nvis_prog_get_template_part('single-program/subpages/lead-content'); ?>
+    <?php pdl_get_template_part('single-program/subpages/lead-content'); ?>
 
     <div class="program-faculty-staff-list">
       <?php
@@ -35,7 +35,7 @@ if ($args['show_subpage']) : ?>
         $h_level = 3;
 
         if ($args['group_by_category']) :
-          $cats = nvis_prog_get_people_by_category($args['personnel']);
+          $cats = pdl_get_people_by_category($args['personnel']);
           $h_level = 4;
 
           foreach ($cats as $cat) :
@@ -48,7 +48,7 @@ if ($args['show_subpage']) : ?>
         <div class="person-category__list person-list">
           <?php
             foreach ($cat->people as $person) : $person = get_post($person);
-              nvis_prog_get_template_part(
+              pdl_get_template_part(
                   'archive-person/person-item',
                   [
                       'post'                     => $person,
@@ -69,7 +69,7 @@ if ($args['show_subpage']) : ?>
       <div class="person-list">
         <?php
           foreach ($args['personnel'] as $person) :
-            nvis_prog_get_template_part(
+            pdl_get_template_part(
                 'archive-person/person-item',
                 [
                     'post'                     => $person,

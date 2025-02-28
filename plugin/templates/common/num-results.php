@@ -18,9 +18,9 @@ if (!$post_type) {
 $defaults = [
     'label_single_post'      => nvis_get_post_type_label($post_type,'singular_name'),
     'label_posts'            => strtolower(nvis_get_post_type_label($post_type, 'plural_not_collective', 'name')),
-    'label_filtered_results' => nvis_prog_get_label('filtered_results'),
-    'label_showing'          => nvis_prog_get_label('showing'),
-    'label_showing_of'       => nvis_prog_get_label('showing_of'),
+    'label_filtered_results' => pdl_get_label('filtered_results'),
+    'label_showing'          => pdl_get_label('showing'),
+    'label_showing_of'       => pdl_get_label('showing_of'),
     'wp_query'               => null,
 ];
 

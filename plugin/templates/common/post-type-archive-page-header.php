@@ -10,7 +10,7 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'archive_title'    => nvis_prog_get_archive_title(),
+    'archive_title'    => pdl_get_archive_title(),
     'show_description' => true,
     'show_image'       => true,
     'image_align'      => 'right',
@@ -21,14 +21,14 @@ $args = nvis_parse_template_args($args, $defaults, $template);
 ?>
 <section
   class="<?php echo get_post_type(); ?>-archive-page-header page-header">
-  <?php nvis_prog_get_template_part('common/page-header-backdrop', ['context' => $template, 'fallback_to_post' => false]); ?>
+  <?php pdl_get_template_part('common/page-header-backdrop', ['context' => $template, 'fallback_to_post' => false]); ?>
   <div class="page-header__content">
     <?php 
     if ($args['show_image']) :
-      if (is_tax() && !nvis_is_filtered_results(nvis_prog_get_post_types())) :
-        nvis_prog_get_template_part('common/term-featured-image', $args);
+      if (is_tax() && !nvis_is_filtered_results(pdl_get_post_types())) :
+        pdl_get_template_part('common/term-featured-image', $args);
       else:
-        nvis_prog_get_template_part('common/post-type-featured-image', $args);
+        pdl_get_template_part('common/post-type-featured-image', $args);
       endif;
     endif;
     ?>

@@ -29,7 +29,7 @@ $args = nvis_parse_template_args($args, $defaults, $template);
     if (has_post_thumbnail($post)):
         echo get_the_post_thumbnail($post, $args['img_size'], $args['attributes']);
     else:
-        nvis_prog_get_template_part('single-person/featured-image-placeholder');
+        pdl_get_template_part('single-person/featured-image-placeholder');
     endif;
 
     if ($args['link_image']):

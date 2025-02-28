@@ -10,15 +10,15 @@ defined('ABSPATH') || exit;
 
 global $posts;
 
-nvis_prog_get_template_part('common/header'); ?>
+pdl_get_template_part('common/header'); ?>
 <div class="programs-archive-main">
     <?php
-        nvis_prog_get_template_part('common/breadcrumbs');
-        nvis_prog_get_template_part('archive-program/page-header');
-        nvis_prog_get_template_part('archive-program/filters');
-        nvis_prog_get_template_part('archive-program/num-results');
-        nvis_prog_get_template_part('archive-program/program-list', ['programs' => $posts]);
-        nvis_prog_get_template_part('common/pagination');
+        pdl_get_template_part('common/breadcrumbs');
+        pdl_get_template_part('archive-program/page-header');
+        pdl_get_template_part('archive-program/filters');
+        pdl_get_template_part('archive-program/num-results');
+        pdl_get_template_part('archive-program/program-list', ['programs' => $posts]);
+        pdl_get_template_part('common/pagination');
     ?>
 </div>
-<?php nvis_prog_get_template_part('common/footer');
+<?php pdl_get_template_part('common/footer');

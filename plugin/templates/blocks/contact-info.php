@@ -21,9 +21,9 @@ $defaults = [
     'show_email'    => true,
     'show_office'   => true,
     'show_labels'   => false,
-    'label_phone'   => nvis_prog_get_label('phone'),
-    'label_email'   => nvis_prog_get_label('email'),
-    'label_office'  => nvis_prog_get_label('office'),
+    'label_phone'   => pdl_get_label('phone'),
+    'label_email'   => pdl_get_label('email'),
+    'label_office'  => pdl_get_label('office'),
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);

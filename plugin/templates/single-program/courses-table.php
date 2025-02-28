@@ -13,7 +13,7 @@ $defaults = [
     'courses'       => null,
     'show_credits'  => true,
     'label_course'  => nvis_get_post_type_label('nvis_course', 'singular_name'),
-    'label_credits' => ucfirst(nvis_prog_get_label('credits'))
+    'label_credits' => ucfirst(pdl_get_label('credits'))
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);
@@ -32,7 +32,7 @@ if (is_array($args['courses'])): ?>
         <?php foreach ($args['courses'] as $post) :?>
         <tr class="courses-table__course">
             <td>
-                <?php echo nvis_prog_get_full_course_title($post); ?>
+                <?php echo pdl_get_full_course_title($post); ?>
             </td>
 
             <?php if ($args['show_credits']) : ?>

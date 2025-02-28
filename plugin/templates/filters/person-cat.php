@@ -17,4 +17,4 @@ $defaults = [
 
 $args = nvis_parse_template_args($args, $defaults, $template);
 
-nvis_prog_get_template_part('filters/taxonomy', $args);
+pdl_get_template_part('filters/taxonomy', $args);

@@ -37,7 +37,7 @@ function render_terms_grid($atts) {
     $atts['terms'] = get_terms(['taxonomy' => $atts['tax']]);
 
     ob_start();
-    nvis_prog_get_template_part('common/terms-grid', $atts);
+    pdl_get_template_part('common/terms-grid', $atts);
 
     return ob_get_clean();
 }

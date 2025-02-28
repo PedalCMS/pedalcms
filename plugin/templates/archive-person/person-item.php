@@ -27,7 +27,7 @@ if ($post) :?>
 <article <?php post_class('', $post); ?>>
     <?php
     if ($args['show_image']) :
-        nvis_prog_get_template_part('single-person/featured-image', ['post' => $post, 'img_size' => $args['img_size']]);
+        pdl_get_template_part('single-person/featured-image', ['post' => $post, 'img_size' => $args['img_size']]);
     endif;
     ?>
     <div class="person-info">
@@ -36,7 +36,7 @@ if ($post) :?>
             <a href="<?php echo get_the_permalink($post); ?>"><?php echo get_the_title($post); ?></a>
             <?php printf('</%s>', $h_tag); ?>
             <div class="person-position">
-                <?php nvis_prog_get_template_part('blocks/job-title', ['job_title' => $post->job_title]); ?>
+                <?php pdl_get_template_part('blocks/job-title', ['job_title' => $post->job_title]); ?>
                 <?php
                 if (taxonomy_exists('nvis_department')) :
                     echo
@@ -54,7 +54,7 @@ if ($post) :?>
         </header>
         <?php
         if ($args['show_contact_info']) :
-            nvis_prog_get_template_part('blocks/contact-info', ['post' => $post, 'show_labels' => $args['show_contact_info_labels']]);
+            pdl_get_template_part('blocks/contact-info', ['post' => $post, 'show_labels' => $args['show_contact_info_labels']]);
         endif;
         ?>
     </div>

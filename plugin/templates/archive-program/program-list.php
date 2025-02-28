@@ -10,7 +10,7 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'label_no_programs_found' => nvis_prog_get_label('no_programs_found')
+    'label_no_programs_found' => pdl_get_label('no_programs_found')
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);
@@ -19,7 +19,7 @@ $args = nvis_parse_template_args($args, $defaults, $template);
 <section class="programs-list">
     <?php if (is_array($args['programs']) && !empty($args['programs'])) :
         foreach ($args['programs'] as $post) :
-            nvis_prog_get_template_part('archive-program/program-item', compact('post'));
+            pdl_get_template_part('archive-program/program-item', compact('post'));
         endforeach;
     else: ?>
 

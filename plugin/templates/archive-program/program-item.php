@@ -27,7 +27,7 @@ if ($post) : ?>
 
     <?php
     if ($args['show_image']) :
-        nvis_prog_get_template_part('common/post-featured-image', ['post' => $post, 'image_size' => 'medium', 'image_align' => 'left', 'link_image' => true, 'context' => $template]);
+        pdl_get_template_part('common/post-featured-image', ['post' => $post, 'image_size' => 'medium', 'image_align' => 'left', 'link_image' => true, 'context' => $template]);
     endif;
     ?>
 
@@ -43,7 +43,7 @@ if ($post) : ?>
         </header>
         <?php
         if ($args['show_program_meta']) :
-            nvis_prog_get_template_part(
+            pdl_get_template_part(
                 'archive-program/program-meta',
                 [
                     'post'       => $post,
@@ -56,7 +56,7 @@ if ($post) : ?>
 
     <?php
     if ($args['show_program_actions']) :
-        nvis_prog_get_template_part(
+        pdl_get_template_part(
             'single-program/program-actions',
             [
                 'post'          => $post,

@@ -31,7 +31,7 @@ $classes = [
     if (is_array($args['people']) && !empty($args['people'])) :
         foreach ($args['people'] as $post) :
             $args['post'] = $post;
-            nvis_prog_get_template_part('archive-person/person-item', $args);
+            pdl_get_template_part('archive-person/person-item', $args);
         endforeach;
     else: ?>
 

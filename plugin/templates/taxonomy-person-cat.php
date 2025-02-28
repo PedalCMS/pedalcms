@@ -8,4 +8,4 @@
  */
 defined('ABSPATH') || exit;
 
-nvis_prog_get_template_part('archive-person'); ?>
+pdl_get_template_part('archive-person'); ?>

@@ -1,6 +1,6 @@
 <?php
 
-nvis_prog_get_template_part(
+pdl_get_template_part(
     'single-program/program-meta',
     [
         'post'            => $args['post'],

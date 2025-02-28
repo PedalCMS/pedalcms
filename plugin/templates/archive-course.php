@@ -10,15 +10,15 @@ defined('ABSPATH') || exit;
 
 global $posts;
 
-nvis_prog_get_template_part('common/header'); ?>
+pdl_get_template_part('common/header'); ?>
 <div class="course-archive-main">
     <?php
-    nvis_prog_get_template_part('common/breadcrumbs');
-    nvis_prog_get_template_part('archive-course/page-header');
-    nvis_prog_get_template_part('archive-course/filters');
-    nvis_prog_get_template_part('archive-course/num-results');
-    nvis_prog_get_template_part('archive-course/course-list', ['courses' => $posts]);
-    nvis_prog_get_template_part('common/pagination');
+    pdl_get_template_part('common/breadcrumbs');
+    pdl_get_template_part('archive-course/page-header');
+    pdl_get_template_part('archive-course/filters');
+    pdl_get_template_part('archive-course/num-results');
+    pdl_get_template_part('archive-course/course-list', ['courses' => $posts]);
+    pdl_get_template_part('common/pagination');
     ?>
 </div>
-<?php nvis_prog_get_template_part('common/footer');
+<?php pdl_get_template_part('common/footer');

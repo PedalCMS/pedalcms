@@ -11,13 +11,13 @@ defined('ABSPATH') || exit;
 
 $defaults = [
     'break_filters_after'        => -1,
-    'label_filter'               => nvis_prog_get_label('filter'),
-    'label_show'                 => nvis_prog_get_label('show'),
-    'label_hide'                 => nvis_prog_get_label('hide'),
-    'label_more_filters'         => nvis_prog_get_label('more_filters'),
-    'label_apply_filters'        => nvis_prog_get_label('apply_filters'),
-    'label_reset_filters'        => nvis_prog_get_label('reset_filters'),
-    'label_missing_filters_data' => nvis_prog_get_label('missing_filters_data'),
+    'label_filter'               => pdl_get_label('filter'),
+    'label_show'                 => pdl_get_label('show'),
+    'label_hide'                 => pdl_get_label('hide'),
+    'label_more_filters'         => pdl_get_label('more_filters'),
+    'label_apply_filters'        => pdl_get_label('apply_filters'),
+    'label_reset_filters'        => pdl_get_label('reset_filters'),
+    'label_missing_filters_data' => pdl_get_label('missing_filters_data'),
 ];
 
 $args = nvis_parse_template_args($args, $defaults, $template);
@@ -80,9 +80,9 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
             endif;
 
             if (is_array($filter) && count($filter) > 1):
-                nvis_prog_get_template_part('filters/' . $filter[0], $filter[1]);
+                pdl_get_template_part('filters/' . $filter[0], $filter[1]);
             elseif (is_string($filter)):
-                nvis_prog_get_template_part('filters/' . $filter);
+                pdl_get_template_part('filters/' . $filter);
             endif;
         endforeach;
 
