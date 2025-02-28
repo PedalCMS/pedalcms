@@ -3,13 +3,13 @@ namespace PedalCMS\Core;
 
 $field_group = [
     'key'      => 'group_624ed9cd20260',
-    'title'    => __('Program Pages Settings', 'nvis-program-pages'),
+    'title'    => __('Program Pages Settings', 'pedalcms'),
     'location' => [
         [
             [
                 'param'    => 'options_page',
                 'operator' => '==',
-                'value'    => 'nvis-program-pages-settings',
+                'value'    => 'pedalcms-settings',
             ],
         ],
     ],
@@ -25,7 +25,7 @@ $field_group = [
     'fields'                => [
         [
             'key'               => 'field_624f4b40ecfe9',
-            'label'             => __('General', 'nvis-program-pages'),
+            'label'             => __('General', 'pedalcms'),
             'name'              => '',
             'type'              => 'tab',
             'instructions'      => '',
@@ -41,10 +41,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_625433ee9f135',
-            'label'             => __('Presentation Mode', 'nvis-program-pages'),
+            'label'             => __('Presentation Mode', 'pedalcms'),
             'name'              => 'nvis_presentation_mode',
             'type'              => 'radio',
-            'instructions'      => __('Choose the amount of design and styling you want applied (CSS). Additional options will be available when Tuxedo Mode is active.', 'nvis-program-pages'),
+            'instructions'      => __('Choose the amount of design and styling you want applied (CSS). Additional options will be available when Tuxedo Mode is active.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -66,10 +66,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_62557df514811',
-            'label'             => __('Active Color', 'nvis-program-pages'),
+            'label'             => __('Active Color', 'pedalcms'),
             'name'              => 'nvis_active_color',
             'type'              => 'color_picker',
-            'instructions'      => __('The color to be used for links and buttons.', 'nvis-program-pages'),
+            'instructions'      => __('The color to be used for links and buttons.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -83,10 +83,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_625580b4f4863',
-            'label'             => __('Button Text Color', 'nvis-program-pages'),
+            'label'             => __('Button Text Color', 'pedalcms'),
             'name'              => 'nvis_active_color_text',
             'type'              => 'color_picker',
-            'instructions'      => __('The color to be used for text on buttons. Set this if white does not provide enough contrast to your active color.', 'nvis-program-pages'),
+            'instructions'      => __('The color to be used for text on buttons. Set this if white does not provide enough contrast to your active color.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -100,7 +100,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_62509138296eb',
-            'label'             => __('Header Image Size', 'nvis-program-pages'),
+            'label'             => __('Header Image Size', 'pedalcms'),
             'name'              => 'nvis_image_size_header',
             'type'              => 'select',
             'instructions'      => '',
@@ -130,7 +130,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_62508f3960c31',
-            'label'             => __('Width', 'nvis-program-pages'),
+            'label'             => __('Width', 'pedalcms'),
             'name'              => 'nvis_image_size_header_w',
             'type'              => 'number',
             'instructions'      => '',
@@ -159,7 +159,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_62508f9960c32',
-            'label'             => __('Height', 'nvis-program-pages'),
+            'label'             => __('Height', 'pedalcms'),
             'name'              => 'nvis_image_size_header_h',
             'type'              => 'number',
             'instructions'      => '',
@@ -188,10 +188,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_624f4b5fecfea',
-            'label'             => __('Display Breadcrumbs', 'nvis-program-pages'),
+            'label'             => __('Display Breadcrumbs', 'pedalcms'),
             'name'              => 'nvis_display_breadcrumbs',
             'type'              => 'true_false',
-            'instructions'      => __('Disable this if you have two showing up.', 'nvis-program-pages'),
+            'instructions'      => __('Disable this if you have two showing up.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -207,10 +207,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_62543575ecebe',
-            'label'             => __('Main Content Wrapper Tag', 'nvis-program-pages'),
+            'label'             => __('Main Content Wrapper Tag', 'pedalcms'),
             'name'              => 'nvis_main_content_wrapper_tag',
             'type'              => 'select',
-            'instructions'      => __('Switch to "main" to fix accessibility issues with some themes.', 'nvis-program-pages'),
+            'instructions'      => __('Switch to "main" to fix accessibility issues with some themes.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -233,7 +233,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_624ed9f473c21',
-            'label'             => __('Programs', 'nvis-program-pages'),
+            'label'             => __('Programs', 'pedalcms'),
             'name'              => '',
             'type'              => 'tab',
             'instructions'      => '',
@@ -249,10 +249,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_624f23fdaf6a2',
-            'label'             => __('Configure Program Listings', 'nvis-program-pages'),
+            'label'             => __('Configure Program Listings', 'pedalcms'),
             'name'              => 'nvis_program_archive',
             'type'              => 'group',
-            'instructions'      => __('Configuration options for searching and browsing the list of programs.', 'nvis-program-pages'),
+            'instructions'      => __('Configuration options for searching and browsing the list of programs.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -264,10 +264,10 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_625460ce1849c',
-                    'label'             => __('Archive Title', 'nvis-program-pages'),
+                    'label'             => __('Archive Title', 'pedalcms'),
                     'name'              => 'title',
                     'type'              => 'text',
-                    'instructions'      => __('The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'nvis-program-pages'),
+                    'instructions'      => __('The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -276,17 +276,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Programs', 'nvis-program-pages'),
+                    'placeholder'   => __('Programs', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_624eda3a73c22',
-                    'label'             => __('Lead Copy', 'nvis-program-pages'),
+                    'label'             => __('Lead Copy', 'pedalcms'),
                     'name'              => 'description',
                     'type'              => 'wysiwyg',
-                    'instructions'      => __('The content that appears in the archive page header.', 'nvis-program-pages'),
+                    'instructions'      => __('The content that appears in the archive page header.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -302,10 +302,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_624edb4c73c23',
-                    'label'             => __('Header Image', 'nvis-program-pages'),
+                    'label'             => __('Header Image', 'pedalcms'),
                     'name'              => 'featured_image',
                     'type'              => 'image',
-                    'instructions'      => __('The image to be displayed in the page header of the archive.', 'nvis-program-pages'),
+                    'instructions'      => __('The image to be displayed in the page header of the archive.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -326,10 +326,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_624edbc673c24',
-                    'label'             => __('Header Background Image', 'nvis-program-pages'),
+                    'label'             => __('Header Background Image', 'pedalcms'),
                     'name'              => 'header_background',
                     'type'              => 'image',
-                    'instructions'      => __('The background image of the archive page header (Tuxedo Mode only).', 'nvis-program-pages'),
+                    'instructions'      => __('The background image of the archive page header (Tuxedo Mode only).', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper' => [
@@ -350,10 +350,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6250367012e71',
-                    'label'             => __('Search Filters', 'nvis-program-pages'),
+                    'label'             => __('Search Filters', 'pedalcms'),
                     'name'              => 'search_filters',
                     'type'              => 'checkbox',
-                    'instructions'      => __('Select the list of search filters you want enabled. (Disabled taxonomies will not show up in this list).', 'nvis-program-pages'),
+                    'instructions'      => __('Select the list of search filters you want enabled. (Disabled taxonomies will not show up in this list).', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -383,10 +383,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6250434aa7d23',
-                    'label'             => __('Number of Filters Visible', 'nvis-program-pages'),
+                    'label'             => __('Number of Filters Visible', 'pedalcms'),
                     'name'              => 'filters_showing',
                     'type'              => 'number',
-                    'instructions'      => __('The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'nvis-program-pages'),
+                    'instructions'      => __('The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -404,10 +404,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_625034133f671',
-                    'label'             => __('Show Images in List View', 'nvis-program-pages'),
+                    'label'             => __('Show Images in List View', 'pedalcms'),
                     'name'              => 'show_images',
                     'type'              => 'true_false',
-                    'instructions'      => __('Should lists of posts include their featured images?', 'nvis-program-pages'),
+                    'instructions'      => __('Should lists of posts include their featured images?', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -425,10 +425,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_62542e1c55d3a',
-            'label'             => __('Configure Programs', 'nvis-program-pages'),
+            'label'             => __('Configure Programs', 'pedalcms'),
             'name'              => 'nvis_program',
             'type'              => 'group',
-            'instructions'      => __('Configuration options for individual programs.', 'nvis-program-pages'),
+            'instructions'      => __('Configuration options for individual programs.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -440,10 +440,10 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_624f2595939f4',
-                    'label'             => __('Default Post Featured Image', 'nvis-program-pages'),
+                    'label'             => __('Default Post Featured Image', 'pedalcms'),
                     'name'              => 'featured_image',
                     'type'              => 'image',
-                    'instructions'      => __('The default featured image of individual posts.', 'nvis-program-pages'),
+                    'instructions'      => __('The default featured image of individual posts.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -464,7 +464,7 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_62542f1855d3b',
-                    'label'             => __('Application Deadlines', 'nvis-program-pages'),
+                    'label'             => __('Application Deadlines', 'pedalcms'),
                     'name'              => 'application_deadlines',
                     'type'              => 'repeater',
                     'instructions'      => '',
@@ -483,7 +483,7 @@ $field_group = [
                     'sub_fields'   => [
                         [
                             'key'               => 'field_62542f3455d3c',
-                            'label'             => __('Deadline Label', 'nvis-program-pages'),
+                            'label'             => __('Deadline Label', 'pedalcms'),
                             'name'              => 'label',
                             'type'              => 'text',
                             'instructions'      => '',
@@ -495,14 +495,14 @@ $field_group = [
                                 'id'    => '',
                             ],
                             'default_value' => '',
-                            'placeholder'   => __('Fall, Spring, etc.', 'nvis-program-pages'),
+                            'placeholder'   => __('Fall, Spring, etc.', 'pedalcms'),
                             'prepend'       => '',
                             'append'        => '',
                             'maxlength'     => '',
                         ],
                         [
                             'key'               => 'field_62542f6555d3d',
-                            'label'             => __('Deadline Info', 'nvis-program-pages'),
+                            'label'             => __('Deadline Info', 'pedalcms'),
                             'name'              => 'info',
                             'type'              => 'text',
                             'instructions'      => '',
@@ -514,7 +514,7 @@ $field_group = [
                                 'id'    => '',
                             ],
                             'default_value' => '',
-                            'placeholder'   => __('e.g. June 24th', 'nvis-program-pages'),
+                            'placeholder'   => __('e.g. June 24th', 'pedalcms'),
                             'prepend'       => '',
                             'append'        => '',
                             'maxlength'     => '',
@@ -523,10 +523,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6262f41e9e285',
-                    'label'             => __('Request Info Button Text', 'nvis-program-pages'),
+                    'label'             => __('Request Info Button Text', 'pedalcms'),
                     'name'              => 'label_request_info_action',
                     'type'              => 'text',
-                    'instructions'      => __('The text to be displayed in the Request Info button.', 'nvis-program-pages'),
+                    'instructions'      => __('The text to be displayed in the Request Info button.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -535,17 +535,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Request Info', 'nvis-program-pages'),
+                    'placeholder'   => __('Request Info', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6254300d55d3e',
-                    'label'             => __('Request Info URL', 'nvis-program-pages'),
+                    'label'             => __('Request Info URL', 'pedalcms'),
                     'name'              => 'url_request_info',
                     'type'              => 'url',
-                    'instructions'      => __('Enter a URL pattern to create unique request info URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'nvis-program-pages'),
+                    'instructions'      => __('Enter a URL pattern to create unique request info URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -558,10 +558,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6262f40e90f8b',
-                    'label'             => __('Apply Now Button Text', 'nvis-program-pages'),
+                    'label'             => __('Apply Now Button Text', 'pedalcms'),
                     'name'              => 'label_apply_now_action',
                     'type'              => 'text',
-                    'instructions'      => __('The text to be displayed in the Apply Now button.', 'nvis-program-pages'),
+                    'instructions'      => __('The text to be displayed in the Apply Now button.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -570,17 +570,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Apply Now', 'nvis-program-pages'),
+                    'placeholder'   => __('Apply Now', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6254304c55d40',
-                    'label'             => __('Apply Now URL', 'nvis-program-pages'),
+                    'label'             => __('Apply Now URL', 'pedalcms'),
                     'name'              => 'url_apply_now',
                     'type'              => 'url',
-                    'instructions'      => __('Enter a URL pattern to create unique apply now URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'nvis-program-pages'),
+                    'instructions'      => __('Enter a URL pattern to create unique apply now URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -593,10 +593,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_625daa155a037',
-                    'label'             => __('Primary Contact Heading', 'nvis-program-pages'),
+                    'label'             => __('Primary Contact Heading', 'pedalcms'),
                     'name'              => 'label_program_contact',
                     'type'              => 'text',
-                    'instructions'      => __('Appears above the list of contacts in the sidebar.', 'nvis-program-pages'),
+                    'instructions'      => __('Appears above the list of contacts in the sidebar.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -605,17 +605,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Program Contact', 'nvis-program-pages'),
+                    'placeholder'   => __('Program Contact', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6262f31da5a29',
-                    'label'             => __('Contact Button Text', 'nvis-program-pages'),
+                    'label'             => __('Contact Button Text', 'pedalcms'),
                     'name'              => 'label_contact_action',
                     'type'              => 'text',
-                    'instructions'      => __('The text to be displayed in the Contact button.', 'nvis-program-pages'),
+                    'instructions'      => __('The text to be displayed in the Contact button.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -624,17 +624,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Contact', 'nvis-program-pages'),
+                    'placeholder'   => __('Contact', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_625da91771551',
-                    'label'             => __('Contact URL', 'nvis-program-pages'),
+                    'label'             => __('Contact URL', 'pedalcms'),
                     'name'              => 'url_contact',
                     'type'              => 'url',
-                    'instructions'      => __('Enter a URL pattern to create unique contact URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'nvis-program-pages'),
+                    'instructions'      => __('Enter a URL pattern to create unique contact URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -649,7 +649,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_62573b95abb37',
-            'label'             => __('Subpages', 'nvis-program-pages'),
+            'label'             => __('Subpages', 'pedalcms'),
             'name'              => '',
             'type'              => 'tab',
             'instructions'      => '',
@@ -665,10 +665,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_6259af11ee00e',
-            'label'             => __('Enabled Subpages', 'nvis-program-pages'),
+            'label'             => __('Enabled Subpages', 'pedalcms'),
             'name'              => 'nvis_enable_subpages_nvis_program',
             'type'              => 'checkbox',
-            'instructions'      => __('This enables subpages for all programs but any subpage can be disabled per program as well.', 'nvis-program-pages'),
+            'instructions'      => __('This enables subpages for all programs but any subpage can be disabled per program as well.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -695,10 +695,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_62587e6f4d704',
-            'label'             => __('Careers', 'nvis-program-pages'),
+            'label'             => __('Careers', 'pedalcms'),
             'name'              => 'nvis_program_subpage_careers',
             'type'              => 'group',
-            'instructions'      => __('Configuration options for the Careers program subpage.', 'nvis-program-pages'),
+            'instructions'      => __('Configuration options for the Careers program subpage.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -710,10 +710,10 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_62587f3b5d771',
-                    'label'             => __('Career Post Type', 'nvis-program-pages'),
+                    'label'             => __('Career Post Type', 'pedalcms'),
                     'name'              => 'post_type',
                     'type'              => 'select',
-                    'instructions'      => __('Select the post type to associate careers with programs.', 'nvis-program-pages'),
+                    'instructions'      => __('Select the post type to associate careers with programs.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -734,7 +734,7 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_62587fa7fffe3',
-                    'label'             => __('Page Title', 'nvis-program-pages'),
+                    'label'             => __('Page Title', 'pedalcms'),
                     'name'              => 'title',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -746,14 +746,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Careers', 'nvis-program-pages'),
+                    'placeholder'   => __('Careers', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_62587fcffffe4',
-                    'label'             => __('Tab Label', 'nvis-program-pages'),
+                    'label'             => __('Tab Label', 'pedalcms'),
                     'name'              => 'tab_label',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -765,7 +765,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Careers', 'nvis-program-pages'),
+                    'placeholder'   => __('Careers', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -774,7 +774,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_625882003b476',
-            'label'             => __('Curriculum', 'nvis-program-pages'),
+            'label'             => __('Curriculum', 'pedalcms'),
             'name'              => 'nvis_program_subpage_curriculum',
             'type'              => 'group',
             'instructions'      => '',
@@ -789,7 +789,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_625882003b479',
-                    'label'             => __('Page Title', 'nvis-program-pages'),
+                    'label'             => __('Page Title', 'pedalcms'),
                     'name'              => 'title',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -801,14 +801,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Curriculum', 'nvis-program-pages'),
+                    'placeholder'   => __('Curriculum', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_625882003b47a',
-                    'label'             => __('Tab Label', 'nvis-program-pages'),
+                    'label'             => __('Tab Label', 'pedalcms'),
                     'name'              => 'tab_label',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -820,17 +820,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Curriculum', 'nvis-program-pages'),
+                    'placeholder'   => __('Curriculum', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_62685155391da',
-                    'label'             => __('Show Credits', 'nvis-program-pages'),
+                    'label'             => __('Show Credits', 'pedalcms'),
                     'name'              => 'show_credits',
                     'type'              => 'true_false',
-                    'instructions'      => __('Whether or not to display the credits column in courses tables.', 'nvis-program-pages'),
+                    'instructions'      => __('Whether or not to display the credits column in courses tables.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -848,7 +848,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_6258827f3b47b',
-            'label'             => __('Faculty & Staff', 'nvis-program-pages'),
+            'label'             => __('Faculty & Staff', 'pedalcms'),
             'name'              => 'nvis_program_subpage_faculty_staff',
             'type'              => 'group',
             'instructions'      => '',
@@ -863,7 +863,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_6258827f3b47d',
-                    'label'             => __('Page Title', 'nvis-program-pages'),
+                    'label'             => __('Page Title', 'pedalcms'),
                     'name'              => 'title',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -875,14 +875,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Faculty & Staff', 'nvis-program-pages'),
+                    'placeholder'   => __('Faculty & Staff', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6258827f3b47e',
-                    'label'             => __('Tab Label', 'nvis-program-pages'),
+                    'label'             => __('Tab Label', 'pedalcms'),
                     'name'              => 'tab_label',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -894,7 +894,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Faculty & Staff', 'nvis-program-pages'),
+                    'placeholder'   => __('Faculty & Staff', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -903,7 +903,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_625d9c82d65d9',
-            'label'             => __('Cost', 'nvis-program-pages'),
+            'label'             => __('Cost', 'pedalcms'),
             'name'              => 'nvis_program_subpage_cost',
             'type'              => 'group',
             'instructions'      => '',
@@ -918,7 +918,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_625d9c82d65da',
-                    'label'             => __('Page Title', 'nvis-program-pages'),
+                    'label'             => __('Page Title', 'pedalcms'),
                     'name'              => 'title',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -930,14 +930,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Cost', 'nvis-program-pages'),
+                    'placeholder'   => __('Cost', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_625d9c82d65db',
-                    'label'             => __('Tab Label', 'nvis-program-pages'),
+                    'label'             => __('Tab Label', 'pedalcms'),
                     'name'              => 'tab_label',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -949,7 +949,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Cost', 'nvis-program-pages'),
+                    'placeholder'   => __('Cost', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -958,7 +958,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_625d9cafd65dc',
-            'label'             => __('How to Apply', 'nvis-program-pages'),
+            'label'             => __('How to Apply', 'pedalcms'),
             'name'              => 'nvis_program_subpage_apply',
             'type'              => 'group',
             'instructions'      => '',
@@ -973,7 +973,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_625d9cafd65dd',
-                    'label'             => __('Page Title', 'nvis-program-pages'),
+                    'label'             => __('Page Title', 'pedalcms'),
                     'name'              => 'title',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -985,14 +985,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('How to Apply', 'nvis-program-pages'),
+                    'placeholder'   => __('How to Apply', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_625d9cafd65de',
-                    'label'             => __('Tab Label', 'nvis-program-pages'),
+                    'label'             => __('Tab Label', 'pedalcms'),
                     'name'              => 'tab_label',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -1004,7 +1004,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('How to Apply', 'nvis-program-pages'),
+                    'placeholder'   => __('How to Apply', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -1013,7 +1013,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_625d9f712f83a',
-            'label'             => __('FAQs', 'nvis-program-pages'),
+            'label'             => __('FAQs', 'pedalcms'),
             'name'              => 'nvis_program_subpage_faqs',
             'type'              => 'group',
             'instructions'      => '',
@@ -1028,7 +1028,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_625d9f712f83b',
-                    'label'             => __('Page Title', 'nvis-program-pages'),
+                    'label'             => __('Page Title', 'pedalcms'),
                     'name'              => 'title',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -1040,14 +1040,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('FAQs', 'nvis-program-pages'),
+                    'placeholder'   => __('FAQs', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_625d9f712f83c',
-                    'label'             => __('Tab Label', 'nvis-program-pages'),
+                    'label'             => __('Tab Label', 'pedalcms'),
                     'name'              => 'tab_label',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -1059,7 +1059,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('FAQs', 'nvis-program-pages'),
+                    'placeholder'   => __('FAQs', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -1068,7 +1068,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_625d9fc572843',
-            'label'             => __('News', 'nvis-program-pages'),
+            'label'             => __('News', 'pedalcms'),
             'name'              => 'nvis_program_subpage_news',
             'type'              => 'group',
             'instructions'      => '',
@@ -1083,7 +1083,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_625d9fc572844',
-                    'label'             => __('Page Title', 'nvis-program-pages'),
+                    'label'             => __('Page Title', 'pedalcms'),
                     'name'              => 'title',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -1095,14 +1095,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('News', 'nvis-program-pages'),
+                    'placeholder'   => __('News', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_625d9fc572845',
-                    'label'             => __('Tab Label', 'nvis-program-pages'),
+                    'label'             => __('Tab Label', 'pedalcms'),
                     'name'              => 'tab_label',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -1114,7 +1114,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('News', 'nvis-program-pages'),
+                    'placeholder'   => __('News', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -1123,7 +1123,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_625095cab680d',
-            'label'             => __('Course Catalog', 'nvis-program-pages'),
+            'label'             => __('Course Catalog', 'pedalcms'),
             'name'              => '',
             'type'              => 'tab',
             'instructions'      => '',
@@ -1139,10 +1139,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_624f2bf176f96',
-            'label'             => __('Enable this Feature', 'nvis-program-pages'),
+            'label'             => __('Enable this Feature', 'pedalcms'),
             'name'              => 'nvis_course_enable',
             'type'              => 'true_false',
-            'instructions'      => __('If you\'re not going to use this feature, you should disable it.', 'nvis-program-pages'),
+            'instructions'      => __('If you\'re not going to use this feature, you should disable it.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -1158,10 +1158,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_624f2bf176f95',
-            'label'             => __('Configure Course Catalog', 'nvis-program-pages'),
+            'label'             => __('Configure Course Catalog', 'pedalcms'),
             'name'              => 'nvis_course_archive',
             'type'              => 'group',
-            'instructions'      => __('Configuration options for searching and browsing the list of courses.', 'nvis-program-pages'),
+            'instructions'      => __('Configuration options for searching and browsing the list of courses.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper' => [
@@ -1173,10 +1173,10 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_6254633df0007',
-                    'label'             => __('Archive Title', 'nvis-program-pages'),
+                    'label'             => __('Archive Title', 'pedalcms'),
                     'name'              => 'title',
                     'type'              => 'text',
-                    'instructions'      => __('The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'nvis-program-pages'),
+                    'instructions'      => __('The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1185,17 +1185,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Course Catalog', 'nvis-program-pages'),
+                    'placeholder'   => __('Course Catalog', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_624f2bf176f97',
-                    'label'             => __('Lead Copy', 'nvis-program-pages'),
+                    'label'             => __('Lead Copy', 'pedalcms'),
                     'name'              => 'description',
                     'type'              => 'wysiwyg',
-                    'instructions'      => __('The content that appears in the archive page header.', 'nvis-program-pages'),
+                    'instructions'      => __('The content that appears in the archive page header.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1211,10 +1211,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_624f2bf176f98',
-                    'label'             => __('Header Image', 'nvis-program-pages'),
+                    'label'             => __('Header Image', 'pedalcms'),
                     'name'              => 'featured_image',
                     'type'              => 'image',
-                    'instructions'      => __('The image to be displayed in the page header of the archive.', 'nvis-program-pages'),
+                    'instructions'      => __('The image to be displayed in the page header of the archive.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1235,10 +1235,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_624f2bf176f99',
-                    'label'             => __('Header Background Image', 'nvis-program-pages'),
+                    'label'             => __('Header Background Image', 'pedalcms'),
                     'name'              => 'header_background',
                     'type'              => 'image',
-                    'instructions'      => __('The background image of the archive page header (Tuxedo Mode only).', 'nvis-program-pages'),
+                    'instructions'      => __('The background image of the archive page header (Tuxedo Mode only).', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper' => [
@@ -1259,10 +1259,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_625466e002016',
-                    'label'             => __('Search Filters', 'nvis-program-pages'),
+                    'label'             => __('Search Filters', 'pedalcms'),
                     'name'              => 'search_filters',
                     'type'              => 'checkbox',
-                    'instructions'      => __('Select the list of search filters you want enabled.', 'nvis-program-pages'),
+                    'instructions'      => __('Select the list of search filters you want enabled.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1294,10 +1294,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_62546642e4853',
-                    'label'             => __('Number of Filters Visible', 'nvis-program-pages'),
+                    'label'             => __('Number of Filters Visible', 'pedalcms'),
                     'name'              => 'filters_showing',
                     'type'              => 'number',
-                    'instructions'      => __('The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'nvis-program-pages'),
+                    'instructions'      => __('The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1317,10 +1317,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_625430e759b18',
-            'label'             => __('Configure Courses', 'nvis-program-pages'),
+            'label'             => __('Configure Courses', 'pedalcms'),
             'name'              => 'nvis_course',
             'type'              => 'group',
-            'instructions'      => __('Configuration options for individual courses.', 'nvis-program-pages'),
+            'instructions'      => __('Configuration options for individual courses.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper' => [
@@ -1332,10 +1332,10 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_626848ca44429',
-                    'label'             => __('Course Credits Label', 'nvis-program-pages'),
+                    'label'             => __('Course Credits Label', 'pedalcms'),
                     'name'              => 'label_credits',
                     'type'              => 'text',
-                    'instructions'      => __('The unit of measure for course hours. Sometimes called units.', 'nvis-program-pages'),
+                    'instructions'      => __('The unit of measure for course hours. Sometimes called units.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1344,17 +1344,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('credits', 'nvis-program-pages'),
+                    'placeholder'   => __('credits', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6268496a4682e',
-                    'label'             => __('Course Credits Label, Singular', 'nvis-program-pages'),
+                    'label'             => __('Course Credits Label, Singular', 'pedalcms'),
                     'name'              => 'label_credit',
                     'type'              => 'text',
-                    'instructions'      => __('The unit of measure for course hours. Singular version.', 'nvis-program-pages'),
+                    'instructions'      => __('The unit of measure for course hours. Singular version.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1363,17 +1363,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('credit', 'nvis-program-pages'),
+                    'placeholder'   => __('credit', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_62631221ea0d7',
-                    'label'             => __('Course Registration Button Text', 'nvis-program-pages'),
+                    'label'             => __('Course Registration Button Text', 'pedalcms'),
                     'name'              => 'label_register_action',
                     'type'              => 'text',
-                    'instructions'      => __('The text to be displayed in the Register button.', 'nvis-program-pages'),
+                    'instructions'      => __('The text to be displayed in the Register button.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1382,17 +1382,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Register', 'nvis-program-pages'),
+                    'placeholder'   => __('Register', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_625432e181228',
-                    'label'             => __('Course Registration Search URL', 'nvis-program-pages'),
+                    'label'             => __('Course Registration Search URL', 'pedalcms'),
                     'name'              => 'url_reg_search',
                     'type'              => 'url',
-                    'instructions'      => __('Enter a URL pattern to create unique "Search Sections" URLs for each course. You can use the following tag: {$course_reg_key}', 'nvis-program-pages'),
+                    'instructions'      => __('Enter a URL pattern to create unique "Search Sections" URLs for each course. You can use the following tag: {$course_reg_key}', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1405,10 +1405,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6269913eccb62',
-                    'label'             => __('Instructors Heading', 'nvis-program-pages'),
+                    'label'             => __('Instructors Heading', 'pedalcms'),
                     'name'              => 'label_instructors',
                     'type'              => 'text',
-                    'instructions'      => __('The heading over the list of instructors.', 'nvis-program-pages'),
+                    'instructions'      => __('The heading over the list of instructors.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1417,7 +1417,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Instructors', 'nvis-program-pages'),
+                    'placeholder'   => __('Instructors', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -1426,7 +1426,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_625095f5b680e',
-            'label'             => __('Directory', 'nvis-program-pages'),
+            'label'             => __('Directory', 'pedalcms'),
             'name'              => '',
             'type'              => 'tab',
             'instructions'      => '',
@@ -1442,10 +1442,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_624f2b2a695af',
-            'label'             => __('Enable this Feature', 'nvis-program-pages'),
+            'label'             => __('Enable this Feature', 'pedalcms'),
             'name'              => 'nvis_person_enable',
             'type'              => 'true_false',
-            'instructions'      => __('If you\'re not going to use this feature, you should disable it.', 'nvis-program-pages'),
+            'instructions'      => __('If you\'re not going to use this feature, you should disable it.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -1461,10 +1461,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_624f2b16695aa',
-            'label'             => __('Configure Faculty & Staff Directory', 'nvis-program-pages'),
+            'label'             => __('Configure Faculty & Staff Directory', 'pedalcms'),
             'name'              => 'nvis_person_archive',
             'type'              => 'group',
-            'instructions'      => __('Configuration options for searching and browsing the list of personnel.', 'nvis-program-pages'),
+            'instructions'      => __('Configuration options for searching and browsing the list of personnel.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper' => [
@@ -1476,10 +1476,10 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_62546c8a510cf',
-                    'label'             => __('Archive Title', 'nvis-program-pages'),
+                    'label'             => __('Archive Title', 'pedalcms'),
                     'name'              => 'title',
                     'type'              => 'text',
-                    'instructions'      => __('The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'nvis-program-pages'),
+                    'instructions'      => __('The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1488,17 +1488,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Directory', 'nvis-program-pages'),
+                    'placeholder'   => __('Directory', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_624f2b16695ab',
-                    'label'             => __('Lead Copy', 'nvis-program-pages'),
+                    'label'             => __('Lead Copy', 'pedalcms'),
                     'name'              => 'description',
                     'type'              => 'wysiwyg',
-                    'instructions'      => __('The content that appears in the archive page header.', 'nvis-program-pages'),
+                    'instructions'      => __('The content that appears in the archive page header.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1514,10 +1514,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_624f2b16695ac',
-                    'label'             => __('Featured Image', 'nvis-program-pages'),
+                    'label'             => __('Featured Image', 'pedalcms'),
                     'name'              => 'featured_image',
                     'type'              => 'image',
-                    'instructions'      => __('The image to be displayed in the page header of the archive.', 'nvis-program-pages'),
+                    'instructions'      => __('The image to be displayed in the page header of the archive.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1538,10 +1538,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_624f2b16695ad',
-                    'label'             => __('Header Background Image', 'nvis-program-pages'),
+                    'label'             => __('Header Background Image', 'pedalcms'),
                     'name'              => 'header_background',
                     'type'              => 'image',
-                    'instructions'      => __('The background image of the archive page header (Tuxedo Mode only).', 'nvis-program-pages'),
+                    'instructions'      => __('The background image of the archive page header (Tuxedo Mode only).', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper' => [
@@ -1562,10 +1562,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_62546a55dc204',
-                    'label'             => __('Search Filters', 'nvis-program-pages'),
+                    'label'             => __('Search Filters', 'pedalcms'),
                     'name'              => 'search_filters',
                     'type'              => 'checkbox',
-                    'instructions'      => __('Select the list of search filters you want enabled.', 'nvis-program-pages'),
+                    'instructions'      => __('Select the list of search filters you want enabled.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1595,10 +1595,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_62546a62dc205',
-                    'label'             => __('Number of Filters Visible', 'nvis-program-pages'),
+                    'label'             => __('Number of Filters Visible', 'pedalcms'),
                     'name'              => 'filters_showing',
                     'type'              => 'number',
-                    'instructions'      => __('The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'nvis-program-pages'),
+                    'instructions'      => __('The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1618,10 +1618,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_625436e5d0dba',
-            'label'             => __('Configure Personnel', 'nvis-program-pages'),
+            'label'             => __('Configure Personnel', 'pedalcms'),
             'name'              => 'nvis_person',
             'type'              => 'group',
-            'instructions'      => __('Configuration options for individual personnel.', 'nvis-program-pages'),
+            'instructions'      => __('Configuration options for individual personnel.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper' => [
@@ -1633,10 +1633,10 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_62696f57bc6bb',
-                    'label'             => __('Header Background Image', 'nvis-program-pages'),
+                    'label'             => __('Header Background Image', 'pedalcms'),
                     'name'              => 'header_background',
                     'type'              => 'image',
-                    'instructions'      => __('The background image of the personnel page header (Tuxedo Mode only).', 'nvis-program-pages'),
+                    'instructions'      => __('The background image of the personnel page header (Tuxedo Mode only).', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper' => [
@@ -1657,10 +1657,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_62696cdb81e93',
-                    'label'             => __('Courses Taught Heading', 'nvis-program-pages'),
+                    'label'             => __('Courses Taught Heading', 'pedalcms'),
                     'name'              => 'label_courses_taught',
                     'type'              => 'text',
-                    'instructions'      => __('The heading above this list of courses a faculty member teaches.', 'nvis-program-pages'),
+                    'instructions'      => __('The heading above this list of courses a faculty member teaches.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1669,7 +1669,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Courses Taught', 'nvis-program-pages'),
+                    'placeholder'   => __('Courses Taught', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -1678,7 +1678,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_6250950db680c',
-            'label'             => __('Taxonomies', 'nvis-program-pages'),
+            'label'             => __('Taxonomies', 'pedalcms'),
             'name'              => '',
             'type'              => 'tab',
             'instructions'      => '',
@@ -1694,10 +1694,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_6255d51d49335',
-            'label'             => __('College', 'nvis-program-pages'),
+            'label'             => __('College', 'pedalcms'),
             'name'              => 'nvis_college',
             'type'              => 'group',
-            'instructions'      => __('Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'nvis-program-pages'),
+            'instructions'      => __('Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -1709,7 +1709,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_6255d51d49336',
-                    'label'             => __('Enable this Taxonomy', 'nvis-program-pages'),
+                    'label'             => __('Enable this Taxonomy', 'pedalcms'),
                     'name'              => 'enable',
                     'type'              => 'true_false',
                     'instructions'      => '',
@@ -1728,10 +1728,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_630e5de55cf04',
-                    'label'             => __('Enable Archive', 'nvis-program-pages'),
+                    'label'             => __('Enable Archive', 'pedalcms'),
                     'name'              => 'enable_archive',
                     'type'              => 'true_false',
-                    'instructions'      => __('If disabled, links will point to a filtered programs view.', 'nvis-program-pages'),
+                    'instructions'      => __('If disabled, links will point to a filtered programs view.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1747,7 +1747,7 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6255d51d49337',
-                    'label'             => __('Singular Label', 'nvis-program-pages'),
+                    'label'             => __('Singular Label', 'pedalcms'),
                     'name'              => 'label_single',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -1759,14 +1759,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('College', 'nvis-program-pages'),
+                    'placeholder'   => __('College', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6255d51d49338',
-                    'label'             => __('Plural Label', 'nvis-program-pages'),
+                    'label'             => __('Plural Label', 'pedalcms'),
                     'name'              => 'label_plural',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -1778,17 +1778,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Colleges', 'nvis-program-pages'),
+                    'placeholder'   => __('Colleges', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],        
                 [
                     'key'               => 'field_630e706b11afc',
-                    'label'             => __('Use with:', 'nvis-program-pages'),
+                    'label'             => __('Use with:', 'pedalcms'),
                     'name'              => 'object_type',
                     'type'              => 'checkbox',
-                    'instructions'      => __('Choose the the features to use this taxonomy with.', 'nvis-program-pages'),
+                    'instructions'      => __('Choose the the features to use this taxonomy with.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1812,10 +1812,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_6255e021cb5de',
-            'label'             => __('Department', 'nvis-program-pages'),
+            'label'             => __('Department', 'pedalcms'),
             'name'              => 'nvis_department',
             'type'              => 'group',
-            'instructions'      => __('Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'nvis-program-pages'),
+            'instructions'      => __('Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -1827,7 +1827,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_6255e021cb5df',
-                    'label'             => __('Enable this Taxonomy', 'nvis-program-pages'),
+                    'label'             => __('Enable this Taxonomy', 'pedalcms'),
                     'name'              => 'enable',
                     'type'              => 'true_false',
                     'instructions'      => '',
@@ -1846,10 +1846,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_630e66adbf615',
-                    'label'             => __('Enable Archive', 'nvis-program-pages'),
+                    'label'             => __('Enable Archive', 'pedalcms'),
                     'name'              => 'enable_archive',
                     'type'              => 'true_false',
-                    'instructions'      => __('If disabled, links will point to a filtered programs view.', 'nvis-program-pages'),
+                    'instructions'      => __('If disabled, links will point to a filtered programs view.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1865,10 +1865,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_631a428ff3f05',
-                    'label'             => __('Depends on College', 'nvis-program-pages'),
+                    'label'             => __('Depends on College', 'pedalcms'),
                     'name'              => 'depends_college',
                     'type'              => 'true_false',
-                    'instructions'      => __('If enabled, Departments will belong to a College and the relationship will be enforced.', 'nvis-program-pages'),
+                    'instructions'      => __('If enabled, Departments will belong to a College and the relationship will be enforced.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => [
                         [
@@ -1892,7 +1892,7 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6255e021cb5e0',
-                    'label'             => __('Singular Label', 'nvis-program-pages'),
+                    'label'             => __('Singular Label', 'pedalcms'),
                     'name'              => 'label_single',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -1904,14 +1904,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Department', 'nvis-program-pages'),
+                    'placeholder'   => __('Department', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6255e021cb5e1',
-                    'label'             => __('Plural Label', 'nvis-program-pages'),
+                    'label'             => __('Plural Label', 'pedalcms'),
                     'name'              => 'label_plural',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -1923,17 +1923,17 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Departments', 'nvis-program-pages'),
+                    'placeholder'   => __('Departments', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],        
                 [
                     'key'               => 'field_630e6ba4ce6d5',
-                    'label'             => __('Use with:', 'nvis-program-pages'),
+                    'label'             => __('Use with:', 'pedalcms'),
                     'name'              => 'object_type',
                     'type'              => 'checkbox',
-                    'instructions'      => __('Choose the the features to use this taxonomy with.', 'nvis-program-pages'),
+                    'instructions'      => __('Choose the the features to use this taxonomy with.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -1957,10 +1957,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_6255c198c4cfe',
-            'label'             => __('Program Type', 'nvis-program-pages'),
+            'label'             => __('Program Type', 'pedalcms'),
             'name'              => 'nvis_program_type',
             'type'              => 'group',
-            'instructions'      => __('Used by Programs.', 'nvis-program-pages'),
+            'instructions'      => __('Used by Programs.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -1972,7 +1972,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_6255c2091ea8a',
-                    'label'             => __('Enable this Taxonomy', 'nvis-program-pages'),
+                    'label'             => __('Enable this Taxonomy', 'pedalcms'),
                     'name'              => 'enable',
                     'type'              => 'true_false',
                     'instructions'      => '',
@@ -1991,10 +1991,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_630e5d63b6a25',
-                    'label'             => __('Enable Archive', 'nvis-program-pages'),
+                    'label'             => __('Enable Archive', 'pedalcms'),
                     'name'              => 'enable_archive',
                     'type'              => 'true_false',
-                    'instructions'      => __('If disabled, links will point to a filtered programs view.', 'nvis-program-pages'),
+                    'instructions'      => __('If disabled, links will point to a filtered programs view.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -2010,7 +2010,7 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6255c22b1ea8b',
-                    'label'             => __('Singular Label', 'nvis-program-pages'),
+                    'label'             => __('Singular Label', 'pedalcms'),
                     'name'              => 'label_single',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2022,14 +2022,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Program Type', 'nvis-program-pages'),
+                    'placeholder'   => __('Program Type', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6255c2561ea8c',
-                    'label'             => __('Plural Label', 'nvis-program-pages'),
+                    'label'             => __('Plural Label', 'pedalcms'),
                     'name'              => 'label_plural',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2041,7 +2041,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Program Types', 'nvis-program-pages'),
+                    'placeholder'   => __('Program Types', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -2050,10 +2050,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_6255df25cb5ce',
-            'label'             => __('Instruction Mode', 'nvis-program-pages'),
+            'label'             => __('Instruction Mode', 'pedalcms'),
             'name'              => 'nvis_instruct_mode',
             'type'              => 'group',
-            'instructions'      => __('Used by Programs. (e.g. In-person, Online, Hybrid)', 'nvis-program-pages'),
+            'instructions'      => __('Used by Programs. (e.g. In-person, Online, Hybrid)', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -2065,7 +2065,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_6255df25cb5cf',
-                    'label'             => __('Enable this Taxonomy', 'nvis-program-pages'),
+                    'label'             => __('Enable this Taxonomy', 'pedalcms'),
                     'name'              => 'enable',
                     'type'              => 'true_false',
                     'instructions'      => '',
@@ -2084,7 +2084,7 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6255df25cb5d0',
-                    'label'             => __('Singular Label', 'nvis-program-pages'),
+                    'label'             => __('Singular Label', 'pedalcms'),
                     'name'              => 'label_single',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2096,14 +2096,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Instruction Mode', 'nvis-program-pages'),
+                    'placeholder'   => __('Instruction Mode', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6255df25cb5d1',
-                    'label'             => __('Plural Label', 'nvis-program-pages'),
+                    'label'             => __('Plural Label', 'pedalcms'),
                     'name'              => 'label_plural',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2115,7 +2115,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Instruction Modes', 'nvis-program-pages'),
+                    'placeholder'   => __('Instruction Modes', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -2124,10 +2124,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_6255df6ccb5d2',
-            'label'             => __('Subject', 'nvis-program-pages'),
+            'label'             => __('Subject', 'pedalcms'),
             'name'              => 'nvis_subject',
             'type'              => 'group',
-            'instructions'      => __('Used in the Course Catalog.', 'nvis-program-pages'),
+            'instructions'      => __('Used in the Course Catalog.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -2139,7 +2139,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_6255df6ccb5d3',
-                    'label'             => __('Enable this Taxonomy', 'nvis-program-pages'),
+                    'label'             => __('Enable this Taxonomy', 'pedalcms'),
                     'name'              => 'enable',
                     'type'              => 'true_false',
                     'instructions'      => '',
@@ -2158,7 +2158,7 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6255df6ccb5d4',
-                    'label'             => __('Singular Label', 'nvis-program-pages'),
+                    'label'             => __('Singular Label', 'pedalcms'),
                     'name'              => 'label_single',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2170,14 +2170,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Subject', 'nvis-program-pages'),
+                    'placeholder'   => __('Subject', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6255df6ccb5d5',
-                    'label'             => __('Plural Label', 'nvis-program-pages'),
+                    'label'             => __('Plural Label', 'pedalcms'),
                     'name'              => 'label_plural',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2189,7 +2189,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Subjects', 'nvis-program-pages'),
+                    'placeholder'   => __('Subjects', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -2198,10 +2198,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_6255dfa3cb5d6',
-            'label'             => __('Session', 'nvis-program-pages'),
+            'label'             => __('Session', 'pedalcms'),
             'name'              => 'nvis_session',
             'type'              => 'group',
-            'instructions'      => __('Used in the Course Catalog. Also commonly referred to as "term." (e.g. Fall, Spring, Summer)', 'nvis-program-pages'),
+            'instructions'      => __('Used in the Course Catalog. Also commonly referred to as "term." (e.g. Fall, Spring, Summer)', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -2213,7 +2213,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_6255dfa3cb5d7',
-                    'label'             => __('Enable this Taxonomy', 'nvis-program-pages'),
+                    'label'             => __('Enable this Taxonomy', 'pedalcms'),
                     'name'              => 'enable',
                     'type'              => 'true_false',
                     'instructions'      => '',
@@ -2232,7 +2232,7 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6255dfa3cb5d8',
-                    'label'             => __('Singular Label', 'nvis-program-pages'),
+                    'label'             => __('Singular Label', 'pedalcms'),
                     'name'              => 'label_single',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2244,14 +2244,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Session', 'nvis-program-pages'),
+                    'placeholder'   => __('Session', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6255dfa3cb5d9',
-                    'label'             => __('Plural Label', 'nvis-program-pages'),
+                    'label'             => __('Plural Label', 'pedalcms'),
                     'name'              => 'label_plural',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2263,7 +2263,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Sessions', 'nvis-program-pages'),
+                    'placeholder'   => __('Sessions', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -2272,7 +2272,7 @@ $field_group = [
         ],
         [
             'key'               => 'field_6255dfe6cb5da',
-            'label'             => __('Personnel Category', 'nvis-program-pages'),
+            'label'             => __('Personnel Category', 'pedalcms'),
             'name'              => 'nvis_person_cat',
             'type'              => 'group',
             'instructions'      => __('Used in the Faculty & Staff Directory.'),
@@ -2287,7 +2287,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_6255dfe6cb5db',
-                    'label'             => __('Enable this Taxonomy', 'nvis-program-pages'),
+                    'label'             => __('Enable this Taxonomy', 'pedalcms'),
                     'name'              => 'enable',
                     'type'              => 'true_false',
                     'instructions'      => '',
@@ -2306,10 +2306,10 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_630e5ee33fe9b',
-                    'label'             => __('Enable Archive', 'nvis-program-pages'),
+                    'label'             => __('Enable Archive', 'pedalcms'),
                     'name'              => 'enable_archive',
                     'type'              => 'true_false',
-                    'instructions'      => __('If disabled, links will point to a filtered personnel directory view.', 'nvis-program-pages'),
+                    'instructions'      => __('If disabled, links will point to a filtered personnel directory view.', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper'           => [
@@ -2325,7 +2325,7 @@ $field_group = [
                 ],
                 [
                     'key'               => 'field_6255dfe6cb5dc',
-                    'label'             => __('Singular Label', 'nvis-program-pages'),
+                    'label'             => __('Singular Label', 'pedalcms'),
                     'name'              => 'label_single',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2337,14 +2337,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Personnel Category', 'nvis-program-pages'),
+                    'placeholder'   => __('Personnel Category', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6255dfe6cb5dd',
-                    'label'             => __('Plural Label', 'nvis-program-pages'),
+                    'label'             => __('Plural Label', 'pedalcms'),
                     'name'              => 'label_plural',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2356,7 +2356,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('Personnel Categories', 'nvis-program-pages'),
+                    'placeholder'   => __('Personnel Categories', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
@@ -2365,10 +2365,10 @@ $field_group = [
         ],
         [
             'key'               => 'field_6255e041cb5e2',
-            'label'             => __('FAQ Category', 'nvis-program-pages'),
+            'label'             => __('FAQ Category', 'pedalcms'),
             'name'              => 'nvis_faq_cat',
             'type'              => 'group',
-            'instructions'      => __('Used by Programs.', 'nvis-program-pages'),
+            'instructions'      => __('Used by Programs.', 'pedalcms'),
             'required'          => 0,
             'conditional_logic' => 0,
             'wrapper'           => [
@@ -2380,7 +2380,7 @@ $field_group = [
             'sub_fields' => [
                 [
                     'key'               => 'field_6255e041cb5e4',
-                    'label'             => __('Singular Label', 'nvis-program-pages'),
+                    'label'             => __('Singular Label', 'pedalcms'),
                     'name'              => 'label_single',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2392,14 +2392,14 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('FAQ Category', 'nvis-program-pages'),
+                    'placeholder'   => __('FAQ Category', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
                 ],
                 [
                     'key'               => 'field_6255e041cb5e5',
-                    'label'             => __('Plural Label', 'nvis-program-pages'),
+                    'label'             => __('Plural Label', 'pedalcms'),
                     'name'              => 'label_plural',
                     'type'              => 'text',
                     'instructions'      => '',
@@ -2411,7 +2411,7 @@ $field_group = [
                         'id'    => '',
                     ],
                     'default_value' => '',
-                    'placeholder'   => __('FAQ Categories', 'nvis-program-pages'),
+                    'placeholder'   => __('FAQ Categories', 'pedalcms'),
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',

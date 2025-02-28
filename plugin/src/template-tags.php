@@ -98,7 +98,7 @@ if (!function_exists('nvis_prog_register_program_subpage')) :
  * 
  * You must also provide a template to render the subpage. It should be located 
  * here:
- * {$theme-name}/nvis-program-pages/single-program/subpages/{$slug}.php
+ * {$theme-name}/pedalcms/single-program/subpages/{$slug}.php
  * 
  * By default, all registered subpages are enabled for all programs. It is up
  * to you to handle cases where these should be displayed on a program by 

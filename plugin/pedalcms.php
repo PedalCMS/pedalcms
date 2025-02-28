@@ -9,7 +9,7 @@
  * Version: 0.1
  * Author: pedalcms
  * Author URI: https://verifiedstudios.com
- * Text Domain: nvis-program-pages
+ * Text Domain: pedalcms
  * License: GPL 2.0 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * 

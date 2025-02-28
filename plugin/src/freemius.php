@@ -19,7 +19,7 @@ function nvis_prog_freemius() {
 
         $fs_args = [
             'id'                  => '11142',
-            'slug'                => 'nvis-program-pages',
+            'slug'                => 'pedalcms',
             'type'                => 'plugin',
             'public_key'          => 'pk_44e5d6d9560fb16310d89b80eefe0',
             'is_premium'          => true,

@@ -31,7 +31,7 @@ function render_terms_grid($atts) {
     );
 
     if (!$atts['tax']) {
-        return __('You must supply a taxonomy via the tax attribute (e.g. tax="nvis_program_type").', 'nvis-program-pages');
+        return __('You must supply a taxonomy via the tax attribute (e.g. tax="nvis_program_type").', 'pedalcms');
     }
 
     $atts['terms'] = get_terms(['taxonomy' => $atts['tax']]);

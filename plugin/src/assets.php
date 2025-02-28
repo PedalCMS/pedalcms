@@ -145,7 +145,7 @@ function admin_enqueue_assets() {
         $nvis_acf_data = [
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('nvis_acf_data'),
-            'label_not_found' => __('No departments found', 'nvis-program-pages')
+            'label_not_found' => __('No departments found', 'pedalcms')
         ];
     
         wp_localize_script('nvis-acf', 'nvisACFData', $nvis_acf_data);

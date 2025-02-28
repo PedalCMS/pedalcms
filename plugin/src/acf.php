@@ -240,7 +240,7 @@ function choices_image_size_header(array $field): array {
         $labels
     );
 
-    $field['choices']['custom'] = __('Custom', 'nvis-program-pages');
+    $field['choices']['custom'] = __('Custom', 'pedalcms');
 
     return $field;
 }

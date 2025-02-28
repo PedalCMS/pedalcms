@@ -15,13 +15,13 @@ See https://invisibe.us
 
 1. Navigate to the \"Add New\" in the plugins dashboard
 2. Navigate to the \"Upload\" area
-3. Select `nvis-program-pages.zip` from your computer
+3. Select `pedalcms.zip` from your computer
 4. Click \"Install Now\"
 5. Activate the plugin in the Plugin dashboard
 
 = Using FTP =
 
-1. Download `nvis-program-pages.zip` from your account
-2. Extract the `nvis-program-pages` directory on your computer
-3. Upload the `nvis-program-pages` directory to the plugins directory of your WordPress install (usually `/wp-content/plugins/`)
+1. Download `pedalcms.zip` from your account
+2. Extract the `pedalcms` directory on your computer
+3. Upload the `pedalcms` directory to the plugins directory of your WordPress install (usually `/wp-content/plugins/`)
 4. Activate Invisible Us: Program Marketing Essentials from the Plugins dashboard

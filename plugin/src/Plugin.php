@@ -14,7 +14,7 @@ class Plugin {
      *
      * @var string
      */
-    public static $name = 'nvis-program-pages';
+    public static $name = 'pedalcms';
 
     /**
      * Absolute path of the plugin root.
@@ -193,11 +193,11 @@ class Plugin {
      * @return void
      */
     private static function setup_options_page() {
-        self::$options_page_slug = 'nvis-program-pages-settings';
+        self::$options_page_slug = 'pedalcms-settings';
 
         self::$options_page = [
-            'page_title'  => __('Pedal CMS Settings', 'nvis-program-pages'),
-            'menu_title'  => _x('Settings', 'menu item title', 'nvis-program-pages'),
+            'page_title'  => __('Pedal CMS Settings', 'pedalcms'),
+            'menu_title'  => _x('Settings', 'menu item title', 'pedalcms'),
             'menu_slug'   => self::$options_page_slug,
             'capability'  => 'manage_options',
             // 'parent_slug' => 'options-general.php',
@@ -214,49 +214,49 @@ class Plugin {
      */
     private static function setup_labels() {
         self::$labels = [
-            'more_details'           => __('More Details', 'nvis-program-pages'),
-            'no_one_found'           => __('No one was found.', 'nvis-program-pages'),
-            'no_programs_found'      => __('No programs were found.', 'nvis-program-pages'),
-            'prerequisites'          => __('Prerequisites', 'nvis-program-pages'),
-            'yes'                    => __('Yes', 'nvis-program-pages'),
-            'no'                     => __('No', 'nvis-program-pages'),
-            'phone'                  => _x('Phone', 'noun', 'nvis-program-pages'),
-            'email'                  => _x('Email', 'noun', 'nvis-program-pages'),
-            'office'                 => __('Office', 'nvis-program-pages'),
-            'filter'                 => __('Filter', 'nvis-program-pages'),
-            'show'                   => __('Show', 'nvis-program-pages'),
-            'hide'                   => __('Hide', 'nvis-program-pages'),
-            'more_filters'           => __('More Filters', 'nvis-program-pages'),
-            'apply_filters'          => __('Search', 'nvis-program-pages'),
-            'reset_filters'          => __('Reset Filters', 'nvis-program-pages'),
-            'missing_filters_data'   => __('Missing data to render filters.', 'nvis-program-pages'),
+            'more_details'           => __('More Details', 'pedalcms'),
+            'no_one_found'           => __('No one was found.', 'pedalcms'),
+            'no_programs_found'      => __('No programs were found.', 'pedalcms'),
+            'prerequisites'          => __('Prerequisites', 'pedalcms'),
+            'yes'                    => __('Yes', 'pedalcms'),
+            'no'                     => __('No', 'pedalcms'),
+            'phone'                  => _x('Phone', 'noun', 'pedalcms'),
+            'email'                  => _x('Email', 'noun', 'pedalcms'),
+            'office'                 => __('Office', 'pedalcms'),
+            'filter'                 => __('Filter', 'pedalcms'),
+            'show'                   => __('Show', 'pedalcms'),
+            'hide'                   => __('Hide', 'pedalcms'),
+            'more_filters'           => __('More Filters', 'pedalcms'),
+            'apply_filters'          => __('Search', 'pedalcms'),
+            'reset_filters'          => __('Reset Filters', 'pedalcms'),
+            'missing_filters_data'   => __('Missing data to render filters.', 'pedalcms'),
             /* translators: The placeholder is the name of the filter. It will be translated separately. */
-            'missing_filter_data'    => __('Missing data to render %s filter', 'nvis-program-pages'),
-            'filtered_results'       => __('Filtered Results', 'nvis-program-pages'),
-            'showing'                => __('Showing', 'nvis-program-pages'),
+            'missing_filter_data'    => __('Missing data to render %s filter', 'pedalcms'),
+            'filtered_results'       => __('Filtered Results', 'pedalcms'),
+            'showing'                => __('Showing', 'pedalcms'),
             /* translators: Number of results (e.g. 'Showing 1-10 of 120 posts'). Note: the last placeholder is the name of the post_type.  */
-            'showing_of'             => __('Showing %1$s–%2$s of %3$s %4$s.', 'nvis-program-pages'),
-            'keyword'                => __('Keyword', 'nvis-program-pages'),
-            'none_selected_prefix'   => __('Any ', 'nvis-program-pages'),
-            'credit'                 => __('credit', 'nvis-program-pages'),
-            'credits'                => __('credits', 'nvis-program-pages'),
-            'offered_in'             => __('Offered in', 'nvis-program-pages'),
-            'instructors'            => __('Instructors', 'nvis-program-pages'),
-            'courses_taught'         => __('Courses Taught', 'nvis-program-pages'),
-            'program_subnav'         => __('Program Subnav', 'nvis-program-pages'),
-            'about_program'          => __('About this Program', 'nvis-program-pages'),
-            'application_deadlines'  => __('Application Deadlines', 'nvis-program-pages'),
-            'program_contact'        => __('Program Contact', 'nvis-program-pages'),
-            'contact_action'         => __('Contact', 'nvis-program-pages'),
-            'featured'               => __('Featured', 'nvis-program-pages'),
-            'read_more'              => __('Read More', 'nvis-program-pages'),
-            'show_all_posts'         => __('Show All Posts', 'nvis-program-pages'),
-            'program_details'        => __('Program Details', 'nvis-program-pages'),
-            'apply_now_action'       => __('Apply Now', 'nvis-program-pages'),
-            'request_info_action'    => __('Request Info', 'nvis-program-pages'),
-            'estimated_cost'         => __('Estimated Cost', 'nvis-program-pages'),
-            'register_action'        => __('Register', 'nvis-program-pages'),
-            'back_to_top'            => __('Back to Top', 'nvis-program-pages'),
+            'showing_of'             => __('Showing %1$s–%2$s of %3$s %4$s.', 'pedalcms'),
+            'keyword'                => __('Keyword', 'pedalcms'),
+            'none_selected_prefix'   => __('Any ', 'pedalcms'),
+            'credit'                 => __('credit', 'pedalcms'),
+            'credits'                => __('credits', 'pedalcms'),
+            'offered_in'             => __('Offered in', 'pedalcms'),
+            'instructors'            => __('Instructors', 'pedalcms'),
+            'courses_taught'         => __('Courses Taught', 'pedalcms'),
+            'program_subnav'         => __('Program Subnav', 'pedalcms'),
+            'about_program'          => __('About this Program', 'pedalcms'),
+            'application_deadlines'  => __('Application Deadlines', 'pedalcms'),
+            'program_contact'        => __('Program Contact', 'pedalcms'),
+            'contact_action'         => __('Contact', 'pedalcms'),
+            'featured'               => __('Featured', 'pedalcms'),
+            'read_more'              => __('Read More', 'pedalcms'),
+            'show_all_posts'         => __('Show All Posts', 'pedalcms'),
+            'program_details'        => __('Program Details', 'pedalcms'),
+            'apply_now_action'       => __('Apply Now', 'pedalcms'),
+            'request_info_action'    => __('Request Info', 'pedalcms'),
+            'estimated_cost'         => __('Estimated Cost', 'pedalcms'),
+            'register_action'        => __('Register', 'pedalcms'),
+            'back_to_top'            => __('Back to Top', 'pedalcms'),
         ];
     }
 
@@ -471,7 +471,7 @@ class Plugin {
             $label = self::$labels[$label_key] ??
                 sprintf(
                     /* translators: the argument is the key of the label */
-                    __('Label "%s" not found', 'nvis-program-pages'),
+                    __('Label "%s" not found', 'pedalcms'),
                     $label_key
                 );
         }

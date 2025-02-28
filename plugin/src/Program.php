@@ -63,39 +63,39 @@ class Program extends CustomPostType {
 
     protected function setup_labels(): void {
         $this->args['labels'] = [
-            'name'                     => _x( 'Programs', 'post type general name', 'nvis-program-pages' ),
-            'singular_name'            => _x( 'Program', 'post type singular name', 'nvis-program-pages' ),
-            'add_new_item'             => __( 'Add New Program', 'nvis-program-pages' ),
-            'edit_item'                => __( 'Edit Program', 'nvis-program-pages' ),
-            'new_item'                 => __( 'New Program', 'nvis-program-pages' ),
-            'view_item'                => __( 'View Program', 'nvis-program-pages' ),
-            'view_items'               => __( 'View Programs', 'nvis-program-pages' ),
-            'search_items'             => __( 'Search Programs', 'nvis-program-pages' ),
-            'not_found'                => __( 'No programs found.', 'nvis-program-pages' ),
-            'not_found_in_trash'       => __( 'No programs found in Trash.', 'nvis-program-pages' ),
-            'parent_item_colon'        => __( 'Parent Program:', 'nvis-program-pages' ),
-            'all_items'                => __( 'All Programs', 'nvis-program-pages' ),
-            'archives'                 => __( 'Programs', 'nvis-program-pages' ),
-            'attributes'               => __( 'Program Attributes', 'nvis-program-pages' ),
-            'insert_into_item'         => __( 'Insert into program', 'nvis-program-pages' ),
-            'uploaded_to_this_item'    => __( 'Uploaded to this program', 'nvis-program-pages' ),
-            'filter_items_list'        => __( 'Filter programs list', 'nvis-program-pages' ),
-            'items_list_navigation'    => __( 'Programs list navigation', 'nvis-program-pages' ),
-            'items_list'               => __( 'Programs list', 'nvis-program-pages' ),
-            'item_published'           => __( 'Program published.', 'nvis-program-pages' ),
-            'item_published_privately' => __( 'Program published privately.', 'nvis-program-pages' ),
-            'item_reverted_to_draft'   => __( 'Program reverted to draft.', 'nvis-program-pages' ),
-            'item_scheduled'           => __( 'Program scheduled.', 'nvis-program-pages' ),
-            'item_updated'             => __( 'Program updated.', 'nvis-program-pages' ),
-            'item_link'                => _x( 'Program Link', 'navigation link block title', 'nvis-program-pages' ),
-            'item_link_description'    => _x( 'A link to a program.', 'navigation link block description', 'nvis-program-pages' ),
+            'name'                     => _x( 'Programs', 'post type general name', 'pedalcms' ),
+            'singular_name'            => _x( 'Program', 'post type singular name', 'pedalcms' ),
+            'add_new_item'             => __( 'Add New Program', 'pedalcms' ),
+            'edit_item'                => __( 'Edit Program', 'pedalcms' ),
+            'new_item'                 => __( 'New Program', 'pedalcms' ),
+            'view_item'                => __( 'View Program', 'pedalcms' ),
+            'view_items'               => __( 'View Programs', 'pedalcms' ),
+            'search_items'             => __( 'Search Programs', 'pedalcms' ),
+            'not_found'                => __( 'No programs found.', 'pedalcms' ),
+            'not_found_in_trash'       => __( 'No programs found in Trash.', 'pedalcms' ),
+            'parent_item_colon'        => __( 'Parent Program:', 'pedalcms' ),
+            'all_items'                => __( 'All Programs', 'pedalcms' ),
+            'archives'                 => __( 'Programs', 'pedalcms' ),
+            'attributes'               => __( 'Program Attributes', 'pedalcms' ),
+            'insert_into_item'         => __( 'Insert into program', 'pedalcms' ),
+            'uploaded_to_this_item'    => __( 'Uploaded to this program', 'pedalcms' ),
+            'filter_items_list'        => __( 'Filter programs list', 'pedalcms' ),
+            'items_list_navigation'    => __( 'Programs list navigation', 'pedalcms' ),
+            'items_list'               => __( 'Programs list', 'pedalcms' ),
+            'item_published'           => __( 'Program published.', 'pedalcms' ),
+            'item_published_privately' => __( 'Program published privately.', 'pedalcms' ),
+            'item_reverted_to_draft'   => __( 'Program reverted to draft.', 'pedalcms' ),
+            'item_scheduled'           => __( 'Program scheduled.', 'pedalcms' ),
+            'item_updated'             => __( 'Program updated.', 'pedalcms' ),
+            'item_link'                => _x( 'Program Link', 'navigation link block title', 'pedalcms' ),
+            'item_link_description'    => _x( 'A link to a program.', 'navigation link block description', 'pedalcms' ),
         ];
     }
 
     protected function setup_field_group() {
         $field_group = [
             'key'         => 'group_61118a19b2e4c',
-            'title'       => _x('Program Info', 'field group title','nvis-program-pages'),
+            'title'       => _x('Program Info', 'field group title','pedalcms'),
             'location'    => [
                 [
                     [
@@ -115,21 +115,21 @@ class Program extends CustomPostType {
             'fields'                => [
                 [
                     'key'       => 'field_6112749bd4b71',
-                    'label'     => __('Main','nvis-program-pages'),
+                    'label'     => __('Main','pedalcms'),
                     'type'      => 'tab',
                     'placement' => 'top',
                     'endpoint'  => 0,
                 ],
                 [
                     'key'          => 'field_6112773d640f4',
-                    'label'        => __('Program GUID','nvis-program-pages'),
+                    'label'        => __('Program GUID','pedalcms'),
                     'name'         => 'program_guid',
                     'type'         => 'text',
-                    'instructions' => __('The globally unique identifier for the program. Typically, used campus-wide across systems.', 'nvis-program-pages'),
+                    'instructions' => __('The globally unique identifier for the program. Typically, used campus-wide across systems.', 'pedalcms'),
                 ],
                 [
                     'key'           => 'field_611279af182d2',
-                    'label'         => __('College','nvis-program-pages'),
+                    'label'         => __('College','pedalcms'),
                     'name'          => 'college',
                     'type'          => 'taxonomy',
                     'instructions'  => '',
@@ -145,11 +145,11 @@ class Program extends CustomPostType {
                 ],
                 [
                     'key'           => 'field_630fb69367bc5',
-                    'label'         => __('Department','nvis-program-pages'),
+                    'label'         => __('Department','pedalcms'),
                     'name'          => 'department',
                     'type'          => 'select',
                     'instructions'  => '',
-                    'placeholder'   => __('Select department', 'nvis-program-pages'),
+                    'placeholder'   => __('Select department', 'pedalcms'),
                     'default_value' => 0,
                     'required'      => 0,
                     'taxonomy'      => Department::TAXONOMY,
@@ -164,12 +164,12 @@ class Program extends CustomPostType {
                     'ajax'          => 0,
                     'disable'       => 1,
                     'choices'       => [
-                        0 => __('(Select college first)', 'nvis-program-pages')
+                        0 => __('(Select college first)', 'pedalcms')
                     ]
                 ],
                 [
                     'key'           => 'field_61127c46a8faf',
-                    'label'         => __('Program Type','nvis-program-pages'),
+                    'label'         => __('Program Type','pedalcms'),
                     'name'          => 'program_type',
                     'type'          => 'taxonomy',
                     'instructions'  => '',
@@ -185,7 +185,7 @@ class Program extends CustomPostType {
                 ],
                 [
                     'key'           => 'field_61127a1f182d4',
-                    'label'         => __('Instruction Mode','nvis-program-pages'),
+                    'label'         => __('Instruction Mode','pedalcms'),
                     'name'          => 'instruction_mode',
                     'type'          => 'taxonomy',
                     'instructions'  => '',
@@ -200,7 +200,7 @@ class Program extends CustomPostType {
                 ],
                 [
                     'key'           => 'field_61128ea8b1920',
-                    'label'         => __('Prerequisites','nvis-program-pages'),
+                    'label'         => __('Prerequisites','pedalcms'),
                     'name'          => 'prerequisites',
                     'type'          => 'true_false',
                     'instructions'  => '',
@@ -210,7 +210,7 @@ class Program extends CustomPostType {
                 ],
                 [
                     'key'           => 'field_6112738ed4b70',
-                    'label'         => __('Overview Content','nvis-program-pages'),
+                    'label'         => __('Overview Content','pedalcms'),
                     'name'          => 'overview_content',
                     'type'          => 'wysiwyg',
                     'instructions'  => '',
@@ -222,31 +222,31 @@ class Program extends CustomPostType {
                 ],
                 [
                     'key'          => 'field_61127d078fbcb',
-                    'label'        => __('Request Info URL','nvis-program-pages'),
+                    'label'        => __('Request Info URL','pedalcms'),
                     'name'         => 'url_request_info',
                     'type'         => 'url',
-                    'instructions' => __('Overrides the global pattern for Request Info URLs.','nvis-program-pages'),
+                    'instructions' => __('Overrides the global pattern for Request Info URLs.','pedalcms'),
                     'placeholder'  => '',
                 ],
                 [
                     'key'          => 'field_61127d728fbcc',
-                    'label'        => __('Apply Now URL','nvis-program-pages'),
+                    'label'        => __('Apply Now URL','pedalcms'),
                     'name'         => 'url_apply_now',
                     'type'         => 'url',
-                    'instructions' => __('Overrides the global pattern for Apply Now URLs.','nvis-program-pages'),
+                    'instructions' => __('Overrides the global pattern for Apply Now URLs.','pedalcms'),
                     'placeholder'  => '',
                 ],
                 [
                     'key'          => 'field_61127d948fbcd',
-                    'label'        => __('Contact Us URL','nvis-program-pages'),
+                    'label'        => __('Contact Us URL','pedalcms'),
                     'name'         => 'url_contact_us',
                     'type'         => 'url',
-                    'instructions' => __('Overrides the global pattern for Contact Us URLs.','nvis-program-pages'),
+                    'instructions' => __('Overrides the global pattern for Contact Us URLs.','pedalcms'),
                     'placeholder'  => '',
                 ],
                 [
                     'key'           => 'field_6138d5c7722ca',
-                    'label'         => __('Show Application Deadlines?','nvis-program-pages'),
+                    'label'         => __('Show Application Deadlines?','pedalcms'),
                     'name'          => 'show_application_deadlines',
                     'type'          => 'true_false',
                     'instructions'  => '',
@@ -256,31 +256,31 @@ class Program extends CustomPostType {
                 ],
                 [
                     'key'          => 'field_613a6d0cce1eb',
-                    'label'        => __('Application Deadlines','nvis-program-pages'),
+                    'label'        => __('Application Deadlines','pedalcms'),
                     'name'         => 'application_deadlines',
                     'type'         => 'repeater',
-                    'instructions' => __('Leave blank to inherit.','nvis-program-pages'),
+                    'instructions' => __('Leave blank to inherit.','pedalcms'),
                     'collapsed'    => 'field_61156b777d403',
                     'layout'       => 'block',
-                    'button_label' => _x('Add Deadline', 'new deadline button label','nvis-program-pages'),
+                    'button_label' => _x('Add Deadline', 'new deadline button label','pedalcms'),
                     'sub_fields'   => [
                         [
                             'key'          => 'field_61156b777d403',
-                            'label'        => __('Deadline Label','nvis-program-pages'),
+                            'label'        => __('Deadline Label','pedalcms'),
                             'name'         => 'label',
                             'type'         => 'text',
                             'instructions' => '',
                             'required'     => 1,
-                            'placeholder'  => _x('Fall, Spring, etc.', 'deadline label field placeholder', 'nvis-program-pages'),
+                            'placeholder'  => _x('Fall, Spring, etc.', 'deadline label field placeholder', 'pedalcms'),
                             'maxlength'    => '',
                         ],
                         [
                             'key'          => 'field_61156bbe7d404',
-                            'label'        => __('Deadline Info','nvis-program-pages'),
+                            'label'        => __('Deadline Info','pedalcms'),
                             'name'         => 'info',
                             'type'         => 'text',
                             'instructions' => '',
-                            'placeholder'  => _x('e.g. June 24th', 'deadline info field placeholder', 'nvis-program-pages'),
+                            'placeholder'  => _x('e.g. June 24th', 'deadline info field placeholder', 'pedalcms'),
                             'maxlength'    => '',
                         ],
                     ],
@@ -296,7 +296,7 @@ class Program extends CustomPostType {
                 ],
                 [
                     'key'          => 'field_611276e3640f3',
-                    'label'        => __('Program Contacts','nvis-program-pages'),
+                    'label'        => __('Program Contacts','pedalcms'),
                     'name'         => 'related_contacts',
                     'type'         => 'relationship',
                     'instructions' => '',
@@ -330,18 +330,18 @@ class Program extends CustomPostType {
     protected static function setup_subpages() {
         self::$subpages = [
             'index' => [
-                'title' => _x('Overview', 'Proper subpage title','nvis-program-pages'),
+                'title' => _x('Overview', 'Proper subpage title','pedalcms'),
                 'order' => -1,
                 'builtin' => true
             ],
             'curriculum' => [
-                'title' => _x('Curriculum','Proper subpage title','nvis-program-pages'),
+                'title' => _x('Curriculum','Proper subpage title','pedalcms'),
                 'order' => 10,
                 'builtin' => true,
                 'fields' => [
                     [
                         'key'           => 'field_6112835dfeb44',
-                        'label'         => __('Show Curriculum Section?','nvis-program-pages'),
+                        'label'         => __('Show Curriculum Section?','pedalcms'),
                         'name'          => 'show_curriculum_section',
                         'type'          => 'true_false',
                         'instructions'  => '',
@@ -353,10 +353,10 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'           => 'field_615f0ea5ecd84',
-                        'label'         => _x('Lead Content', 'Curriculum','nvis-program-pages'),
+                        'label'         => _x('Lead Content', 'Curriculum','pedalcms'),
                         'name'          => 'curriculum_lead',
                         'type'          => 'wysiwyg',
-                        'instructions'  => __('This content goes before the list of curriculum sections.','nvis-program-pages'),
+                        'instructions'  => __('This content goes before the list of curriculum sections.','pedalcms'),
                         'default_value' => '',
                         'tabs'          => 'all',
                         'toolbar'       => 'full',
@@ -365,31 +365,31 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'          => 'field_615f0c5a22deb',
-                        'label'        => __('Curriculum Sections','nvis-program-pages'),
+                        'label'        => __('Curriculum Sections','pedalcms'),
                         'name'         => 'curriculum_sections',
                         'type'         => 'repeater',
                         'instructions' => '',
                         'collapsed'    => 'field_615f0c8022dec',
                         'layout'       => 'block',
-                        'button_label' => _x('Add Section','New section button label','nvis-program-pages'),
+                        'button_label' => _x('Add Section','New section button label','pedalcms'),
                         'sub_fields'   => [
                             [
                                 'key'          => 'field_615f0c8022dec',
-                                'label'        => __('Section Title','nvis-program-pages'),
+                                'label'        => __('Section Title','pedalcms'),
                                 'name'         => 'section_title',
                                 'type'         => 'text',
                                 'instructions' => '',
-                                'placeholder'  => __('Math Requirements, etc.','nvis-program-pages'),
+                                'placeholder'  => __('Math Requirements, etc.','pedalcms'),
                                 'prepend'      => '',
                                 'append'       => '',
                                 'maxlength'    => '',
                             ],
                             [
                                 'key'               => 'field_615f0cd622ded',
-                                'label'             => __('Section Content','nvis-program-pages'),
+                                'label'             => __('Section Content','pedalcms'),
                                 'name'              => 'section_content',
                                 'type'              => 'wysiwyg',
-                                'instructions'      => __('Some preamble or instructions about the courses below. For example, "Choose two of the following."','nvis-program-pages'),
+                                'instructions'      => __('Some preamble or instructions about the courses below. For example, "Choose two of the following."','pedalcms'),
                                 'required'          => 0,
                                 'conditional_logic' => 0,
                                 'wrapper'           => [
@@ -404,7 +404,7 @@ class Program extends CustomPostType {
                             ],
                             [
                                 'key'          => 'field_615f0d7322dee',
-                                'label'        => __('Section Courses','nvis-program-pages'),
+                                'label'        => __('Section Courses','pedalcms'),
                                 'name'         => 'section_courses',
                                 'type'         => 'relationship',
                                 'instructions' => '',
@@ -422,14 +422,14 @@ class Program extends CustomPostType {
                 ]
             ],
             'careers' => [
-                'title' => _x('Careers', 'Proper subpage title','nvis-program-pages'),
-                'aria_label' => __('Careers related to the current program','nvis-program-pages'),
+                'title' => _x('Careers', 'Proper subpage title','pedalcms'),
+                'aria_label' => __('Careers related to the current program','pedalcms'),
                 'order' => 20,
                 'builtin' => true,
                 'fields' => [
                     [
                         'key'           => 'field_61118a6ecb6c0',
-                        'label'         => __('Show Careers Section?','nvis-program-pages'),
+                        'label'         => __('Show Careers Section?','pedalcms'),
                         'name'          => 'show_careers_section',
                         'type'          => 'true_false',
                         'instructions'  => '',
@@ -441,7 +441,7 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'           => 'field_611275a9d4b74',
-                        'label'         => _x('Lead Content', 'Careers','nvis-program-pages'),
+                        'label'         => _x('Lead Content', 'Careers','pedalcms'),
                         'name'          => 'careers_lead',
                         'type'          => 'wysiwyg',
                         'instructions'  => '',
@@ -453,7 +453,7 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'          => 'field_6112754dd4b73',
-                        'label'        => __('Related Careers','nvis-program-pages'),
+                        'label'        => __('Related Careers','pedalcms'),
                         'name'         => 'related_program_careers',
                         'type'         => 'relationship',
                         'instructions' => '',
@@ -473,14 +473,14 @@ class Program extends CustomPostType {
                 ]
             ],
             'faculty-staff' => [
-                'title' => _x('Faculty & Staff','Proper subpage title','nvis-program-pages'),
-                'aria_label' => __('Faculty & staff related to the current program','nvis-program-pages'),
+                'title' => _x('Faculty & Staff','Proper subpage title','pedalcms'),
+                'aria_label' => __('Faculty & staff related to the current program','pedalcms'),
                 'order' => 30,
                 'builtin' => true,
                 'fields' => [
                     [
                         'key'           => 'field_613b63fa499ce',
-                        'label'         => __('Show Faculty & Staff Section?','nvis-program-pages'),
+                        'label'         => __('Show Faculty & Staff Section?','pedalcms'),
                         'name'          => 'show_faculty_staff_section',
                         'type'          => 'true_false',
                         'instructions'  => '',
@@ -492,7 +492,7 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'           => 'field_613b6446aae76',
-                        'label'         => _x('Lead Content', 'Faculty & Staff','nvis-program-pages'),
+                        'label'         => _x('Lead Content', 'Faculty & Staff','pedalcms'),
                         'name'          => 'faculty_staff_lead',
                         'type'          => 'wysiwyg',
                         'instructions'  => '',
@@ -504,7 +504,7 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'           => 'field_613b6ecd4687a',
-                        'label'         => __('Group by category?','nvis-program-pages'),
+                        'label'         => __('Group by category?','pedalcms'),
                         'name'          => 'faculty_staff_by_category',
                         'type'          => 'true_false',
                         'instructions'  => '',
@@ -516,7 +516,7 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'          => 'field_613b6de416aa1',
-                        'label'        => __('Related Faculty & Staff','nvis-program-pages'),
+                        'label'        => __('Related Faculty & Staff','pedalcms'),
                         'name'         => 'related_faculty_staff',
                         'type'         => 'relationship',
                         'instructions' => '',
@@ -537,13 +537,13 @@ class Program extends CustomPostType {
                 ]
             ],
             'cost' => [
-                'title' => _x('Cost','Proper subpage title','nvis-program-pages'),
+                'title' => _x('Cost','Proper subpage title','pedalcms'),
                 'order' => 40,
                 'builtin' => true,
                 'fields' => [
                     [
                         'key'           => 'field_6124eebb8a99e',
-                        'label'         => __('Show Cost Section?','nvis-program-pages'),
+                        'label'         => __('Show Cost Section?','pedalcms'),
                         'name'          => 'show_cost_section',
                         'type'          => 'true_false',
                         'instructions'  => '',
@@ -554,22 +554,22 @@ class Program extends CustomPostType {
                         'ui_off_text'   => '',
                     ],[
                         'key'           => 'field_617848545496b',
-                        'label'         => __('Estimated Cost Label','nvis-program-pages'),
+                        'label'         => __('Estimated Cost Label','pedalcms'),
                         'name'          => 'estimated_cost_label',
                         'type'          => 'text',
                         'instructions'  => '',
-                        'placeholder'   => _x('Estimated Cost', 'field placeholder','nvis-program-pages'),
+                        'placeholder'   => _x('Estimated Cost', 'field placeholder','pedalcms'),
                     ],
                     [
                         'key'               => 'field_6178492a5496c',
-                        'label'             => _x('Estimated Cost', 'field label','nvis-program-pages'),
+                        'label'             => _x('Estimated Cost', 'field label','pedalcms'),
                         'name'              => 'estimated_cost',
                         'type'              => 'text',
-                        'instructions'      => __('Leave blank to omit this field.','nvis-program-pages'),
+                        'instructions'      => __('Leave blank to omit this field.','pedalcms'),
                     ],
                     [
                         'key'           => 'field_61327ef17bf0d',
-                        'label'         => __('Cost Content','nvis-program-pages'),
+                        'label'         => __('Cost Content','pedalcms'),
                         'name'          => 'cost_content',
                         'type'          => 'wysiwyg',
                         'instructions'  => '',
@@ -582,13 +582,13 @@ class Program extends CustomPostType {
                 ]
             ],
             'apply' => [
-                'title' => _x('How to Apply','Proper subpage title','nvis-program-pages'),
+                'title' => _x('How to Apply','Proper subpage title','pedalcms'),
                 'order' => 50,
                 'builtin' => true,
                 'fields' => [
                     [
                         'key'           => 'field_611d69fb7f47f',
-                        'label'         => __('Show Apply Section?','nvis-program-pages'),
+                        'label'         => __('Show Apply Section?','pedalcms'),
                         'name'          => 'show_apply_section',
                         'type'          => 'true_false',
                         'instructions'  => '',
@@ -600,7 +600,7 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'           => 'field_611d6bfe199d9',
-                        'label'         => __('Apply Content','nvis-program-pages'),
+                        'label'         => __('Apply Content','pedalcms'),
                         'name'          => 'apply_content',
                         'type'          => 'wysiwyg',
                         'instructions'  => '',
@@ -613,14 +613,14 @@ class Program extends CustomPostType {
                 ]
             ],
             'faqs' => [
-                'title' => _x('FAQs','Proper subpage title','nvis-program-pages'),
-                'aria_label' => __('FAQs related to the current program','nvis-program-pages'),
+                'title' => _x('FAQs','Proper subpage title','pedalcms'),
+                'aria_label' => __('FAQs related to the current program','pedalcms'),
                 'order' => 60,
                 'builtin' => true,
                 'fields' => [
                     [
                         'key'           => 'field_61118aa8cb6c2',
-                        'label'         => __('Show FAQs Section?','nvis-program-pages'),
+                        'label'         => __('Show FAQs Section?','pedalcms'),
                         'name'          => 'show_faqs_section',
                         'type'          => 'true_false',
                         'instructions'  => '',
@@ -632,7 +632,7 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'           => 'field_6113d61abfe26',
-                        'label'         => __('Group FAQs by category?','nvis-program-pages'),
+                        'label'         => __('Group FAQs by category?','pedalcms'),
                         'name'          => 'faqs_by_category',
                         'type'          => 'true_false',
                         'instructions'  => '',
@@ -644,7 +644,7 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'           => 'field_6112760bd4b75',
-                        'label'         => _x('Lead Content', 'FAQs','nvis-program-pages'),
+                        'label'         => _x('Lead Content', 'FAQs','pedalcms'),
                         'name'          => 'faqs_lead',
                         'type'          => 'wysiwyg',
                         'instructions'  => '',
@@ -656,20 +656,20 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'          => 'field_61701a9d36062',
-                        'label'        => __('Related FAQs','nvis-program-pages'),
+                        'label'        => __('Related FAQs','pedalcms'),
                         'name'         => 'related_faqs_list',
                         'type'         => 'repeater',
                         'instructions' => '',
                         'collapsed'    => 'field_61701ac036063',
                         'layout'       => 'row',
-                        'button_label' => _x('Add Question', 'new question button label','nvis-program-pages'),
+                        'button_label' => _x('Add Question', 'new question button label','pedalcms'),
                         'sub_fields'   => [
                             [
                                 'key'           => 'field_61701ac036063',
-                                'label'         => __('FAQ Type','nvis-program-pages'),
+                                'label'         => __('FAQ Type','pedalcms'),
                                 'name'          => 'faq_type',
                                 'type'          => 'radio',
-                                'instructions'  => __('Select the type of FAQ you would like to add.','nvis-program-pages'),
+                                'instructions'  => __('Select the type of FAQ you would like to add.','pedalcms'),
                                 'required'      => 1,
                                 'layout'        => 'vertical',
                                 'return_format' => 'value',
@@ -680,10 +680,10 @@ class Program extends CustomPostType {
                             ],
                             [
                                 'key'               => 'field_61701bf236064',
-                                'label'             => _x('Global FAQ', 'faqs relevant to all programs','nvis-program-pages'),
+                                'label'             => _x('Global FAQ', 'faqs relevant to all programs','pedalcms'),
                                 'name'              => 'faq_post',
                                 'type'              => 'post_object',
-                                'instructions'      => __('Select the global question.','nvis-program-pages'),
+                                'instructions'      => __('Select the global question.','pedalcms'),
                                 'required'          => 1,
                                 'taxonomy'          => '',
                                 'allow_null'        => 0,
@@ -705,11 +705,11 @@ class Program extends CustomPostType {
                             ],
                             [
                                 'key'               => 'field_61701c8536065',
-                                'label'             => __('Question','nvis-program-pages'),
+                                'label'             => __('Question','pedalcms'),
                                 'name'              => 'question',
                                 'type'              => 'text',
-                                'instructions'      => __('Enter the question text.','nvis-program-pages'),
-                                'placeholder'       => _x('What is the question?', 'question field placeholder','nvis-program-pages'),
+                                'instructions'      => __('Enter the question text.','pedalcms'),
+                                'placeholder'       => _x('What is the question?', 'question field placeholder','pedalcms'),
                                 'required'          => 1,
                                 'conditional_logic' => [
                                     [
@@ -723,7 +723,7 @@ class Program extends CustomPostType {
                             ],
                             [
                                 'key'               => 'field_61701cc336066',
-                                'label'             => __('Answer','nvis-program-pages'),
+                                'label'             => __('Answer','pedalcms'),
                                 'name'              => 'answer',
                                 'type'              => 'wysiwyg',
                                 'instructions'      => '',
@@ -745,7 +745,7 @@ class Program extends CustomPostType {
                             ],
                             [
                                 'key'               => 'field_61701cf336067',
-                                'label'             => __('Category','nvis-program-pages'),
+                                'label'             => __('Category','pedalcms'),
                                 'name'              => 'faq_category',
                                 'type'              => 'taxonomy',
                                 'instructions'      => '',
@@ -778,14 +778,14 @@ class Program extends CustomPostType {
                 ]
             ],
             'news' => [
-                'title' => _x('News','Proper subpage title','nvis-program-pages'),
-                'aria_label' => __('News related to the current program','nvis-program-pages'),
+                'title' => _x('News','Proper subpage title','pedalcms'),
+                'aria_label' => __('News related to the current program','pedalcms'),
                 'order' => 70,
                 'builtin' => true,
                 'fields' => [
                     [
                         'key'           => 'field_611fdfdc20be6',
-                        'label'         => __('Show News Section?','nvis-program-pages'),
+                        'label'         => __('Show News Section?','pedalcms'),
                         'name'          => 'show_news_section',
                         'type'          => 'true_false',
                         'instructions'  => '',
@@ -797,10 +797,10 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'           => 'field_611fe01c20be7',
-                        'label'         => _x('News Tag', 'tag of related news','nvis-program-pages'),
+                        'label'         => _x('News Tag', 'tag of related news','pedalcms'),
                         'name'          => 'news_tag',
                         'type'          => 'taxonomy',
-                        'instructions'  => __('The tag that should associate posts with this program.','nvis-program-pages'),
+                        'instructions'  => __('The tag that should associate posts with this program.','pedalcms'),
                         'taxonomy'      => 'post_tag',
                         'field_type'    => 'select',
                         'allow_null'    => 1,
@@ -817,10 +817,10 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'           => 'field_6124f029ff016',
-                        'label'         => __('Number of Posts','nvis-program-pages'),
+                        'label'         => __('Number of Posts','pedalcms'),
                         'name'          => 'news_num_posts',
                         'type'          => 'number',
-                        'instructions'  => __('Number of posts to show on this subpage. Set to -1 to show all.','nvis-program-pages'),
+                        'instructions'  => __('Number of posts to show on this subpage. Set to -1 to show all.','pedalcms'),
                         'default_value' => 10,
                         'placeholder'   => '10',
                         'min'           => -1,
@@ -833,10 +833,10 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'           => 'field_6124f184ff017',
-                        'label'         => __('Show link to all posts?','nvis-program-pages'),
+                        'label'         => __('Show link to all posts?','pedalcms'),
                         'name'          => 'news_show_all_link',
                         'type'          => 'true_false',
-                        'instructions'  => __('Link to the tag archive view at the bottom of the list?','nvis-program-pages'),
+                        'instructions'  => __('Link to the tag archive view at the bottom of the list?','pedalcms'),
                         'default_value' => 1,
                         'ui'            => 1,
                         'wrapper'       => [
@@ -847,10 +847,10 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'          => 'field_61263568d2f46',
-                        'label'        => __('Featured Posts','nvis-program-pages'),
+                        'label'        => __('Featured Posts','pedalcms'),
                         'name'         => 'news_featured_posts',
                         'type'         => 'post_object',
-                        'instructions' => __('Select posts to keep at the top of the news subpage.','nvis-program-pages'),
+                        'instructions' => __('Select posts to keep at the top of the news subpage.','pedalcms'),
                         'post_type'    => [
                             0 => 'post',
                         ],
@@ -861,10 +861,10 @@ class Program extends CustomPostType {
                     ],
                     [
                         'key'           => 'field_611fdfd220be5',
-                        'label'         => _x('Lead Content', 'News','nvis-program-pages'),
+                        'label'         => _x('Lead Content', 'News','pedalcms'),
                         'name'          => 'news_lead',
                         'type'          => 'wysiwyg',
-                        'instructions'  => __('Content to appear at the top of the page, before the posts.','nvis-program-pages'),
+                        'instructions'  => __('Content to appear at the top of the page, before the posts.','pedalcms'),
                         'default_value' => '',
                         'tabs'          => 'all',
                         'toolbar'       => 'full',
