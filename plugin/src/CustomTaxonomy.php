@@ -1,6 +1,6 @@
 <?php
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 /**
  * Base class for common custom taxonomy tasks in WordPress.

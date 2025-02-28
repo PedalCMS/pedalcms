@@ -1,6 +1,6 @@
 <?php
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 /**
  * Job Title custom block.

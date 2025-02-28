@@ -6,7 +6,7 @@
  * @since 0.1.0
  */
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\register_assets', 0);
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets');

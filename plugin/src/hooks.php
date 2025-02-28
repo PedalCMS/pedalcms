@@ -6,7 +6,7 @@
  * @since 0.1.0
  */
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 add_filter('register_taxonomy_args', __NAMESPACE__ . '\options_register_taxonomy_args', 5, 2);
 add_filter('registered_taxonomy', __NAMESPACE__ . '\options_registered_taxonomy', 5, 2);
 add_filter('document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 3);

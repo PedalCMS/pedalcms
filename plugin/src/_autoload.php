@@ -8,7 +8,7 @@
 
 spl_autoload_register(function ($class) {
     // project-specific namespace prefix
-    $prefix = 'InvisibleUs\\Programs\\';
+    $prefix = 'PedalCMS\\Core\\';
 
     // base directory for the namespace prefix
     $base_dir = __DIR__ . '/';

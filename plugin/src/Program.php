@@ -1,6 +1,6 @@
 <?php
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 /**
  * Program custom post type.
@@ -969,7 +969,7 @@ class Program extends CustomPostType {
             return $url;
         }
 
-        $url = \InvisibleUs\Programs\Plugin::get_option('url_' . $action);
+        $url = \PedalCMS\Core\Plugin::get_option('url_' . $action);
 
         if ($url) {
             $url = str_replace(

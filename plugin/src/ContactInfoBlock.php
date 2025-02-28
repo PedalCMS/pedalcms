@@ -1,6 +1,6 @@
 <?php
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 /**
  * Contact Info custom block.

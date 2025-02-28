@@ -1,6 +1,6 @@
 <?php
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 define('NVISP_FREEMIUS_START', dirname(__FILE__) . '/freemius/start.php');
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 add_action('init', __NAMESPACE__ . '\add_shortcodes');
 

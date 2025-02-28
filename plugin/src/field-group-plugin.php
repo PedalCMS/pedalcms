@@ -1,5 +1,5 @@
 <?php
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 $field_group = [
     'key'      => 'group_624ed9cd20260',

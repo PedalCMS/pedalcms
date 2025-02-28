@@ -12,7 +12,7 @@
  * @since 0.1.0
  */
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 // Breadcrumb NavXT support.
 add_action('bcn_before_fill', __NAMESPACE__ . '\navxt_add_subpage');

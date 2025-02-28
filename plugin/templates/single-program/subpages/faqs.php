@@ -21,7 +21,7 @@ $args = nvis_parse_template_args($args, $defaults, $template);
 $faqs = $args['faqs'];
 
 if ($faqs) {
-    $faqs = \InvisibleUs\Programs\FAQ::normalize_faq_types($faqs, $args['group_by_category']);
+    $faqs = \PedalCMS\Core\FAQ::normalize_faq_types($faqs, $args['group_by_category']);
 }
 
 if ($args['show_subpage']) : ?>

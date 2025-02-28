@@ -6,7 +6,7 @@
  * @since 0.1.0
  */
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 add_action('plugins_loaded', __NAMESPACE__ . '\maybe_load_acf', 0);
 add_action('acf/init', __NAMESPACE__ . '\acf_init');

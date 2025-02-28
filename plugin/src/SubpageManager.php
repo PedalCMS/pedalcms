@@ -1,6 +1,6 @@
 <?php
 
-namespace InvisibleUs\Programs;
+namespace PedalCMS\Core;
 
 /**
  * Handles all functionality related to Subpages.
@@ -29,7 +29,7 @@ class SubpageManager {
     private $query_var = 'nvis_subpage';
 
     /**
-     * List of registered {@see \InvisibleUs\Programs\Subpage} objects, all of which are enabled.
+     * List of registered {@see \PedalCMS\Core\Subpage} objects, all of which are enabled.
      *
      * @since 0.1.0
      * 
@@ -38,7 +38,7 @@ class SubpageManager {
     private $subpages = [];
 
     /**
-     * List of all builtin {@see \InvisibleUs\Programs\Subpage} objects, whether enabled or not.
+     * List of all builtin {@see \PedalCMS\Core\Subpage} objects, whether enabled or not.
      * 
      * @since 0.1.0
      * 
@@ -101,7 +101,7 @@ class SubpageManager {
      * to the active list but all are added to the builtin list.
      *
      * @param Subpage $subpage The subpage to register. 
-     * @return mixed The registered {@see \InvisibleUs\Programs\Subpage} object on success. WP_Error on failure.
+     * @return mixed The registered {@see \PedalCMS\Core\Subpage} object on success. WP_Error on failure.
      */
     public function add_subpage(Subpage $subpage) {
         if ($subpage->is_builtin()) {
@@ -421,7 +421,7 @@ class SubpageManager {
     }
 
     /**
-     * Retrieves a {@see \InvisibleUs\Programs\Subpage} object from the list of
+     * Retrieves a {@see \PedalCMS\Core\Subpage} object from the list of
      * registered subpages. 
      * 
      * If supplied a Subpage object, it will simply return it whether or not 
@@ -429,7 +429,7 @@ class SubpageManager {
      * 
      * @since 0.1.0
      *
-     * @param mixed $subpage Either a string slug of a subpage or a {@see \InvisibleUs\Programs\Subpage} object.
+     * @param mixed $subpage Either a string slug of a subpage or a {@see \PedalCMS\Core\Subpage} object.
      * @param boolean $search_builtin Whether or no to include builtin subpages which may be disabled. Defaults to false. 
      * @return mixed A Subpage object on success, WP_Error on failure. 
      */
@@ -475,7 +475,7 @@ class SubpageManager {
      * 
      * @since 0.1.0
      *
-     * @param mixed $subpage Either a InvisibleUs\Programs\Subpage or the slug of one.
+     * @param mixed $subpage Either a PedalCMS\Core\Subpage or the slug of one.
      * @return boolean
      */
     public function maybe_show_subpage($subpage): bool {
