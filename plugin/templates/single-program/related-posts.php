@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 
 $defaults = [
     'featured_posts'       => null,
@@ -17,10 +17,10 @@ $defaults = [
     'news_tag'             => get_field('news_tag', $post),
     'show_all_posts_link'  => get_field('news_show_all_link', $post),
     'label_all_posts'      => pdl_get_label('show_all_posts'),
-    'label_no_posts_found' => nvis_get_post_type_label('post', 'not_found'),
+    'label_no_posts_found' => pdl_get_post_type_label('post', 'not_found'),
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 $featured_posts = $args['featured_posts'] ?? get_field('news_featured_posts', $post);
 $posts = $args['posts'];

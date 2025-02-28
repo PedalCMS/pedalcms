@@ -13,7 +13,7 @@ $defaults = [
     'label_no_programs_found' => pdl_get_label('no_programs_found')
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 ?>
 <section class="programs-list">

@@ -9,7 +9,7 @@ $defaults = [
     'featured_img' => null,
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 $featured_img = $args['featured_img'];
 $term = $args['term'];
 
@@ -21,7 +21,7 @@ $classes = [
     'featured-image',
     'term__image',
     $args['wrapper_class'],
-    nvis_get_align_class($args['image_align']),
+    pdl_get_align_class($args['image_align']),
 ];
 
 $classes[] = !$featured_img ? 'term__image--placeholder' : '';

@@ -2,7 +2,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 
 $defaults = [
     'attachment_id'    => 0,
@@ -11,7 +11,7 @@ $defaults = [
     'fallback_to_post' => true,
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 if (empty($args['attachment_id']) && $args['fallback_to_post']) {
     $args['attachment_id'] = get_post_thumbnail_id($post);

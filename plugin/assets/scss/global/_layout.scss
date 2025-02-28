@@ -1,6 +1,6 @@
 @use '../common/variables' as *;
 
-.nvis-template {
+.pdl-template {
   margin: var(--nvis-spacing-2x) auto;
   width: 100%;
 }
@@ -49,7 +49,7 @@
   }
 }
 
-.nvis-template .page-header {
+.pdl-template .page-header {
   margin: 0 0 var(--nvis-spacing-2x);
   width: 100%;
 }
@@ -76,12 +76,12 @@
 }
 
 
-.nvis-template .num-results {
+.pdl-template .num-results {
   font-size: 0.9em;
   margin: var(--nvis-spacing-2x) 0;
 }
 
-.nvis-template .pagination {
+.pdl-template .pagination {
   margin: var(--nvis-spacing-2x) 0;
 }
 

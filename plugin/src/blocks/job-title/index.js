@@ -6,7 +6,7 @@
   var useEntityProp = wp.coreData.useEntityProp;
   var useBlockProps = wp.blockEditor.useBlockProps;
 
-  registerBlockType('nvis/job-title', {
+  registerBlockType('pdl/job-title', {
     title: 'Job Title',
     edit: function (props) {
       var blockProps = useBlockProps();

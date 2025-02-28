@@ -16,7 +16,7 @@ $defaults = [
     'image_align'      => 'right',
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 ?>
 <section
@@ -25,7 +25,7 @@ $args = nvis_parse_template_args($args, $defaults, $template);
   <div class="page-header__content">
     <?php 
     if ($args['show_image']) :
-      if (is_tax() && !nvis_is_filtered_results(pdl_get_post_types())) :
+      if (is_tax() && !pdl_is_filtered_results(pdl_get_post_types())) :
         pdl_get_template_part('common/term-featured-image', $args);
       else:
         pdl_get_template_part('common/post-type-featured-image', $args);

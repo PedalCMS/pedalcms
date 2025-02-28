@@ -1,6 +1,6 @@
 @use '../common/variables' as *;
 
-.nvis-template .back-to-top {
+.pdl-template .back-to-top {
   background: #333;
   border-radius: 3px;
   color: #fff;
@@ -69,13 +69,13 @@
   width: fit-content;
 }
 
-.nvis-template .nvis-post-filters button {
+.pdl-template .nvis-post-filters button {
   font-size: 14px;
   line-height: 1;
   padding: 8px 16px;
 }
 
-.nvis-template .nvis-post-filters .reset-link {
+.pdl-template .nvis-post-filters .reset-link {
   --focus-outline: dotted 2px currentColor;
   color: #fff;
   text-decoration: none;

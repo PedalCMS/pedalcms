@@ -6,43 +6,43 @@
   margin-bottom: 0;
 }
 
-.nvis-template .program-subpage-careers .career {
+.pdl-template .program-subpage-careers .career {
   display: block;
   margin-bottom: calc(2 * var(--nvis-spacing-2x));
   padding: 0;
 }
 
-.nvis-template .program-subpage-careers .career-header {
+.pdl-template .program-subpage-careers .career-header {
   border-bottom: solid 1px #ccc;
   margin-bottom: var(--nvis-spacing);
   padding: 0;
   width: 100%;
 }
 
-.nvis-template .program-subpage-careers .career-header a {
+.pdl-template .program-subpage-careers .career-header a {
   color: var(--nvis-active-color);
   text-decoration: none;
 }
 
-.nvis-template .program-subpage-careers .career-header a:hover {
+.pdl-template .program-subpage-careers .career-header a:hover {
   color: inherit;
   text-decoration: underline;
 }
 
-.nvis-template .program-subpage-careers .career-title {
+.pdl-template .program-subpage-careers .career-title {
   margin: 0;
 }
 
-.nvis-template .program-subpage-careers .career-content {
+.pdl-template .program-subpage-careers .career-content {
   margin: 0 0 var(--nvis-spacing-2x);
   width: 100%;
 }
 
-.nvis-template .program-subpage-careers .career-quick-stats table {
+.pdl-template .program-subpage-careers .career-quick-stats table {
   margin: 0;
 }
 
-.nvis-template .program-subpage-careers .career-footer {
+.pdl-template .program-subpage-careers .career-footer {
   width: fit-content;
 }
 
@@ -54,11 +54,11 @@
   margin-bottom: var(--nvis-spacing);
 }
 
-.nvis_program .courses-table {
+.pdl_program .courses-table {
   margin-bottom: var(--nvis-spacing-2x);
 }
 
-.nvis_program .courses-table thead {
+.pdl_program .courses-table thead {
   th:first-child {
     text-align: left;
   }
@@ -68,7 +68,7 @@
   }
 }
 
-.nvis_program .courses-table tbody tr td:nth-child(2) {
+.pdl_program .courses-table tbody tr td:nth-child(2) {
   text-align: center;
 }
 
@@ -81,7 +81,7 @@
   margin: 0 0 var(--nvis-spacing-4x);
 }
 
-.program-faculty-staff-list .person-list .nvis_person {
+.program-faculty-staff-list .person-list .pdl_person {
   padding: 0;
 }
 

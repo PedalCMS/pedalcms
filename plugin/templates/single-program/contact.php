@@ -13,10 +13,10 @@ $defaults = [
     'action'                => 'contact',
     'label_program_contact' => pdl_get_label('program_contact'),
     'label_contact_action'  => pdl_get_label('contact_action'),
-    'contacts'              => post_type_exists('nvis_person') ? get_field('related_contacts') : [],
+    'contacts'              => post_type_exists('pdl_person') ? get_field('related_contacts') : [],
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 $action_url = pdl_get_action_link($args['action']);
 
 if (is_array($args['contacts']) && !empty($args['contacts'])) :

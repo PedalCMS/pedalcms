@@ -21,7 +21,7 @@ $defaults = [
     'breadcrumb_wrapper_class' => 'breadcrumbs'
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 if ($args['show_breadcrumbs']) :
 /**
@@ -32,7 +32,7 @@ if ($args['show_breadcrumbs']) :
  * @param $args The array of args for the template.
  *
  */
-do_action('nvis/programs/before_breadcrumbs', $args);
+do_action('pdl/before_breadcrumbs', $args);
 ?>
 <div id="<?php echo esc_attr($args['breadcrumb_wrapper_id']); ?>"
     class="nvis-breadcrumbs <?php echo esc_attr($args['breadcrumb_wrapper_class']); ?>">
@@ -57,6 +57,6 @@ do_action('nvis/programs/before_breadcrumbs', $args);
  * @param $args The array of args for the template.
  *
  */
-do_action('nvis/programs/after_breadcrumbs', $args);
+do_action('pdl/after_breadcrumbs', $args);
 
 endif;

@@ -20,7 +20,7 @@ $defaults = [
     'label_missing_filters_data' => pdl_get_label('missing_filters_data'),
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 $classes = [
     'nvis-post-filters',
@@ -34,7 +34,7 @@ $classes = [
  *
  * @param array $args The args passed to the template: a list of filters and the post_type.
  */
-do_action('nvis/programs/before_filters_form', $args);
+do_action('pdl/before_filters_form', $args);
 
 
 if (!empty($args['filters']) && !empty($args['post_type'])) :
@@ -46,7 +46,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
      * @param array $filters The list of search filters to display.
      * @param string $post_type The post_type arg passed to the template.
      */
-    $filters = apply_filters('nvis/programs/search_filters', $args['filters'], $args['post_type']);
+    $filters = apply_filters('pdl/search_filters', $args['filters'], $args['post_type']);
 ?>
 <form
     action="<?php echo get_post_type_archive_link($args['post_type']); ?>"
@@ -64,7 +64,7 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
          *
          * @param array $args The args passed to the template: a list of filters and the post_type.
          */
-        do_action('nvis/programs/before_filters_fields', $args);
+        do_action('pdl/before_filters_fields', $args);
 
         foreach ($filters as $i => $filter):
             if ($i === $args['break_filters_after']):
@@ -97,13 +97,13 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
          *
          * @param array $args The args passed to the template: a list of filters and the post_type.
          */
-        do_action('nvis/programs/after_filters_fields', $args);
+        do_action('pdl/after_filters_fields', $args);
         ?>
                 </div>
     </fieldset>
     <div class="actions">
         <button class="button" type="submit"><?php echo esc_html($args['label_apply_filters']); ?></button>
-        <?php if (nvis_is_filtered_results($args['post_type'])): ?>
+        <?php if (pdl_is_filtered_results($args['post_type'])): ?>
         <a class="reset-link"
             href="<?php echo get_post_type_archive_link($args['post_type']); ?>"><?php echo esc_html($args['label_reset_filters']); ?></a>
         <?php endif; ?>
@@ -119,4 +119,4 @@ endif;
  *
  * @param array $args The args passed to the template: a list of filters and the post_type.
  */
-do_action('nvis/programs/after_filters_form', $args);
+do_action('pdl/after_filters_form', $args);

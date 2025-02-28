@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 
 $defaults = [
     'show_image'           => true,
@@ -20,7 +20,7 @@ $defaults = [
     'wrapper_class'        => ''
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 if ($post) : ?>
 <article <?php post_class($args['wrapper_class'], $post); ?>>
@@ -36,8 +36,8 @@ if ($post) : ?>
             <h2 class="program-title entry-title"><a
                     href="<?php echo get_the_permalink($post); ?>"><?php echo get_the_title($post); ?></a></h2>
             <?php
-            if ($args['show_program_type'] && taxonomy_exists('nvis_program_type')) :
-                echo nvis_get_the_term_list($post, 'nvis_program_type', '<div class="program-type">', ',', '</div>', $args['link_terms']);
+            if ($args['show_program_type'] && taxonomy_exists('pdl_program_type')) :
+                echo pdl_get_the_term_list($post, 'pdl_program_type', '<div class="program-type">', ',', '</div>', $args['link_terms']);
             endif;
             ?>
         </header>

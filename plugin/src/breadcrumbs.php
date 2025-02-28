@@ -48,7 +48,7 @@ function get_archive_crumb(): array {
 
     if ($found) {
         return [
-            'text' => nvis_get_post_type_label($post_type, 'breadcrumb_label') ?? post_type_archive_title('', false),
+            'text' => pdl_get_post_type_label($post_type, 'breadcrumb_label') ?? post_type_archive_title('', false),
             'url'  => get_post_type_archive_link($post_type)
         ];
     }
@@ -83,7 +83,7 @@ function get_filtered_results_breadcrumb_label(): string {
      * 
      * @param $label The breadcrumb label. 
      */
-     return apply_filters('nvis/filtered_results_breadcrumb_label', Plugin::get_label('filtered_results'));
+     return apply_filters('pdl/filtered_results_breadcrumb_label', Plugin::get_label('filtered_results'));
 }
 
 /**
@@ -112,7 +112,7 @@ function navxt_add_subpage(object $trail): void {
  * @return void
  */
 function navxt_replace_archive_trail(object $trail) {
-    if (nvis_is_filtered_results(Plugin::post_types())) {
+    if (pdl_is_filtered_results(Plugin::post_types())) {
         if ($trail->opt['bhome_display']) {
             $home = array_pop($trail->breadcrumbs);
         }
@@ -178,7 +178,7 @@ function yoast_update_trail(array $crumbs): array {
         return yoast_add_subpage($crumbs);
     }
 
-    if (nvis_is_filtered_results(Plugin::post_types())) {
+    if (pdl_is_filtered_results(Plugin::post_types())) {
         return yoast_replace_trail($crumbs);
     }
 
@@ -229,7 +229,7 @@ function aioseo_update_trail(array $crumbs): array {
         return aioseo_add_subpage($crumbs);
     }
 
-    if (nvis_is_filtered_results(Plugin::post_types())) {
+    if (pdl_is_filtered_results(Plugin::post_types())) {
         return aioseo_replace_trail($crumbs);
     }
 
@@ -293,7 +293,7 @@ function rankmath_update_trail(array $crumbs, \RankMath\Frontend\Breadcrumbs $cl
         return rankmath_add_subpage($crumbs);
     }
 
-    if (nvis_is_filtered_results(Plugin::post_types())) {
+    if (pdl_is_filtered_results(Plugin::post_types())) {
         return rankmath_replace_trail($crumbs);
     }
 

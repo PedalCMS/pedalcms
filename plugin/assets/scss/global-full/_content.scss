@@ -17,7 +17,7 @@ section:target > h2 {
   }
 }
 
-body .nvis-template .button {
+body .pdl-template .button {
   background-color: var(--nvis-active-color);
   color: var(--nvis-active-color-text);
   font-size: 16px;
@@ -29,20 +29,20 @@ body .nvis-template .button {
   text-transform: none;
 }
 
-body .nvis-template .button-secondary {
+body .pdl-template .button-secondary {
   background-color: transparent;
   border: solid 2px;
   color: var(--nvis-active-color);
 }
 
-body .nvis-template .button:hover,
-body .nvis-template .button-secondary:hover {
+body .pdl-template .button:hover,
+body .pdl-template .button-secondary:hover {
   background-color: #333;
   border-color: #333;
   color: #fff;
 }
 
-.archive .nvis-template .entry-title {
+.archive .pdl-template .entry-title {
   font-size: 1.75em;
   font-weight: bold;
   line-height: 1.1;
@@ -53,7 +53,7 @@ body .nvis-template .button-secondary:hover {
   }
 }
 
-.archive .nvis-template article header a {
+.archive .pdl-template article header a {
   color: var(--nvis-active-color);
   text-decoration: none;
 
@@ -63,7 +63,7 @@ body .nvis-template .button-secondary:hover {
   }
 }
 
-.single .nvis-template article:not(article article) {
+.single .pdl-template article:not(article article) {
   --article-padding: var(--header-padding);
   border-radius: 0 0 3px 3px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);

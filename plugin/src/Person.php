@@ -13,7 +13,7 @@ class Person extends CustomPostType {
     /**
      * The post type to register.
      */
-    public const POST_TYPE = 'nvis_person';
+    public const POST_TYPE = 'pdl_person';
 
     /**
      * The args to pass to register_post_type.
@@ -85,14 +85,14 @@ class Person extends CustomPostType {
         $this->args['template'] = [
             [ 'core/columns', [], [
                 [ 'core/column', ['width' => '66.66%'], [
-                    ['nvis/job-title'],
+                    ['pdl/job-title'],
                     [ 'core/paragraph', [
                         'placeholder' => __('Add some bio text …', 'pedalcms'),
                     ] ],
                 ] ],
                 [ 'core/column', ['width' => '33.33%'], [
                     ['core/post-featured-image'],
-                    ['nvis/contact-info']
+                    ['pdl/contact-info']
                 ] ],
             ] ],
         ];

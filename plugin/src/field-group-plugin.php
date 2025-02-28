@@ -42,7 +42,7 @@ $field_group = [
         [
             'key'               => 'field_625433ee9f135',
             'label'             => __('Presentation Mode', 'pedalcms'),
-            'name'              => 'nvis_presentation_mode',
+            'name'              => 'pdl_presentation_mode',
             'type'              => 'radio',
             'instructions'      => __('Choose the amount of design and styling you want applied (CSS). Additional options will be available when Tuxedo Mode is active.', 'pedalcms'),
             'required'          => 0,
@@ -67,7 +67,7 @@ $field_group = [
         [
             'key'               => 'field_62557df514811',
             'label'             => __('Active Color', 'pedalcms'),
-            'name'              => 'nvis_active_color',
+            'name'              => 'pdl_active_color',
             'type'              => 'color_picker',
             'instructions'      => __('The color to be used for links and buttons.', 'pedalcms'),
             'required'          => 0,
@@ -84,7 +84,7 @@ $field_group = [
         [
             'key'               => 'field_625580b4f4863',
             'label'             => __('Button Text Color', 'pedalcms'),
-            'name'              => 'nvis_active_color_text',
+            'name'              => 'pdl_active_color_text',
             'type'              => 'color_picker',
             'instructions'      => __('The color to be used for text on buttons. Set this if white does not provide enough contrast to your active color.', 'pedalcms'),
             'required'          => 0,
@@ -101,7 +101,7 @@ $field_group = [
         [
             'key'               => 'field_62509138296eb',
             'label'             => __('Header Image Size', 'pedalcms'),
-            'name'              => 'nvis_image_size_header',
+            'name'              => 'pdl_image_size_header',
             'type'              => 'select',
             'instructions'      => '',
             'required'          => 0,
@@ -131,7 +131,7 @@ $field_group = [
         [
             'key'               => 'field_62508f3960c31',
             'label'             => __('Width', 'pedalcms'),
-            'name'              => 'nvis_image_size_header_w',
+            'name'              => 'pdl_image_size_header_w',
             'type'              => 'number',
             'instructions'      => '',
             'required'          => 0,
@@ -160,7 +160,7 @@ $field_group = [
         [
             'key'               => 'field_62508f9960c32',
             'label'             => __('Height', 'pedalcms'),
-            'name'              => 'nvis_image_size_header_h',
+            'name'              => 'pdl_image_size_header_h',
             'type'              => 'number',
             'instructions'      => '',
             'required'          => 0,
@@ -189,7 +189,7 @@ $field_group = [
         [
             'key'               => 'field_624f4b5fecfea',
             'label'             => __('Display Breadcrumbs', 'pedalcms'),
-            'name'              => 'nvis_display_breadcrumbs',
+            'name'              => 'pdl_display_breadcrumbs',
             'type'              => 'true_false',
             'instructions'      => __('Disable this if you have two showing up.', 'pedalcms'),
             'required'          => 0,
@@ -208,7 +208,7 @@ $field_group = [
         [
             'key'               => 'field_62543575ecebe',
             'label'             => __('Main Content Wrapper Tag', 'pedalcms'),
-            'name'              => 'nvis_main_content_wrapper_tag',
+            'name'              => 'pdl_main_content_wrapper_tag',
             'type'              => 'select',
             'instructions'      => __('Switch to "main" to fix accessibility issues with some themes.', 'pedalcms'),
             'required'          => 0,
@@ -250,7 +250,7 @@ $field_group = [
         [
             'key'               => 'field_624f23fdaf6a2',
             'label'             => __('Configure Program Listings', 'pedalcms'),
-            'name'              => 'nvis_program_archive',
+            'name'              => 'pdl_program_archive',
             'type'              => 'group',
             'instructions'      => __('Configuration options for searching and browsing the list of programs.', 'pedalcms'),
             'required'          => 0,
@@ -426,7 +426,7 @@ $field_group = [
         [
             'key'               => 'field_62542e1c55d3a',
             'label'             => __('Configure Programs', 'pedalcms'),
-            'name'              => 'nvis_program',
+            'name'              => 'pdl_program',
             'type'              => 'group',
             'instructions'      => __('Configuration options for individual programs.', 'pedalcms'),
             'required'          => 0,
@@ -666,7 +666,7 @@ $field_group = [
         [
             'key'               => 'field_6259af11ee00e',
             'label'             => __('Enabled Subpages', 'pedalcms'),
-            'name'              => 'nvis_enable_subpages_nvis_program',
+            'name'              => 'pdl_enable_subpages_pdl_program',
             'type'              => 'checkbox',
             'instructions'      => __('This enables subpages for all programs but any subpage can be disabled per program as well.', 'pedalcms'),
             'required'          => 0,
@@ -696,7 +696,7 @@ $field_group = [
         [
             'key'               => 'field_62587e6f4d704',
             'label'             => __('Careers', 'pedalcms'),
-            'name'              => 'nvis_program_subpage_careers',
+            'name'              => 'pdl_program_subpage_careers',
             'type'              => 'group',
             'instructions'      => __('Configuration options for the Careers program subpage.', 'pedalcms'),
             'required'          => 0,
@@ -722,9 +722,9 @@ $field_group = [
                         'id'    => '',
                     ],
                     'choices' => [
-                        'nvis_career' => 'nvis_career',
+                        'pdl_career' => 'pdl_career',
                     ],
-                    'default_value' => 'nvis_career',
+                    'default_value' => 'pdl_career',
                     'allow_null'    => 1,
                     'multiple'      => 0,
                     'ui'            => 0,
@@ -775,7 +775,7 @@ $field_group = [
         [
             'key'               => 'field_625882003b476',
             'label'             => __('Curriculum', 'pedalcms'),
-            'name'              => 'nvis_program_subpage_curriculum',
+            'name'              => 'pdl_program_subpage_curriculum',
             'type'              => 'group',
             'instructions'      => '',
             'required'          => 0,
@@ -849,7 +849,7 @@ $field_group = [
         [
             'key'               => 'field_6258827f3b47b',
             'label'             => __('Faculty & Staff', 'pedalcms'),
-            'name'              => 'nvis_program_subpage_faculty_staff',
+            'name'              => 'pdl_program_subpage_faculty_staff',
             'type'              => 'group',
             'instructions'      => '',
             'required'          => 0,
@@ -904,7 +904,7 @@ $field_group = [
         [
             'key'               => 'field_625d9c82d65d9',
             'label'             => __('Cost', 'pedalcms'),
-            'name'              => 'nvis_program_subpage_cost',
+            'name'              => 'pdl_program_subpage_cost',
             'type'              => 'group',
             'instructions'      => '',
             'required'          => 0,
@@ -959,7 +959,7 @@ $field_group = [
         [
             'key'               => 'field_625d9cafd65dc',
             'label'             => __('How to Apply', 'pedalcms'),
-            'name'              => 'nvis_program_subpage_apply',
+            'name'              => 'pdl_program_subpage_apply',
             'type'              => 'group',
             'instructions'      => '',
             'required'          => 0,
@@ -1014,7 +1014,7 @@ $field_group = [
         [
             'key'               => 'field_625d9f712f83a',
             'label'             => __('FAQs', 'pedalcms'),
-            'name'              => 'nvis_program_subpage_faqs',
+            'name'              => 'pdl_program_subpage_faqs',
             'type'              => 'group',
             'instructions'      => '',
             'required'          => 0,
@@ -1069,7 +1069,7 @@ $field_group = [
         [
             'key'               => 'field_625d9fc572843',
             'label'             => __('News', 'pedalcms'),
-            'name'              => 'nvis_program_subpage_news',
+            'name'              => 'pdl_program_subpage_news',
             'type'              => 'group',
             'instructions'      => '',
             'required'          => 0,
@@ -1140,7 +1140,7 @@ $field_group = [
         [
             'key'               => 'field_624f2bf176f96',
             'label'             => __('Enable this Feature', 'pedalcms'),
-            'name'              => 'nvis_course_enable',
+            'name'              => 'pdl_course_enable',
             'type'              => 'true_false',
             'instructions'      => __('If you\'re not going to use this feature, you should disable it.', 'pedalcms'),
             'required'          => 0,
@@ -1159,7 +1159,7 @@ $field_group = [
         [
             'key'               => 'field_624f2bf176f95',
             'label'             => __('Configure Course Catalog', 'pedalcms'),
-            'name'              => 'nvis_course_archive',
+            'name'              => 'pdl_course_archive',
             'type'              => 'group',
             'instructions'      => __('Configuration options for searching and browsing the list of courses.', 'pedalcms'),
             'required'          => 0,
@@ -1318,7 +1318,7 @@ $field_group = [
         [
             'key'               => 'field_625430e759b18',
             'label'             => __('Configure Courses', 'pedalcms'),
-            'name'              => 'nvis_course',
+            'name'              => 'pdl_course',
             'type'              => 'group',
             'instructions'      => __('Configuration options for individual courses.', 'pedalcms'),
             'required'          => 0,
@@ -1443,7 +1443,7 @@ $field_group = [
         [
             'key'               => 'field_624f2b2a695af',
             'label'             => __('Enable this Feature', 'pedalcms'),
-            'name'              => 'nvis_person_enable',
+            'name'              => 'pdl_person_enable',
             'type'              => 'true_false',
             'instructions'      => __('If you\'re not going to use this feature, you should disable it.', 'pedalcms'),
             'required'          => 0,
@@ -1462,7 +1462,7 @@ $field_group = [
         [
             'key'               => 'field_624f2b16695aa',
             'label'             => __('Configure Faculty & Staff Directory', 'pedalcms'),
-            'name'              => 'nvis_person_archive',
+            'name'              => 'pdl_person_archive',
             'type'              => 'group',
             'instructions'      => __('Configuration options for searching and browsing the list of personnel.', 'pedalcms'),
             'required'          => 0,
@@ -1619,7 +1619,7 @@ $field_group = [
         [
             'key'               => 'field_625436e5d0dba',
             'label'             => __('Configure Personnel', 'pedalcms'),
-            'name'              => 'nvis_person',
+            'name'              => 'pdl_person',
             'type'              => 'group',
             'instructions'      => __('Configuration options for individual personnel.', 'pedalcms'),
             'required'          => 0,
@@ -1695,7 +1695,7 @@ $field_group = [
         [
             'key'               => 'field_6255d51d49335',
             'label'             => __('College', 'pedalcms'),
-            'name'              => 'nvis_college',
+            'name'              => 'pdl_college',
             'type'              => 'group',
             'instructions'      => __('Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'pedalcms'),
             'required'          => 0,
@@ -1782,7 +1782,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
-                ],        
+                ],
                 [
                     'key'               => 'field_630e706b11afc',
                     'label'             => __('Use with:', 'pedalcms'),
@@ -1813,7 +1813,7 @@ $field_group = [
         [
             'key'               => 'field_6255e021cb5de',
             'label'             => __('Department', 'pedalcms'),
-            'name'              => 'nvis_department',
+            'name'              => 'pdl_department',
             'type'              => 'group',
             'instructions'      => __('Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'pedalcms'),
             'required'          => 0,
@@ -1927,7 +1927,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
-                ],        
+                ],
                 [
                     'key'               => 'field_630e6ba4ce6d5',
                     'label'             => __('Use with:', 'pedalcms'),
@@ -1958,7 +1958,7 @@ $field_group = [
         [
             'key'               => 'field_6255c198c4cfe',
             'label'             => __('Program Type', 'pedalcms'),
-            'name'              => 'nvis_program_type',
+            'name'              => 'pdl_program_type',
             'type'              => 'group',
             'instructions'      => __('Used by Programs.', 'pedalcms'),
             'required'          => 0,
@@ -2051,7 +2051,7 @@ $field_group = [
         [
             'key'               => 'field_6255df25cb5ce',
             'label'             => __('Instruction Mode', 'pedalcms'),
-            'name'              => 'nvis_instruct_mode',
+            'name'              => 'pdl_instruct_mode',
             'type'              => 'group',
             'instructions'      => __('Used by Programs. (e.g. In-person, Online, Hybrid)', 'pedalcms'),
             'required'          => 0,
@@ -2125,7 +2125,7 @@ $field_group = [
         [
             'key'               => 'field_6255df6ccb5d2',
             'label'             => __('Subject', 'pedalcms'),
-            'name'              => 'nvis_subject',
+            'name'              => 'pdl_subject',
             'type'              => 'group',
             'instructions'      => __('Used in the Course Catalog.', 'pedalcms'),
             'required'          => 0,
@@ -2199,7 +2199,7 @@ $field_group = [
         [
             'key'               => 'field_6255dfa3cb5d6',
             'label'             => __('Session', 'pedalcms'),
-            'name'              => 'nvis_session',
+            'name'              => 'pdl_session',
             'type'              => 'group',
             'instructions'      => __('Used in the Course Catalog. Also commonly referred to as "term." (e.g. Fall, Spring, Summer)', 'pedalcms'),
             'required'          => 0,
@@ -2273,7 +2273,7 @@ $field_group = [
         [
             'key'               => 'field_6255dfe6cb5da',
             'label'             => __('Personnel Category', 'pedalcms'),
-            'name'              => 'nvis_person_cat',
+            'name'              => 'pdl_person_cat',
             'type'              => 'group',
             'instructions'      => __('Used in the Faculty & Staff Directory.'),
             'required'          => 0,
@@ -2366,7 +2366,7 @@ $field_group = [
         [
             'key'               => 'field_6255e041cb5e2',
             'label'             => __('FAQ Category', 'pedalcms'),
-            'name'              => 'nvis_faq_cat',
+            'name'              => 'pdl_faq_cat',
             'type'              => 'group',
             'instructions'      => __('Used by Programs.', 'pedalcms'),
             'required'          => 0,

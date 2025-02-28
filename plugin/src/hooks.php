@@ -15,22 +15,22 @@ add_filter('body_class', __NAMESPACE__ . '\body_class', 10, 3);
 add_filter('admin_body_class', __NAMESPACE__ . '\admin_body_class', 10, 3);
 add_filter('post_class', __NAMESPACE__ . '\post_class', 10, 3);
 add_filter('term_link', __NAMESPACE__ . '\term_link', 10);
-add_filter('nvis/programs/before_main_content', __NAMESPACE__ . '\before_main_content');
-add_filter('nvis/programs/after_main_content', __NAMESPACE__ . '\after_main_content');
+add_filter('pdl/before_main_content', __NAMESPACE__ . '\before_main_content');
+add_filter('pdl/after_main_content', __NAMESPACE__ . '\after_main_content');
 add_filter('post_type_archive_title', __NAMESPACE__ . '\options_post_type_archive_title', 5, 2);
 add_filter('get_the_post_type_description', __NAMESPACE__ . '\options_post_type_description', 5, 2);
-add_filter('taxonomy_labels_nvis_program_type', __NAMESPACE__ . '\options_program_type_labels');
-add_filter('taxonomy_labels_nvis_college', __NAMESPACE__ . '\options_college_labels');
-add_filter('taxonomy_labels_nvis_instruct_mode', __NAMESPACE__ . '\options_instruct_mode_labels');
-add_filter('taxonomy_labels_nvis_subject', __NAMESPACE__ . '\options_subject_labels');
-add_filter('taxonomy_labels_nvis_session', __NAMESPACE__ . '\options_session_labels');
-add_filter('taxonomy_labels_nvis_person_cat', __NAMESPACE__ . '\options_person_cat_labels');
-add_filter('taxonomy_labels_nvis_department', __NAMESPACE__ . '\options_department_labels');
-add_filter('taxonomy_labels_nvis_faq_cat', __NAMESPACE__ . '\options_faq_cat_labels');
-add_filter('nvis/template_defaults', __NAMESPACE__ . '\options_template_defaults', 5, 2);
-add_filter('nvis/template_args', __NAMESPACE__ . '\options_template_args', 5, 2);
-add_filter('nvis/get_label', __NAMESPACE__ . '\options_plugin_labels', 5, 3);
-add_filter('nvis/programs/add_subpage', __NAMESPACE__ . '\options_subpage_labels', 5, 2);
+add_filter('taxonomy_labels_pdl_program_type', __NAMESPACE__ . '\options_program_type_labels');
+add_filter('taxonomy_labels_pdl_college', __NAMESPACE__ . '\options_college_labels');
+add_filter('taxonomy_labels_pdl_instruct_mode', __NAMESPACE__ . '\options_instruct_mode_labels');
+add_filter('taxonomy_labels_pdl_subject', __NAMESPACE__ . '\options_subject_labels');
+add_filter('taxonomy_labels_pdl_session', __NAMESPACE__ . '\options_session_labels');
+add_filter('taxonomy_labels_pdl_person_cat', __NAMESPACE__ . '\options_person_cat_labels');
+add_filter('taxonomy_labels_pdl_department', __NAMESPACE__ . '\options_department_labels');
+add_filter('taxonomy_labels_pdl_faq_cat', __NAMESPACE__ . '\options_faq_cat_labels');
+add_filter('pdl/template_defaults', __NAMESPACE__ . '\options_template_defaults', 5, 2);
+add_filter('pdl/template_args', __NAMESPACE__ . '\options_template_args', 5, 2);
+add_filter('pdl/get_label', __NAMESPACE__ . '\options_plugin_labels', 5, 3);
+add_filter('pdl/add_subpage', __NAMESPACE__ . '\options_subpage_labels', 5, 2);
 
 /**
  * Modifies the taxonomy args based on plugin options.
@@ -52,7 +52,7 @@ function options_register_taxonomy_args(array $args, string $taxonomy): array {
         return $args;
     }
 
-    $taxonomy = str_replace('nvis_', '', $taxonomy);
+    $taxonomy = str_replace('pdl_', '', $taxonomy);
     $enable_archive = Plugin::get_option($taxonomy . '_enable_archive');
 
     if ($enable_archive !== false) {
@@ -78,7 +78,7 @@ function options_registered_taxonomy(string $taxonomy, $object_type) {
         return;
     }
 
-    $tax = str_replace('nvis_', '', $taxonomy);
+    $tax = str_replace('pdl_', '', $taxonomy);
     $obj_type_option = Plugin::get_option($tax . '_object_type');
 
     if (is_array($obj_type_option)) {
@@ -104,7 +104,7 @@ function options_registered_taxonomy(string $taxonomy, $object_type) {
  */
 function document_title_parts(array $title): array {
 
-    if (nvis_is_filtered_results(Plugin::post_types())) {
+    if (pdl_is_filtered_results(Plugin::post_types())) {
         $post_type = get_query_var('post_type');
         /**
          * Filters the format of the document title part of filtered post type archives.
@@ -113,7 +113,7 @@ function document_title_parts(array $title): array {
          * @param $post_type The current post type.
          */
         $format = apply_filters(
-            'nvis/filter_results_document_title_format',
+            'pdl/filter_results_document_title_format',
             '%1$s, %2$s',
             $post_type
         );
@@ -125,7 +125,7 @@ function document_title_parts(array $title): array {
          * @param $post_type The current post type.
          */
         $filtered_label = apply_filters(
-            'nvis/filtered_results_document_title_label',
+            'pdl/filtered_results_document_title_label',
             Plugin::get_label('filtered_results'),
             $post_type
         );
@@ -284,7 +284,7 @@ function options_faq_cat_labels($labels) {
 }
 
 function options_taxonomy_labels($labels, $taxonomy) {
-    $tax = str_replace('nvis_', '', $taxonomy);
+    $tax = str_replace('pdl_', '', $taxonomy);
 
     $single = Plugin::get_option($tax . '_label_single');
     $plural = Plugin::get_option($tax . '_label_plural');
@@ -303,15 +303,15 @@ function options_taxonomy_labels($labels, $taxonomy) {
 /**
  * Action to output opening tag of main content wrapper.
  *
- * Called on: nvis/programs/before_main_content
+ * Called on: pdl/before_main_content
  *
  * @return void
  */
 function before_main_content() {
     $pattern = '<%s id="%s" class="%s">';
-    $id = apply_filters('nvis/programs/main_content_wrapper_id', 'main-content-wrapper');
-    $classes = ['nvis-progs-template', 'nvis-template'];
-    $classes = apply_filters('nvis/careers/main_content_wrapper_class', $classes);
+    $id = apply_filters('pdl/main_content_wrapper_id', 'main-content-wrapper');
+    $classes = ['pdlcms', 'pdl-template'];
+    $classes = apply_filters('pdl/careers/main_content_wrapper_class', $classes);
     $tag = Plugin::get_option('main_content_wrapper_tag');
 
     printf(
@@ -325,7 +325,7 @@ function before_main_content() {
 /**
  * Action to output end tag of main content wrapper.
  *
- * Called on: nvis/programs/after_main_content
+ * Called on: pdl/after_main_content
  *
  * @return void
  */
@@ -350,7 +350,7 @@ function options_template_args($args, $template) {
 }
 
 function options_search_filters($args) {
-    $post_type = str_replace('nvis_', '', get_query_var('post_type'));
+    $post_type = str_replace('pdl_', '', get_query_var('post_type'));
     $enabled = Plugin::get_option($post_type . '_archive_search_filters');
 
     if (!is_array($enabled)) {
@@ -379,7 +379,7 @@ function options_search_filters($args) {
 
 function options_post_type_archive_title($title, $post_type) {
     if (in_array($post_type, Plugin::post_types())) {
-        $post_type = str_replace('nvis_', '', $post_type);
+        $post_type = str_replace('pdl_', '', $post_type);
         $new_title = Plugin::get_option($post_type . '_archive_title');
 
         if ($new_title) {
@@ -402,7 +402,7 @@ function options_post_type_archive_title($title, $post_type) {
  */
 function options_post_type_description($description,  $post_type_obj) {
     if (in_array($post_type_obj->name, Plugin::post_types())) {
-        $post_type = str_replace('nvis_', '', $post_type_obj->name);
+        $post_type = str_replace('pdl_', '', $post_type_obj->name);
         $new_desc = Plugin::get_option($post_type . '_archive_description');
 
         if ($new_desc) {
@@ -416,7 +416,7 @@ function options_post_type_description($description,  $post_type_obj) {
 /**
  * Updated the template defaults based on the plugin options.
  *
- * Called on filter: `nvis/template_defaults`
+ * Called on filter: `pdl/template_defaults`
  *
  * @param array $defaults The template defaults.
  * @param string $template The name of the template.
@@ -430,7 +430,7 @@ function options_template_defaults($defaults, $template) {
         return $defaults;
     }
 
-    $post_type = str_replace('nvis_', '', $post_type);
+    $post_type = str_replace('pdl_', '', $post_type);
     $presentation_mode = Plugin::get_option('presentation_mode');
 
     switch($template) {
@@ -556,7 +556,7 @@ function options_page_header_backdrop($defaults, $post_type, $presentation_mode)
             $taxonomy = get_taxonomy($taxonomy);
 
             if (!empty($taxonomy->object_type)) {
-                $post_type = str_replace('nvis_', '', $taxonomy->object_type[0]);
+                $post_type = str_replace('pdl_', '', $taxonomy->object_type[0]);
             }
         }
     }
@@ -586,7 +586,7 @@ function options_page_header_backdrop($defaults, $post_type, $presentation_mode)
 function options_subpage_labels($subpage, $post_type) {
     $option_prefix = sprintf(
         '%s_subpage_%s_',
-        str_replace('nvis_', '', $post_type),
+        str_replace('pdl_', '', $post_type),
         str_replace('-', '_', $subpage->slug)
     );
 

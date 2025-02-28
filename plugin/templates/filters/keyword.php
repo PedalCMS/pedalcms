@@ -14,7 +14,7 @@ $defaults = [
     'placeholder' => pdl_get_label('keyword') . ' …'
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 ?>
 <div class="nvis-filter-keyword nvis-filters-field">

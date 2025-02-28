@@ -35,7 +35,7 @@ class TemplateManager {
      *      [
      *        'name' => 'single-career',
      *        'callback' => 'is_singular',
-     *        'args' => ['nvis_career']
+     *        'args' => ['pdl_career']
      *      ]
      *    ];
      * ```
@@ -125,7 +125,7 @@ class TemplateManager {
          * @param string $name The template name.
          */
         return apply_filters(
-            'nvis/locate_template',
+            'pdl/locate_template',
             sprintf($pattern, self::$base_path, $template),
             $template
         );
@@ -151,7 +151,7 @@ class TemplateManager {
              * @param string $template The template name.
              */
             $args = apply_filters(
-                'nvis/template_args',
+                'pdl/template_args',
                 $args,
                 $template
             );
@@ -163,7 +163,7 @@ class TemplateManager {
              *
              * @param array  $args The array of template args.
              */
-            do_action('nvis/before_template/' . $template, $args);
+            do_action('pdl/before_template/' . $template, $args);
 
             include $path;
 
@@ -174,7 +174,7 @@ class TemplateManager {
              *
              * @param array  $args The array of template args.
              */
-            do_action('nvis/after_template/' . $template, $args);
+            do_action('pdl/after_template/' . $template, $args);
         } else {
             if (WP_DEBUG && WP_DEBUG_LOG) {
                 error_log(__FUNCTION__ . ': File not found ' . $template);
@@ -184,7 +184,7 @@ class TemplateManager {
 
     public static function convert_obj_name_to_template($obj_name) {
         return str_replace(
-            ['nvis_', '_'],
+            ['pdl_', '_'],
             ['', '-'],
             $obj_name
         );

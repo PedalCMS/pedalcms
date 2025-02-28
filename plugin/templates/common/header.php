@@ -18,4 +18,4 @@ get_header();
  *
  * @since 0.1
  */
-do_action('nvis/programs/before_main_content');
+do_action('pdl/before_main_content');

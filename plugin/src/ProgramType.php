@@ -10,7 +10,7 @@ namespace PedalCMS\Core;
  * @since 0.1.0
  */
 class ProgramType extends CustomTaxonomy {
-    public const TAXONOMY = 'nvis_program_type';
+    public const TAXONOMY = 'pdl_program_type';
 
     public $object_types = [Program::POST_TYPE];
 

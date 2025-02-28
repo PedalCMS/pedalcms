@@ -5,7 +5,7 @@ namespace PedalCMS\Core;
 add_action('init', __NAMESPACE__ . '\add_shortcodes');
 
 function add_shortcodes() {
-    add_shortcode('nvis_terms_grid', __NAMESPACE__ . '\render_terms_grid');
+    add_shortcode('pdl_terms_grid', __NAMESPACE__ . '\render_terms_grid');
 }
 
 function render_terms_grid($atts) {
@@ -27,11 +27,11 @@ function render_terms_grid($atts) {
 
         ],
         $atts,
-        'nvis_terms_grid'
+        'pdl_terms_grid'
     );
 
     if (!$atts['tax']) {
-        return __('You must supply a taxonomy via the tax attribute (e.g. tax="nvis_program_type").', 'pedalcms');
+        return __('You must supply a taxonomy via the tax attribute (e.g. tax="pdl_program_type").', 'pedalcms');
     }
 
     $atts['terms'] = get_terms(['taxonomy' => $atts['tax']]);

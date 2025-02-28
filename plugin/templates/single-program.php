@@ -14,7 +14,7 @@ get_post_meta(get_the_ID());
 pdl_get_template_part('common/header');
 ?>
 <article
-	id="<?php nvis_article_id_attr('', true); ?>"
+	id="<?php pdl_article_id_attr('', true); ?>"
 	<?php post_class(); ?>>
 	<?php
     pdl_get_template_part('common/breadcrumbs');

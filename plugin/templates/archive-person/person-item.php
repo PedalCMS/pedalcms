@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 
 $defaults = [
     'show_contact_info'        => true,
@@ -20,8 +20,8 @@ $defaults = [
     'h_level'                  => 2,
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
-$h_tag = nvis_get_heading_tag($args['h_level']);
+$args = pdl_parse_template_args($args, $defaults, $template);
+$h_tag = pdl_get_heading_tag($args['h_level']);
 
 if ($post) :?>
 <article <?php post_class('', $post); ?>>
@@ -38,11 +38,11 @@ if ($post) :?>
             <div class="person-position">
                 <?php pdl_get_template_part('blocks/job-title', ['job_title' => $post->job_title]); ?>
                 <?php
-                if (taxonomy_exists('nvis_department')) :
+                if (taxonomy_exists('pdl_department')) :
                     echo
-                        nvis_get_the_term_list(
+                        pdl_get_the_term_list(
                             $post,
-                            'nvis_department',
+                            'pdl_department',
                             '<div class="person-department">',
                             ', ',
                             '</div>',

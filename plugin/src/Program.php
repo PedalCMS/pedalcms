@@ -17,7 +17,7 @@ class Program extends CustomPostType {
      *
      * @var string
      */
-    public const POST_TYPE = 'nvis_program';
+    public const POST_TYPE = 'pdl_program';
 
     private static $subpage_manager = null;
 
@@ -101,7 +101,7 @@ class Program extends CustomPostType {
                     [
                         'param'    => 'post_type',
                         'operator' => '==',
-                        'value'    => 'nvis_program',
+                        'value'    => 'pdl_program',
                     ],
                 ],
             ],
@@ -301,7 +301,7 @@ class Program extends CustomPostType {
                     'type'         => 'relationship',
                     'instructions' => '',
                     'post_type'    => [
-                        0 => 'nvis_person',
+                        0 => 'pdl_person',
                     ],
                     'taxonomy' => '',
                     'filters'  => [
@@ -409,7 +409,7 @@ class Program extends CustomPostType {
                                 'type'         => 'relationship',
                                 'instructions' => '',
                                 'post_type'    => [
-                                    0 => 'nvis_course',
+                                    0 => 'pdl_course',
                                 ],
                                 'filters'  => [
                                     0 => 'search',
@@ -458,7 +458,7 @@ class Program extends CustomPostType {
                         'type'         => 'relationship',
                         'instructions' => '',
                         'post_type'    => [
-                            0 => 'nvis_career',
+                            0 => 'pdl_career',
                         ],
                         'taxonomy' => '',
                         'filters'  => [
@@ -521,7 +521,7 @@ class Program extends CustomPostType {
                         'type'         => 'relationship',
                         'instructions' => '',
                         'post_type'    => [
-                            0 => 'nvis_person',
+                            0 => 'pdl_person',
                         ],
                         'taxonomy' => '',
                         'filters'  => [
@@ -691,7 +691,7 @@ class Program extends CustomPostType {
                                 'return_format'     => 'object',
                                 'ui'                => 1,
                                 'post_type'         => [
-                                    0 => 'nvis_faq',
+                                    0 => 'pdl_faq',
                                 ],
                                 'conditional_logic' => [
                                     [
@@ -750,7 +750,7 @@ class Program extends CustomPostType {
                                 'type'              => 'taxonomy',
                                 'instructions'      => '',
                                 'required'          => 1,
-                                'taxonomy'          => 'nvis_faq_cat',
+                                'taxonomy'          => 'pdl_faq_cat',
                                 'field_type'        => 'select',
                                 'allow_null'        => 0,
                                 'add_term'          => 0,
@@ -1020,7 +1020,7 @@ class Program extends CustomPostType {
         }
 
         // If all else fails, just return the global setting.
-        $deadlines = get_field('nvis_program_application_deadlines', 'option');
+        $deadlines = get_field('pdl_program_application_deadlines', 'option');
         if (is_array($deadlines)) {
             return $deadlines;
         }

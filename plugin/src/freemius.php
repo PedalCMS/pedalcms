@@ -32,7 +32,7 @@ function pdl_freemius() {
                 'is_require_payment' => true,
             ],
             'menu'                => [
-                'slug'           => 'edit.php?post_type=nvis_program',
+                'slug'           => 'edit.php?post_type=pdl_program',
                 'support'        => false,
                 'contact'        => false,
             ],

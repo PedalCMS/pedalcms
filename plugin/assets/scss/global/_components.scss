@@ -22,7 +22,7 @@
   top: -1px;
 }
 
-.nvis-template .back-to-top {
+.pdl-template .back-to-top {
   text-decoration: underline;
 
   &::before {
@@ -248,14 +248,14 @@
   }
 }
 
-.nvis-template .toggletip {
+.pdl-template .toggletip {
   --size: 22px;
   display: inline-block;
   margin-left: 2px;
   position: relative;
 }
 
-.nvis-template .toggletip__toggle {
+.pdl-template .toggletip__toggle {
   align-items: center;
   background: rgba(0, 0, 0, 0.6);
   border: solid 2px;
@@ -277,7 +277,7 @@
   }
 }
 
-.nvis-template .toggletip__tip {
+.pdl-template .toggletip__tip {
   --background: rgba(0, 0, 0, 0.9);
   background-color: var(--background);
   border-radius: 5px;

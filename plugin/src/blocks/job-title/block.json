@@ -1,6 +1,6 @@
 {
 	"apiVersion": 2,
-	"name": "nvis/job-title",
+	"name": "pdl/job-title",
 	"version": "0.1.0",
 	"title": "Job Title",
 	"category": "text",

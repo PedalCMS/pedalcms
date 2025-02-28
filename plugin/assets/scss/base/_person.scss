@@ -1,6 +1,6 @@
 @use '../common/variables' as *;
 
-.nvis_person .contact-info .label {
+.pdl_person .contact-info .label {
   display: inline-block;
   font-size: 0.8em;
   font-weight: bold;
@@ -16,7 +16,7 @@
   }
 }
 
-.person-list .nvis_person {
+.person-list .pdl_person {
   display: flex;
   gap: var(--nvis-spacing);
   margin-bottom: 0 !important;
@@ -73,14 +73,14 @@
   line-height: 1.4;
 }
 
-body.single-nvis_person .person-main {
+body.single-pdl_person .person-main {
   --margin: var(--nvis-spacing-2x);
   display: flex;
   flex-wrap: wrap;
   gap: var(--margin);
 }
 
-body.single-nvis_person .person-content {
+body.single-pdl_person .person-content {
   width: 100%;
 
   @media (min-width: $screen-md-min) {
@@ -88,7 +88,7 @@ body.single-nvis_person .person-content {
   }
 }
 
-body.single-nvis_person .person-sidebar {
+body.single-pdl_person .person-sidebar {
   width: 100%;
 
   @media (min-width: $screen-md-min) {

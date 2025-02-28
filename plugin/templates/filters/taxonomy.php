@@ -21,16 +21,16 @@ $defaults = [
     'missing_data_text'    => pdl_get_label('missing_filter_data')
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 if (!taxonomy_exists($args['taxonomy'])) {
     return;
 }
 
-$label = $args['label'] ?? nvis_get_taxonomy_label($args['taxonomy'], 'singular_name');
+$label = $args['label'] ?? pdl_get_taxonomy_label($args['taxonomy'], 'singular_name');
 $short_label = $args['short_label'] ?? $label;
 $none_selected = $args['label_none_selected'] ?? 
-    nvis_get_taxonomy_label($args['taxonomy'],'none_selected') ??
+    pdl_get_taxonomy_label($args['taxonomy'],'none_selected') ??
     $args['none_selected_prefix'] . $short_label;
 
 if ($args['taxonomy'] && $args['query_var'] && $label) : ?>

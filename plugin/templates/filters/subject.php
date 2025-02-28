@@ -10,10 +10,10 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'taxonomy'  => 'nvis_subject',
+    'taxonomy'  => 'pdl_subject',
     'query_var' => 'subj',
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 pdl_get_template_part('filters/taxonomy', $args);

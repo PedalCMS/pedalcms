@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 
 $defaults = [
     'show_image'             => true,
@@ -21,7 +21,7 @@ $defaults = [
     'fallback_attachment_id' => ''
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 $align_class = in_array($args['image_align'], ['left','right','center','none'], true)
     ? $args['image_align']
@@ -40,7 +40,7 @@ $show_image = $args['show_image'] && (
 );
 
 if ($show_image) :
-    $image = nvis_post_thumbnail_or_fallback(
+    $image = pdl_post_thumbnail_or_fallback(
         $post,
         $args['fallback_attachment_id'],
         $args['image_size'],

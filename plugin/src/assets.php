@@ -98,7 +98,7 @@ function enqueue_assets() {
         if (is_singular()) {
             $post = get_post();
 
-            if (strpos($post->post_content, '[nvis_terms_grid ')) {
+            if (strpos($post->post_content, '[pdl_terms_grid ')) {
                 wp_enqueue_style('nvis-terms-grid');
             }
         }
@@ -132,22 +132,22 @@ function admin_enqueue_assets() {
         in_array(get_post_type(), Plugin::post_types());
 
     if ($is_post_edit && Department::depends_on_college()) {
-        $nvis_acf = '/admin/js/nvis-acf.min.js';
+        $pdl_acf = '/admin/js/nvis-acf.min.js';
 
         wp_enqueue_script(
             'nvis-acf',
-            Plugin::$url . $nvis_acf,
+            Plugin::$url . $pdl_acf,
             ['acf'],
-            filemtime(Plugin::$path . $nvis_acf),
+            filemtime(Plugin::$path . $pdl_acf),
             true
         );
     
-        $nvis_acf_data = [
+        $pdl_acf_data = [
             'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('nvis_acf_data'),
+            'nonce' => wp_create_nonce('pdl_acf_data'),
             'label_not_found' => __('No departments found', 'pedalcms')
         ];
     
-        wp_localize_script('nvis-acf', 'nvisACFData', $nvis_acf_data);
+        wp_localize_script('nvis-acf', 'nvisACFData', $pdl_acf_data);
     }
 }

@@ -9,26 +9,26 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 
 $defaults = [
     'show_subpage'  => pdl_show_subpage('careers'),
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 if ($args['show_subpage']) :
   $careers = get_field('related_program_careers', $post);
 ?>
 
-<div <?php nvis_subpage_class(); ?>>
+<div <?php pdl_subpage_class(); ?>>
   <h2 class="program-subpage__title"><?php echo esc_html(pdl_subpage_title()); ?></h2>
   <?php pdl_get_template_part('single-program/subpages/lead-content'); ?>
 
   <?php
     if (!empty($careers)) :
-      if (function_exists('nvis_car_get_template_part')) :
-        nvis_car_get_template_part(
+      if (function_exists('pdl_car_get_template_part')) :
+        pdl_car_get_template_part(
             'archive-career/career-list',
             [
                 'posts'                 => $careers,

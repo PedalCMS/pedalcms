@@ -13,7 +13,7 @@ class Course extends CustomPostType {
     /**
      * The post type to register.
      */
-    public const POST_TYPE = 'nvis_course';
+    public const POST_TYPE = 'pdl_course';
 
     /**
      * The args to pass to register_post_type.

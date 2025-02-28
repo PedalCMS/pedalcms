@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 
 $defaults = [
     'show_subpage'      => pdl_show_subpage('faqs'),
@@ -17,7 +17,7 @@ $defaults = [
     'faqs'              => get_field('related_faqs_list', $post),
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 $faqs = $args['faqs'];
 
 if ($faqs) {
@@ -25,7 +25,7 @@ if ($faqs) {
 }
 
 if ($args['show_subpage']) : ?>
-<div <?php nvis_subpage_class(); ?>>
+<div <?php pdl_subpage_class(); ?>>
   <h2 class="program-subpage__title"><?php echo esc_html(pdl_subpage_title()); ?></h2>
 
   <div class="program-subpage__content">

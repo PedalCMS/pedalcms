@@ -14,8 +14,8 @@ $defaults = [
     'image_size'         => 'medium',
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
-$args['title_tag'] = nvis_sanitize_title_tag($args['title_tag'], $defaults['title_tag']);
+$args = pdl_parse_template_args($args, $defaults, $template);
+$args['title_tag'] = pdl_sanitize_title_tag($args['title_tag'], $defaults['title_tag']);
 
 $args['columns'] = max(1, min(4, $args['columns']));
 

@@ -11,7 +11,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 
 $defaults = [
     'office_phone'  => $post->office_phone,
@@ -26,7 +26,7 @@ $defaults = [
     'label_office'  => pdl_get_label('office'),
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 if ($post):
 ?>

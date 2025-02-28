@@ -12,11 +12,11 @@ defined('ABSPATH') || exit;
 $defaults = [
     'courses'       => null,
     'show_credits'  => true,
-    'label_course'  => nvis_get_post_type_label('nvis_course', 'singular_name'),
+    'label_course'  => pdl_get_post_type_label('pdl_course', 'singular_name'),
     'label_credits' => ucfirst(pdl_get_label('credits'))
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 if (is_array($args['courses'])): ?>
 <table class="courses-table">

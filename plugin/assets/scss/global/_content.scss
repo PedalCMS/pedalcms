@@ -1,19 +1,19 @@
-.nvis-template .empty-state-message {
+.pdl-template .empty-state-message {
   font-size: 1.5em;
   font-weight: 900;
   line-height: 1.25;
   padding: 1em 0;
 }
 
-.nvis-template .button {
+.pdl-template .button {
   display: inline-block;
 }
 
-.nvis-template .entry-content .button {
+.pdl-template .entry-content .button {
   text-decoration: none;
 }
 
-.single .nvis-template article:not(article article) {
+.single .pdl-template article:not(article article) {
   justify-content: space-between;
 }
 
@@ -46,6 +46,6 @@
   padding: 0.5em 0;
 }
 
-.nvis-template tbody th {
+.pdl-template tbody th {
   text-align: left;
 }

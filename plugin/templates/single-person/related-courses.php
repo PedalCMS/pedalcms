@@ -14,7 +14,7 @@ $defaults = [
     'label_courses_taught' => pdl_get_label('courses_taught')
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 if (!empty($args['posts'])) :
 ?>

@@ -9,15 +9,15 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 $defaults = [
     'label_more_details' => pdl_get_label('more_details'),
-    'label_permalink'    => nvis_get_post_type_label('nvis_course', 'view_item'),
+    'label_permalink'    => pdl_get_post_type_label('pdl_course', 'view_item'),
     'label_show'         => pdl_get_label('show'),
     'label_hide'         => pdl_get_label('hide'),
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 $more_details_id = "more-details-" . $post->ID;
 

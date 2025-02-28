@@ -10,7 +10,7 @@
 defined('ABSPATH') || exit;
 
 ?>
-<div <?php nvis_subpage_class(); ?>>
+<div <?php pdl_subpage_class(); ?>>
   <div class="program-overview-content">
     <?php the_field('overview_content'); ?>
   </div>

@@ -120,7 +120,7 @@ class Plugin {
     }
 
     /**
-     * Adds capabilities for the entire content model to the Administrator role. 
+     * Adds capabilities for the entire content model to the Administrator role.
      *
      * @return void
      */
@@ -201,7 +201,7 @@ class Plugin {
             'menu_slug'   => self::$options_page_slug,
             'capability'  => 'manage_options',
             // 'parent_slug' => 'options-general.php',
-            'parent_slug' => 'edit.php?post_type=nvis_program',
+            'parent_slug' => 'edit.php?post_type=pdl_program',
             'position'    => 7,
             'redirect'    => false,
         ];
@@ -383,7 +383,7 @@ class Plugin {
             $filters = array_map(
                 function($a) {
                     return str_replace(
-                        ['nvis_', '_'],
+                        ['pdl_', '_'],
                         ['', '-'],
                         $a
                     );
@@ -447,19 +447,19 @@ class Plugin {
         }
 
 
-        $NVIS_TemplateManager = new TemplateManager(
+        $pdl_TemplateManager = new TemplateManager(
             self::$template_path,
             self::$name,
             $templates
         );
 
-        add_filter('template_include', [$NVIS_TemplateManager, 'maybe_use_template'], PHP_INT_MAX);
+        add_filter('template_include', [$pdl_TemplateManager, 'maybe_use_template'], PHP_INT_MAX);
 
         return;
     }
 
     /**
-     * Returns a label from the plugin wide registry. 
+     * Returns a label from the plugin wide registry.
      *
      * @param string $label_key The key of the label to retrieve.
      * @return string The requested label on success, "label not found" message on failure.
@@ -491,7 +491,7 @@ class Plugin {
      * @return mixed The value of the setting.
      */
     public static function get_option(string $option) {
-        $value = get_option('options_nvis_' . $option);
+        $value = get_option('options_pdl_' . $option);
 
         /**
          * Filters the value of an option. The last part is the name of the option.
@@ -500,6 +500,6 @@ class Plugin {
          *
          * @param $value The value of the option.
          */
-        return apply_filters("nvis/programs/options/{$option}", $value);
+        return apply_filters("pdl/options/{$option}", $value);
     }
 }

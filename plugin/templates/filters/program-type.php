@@ -10,10 +10,10 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'taxonomy'  => 'nvis_program_type',
+    'taxonomy'  => 'pdl_program_type',
     'query_var' => 'prog_type',
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 pdl_get_template_part('filters/taxonomy', $args);

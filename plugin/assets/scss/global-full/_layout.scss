@@ -1,7 +1,7 @@
 @use '../common/variables' as *;
 
 
-body .nvis-template {
+body .pdl-template {
   --header-padding: var(--nvis-spacing-2x);
   max-width: 1200px;
 
@@ -10,20 +10,20 @@ body .nvis-template {
   }
 }
 
-.archive .nvis-template .nvis-breadcrumbs {
+.archive .pdl-template .nvis-breadcrumbs {
   margin-bottom: var(--nvis-spacing);
 }
 
-.single .nvis-template .nvis-breadcrumbs {
+.single .pdl-template .nvis-breadcrumbs {
   margin-bottom: -1px;
   padding-top: var(--nvis-spacing);
 }
 
-.nvis-template .num-results {
+.pdl-template .num-results {
   color: #333;
 }
 
-.archive .nvis-template article {
+.archive .pdl-template article {
   background: #fff;
   border: solid 1px #ddd;
   border-radius: 3px;
@@ -32,7 +32,7 @@ body .nvis-template {
   overflow: hidden;
 }
 
-.nvis-template .page-header {
+.pdl-template .page-header {
   --header-bg: linear-gradient(#000, #444);
   --h-margin: calc(-1 * var(--header-padding));
   background: var(--header-bg);
@@ -46,7 +46,7 @@ body .nvis-template {
   width: calc(100% + (2 * var(--header-padding)));
 }
 
-.archive .nvis-template .page-header {
+.archive .pdl-template .page-header {
   margin: 0;
   width: 100%;
 
@@ -55,11 +55,11 @@ body .nvis-template {
   }
 }
 
-.archive .nvis-template .page-header .page-title {
+.archive .pdl-template .page-header .page-title {
   margin-bottom: var(--nvis-spacing);
 }
 
-.nvis-template .page-header__backdrop {
+.pdl-template .page-header__backdrop {
   background: var(--header-bg);
   display: table-cell;
   filter: blur(3px);
@@ -74,32 +74,32 @@ body .nvis-template {
   z-index: 0;
 }
 
-.nvis-template .page-header__backdrop img {
+.pdl-template .page-header__backdrop img {
   height: 100%;
   object-fit: cover;
   width: 100%;
 }
 
-.nvis-template .page-header__content {
+.pdl-template .page-header__content {
   position: relative;
   z-index: 1;
 }
 
-.single .nvis-template .page-header a {
+.single .pdl-template .page-header a {
   color: #fff;
   text-shadow: 1px 1px 5px #000;
 }
 
-.single .nvis-template .page-header a:hover {
+.single .pdl-template .page-header a:hover {
   text-decoration: underline;
 }
 
-.nvis-template .page-header__title-group {
+.pdl-template .page-header__title-group {
   display: flex;
   flex-direction: column-reverse;
 }
 
-.nvis-template .page-header__title-group .taxonomy a {
+.pdl-template .page-header__title-group .taxonomy a {
   border-radius: 3px;
   display: inline-block;
   font-size: 1.25em;
@@ -109,14 +109,14 @@ body .nvis-template {
   text-decoration: none;
 }
 
-.nvis-template .page-header__title-group .taxonomy a:hover {
+.pdl-template .page-header__title-group .taxonomy a:hover {
   background: var(--nvis-active-color);
   color: var(--nvis-active-color-text);
   text-decoration: none;
   text-shadow: none;
 }
 
-.nvis-template .page-title {
+.pdl-template .page-title {
   color: #fff;
   font-size: 32px;
   font-weight: bold;
@@ -127,32 +127,32 @@ body .nvis-template {
   }
 }
 
-.nvis-template .archive-description {
+.pdl-template .archive-description {
   font-size: 1.25em;
   line-height: 1.5;
   max-width: 600px;
   text-shadow: 1px 1px 5px #000;
 }
 
-.nvis-template .archive-description p:last-of-type {
+.pdl-template .archive-description p:last-of-type {
   margin-bottom: var(--header-padding);
 }
 
-.nvis-template .page-header .featured-image {
+.pdl-template .page-header .featured-image {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   height: fit-content;
   margin-bottom: var(--nvis-spacing-2x);
   width: fit-content;
 }
 
-.nvis-template .page-header .nvis-meta-group a {
+.pdl-template .page-header .nvis-meta-group a {
   border-radius: 2px;
   display: inline-block;
   padding: 2px;
   text-decoration: underline;
 }
 
-.nvis-template .page-header .nvis-meta-group a:hover {
+.pdl-template .page-header .nvis-meta-group a:hover {
   background: #fff;
   color: #000;
   text-decoration: none;

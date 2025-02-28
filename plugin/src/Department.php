@@ -10,7 +10,7 @@ namespace PedalCMS\Core;
  * @since 0.1.0
  */
 class Department extends CustomTaxonomy {
-    public const TAXONOMY = 'nvis_department';
+    public const TAXONOMY = 'pdl_department';
 
     public $object_types = [Program::POST_TYPE, Person::POST_TYPE, Course::POST_TYPE];
 
@@ -91,7 +91,7 @@ class Department extends CustomTaxonomy {
                         'class' => '',
                         'id'    => '',
                     ],
-                    'taxonomy'      => 'nvis_college',
+                    'taxonomy'      => 'pdl_college',
                     'add_term'      => 0,
                     'save_terms'    => 0,
                     'load_terms'    => 0,

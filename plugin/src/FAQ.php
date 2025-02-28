@@ -13,7 +13,7 @@ class FAQ extends CustomPostType {
     /**
      * The post type to register.
      */
-    public const POST_TYPE = 'nvis_faq';
+    public const POST_TYPE = 'pdl_faq';
 
     /**
      * The args to pass to register_post_type.

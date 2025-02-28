@@ -14,7 +14,7 @@ abstract class CustomBlock {
     /**
      * The namespace to prefix the block.
      *
-     * Example: 'nvis/block-name'
+     * Example: 'pdl/block-name'
      *
      * @var string
      */

@@ -102,7 +102,7 @@ if (!function_exists('pdl_register_program_subpage')) :
  * 
  * By default, all registered subpages are enabled for all programs. It is up
  * to you to handle cases where these should be displayed on a program by 
- * program basis. See filter {@see 'nvis/programs/maybe_show_subpage'}. 
+ * program basis. See filter {@see 'pdl/maybe_show_subpage'}. 
  * 
  * @since 0.1.0
  * 
@@ -251,7 +251,7 @@ function pdl_subpage_link(string $subpage, bool $echo = true): string {
 endif;
 
 
-if (!function_exists('nvis_get_subpage_class')) :
+if (!function_exists('pdl_get_subpage_class')) :
 /**
  * Generates the CSS class names for a subpage container.
  * 
@@ -259,7 +259,7 @@ if (!function_exists('nvis_get_subpage_class')) :
  *
  * @return array The list of class name strings.
  */
-function nvis_get_subpage_class(): array {
+function pdl_get_subpage_class(): array {
     $active = \PedalCMS\Core\Program::subpage_manager()->get_active_subpage();
 
     $classes = [
@@ -275,7 +275,7 @@ function nvis_get_subpage_class(): array {
      * @param string[] $classes An array of class names.
      * @param string[] $subpage The slug of the current subpage.
      */
-    $classes = apply_filters('nvis/programs/subpage_class', $classes, $active);
+    $classes = apply_filters('pdl/subpage_class', $classes, $active);
 
     return array_unique($classes);
 }
@@ -283,19 +283,19 @@ function nvis_get_subpage_class(): array {
 endif; 
 
 
-if (!function_exists('nvis_subpage_class')) :
+if (!function_exists('pdl_subpage_class')) :
 /**
  * Outputs the current subpage class with the class attribute string.
  * 
  * @since 0.1.0
  *
- * @see nvis_get_subpage_class()
+ * @see pdl_get_subpage_class()
  * @return void
  */
-function nvis_subpage_class() {
+function pdl_subpage_class() {
     printf(
         'class="%s"',
-        esc_attr(implode(' ', nvis_get_subpage_class()))
+        esc_attr(implode(' ', pdl_get_subpage_class()))
     );
 }
 

@@ -11,7 +11,7 @@
 defined('ABSPATH') || exit;
 
 $defaults = [
-    'post_type' => 'nvis_program',
+    'post_type' => 'pdl_program',
     'break_filters_after' => 3,
     'filters'   => [
         'keyword',
@@ -22,6 +22,6 @@ $defaults = [
     ]
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 pdl_get_template_part('common/filters', $args);

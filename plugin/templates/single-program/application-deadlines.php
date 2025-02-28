@@ -14,7 +14,7 @@ $defaults = [
     'heading'   => pdl_get_label('application_deadlines')
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 if (is_array($args['deadlines'])) : ?>
 <div class="program-deadlines">

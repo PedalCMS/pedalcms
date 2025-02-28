@@ -44,7 +44,7 @@
   margin-bottom: var(--nvis-spacing-4x);
 }
 
-.nvis-template .page-header .program-subnav {
+.pdl-template .page-header .program-subnav {
   margin: 0 calc(-1 * var(--article-padding));
 
   &__heading {
@@ -87,7 +87,7 @@
   }
 }
 
-.nvis-template .program-main {
+.pdl-template .program-main {
 
   @media (min-width: $screen-md-min) {
     width: calc(100% - var(--nvis-sidebar-width) - 4 * var(--nvis-spacing));

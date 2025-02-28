@@ -26,7 +26,7 @@ class SubpageManager {
      *
      * @var string
      */
-    private $query_var = 'nvis_subpage';
+    private $query_var = 'pdl_subpage';
 
     /**
      * List of registered {@see \PedalCMS\Core\Subpage} objects, all of which are enabled.
@@ -127,7 +127,7 @@ class SubpageManager {
          * @param Subpage $subpage The subpage to be registered.
          * @param string $post_type The post_type this subpage belongs to.
          */
-         $subpage = apply_filters('nvis/programs/add_subpage', $subpage, $this->post_type);
+         $subpage = apply_filters('pdl/add_subpage', $subpage, $this->post_type);
          $subpage->before_add();
          $this->subpages[] = $subpage;
          $this->sort();
@@ -229,7 +229,7 @@ class SubpageManager {
             array_shift($subpages);
         }
 
-        $subpages = apply_filters('nvis/programs/get_subpages', $subpages, $list_name, $this->post_type);
+        $subpages = apply_filters('pdl/get_subpages', $subpages, $list_name, $this->post_type);
 
         if ($return_type === 'hash') {
             return array_combine(
@@ -326,7 +326,7 @@ class SubpageManager {
                  * @param array $title_parts The complete title parts from `document_title_parts` filter.
                  */
                 $title['title'] = apply_filters( 
-                    'nvis/programs/subpage_document_title_part', 
+                    'pdl/subpage_document_title_part', 
                     $subpage->document_title . ', ' . $title['title'],
                     $subpage->document_title, 
                     $title['title'],
@@ -502,7 +502,7 @@ class SubpageManager {
          * @param string $subpage The subpage in question.
          * @param string $post_type The post_type this subpage belongs to.
          */
-        return apply_filters('nvis/programs/maybe_show_subpage', $show, $subpage, $this->post_type);
+        return apply_filters('pdl/maybe_show_subpage', $show, $subpage, $this->post_type);
     }
 
     /**
@@ -516,7 +516,7 @@ class SubpageManager {
      */
     public function get_enabled_subpages(): array {
         // TODO: Make this dynamic based on post type.
-        $enabled = get_option('options_nvis_enable_subpages_' . $this->post_type);
+        $enabled = get_option('options_pdl_enable_subpages_' . $this->post_type);
 
         if (!is_array($enabled)) {
             $enabled = [];
@@ -529,7 +529,7 @@ class SubpageManager {
          *
          * @param array $filters The subpages by slug.
          */
-        return apply_filters('nvis/programs/enabled_subpages', $enabled, $this->post_type, $this->subpages);
+        return apply_filters('pdl/enabled_subpages', $enabled, $this->post_type, $this->subpages);
     }
 
     /**
@@ -557,7 +557,7 @@ class SubpageManager {
          * @param string $url The url of the subpage.
          * @param string $subpage The slug of the corresponding subpage.
          */
-        $link = apply_filters('nvis/programs/get_subpage_link', $link, $subpage);
+        $link = apply_filters('pdl/get_subpage_link', $link, $subpage);
 
         if ($echo) {
             echo $link;

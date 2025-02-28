@@ -11,7 +11,7 @@
 defined('ABSPATH') || exit;
 
 $args = [
-    'post_type' => 'nvis_person',
+    'post_type' => 'pdl_person',
     'break_filters_after' => 2,
     'filters'   => [
         'keyword',

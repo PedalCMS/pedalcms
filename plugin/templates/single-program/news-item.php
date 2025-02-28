@@ -25,7 +25,7 @@ $defaults = [
     'label_read_more'     => pdl_get_label('read_more'),
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 $args['context'] = $template;
 $args['link_image'] = true;
 
@@ -69,7 +69,7 @@ if ($args['post']) :
             <?php
             if ($args['show_category']) :
                 echo
-                    nvis_get_the_term_list(
+                    pdl_get_the_term_list(
                         $post,
                         'category',
                         '<span class="related-post__category">',

@@ -10,7 +10,7 @@ namespace PedalCMS\Core;
  * @since 0.1.0
  */
 class Session extends CustomTaxonomy {
-    public const TAXONOMY = 'nvis_session';
+    public const TAXONOMY = 'pdl_session';
     public string $name = 'Term';
     public string $plural_name = 'Terms';
 

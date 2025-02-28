@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 
 $defaults = [
     'h_level'                   => 2,
@@ -18,10 +18,10 @@ $defaults = [
     'personnel'                 => get_field('related_course_personnel', $post)
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 $style = in_array($args['style'], ['full','links'], true) ? $args['style'] : $defaults['style'];
-$h_tag = nvis_get_heading_tag($args['h_level']);
+$h_tag = pdl_get_heading_tag($args['h_level']);
 
 if (!empty($args['personnel'])) :
 ?>

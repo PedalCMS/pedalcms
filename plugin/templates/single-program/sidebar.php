@@ -16,6 +16,6 @@ defined('ABSPATH') || exit;
     <?php pdl_get_template_part('single-program/application-deadlines'); ?>
     <?php pdl_get_template_part('single-program/contact'); ?>
 
-    <?php nvis_back_to_top_link(); ?>
+    <?php pdl_back_to_top_link(); ?>
   </div>
 </section>

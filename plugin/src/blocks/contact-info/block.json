@@ -1,6 +1,6 @@
 {
 	"apiVersion": 2,
-	"name": "nvis/contact-info",
+	"name": "pdl/contact-info",
 	"version": "0.1.0",
 	"title": "Contact Info",
 	"category": "text",

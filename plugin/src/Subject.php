@@ -10,7 +10,7 @@ namespace PedalCMS\Core;
  * @since 0.1.0
  */
 class Subject extends CustomTaxonomy {
-    public const TAXONOMY = 'nvis_subject';
+    public const TAXONOMY = 'pdl_subject';
 
     public $object_types = [Course::POST_TYPE];
 

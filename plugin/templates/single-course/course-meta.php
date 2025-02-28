@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 
 $defaults = [
     'label_credit'       => pdl_get_label('credit'),
@@ -18,7 +18,7 @@ $defaults = [
     'link_terms'         => false,
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 ?>
 <div class="course-meta">
@@ -32,10 +32,10 @@ $args = nvis_parse_template_args($args, $defaults, $template);
     </div>
 
     <?php
-    if (taxonomy_exists('nvis_session')) :
-        echo nvis_get_the_term_list(
+    if (taxonomy_exists('pdl_session')) :
+        echo pdl_get_the_term_list(
             $post,
-            'nvis_session',
+            'pdl_session',
             sprintf('<div class="course-terms-offered">%s ', esc_html($args['label_offered_in'])),
             ', ',
             '</div>',

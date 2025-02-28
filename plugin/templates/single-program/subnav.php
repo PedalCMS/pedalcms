@@ -15,9 +15,9 @@ $defaults = [
     'label_program_subnav' => pdl_get_label('program_subnav')
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
-$h_tag = nvis_get_heading_tag($args['h_level']);
+$h_tag = pdl_get_heading_tag($args['h_level']);
 
 if (pdl_show_subpages()) : $subpages = pdl_get_subpages(); ?>
 

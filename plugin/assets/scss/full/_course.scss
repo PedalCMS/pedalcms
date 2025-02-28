@@ -1,13 +1,13 @@
-.course-list .nvis_course header {
+.course-list .pdl_course header {
   border-bottom: solid 1px #ccc;
   padding-bottom: calc(var(--nvis-spacing) / 2);
 }
 
-.course-list .nvis_course .course-meta {
+.course-list .pdl_course .course-meta {
   font-size: 0.9em;
 }
 
-.course-list .nvis_course .course-credits {
+.course-list .pdl_course .course-credits {
   font-weight: bold;
 }
 
@@ -22,7 +22,7 @@
   padding-bottom: var(--spacing);
 }
 
-.nvis-template .course-sidebar .person-name {
+.pdl-template .course-sidebar .person-name {
   font-family: inherit;
   font-size: 1.25em;
   font-weight: bold;

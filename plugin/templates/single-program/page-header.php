@@ -13,7 +13,7 @@ $defaults = [
     'link_terms' => true,
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 $args['context'] = $template;
 
 ?>
@@ -28,9 +28,9 @@ $args['context'] = $template;
       <h1 class="page-title entry-title">
         <?php the_title(); ?>
       </h1>
-      <?php if (taxonomy_exists('nvis_program_type')) :?>
+      <?php if (taxonomy_exists('pdl_program_type')) :?>
       <div class="program-type taxonomy">
-        <?php echo nvis_get_the_term_list(get_the_ID(), 'nvis_program_type', '', ', ', '', $args['link_terms']);?>
+        <?php echo pdl_get_the_term_list(get_the_ID(), 'pdl_program_type', '', ', ', '', $args['link_terms']);?>
       </div>
       <?php endif; ?>
     </div>

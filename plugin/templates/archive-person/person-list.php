@@ -15,10 +15,10 @@ $defaults = [
     'show_contact_info'        => true,
     'show_contact_info_labels' => false,
     'img_size'                 => 'medium',
-    'label_no_one_found'       => nvis_get_post_type_label('nvis_person', 'not_found')
+    'label_no_one_found'       => pdl_get_post_type_label('pdl_person', 'not_found')
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 $classes = [
     'person-list',

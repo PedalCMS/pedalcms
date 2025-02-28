@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$post = nvis_args_or_global('post', $args);
+$post = pdl_args_or_global('post', $args);
 
 $defaults = [
     'context'         => $template,
@@ -30,7 +30,7 @@ $defaults = [
     'wrapper_class' => 'program-actions'
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 
 if ($args['add_permalink']) {
     $permalink = $args['add_permalink'] === true ? get_permalink($post) : $args['add_permalink'];

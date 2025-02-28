@@ -16,15 +16,15 @@ if (!$post_type) {
 }
 
 $defaults = [
-    'label_single_post'      => nvis_get_post_type_label($post_type,'singular_name'),
-    'label_posts'            => strtolower(nvis_get_post_type_label($post_type, 'plural_not_collective', 'name')),
+    'label_single_post'      => pdl_get_post_type_label($post_type,'singular_name'),
+    'label_posts'            => strtolower(pdl_get_post_type_label($post_type, 'plural_not_collective', 'name')),
     'label_filtered_results' => pdl_get_label('filtered_results'),
     'label_showing'          => pdl_get_label('showing'),
     'label_showing_of'       => pdl_get_label('showing_of'),
     'wp_query'               => null,
 ];
 
-$args = nvis_parse_template_args($args, $defaults, $template);
+$args = pdl_parse_template_args($args, $defaults, $template);
 $wp_query = $args['wp_query'];
 
 if (!$wp_query) {
@@ -69,11 +69,11 @@ if ($wp_query->found_posts) {
  * @since 0.1
  *
  */
-do_action('nvis/careers/before_num_results');
+do_action('pdl/careers/before_num_results');
 
 if ($wp_query->found_posts) : ?>
 <div class="num-results">
-    <?php if (nvis_is_filtered_results($post_type)) : ?>
+    <?php if (pdl_is_filtered_results($post_type)) : ?>
     <strong class="num-results__filtered"><?php echo esc_html($args['label_filtered_results']);?>:</strong>
     <?php endif; ?>
 
@@ -86,4 +86,4 @@ if ($wp_query->found_posts) : ?>
  * @since 0.1
  *
  */
-do_action('nvis/careers/after_num_results');
+do_action('pdl/careers/after_num_results');

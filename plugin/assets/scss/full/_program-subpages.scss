@@ -17,14 +17,14 @@
   line-height: 1.5;
 }
 
-body.single-nvis_program .related-post {
+body.single-pdl_program .related-post {
   --spacing: var(--nvis-spacing-2x);
   border-bottom: solid 1px #ccc;
   margin-bottom: var(--spacing);
   padding-bottom: var(--spacing);
 }
 
-body.single-nvis_program .related-post__title-label {
+body.single-pdl_program .related-post__title-label {
   display: inline-block;
   font-size: 0.75em;
   line-height: 1;
@@ -32,7 +32,7 @@ body.single-nvis_program .related-post__title-label {
   width: fit-content;
 }
 
-body.single-nvis_program .related-post__category a {
+body.single-pdl_program .related-post__category a {
   margin-bottom: 0.1em;
   text-decoration: none;
 }

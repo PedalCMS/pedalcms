@@ -2429,7 +2429,7 @@ msgid "A link to a session."
 msgstr ""
 
 #: src/shortcodes.php:34
-msgid "You must supply a taxonomy via the tax attribute (e.g. tax=\"nvis_program_type\")."
+msgid "You must supply a taxonomy via the tax attribute (e.g. tax=\"pdl_program_type\")."
 msgstr ""
 
 #: src/Subject.php:32

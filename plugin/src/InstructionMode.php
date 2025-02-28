@@ -10,7 +10,7 @@ namespace PedalCMS\Core;
  * @since 0.1.0
  */
 class InstructionMode extends CustomTaxonomy {
-    public const TAXONOMY = 'nvis_instruct_mode';
+    public const TAXONOMY = 'pdl_instruct_mode';
     public string $name = 'Instruction Mode';
     public string $plural_name = 'Instruction Modes';
 
