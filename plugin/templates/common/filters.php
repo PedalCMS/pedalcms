@@ -80,9 +80,9 @@ if (!empty($args['filters']) && !empty($args['post_type'])) :
             endif;
 
             if (is_array($filter) && count($filter) > 1):
-                pdl_get_template_part('filters/' . $filter[0], $filter[1]);
+                pdl_get_template_part('common/filters/' . $filter[0], $filter[1]);
             elseif (is_string($filter)):
-                pdl_get_template_part('filters/' . $filter);
+                pdl_get_template_part('common/filters/' . $filter);
             endif;
         endforeach;
 
