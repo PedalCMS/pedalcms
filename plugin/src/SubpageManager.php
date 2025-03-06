@@ -85,8 +85,8 @@ class SubpageManager {
      */
     public function setup_hooks(): void {
         add_action('wp', [&$this, 'maybe_override_rel_canonical']);
-        add_filter('rewrite_rules_array', [&$this, 'insert_rules']);
-        add_filter('query_vars', [&$this, 'add_query_var']);
+        add_action('init', [&$this, 'insert_rules'], 1);
+        add_filter('query_vars', [&$this, 'add_query_var'], 1);
         add_filter('document_title_parts', [&$this, 'maybe_update_title'], 20);
 
         return;
@@ -268,35 +268,36 @@ class SubpageManager {
      * Called on filter: `rewrite_rules_array`
      * 
      * @since 0.1.0
-     *
-     * @param array $rules The existing rewrite rules.
-     * @return array The resulting rewrite rules with ours added.
      */
-    public function insert_rules(array $rules): array {
-        $subpage_rules = [];
+    public function insert_rules() {
         $post_obj = get_post_type_object($this->post_type);
+
+        if (!$post_obj->rewrite) {
+            return;
+        }
+
         $pretty_pattern = '%s/([^/]+)/%s/?$';
         $real_pattern = 'index.php?%s=$matches[1]&%s=%s';
 
-        if (!$post_obj->rewrite) {
-            return $rules;
-        }
-
+        /**
+         * We are adding each subpage as its own rule so that the attachment
+         * rewrite rule continues to function as normal. The only side effect
+         * is that in a collision between an attachment and a subpage with the 
+         * same slug, our subpages will win. Sorry not sorry.
+         */
         foreach ($this->subpages as $subpage) {
             if ($subpage->slug === 'index') {
                 continue;
             }
 
-            $index = sprintf($pretty_pattern, $post_obj->rewrite['slug'], $subpage->slug);
-            $subpage_rules[$index] = sprintf(
-                $real_pattern,
-                $this->post_type,
-                $this->query_var,
-                $subpage->slug
+            add_rewrite_rule(
+                sprintf($pretty_pattern, $post_obj->rewrite['slug'], $subpage->slug),
+                sprintf($real_pattern, $post_obj->query_var, $this->query_var, $subpage->slug),
+                'top' // supercede the attachment rewrite rule
             );
         }
 
-        return $subpage_rules + $rules;
+        return;
     }
 
     /**
