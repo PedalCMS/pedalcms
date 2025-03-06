@@ -44,7 +44,7 @@ class Program extends CustomPostType {
         'rest_controller_class'           => 'WP_REST_Posts_Controller',
         'show_ui'             => true,
         'show_in_menu'        => true,
-        'query_var'           => 'programs',
+        'query_var'           => 'program',
         'map_meta_cap'        => true,
         'hierarchical'        => false,
         'supports'            => ['title', 'thumbnail'],
