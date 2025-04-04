@@ -22,6 +22,8 @@ $args = pdl_parse_template_args($args, $defaults, $template);
 
 ?>
 <div class="course-meta">
+    
+    <?php if ($post->credits) : ?>
     <div class="course-credits">
         <?php
             echo (int) $post->credits . ' ';
@@ -30,6 +32,7 @@ $args = pdl_parse_template_args($args, $defaults, $template);
                 esc_html($args['label_credits']);
         ?>
     </div>
+    <?php endif; ?>
 
     <?php
     if (taxonomy_exists('pdl_session')) :
