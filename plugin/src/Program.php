@@ -398,7 +398,7 @@ class Program extends CustomPostType {
                                     'id'    => '',
                                 ],
                                 'tabs'          => 'all',
-                                'toolbar'       => 'basic',
+                                'toolbar'       => 'full',
                                 'media_upload'  => 0,
                                 'delay'         => 1,
                             ],
