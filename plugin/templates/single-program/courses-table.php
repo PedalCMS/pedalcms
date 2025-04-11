@@ -32,7 +32,7 @@ if (is_array($args['courses'])): ?>
         <?php foreach ($args['courses'] as $post) :?>
         <tr class="courses-table__course">
             <td>
-                <?php echo pdl_get_full_course_title($post); ?>
+                <a href="<?php the_permalink($post); ?>"><?php echo pdl_get_full_course_title($post); ?></a>
             </td>
 
             <?php if ($args['show_credits']) : ?>
