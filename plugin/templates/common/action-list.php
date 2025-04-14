@@ -12,7 +12,7 @@ if (!empty($args['actions'])) : ?>
     <ul>
         <?php
         foreach ($args['actions'] as $i => $action) :
-          if (empty($args['url']) || empty($args['label'])) continue; 
+          if (empty($action['url']) || empty($action['label'])) continue; 
           
           $class = $action['key'] ? str_replace('_', '-', $action['key']) : '';
           $class .= ' button ';
