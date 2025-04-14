@@ -969,7 +969,7 @@ class Program extends CustomPostType {
             return $url;
         }
 
-        $url = \PedalCMS\Core\Plugin::get_option('url_' . $action);
+        $url = \PedalCMS\Core\Plugin::get_option('program_url_' . $action);
 
         if ($url) {
             $url = str_replace(
