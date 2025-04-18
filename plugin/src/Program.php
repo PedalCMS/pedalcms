@@ -1039,6 +1039,8 @@ class Program extends CustomPostType {
         self::setup_subpages();
         self::$subpage_manager = new SubpageManager(Program::POST_TYPE);
 
+        do_action('pdl/register_subpages', Program::POST_TYPE);
+
         foreach(Program::$subpages as $slug => $args) {
             $subpage = new Subpage($slug, $args);
             self::$subpage_manager->add_subpage($subpage);
