@@ -137,10 +137,10 @@ function admin_enqueue_assets() {
         in_array(get_post_type(), Plugin::post_types());
 
     if ($is_post_edit && Department::depends_on_college()) {
-        $pdl_acf = '/admin/js/nvis-acf.min.js';
+        $pdl_acf = '/admin/js/pdl-acf.min.js';
 
         wp_enqueue_script(
-            'nvis-acf',
+            'pdl-acf',
             Plugin::$url . $pdl_acf,
             ['acf'],
             filemtime(Plugin::$path . $pdl_acf),
@@ -153,6 +153,6 @@ function admin_enqueue_assets() {
             'label_not_found' => __('No departments found', 'pedalcms')
         ];
     
-        wp_localize_script('nvis-acf', 'nvisACFData', $pdl_acf_data);
+        wp_localize_script('pdl-acf', 'pdlACFData', $pdl_acf_data);
     }
 }
