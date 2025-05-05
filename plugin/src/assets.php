@@ -124,6 +124,11 @@ function enqueue_assets() {
     }
 }
 
+/**
+ * Enqueues WP Admin assets.
+ *
+ * @return void
+ */
 function admin_enqueue_assets() {
     global $pagenow;
     
