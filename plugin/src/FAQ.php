@@ -26,7 +26,7 @@ class FAQ extends CustomPostType {
         'rewrite'             => ['slug' => 'faq'],
         'has_archive'         => 'faqs',
         'capability_type'     => self::POST_TYPE,
-        'menu_icon'           => 'dashicons-editor-help',
+        'menu_icon'           => '',
         'menu_position'       => 5,
         'description'         => '',
         'public'              => true,

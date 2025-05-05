@@ -34,7 +34,7 @@ class Program extends CustomPostType {
         'has_archive'         => 'programs',
         'rewrite'             => ['slug' => 'program', 'with_front' => true],
         'capability_type'     => self::POST_TYPE,
-        'menu_icon'           => 'dashicons-welcome-learn-more',
+        'menu_icon'           => '',
         'menu_position'       => 5,
         'description'         => '',
         'public'              => true,
@@ -65,6 +65,7 @@ class Program extends CustomPostType {
         $this->args['labels'] = [
             'name'                     => _x( 'Programs', 'post type general name', 'pedalcms' ),
             'singular_name'            => _x( 'Program', 'post type singular name', 'pedalcms' ),
+            'menu_name'                => __( 'Pedal', 'pedalcms' ),
             'add_new_item'             => __( 'Add New Program', 'pedalcms' ),
             'edit_item'                => __( 'Edit Program', 'pedalcms' ),
             'new_item'                 => __( 'New Program', 'pedalcms' ),

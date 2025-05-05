@@ -1,0 +1,48 @@
+body.wp-admin #adminmenu li[id^="menu-posts-pdl_"] > a {
+  .wp-menu-image {
+    background-color: rgba(255,255,255,0.6);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 22px 22px;
+  }
+
+  &.wp-menu-open,
+  &:hover {
+    .wp-menu-image {
+      background-color: currentColor;
+      opacity: 1;
+    }
+  }
+
+}
+
+body.wp-admin .menu-icon-pdl_program {
+  .wp-menu-image {
+    background-color: transparent !important;
+    background-image: url(../icons/pedal-icon.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 22px 22px;
+    filter: saturate(0) brightness(0.8);
+    opacity: 1;
+  }
+
+  &.wp-menu-open,
+  &:hover {
+    .wp-menu-image {
+      filter: saturate(1) brightness(1);
+    }
+  }
+}
+
+body.wp-admin .menu-icon-pdl_course .wp-menu-image {
+  mask-image: url(../icons/course.svg);
+}
+
+body.wp-admin .menu-icon-pdl_person .wp-menu-image {
+  mask-image: url(../icons/person.svg);
+}
+
+body.wp-admin .menu-icon-pdl_faq .wp-menu-image {
+  mask-image: url(../icons/faq.svg);
+}

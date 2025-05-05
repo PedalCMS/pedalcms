@@ -26,7 +26,7 @@ class Course extends CustomPostType {
         'rewrite'             => ['slug' => 'course'],
         'has_archive'         => 'courses',
         'capability_type'     => self::POST_TYPE,
-        'menu_icon'           => 'dashicons-book-alt',
+        'menu_icon'           => '',
         'menu_position'       => 5,
         'description'         => '',
         'public'              => true,
@@ -186,8 +186,8 @@ class Course extends CustomPostType {
     }
 
     /**
-     * Prefixes the course title with the course code. 
-     * 
+     * Prefixes the course title with the course code.
+     *
      * @since 0.1.0
      *
      * @param mixed $post Either the ID of a post or a WP_Post object. Deafults to the current course.
@@ -219,7 +219,7 @@ class Course extends CustomPostType {
      *
      * Will check for a local course override before attempting to build it from
      * the plugin wide pattern setting.
-     * 
+     *
      * @since 0.1.0
      *
      * @param string $action The name of the action.

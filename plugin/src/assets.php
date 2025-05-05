@@ -104,8 +104,8 @@ function enqueue_assets() {
         }
     }
 
-    $is_plugin_content = 
-        is_singular(Plugin::post_types()) || 
+    $is_plugin_content =
+        is_singular(Plugin::post_types()) ||
         is_post_type_archive(Plugin::post_types()) ||
         is_tax(Plugin::taxonomies());
 
@@ -131,8 +131,8 @@ function enqueue_assets() {
  */
 function admin_enqueue_assets() {
     global $pagenow;
-    
-    $is_post_edit = 
+
+    $is_post_edit =
         in_array($pagenow, ['post.php', 'post-new.php']) &&
         in_array(get_post_type(), Plugin::post_types());
 
@@ -146,13 +146,23 @@ function admin_enqueue_assets() {
             filemtime(Plugin::$path . $pdl_acf),
             true
         );
-    
+
         $pdl_acf_data = [
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce' => wp_create_nonce('pdl_acf_data'),
             'label_not_found' => __('No departments found', 'pedalcms')
         ];
-    
+
         wp_localize_script('pdl-acf', 'pdlACFData', $pdl_acf_data);
     }
+
+    $pdl_css = '/admin/css/pdl-admin.css';
+
+    wp_enqueue_style(
+        'pdl-admin',
+        Plugin::$url . $pdl_css,
+        [],
+        filemtime(Plugin::$path . $pdl_css)
+    );
+
 }

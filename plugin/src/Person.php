@@ -26,7 +26,7 @@ class Person extends CustomPostType {
         'rewrite'             => ['slug' => 'directory'],
         'has_archive'         => 'directory',
         'capability_type'     => self::POST_TYPE,
-        'menu_icon'           => 'dashicons-businesswoman',
+        'menu_icon'           => '',
         'menu_position'       => 5,
         'description'         => '',
         'public'              => true,
