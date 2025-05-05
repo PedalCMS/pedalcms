@@ -2,13 +2,13 @@
 
 /**
  * Plugin Name: Pedal CMS
- * Plugin URI: https://verifiedstudios.com
+ * Plugin URI: https://pedalcms.com
  * Description: A program marketing powerhouse that includes: program listings, course offerings, team  directory, and more.
  * Requires PHP: 8.1
  * Requires at least: 5.6
  * Version: 0.1
  * Author: pedalcms
- * Author URI: https://verifiedstudios.com
+ * Author URI: https://pedalcms.com
  * Text Domain: pedalcms
  * License: GPL 2.0 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
