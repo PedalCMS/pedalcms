@@ -1,6 +1,5 @@
-# Bundled Advanced Custom Fields & Freemius.
+# Bundled Advanced Custom Fields.
 plugin/src/acf
-plugin/src/freemius
 
 # No builds.
 *.zip
