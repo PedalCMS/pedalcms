@@ -237,7 +237,7 @@ function term_link(string $link): string {
     $query_start = strpos($link, '?');
 
     if ($query_start !== false) {
-        if (is_admin()) {
+        if (is_admin() && isset($_GET['post_type'])) {
             $post_type = $_GET['post_type'];
         } else {
             $post_type = get_query_var('post_type');
