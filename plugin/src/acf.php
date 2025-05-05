@@ -185,6 +185,7 @@ function add_relationship(int $add_post, array $to_posts, string $field_name): v
 
     return;
 }
+
 /**
  * Removes the relationship value from the connected post(s).
  *
@@ -306,8 +307,15 @@ function choices_post_type(array $field): array {
     return $field;
 }
 
-
-function prepare_taxonomy_field($field) {
+/**
+ * Filters out fields for disabled taxonomies.
+ * 
+ * Called on filter: `acf/prepare_field/type=taxonomy`
+ *
+ * @param array|false $field The current taxonomy field config.
+ * @return array|false Either the taxonomy field or false if taxonomy disabled.
+ */
+function prepare_taxonomy_field(array|false $field): array|false {
     if (!in_array($field['taxonomy'], Plugin::taxonomies(false))) {
         return $field;
     }
@@ -326,8 +334,15 @@ function prepare_taxonomy_field($field) {
     return $field;
 }
 
-
-function prepare_department($field) {
+/**
+ * Modifies the department field based on whether departments depend on colleges.
+ * 
+ * Called on filter: `acf/prepare_field/name=department`
+ *
+ * @param array|false $field The department taxonomy field config.
+ * @return array|false Either 
+ */
+function prepare_department(array|false $field): array|false {
     if (!prepare_taxonomy_field($field)) {
         return false;
     }
