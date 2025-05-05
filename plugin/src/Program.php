@@ -11,24 +11,14 @@ namespace PedalCMS\Core;
  */
 class Program extends CustomPostType {
     /**
-     * The post type to register.
-     *
-     * @since 0.1.0
-     *
-     * @var string
+     * @inheritdoc
      */
     public const POST_TYPE = 'pdl_program';
 
     private static $subpage_manager = null;
 
     /**
-     * The args to pass to register_post_type.
-     *
-     * Gets updated throughout the setup process.
-     *
-     * @since 0.1.0
-     *
-     * @var array
+     * @inheritdoc
      */
     public array $args = [
         'has_archive'         => 'programs',
@@ -61,6 +51,9 @@ class Program extends CustomPostType {
      */
     public static $subpages = [];
 
+    /**
+     * @inheritdoc
+     */
     protected function setup_labels(): void {
         $this->args['labels'] = [
             'name'                     => _x( 'Programs', 'post type general name', 'pedalcms' ),
@@ -93,6 +86,13 @@ class Program extends CustomPostType {
         ];
     }
 
+    /**
+     * Initialize the edit screen fields.
+     *
+     * @since 0.1.0
+     *
+     * @return void
+     */
     protected function setup_field_group() {
         $field_group = [
             'key'         => 'group_61118a19b2e4c',
@@ -328,6 +328,13 @@ class Program extends CustomPostType {
         $this->field_groups[] = $field_group;
     }
 
+    /**
+     * Initialize the list of Subpages.
+     *
+     * @since 0.1.0
+     *
+     * @return void
+     */
     protected static function setup_subpages() {
         self::$subpages = [
             'index' => [
@@ -878,6 +885,9 @@ class Program extends CustomPostType {
 
     }
 
+    /**
+     * @inheritdoc
+     */
     public function setup_hooks(): void {
         add_action('pre_get_posts', [static::class, 'update_sort_order']);
         add_action('wp_after_insert_post', [static::class, 'save_terms'], 10, 2);
@@ -908,6 +918,15 @@ class Program extends CustomPostType {
         return;
     }
 
+    /**
+     * Associates a post with the appropriate department terms.
+     *
+     * @since 0.1.0
+     *
+     * @param int $post_id The current post ID.
+     * @param \WP_Post $post The current post object.
+     * @return void
+     */
     public static function save_terms($post_id, $post) {
         if ($post->post_type === self::POST_TYPE) {
             Department::save_terms($post);
