@@ -42,7 +42,7 @@ abstract class CustomPostType extends CustomContentObject {
      *
      * @var string
      */
-    protected string $icons_path = 'icons/';
+    protected string $icons_path = 'admin/icons/';
 
 
     protected function __construct() {
@@ -96,7 +96,8 @@ abstract class CustomPostType extends CustomContentObject {
         }
 
         if ($file) {
-            $this->args['menu_icon'] = $file;
+            $url = trailingslashit(Plugin::$url) . $this->icons_path . $this->icon_file;
+            $this->args['menu_icon'] = $url;
         }
 
         return;
