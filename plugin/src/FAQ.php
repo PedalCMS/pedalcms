@@ -5,8 +5,7 @@ namespace PedalCMS\Core;
 /**
  * FAQ custom post type.
  *
- * @package PedalCMS
- * @subpackage ContentModel
+ * @package PedalCMS\Core\ContentModel
  * @since 0.1.0
  */
 class FAQ extends CustomPostType {

@@ -2,8 +2,7 @@
 /**
  * The template for displaying the single Course page header.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 
@@ -22,7 +21,7 @@ $args = pdl_parse_template_args($args, $defaults, $template);
 
 ?>
 <div class="course-meta">
-    
+
     <?php if ($post->credits) : ?>
     <div class="course-credits">
         <?php

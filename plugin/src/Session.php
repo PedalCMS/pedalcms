@@ -5,8 +5,7 @@ namespace PedalCMS\Core;
 /**
  * Session custom taxonomy.
  *
- * @package PedalCMS
- * @subpackage ContentModel
+ * @package PedalCMS\Core\ContentModel
  * @since 0.1.0
  */
 class Session extends CustomTaxonomy {

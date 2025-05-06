@@ -2,8 +2,7 @@
 /**
  * Displays a variety of meta items, for use in a single Person view.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

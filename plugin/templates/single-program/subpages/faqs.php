@@ -2,8 +2,7 @@
 /**
  * The template for displaying the FAQ Program Subpage.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

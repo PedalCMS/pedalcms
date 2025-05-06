@@ -3,8 +3,7 @@
 /**
  * A template for displaying a search and filter form.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  * @since 0.1.0
  *

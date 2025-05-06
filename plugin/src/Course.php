@@ -5,8 +5,7 @@ namespace PedalCMS\Core;
 /**
  * Course custom post type.
  *
- * @package PedalCMS
- * @subpackage ContentModel
+ * @package PedalCMS\Core\ContentModel
  * @since 0.1.0
  */
 class Course extends CustomPostType {

@@ -6,8 +6,7 @@ namespace PedalCMS\Core;
  * Base class for common custom block tasks in WordPress.
  *
  * @version 0.1.0
- * @package PedalCMS
- * @subpackage StandardLib
+ * @package PedalCMS\StandardLib
  * @since 0.1.0
  */
 abstract class CustomBlock {

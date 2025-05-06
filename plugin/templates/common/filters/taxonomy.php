@@ -4,8 +4,7 @@
  *
  * An abstract template. Only meant to be referenced by other filter templates.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 
@@ -29,7 +28,7 @@ if (!taxonomy_exists($args['taxonomy'])) {
 
 $label = $args['label'] ?? pdl_get_taxonomy_label($args['taxonomy'], 'singular_name');
 $short_label = $args['short_label'] ?? $label;
-$none_selected = $args['label_none_selected'] ?? 
+$none_selected = $args['label_none_selected'] ??
     pdl_get_taxonomy_label($args['taxonomy'],'none_selected') ??
     $args['none_selected_prefix'] . $short_label;
 

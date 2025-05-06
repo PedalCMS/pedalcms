@@ -2,8 +2,7 @@
 /**
  * Displays a single Program item, for use in an archive or other Program list.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

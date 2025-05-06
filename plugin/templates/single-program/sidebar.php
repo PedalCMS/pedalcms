@@ -2,8 +2,7 @@
 /**
  * The template for displaying the Program sidebar with calls to action and contact info.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

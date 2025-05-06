@@ -2,8 +2,7 @@
 /**
  * The template for displaying a person when classic editor enabled on personnel.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

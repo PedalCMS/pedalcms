@@ -2,8 +2,7 @@
 /**
  * The template for displaying Program meta items, for use on single Program.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

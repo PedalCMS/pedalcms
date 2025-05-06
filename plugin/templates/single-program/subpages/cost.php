@@ -2,8 +2,7 @@
 /**
  * The template for displaying the Cost Program Subpage.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 
@@ -30,7 +29,7 @@ if ($args['show_subpage']) : ?>
 
 <div <?php pdl_subpage_class(); ?>>
   <h2 class="program-subpage__title"><?php echo esc_html(pdl_subpage_title()); ?></h2>
-  
+
   <div class="program-subpage__content">
 
     <?php if ($args['estimated_cost']) : ?>

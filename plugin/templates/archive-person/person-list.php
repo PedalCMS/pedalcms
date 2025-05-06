@@ -2,8 +2,7 @@
 /**
  * Displays a list of Person items, for use in an archive.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

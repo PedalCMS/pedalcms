@@ -2,8 +2,7 @@
 /**
  * The template for displaying a single curriculum section, for use on Curriculum subpage.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

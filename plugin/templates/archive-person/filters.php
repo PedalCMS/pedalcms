@@ -2,8 +2,7 @@
 /**
  * A template for displaying the Person archive search and filter form.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  *
  */

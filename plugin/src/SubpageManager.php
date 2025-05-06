@@ -5,8 +5,7 @@ namespace PedalCMS\Core;
 /**
  * Handles all functionality related to Subpages.
  *
- * @package PedalCMS
- * @subpackage Subpages
+ * @package PedalCMS\Core\Subpages
  * @since 0.1.0
  */
 class SubpageManager {

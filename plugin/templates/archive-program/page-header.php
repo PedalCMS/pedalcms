@@ -2,8 +2,7 @@
 /**
  * Template for displaying the Program archive page header.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

@@ -2,8 +2,7 @@
 /**
  * Displays a Person Category taxonomy dropdown filter.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

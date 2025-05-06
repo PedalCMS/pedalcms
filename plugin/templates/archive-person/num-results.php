@@ -2,8 +2,7 @@
 /**
  * Template for displaying number of results in Person archives.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

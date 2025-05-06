@@ -2,8 +2,7 @@
 /**
  * The template for displaying the single Course page header.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

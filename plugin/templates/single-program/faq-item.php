@@ -2,8 +2,7 @@
 /**
  * The template for displaying a single FAQ item, for use on the FAQ subpage.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

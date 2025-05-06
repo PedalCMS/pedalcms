@@ -4,8 +4,7 @@
  *
  * A thin wrapper around get_footer().
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

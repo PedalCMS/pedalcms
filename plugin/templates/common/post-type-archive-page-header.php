@@ -2,8 +2,7 @@
 /**
  * Template for displaying the Program archive page header.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 
@@ -23,7 +22,7 @@ $args = pdl_parse_template_args($args, $defaults, $template);
   class="<?php echo get_post_type(); ?>-archive-page-header page-header">
   <?php pdl_get_template_part('common/page-header-backdrop', ['context' => $template, 'fallback_to_post' => false]); ?>
   <div class="page-header__content">
-    <?php 
+    <?php
     if ($args['show_image']) :
       if (is_tax() && !pdl_is_filtered_results(pdl_get_post_types())) :
         pdl_get_template_part('common/term-featured-image', $args);

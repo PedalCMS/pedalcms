@@ -2,8 +2,7 @@
 /**
  * The template for displaying college archives.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 defined('ABSPATH') || exit;

@@ -5,8 +5,7 @@ namespace PedalCMS\Core;
 /**
  * Person Category custom taxonomy.
  *
- * @package PedalCMS
- * @subpackage ContentModel
+ * @package PedalCMS\Core\ContentModel
  * @since 0.1.0
  */
 class PersonCategory extends CustomTaxonomy {

@@ -2,8 +2,7 @@
 /**
  * Displays a simple list of post links.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

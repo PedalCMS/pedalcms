@@ -2,8 +2,7 @@
 /**
  * The template for displaying personnel archives, aka the Directory.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 defined('ABSPATH') || exit;

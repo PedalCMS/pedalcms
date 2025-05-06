@@ -6,8 +6,7 @@ namespace PedalCMS\Core;
  * Handles all functionality related to our extended template system.
  *
  * @version 0.1.0
- * @package PedalCMS
- * @subpackage StandardLib
+ * @package PedalCMS\StandardLib
  * @since 0.1.0
  */
 class TemplateManager {

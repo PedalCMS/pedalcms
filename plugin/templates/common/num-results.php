@@ -2,8 +2,7 @@
 /**
  * Template for displaying number of results in archives and filtered search.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

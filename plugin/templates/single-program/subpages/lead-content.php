@@ -2,8 +2,7 @@
 /**
  * The template for displaying lead content on a Program Subpage.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

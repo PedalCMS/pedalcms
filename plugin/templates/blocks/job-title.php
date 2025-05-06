@@ -4,8 +4,7 @@
  *
  * Primarily used to render the JobTitle block but can be used anywhere.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

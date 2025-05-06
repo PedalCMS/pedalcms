@@ -2,8 +2,7 @@
 /**
  * The template for displaying the an SVG image placeholder for a Person.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 

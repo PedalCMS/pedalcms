@@ -2,8 +2,7 @@
 /**
  * The template for displaying a Program contact person.
  *
- * @package PedalCMS
- * @subpackage Templates
+ * @package PedalCMS\Core\Templates
  * @version 1.0
  */
 
