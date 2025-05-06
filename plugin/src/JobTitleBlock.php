@@ -4,15 +4,21 @@ namespace PedalCMS\Core;
 
 /**
  * Job Title custom block.
- * 
+ *
  * Used with Person post types.
- * 
+ *
  * @package PedalCMS
  * @since 0.1.0
  */
 class JobTitleBlock extends CustomBlock {
+    /**
+     * @inheritdoc
+     */
     public static string $block_name = 'job-title';
 
+    /**
+     * @inheritdoc
+     */
     public static array $editor_dependencies = [
         'wp-blocks',
         'wp-element',
@@ -22,6 +28,9 @@ class JobTitleBlock extends CustomBlock {
         'wp-block-editor'
     ];
 
+    /**
+     * @inheritdoc
+     */
     public static function render(array $block_attributes, string $content): string {
         $post = get_post();
 
