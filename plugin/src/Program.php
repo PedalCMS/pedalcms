@@ -87,11 +87,7 @@ class Program extends CustomPostType {
     }
 
     /**
-     * Initialize the edit screen fields.
-     *
-     * @since 0.1.0
-     *
-     * @return void
+     * @inheritdoc
      */
     protected function setup_field_group() {
         $field_group = [

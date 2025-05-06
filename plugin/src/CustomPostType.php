@@ -44,7 +44,9 @@ abstract class CustomPostType extends CustomContentObject {
      */
     protected string $icons_path = 'admin/icons/';
 
-
+    /**
+     * @inheritdoc
+     */
     protected function __construct() {
         $this->system_name = static::POST_TYPE;
         parent::__construct();
@@ -332,6 +334,9 @@ abstract class CustomPostType extends CustomContentObject {
         return $groups;
     }
 
+    /**
+     * @inheritdoc
+     */
     public static function get_content_type():string {
         return 'post_type';
     }

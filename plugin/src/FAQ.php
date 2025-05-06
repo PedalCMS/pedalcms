@@ -11,16 +11,12 @@ namespace PedalCMS\Core;
  */
 class FAQ extends CustomPostType {
     /**
-     * The post type to register.
+     * @inheritdoc
      */
     public const POST_TYPE = 'pdl_faq';
 
     /**
-     * The args to pass to register_post_type.
-     *
-     * Gets updated throughout the setup process.
-     *
-     * @var array
+     * @inheritdoc
      */
     public array $args = [
         'rewrite'             => ['slug' => 'faq'],
@@ -38,6 +34,9 @@ class FAQ extends CustomPostType {
         'supports'            => ['title', 'editor'],
     ];
 
+    /**
+     * @inheritdoc
+     */
     protected function setup_labels(): void {
         self::$enter_title_text = __('Enter the Question', 'pedalcms');
 

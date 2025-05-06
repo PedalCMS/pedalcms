@@ -11,16 +11,12 @@ namespace PedalCMS\Core;
  */
 class Course extends CustomPostType {
     /**
-     * The post type to register.
+     * @inheritdoc
      */
     public const POST_TYPE = 'pdl_course';
 
     /**
-     * The args to pass to register_post_type.
-     *
-     * Gets updated throughout the setup process.
-     *
-     * @var array
+     * @inheritdoc
      */
     public array $args = [
         'rewrite'             => ['slug' => 'course'],
@@ -38,6 +34,9 @@ class Course extends CustomPostType {
         'supports'            => ['title', 'editor'],
     ];
 
+    /**
+     * @inheritdoc
+     */
     protected function setup_labels(): void {
         $this->args['labels'] = [
             'name'                     => _x( 'Course Catalog', 'post type general name', 'pedalcms' ),
@@ -70,6 +69,13 @@ class Course extends CustomPostType {
         ];
     }
 
+    /**
+     * Initialize the edit screen fields.
+     *
+     * @since 0.1.0
+     *
+     * @return void
+     */
     protected function setup_field_group() {
         $field_group = [
             'key'      => 'group_612f7f2c97e10',

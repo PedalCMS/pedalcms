@@ -225,15 +225,34 @@ abstract class CustomContentObject {
         return;
     }
 
+    /**
+     * Initialize the edit screen fields.
+     *
+     * @since 0.1.0
+     *
+     * @return void
+     */
     protected function setup_field_group() {
 
     }
 
+    /**
+     * Returns the group of edit screen fields.
+     *
+     * @since 0.1.0
+     *
+     * @return array The ACF field group of fields for this object.
+     */
     public static function get_field_group(): array {
         $instance = static::get_instance();
 
         return $instance->field_groups[0] ?? [];
     }
 
+    /**
+     * Returns the type of content object.
+     *
+     * @return string Either 'post_type' or 'taxonomy'
+     */
     abstract public static function get_content_type(): string;
 }

@@ -23,6 +23,9 @@ abstract class CustomTaxonomy extends CustomContentObject {
      */
     public $object_types = null;
 
+    /**
+     * @inheritdoc
+     */
     public array $args = [
         'description'           => '',
         'hierarchical'          => false,
@@ -50,6 +53,9 @@ abstract class CustomTaxonomy extends CustomContentObject {
         $this->init = true;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function register(): void {
         $this->maybe_behave_like_tag();
         $result = register_taxonomy(static::TAXONOMY, $this->object_types, $this->args);
@@ -107,10 +113,24 @@ abstract class CustomTaxonomy extends CustomContentObject {
         ]);
     }
 
+    /**
+     * @inheritdoc
+     */
     public static function get_content_type():string {
         return 'taxonomy';
     }
 
+    /**
+     * Gets all terms for taxonomy by given meta args.
+     *
+     * Wrapper for get_terms that builds the meta_query arg.
+     *
+     * @param string $key The meta_key to search.
+     * @param string $value The meta_value to match.
+     * @param string $compare The compare operator.
+     * @param integer $limit Max number of posts to return.
+     * @return WP_Term|WP_Error|false WP_Term object on success, false if not found, WP_Error otherwise.
+     */
     public static function get_by_meta(string $key = '', string $value = '', string $compare = '=', bool $singular = false) {
         $terms = get_terms([
             'taxonomy' => static::TAXONOMY,
@@ -129,7 +149,7 @@ abstract class CustomTaxonomy extends CustomContentObject {
                 return $terms[0];
             }
 
-            return null;
+            return false;
         }
 
         return $terms;
