@@ -12,7 +12,7 @@ namespace PedalCMS\Core;
 class SubpageManager {
     /**
      * The query var to register.
-     * 
+     *
      * @since 0.1.0
      *
      * @var string
@@ -21,7 +21,7 @@ class SubpageManager {
 
     /**
      * The query var to register.
-     * 
+     *
      * @since 0.1.0
      *
      * @var string
@@ -32,25 +32,27 @@ class SubpageManager {
      * List of registered {@see \PedalCMS\Core\Subpage} objects, all of which are enabled.
      *
      * @since 0.1.0
-     * 
+     *
      * @var array
      */
     private $subpages = [];
 
     /**
      * List of all builtin {@see \PedalCMS\Core\Subpage} objects, whether enabled or not.
-     * 
+     *
      * @since 0.1.0
-     * 
+     *
      * @var array
      */
     private $builtin = [];
 
     /**
-     * The current active Subpage object. 
-     * 
-     * A cache var that is initialized the first time get_active_subpage is 
+     * The current active Subpage object.
+     *
+     * A cache var that is initialized the first time get_active_subpage is
      * called with the 'object' return type.
+     *
+     * @since 0.1.0
      *
      * @var Subpage
      */
@@ -58,7 +60,7 @@ class SubpageManager {
 
     /**
      * Constructor
-     * 
+     *
      * @since 0.1.0
      *
      * @param string $post_type The post_type to the subpages will belong to.
@@ -78,7 +80,7 @@ class SubpageManager {
 
     /**
      * Registers all the hooks for the class.
-     * 
+     *
      * @since 0.1.0
      *
      * @return void
@@ -93,14 +95,14 @@ class SubpageManager {
     }
 
     /**
-     * Registers a Subpage for the current post type. 
-     * 
+     * Registers a Subpage for the current post type.
+     *
      * @since 0.1.0
-     * 
-     * Builin subpages are tested against a plugin setting before being added 
+     *
+     * Builin subpages are tested against a plugin setting before being added
      * to the active list but all are added to the builtin list.
      *
-     * @param Subpage $subpage The subpage to register. 
+     * @param Subpage $subpage The subpage to register.
      * @return mixed The registered {@see \PedalCMS\Core\Subpage} object on success. WP_Error on failure.
      */
     public function add_subpage(Subpage $subpage) {
@@ -137,7 +139,7 @@ class SubpageManager {
 
     /**
      * Checks that a given list is valid.
-     * 
+     *
      * @since 0.1.0
      *
      * @param string $list The list to validate.
@@ -156,8 +158,8 @@ class SubpageManager {
     }
 
     /**
-     * Sorts a given list by the subpages order property. 
-     * 
+     * Sorts a given list by the subpages order property.
+     *
      * @since 0.1.0
      *
      * @param string $list The list of subpages to sort. Defaults to 'subpages'.
@@ -183,7 +185,7 @@ class SubpageManager {
 
     /**
      * Returns the list of current subpages.
-     * 
+     *
      * @since 0.1.0
      *
      * @param bool $with_index Whether or not to include the index.
@@ -196,7 +198,7 @@ class SubpageManager {
 
     /**
      * Returns the list of builtin subpages.
-     * 
+     *
      * @since 0.1.0
      *
      * @param bool $with_index Whether or not to include the index.
@@ -264,9 +266,9 @@ class SubpageManager {
 
     /**
      * Adds rewrite rules for programs subpages.
-     * 
+     *
      * Called on filter: `rewrite_rules_array`
-     * 
+     *
      * @since 0.1.0
      */
     public function insert_rules() {
@@ -282,7 +284,7 @@ class SubpageManager {
         /**
          * We are adding each subpage as its own rule so that the attachment
          * rewrite rule continues to function as normal. The only side effect
-         * is that in a collision between an attachment and a subpage with the 
+         * is that in a collision between an attachment and a subpage with the
          * same slug, our subpages will win. Sorry not sorry.
          */
         foreach ($this->subpages as $subpage) {
@@ -302,13 +304,13 @@ class SubpageManager {
 
     /**
      * Updates the 'title' document title part for Subpages.
-     * 
+     *
      * Called on filter: `document_title_parts`
-     * 
+     *
      * @since 0.1.0
      *
      * @param array $title The current title parts.
-     * @return array $title The potentially filtered 
+     * @return array $title The potentially filtered
      */
     public function maybe_update_title(array $title): array {
         if (is_singular($this->post_type)) {
@@ -317,19 +319,19 @@ class SubpageManager {
             if ($subpage && $subpage->slug !== 'index') {
                 /**
                  * Filters the 'title' part of document_title_part for subpages.
-                 * 
+                 *
                  * @since 0.1
-                 * 
+                 *
                  * @param string $title_part The resulting 'title' part.
                  * @param string $subpage_doc_title The document_title property of the subpage.
                  * @param string $current_title The original 'title' part for the parent post.
                  * @param Subpage $subpage The current/active Subpage object.
                  * @param array $title_parts The complete title parts from `document_title_parts` filter.
                  */
-                $title['title'] = apply_filters( 
-                    'pdl/subpage_document_title_part', 
+                $title['title'] = apply_filters(
+                    'pdl/subpage_document_title_part',
                     $subpage->document_title . ', ' . $title['title'],
-                    $subpage->document_title, 
+                    $subpage->document_title,
                     $title['title'],
                     $subpage,
                     $title
@@ -344,9 +346,9 @@ class SubpageManager {
 
     /**
      * Decides whether or not to override the canonical tag.
-     * 
+     *
      * Called on action: `wp`
-     * 
+     *
      * @since 0.1.0
      *
      * @return void
@@ -362,9 +364,9 @@ class SubpageManager {
 
     /**
      * Renders a custom canonical link for subpages.
-     * 
+     *
      * Called on filter: `wp_head`
-     * 
+     *
      * @since 0.1.0
      *
      * @return void
@@ -383,7 +385,7 @@ class SubpageManager {
      *
      * This function should only be called in the context of a single post
      * matching the current post_type.
-     * 
+     *
      * @since 0.1.0
      *
      * @param string $return_type The format of the returned subpage. Either 'slug' or 'object'. Defaults to 'slug'.
@@ -411,7 +413,7 @@ class SubpageManager {
 
     /**
      * Tests whether the subpage is currently active.
-     * 
+     *
      * @since 0.1.0
      *
      * @param string $subpage The slug of the subpage to test.
@@ -423,16 +425,16 @@ class SubpageManager {
 
     /**
      * Retrieves a {@see \PedalCMS\Core\Subpage} object from the list of
-     * registered subpages. 
-     * 
-     * If supplied a Subpage object, it will simply return it whether or not 
+     * registered subpages.
+     *
+     * If supplied a Subpage object, it will simply return it whether or not
      * the subpage has been registered. Caveat emptor.
-     * 
+     *
      * @since 0.1.0
      *
      * @param mixed $subpage Either a string slug of a subpage or a {@see \PedalCMS\Core\Subpage} object.
-     * @param boolean $search_builtin Whether or no to include builtin subpages which may be disabled. Defaults to false. 
-     * @return mixed A Subpage object on success, WP_Error on failure. 
+     * @param boolean $search_builtin Whether or no to include builtin subpages which may be disabled. Defaults to false.
+     * @return mixed A Subpage object on success, WP_Error on failure.
      */
     public function get_subpage($subpage, $search_builtin = false) {
         if ($subpage instanceof Subpage) {
@@ -473,7 +475,7 @@ class SubpageManager {
 
     /**
      * Determines whether a particular subpage should be rendered.
-     * 
+     *
      * @since 0.1.0
      *
      * @param mixed $subpage Either a PedalCMS\Core\Subpage or the slug of one.
@@ -497,7 +499,7 @@ class SubpageManager {
         /**
          * Filters the decision to show a particular subpage.
          *
-         * @since 0.1
+         * @since 0.1.0
          *
          * @param bool $show_subpage Whether to show the subpage.
          * @param string $subpage The subpage in question.
@@ -510,7 +512,7 @@ class SubpageManager {
      * Gets the list of currently enabled subpages.
      *
      * The order of these should _not_ be trusted.
-     * 
+     *
      * @since 0.1.0
      *
      * @return array List of subpages by slug.
@@ -538,7 +540,7 @@ class SubpageManager {
      *
      * This function should only be called in the context of a single post
      * matching the current post_type.
-     * 
+     *
      * @since 0.1.0
      *
      * @param string $subpage The slug of the subpage.
@@ -553,7 +555,7 @@ class SubpageManager {
         /**
          * Filters the subpage link.
          *
-         * @since 0.1
+         * @since 0.1.0
          *
          * @param string $url The url of the subpage.
          * @param string $subpage The slug of the corresponding subpage.
@@ -569,7 +571,7 @@ class SubpageManager {
 
     /**
      * Returns a list of ACF fields from all enabled subpages.
-     * 
+     *
      * @since 0.1.0
      *
      * @return array List of ACF fields.

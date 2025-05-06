@@ -183,6 +183,11 @@ class Plugin {
         return;
     }
 
+    /**
+     * Returns the plugin's field group.
+     *
+     * @return array The field group.
+     */
     public static function get_field_group(): array {
         return static::$field_groups[0] ?? [];
     }

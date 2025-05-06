@@ -182,7 +182,15 @@ class TemplateManager {
         }
     }
 
-    public static function convert_obj_name_to_template($obj_name) {
+    /**
+     * Converts a content object name to its template slug.
+     *
+     * @since 0.1.0
+     *
+     * @param string $obj_name The name of the content object.
+     * @return string The template slug version of the object name.
+     */
+    public static function convert_obj_name_to_template($obj_name): string {
         return str_replace(
             ['pdl_', '_'],
             ['', '-'],

@@ -185,7 +185,12 @@ class Department extends CustomTaxonomy {
         );
     }
 
-
+    /**
+     * Creates the post/taxonomy connection to the given post from the `department` field.
+     *
+     * @param \WP_Post|int $post The post to associate.
+     * @return void
+     */
     public static function save_terms($post=null) {
         $post = get_post($post);
         $term_id = get_field('department', $post);

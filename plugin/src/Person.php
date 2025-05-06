@@ -11,16 +11,13 @@ namespace PedalCMS\Core;
  */
 class Person extends CustomPostType {
     /**
-     * The post type to register.
+     * @inheritdoc
      */
     public const POST_TYPE = 'pdl_person';
 
+
     /**
-     * The args to pass to register_post_type.
-     *
-     * Gets updated throughout the setup process.
-     *
-     * @var array
+     * @inheritdoc
      */
     public array $args = [
         'rewrite'             => ['slug' => 'directory'],
@@ -39,6 +36,9 @@ class Person extends CustomPostType {
         'supports'            => ['title', 'editor', 'thumbnail', 'custom-fields'],
     ];
 
+    /**
+     * @inheritdoc
+     */
     public function register(): void {
         if (!self::is_block_editor_enabled()) {
             $this->args['show_in_rest'] = false;
@@ -47,6 +47,9 @@ class Person extends CustomPostType {
         parent::register();
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function setup_labels(): void {
         self::$enter_title_text = __('Enter the Full Name', 'pedalcms');
 
@@ -81,6 +84,9 @@ class Person extends CustomPostType {
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function setup_template() {
         $this->args['template'] = [
             [ 'core/columns', [], [
@@ -98,6 +104,9 @@ class Person extends CustomPostType {
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function setup_post_meta() {
         $this->post_meta = [
             'job_title' => [
@@ -139,6 +148,9 @@ class Person extends CustomPostType {
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function setup_field_group() {
         $field_group = [
             'key'      => 'group_61140677b6acb',
@@ -264,6 +276,9 @@ class Person extends CustomPostType {
         $this->field_groups[] = $field_group;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function setup_hooks(): void {
         add_action('pre_get_posts', [static::class, 'update_sort_order']);
         add_action('wp_after_insert_post', [static::class, 'save_terms'], 10, 2);
@@ -294,6 +309,14 @@ class Person extends CustomPostType {
         return;
     }
 
+    /**
+     * A simple wrapper around `Department::save_terms()`
+     *
+     * @see Department::save_terms()
+     *
+     * @param \WP_Post|int $post The post to associate.
+     * @return void
+     */
     public static function save_terms($post_id, $post) {
         if ($post->post_type === self::POST_TYPE) {
             Department::save_terms($post);

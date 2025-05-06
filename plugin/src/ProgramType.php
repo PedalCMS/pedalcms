@@ -10,10 +10,19 @@ namespace PedalCMS\Core;
  * @since 0.1.0
  */
 class ProgramType extends CustomTaxonomy {
+    /**
+     * @inheritdoc
+     */
     public const TAXONOMY = 'pdl_program_type';
 
+    /**
+     * @inheritdoc
+     */
     public $object_types = [Program::POST_TYPE];
 
+    /**
+     * @inheritdoc
+     */
     public array $args = [
         'query_var'             => 'prog_type',
         'rewrite'               => ['slug' => 'program-type'],
@@ -29,6 +38,9 @@ class ProgramType extends CustomTaxonomy {
         'show_tagcloud'         => false,
     ];
 
+    /**
+     * @inheritdoc
+     */
     protected function setup_labels(): void {
         $this->args['labels'] = [
             'name'                       => _x( 'Program Types', 'taxonomy general name' , 'pedalcms'),
@@ -57,6 +69,9 @@ class ProgramType extends CustomTaxonomy {
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function setup_field_group(): void {
         $field_group = [
             'key'         => 'group_6123fad662541',

@@ -4,10 +4,25 @@ namespace PedalCMS\Core;
 
 add_action('init', __NAMESPACE__ . '\add_shortcodes');
 
+/**
+ * Registered shortcodes for the plugin.
+ *
+ * @since 0.1.0
+ *
+ * @return void
+ */
 function add_shortcodes() {
     add_shortcode('pdl_terms_grid', __NAMESPACE__ . '\render_terms_grid');
 }
 
+/**
+ * Renders the `pdl_terms_grid` shortcode.
+ *
+ * @since 0.1.0
+ *
+ * @param array $atts
+ * @return void
+ */
 function render_terms_grid($atts) {
     $atts = shortcode_atts(
         [
