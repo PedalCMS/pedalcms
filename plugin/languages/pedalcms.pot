@@ -22,7 +22,7 @@ msgstr ""
 #. Plugin URI of the plugin
 #. Author URI of the plugin
 #: pedalcms.php
-msgid "https://verifiedstudios.com"
+msgid "https://pedalcms.com"
 msgstr ""
 
 #. Description of the plugin
