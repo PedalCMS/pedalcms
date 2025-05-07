@@ -19,4 +19,5 @@
         </api>
     </version>
     <!-- <setting name="graphs.enabled" value="true"/> -->
+    <setting name="template.color" value="light-blue"/>
 </phpdocumentor>
