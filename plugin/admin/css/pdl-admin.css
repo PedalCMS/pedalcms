@@ -13,26 +13,10 @@ body.wp-admin #adminmenu li[id^="menu-posts-pdl_"] > a {
       opacity: 1;
     }
   }
-
 }
 
-body.wp-admin .menu-icon-pdl_program {
-  .wp-menu-image {
-    background-color: transparent !important;
-    background-image: url(../icons/pedal-icon.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 22px 22px;
-    filter: saturate(0) brightness(0.8);
-    opacity: 1;
-  }
-
-  &.wp-menu-open,
-  &:hover {
-    .wp-menu-image {
-      filter: saturate(1) brightness(1);
-    }
-  }
+body.wp-admin .menu-icon-pdl_program .wp-menu-image {
+  mask-image: url(../icons/pedal-icon.svg);
 }
 
 body.wp-admin .menu-icon-pdl_course .wp-menu-image {
