@@ -51,7 +51,9 @@ class Plugin {
      */
     public static $options_page;
 
-    public static $options_page_slug;
+    public static $options_page_slug = 'pedalcms-settings';
+
+    public static $options_page_parent = 'edit.php?post_type='.Program::POST_TYPE;
 
     public static $labels = [];
 
@@ -103,6 +105,7 @@ class Plugin {
         self::$template_path = self::$path . self::$template_path;
 
         add_action('init', [self::class, 'plugin_init'], 0);
+        add_action('plugin_action_links', [self::class, 'add_settings_link'], 10, 2);
 
         self::$_init = true;
     }
@@ -198,16 +201,13 @@ class Plugin {
      * @return void
      */
     private static function setup_options_page() {
-        self::$options_page_slug = 'pedalcms-settings';
-
         self::$options_page = [
             'page_title'  => __('Pedal CMS Settings', 'pedalcms'),
             'menu_title'  => _x('Settings', 'menu item title', 'pedalcms'),
             'menu_slug'   => self::$options_page_slug,
             'capability'  => 'manage_options',
-            // 'parent_slug' => 'options-general.php',
-            'parent_slug' => 'edit.php?post_type=pdl_program',
-            'position'    => 7,
+            'parent_slug' => self::$options_page_parent,
+            'position'    => 100,
             'redirect'    => false,
         ];
     }
@@ -263,6 +263,29 @@ class Plugin {
             'register_action'        => __('Register', 'pedalcms'),
             'back_to_top'            => __('Back to Top', 'pedalcms'),
         ];
+    }
+
+    /**
+     * Add settings link to plugin actions.
+     *
+     * Called on filter: `plugin_action_links`
+     *
+     * @since 0.1.0
+     *
+     * @param string[] $actions The current list of actions.
+     * @param $plugin_file The file name identifier of the current plugin (e.g. pedalcms/pedalcms.php).
+     *
+     * @return string[] The filtered actions.
+     */
+    public static function add_settings_link($actions, $plugin_file) {
+        $this_plugin = sprintf('%1$s/%1$s.php', self::$name);
+
+        if ($plugin_file === $this_plugin) {
+            $link = sprintf('%s&page=%s', self::$options_page_parent, self::$options_page_slug);
+            array_unshift($actions, sprintf('<a href="%s">Settings</a>', $link ));
+        }
+
+        return $actions;
     }
 
     /**
