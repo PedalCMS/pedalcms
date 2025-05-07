@@ -15,6 +15,7 @@
             </source>
             <ignore>
                 <path>plugin/src/acf</path>
+                <path>**/index.php</path>
             </ignore>
         </api>
     </version>
