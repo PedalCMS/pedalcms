@@ -51,10 +51,27 @@ class Plugin {
      */
     public static $options_page;
 
+    /**
+     * The admin page slug for the options page.
+     *
+     * @var string
+     */
     public static $options_page_slug = 'pedalcms-settings';
 
+    /**
+     * The link to the parent menu item of the options page.
+     *
+     * @var string
+     */
     public static $options_page_parent = 'edit.php?post_type='.Program::POST_TYPE;
 
+    /**
+     * All regist strings/labels to the plugin to be output on the front end of the site.
+     *
+     * Ex: 'More Details'
+     *
+     * @var array
+     */
     public static $labels = [];
 
     /**
