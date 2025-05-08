@@ -17,6 +17,7 @@
                 <path>plugin/src/acf</path>
                 <path>**/index.php</path>
             </ignore>
+            <default-package-name>PedalCMS\Core</default-package-name>
         </api>
     </version>
     <!-- <setting name="graphs.enabled" value="true"/> -->

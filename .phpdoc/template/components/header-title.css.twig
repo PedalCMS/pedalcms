@@ -1,0 +1,59 @@
+.phpdocumentor-title {
+    box-sizing: border-box;
+    color: var(--title-text-color);
+    font-size: var(--text-lg);
+    letter-spacing: .05rem;
+    font-weight: normal;
+    width: auto;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.phpdocumentor-title.-without-divider {
+    border: none;
+}
+
+.phpdocumentor-title__link {
+    transition: all .3s ease-out;
+    display: flex;
+    flex-direction: column;
+    color: var(--title-text-color);
+    text-decoration: none;
+    font-weight: normal;
+    white-space: nowrap;
+    transform: scale(.75);
+    transform-origin: left;
+
+    svg {
+        width: 164px;
+        height: auto;
+    }
+}
+
+.phpdocumentor-title__link:hover {
+    transform: scale(1.05);
+}
+
+@media (min-width: {{ breakpoints['menu'] }}) {
+    .phpdocumentor-title {
+        width: 22%;
+        border-right: var(--sidebar-border-color) solid 1px;
+    }
+
+    .phpdocumentor-title__link {
+        transform-origin: left;
+    }
+}
+
+@media (min-width: {{ breakpoints['xl'] }}) {
+    .phpdocumentor-title__link {
+        transform: scale(.85);
+    }
+}
+
+@media (min-width: {{ breakpoints['xxl'] }}) {
+    .phpdocumentor-title__link {
+        transform: scale(1);
+    }
+}
