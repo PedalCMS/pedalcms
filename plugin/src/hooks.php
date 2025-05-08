@@ -35,6 +35,10 @@ add_filter('pdl/add_subpage', __NAMESPACE__ . '\options_subpage_labels', 5, 2);
 /**
  * Modifies the taxonomy args based on plugin options.
  *
+ * Called on filter: `registered_taxonomy`
+ *
+ * @since 0.1.0
+ *
  * @param array $args Array of arguments for registering a taxonomy.
  *                       See the register_taxonomy() function for accepted arguments.
  * @param string $taxonomy Taxonomy key.
@@ -68,6 +72,17 @@ function options_register_taxonomy_args(array $args, string $taxonomy): array {
     return $args;
 }
 
+/**
+ * Removes association between custom taxonomies and post types based on plugin options.
+ *
+ * Called on action: `registered_taxonomy`
+ *
+ * @since 0.1.0
+ *
+ * @param string $taxonomy Taxonomy key.
+ * @param array|string $object_type Name of the object type for the taxonomy object.
+ * @return void
+ */
 function options_registered_taxonomy(string $taxonomy, $object_type) {
     $multi_obj_taxonomies = [
         College::TAXONOMY,
@@ -98,7 +113,9 @@ function options_registered_taxonomy(string $taxonomy, $object_type) {
 /**
  * Updates the title for filtered results in archives and program subpages.
  *
- * Called on filter: document_title_parts
+ * Called on filter: `document_title_parts`
+ *
+ * @since 0.1.0
  *
  * @param array $title The current title parts.
  */
@@ -142,6 +159,15 @@ function document_title_parts(array $title): array {
     return $title;
 }
 
+/**
+ * Outputs CSS variables for user color preferences.
+ *
+ * Called on action: `wp_head`
+ *
+ * @since 0.1.0
+ *
+ * @return void
+ */
 function options_wp_head() {
     $style_tag = '<style>html body{%s}</style>';
     $var_ptrn = '--nvis-%s: %s';
@@ -174,6 +200,8 @@ function options_wp_head() {
 /**
  * Adds body class name based on presentation mode.
  *
+ * @since 0.1.0
+ *
  * @param array $classes An array of body class names.
  * @return array The resulting array of body class names.
  */
@@ -189,6 +217,10 @@ function body_class(array $classes): array {
 
 /**
  * Adds body class name based on presentation mode to options screen.
+ *
+ * Called on filter: `admin_body_class`
+ *
+ * @since 0.1.0
  *
  * @param string $classes A string of body class names.
  * @return string The resulting string of body class names.
@@ -208,6 +240,10 @@ function admin_body_class(string $classes): string {
 
 /**
  * Adds a class for the current program subpage.
+ *
+ * Called on filter: `post_class`
+ *
+ * @since 0.1.0
  *
  * @param array $classes The list of post classes.
  * @return array The filtered list of post classes.
@@ -230,8 +266,10 @@ function post_class(array $classes): array {
  *
  * Called on filter: `term_link`
  *
- * @param string $link
- * @return string
+ * @since 0.1.0
+ *
+ * @param string $link The current term link.
+ * @return string The modified term link.
  */
 function term_link(string $link): string {
     $query_start = strpos($link, '?');
@@ -251,38 +289,125 @@ function term_link(string $link): string {
     return $link;
 }
 
+/**
+ * Alters Program Type labels based on plugin options.
+ *
+ * Called on filter: `taxonomy_labels_pdl_program_type`
+ *
+ * @since 0.1.0
+ *
+ * @param object $labels The WP_Taxonomy labels property.
+ * @return object The filtered labels.
+ */
 function options_program_type_labels($labels) {
     return options_taxonomy_labels($labels, ProgramType::TAXONOMY);
 }
 
+/**
+ * Alters College labels based on plugin options.
+ *
+ * Called on filter: `taxonomy_labels_pdl_college`
+ *
+ * @since 0.1.0
+ *
+ * @param object $labels The WP_Taxonomy labels property.
+ * @return object The filtered labels.
+ */
 function options_college_labels($labels) {
     return options_taxonomy_labels($labels, College::TAXONOMY);
 }
 
+/**
+ * Alters Instruction Mode labels based on plugin options.
+ *
+ * Called on filter: `taxonomy_labels_pdl_instruct_mode`
+ *
+ * @since 0.1.0
+ *
+ * @param object $labels The WP_Taxonomy labels property.
+ * @return object The filtered labels.
+ */
 function options_instruct_mode_labels($labels) {
     return options_taxonomy_labels($labels, InstructionMode::TAXONOMY);
 }
 
+/**
+ * Alters Subject labels based on plugin options.
+ *
+ * Called on filter: `taxonomy_labels_pdl_subject`
+ *
+ * @since 0.1.0
+ *
+ * @param object $labels The WP_Taxonomy labels property.
+ * @return object The filtered labels.
+ */
 function options_subject_labels($labels) {
     return options_taxonomy_labels($labels, Subject::TAXONOMY);
 }
 
+/**
+ * Alters Session labels based on plugin options.
+ *
+ * Called on filter: `taxonomy_labels_pdl_session`
+ *
+ * @since 0.1.0
+ *
+ * @param object $labels The WP_Taxonomy labels property.
+ * @return object The filtered labels.
+ */
 function options_session_labels($labels) {
     return options_taxonomy_labels($labels, Session::TAXONOMY);
 }
 
+/**
+ * Alters Person Category labels based on plugin options.
+ *
+ * Called on filter: `taxonomy_labels_pdl_person_cat`
+ *
+ * @param object $labels The WP_Taxonomy labels property.
+ * @return object The filtered labels.
+ */
 function options_person_cat_labels($labels) {
     return options_taxonomy_labels($labels, PersonCategory::TAXONOMY);
 }
 
+/**
+ * Alters Department labels based on plugin options.
+ *
+ * Called on filter: `taxonomy_labels_pdl_department`
+ *
+ * @since 0.1.0
+ *
+ * @param object $labels The WP_Taxonomy labels property.
+ * @return object The filtered labels.
+ */
 function options_department_labels($labels) {
     return options_taxonomy_labels($labels, Department::TAXONOMY);
 }
 
+/**
+ * Alters FAQ Category labels based on plugin options.
+ *
+ * Called on filter: `taxonomy_labels_pdl_faq_cat`
+ *
+ * @since 0.1.0
+ *
+ * @param object $labels The WP_Taxonomy labels property.
+ * @return object The filtered labels.
+ */
 function options_faq_cat_labels($labels) {
     return options_taxonomy_labels($labels, FAQCategory::TAXONOMY);
 }
 
+/**
+ * Alters our custom taxonomy labels based on plugin options.
+ *
+ * @since 0.1.0
+ *
+ * @param object $labels The WP_Taxonomy labels property.
+ * @param string $taxonomy The name of the current taxonomy
+ * @return object The filtered labels.
+ */
 function options_taxonomy_labels($labels, $taxonomy) {
     $tax = str_replace('pdl_', '', $taxonomy);
 
@@ -303,7 +428,9 @@ function options_taxonomy_labels($labels, $taxonomy) {
 /**
  * Action to output opening tag of main content wrapper.
  *
- * Called on: pdl/before_main_content
+ * Called on: `pdl/before_main_content`
+ *
+ * @since 0.1.0
  *
  * @return void
  */
@@ -325,7 +452,9 @@ function before_main_content() {
 /**
  * Action to output end tag of main content wrapper.
  *
- * Called on: pdl/after_main_content
+ * Called on: `pdl/after_main_content`
+ *
+ * @since 0.1.0
  *
  * @return void
  */
@@ -335,6 +464,17 @@ function after_main_content() {
     echo "</{$tag}>";
 }
 
+/**
+ * Filters various template args based on plugin options.
+ *
+ * Called on filter: `pdl/template_args`
+ *
+ * @since 0.1.0
+ *
+ * @param array $args The current template args.
+ * @param string $template The current template name.
+ * @return string The modified template args.
+ */
 function options_template_args($args, $template) {
     switch ($template) {
         case 'common/filters':
@@ -349,6 +489,14 @@ function options_template_args($args, $template) {
     return $args;
 }
 
+/**
+ * Modifies template args for `common/filters` based on plugin options.
+ *
+ * @since 0.1.0
+ *
+ * @param array $args The current template args.
+ * @return array The modified template args.
+ */
 function options_search_filters($args) {
     $post_type = str_replace('pdl_', '', get_query_var('post_type'));
     $enabled = Plugin::get_option($post_type . '_archive_search_filters');
@@ -376,7 +524,17 @@ function options_search_filters($args) {
     return $args;
 }
 
-
+/**
+ * Updates the post archive title based on plugin options.
+ *
+ * Called on filter: `post_type_archive_title`
+ *
+ * @since 0.1.0
+ *
+ * @param string $title The existing title.
+ * @param string $post_type The current post type.
+ * @return string The modified title.
+ */
 function options_post_type_archive_title($title, $post_type) {
     if (in_array($post_type, Plugin::post_types())) {
         $post_type = str_replace('pdl_', '', $post_type);
@@ -417,6 +575,8 @@ function options_post_type_description($description,  $post_type_obj) {
  * Updated the template defaults based on the plugin options.
  *
  * Called on filter: `pdl/template_defaults`
+ *
+ * @since 0.1.0
  *
  * @param array $defaults The template defaults.
  * @param string $template The name of the template.
@@ -495,6 +655,8 @@ function options_template_defaults($defaults, $template) {
 /**
  * Filters the template defaults for `common/post-featured-image` based on plugin options.
  *
+ * @since 0.1.0
+ *
  * @param array $defaults The template defaults.
  * @return array The filtered defaults.
  */
@@ -521,6 +683,14 @@ function options_post_featured_image($defaults, $post_type, $presentation_mode) 
     return $defaults;
 }
 
+/**
+ * Modifies the template defaults for post type and taxonomy featured image templates.
+ *
+ * @since 0.1.0
+ *
+ * @param array $defaults The existing template defaults.
+ * @return void The modified template defaults.
+ */
 function options_header_image_size($defaults) {
     $size = Plugin::get_option('image_size_header');
 
@@ -538,6 +708,16 @@ function options_header_image_size($defaults) {
     return $defaults;
 }
 
+/**
+ * Modifies the template defaults for `common/page-header-backdrop`.
+ *
+ * @since 0.1.0
+ *
+ * @param array $defaults The current template defaults.
+ * @param string $post_type The current post type.
+ * @param string $presentation_mode The currently active presentation mode (either of 'none', 'base', 'full').
+ * @return array The modified template defaults.
+ */
 function options_page_header_backdrop($defaults, $post_type, $presentation_mode) {
     if ($presentation_mode !== 'full') {
         return $defaults;
@@ -582,7 +762,17 @@ function options_page_header_backdrop($defaults, $post_type, $presentation_mode)
     return $defaults;
 }
 
-
+/**
+ * Sets the subpage labels based on plugin options.
+ *
+ * Called on filter: `pdl/add_subpage`
+ *
+ * @since 0.1.0
+ *
+ * @param Subpage $subpage The subpage being registered.
+ * @param String $post_type The current post type.
+ * @return Subpage The modified subpage object.
+ */
 function options_subpage_labels($subpage, $post_type) {
     $option_prefix = sprintf(
         '%s_subpage_%s_',
@@ -606,7 +796,14 @@ function options_subpage_labels($subpage, $post_type) {
     return $subpage;
 }
 
-
+/**
+ * Modifies the args of action list templates for programs and courses.
+ *
+ * @since 0.1.0
+ *
+ * @param array $args The current template args.
+ * @return array The modified template args.
+ */
 function options_action_list($args) {
     switch ($args['context']) {
         case 'single-program/program-actions':
@@ -632,6 +829,18 @@ function options_action_list($args) {
     return $args;
 }
 
+/**
+ * Modifies registered plugin labels based on plugin options.
+ *
+ * Called on filter: `pdl/get_label`
+ *
+ * @since 0.1.0
+ *
+ * @param string $label The label being requested.
+ * @param string $label_key The label identifier.
+ * @param string $plugin The identifier of the current plugin (deprecated).
+ * @return string The filtered label.
+ */
 function options_plugin_labels($label, $label_key, $plugin) {
     $course_labels = [
         'credit',
@@ -651,7 +860,14 @@ function options_plugin_labels($label, $label_key, $plugin) {
     return $label;
 }
 
-
+/**
+ * Modifies the defaults for the `single-program/contact` template.
+ *
+ * @since 0.1.0
+ *
+ * @param array $defaults The current template defaults.
+ * @return array The filtered template defaults.
+ */
 function options_program_contact($defaults) {
     $labels = [
         'label_program_contact',
