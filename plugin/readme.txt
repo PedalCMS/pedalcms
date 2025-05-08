@@ -8,7 +8,7 @@ License: GPL-2.0+
 A program marketing powerhouse that includes: program listings, course offerings, team directory, and more.
 
 == Description ==
-See https://invisibe.us
+See https://pedalcms.com
 
 == Installation ==
 = Uploading via WordPress Dashboard =

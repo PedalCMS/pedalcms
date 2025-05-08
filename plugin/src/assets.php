@@ -20,7 +20,7 @@ add_action('admin_enqueue_scripts', __NAMESPACE__ . '\admin_enqueue_assets');
 function register_assets() {
     $global = '/assets/css/global.min.css';
     wp_register_style(
-        'nvis-global',
+        'pdl-global',
         Plugin::$url . $global,
         [],
         filemtime(Plugin::$path . $global)
@@ -28,39 +28,39 @@ function register_assets() {
 
     $base = '/assets/css/base.min.css';
     wp_register_style(
-        'nvis-programs-base',
+        'pdl-programs-base',
         Plugin::$url . $base,
-        ['nvis-global'],
+        ['pdl-global'],
         filemtime(Plugin::$path . $base)
     );
 
     $global_full = '/assets/css/global-full.min.css';
     wp_register_style(
-        'nvis-global-full',
+        'pdl-global-full',
         Plugin::$url . $global_full,
-        ['nvis-global'],
+        ['pdl-global'],
         filemtime(Plugin::$path . $global_full)
     );
 
     $full = '/assets/css/full.min.css';
     wp_register_style(
-        'nvis-programs-full',
+        'pdl-programs-full',
         Plugin::$url . $full,
-        ['nvis-global', 'nvis-programs-base'],
+        ['pdl-global', 'pdl-programs-base'],
         filemtime(Plugin::$path . $full)
     );
 
     $terms_grid = '/assets/css/terms-grid.min.css';
     wp_register_style(
-        'nvis-terms-grid',
+        'pdl-terms-grid',
         Plugin::$url . $terms_grid,
-        ['nvis-global'],
+        ['pdl-global'],
         filemtime(Plugin::$path . $terms_grid)
     );
 
     $global = '/assets/js/global.min.js';
     wp_register_script(
-        'nvis-global',
+        'pdl-global',
         Plugin::$url . $global,
         [],
         filemtime(Plugin::$path . $global),
@@ -81,16 +81,16 @@ function enqueue_assets() {
     }
 
     if (pdl_is_active_subpage('careers') && $presentation_mode !== 'none') {
-        wp_enqueue_style('nvis-careers-base');
+        wp_enqueue_style('pdl-careers-base');
     }
 
     if (!is_admin()) {
         if ($presentation_mode !== 'none') {
-            wp_enqueue_style('nvis-global');
+            wp_enqueue_style('pdl-global');
         }
 
         if ($presentation_mode === 'full') {
-            wp_enqueue_style('nvis-global-full');
+            wp_enqueue_style('pdl-global-full');
         }
     }
 
@@ -99,7 +99,7 @@ function enqueue_assets() {
             $post = get_post();
 
             if (strpos($post->post_content, '[pdl_terms_grid ')) {
-                wp_enqueue_style('nvis-terms-grid');
+                wp_enqueue_style('pdl-terms-grid');
             }
         }
     }
@@ -111,16 +111,16 @@ function enqueue_assets() {
 
     if (!is_admin() && $is_plugin_content) {
         if ($presentation_mode !== 'none') {
-            wp_enqueue_style('nvis-programs-base');
+            wp_enqueue_style('pdl-programs-base');
         }
 
         if ($presentation_mode === 'full') {
-            wp_enqueue_style('nvis-programs-full');
+            wp_enqueue_style('pdl-programs-full');
         }
     }
 
     if (!is_admin()) {
-        wp_enqueue_script('nvis-global');
+        wp_enqueue_script('pdl-global');
     }
 }
 

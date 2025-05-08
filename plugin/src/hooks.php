@@ -170,7 +170,7 @@ function document_title_parts(array $title): array {
  */
 function options_wp_head() {
     $style_tag = '<style>html body{%s}</style>';
-    $var_ptrn = '--nvis-%s: %s';
+    $var_ptrn = '--pdl-%s: %s';
     $options = [
         'active_color',
         'active_color_text'
@@ -209,7 +209,7 @@ function body_class(array $classes): array {
     $presentation_mode = Plugin::get_option('presentation_mode');
 
     if ($presentation_mode) {
-        $classes[] = 'nvis-present-mode--' . $presentation_mode;
+        $classes[] = 'pdl-present-mode--' . $presentation_mode;
     }
 
     return $classes;
@@ -231,7 +231,7 @@ function admin_body_class(string $classes): string {
         $presentation_mode = Plugin::get_option('presentation_mode');
 
         if ($presentation_mode) {
-            $classes .= ' nvis-present-mode--' . $presentation_mode;
+            $classes .= ' pdl-present-mode--' . $presentation_mode;
         }
     }
 

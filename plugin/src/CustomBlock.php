@@ -17,7 +17,7 @@ abstract class CustomBlock {
      *
      * @var string
      */
-    public static string $namespace = 'nvis';
+    public static string $namespace = 'pdl';
     /**
      * The block's machine name.
      *

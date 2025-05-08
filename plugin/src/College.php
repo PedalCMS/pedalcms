@@ -78,7 +78,7 @@ class College extends CustomTaxonomy {
     protected function setup_field_group() {
         $field_group = [
             'key'    => 'group_630e24b59b4e4',
-            'title'  => __('College Info', 'nvis-career-profiles'),
+            'title'  => __('College Info', 'pedalcms'),
             'menu_order'            => 0,
             'position'              => 'acf_after_title',
             'style'                 => 'seamless',
@@ -98,7 +98,7 @@ class College extends CustomTaxonomy {
             'fields' => [
                 [
                     'key'           => 'field_6304c88d7d4aa',
-                    'label'         => __('Featured Image', 'nvis-career-profiles'),
+                    'label'         => __('Featured Image', 'pedalcms'),
                     'name'          => 'featured_image',
                     'type'          => 'image',
                     'instructions'  => '',
@@ -108,10 +108,10 @@ class College extends CustomTaxonomy {
                 ],
                 [
                     'key'               => 'field_630e13fdc975c',
-                    'label'             => __('Header Background Image', 'nvis-career-profiles'),
+                    'label'             => __('Header Background Image', 'pedalcms'),
                     'name'              => 'header_background',
                     'type'              => 'image',
-                    'instructions'      => __('The background image of the archive page header (Tuxedo Mode only).', 'nvis-career-profiles'),
+                    'instructions'      => __('The background image of the archive page header (Tuxedo Mode only).', 'pedalcms'),
                     'required'          => 0,
                     'conditional_logic' => 0,
                     'wrapper' => [

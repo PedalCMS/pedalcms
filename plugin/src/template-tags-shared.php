@@ -359,7 +359,7 @@ if (!function_exists('pdl_toggletip')) :
 /**
  * Generates the HTML for a ToggleTip.
  *
- * This feature relies on the registered JS file 'nvis-global'. Make sure that
+ * This feature relies on the registered JS file 'pdl-global'. Make sure that
  * this file is enqueued when using ToggleTips.
  *
  * @param string $content The contents of the tip popup.

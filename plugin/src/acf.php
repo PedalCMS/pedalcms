@@ -32,10 +32,10 @@ function maybe_load_acf(): void {
     }
 
     $subpath = '/src/acf/';
-    define('NVISP_ACF_PATH', Plugin::$path . $subpath);
-    define('NVISP_ACF_URL', Plugin::$url . $subpath);
+    define('PDL_ACF_PATH', Plugin::$path . $subpath);
+    define('PDL_ACF_URL', Plugin::$url . $subpath);
 
-    include_once(NVISP_ACF_PATH . 'acf.php');
+    include_once(PDL_ACF_PATH . 'acf.php');
 
     add_filter('acf/settings/url', __NAMESPACE__ . '\acf_settings_url');
     add_filter('acf/settings/show_admin', '__return_false');
@@ -50,7 +50,7 @@ function maybe_load_acf(): void {
  * @return void
  */
 function acf_settings_url(string $url) {
-    return NVISP_ACF_URL;
+    return PDL_ACF_URL;
 }
 
 /**
@@ -309,7 +309,7 @@ function choices_post_type(array $field): array {
 
 /**
  * Filters out fields for disabled taxonomies.
- * 
+ *
  * Called on filter: `acf/prepare_field/type=taxonomy`
  *
  * @param array|false $field The current taxonomy field config.
@@ -323,9 +323,9 @@ function prepare_taxonomy_field(array|false $field): array|false {
     $tax = str_replace('pdl_', '', $field['taxonomy']);
     $enabled = Plugin::get_option($tax . '_enable');
 
-    /* 
-     * Boolean false is returned if the option was not found. Check for that 
-     * before disabling this field. 
+    /*
+     * Boolean false is returned if the option was not found. Check for that
+     * before disabling this field.
      */
     if ($enabled !== false && !$enabled) {
         return false;
@@ -336,11 +336,11 @@ function prepare_taxonomy_field(array|false $field): array|false {
 
 /**
  * Modifies the department field based on whether departments depend on colleges.
- * 
+ *
  * Called on filter: `acf/prepare_field/name=department`
  *
  * @param array|false $field The department taxonomy field config.
- * @return array|false Either 
+ * @return array|false Either
  */
 function prepare_department(array|false $field): array|false {
     if (!prepare_taxonomy_field($field)) {
