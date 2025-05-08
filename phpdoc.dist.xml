@@ -5,6 +5,7 @@
         xmlns="https://www.phpdoc.org"
         xsi:noNamespaceSchemaLocation="https://docs.phpdoc.org/latest/phpdoc.xsd"
 >
+    <title>PedalCMS Developer Docs</title>
     <paths>
         <output>docs</output>
     </paths>
@@ -22,4 +23,5 @@
     </version>
     <!-- <setting name="graphs.enabled" value="true"/> -->
     <setting name="template.color" value="light-blue"/>
+    <setting name="guides.enabled" value="true"/>
 </phpdocumentor>
