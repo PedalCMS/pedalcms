@@ -537,7 +537,17 @@ class Plugin {
         $value = get_option('options_pdl_' . $option, $default);
 
         /**
-         * Filters the value of an option. The last part is the name of the option.
+         * Filters the value of all options.
+         *
+         * @since 0.2.1
+         *
+         * @param $value The value of the option.
+         * @param $option The name of the option.
+         */
+        return apply_filters('pdl/options/all', $value, $option);
+
+        /**
+         * Filters the value of a single option. The last part of the filter is the name of the option.
          *
          * @since 0.1
          *
