@@ -529,14 +529,12 @@ class Plugin {
     /**
      * Retrieves a plugin setting.
      *
-     * A simple wrapper around ACF get_field that handles prefixing the
-     * setting name.
-     *
      * @param string $option The name of the setting.
+     * @param mixed $default The fallback value for the setting.
      * @return mixed The value of the setting.
      */
-    public static function get_option(string $option) {
-        $value = get_option('options_pdl_' . $option);
+    public static function get_option(string $option, mixed $default = null): mixed {
+        $value = get_option('options_pdl_' . $option, $default);
 
         /**
          * Filters the value of an option. The last part is the name of the option.
