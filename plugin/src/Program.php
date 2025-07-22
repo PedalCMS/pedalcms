@@ -169,7 +169,7 @@ class Program extends CustomPostType {
                     'name'          => 'program_type',
                     'type'          => 'taxonomy',
                     'instructions'  => '',
-                    'required'      => 1,
+                    'required'      => 0,
                     'taxonomy'      => ProgramType::TAXONOMY,
                     'field_type'    => 'radio',
                     'allow_null'    => 0,
