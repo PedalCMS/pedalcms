@@ -204,6 +204,7 @@ $field_group = [
             'ui'            => 1,
             'ui_on_text'    => '',
             'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
         ],
         [
             'key'               => 'field_62543575ecebe',
@@ -280,6 +281,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_624eda3a73c22',
@@ -299,6 +301,7 @@ $field_group = [
                     'toolbar'       => 'basic',
                     'media_upload'  => 0,
                     'delay'         => 1,
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_624edb4c73c23',
@@ -420,6 +423,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
             ],
         ],
@@ -499,6 +503,7 @@ $field_group = [
                             'prepend'       => '',
                             'append'        => '',
                             'maxlength'     => '',
+                            'wpml_cf_preferences' => 2,
                         ],
                         [
                             'key'               => 'field_62542f6555d3d',
@@ -518,6 +523,7 @@ $field_group = [
                             'prepend'       => '',
                             'append'        => '',
                             'maxlength'     => '',
+                            'wpml_cf_preferences' => 2,
                         ],
                     ],
                 ],
@@ -539,6 +545,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6254300d55d3e',
@@ -555,6 +562,7 @@ $field_group = [
                     ],
                     'default_value' => '',
                     'placeholder'   => '',
+                    'wpml_cf_preferences' => 3,
                 ],
                 [
                     'key'               => 'field_6262f40e90f8b',
@@ -574,6 +582,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6254304c55d40',
@@ -590,6 +599,7 @@ $field_group = [
                     ],
                     'default_value' => '',
                     'placeholder'   => '',
+                    'wpml_cf_preferences' => 3,
                 ],
                 [
                     'key'               => 'field_625daa155a037',
@@ -609,6 +619,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6262f31da5a29',
@@ -628,6 +639,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_625da91771551',
@@ -644,6 +656,7 @@ $field_group = [
                     ],
                     'default_value' => '',
                     'placeholder'   => '',
+                    'wpml_cf_preferences' => 3,
                 ],
             ],
         ],
@@ -750,6 +763,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_62587fcffffe4',
@@ -769,6 +783,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -805,6 +820,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_625882003b47a',
@@ -824,6 +840,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_62685155391da',
@@ -843,6 +860,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
             ],
         ],
@@ -879,6 +897,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6258827f3b47e',
@@ -898,6 +917,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -934,6 +954,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_625d9c82d65db',
@@ -953,6 +974,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -989,6 +1011,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_625d9cafd65de',
@@ -1008,6 +1031,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -1044,6 +1068,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_625d9f712f83c',
@@ -1063,6 +1088,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -1099,6 +1125,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_625d9fc572845',
@@ -1118,6 +1145,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -1155,6 +1183,7 @@ $field_group = [
             'ui'            => 1,
             'ui_on_text'    => '',
             'ui_off_text'   => '',
+            'wpml_cf_preferences' => 1,
         ],
         [
             'key'               => 'field_624f2bf176f95',
@@ -1189,6 +1218,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_624f2bf176f97',
@@ -1208,6 +1238,7 @@ $field_group = [
                     'toolbar'       => 'basic',
                     'media_upload'  => 0,
                     'delay'         => 1,
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_624f2bf176f98',
@@ -1348,6 +1379,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6268496a4682e',
@@ -1367,6 +1399,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_62631221ea0d7',
@@ -1386,6 +1419,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_625432e181228',
@@ -1402,6 +1436,7 @@ $field_group = [
                     ],
                     'default_value' => '',
                     'placeholder'   => '',
+                    'wpml_cf_preferences' => 3,
                 ],
                 [
                     'key'               => 'field_6269913eccb62',
@@ -1421,6 +1456,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -1458,6 +1494,7 @@ $field_group = [
             'ui'            => 1,
             'ui_on_text'    => '',
             'ui_off_text'   => '',
+            'wpml_cf_preferences' => 1,
         ],
         [
             'key'               => 'field_624f2b16695aa',
@@ -1492,6 +1529,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_624f2b16695ab',
@@ -1511,6 +1549,7 @@ $field_group = [
                     'toolbar'       => 'basic',
                     'media_upload'  => 0,
                     'delay'         => 1,
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_624f2b16695ac',
@@ -1673,6 +1712,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -1725,6 +1765,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_630e5de55cf04',
@@ -1744,6 +1785,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_6255d51d49337',
@@ -1763,6 +1805,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6255d51d49338',
@@ -1782,6 +1825,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_630e706b11afc',
@@ -1843,6 +1887,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_630e66adbf615',
@@ -1862,6 +1907,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_631a428ff3f05',
@@ -1889,6 +1935,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_6255e021cb5e0',
@@ -1908,6 +1955,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6255e021cb5e1',
@@ -1927,6 +1975,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_630e6ba4ce6d5',
@@ -1988,6 +2037,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_630e5d63b6a25',
@@ -2007,6 +2057,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_6255c22b1ea8b',
@@ -2026,6 +2077,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6255c2561ea8c',
@@ -2045,6 +2097,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -2081,6 +2134,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_6255df25cb5d0',
@@ -2100,6 +2154,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6255df25cb5d1',
@@ -2119,6 +2174,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -2155,6 +2211,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_6255df6ccb5d4',
@@ -2174,6 +2231,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6255df6ccb5d5',
@@ -2193,6 +2251,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -2229,6 +2288,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_6255dfa3cb5d8',
@@ -2248,6 +2308,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6255dfa3cb5d9',
@@ -2267,6 +2328,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -2303,6 +2365,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_630e5ee33fe9b',
@@ -2322,6 +2385,7 @@ $field_group = [
                     'ui'            => 1,
                     'ui_on_text'    => '',
                     'ui_off_text'   => '',
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'               => 'field_6255dfe6cb5dc',
@@ -2341,6 +2405,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6255dfe6cb5dd',
@@ -2360,6 +2425,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],
@@ -2396,6 +2462,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
                 [
                     'key'               => 'field_6255e041cb5e5',
@@ -2415,6 +2482,7 @@ $field_group = [
                     'prepend'       => '',
                     'append'        => '',
                     'maxlength'     => '',
+                    'wpml_cf_preferences' => 2,
                 ],
             ],
         ],

@@ -203,6 +203,7 @@ class Program extends CustomPostType {
                     'message'       => '',
                     'default_value' => true,
                     'ui'            => 1,
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'           => 'field_6112738ed4b70',
@@ -249,6 +250,7 @@ class Program extends CustomPostType {
                     'message'       => '',
                     'default_value' => true,
                     'ui'            => 1,
+                    'wpml_cf_preferences' => 1,
                 ],
                 [
                     'key'          => 'field_613a6d0cce1eb',
@@ -353,6 +355,7 @@ class Program extends CustomPostType {
                         'ui'            => 1,
                         'ui_on_text'    => '',
                         'ui_off_text'   => '',
+                        'wpml_cf_preferences' => 1,
                     ],
                     [
                         'key'           => 'field_615f0ea5ecd84',
@@ -441,6 +444,7 @@ class Program extends CustomPostType {
                         'ui'            => 1,
                         'ui_on_text'    => '',
                         'ui_off_text'   => '',
+                        'wpml_cf_preferences' => 1,
                     ],
                     [
                         'key'           => 'field_611275a9d4b74',
@@ -492,6 +496,7 @@ class Program extends CustomPostType {
                         'ui'            => 1,
                         'ui_on_text'    => '',
                         'ui_off_text'   => '',
+                        'wpml_cf_preferences' => 1,
                     ],
                     [
                         'key'           => 'field_613b6446aae76',
@@ -516,6 +521,7 @@ class Program extends CustomPostType {
                         'ui'            => 1,
                         'ui_on_text'    => '',
                         'ui_off_text'   => '',
+                        'wpml_cf_preferences' => 1,
                     ],
                     [
                         'key'          => 'field_613b6de416aa1',
@@ -555,6 +561,7 @@ class Program extends CustomPostType {
                         'ui'            => 1,
                         'ui_on_text'    => '',
                         'ui_off_text'   => '',
+                        'wpml_cf_preferences' => 1,
                     ],[
                         'key'           => 'field_617848545496b',
                         'label'         => __('Estimated Cost Label','pedalcms'),
@@ -600,6 +607,7 @@ class Program extends CustomPostType {
                         'ui'            => 1,
                         'ui_on_text'    => '',
                         'ui_off_text'   => '',
+                        'wpml_cf_preferences' => 1,
                     ],
                     [
                         'key'           => 'field_611d6bfe199d9',
@@ -632,6 +640,7 @@ class Program extends CustomPostType {
                         'ui'            => 1,
                         'ui_on_text'    => '',
                         'ui_off_text'   => '',
+                        'wpml_cf_preferences' => 1,
                     ],
                     [
                         'key'           => 'field_6113d61abfe26',
@@ -644,6 +653,7 @@ class Program extends CustomPostType {
                         'ui'            => 1,
                         'ui_on_text'    => '',
                         'ui_off_text'   => '',
+                        'wpml_cf_preferences' => 1,
                     ],
                     [
                         'key'           => 'field_6112760bd4b75',
@@ -797,6 +807,7 @@ class Program extends CustomPostType {
                         'ui'            => 1,
                         'ui_on_text'    => '',
                         'ui_off_text'   => '',
+                        'wpml_cf_preferences' => 1,
                     ],
                     [
                         'key'           => 'field_611fe01c20be7',
@@ -847,6 +858,7 @@ class Program extends CustomPostType {
                             'class' => '',
                             'id'    => '',
                         ],
+                        'wpml_cf_preferences' => 1,
                     ],
                     [
                         'key'          => 'field_61263568d2f46',
