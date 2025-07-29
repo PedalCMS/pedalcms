@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<wpml-config>
+  <custom-types>
+    <custom-type translate="1">pdl_program</custom-type>
+    <custom-type translate="1">pdl_person</custom-type>
+    <custom-type translate="1">pdl_course</custom-type>
+    <custom-type translate="1">pdl_faq</custom-type>
+  </custom-types>
+
+  <taxonomies>
+    <taxonomy translate="1">pdl_program_type</taxonomy>
+    <taxonomy translate="1">pdl_college</taxonomy>
+    <taxonomy translate="1">pdl_department</taxonomy>
+    <taxonomy translate="1">pdl_subject</taxonomy>
+    <taxonomy translate="1">pdl_person_cat</taxonomy>
+    <taxonomy translate="1">pdl_faq_cat</taxonomy>
+  </taxonomies>
+
+  <custom-fields>
+    <!-- Common Fields/Curriculum Sections  -->
+    <custom-field action="translate">application_deadlines</custom-field>
+    <custom-field action="translate">application_deadlines_0_deadline_label</custom-field>
+    <custom-field action="translate">application_deadlines_0_deadline_info</custom-field>
+    <!-- Program Fields -->
+    <custom-field action="translate">overview_content</custom-field>
+    <custom-field action="copy">show_application_deadlines</custom-field>
+    <custom-field action="copy">prerequisites</custom-field>
+    <custom-field action="copy">program_guid</custom-field>
+    <custom-field action="copy">college</custom-field>
+    <custom-field action="copy-once">url_apply_now</custom-field>
+    <custom-field action="copy-once">url_contact_us</custom-field>
+    <custom-field action="copy-once">url_request_info</custom-field>
+    <custom-field action="copy">pdl_program_type_enable</custom-field>
+    <custom-field action="copy">related_contacts</custom-field>
+    <custom-field action="copy">show_faqs_section</custom-field>
+    <custom-field action="translate">faqs_lead</custom-field>
+    <custom-field action="copy">faqs_by_category</custom-field>
+    <custom-field action="copy">show_curriculum_section</custom-field>
+    <custom-field action="translate">curriculum_lead</custom-field>
+    <custom-field action="copy">show_faculty_staff_section</custom-field>
+    <custom-field action="translate">faculty_staff_lead</custom-field>
+    <custom-field action="copy">faculty_staff_by_category</custom-field>
+    <custom-field action="copy">related_faculty_staff</custom-field>
+    <custom-field action="copy">show_cost_section</custom-field>
+    <custom-field action="translate">estimated_cost</custom-field>
+    <custom-field action="translate">estimated_cost_label</custom-field>
+    <custom-field action="translate">cost_content</custom-field>
+    <custom-field action="copy">show_apply_section</custom-field>
+    <custom-field action="translate">apply_content</custom-field>
+    <custom-field action="copy">show_news_section</custom-field>
+    <custom-field action="translate">news_lead</custom-field>
+    <custom-field action="copy">news_tag</custom-field>
+    <custom-field action="copy">news_featured_posts</custom-field>
+    <custom-field action="copy">news_num_posts</custom-field>
+    <custom-field action="copy-once">news_show_all_link</custom-field>
+    <!-- Program Fields/Curriculum Sections  -->
+    <custom-field action="translate">curriculum_sections</custom-field>
+    <custom-field action="translate">curriculum_sections_0_section_title</custom-field>
+    <custom-field action="translate">curriculum_sections_0_section_content</custom-field>
+    <custom-field action="copy">curriculum_sections_0_section_courses</custom-field>
+    <!-- Program Fields/Related FAQs  -->
+    <custom-field action="translate">related_faqs_list</custom-field>
+    <custom-field action="translate">related_faqs_list_0_faq_type</custom-field>
+    <custom-field action="copy">related_faqs_list_0_faq_post</custom-field>
+    <custom-field action="translate">related_faqs_list_0_question</custom-field>
+    <custom-field action="translate">related_faqs_list_0_answer</custom-field>
+    <!-- Person Fields -->
+    <custom-field action="copy">person_category</custom-field>
+    <custom-field action="copy-once">job_title</custom-field>
+    <custom-field action="copy-once">email_address</custom-field>
+    <custom-field action="copy">office</custom-field>
+    <custom-field action="copy">office_phone</custom-field>
+    <custom-field action="copy">linkedin</custom-field>
+    <custom-field action="copy">related_person_courses</custom-field>
+    <!-- Course Fields -->
+    <custom-field action="translate">short_description</custom-field>
+    <custom-field action="copy">url_reg_search</custom-field>
+    <custom-field action="copy">course_code</custom-field>
+    <custom-field action="copy">course_registration_key</custom-field>
+    <custom-field action="copy">credits</custom-field>
+    <custom-field action="copy">related_course_personnel</custom-field>
+
+  </custom-fields>
+</wpml-config>
