@@ -4,20 +4,30 @@ plugin/src/acf
 # No builds.
 *.zip
 
-# Developer Artifacts.
+# Files and folders related to build and test tools.
 *.map
 .env
 /build
-/node_modules
-package-lock.json
-/vendor
-composer.lock
 .php_cs.cache
 .php-cs-fixer.cache
 .phpdoc/*
 !.phpdoc/template/
 /docs
+composer.lock
+package-lock.json
+.phpunit.result.cache
+/phpunit.xml
+/vendor/*
+/node_modules/*
+.cache/*
+/tests/phpunit/cache
+/tests/phpunit/coverage
+/tests/e2e/artifacts
+.DS_Store
 
 # File that we want to keep around temporarily.
 *.ignoreme
+
+# Track placeholders so that empty directories stay in the repo.
+!.gitkeep
 

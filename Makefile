@@ -2,7 +2,7 @@
 # ACF_LIC should be set in .env
 BIN := ./node_modules/.bin
 PLUGIN_NAME := pedalcms
-PLUGIN_ROOT := plugin
+PLUGIN_ROOT := .
 PLUGIN_VERSION := $$(grep "^ \* Version" $(PLUGIN_ROOT)/$(PLUGIN_NAME).php| awk -F' ' '{print $3}' | cut -d ":" -f2 | sed 's/ //g')
 INCLUDES_DIR := $(PLUGIN_ROOT)/src
 LANGUAGES_DIR := $(PLUGIN_ROOT)/languages
