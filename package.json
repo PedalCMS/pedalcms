@@ -1,157 +1,75 @@
 {
-  "devDependencies": {
-    "@babel/cli": "^7.16.8",
-    "@babel/core": "^7.16.12",
-    "@babel/preset-env": "^7.16.11",
-    "@wordpress/eslint-plugin": "^10.0.0",
-    "autoprefixer": "^10.4.2",
-    "eslint": "^8.7.0",
-    "postcss": "^8.4.6",
-    "postcss-cli": "^9.1.0",
-    "prettier": "^2.3.2",
-    "sass": "^1.49.7",
-    "stylelint": "^13.13.1",
-    "stylelint-config-standard": "^22.0.0",
-    "stylelint-order": "^4.1.0"
-  },
-  "prettier": {
-    "semi": true,
-    "tabWidth": 2,
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": [
-          "*.html"
-        ],
-        "options": {
-          "tabWidth": 4,
-          "singleQuote": false
-        }
-      }
-    ]
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ],
-    "plugins": []
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es2021": true
-    },
-    "extends": [
-      "plugin:@wordpress/eslint-plugin/recommended"
-    ],
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "rules": {}
-  },
-  "stylelint": {
-    "plugins": [
-      "stylelint-order"
-    ],
-    "rules": {
-      "order/properties-alphabetical-order": true,
-      "alpha-value-notation": "number",
-      "at-rule-disallowed-list": [
-        "import"
-      ],
-      "at-rule-empty-line-before": "always",
-      "at-rule-name-case": "lower",
-      "at-rule-name-newline-after": "always-multi-line",
-      "at-rule-name-space-after": "always",
-      "at-rule-semicolon-newline-after": "always",
-      "at-rule-semicolon-space-before": "never",
-      "color-function-notation": "legacy",
-      "color-hex-case": "lower",
-      "color-hex-length": "short",
-      "color-no-invalid-hex": true,
-      "comment-whitespace-inside": "always",
-      "block-closing-brace-empty-line-before": "never",
-      "block-closing-brace-newline-after": "always",
-      "block-closing-brace-newline-before": "always",
-      "block-no-empty": true,
-      "block-opening-brace-newline-after": "always",
-      "block-opening-brace-space-before": "always-multi-line",
-      "declaration-bang-space-after": "never",
-      "declaration-bang-space-before": "always",
-      "declaration-colon-newline-after": "always-multi-line",
-      "declaration-colon-space-after": "always",
-      "declaration-colon-space-before": "never",
-      "declaration-empty-line-before": "never",
-      "declaration-block-semicolon-newline-after": "always",
-      "declaration-block-semicolon-newline-before": "never-multi-line",
-      "declaration-block-semicolon-space-before": "never",
-      "font-family-name-quotes": "always-unless-keyword",
-      "function-calc-no-unspaced-operator": true,
-      "function-comma-space-after": "always",
-      "function-comma-space-before": "never",
-      "function-max-empty-lines": 0,
-      "function-name-case": "lower",
-      "function-parentheses-space-inside": "never",
-      "function-url-quotes": "always",
-      "function-whitespace-after": "always",
-      "indentation": 2,
-      "length-zero-no-unit": true,
-      "linebreaks": "unix",
-      "max-empty-lines": 2,
-      "media-feature-colon-space-after": "always",
-      "media-feature-colon-space-before": "never",
-      "media-feature-name-case": "lower",
-      "media-feature-parentheses-space-inside": "never",
-      "media-feature-range-operator-space-after": "always",
-      "media-feature-range-operator-space-before": "always",
-      "media-query-list-comma-newline-after": "always-multi-line",
-      "media-query-list-comma-newline-before": "never-multi-line",
-      "media-query-list-comma-space-after": "always",
-      "media-query-list-comma-space-before": "never",
-      "no-duplicate-selectors": true,
-      "no-empty-first-line": true,
-      "no-eol-whitespace": true,
-      "no-extra-semicolons": true,
-      "no-invalid-double-slash-comments": true,
-      "no-irregular-whitespace": true,
-      "no-missing-end-of-source-newline": true,
-      "number-leading-zero": "always",
-      "number-max-precision": 3,
-      "number-no-trailing-zeros": true,
-      "property-case": "lower",
-      "rule-empty-line-before": [
-        "always",
-        {
-          "ignore": [
-            "after-comment",
-            "first-nested"
-          ]
-        }
-      ],
-      "selector-attribute-brackets-space-inside": "never",
-      "selector-attribute-operator-space-after": "never",
-      "selector-attribute-operator-space-before": "never",
-      "selector-attribute-quotes": "always",
-      "selector-combinator-space-after": "always",
-      "selector-combinator-space-before": "always",
-      "selector-descendant-combinator-no-non-space": true,
-      "selector-pseudo-class-case": "lower",
-      "selector-pseudo-element-case": "lower",
-      "selector-pseudo-class-parentheses-space-inside": "never",
-      "selector-type-case": "lower",
-      "selector-list-comma-newline-after": "always",
-      "selector-list-comma-newline-before": "never-multi-line",
-      "selector-list-comma-space-before": "never",
-      "string-no-newline": true,
-      "string-quotes": "single",
-      "unit-case": "lower",
-      "value-list-comma-newline-after": "always-multi-line",
-      "value-list-comma-newline-before": "never-multi-line",
-      "value-list-comma-space-after": "always",
-      "value-list-comma-space-before": "never",
-      "value-list-max-empty-lines": 0,
-      "value-keyword-case": "lower"
-    }
-  }
+	"name": "pedalcms",
+	"version": "0.3.0",
+	"description": "PedalCMS Core Plugin",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/PedalCMS/pedalcms.git"
+	},
+	"keywords": [],
+	"author": "PedalCMS",
+	"license": "GPLv2",
+	"bugs": {
+		"url": "https://github.com/PedalCMS/pedalcms/issues"
+	},
+	"homepage": "https://github.com/PedalCMS/pedalcms#readme",
+	"devDependencies": {
+		"@babel/cli": "^7.16.8",
+		"@babel/core": "^7.16.12",
+		"@babel/preset-env": "^7.16.11",
+		"@wordpress/eslint-plugin": "^10.0.0",
+		"autoprefixer": "^10.4.2",
+		"eslint": "^8.7.0",
+		"postcss": "^8.4.6",
+		"postcss-cli": "^9.1.0",
+		"prettier": "^2.3.2",
+		"sass": "^1.49.7",
+		"@playwright/test": "^1.50.1",
+		"@wordpress/env": "^10.18.0",
+		"dotenv": "^16.4.7"
+	},
+	"prettier": {
+		"semi": true,
+		"tabWidth": 2,
+		"singleQuote": true,
+		"overrides": [
+			{
+				"files": [
+					"*.html"
+				],
+				"options": {
+					"tabWidth": 4,
+					"singleQuote": false
+				}
+			}
+		]
+	},
+	"babel": {
+		"presets": [
+			"@babel/preset-env"
+		],
+		"plugins": []
+	},
+	"eslintConfig": {
+		"env": {
+			"browser": true,
+			"es2021": true
+		},
+		"extends": [
+			"plugin:@wordpress/eslint-plugin/recommended"
+		],
+		"parserOptions": {
+			"ecmaVersion": "latest",
+			"sourceType": "module"
+		},
+		"rules": {}
+	},
+	"scripts": {
+		"wp-env": "wp-env",
+		"env:start": "wp-env start",
+		"env:stop": "wp-env stop",
+		"env:clean": "wp-env clean",
+		"env:destroy": "wp-env destroy",
+		"test:e2e": "npx playwright test --config=./tests/e2e/playwright.config.ts"
+	}
 }
