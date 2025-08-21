@@ -25,10 +25,12 @@ spl_autoload_register(
 		// get the relative class name
 		$relative_class = substr( $class, $len );
 
-		// replace the namespace prefix with the base directory, replace namespace
-		// separators with directory separators in the relative class name, append
-		// with .php
-		$file = $base_dir . str_replace( '\\', '/', $relative_class ) . '.php';
+		// convert to WP code standards convention.
+		$file = sprintf(
+			'%sclass-%s.php',
+			$base_dir,
+			strtolower($relative_class)
+		);
 
 		// if the file exists, require it
 		if ( file_exists( $file ) ) {
