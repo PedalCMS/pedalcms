@@ -29,14 +29,15 @@ $args['context']    = $template;
 $args['link_image'] = true;
 
 if ( $args['post'] ) :
-	$post    = $args['post'];
+	$news_post = $args['post'];
+	$args['post'] = $news_post; // Update args to use the renamed variable
 	$classes = [ 'related-post' ];
 
 	if ( $args['is_featured'] ) {
 		$classes[] = 'related-post--featured';
 	}
 
-	if ( has_post_thumbnail( $post ) ) {
+	if ( has_post_thumbnail( $news_post ) ) {
 		$classes[] = 'related-post--has-image';
 	}
 
@@ -47,7 +48,7 @@ if ( $args['post'] ) :
 	class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 
 	<?php
-	if ( $args['show_image'] && has_post_thumbnail( $post ) ) :
+	if ( $args['show_image'] && has_post_thumbnail( $news_post ) ) :
 		pdl_get_template_part( 'common/post-featured-image', $args );
 	endif;
 	?>
@@ -56,8 +57,8 @@ if ( $args['post'] ) :
 		<header class="related-post__header">
 			<h3 class="related-post__title">
 				<a
-					href="<?php echo esc_url( get_permalink( $post ) ); ?>">
-					<?php echo esc_html( get_the_title( $post ) ); ?>
+					href="<?php echo esc_url( get_permalink( $news_post ) ); ?>">
+					<?php echo esc_html( get_the_title( $news_post ) ); ?>
 				</a>
 			</h3>
 
@@ -69,7 +70,7 @@ if ( $args['post'] ) :
 			if ( $args['show_category'] ) :
 				echo wp_kses_post(
 					pdl_get_the_term_list(
-						$post,
+						$news_post,
 						'category',
 						'<span class="related-post__category">',
 						',',
@@ -82,14 +83,14 @@ if ( $args['post'] ) :
 		</header>
 
 		<?php if ( $args['show_excerpt'] ) : ?>
-		<div class="related-post__content"><?php echo wp_kses_post( get_the_excerpt( $post ) ); ?>
+		<div class="related-post__content"><?php echo wp_kses_post( get_the_excerpt( $news_post ) ); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if ( $args['show_permalink'] ) : ?>
 		<p class="related-post__more">
 			<a class="related-post__more-link"
-				href="<?php echo esc_url( get_permalink( $post ) ); ?>">
+				href="<?php echo esc_url( get_permalink( $news_post ) ); ?>">
 				<?php echo esc_html( $args['label_read_more'] ); ?>
 			</a>
 		</p>

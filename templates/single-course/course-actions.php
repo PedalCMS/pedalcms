@@ -1,6 +1,6 @@
 <?php
 
-$post = pdl_args_or_global( 'post', $args );
+$course_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'context'         => $template,
@@ -10,7 +10,7 @@ $defaults = [
 	'actions'         => [],
 ];
 
-$register_url = pdl_get_course_action_link( 'reg_search', $post );
+$register_url = pdl_get_course_action_link( 'reg_search', $course_post );
 
 if ( $register_url ) {
 	$defaults['actions'][] = [
@@ -23,7 +23,7 @@ if ( $register_url ) {
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
 if ( $args['add_permalink'] ) {
-	$permalink = true === $args['add_permalink'] ? get_permalink( $post ) : $args['add_permalink'];
+	$permalink = true === $args['add_permalink'] ? get_permalink( $course_post ) : $args['add_permalink'];
 
 	array_unshift(
 		$args['actions'],

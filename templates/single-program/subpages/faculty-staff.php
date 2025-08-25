@@ -8,13 +8,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$program_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'show_subpage'             => pdl_show_subpage( 'faculty-staff' ),
 	'show_contact_info_labels' => true,
-	'personnel'                => post_type_exists( 'pdl_person' ) ? get_field( 'related_faculty_staff', $post ) : [],
-	'group_by_category'        => get_field( 'faculty_staff_by_category', $post ),
+	'personnel'                => post_type_exists( 'pdl_person' ) ? get_field( 'related_faculty_staff', $program_post ) : [],
+	'group_by_category'        => get_field( 'faculty_staff_by_category', $program_post ),
 	'image_size'               => 'thumbnail',
 ];
 
@@ -37,16 +37,16 @@ if ( $args['show_subpage'] ) : ?>
 				$cats    = pdl_get_people_by_category( $args['personnel'] );
 				$h_level = 4;
 
-				foreach ( $cats as $cat ) :
+				foreach ( $cats as $person_cat ) :
 					?>
 		<div class="person-category">
-		<h3 id="<?php echo $cat->slug; ?>"
+		<h3 id="<?php echo $person_cat->slug; ?>"
 			class="person-category__title">
-					<?php echo $cat->name; ?>
+					<?php echo $person_cat->name; ?>
 		</h3>
 		<div class="person-category__list person-list">
 					<?php
-					foreach ( $cat->people as $person ) :
+					foreach ( $person_cat->people as $person ) :
 						$person = get_post( $person );
 						pdl_get_template_part(
 							'archive-person/person-item',

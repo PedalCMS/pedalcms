@@ -8,11 +8,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$program_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'show_subpage'    => pdl_show_subpage( 'apply' ),
-	'subpage_content' => get_field( 'apply_content', $post ),
+	'subpage_content' => get_field( 'apply_content', $program_post ),
 ];
 
 $args = pdl_parse_template_args( $args, $defaults, $template );

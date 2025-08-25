@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$featured_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'show_image'             => true,
@@ -34,13 +34,13 @@ $classes     = [
 ];
 
 $show_image = $args['show_image'] && (
-	has_post_thumbnail( $post ) ||
+	has_post_thumbnail( $featured_post ) ||
 	! empty( $args['fallback_attachment_id'] )
 );
 
 if ( $show_image ) :
 	$image = pdl_post_thumbnail_or_fallback(
-		$post,
+		$featured_post,
 		$args['fallback_attachment_id'],
 		$args['image_size'],
 		$args['image_attributes']
@@ -50,7 +50,7 @@ if ( $show_image ) :
 		printf(
 			'<div class="%s"><a href="%s">%s</a></div>',
 			esc_attr( implode( ' ', $classes ) ),
-			esc_url( get_the_permalink( $post ) ),
+			esc_url( get_the_permalink( $featured_post ) ),
 			wp_kses_post( $image )
 		);
 	else :

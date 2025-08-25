@@ -31,41 +31,41 @@ if ( ! empty( $args['terms'] ) ) :
 <ul class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
 	data-columns="<?php echo esc_attr( $args['columns'] ); ?>">
 	<?php
-	foreach ( $args['terms'] as $term ) :
+	foreach ( $args['terms'] as $grid_term ) :
 		?>
 	<li class="term">
 		<div class="term__title-group">
 			<?php printf( '<%s class="term__title">', esc_html( $args['title_tag'] ) ); ?>
 			<a
-				href="<?php echo esc_url( get_term_link( $term, $term->taxonomy ) ); ?>"><?php echo esc_html( $term->name ); ?></a>
+				href="<?php echo esc_url( get_term_link( $grid_term, $grid_term->taxonomy ) ); ?>"><?php echo esc_html( $grid_term->name ); ?></a>
 			<?php printf( '</%s>', esc_html( $args['title_tag'] ) ); ?>
 		</div>
 
 		<?php
 		if ( $args['show_image'] ) :
-			$args['term'] = $term;
+			$args['term'] = $grid_term;
 			pdl_get_template_part( 'common/term-featured-image', $args );
 		endif;
 		?>
 
 		<?php if ( $args['show_description'] ) : ?>
-		<div class="term__description"><?php echo wp_kses_post( $term->description ); ?>
+		<div class="term__description"><?php echo wp_kses_post( $grid_term->description ); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if ( $args['show_posts_link'] ) : ?>
 		<div class="term__posts-link">
 			<a
-				href="<?php echo esc_url( get_term_link( $term, $term->taxonomy ) ); ?>">
+				href="<?php echo esc_url( get_term_link( $grid_term, $grid_term->taxonomy ) ); ?>">
 				<?php
 				printf(
 					'%s %s %s',
 					esc_html( $args['posts_link_prefix'] ),
-					$args['show_num_posts'] ? number_format( (int) $term->count ) : '',
+					$args['show_num_posts'] ? number_format( (int) $grid_term->count ) : '',
 					esc_html( $args['label_posts'] )
 				);
 				?>
-				<span class="screen-reader-text"><?php printf( esc_html( $args['label_sr_text'] ), esc_html( $term->name ) ); ?>
+				<span class="screen-reader-text"><?php printf( esc_html( $args['label_sr_text'] ), esc_html( $grid_term->name ) ); ?>
 				</span>
 			</a>
 		</div>

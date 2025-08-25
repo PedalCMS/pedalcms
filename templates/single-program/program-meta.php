@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$program_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'show_college'           => true,
@@ -40,7 +40,7 @@ printf( '<div class="%s">', esc_attr( implode( ' ', $classes ) ) );
 if ( $args['show_instruction_mode'] && taxonomy_exists( 'pdl_instruct_mode' ) ) :
 	echo wp_kses_post(
 		pdl_get_the_term_list(
-			$post->ID,
+			$program_post->ID,
 			'pdl_instruct_mode',
 			sprintf( wp_kses_post( $args['meta_before_fmt'] ), 'instruction-mode', $args['label_instruction_mode'] ),
 			$args['terms_separator'],
@@ -52,14 +52,14 @@ endif;
 
 if ( $args['show_prerequisites'] ) :
 	printf( wp_kses_post( $args['meta_before_fmt'] ), 'prerequisites', esc_html( $args['label_prerequisites'] ) );
-	echo esc_html( get_field( 'prerequisites', $post ) ? $args['label_yes'] : $args['label_no'] );
+	echo esc_html( get_field( 'prerequisites', $program_post ) ? $args['label_yes'] : $args['label_no'] );
 	echo wp_kses_post( $args['meta_after'] );
 endif;
 
 if ( $args['show_college'] && taxonomy_exists( 'pdl_college' ) ) :
 	echo wp_kses_post(
 		pdl_get_the_term_list(
-			$post->ID,
+			$program_post->ID,
 			'pdl_college',
 			sprintf( $args['meta_before_fmt'], 'program-college', $args['label_college'] ),
 			$args['terms_separator'],
@@ -72,7 +72,7 @@ endif;
 if ( $args['show_department'] && taxonomy_exists( 'pdl_department' ) ) :
 	echo wp_kses_post(
 		pdl_get_the_term_list(
-			$post->ID,
+			$program_post->ID,
 			'pdl_department',
 			sprintf( $args['meta_before_fmt'], 'department', $args['label_department'] ),
 			$args['terms_separator'],

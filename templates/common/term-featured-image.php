@@ -11,10 +11,10 @@ $defaults = [
 
 $args         = pdl_parse_template_args( $args, $defaults, $template );
 $featured_img = $args['featured_img'];
-$term         = $args['term'];
+$featured_term = $args['term'];
 
-if ( ! $featured_img && $term instanceof WP_Term ) {
-	$featured_img = get_term_meta( $term->term_id, 'featured_image', true );
+if ( ! $featured_img && $featured_term instanceof WP_Term ) {
+	$featured_img = get_term_meta( $featured_term->term_id, 'featured_image', true );
 }
 
 $classes = [
@@ -32,7 +32,7 @@ if ( $img ) {
 	if ( $args['link_image'] ) {
 		$img = sprintf(
 			'<a href="%s">%s</a>',
-			esc_url( get_term_link( $term, $term->taxonomy ) ),
+			esc_url( get_term_link( $featured_term, $featured_term->taxonomy ) ),
 			$img
 		);
 	}

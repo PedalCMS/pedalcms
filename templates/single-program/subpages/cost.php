@@ -8,9 +8,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$program_post = pdl_args_or_global( 'post', $args );
 
-$label_est_cost = get_field( 'estimated_cost_label', $post );
+$label_est_cost = get_field( 'estimated_cost_label', $program_post );
 
 if ( empty( $label_est_cost ) ) {
 	$label_est_cost = pdl_get_label( 'estimated_cost' );
@@ -18,8 +18,8 @@ if ( empty( $label_est_cost ) ) {
 
 $defaults = [
 	'show_subpage'         => pdl_show_subpage( 'cost' ),
-	'subpage_content'      => get_field( 'cost_content', $post ),
-	'estimated_cost'       => get_field( 'estimated_cost', $post ),
+	'subpage_content'      => get_field( 'cost_content', $program_post ),
+	'estimated_cost'       => get_field( 'estimated_cost', $program_post ),
 	'label_estimated_cost' => $label_est_cost,
 ];
 

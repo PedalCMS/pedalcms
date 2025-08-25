@@ -8,47 +8,48 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post_type = get_post_type();
+$current_post_type = get_post_type();
 
-if ( ! $post_type ) {
-	$post_type = 'post';
+if ( ! $current_post_type ) {
+	$current_post_type = 'post';
 }
 
 $defaults = [
-	'label_single_post'      => pdl_get_post_type_label( $post_type, 'singular_name' ),
-	'label_posts'            => strtolower( pdl_get_post_type_label( $post_type, 'plural_not_collective', 'name' ) ),
+	'label_single_post'      => pdl_get_post_type_label( $current_post_type, 'singular_name' ),
+	'label_posts'            => strtolower( pdl_get_post_type_label( $current_post_type, 'plural_not_collective', 'name' ) ),
 	'label_filtered_results' => pdl_get_label( 'filtered_results' ),
 	'label_showing'          => pdl_get_label( 'showing' ),
 	'label_showing_of'       => pdl_get_label( 'showing_of' ),
 	'wp_query'               => null,
 ];
 
-$args     = pdl_parse_template_args( $args, $defaults, $template );
-$wp_query = $args['wp_query'];
+$args      = pdl_parse_template_args( $args, $defaults, $template );
+$query_obj = $args['wp_query'];
 
-if ( ! $wp_query ) {
+if ( ! $query_obj ) {
 	global $wp_query;
+	$query_obj = $wp_query;
 }
 
-$post_type   = $wp_query->get( 'post_type' );
-$per_page    = (int) $wp_query->get( 'posts_per_page' );
-$page        = $wp_query->get( 'paged' );
-$page        = $page ? $page : 1;
-$first       = ( $page - 1 ) * $per_page + 1;
-$last        = $first + ( $wp_query->post_count - 1 );
-$showing_all = $wp_query->found_posts === $wp_query->post_count;
+$query_post_type = $query_obj->get( 'post_type' );
+$query_per_page  = (int) $query_obj->get( 'posts_per_page' );
+$query_page      = $query_obj->get( 'paged' );
+$query_page      = $query_page ? $query_page : 1;
+$first           = ( $query_page - 1 ) * $query_per_page + 1;
+$last            = $first + ( $query_obj->post_count - 1 );
+$showing_all     = $query_obj->found_posts === $query_obj->post_count;
 
 $label = $args['label_posts'];
 
-if ( $wp_query->found_posts ) {
+if ( $query_obj->found_posts ) {
 	if ( $showing_all ) {
-		if ( 1 === $wp_query->found_posts ) {
+		if ( 1 === $query_obj->found_posts ) {
 			$label = $args['label_single_post'];
 		}
 		$num_results = sprintf(
 			'%s %s %s.',
 			esc_html( $args['label_showing'] ),
-			$wp_query->found_posts,
+			$query_obj->found_posts,
 			$label
 		);
 	} else {
@@ -56,7 +57,7 @@ if ( $wp_query->found_posts ) {
 			esc_html( $args['label_showing_of'] ),
 			number_format( $first ),
 			number_format( $last ),
-			number_format( $wp_query->found_posts ),
+			number_format( $query_obj->found_posts ),
 			$label
 		);
 	}
@@ -70,9 +71,9 @@ if ( $wp_query->found_posts ) {
  */
 do_action( 'pdl/careers/before_num_results' );
 
-if ( $wp_query->found_posts ) : ?>
+if ( $query_obj->found_posts ) : ?>
 <div class="num-results">
-	<?php if ( pdl_is_filtered_results( $post_type ) ) : ?>
+	<?php if ( pdl_is_filtered_results( $current_post_type ) ) : ?>
 	<strong class="num-results__filtered"><?php echo esc_html( $args['label_filtered_results'] ); ?>:</strong>
 	<?php endif; ?>
 

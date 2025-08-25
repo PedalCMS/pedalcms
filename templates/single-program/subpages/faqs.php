@@ -8,12 +8,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$program_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'show_subpage'      => pdl_show_subpage( 'faqs' ),
-	'group_by_category' => get_field( 'faqs_by_category', $post ),
-	'faqs'              => get_field( 'related_faqs_list', $post ),
+	'group_by_category' => get_field( 'faqs_by_category', $program_post ),
+	'faqs'              => get_field( 'related_faqs_list', $program_post ),
 ];
 
 $args = pdl_parse_template_args( $args, $defaults, $template );
@@ -35,16 +35,16 @@ if ( $args['show_subpage'] ) : ?>
 		<?php
 		if ( ! empty( $faqs ) ) :
 			if ( $args['group_by_category'] ) :
-				foreach ( $faqs as $cat ) :
+				foreach ( $faqs as $faq_cat ) :
 					?>
 		<div class="faq-category">
-		<h3 id="<?php echo $cat->slug; ?>"
+		<h3 id="<?php echo $faq_cat->slug; ?>"
 			class="faq-category__title">
-					<?php echo $cat->name; ?>
+					<?php echo $faq_cat->name; ?>
 		</h3>
 		<div class="faq-category__faqs">
 					<?php
-					foreach ( $cat->faqs as $faq ) :
+					foreach ( $faq_cat->faqs as $faq ) :
 						pdl_get_template_part( 'single-program/faq-item', compact( 'faq' ) );
 					endforeach;
 					?>

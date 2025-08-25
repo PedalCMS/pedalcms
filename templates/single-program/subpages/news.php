@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$program_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'show_subpage'  => pdl_show_subpage( 'news' ),
@@ -28,7 +28,7 @@ if ( $args['show_subpage'] ) : ?>
 			pdl_get_template_part(
 				'single-program/related-posts',
 				[
-					'post'    => $post,
+					'post'    => $program_post,
 					'context' => $template,
 				]
 			);

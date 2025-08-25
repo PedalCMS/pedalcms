@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$person_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'show_contact_info'        => true,
@@ -22,14 +22,14 @@ $defaults = [
 $args  = pdl_parse_template_args( $args, $defaults, $template );
 $h_tag = pdl_get_heading_tag( $args['h_level'] );
 
-if ( $post ) :?>
-<article <?php post_class( '', $post ); ?>>
+if ( $person_post ) :?>
+<article <?php post_class( '', $person_post ); ?>>
 	<?php
 	if ( $args['show_image'] ) :
 		pdl_get_template_part(
 			'single-person/featured-image',
 			[
-				'post'     => $post,
+				'post'     => $person_post,
 				'img_size' => $args['img_size'],
 			]
 		);
@@ -38,15 +38,15 @@ if ( $post ) :?>
 	<div class="person-info">
 		<header>
 			<?php printf( '<%s class="person-name">', esc_html( $h_tag ) ); ?>
-			<a href="<?php echo esc_url( get_the_permalink( $post ) ); ?>"><?php echo esc_html( get_the_title( $post ) ); ?></a>
+			<a href="<?php echo esc_url( get_the_permalink( $person_post ) ); ?>"><?php echo esc_html( get_the_title( $person_post ) ); ?></a>
 			<?php printf( '</%s>', esc_html( $h_tag ) ); ?>
 			<div class="person-position">
-				<?php pdl_get_template_part( 'blocks/job-title', [ 'job_title' => $post->job_title ] ); ?>
+				<?php pdl_get_template_part( 'blocks/job-title', [ 'job_title' => $person_post->job_title ] ); ?>
 				<?php
 				if ( taxonomy_exists( 'pdl_department' ) ) :
 					echo wp_kses_post(
 						pdl_get_the_term_list(
-							$post,
+							$person_post,
 							'pdl_department',
 							'<div class="person-department">',
 							', ',
@@ -63,7 +63,7 @@ if ( $post ) :?>
 			pdl_get_template_part(
 				'blocks/contact-info',
 				[
-					'post'        => $post,
+					'post'        => $person_post,
 					'show_labels' => $args['show_contact_info_labels'],
 				]
 			);

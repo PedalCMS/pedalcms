@@ -8,30 +8,30 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$program_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'featured_posts'       => null,
 	'posts'                => null,
-	'news_tag'             => get_field( 'news_tag', $post ),
-	'show_all_posts_link'  => get_field( 'news_show_all_link', $post ),
+	'news_tag'             => get_field( 'news_tag', $program_post ),
+	'show_all_posts_link'  => get_field( 'news_show_all_link', $program_post ),
 	'label_all_posts'      => pdl_get_label( 'show_all_posts' ),
 	'label_no_posts_found' => pdl_get_post_type_label( 'post', 'not_found' ),
 ];
 
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
-$featured_posts = $args['featured_posts'] ?? get_field( 'news_featured_posts', $post );
-$posts          = $args['posts'];
+$featured_posts = $args['featured_posts'] ?? get_field( 'news_featured_posts', $program_post );
+$related_posts  = $args['posts'];
 
-if ( empty( $posts ) && false !== $posts ) {
+if ( empty( $related_posts ) && false !== $related_posts ) {
 	$not_in = ! empty( $featured_posts ) ?
 		array_column( $featured_posts, 'ID' ) :
 		[];
-	$posts  = pdl_get_related_posts( $post, $not_in );
+	$related_posts = pdl_get_related_posts( $program_post, $not_in );
 }
 
-if ( ! empty( $featured_posts ) || ! empty( $posts ) ) : ?>
+if ( ! empty( $featured_posts ) || ! empty( $related_posts ) ) : ?>
 
 	<?php if ( ! empty( $featured_posts ) ) : ?>
 <div class="related-post-list related-post-list--featured">
@@ -49,10 +49,10 @@ if ( ! empty( $featured_posts ) || ! empty( $posts ) ) : ?>
 </div>
 	<?php endif; ?>
 
-	<?php if ( ! empty( $posts ) ) : ?>
+	<?php if ( ! empty( $related_posts ) ) : ?>
 <div class="related-post-list">
 		<?php
-		foreach ( $posts as $p ) :
+		foreach ( $related_posts as $p ) :
 			pdl_get_template_part( 'single-program/news-item', [ 'post' => $p ] );
 		endforeach;
 		?>

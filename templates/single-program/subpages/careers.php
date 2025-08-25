@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$program_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'show_subpage' => pdl_show_subpage( 'careers' ),
@@ -17,7 +17,7 @@ $defaults = [
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
 if ( $args['show_subpage'] ) :
-	$careers = get_field( 'related_program_careers', $post );
+	$careers = get_field( 'related_program_careers', $program_post );
 	?>
 
 <div <?php pdl_subpage_class(); ?>>

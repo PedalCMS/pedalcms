@@ -10,12 +10,12 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$contact_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
-	'office_phone'  => $post->office_phone,
-	'email_address' => $post->email_address,
-	'office'        => $post->office,
+	'office_phone'  => $contact_post->office_phone,
+	'email_address' => $contact_post->email_address,
+	'office'        => $contact_post->office,
 	'show_phone'    => true,
 	'show_email'    => true,
 	'show_office'   => true,
@@ -27,7 +27,7 @@ $defaults = [
 
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
-if ( $post ) :
+if ( $contact_post ) :
 	?>
 <div class="contact-info">
 	<?php if ( $args['show_phone'] && $args['office_phone'] ) : ?>

@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$program_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'show_image'           => true,
@@ -21,15 +21,15 @@ $defaults = [
 
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
-if ( $post ) : ?>
-<article <?php post_class( $args['wrapper_class'], $post ); ?>>
+if ( $program_post ) : ?>
+<article <?php post_class( $args['wrapper_class'], $program_post ); ?>>
 
 	<?php
 	if ( $args['show_image'] ) :
 		pdl_get_template_part(
 			'common/post-featured-image',
 			[
-				'post'        => $post,
+				'post'        => $program_post,
 				'image_size'  => 'medium',
 				'image_align' => 'left',
 				'link_image'  => true,
@@ -42,10 +42,10 @@ if ( $post ) : ?>
 	<div class="program-info item-info">
 		<header>
 			<h2 class="program-title entry-title"><a
-					href="<?php echo esc_url( get_the_permalink( $post ) ); ?>"><?php echo esc_html( get_the_title( $post ) ); ?></a></h2>
+					href="<?php echo esc_url( get_the_permalink( $program_post ) ); ?>"><?php echo esc_html( get_the_title( $program_post ) ); ?></a></h2>
 			<?php
 			if ( $args['show_program_type'] && taxonomy_exists( 'pdl_program_type' ) ) :
-				echo wp_kses_post( pdl_get_the_term_list( $post, 'pdl_program_type', '<div class="program-type">', ',', '</div>', $args['link_terms'] ) );
+				echo wp_kses_post( pdl_get_the_term_list( $program_post, 'pdl_program_type', '<div class="program-type">', ',', '</div>', $args['link_terms'] ) );
 			endif;
 			?>
 		</header>
@@ -54,7 +54,7 @@ if ( $post ) : ?>
 			pdl_get_template_part(
 				'archive-program/program-meta',
 				[
-					'post'       => $post,
+					'post'       => $program_post,
 					'link_terms' => $args['link_terms'],
 				]
 			);
@@ -67,7 +67,7 @@ if ( $post ) : ?>
 		pdl_get_template_part(
 			'single-program/program-actions',
 			[
-				'post'          => $post,
+				'post'          => $program_post,
 				'add_permalink' => true,
 			]
 		);
