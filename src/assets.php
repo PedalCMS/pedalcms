@@ -80,21 +80,21 @@ function enqueue_assets() {
 		$presentation_mode = 'base';
 	}
 
-	if ( pdl_is_active_subpage( 'careers' ) && $presentation_mode !== 'none' ) {
+	if ( pdl_is_active_subpage( 'careers' ) && 'none' !== $presentation_mode ) {
 		wp_enqueue_style( 'pdl-careers-base' );
 	}
 
 	if ( ! is_admin() ) {
-		if ( $presentation_mode !== 'none' ) {
+		if ( 'none' !== $presentation_mode ) {
 			wp_enqueue_style( 'pdl-global' );
 		}
 
-		if ( $presentation_mode === 'full' ) {
+		if ( 'full' === $presentation_mode ) {
 			wp_enqueue_style( 'pdl-global-full' );
 		}
 	}
 
-	if ( ! is_admin() && $presentation_mode !== 'none' ) {
+	if ( ! is_admin() && 'none' !== $presentation_mode ) {
 		if ( is_singular() ) {
 			$post = get_post();
 
@@ -110,11 +110,11 @@ function enqueue_assets() {
 		is_tax( Plugin::taxonomies() );
 
 	if ( ! is_admin() && $is_plugin_content ) {
-		if ( $presentation_mode !== 'none' ) {
+		if ( 'none' !== $presentation_mode ) {
 			wp_enqueue_style( 'pdl-programs-base' );
 		}
 
-		if ( $presentation_mode === 'full' ) {
+		if ( 'full' === $presentation_mode ) {
 			wp_enqueue_style( 'pdl-programs-full' );
 		}
 	}

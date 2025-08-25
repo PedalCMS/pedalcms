@@ -153,7 +153,7 @@ abstract class CustomPostType extends CustomContentObject {
 	 * @return string
 	 */
 	public static function update_enter_title_text( string $text, \WP_Post $post ): string {
-		if ( $post->post_type === static::POST_TYPE ) {
+		if ( static::POST_TYPE === $post->post_type ) {
 			$text = static::$enter_title_text;
 		}
 
@@ -276,9 +276,9 @@ abstract class CustomPostType extends CustomContentObject {
 	public static function is_edit_posts_screen(): bool {
 		global $pagenow;
 
-		if ( $pagenow == 'edit.php' ) {
+		if ( 'edit.php' === $pagenow ) {
 			if ( ! empty( $_GET['post_type'] ) ) {
-				if ( $_GET['post_type'] == static::POST_TYPE ) {
+				if ( static::POST_TYPE === $_GET['post_type'] ) {
 					return true;
 				}
 			}
@@ -298,7 +298,7 @@ abstract class CustomPostType extends CustomContentObject {
 		}
 		$screen = get_current_screen();
 
-		return $screen->parent_base === 'edit' && $screen->id === static::POST_TYPE;
+		return 'edit' === $screen->parent_base && static::POST_TYPE === $screen->id;
 	}
 
 	/**

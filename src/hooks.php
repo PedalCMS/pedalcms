@@ -60,7 +60,7 @@ function options_register_taxonomy_args( array $args, string $taxonomy ): array 
 	$taxonomy       = str_replace( 'pdl_', '', $taxonomy );
 	$enable_archive = Plugin::get_option( $taxonomy . '_enable_archive' );
 
-	if ( $enable_archive !== false ) {
+	if ( false !== $enable_archive ) {
 		/*
 		 * The first test determines whether an option has been saved.
 		 * The second test checks the value before acting.
@@ -228,7 +228,7 @@ function body_class( array $classes ): array {
  */
 function admin_body_class( string $classes ): string {
 	$current_screen = get_current_screen();
-	if ( $current_screen->id === 'settings_page_' . Plugin::$options_page_slug ) {
+	if ( 'settings_page_' . Plugin::$options_page_slug === $current_screen->id ) {
 		$presentation_mode = Plugin::get_option( 'presentation_mode' );
 
 		if ( $presentation_mode ) {
@@ -275,7 +275,7 @@ function post_class( array $classes ): array {
 function term_link( string $link ): string {
 	$query_start = strpos( $link, '?' );
 
-	if ( $query_start !== false ) {
+	if ( false !== $query_start ) {
 		if ( is_admin() && isset( $_GET['post_type'] ) ) {
 			$post_type = $_GET['post_type'];
 		} else {
@@ -671,7 +671,7 @@ function options_post_featured_image( $defaults, $post_type, $presentation_mode 
 		if ( is_post_type_archive() ) {
 			$defaults['show_image'] = Plugin::get_option( $post_type . '_archive_show_images' );
 
-			if ( $presentation_mode === 'full' ) {
+			if ( 'full' === $presentation_mode ) {
 				$defaults['image_wrapper_class'] = $zoom_class;
 			}
 		}
@@ -698,7 +698,7 @@ function options_header_image_size( $defaults ) {
 	if ( $size ) {
 		$defaults['image_size'] = $size;
 
-		if ( $defaults['image_size'] === 'custom' ) {
+		if ( 'custom' === $defaults['image_size'] ) {
 			$defaults['image_size'] = [
 				(int) Plugin::get_option( 'image_size_header_w' ),
 				(int) Plugin::get_option( 'image_size_header_h' ),
@@ -720,7 +720,7 @@ function options_header_image_size( $defaults ) {
  * @return array The modified template defaults.
  */
 function options_page_header_backdrop( $defaults, $post_type, $presentation_mode ) {
-	if ( $presentation_mode !== 'full' ) {
+	if ( 'full' !== $presentation_mode ) {
 		return $defaults;
 	}
 
@@ -848,7 +848,7 @@ function options_plugin_labels( $label, $label_key, $plugin ) {
 		'credits',
 	];
 
-	if ( $plugin === 'programs' && in_array( $label_key, $course_labels ) ) {
+	if ( 'programs' === $plugin && in_array( $label_key, $course_labels ) ) {
 
 		$value = Plugin::get_option( 'course_label_' . $label_key );
 

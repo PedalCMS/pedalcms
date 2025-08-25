@@ -100,7 +100,7 @@ function get_related_field_name( string $field_name ) {
 
 	$rel_field_name = array_search( $field_name, $bidirectional, true );
 
-	if ( $rel_field_name !== false ) {
+	if ( false !== $rel_field_name ) {
 		return $rel_field_name;
 	}
 
@@ -204,7 +204,7 @@ function remove_relationship( int $remove_post, array $from_posts, string $field
 
 			$i = array_search( $remove_post, $rel_posts, true );
 
-			if ( $i !== false ) {
+			if ( false !== $i ) {
 				unset( $rel_posts[ $i ] );
 				update_field( $field_name, $rel_posts, $post_id );
 			}
@@ -326,7 +326,7 @@ function prepare_taxonomy_field( array|false $field ): array|false {
 	 * Boolean false is returned if the option was not found. Check for that
 	 * before disabling this field.
 	 */
-	if ( $enabled !== false && ! $enabled ) {
+	if ( false !== $enabled && ! $enabled ) {
 		return false;
 	}
 
@@ -350,7 +350,7 @@ function prepare_department( array|false $field ): array|false {
 		$field['type'] = 'taxonomy';
 	}
 
-	if ( $field['type'] === 'select' ) {
+	if ( 'select' === $field['type'] ) {
 		if ( $field['value'] ) {
 			$term                               = get_term( $field['value'] );
 			$field['choices'][ $term->term_id ] = $term->name;
@@ -370,8 +370,8 @@ function prepare_department( array|false $field ): array|false {
  * @return void
  */
 function save_options( $post_id ) {
-	if ( $post_id === 'options' ) {
-		if ( $_GET['page'] === Plugin::$options_page_slug ) {
+	if ( 'options' === $post_id ) {
+		if ( Plugin::$options_page_slug === $_GET['page'] ) {
 			set_transient( 'pdl_flush_rules', true );
 		}
 	}

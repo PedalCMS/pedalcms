@@ -297,7 +297,7 @@ class Plugin {
 	public static function add_settings_link( $actions, $plugin_file ) {
 		$this_plugin = sprintf( '%1$s/%1$s.php', self::$name );
 
-		if ( $plugin_file === $this_plugin ) {
+		if ( $this_plugin === $plugin_file ) {
 			$link = sprintf( '%s&page=%s', self::$options_page_parent, self::$options_page_slug );
 			array_unshift( $actions, sprintf( '<a href="%s">Settings</a>', $link ) );
 		}

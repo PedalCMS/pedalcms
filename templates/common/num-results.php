@@ -36,13 +36,13 @@ $page        = $wp_query->get( 'paged' );
 $page        = $page ? $page : 1;
 $first       = ( $page - 1 ) * $per_page + 1;
 $last        = $first + ( $wp_query->post_count - 1 );
-$showing_all = $wp_query->post_count === $wp_query->found_posts;
+$showing_all = $wp_query->found_posts === $wp_query->post_count;
 
 $label = $args['label_posts'];
 
 if ( $wp_query->found_posts ) {
 	if ( $showing_all ) {
-		if ( $wp_query->found_posts == 1 ) {
+		if ( 1 === $wp_query->found_posts ) {
 			$label = $args['label_single_post'];
 		}
 		$num_results = sprintf(

@@ -97,7 +97,7 @@ if ( ! empty( $args['filters'] ) && ! empty( $args['post_type'] ) ) : ?>
 			$show_more = false;
 
 			foreach ( $args['filters'] as $i => $filter ) :
-				if ( $args['break_filters_after'] && $i === $args['break_filters_after'] ) :
+				if ( $args['break_filters_after'] && $args['break_filters_after'] === $i ) :
 					$show_more = true;
 					?>
 			<button type="button" data-target="more-filters" class="pdl-toggle__trigger" aria-expanded="false"

@@ -24,7 +24,7 @@ $args = pdl_parse_template_args( $args, $defaults, $template );
 $featured_posts = $args['featured_posts'] ?? get_field( 'news_featured_posts', $post );
 $posts          = $args['posts'];
 
-if ( empty( $posts ) && $posts !== false ) {
+if ( empty( $posts ) && false !== $posts ) {
 	$not_in = ! empty( $featured_posts ) ?
 		array_column( $featured_posts, 'ID' ) :
 		[];

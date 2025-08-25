@@ -162,7 +162,7 @@ abstract class CustomContentObject {
 
 				break;
 			case 'edit-' . $this->system_name:
-				if ( $screen->base == 'term' ) {
+				if ( 'term' === $screen->base ) {
 					// Both taxonomy lists and edit screens have the same id
 					if ( $this->help ) {
 						$tabs = $this->help;

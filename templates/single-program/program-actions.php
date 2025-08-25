@@ -32,7 +32,7 @@ $defaults = [
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
 if ( $args['add_permalink'] ) {
-	$permalink = $args['add_permalink'] === true ? get_permalink( $post ) : $args['add_permalink'];
+	$permalink = true === $args['add_permalink'] ? get_permalink( $post ) : $args['add_permalink'];
 
 	array_unshift(
 		$args['actions'],

@@ -26,7 +26,7 @@ $args = pdl_parse_template_args( $args, $defaults, $template );
 	<div class="course-credits">
 		<?php
 			echo (int) $post->credits . ' ';
-			echo $post->credits === 1 ?
+			echo 1 === $post->credits ?
 				esc_html( $args['label_credit'] ) :
 				esc_html( $args['label_credits'] );
 		?>

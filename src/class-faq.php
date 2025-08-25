@@ -90,7 +90,7 @@ class FAQ extends CustomPostType {
 		$new_list = [];
 
 		foreach ( $faqs as $faq ) {
-			if ( $faq['faq_type'] === 'global' ) {
+			if ( 'global' === $faq['faq_type'] ) {
 				$post = $faq['faq_post'];
 				$cat  = get_the_terms( $post, FAQCategory::TAXONOMY );
 

@@ -938,7 +938,7 @@ class Program extends CustomPostType {
 	 * @return void
 	 */
 	public static function save_terms( $post_id, $post ) {
-		if ( $post->post_type === self::POST_TYPE ) {
+		if ( self::POST_TYPE === $post->post_type ) {
 			Department::save_terms( $post );
 		}
 	}

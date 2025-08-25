@@ -28,7 +28,7 @@ if ( ! empty( $args['personnel'] ) ) :
 	<?php
 	printf( '<%s>%s</%s>', $h_tag, esc_html( $args['label_instructors'] ), $h_tag );
 
-	if ( $style === 'full' ) :
+	if ( 'full' === $style ) :
 		pdl_get_template_part(
 			'archive-person/person-list',
 			[
@@ -40,7 +40,7 @@ if ( ! empty( $args['personnel'] ) ) :
 				'context'           => $template,
 			]
 		);
-	elseif ( $style === 'links' ) :
+	elseif ( 'links' === $style ) :
 		pdl_get_template_part( 'common/posts-links', [ 'posts' => $args['personnel'] ] );
 	endif;
 	?>
