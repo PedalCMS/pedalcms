@@ -42,10 +42,10 @@ if ( $post ) : ?>
 	<div class="program-info item-info">
 		<header>
 			<h2 class="program-title entry-title"><a
-					href="<?php echo get_the_permalink( $post ); ?>"><?php echo get_the_title( $post ); ?></a></h2>
+					href="<?php echo esc_url( get_the_permalink( $post ) ); ?>"><?php echo esc_html( get_the_title( $post ) ); ?></a></h2>
 			<?php
 			if ( $args['show_program_type'] && taxonomy_exists( 'pdl_program_type' ) ) :
-				echo pdl_get_the_term_list( $post, 'pdl_program_type', '<div class="program-type">', ',', '</div>', $args['link_terms'] );
+				echo wp_kses_post( pdl_get_the_term_list( $post, 'pdl_program_type', '<div class="program-type">', ',', '</div>', $args['link_terms'] ) );
 			endif;
 			?>
 		</header>

@@ -49,15 +49,15 @@ if ( $show_image ) :
 	if ( $args['link_image'] ) :
 		printf(
 			'<div class="%s"><a href="%s">%s</a></div>',
-			implode( ' ', $classes ),
-			get_the_permalink( $post ),
-			$image
+			esc_attr( implode( ' ', $classes ) ),
+			esc_url( get_the_permalink( $post ) ),
+			wp_kses_post( $image )
 		);
 	else :
 		printf(
 			'<div class="%s">%s</div>',
-			implode( ' ', $classes ),
-			$image
+			esc_attr( implode( ' ', $classes ) ),
+			wp_kses_post( $image )
 		);
 	endif;
 endif;

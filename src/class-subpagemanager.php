@@ -376,7 +376,7 @@ class SubpageManager {
 	public function subpage_canonical(): void {
 		printf(
 			'<link rel="canonical" href="%s" />',
-			self::get_subpage_link( $this->get_active_subpage(), false )
+			esc_url( self::get_subpage_link( $this->get_active_subpage(), false ) )
 		);
 
 		return;
@@ -565,7 +565,7 @@ class SubpageManager {
 		$link = apply_filters( 'pdl/get_subpage_link', $link, $subpage );
 
 		if ( $echo ) {
-			echo $link;
+			echo esc_url( $link );
 		}
 
 		return $link;

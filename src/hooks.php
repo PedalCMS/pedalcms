@@ -192,8 +192,8 @@ function options_wp_head() {
 
 	if ( ! empty( $vars ) ) {
 		printf(
-			$style_tag,
-			implode( ';', $vars )
+			wp_kses_post( $style_tag ),
+			esc_html( implode( ';', $vars ) )
 		);
 	}
 }
@@ -443,9 +443,9 @@ function before_main_content() {
 	$tag     = Plugin::get_option( 'main_content_wrapper_tag' );
 
 	printf(
-		$pattern,
-		$tag,
-		$id,
+		esc_html( $pattern ),
+		esc_html( $tag ),
+		esc_attr( $id ),
 		esc_attr( implode( ' ', $classes ) )
 	);
 }
@@ -462,7 +462,7 @@ function before_main_content() {
 function after_main_content() {
 	$tag = Plugin::get_option( 'main_content_wrapper_tag' );
 
-	echo "</{$tag}>";
+	echo wp_kses_post( "</{$tag}>" );
 }
 
 /**

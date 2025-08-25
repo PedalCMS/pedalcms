@@ -23,13 +23,15 @@ $args = pdl_parse_template_args( $args, $defaults, $template );
 	</div>
 	<?php
 	if ( taxonomy_exists( 'pdl_department' ) ) :
-		echo pdl_get_the_term_list(
-			$post,
-			'pdl_department',
-			'<div class="person-department person-meta__item">',
-			', ',
-			'</div>',
-			$args['link_terms']
+		echo wp_kses_post(
+			pdl_get_the_term_list(
+				$post,
+				'pdl_department',
+				'<div class="person-department person-meta__item">',
+				', ',
+				'</div>',
+				$args['link_terms']
+			)
 		);
 	endif;
 	?>

@@ -24,18 +24,18 @@ if ( $post ) :?>
 <article <?php post_class( '', $post ); ?>>
 	<header>
 		<h2 class="entry-title course-title">
-			<a href="<?php echo get_the_permalink( $post ); ?>">
-				<?php echo pdl_get_full_course_title( $post ); ?>
+			<a href="<?php echo esc_url( get_the_permalink( $post ) ); ?>">
+				<?php echo esc_html( pdl_get_full_course_title( $post ) ); ?>
 			</a>
 		</h2>
 		<?php pdl_get_template_part( 'single-course/course-meta', compact( 'post' ) ); ?>
 	</header>
 	<div class="course-content">
 		<button class="pdl-toggle__trigger" aria-expanded="false"
-			data-target="<?php echo $more_details_id; ?>"
+			data-target="<?php echo esc_attr( $more_details_id ); ?>"
 			data-show-label="<?php echo esc_attr( $args['label_show'] ); ?> "
 			data-hide-label="<?php echo esc_attr( $args['label_hide'] ); ?> "><?php echo esc_html( $args['label_more_details'] ); ?></button>
-		<div id="<?php echo $more_details_id; ?>"
+		<div id="<?php echo esc_attr( $more_details_id ); ?>"
 			class="pdl-toggle__content" hidden>
 			<div class="course-details">
 				<p class="course-description"><?php echo esc_html( $post->short_description ); ?>

@@ -76,7 +76,7 @@ if ( $wp_query->found_posts ) : ?>
 	<strong class="num-results__filtered"><?php echo esc_html( $args['label_filtered_results'] ); ?>:</strong>
 	<?php endif; ?>
 
-	<span class="num-results__value"><?php echo $num_results; ?></span>
+	<span class="num-results__value"><?php echo esc_html( $num_results ); ?></span>
 </div>
 	<?php
 endif;

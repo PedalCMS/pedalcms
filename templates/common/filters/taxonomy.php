@@ -53,7 +53,7 @@ if ( $args['taxonomy'] && $args['query_var'] && $label ) : ?>
 </div>
 <?php else : ?>
 <div>
-	<?php printf( $args['missing_data_text'], $args['taxonomy'] ); ?>
+	<?php printf( esc_html( $args['missing_data_text'] ), esc_html( $args['taxonomy'] ) ); ?>
 </div>
 	<?php
 endif;

@@ -49,7 +49,7 @@ if ( $post ) :
 		<?php endif; ?>
 
 		<a class="contact-info__email"
-			href="mailto:<?php echo antispambot( $args['email_address'], true ); ?>"><?php echo antispambot( $args['email_address'] ); ?></a>
+			href="mailto:<?php echo esc_attr( antispambot( $args['email_address'], true ) ); ?>"><?php echo esc_html( antispambot( $args['email_address'] ) ); ?></a>
 	</div>
 	<?php endif; ?>
 

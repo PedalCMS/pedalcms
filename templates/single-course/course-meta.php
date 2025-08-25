@@ -35,13 +35,15 @@ $args = pdl_parse_template_args( $args, $defaults, $template );
 
 	<?php
 	if ( taxonomy_exists( 'pdl_session' ) ) :
-		echo pdl_get_the_term_list(
-			$post,
-			'pdl_session',
-			sprintf( '<div class="course-terms-offered">%s ', esc_html( $args['label_offered_in'] ) ),
-			', ',
-			'</div>',
-			$args['link_terms']
+		echo wp_kses_post(
+			pdl_get_the_term_list(
+				$post,
+				'pdl_session',
+				sprintf( '<div class="course-terms-offered">%s ', esc_html( $args['label_offered_in'] ) ),
+				', ',
+				'</div>',
+				$args['link_terms']
+			)
 		);
 	endif;
 	?>

@@ -44,7 +44,7 @@ if ( $args['post'] ) :
 
 	?>
 <article
-	class="<?php echo implode( ' ', $classes ); ?>">
+	class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 
 	<?php
 	if ( $args['show_image'] && has_post_thumbnail( $post ) ) :
@@ -57,7 +57,7 @@ if ( $args['post'] ) :
 			<h3 class="related-post__title">
 				<a
 					href="<?php echo esc_url( get_permalink( $post ) ); ?>">
-					<?php echo get_the_title( $post ); ?>
+					<?php echo esc_html( get_the_title( $post ) ); ?>
 				</a>
 			</h3>
 
@@ -67,20 +67,22 @@ if ( $args['post'] ) :
 
 			<?php
 			if ( $args['show_category'] ) :
-				echo pdl_get_the_term_list(
-					$post,
-					'category',
-					'<span class="related-post__category">',
-					',',
-					'</span>',
-					$args['link_terms']
+				echo wp_kses_post(
+					pdl_get_the_term_list(
+						$post,
+						'category',
+						'<span class="related-post__category">',
+						',',
+						'</span>',
+						$args['link_terms']
+					)
 				);
 			endif;
 			?>
 		</header>
 
 		<?php if ( $args['show_excerpt'] ) : ?>
-		<div class="related-post__content"><?php echo get_the_excerpt( $post ); ?>
+		<div class="related-post__content"><?php echo wp_kses_post( get_the_excerpt( $post ) ); ?>
 		</div>
 		<?php endif; ?>
 

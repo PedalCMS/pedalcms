@@ -37,20 +37,22 @@ if ( $post ) :?>
 	?>
 	<div class="person-info">
 		<header>
-			<?php printf( '<%s class="person-name">', $h_tag ); ?>
-			<a href="<?php echo get_the_permalink( $post ); ?>"><?php echo get_the_title( $post ); ?></a>
-			<?php printf( '</%s>', $h_tag ); ?>
+			<?php printf( '<%s class="person-name">', esc_html( $h_tag ) ); ?>
+			<a href="<?php echo esc_url( get_the_permalink( $post ) ); ?>"><?php echo esc_html( get_the_title( $post ) ); ?></a>
+			<?php printf( '</%s>', esc_html( $h_tag ) ); ?>
 			<div class="person-position">
 				<?php pdl_get_template_part( 'blocks/job-title', [ 'job_title' => $post->job_title ] ); ?>
 				<?php
 				if ( taxonomy_exists( 'pdl_department' ) ) :
-					echo pdl_get_the_term_list(
-						$post,
-						'pdl_department',
-						'<div class="person-department">',
-						', ',
-						'</div>',
-						$args['link_terms']
+					echo wp_kses_post(
+						pdl_get_the_term_list(
+							$post,
+							'pdl_department',
+							'<div class="person-department">',
+							', ',
+							'</div>',
+							$args['link_terms']
+						)
 					);
 				endif;
 				?>

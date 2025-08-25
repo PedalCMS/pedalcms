@@ -28,17 +28,17 @@ $classes = [
 if ( ! empty( $args['terms'] ) ) :
 	$classes[] = ( $args['terms'][0] )->taxonomy . '-terms-grid';
 	?>
-<ul class="<?php echo implode( ' ', $classes ); ?>"
-	data-columns="<?php echo $args['columns']; ?>">
+<ul class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
+	data-columns="<?php echo esc_attr( $args['columns'] ); ?>">
 	<?php
 	foreach ( $args['terms'] as $term ) :
 		?>
 	<li class="term">
 		<div class="term__title-group">
-			<?php printf( '<%s class="term__title">', $args['title_tag'] ); ?>
+			<?php printf( '<%s class="term__title">', esc_html( $args['title_tag'] ) ); ?>
 			<a
 				href="<?php echo esc_url( get_term_link( $term, $term->taxonomy ) ); ?>"><?php echo esc_html( $term->name ); ?></a>
-			<?php printf( '</%s>', $args['title_tag'] ); ?>
+			<?php printf( '</%s>', esc_html( $args['title_tag'] ) ); ?>
 		</div>
 
 		<?php
@@ -49,7 +49,7 @@ if ( ! empty( $args['terms'] ) ) :
 		?>
 
 		<?php if ( $args['show_description'] ) : ?>
-		<div class="term__description"><?php echo $term->description; ?>
+		<div class="term__description"><?php echo wp_kses_post( $term->description ); ?>
 		</div>
 		<?php endif; ?>
 
@@ -65,7 +65,7 @@ if ( ! empty( $args['terms'] ) ) :
 					esc_html( $args['label_posts'] )
 				);
 				?>
-				<span class="screen-reader-text"><?php printf( $args['label_sr_text'], esc_html( $term->name ) ); ?>
+				<span class="screen-reader-text"><?php printf( esc_html( $args['label_sr_text'] ), esc_html( $term->name ) ); ?>
 				</span>
 			</a>
 		</div>

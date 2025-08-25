@@ -37,5 +37,5 @@ if ( $img ) {
 		);
 	}
 
-	printf( '<div class="%s">%s</div>', implode( ' ', $classes ), $img );
+	printf( '<div class="%s">%s</div>', esc_attr( implode( ' ', $classes ) ), wp_kses_post( $img ) );
 }
