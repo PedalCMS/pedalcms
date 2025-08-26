@@ -25,15 +25,15 @@ if ( is_array( $args['contacts'] ) && ! empty( $args['contacts'] ) ) :
 	<?php echo esc_html( $args['label_program_contact'] ); ?>
 	</h2>
 	<?php
-	foreach ( $args['contacts'] as $post ) :
-		pdl_get_template_part( 'single-program/contact-item', compact( 'post' ) );
+	foreach ( $args['contacts'] as $contact_post ) :
+		pdl_get_template_part( 'single-program/contact-item', [ 'post' => $contact_post ] );
 	endforeach;
 	?>
 </div>
 <?php endif; ?>
 
 <?php if ( $action_url ) : ?>
-<a class="<?php echo $args['action']; ?>-button button button-secondary"
-	href="<?php echo esc_url( $action_url ); ?>"><?php echo $args['label_contact_action']; ?></a>
+<a class="<?php echo esc_attr( $args['action'] ); ?>-button button button-secondary"
+	href="<?php echo esc_url( $action_url ); ?>"><?php echo esc_html( $args['label_contact_action'] ); ?></a>
 	<?php
 endif;

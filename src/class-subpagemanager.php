@@ -111,7 +111,7 @@ class SubpageManager {
 			$this->builtin[] = $subpage;
 			$this->sort( 'builtin' );
 
-			if ( $subpage->slug !== 'index' && ! in_array( $subpage->slug, $enabled ) ) {
+			if ( 'index' !== $subpage->slug && ! in_array( $subpage->slug, $enabled ) ) {
 				return new \WP_Error(
 					'warning',
 					'Subpage is not enabled.',
@@ -235,12 +235,12 @@ class SubpageManager {
 
 		$subpages = apply_filters( 'pdl/get_subpages', $subpages, $list_name, $this->post_type );
 
-		if ( $return_type === 'hash' ) {
+		if ( 'hash' === $return_type ) {
 			return array_combine(
 				wp_list_pluck( $subpages, 'slug' ),
 				wp_list_pluck( $subpages, 'title' )
 			);
-		} elseif ( $return_type !== 'objects' ) {
+		} elseif ( 'objects' !== $return_type ) {
 			return new \WP_Error(
 				'error',
 				'Unrecognized return type: ' . $return_type
@@ -290,7 +290,7 @@ class SubpageManager {
 		 * same slug, our subpages will win. Sorry not sorry.
 		 */
 		foreach ( $this->subpages as $subpage ) {
-			if ( $subpage->slug === 'index' ) {
+			if ( 'index' === $subpage->slug ) {
 				continue;
 			}
 
@@ -318,7 +318,7 @@ class SubpageManager {
 		if ( is_singular( $this->post_type ) ) {
 			$subpage = $this->get_active_subpage( 'object' );
 
-			if ( $subpage && $subpage->slug !== 'index' ) {
+			if ( $subpage && 'index' !== $subpage->slug ) {
 				/**
 				 * Filters the 'title' part of document_title_part for subpages.
 				 *
@@ -376,7 +376,7 @@ class SubpageManager {
 	public function subpage_canonical(): void {
 		printf(
 			'<link rel="canonical" href="%s" />',
-			self::get_subpage_link( $this->get_active_subpage(), false )
+			esc_url( self::get_subpage_link( $this->get_active_subpage(), false ) )
 		);
 
 		return;
@@ -398,11 +398,11 @@ class SubpageManager {
 
 		$slug = $slug ? $slug : 'index';
 
-		if ( $return_type === 'slug' ) {
+		if ( 'slug' === $return_type ) {
 			return $slug;
 		}
 
-		if ( $return_type !== 'object' ) {
+		if ( 'object' !== $return_type ) {
 			return false;
 		}
 
@@ -422,7 +422,7 @@ class SubpageManager {
 	 * @return boolean
 	 */
 	public function is_active_subpage( string $subpage ): bool {
-		return $this->get_active_subpage() === $subpage;
+		return $subpage === $this->get_active_subpage();
 	}
 
 	/**
@@ -447,7 +447,7 @@ class SubpageManager {
 				wp_list_pluck( $this->subpages, 'slug' )
 			);
 
-			if ( $i !== false ) {
+			if ( false !== $i ) {
 				return $this->subpages[ $i ];
 			}
 
@@ -457,7 +457,7 @@ class SubpageManager {
 					wp_list_pluck( $this->builtin, 'slug' )
 				);
 
-				if ( $i !== false ) {
+				if ( false !== $i ) {
 					return $this->builtin[ $i ];
 				}
 			}
@@ -492,7 +492,7 @@ class SubpageManager {
 
 		$show = true;
 
-		if ( $subpage->slug !== 'index' && $subpage->is_builtin() ) {
+		if ( 'index' !== $subpage->slug && $subpage->is_builtin() ) {
 			$field_safe = str_replace( '-', '_', $subpage->slug );
 
 			$show = (bool) get_field( sprintf( 'show_%s_section', $field_safe ) );
@@ -550,7 +550,7 @@ class SubpageManager {
 	 * @return string The subpage URL.
 	 */
 	public static function get_subpage_link( string $subpage, bool $echo = true ): string {
-		$link = $subpage === 'index' ?
+		$link = 'index' === $subpage ?
 			get_the_permalink() :
 			sprintf( '%s%s/', get_the_permalink(), $subpage );
 
@@ -565,7 +565,7 @@ class SubpageManager {
 		$link = apply_filters( 'pdl/get_subpage_link', $link, $subpage );
 
 		if ( $echo ) {
-			echo $link;
+			echo esc_url( $link );
 		}
 
 		return $link;

@@ -28,8 +28,8 @@ $classes = [
 	class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<?php
 	if ( is_array( $args['people'] ) && ! empty( $args['people'] ) ) :
-		foreach ( $args['people'] as $post ) :
-			$args['post'] = $post;
+		foreach ( $args['people'] as $person_post ) :
+			$args['post'] = $person_post;
 			pdl_get_template_part( 'archive-person/person-item', $args );
 		endforeach;
 	else :

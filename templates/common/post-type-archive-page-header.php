@@ -19,7 +19,7 @@ $args = pdl_parse_template_args( $args, $defaults, $template );
 
 ?>
 <section
-	class="<?php echo get_post_type(); ?>-archive-page-header page-header">
+	class="<?php echo esc_attr( get_post_type() ); ?>-archive-page-header page-header">
 	<?php
 	pdl_get_template_part(
 		'common/page-header-backdrop',
@@ -40,7 +40,7 @@ $args = pdl_parse_template_args( $args, $defaults, $template );
 	endif;
 	?>
 	<h1 class="page-title">
-		<?php echo $args['archive_title']; ?>
+		<?php echo esc_html( $args['archive_title'] ); ?>
 	</h1>
 	<?php if ( $args['show_description'] || $args['show_image'] ) : ?>
 	<div class="archive-summary">

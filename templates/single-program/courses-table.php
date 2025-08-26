@@ -28,14 +28,14 @@ if ( is_array( $args['courses'] ) ) : ?>
 		<?php endif; ?>
 	</thead>
 	<tbody class="courses-table__body">
-		<?php foreach ( $args['courses'] as $post ) : ?>
+		<?php foreach ( $args['courses'] as $course_post ) : ?>
 		<tr class="courses-table__course">
 			<td>
-				<a href="<?php the_permalink( $post ); ?>"><?php echo pdl_get_full_course_title( $post ); ?></a>
+				<a href="<?php the_permalink( $course_post ); ?>"><?php echo esc_html( pdl_get_full_course_title( $course_post ) ); ?></a>
 			</td>
 
 			<?php if ( $args['show_credits'] ) : ?>
-			<td><?php echo (int) $post->credits; ?>
+			<td><?php echo (int) $course_post->credits; ?>
 			</td>
 			<?php endif; ?>
 

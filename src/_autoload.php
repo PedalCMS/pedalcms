@@ -29,7 +29,7 @@ spl_autoload_register(
 		$file = sprintf(
 			'%sclass-%s.php',
 			$base_dir,
-			strtolower($relative_class)
+			strtolower( $relative_class )
 		);
 
 		// if the file exists, require it

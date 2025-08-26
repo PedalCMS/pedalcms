@@ -78,7 +78,7 @@ $reset_text   = sprintf(
 );
 
 if ( ! empty( $args['filters'] ) && ! empty( $args['post_type'] ) ) : ?>
-<form id="<?php echo $form_id; ?>" action="<?php echo $form_action; ?>" class="<?php echo $form_class; ?>">
+<form id="<?php echo esc_attr( $form_id ); ?>" action="<?php echo esc_url( $form_action ); ?>" class="<?php echo esc_attr( $form_class ); ?>">
 	<fieldset>
 		<legend class="screen-reader-text"><?php echo esc_html( $args['label_filter'] ); ?>
 		</legend>
@@ -97,7 +97,7 @@ if ( ! empty( $args['filters'] ) && ! empty( $args['post_type'] ) ) : ?>
 			$show_more = false;
 
 			foreach ( $args['filters'] as $i => $filter ) :
-				if ( $args['break_filters_after'] && $i === $args['break_filters_after'] ) :
+				if ( $args['break_filters_after'] && $args['break_filters_after'] === $i ) :
 					$show_more = true;
 					?>
 			<button type="button" data-target="more-filters" class="pdl-toggle__trigger" aria-expanded="false"
@@ -135,13 +135,13 @@ if ( ! empty( $args['filters'] ) && ! empty( $args['post_type'] ) ) : ?>
 	</fieldset>
 	<div class="actions">
 		<button class="search-button button" type="submit">
-			<?php echo $args['icon_search'] . $args['icon_loading']; ?>
+			<?php echo wp_kses_post( $args['icon_search'] . $args['icon_loading'] ); ?>
 			<span class="action-text"><?php echo esc_html( $args['label_apply_filters'] ); ?></span>
 		</button>
 
 
 		<?php if ( $reset_active ) : ?>
-		<a class="<?php echo $reset_class; ?>" href="<?php echo esc_url( $reset_link ); ?>"><?php echo $reset_text; ?></a>
+		<a class="<?php echo esc_attr( $reset_class ); ?>" href="<?php echo esc_url( $reset_link ); ?>"><?php echo wp_kses_post( $reset_text ); ?></a>
 		<?php endif; ?>
 	</div>
 </form>

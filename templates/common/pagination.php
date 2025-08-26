@@ -32,15 +32,17 @@ do_action( 'pdl/before_pagination', $args );
 		wp_paginate();
 	} else {
 		global $wp_query;
-		echo paginate_links(
-			[
-				'total'     => $wp_query->max_num_pages,
-				'show_all'  => false,
-				'type'      => 'plain',
-				'end_size'  => 1,
-				'mid_size'  => 1,
-				'prev_next' => true,
-			]
+		echo wp_kses_post(
+			paginate_links(
+				[
+					'total'     => $wp_query->max_num_pages,
+					'show_all'  => false,
+					'type'      => 'plain',
+					'end_size'  => 1,
+					'mid_size'  => 1,
+					'prev_next' => true,
+				]
+			)
 		);
 	}
 	?>

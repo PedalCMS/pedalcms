@@ -194,7 +194,7 @@ if ( ! function_exists( 'pdl_article_id_attr' ) ) :
 		);
 
 		if ( $echo ) {
-			echo $id;
+			echo esc_attr( $id );
 		}
 
 		return $id;
@@ -240,7 +240,7 @@ if ( ! function_exists( 'pdl_back_to_top_link' ) ) :
 		);
 
 		if ( $echo ) {
-			echo $link;
+			echo wp_kses_post( $link );
 		}
 
 		return $link;
@@ -390,7 +390,7 @@ if ( ! function_exists( 'pdl_toggletip' ) ) :
 		);
 
 		if ( $echo ) {
-			echo $toggletip;
+			echo wp_kses_post( $toggletip );
 		}
 
 		return $toggletip;

@@ -60,6 +60,6 @@ add_action(
 	}
 );
 
-$plugin = new Plugin();
+$pedalcms_plugin = new Plugin();
 
 register_activation_hook( __FILE__, [ __NAMESPACE__ . '\Plugin', 'install' ] );

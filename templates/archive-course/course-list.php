@@ -19,8 +19,8 @@ $args = pdl_parse_template_args( $args, $defaults, $template );
 <section class="course-list article-list">
 	<?php
 	if ( is_array( $args['courses'] ) && ! empty( $args['courses'] ) ) :
-		foreach ( $args['courses'] as $post ) :
-			pdl_get_template_part( 'archive-course/course-item', compact( 'post' ) );
+		foreach ( $args['courses'] as $course_post ) :
+			pdl_get_template_part( 'archive-course/course-item', compact( 'course_post' ) );
 		endforeach;
 	else :
 		?>

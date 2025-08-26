@@ -18,8 +18,8 @@ $args = pdl_parse_template_args( $args, $defaults, $template );
 <section class="programs-list">
 	<?php
 	if ( is_array( $args['programs'] ) && ! empty( $args['programs'] ) ) :
-		foreach ( $args['programs'] as $post ) :
-			pdl_get_template_part( 'archive-program/program-item', compact( 'post' ) );
+		foreach ( $args['programs'] as $program_post ) :
+			pdl_get_template_part( 'archive-program/program-item', compact( 'program_post' ) );
 		endforeach;
 	else :
 		?>

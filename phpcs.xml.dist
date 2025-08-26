@@ -71,10 +71,16 @@
 	</rule>
 	<rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
 		<exclude-pattern>/tests/phpunit/*</exclude-pattern>
+		<exclude-pattern>/src/_autoload.php</exclude-pattern>
 	</rule>
 
 	<!-- Exclude test files from overriding globals sniff. -->
 	<rule ref="WordPress.WP.GlobalVariablesOverride.Prohibited">
 		<exclude-pattern>/tests/phpunit/tests/*</exclude-pattern>
+	</rule>
+
+	<!-- Exclude hook name convention warnings - allow forward slashes in hook names. -->
+	<rule ref="WordPress.NamingConventions.ValidHookName.UseUnderscores">
+		<severity>0</severity>
 	</rule>
 </ruleset>

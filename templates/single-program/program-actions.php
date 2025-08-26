@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$program_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'context'         => $template,
@@ -17,12 +17,12 @@ $defaults = [
 	'actions'         => [
 		[
 			'label' => pdl_get_label( 'apply_now_action' ),
-			'url'   => pdl_get_action_link( 'apply_now', $post ),
+			'url'   => pdl_get_action_link( 'apply_now', $program_post ),
 			'key'   => 'apply_now',
 		],
 		[
 			'label' => pdl_get_label( 'request_info_action' ),
-			'url'   => pdl_get_action_link( 'request_info', $post ),
+			'url'   => pdl_get_action_link( 'request_info', $program_post ),
 			'key'   => 'request_info',
 		],
 	],
@@ -32,7 +32,7 @@ $defaults = [
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
 if ( $args['add_permalink'] ) {
-	$permalink = $args['add_permalink'] === true ? get_permalink( $post ) : $args['add_permalink'];
+	$permalink = true === $args['add_permalink'] ? get_permalink( $program_post ) : $args['add_permalink'];
 
 	array_unshift(
 		$args['actions'],

@@ -25,9 +25,9 @@ if ( pdl_show_subpages() ) :
 	<?php
 	printf(
 		'<%s class="program-subnav__heading">%s</%s>',
-		$h_tag,
+		esc_html( $h_tag ),
 		esc_html( $args['label_about_program'] ),
-		$h_tag
+		esc_html( $h_tag )
 	);
 	?>
 	<ul class="program-subnav__menu menu">

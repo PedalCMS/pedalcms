@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$person_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'img_size'   => 'medium',
@@ -22,11 +22,11 @@ $args = pdl_parse_template_args( $args, $defaults, $template );
 <div class="person-featured-image featured-image">
 	<?php
 	if ( $args['link_image'] ) :
-		printf( '<a href="%s">', esc_url( get_permalink( $post ) ) );
+		printf( '<a href="%s">', esc_url( get_permalink( $person_post ) ) );
 	endif;
 
-	if ( has_post_thumbnail( $post ) ) :
-		echo get_the_post_thumbnail( $post, $args['img_size'], $args['attributes'] );
+	if ( has_post_thumbnail( $person_post ) ) :
+		echo get_the_post_thumbnail( $person_post, $args['img_size'], $args['attributes'] );
 	else :
 		pdl_get_template_part( 'single-person/featured-image-placeholder' );
 	endif;

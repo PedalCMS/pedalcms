@@ -8,13 +8,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$post = pdl_args_or_global( 'post', $args );
+$course_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
 	'h_level'           => 2,
 	'style'             => 'full',
 	'label_instructors' => pdl_get_label( 'instructors' ),
-	'personnel'         => get_field( 'related_course_personnel', $post ),
+	'personnel'         => get_field( 'related_course_personnel', $course_post ),
 ];
 
 $args = pdl_parse_template_args( $args, $defaults, $template );
@@ -26,9 +26,9 @@ if ( ! empty( $args['personnel'] ) ) :
 	?>
 <div class="course-personnel">
 	<?php
-	printf( '<%s>%s</%s>', $h_tag, esc_html( $args['label_instructors'] ), $h_tag );
+	printf( '<%s>%s</%s>', esc_html( $h_tag ), esc_html( $args['label_instructors'] ), esc_html( $h_tag ) );
 
-	if ( $style === 'full' ) :
+	if ( 'full' === $style ) :
 		pdl_get_template_part(
 			'archive-person/person-list',
 			[
@@ -40,7 +40,7 @@ if ( ! empty( $args['personnel'] ) ) :
 				'context'           => $template,
 			]
 		);
-	elseif ( $style === 'links' ) :
+	elseif ( 'links' === $style ) :
 		pdl_get_template_part( 'common/posts-links', [ 'posts' => $args['personnel'] ] );
 	endif;
 	?>

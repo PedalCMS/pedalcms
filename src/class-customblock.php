@@ -113,14 +113,14 @@ abstract class CustomBlock {
 				continue;
 			}
 
-			if ( $props['type'] === 'style' ) {
+			if ( 'style' === $props['type'] ) {
 				wp_enqueue_style(
 					self::get_asset_handle( $asset, $props['editor_only'] ),
 					$block_url . $asset,
 					$props['dependencies'],
 					filemtime( $block_path . $asset )
 				);
-			} elseif ( $props['type'] == 'script' ) {
+			} elseif ( 'script' === $props['type'] ) {
 				wp_enqueue_script(
 					self::get_asset_handle( $asset, $props['editor_only'] ),
 					$block_url . $asset,
