@@ -42,7 +42,7 @@ class Plugin {
 	 *
 	 * @var boolean
 	 */
-	private static $_init = false;
+	private static $init = false;
 
 	/**
 	 * Config for reistering ACF options page.
@@ -113,7 +113,7 @@ class Plugin {
 	 * Kicks off the whole plugin setup.
 	 */
 	public function __construct() {
-		if ( self::$_init ) {
+		if ( self::$init ) {
 			return;
 		}
 
@@ -124,7 +124,7 @@ class Plugin {
 		add_action( 'init', [ self::class, 'plugin_init' ], 0 );
 		add_action( 'plugin_action_links', [ self::class, 'add_settings_link' ], 10, 2 );
 
-		self::$_init = true;
+		self::$init = true;
 	}
 
 	/**

@@ -38,9 +38,9 @@ if ( $args['show_subpage'] ) : ?>
 				foreach ( $faqs as $faq_cat ) :
 					?>
 		<div class="faq-category">
-		<h3 id="<?php echo $faq_cat->slug; ?>"
+		<h3 id="<?php echo esc_attr( $faq_cat->slug ); ?>"
 			class="faq-category__title">
-					<?php echo $faq_cat->name; ?>
+					<?php echo esc_html( $faq_cat->name ); ?>
 		</h3>
 		<div class="faq-category__faqs">
 					<?php

@@ -29,7 +29,7 @@ $args['context'] = $template;
 		</h1>
 		<?php if ( taxonomy_exists( 'pdl_program_type' ) ) : ?>
 		<div class="program-type taxonomy">
-			<?php echo pdl_get_the_term_list( get_the_ID(), 'pdl_program_type', '', ', ', '', $args['link_terms'] ); ?>
+			<?php echo wp_kses_post( pdl_get_the_term_list( get_the_ID(), 'pdl_program_type', '', ', ', '', $args['link_terms'] ) ); ?>
 		</div>
 		<?php endif; ?>
 	</div>

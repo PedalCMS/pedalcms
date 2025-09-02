@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 	<?php endif; ?>
 	<?php if ( isset( $args['section_content'] ) ) : ?>
 	<div class="curriculum-section__content">
-		<?php echo $args['section_content']; ?>
+		<?php echo wp_kses_post( $args['section_content'] ); ?>
 	</div>
 	<?php endif; ?>
 

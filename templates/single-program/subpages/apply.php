@@ -22,7 +22,7 @@ if ( $args['show_subpage'] ) : ?>
 <div <?php pdl_subpage_class(); ?>>
 	<h2 class="program-subpage__title"><?php echo esc_html( pdl_subpage_title() ); ?></h2>
 	<div class="program-subpage__content">
-	<?php echo $args['subpage_content']; ?>
+	<?php echo wp_kses_post( $args['subpage_content'] ); ?>
 	</div>
 </div>
 

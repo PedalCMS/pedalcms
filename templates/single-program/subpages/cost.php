@@ -42,7 +42,7 @@ if ( $args['show_subpage'] ) : ?>
 	<?php endif; ?>
 
 	<div class="program-cost-content">
-		<?php echo $args['subpage_content']; ?>
+		<?php echo wp_kses_post( $args['subpage_content'] ); ?>
 	</div>
 
 	</div>
