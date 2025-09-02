@@ -191,7 +191,7 @@ class SubpageManager {
 	 * @return mixed List of subpages or WP_Error.
 	 */
 	public function get_subpages( bool $with_index = true, string $return_type = 'hash' ) {
-		return $this->_get_subpages( $with_index, $return_type, 'subpages' );
+		return $this->get_subpages_internal( $with_index, $return_type, 'subpages' );
 	}
 
 	/**
@@ -204,7 +204,7 @@ class SubpageManager {
 	 * @return mixed List of subpages or WP_Error.
 	 */
 	public function get_builtin_subpages( bool $with_index = true, string $return_type = 'hash' ) {
-		return $this->_get_subpages( $with_index, $return_type, 'builtin' );
+		return $this->get_subpages_internal( $with_index, $return_type, 'builtin' );
 	}
 
 	/**
@@ -216,7 +216,7 @@ class SubpageManager {
 	 * @param string $return_type Can be 'hash' or 'objects'.
 	 * @return mixed List of subpages or WP_Error.
 	 */
-	public function _get_subpages( bool $with_index = true, string $return_type = 'hash', $list_name = 'subpages' ) {
+	private function get_subpages_internal( bool $with_index = true, string $return_type = 'hash', $list_name = 'subpages' ) {
 		$list_name = $this->check_list( $list_name );
 
 		if ( is_wp_error( $list_name ) ) {
