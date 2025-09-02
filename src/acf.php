@@ -307,7 +307,7 @@ function choices_post_type( array $field ): array {
  * @return array|false Either the taxonomy field or false if taxonomy disabled.
  */
 function prepare_taxonomy_field( array|false $field ): array|false {
-	if ( ! in_array( $field['taxonomy'], Plugin::taxonomies( false ) ) ) {
+	if ( ! in_array( $field['taxonomy'], Plugin::taxonomies( false ), true ) ) {
 		return $field;
 	}
 

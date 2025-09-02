@@ -107,7 +107,7 @@ class SubpageManager {
 			$this->builtin[] = $subpage;
 			$this->sort( 'builtin' );
 
-			if ( 'index' !== $subpage->slug && ! in_array( $subpage->slug, $enabled ) ) {
+			if ( 'index' !== $subpage->slug && ! in_array( $subpage->slug, $enabled, true ) ) {
 				return new \WP_Error(
 					'warning',
 					'Subpage is not enabled.',
@@ -142,7 +142,7 @@ class SubpageManager {
 	 */
 	private function check_list( string $list ) {
 		$lists = [ 'subpages', 'builtin' ];
-		if ( ! in_array( $list, $lists ) ) {
+		if ( ! in_array( $list, $lists, true ) ) {
 			return new \WP_Error(
 				'error',
 				'Trying to access unknown list: ' . $list
@@ -434,7 +434,8 @@ class SubpageManager {
 		} elseif ( is_string( $subpage ) ) {
 			$i = array_search(
 				$subpage,
-				wp_list_pluck( $this->subpages, 'slug' )
+				wp_list_pluck( $this->subpages, 'slug' ),
+				true
 			);
 
 			if ( false !== $i ) {
@@ -444,7 +445,8 @@ class SubpageManager {
 			if ( $search_builtin ) {
 				$i = array_search(
 					$subpage,
-					wp_list_pluck( $this->builtin, 'slug' )
+					wp_list_pluck( $this->builtin, 'slug' ),
+					true
 				);
 
 				if ( false !== $i ) {

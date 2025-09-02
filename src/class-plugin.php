@@ -328,7 +328,7 @@ class Plugin {
 		self::$post_types[] = FAQ::POST_TYPE;
 		$enabled_subpages   = Program::subpage_manager()->get_enabled_subpages();
 
-		if ( is_array( $enabled_subpages ) && in_array( 'faqs', $enabled_subpages ) ) {
+		if ( is_array( $enabled_subpages ) && in_array( 'faqs', $enabled_subpages, true ) ) {
 			FAQ::get_instance()->register();
 			self::$post_types_enabled[] = FAQ::POST_TYPE;
 		}

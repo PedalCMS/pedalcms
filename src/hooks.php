@@ -53,7 +53,7 @@ function options_register_taxonomy_args( array $args, string $taxonomy ): array 
 		PersonCategory::TAXONOMY,
 	];
 
-	if ( ! in_array( $taxonomy, $archive_taxonomies ) ) {
+	if ( ! in_array( $taxonomy, $archive_taxonomies, true ) ) {
 		return $args;
 	}
 
@@ -90,7 +90,7 @@ function options_registered_taxonomy( string $taxonomy, $object_type ) {
 		Department::TAXONOMY,
 	];
 
-	if ( ! in_array( $taxonomy, $multi_obj_taxonomies ) ) {
+	if ( ! in_array( $taxonomy, $multi_obj_taxonomies, true ) ) {
 		return;
 	}
 
@@ -103,7 +103,7 @@ function options_registered_taxonomy( string $taxonomy, $object_type ) {
 			$post_types = Plugin::post_types();
 
 			foreach ( $diff as $post_type ) {
-				if ( in_array( $post_type, $post_types ) ) {
+				if ( in_array( $post_type, $post_types, true ) ) {
 					unregister_taxonomy_for_object_type( $taxonomy, $post_type );
 				}
 			}
@@ -537,7 +537,7 @@ function options_search_filters( $args ) {
  * @return string The modified title.
  */
 function options_post_type_archive_title( $title, $post_type ) {
-	if ( in_array( $post_type, Plugin::post_types() ) ) {
+	if ( in_array( $post_type, Plugin::post_types(), true ) ) {
 		$post_type = str_replace( 'pdl_', '', $post_type );
 		$new_title = Plugin::get_option( $post_type . '_archive_title' );
 
@@ -560,7 +560,7 @@ function options_post_type_archive_title( $title, $post_type ) {
  * @return string The filtered post type description.
  */
 function options_post_type_description( $description, $post_type_obj ) {
-	if ( in_array( $post_type_obj->name, Plugin::post_types() ) ) {
+	if ( in_array( $post_type_obj->name, Plugin::post_types(), true ) ) {
 		$post_type = str_replace( 'pdl_', '', $post_type_obj->name );
 		$new_desc  = Plugin::get_option( $post_type . '_archive_description' );
 
@@ -587,7 +587,7 @@ function options_template_defaults( $defaults, $template ) {
 	$post_type = get_query_var( 'post_type' );
 	$taxonomy  = get_query_var( 'taxonomy' );
 
-	if ( ! in_array( $post_type, Plugin::post_types() ) && ! in_array( $taxonomy, Plugin::taxonomies() ) ) {
+	if ( ! in_array( $post_type, Plugin::post_types(), true ) && ! in_array( $taxonomy, Plugin::taxonomies(), true ) ) {
 		return $defaults;
 	}
 
@@ -623,7 +623,7 @@ function options_template_defaults( $defaults, $template ) {
 		case 'single-program/courses-table':
 			$show_credits = Plugin::get_option( 'program_subpage_curriculum_show_credits' );
 
-			if ( in_array( $show_credits, [ '0','1' ] ) ) {
+			if ( in_array( $show_credits, [ '0','1' ], true ) ) {
 				$defaults['show_credits'] = (bool) $show_credits;
 			}
 
@@ -848,7 +848,7 @@ function options_plugin_labels( $label, $label_key, $plugin ) {
 		'credits',
 	];
 
-	if ( 'programs' === $plugin && in_array( $label_key, $course_labels ) ) {
+	if ( 'programs' === $plugin && in_array( $label_key, $course_labels, true ) ) {
 
 		$value = Plugin::get_option( 'course_label_' . $label_key );
 
