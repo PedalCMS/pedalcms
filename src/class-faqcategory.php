@@ -37,7 +37,6 @@ class FAQCategory extends CustomTaxonomy {
 		'rewrite'            => false,
 		'description'        => '',
 		'sort'               => true,
-		'rewrite'            => false,
 		'hierarchical'       => true,
 		'public'             => true,
 		'show_ui'            => true,
