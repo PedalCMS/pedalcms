@@ -200,7 +200,7 @@ abstract class CustomContentObject {
 						$tab['content'] = $content;
 					}
 					// finally, add the tab using the screen API
-					if ( 'sidebar' == $tab['id'] ) {
+					if ( 'sidebar' === $tab['id'] ) {
 						$sidebar_content = $tab['content'];
 					} else {
 						$screen->add_help_tab( $tab );
