@@ -521,11 +521,11 @@ class Plugin {
 	 * Retrieves a plugin setting.
 	 *
 	 * @param string $option The name of the setting.
-	 * @param mixed $default The fallback value for the setting.
+	 * @param mixed $fallback The fallback value for the setting.
 	 * @return mixed The value of the setting.
 	 */
-	public static function get_option( string $option, mixed $default = null ): mixed {
-		$value = get_option( 'options_pdl_' . $option, $default );
+	public static function get_option( string $option, mixed $fallback = null ): mixed {
+		$value = get_option( 'options_pdl_' . $option, $fallback );
 
 		/**
 		 * Filters the value of all options.

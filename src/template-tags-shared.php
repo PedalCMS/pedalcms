@@ -72,14 +72,14 @@ if ( ! function_exists( 'pdl_sanitize_title_tag' ) ) :
 	 * @since 0.1
 	 *
 	 * @param string $tag The tag to check.
-	 * @param string $default The fallback tag.
+	 * @param string $fallback The fallback tag.
 	 * @return string The safe html title tag.
 	 */
-	function pdl_sanitize_title_tag( $tag, string $default ): string {
+	function pdl_sanitize_title_tag( $tag, string $fallback ): string {
 		$allowed_tags = [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div' ];
 
 		if ( ! in_array( $tag, $allowed_tags, true ) ) {
-			$tag = $default;
+			$tag = $fallback;
 		}
 
 		return $tag;

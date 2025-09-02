@@ -137,19 +137,19 @@ class SubpageManager {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string $list The list to validate.
+	 * @param string $list_name The list to validate.
 	 * @return mixed The list argument returned if valid, WP_Error otherwise.
 	 */
-	private function check_list( string $list ) {
+	private function check_list( string $list_name ) {
 		$lists = [ 'subpages', 'builtin' ];
-		if ( ! in_array( $list, $lists, true ) ) {
+		if ( ! in_array( $list_name, $lists, true ) ) {
 			return new \WP_Error(
 				'error',
-				'Trying to access unknown list: ' . $list
+				'Trying to access unknown list: ' . $list_name
 			);
 		}
 
-		return $list;
+		return $list_name;
 	}
 
 	/**
@@ -157,18 +157,18 @@ class SubpageManager {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string $list The list of subpages to sort. Defaults to 'subpages'.
+	 * @param string $list_name The list of subpages to sort. Defaults to 'subpages'.
 	 * @return mixed Either true on success or WP_Error if given a bad list.
 	 */
-	public function sort( string $list = 'subpages' ) {
-		$list = $this->check_list( $list );
+	public function sort( string $list_name = 'subpages' ) {
+		$list_name = $this->check_list( $list_name );
 
-		if ( is_wp_error( $list ) ) {
-			return $list;
+		if ( is_wp_error( $list_name ) ) {
+			return $list_name;
 		}
 
 		usort(
-			$this->$list,
+			$this->$list_name,
 			function ( $a, $b ) {
 				if ( $a->order === $b->order ) {
 					return 0;
