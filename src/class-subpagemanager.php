@@ -538,10 +538,10 @@ class SubpageManager {
 	 * @since 0.1.0
 	 *
 	 * @param string $subpage The slug of the subpage.
-	 * @param boolean $echo Whether or not to output the URL.
+	 * @param boolean $output Whether or not to output the URL.
 	 * @return string The subpage URL.
 	 */
-	public static function get_subpage_link( string $subpage, bool $echo = true ): string {
+	public static function get_subpage_link( string $subpage, bool $output = true ): string {
 		$link = 'index' === $subpage ?
 			get_the_permalink() :
 			sprintf( '%s%s/', get_the_permalink(), $subpage );
@@ -556,7 +556,7 @@ class SubpageManager {
 		 */
 		$link = apply_filters( 'pdl/get_subpage_link', $link, $subpage );
 
-		if ( $echo ) {
+		if ( $output ) {
 			echo esc_url( $link );
 		}
 
