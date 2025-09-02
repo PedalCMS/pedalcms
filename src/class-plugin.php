@@ -199,8 +199,6 @@ class Plugin {
 		require_once self::$path . '/src/field-group-plugin.php';
 
 		self::$field_groups[] = $field_group;
-
-		return;
 	}
 
 	/**
@@ -380,8 +378,6 @@ class Plugin {
 		self::$taxonomies[] = FAQCategory::TAXONOMY;
 		FAQCategory::get_instance()->register();
 		self::$taxonomies_enabled[] = FAQCategory::TAXONOMY;
-
-		return;
 	}
 
 	/**
@@ -454,8 +450,6 @@ class Plugin {
 
 		new JobTitleBlock();
 		new ContactInfoBlock();
-
-		return;
 	}
 
 	/**
@@ -498,8 +492,6 @@ class Plugin {
 		);
 
 		add_filter( 'template_include', [ $pdl_TemplateManager, 'maybe_use_template' ], PHP_INT_MAX );
-
-		return;
 	}
 
 	/**
@@ -543,8 +535,6 @@ class Plugin {
 		 * @param $value The value of the option.
 		 * @param $option The name of the option.
 		 */
-		return apply_filters( 'pdl/options/all', $value, $option );
-
 		/**
 		 * Filters the value of a single option. The last part of the filter is the name of the option.
 		 *

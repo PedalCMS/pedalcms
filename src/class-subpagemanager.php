@@ -73,8 +73,6 @@ class SubpageManager {
 		}
 
 		$this->setup_hooks();
-
-		return;
 	}
 
 	/**
@@ -89,8 +87,6 @@ class SubpageManager {
 		add_action( 'init', [ &$this, 'insert_rules' ], 1 );
 		add_filter( 'query_vars', [ &$this, 'add_query_var' ], 1 );
 		add_filter( 'document_title_parts', [ &$this, 'maybe_update_title' ], 20 );
-
-		return;
 	}
 
 	/**
@@ -300,8 +296,6 @@ class SubpageManager {
 				'top' // supercede the attachment rewrite rule
 			);
 		}
-
-		return;
 	}
 
 	/**
@@ -360,8 +354,6 @@ class SubpageManager {
 			remove_filter( 'wp_head', 'rel_canonical' );
 			add_filter( 'wp_head', [ &$this, 'subpage_canonical' ] );
 		}
-
-		return;
 	}
 
 	/**
@@ -378,8 +370,6 @@ class SubpageManager {
 			'<link rel="canonical" href="%s" />',
 			esc_url( self::get_subpage_link( $this->get_active_subpage(), false ) )
 		);
-
-		return;
 	}
 
 	/**

@@ -9,8 +9,8 @@ $defaults = [
 	'featured_img'  => null,
 ];
 
-$args         = pdl_parse_template_args( $args, $defaults, $template );
-$featured_img = $args['featured_img'];
+$args          = pdl_parse_template_args( $args, $defaults, $template );
+$featured_img  = $args['featured_img'];
 $featured_term = $args['term'];
 
 if ( ! $featured_img && $featured_term instanceof WP_Term ) {

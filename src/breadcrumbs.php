@@ -99,8 +99,6 @@ function navxt_add_subpage( object $trail ): void {
 		$linked = (bool) $trail->opt['bcurrent_item_linked'];
 		$trail->add( new \bcn_breadcrumb( $crumb['text'], null, [], $crumb['url'], null, $linked ) );
 	}
-
-	return;
 }
 
 /**

@@ -924,8 +924,6 @@ class Program extends CustomPostType {
 			$query->set( 'order', 'ASC' );
 			$query->set( 'orderby', 'title' );
 		}
-
-		return;
 	}
 
 	/**

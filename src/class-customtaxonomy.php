@@ -75,8 +75,6 @@ abstract class CustomTaxonomy extends CustomContentObject {
 		}
 
 		$this->args = [];
-
-		return;
 	}
 
 	/**
@@ -93,8 +91,6 @@ abstract class CustomTaxonomy extends CustomContentObject {
 				$this->args['update_count_callback'] = '_update_post_term_count';
 			}
 		}
-
-		return;
 	}
 
 	/**
