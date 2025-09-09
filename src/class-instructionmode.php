@@ -37,7 +37,6 @@ class InstructionMode extends CustomTaxonomy {
 		'rewrite'            => false,
 		'description'        => '',
 		'sort'               => true,
-		'rewrite'            => false,
 		'hierarchical'       => false,
 		'public'             => true,
 		'show_ui'            => true,

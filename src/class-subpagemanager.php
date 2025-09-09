@@ -73,8 +73,6 @@ class SubpageManager {
 		}
 
 		$this->setup_hooks();
-
-		return;
 	}
 
 	/**
@@ -89,8 +87,6 @@ class SubpageManager {
 		add_action( 'init', [ &$this, 'insert_rules' ], 1 );
 		add_filter( 'query_vars', [ &$this, 'add_query_var' ], 1 );
 		add_filter( 'document_title_parts', [ &$this, 'maybe_update_title' ], 20 );
-
-		return;
 	}
 
 	/**
@@ -111,7 +107,7 @@ class SubpageManager {
 			$this->builtin[] = $subpage;
 			$this->sort( 'builtin' );
 
-			if ( 'index' !== $subpage->slug && ! in_array( $subpage->slug, $enabled ) ) {
+			if ( 'index' !== $subpage->slug && ! in_array( $subpage->slug, $enabled, true ) ) {
 				return new \WP_Error(
 					'warning',
 					'Subpage is not enabled.',
@@ -141,19 +137,19 @@ class SubpageManager {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string $list The list to validate.
+	 * @param string $list_name The list to validate.
 	 * @return mixed The list argument returned if valid, WP_Error otherwise.
 	 */
-	private function check_list( string $list ) {
+	private function check_list( string $list_name ) {
 		$lists = [ 'subpages', 'builtin' ];
-		if ( ! in_array( $list, $lists ) ) {
+		if ( ! in_array( $list_name, $lists, true ) ) {
 			return new \WP_Error(
 				'error',
-				'Trying to access unknown list: ' . $list
+				'Trying to access unknown list: ' . $list_name
 			);
 		}
 
-		return $list;
+		return $list_name;
 	}
 
 	/**
@@ -161,18 +157,18 @@ class SubpageManager {
 	 *
 	 * @since 0.1.0
 	 *
-	 * @param string $list The list of subpages to sort. Defaults to 'subpages'.
+	 * @param string $list_name The list of subpages to sort. Defaults to 'subpages'.
 	 * @return mixed Either true on success or WP_Error if given a bad list.
 	 */
-	public function sort( string $list = 'subpages' ) {
-		$list = $this->check_list( $list );
+	public function sort( string $list_name = 'subpages' ) {
+		$list_name = $this->check_list( $list_name );
 
-		if ( is_wp_error( $list ) ) {
-			return $list;
+		if ( is_wp_error( $list_name ) ) {
+			return $list_name;
 		}
 
 		usort(
-			$this->$list,
+			$this->$list_name,
 			function ( $a, $b ) {
 				if ( $a->order === $b->order ) {
 					return 0;
@@ -195,7 +191,7 @@ class SubpageManager {
 	 * @return mixed List of subpages or WP_Error.
 	 */
 	public function get_subpages( bool $with_index = true, string $return_type = 'hash' ) {
-		return $this->_get_subpages( $with_index, $return_type, 'subpages' );
+		return $this->get_subpages_internal( $with_index, $return_type, 'subpages' );
 	}
 
 	/**
@@ -208,7 +204,7 @@ class SubpageManager {
 	 * @return mixed List of subpages or WP_Error.
 	 */
 	public function get_builtin_subpages( bool $with_index = true, string $return_type = 'hash' ) {
-		return $this->_get_subpages( $with_index, $return_type, 'builtin' );
+		return $this->get_subpages_internal( $with_index, $return_type, 'builtin' );
 	}
 
 	/**
@@ -220,7 +216,7 @@ class SubpageManager {
 	 * @param string $return_type Can be 'hash' or 'objects'.
 	 * @return mixed List of subpages or WP_Error.
 	 */
-	public function _get_subpages( bool $with_index = true, string $return_type = 'hash', $list_name = 'subpages' ) {
+	private function get_subpages_internal( bool $with_index = true, string $return_type = 'hash', $list_name = 'subpages' ) {
 		$list_name = $this->check_list( $list_name );
 
 		if ( is_wp_error( $list_name ) ) {
@@ -300,8 +296,6 @@ class SubpageManager {
 				'top' // supercede the attachment rewrite rule
 			);
 		}
-
-		return;
 	}
 
 	/**
@@ -360,8 +354,6 @@ class SubpageManager {
 			remove_filter( 'wp_head', 'rel_canonical' );
 			add_filter( 'wp_head', [ &$this, 'subpage_canonical' ] );
 		}
-
-		return;
 	}
 
 	/**
@@ -378,8 +370,6 @@ class SubpageManager {
 			'<link rel="canonical" href="%s" />',
 			esc_url( self::get_subpage_link( $this->get_active_subpage(), false ) )
 		);
-
-		return;
 	}
 
 	/**
@@ -444,7 +434,8 @@ class SubpageManager {
 		} elseif ( is_string( $subpage ) ) {
 			$i = array_search(
 				$subpage,
-				wp_list_pluck( $this->subpages, 'slug' )
+				wp_list_pluck( $this->subpages, 'slug' ),
+				true
 			);
 
 			if ( false !== $i ) {
@@ -454,7 +445,8 @@ class SubpageManager {
 			if ( $search_builtin ) {
 				$i = array_search(
 					$subpage,
-					wp_list_pluck( $this->builtin, 'slug' )
+					wp_list_pluck( $this->builtin, 'slug' ),
+					true
 				);
 
 				if ( false !== $i ) {
@@ -546,10 +538,10 @@ class SubpageManager {
 	 * @since 0.1.0
 	 *
 	 * @param string $subpage The slug of the subpage.
-	 * @param boolean $echo Whether or not to output the URL.
+	 * @param boolean $output Whether or not to output the URL.
 	 * @return string The subpage URL.
 	 */
-	public static function get_subpage_link( string $subpage, bool $echo = true ): string {
+	public static function get_subpage_link( string $subpage, bool $output = true ): string {
 		$link = 'index' === $subpage ?
 			get_the_permalink() :
 			sprintf( '%s%s/', get_the_permalink(), $subpage );
@@ -564,7 +556,7 @@ class SubpageManager {
 		 */
 		$link = apply_filters( 'pdl/get_subpage_link', $link, $subpage );
 
-		if ( $echo ) {
+		if ( $output ) {
 			echo esc_url( $link );
 		}
 

@@ -296,8 +296,6 @@ class Person extends CustomPostType {
 	public function setup_hooks(): void {
 		add_action( 'pre_get_posts', [ static::class, 'update_sort_order' ] );
 		add_action( 'wp_after_insert_post', [ static::class, 'save_terms' ], 10, 2 );
-
-		return;
 	}
 
 	/**
@@ -319,8 +317,6 @@ class Person extends CustomPostType {
 			$query->set( 'order', 'ASC' );
 			$query->set( 'orderby', 'title' );
 		}
-
-		return;
 	}
 
 	/**

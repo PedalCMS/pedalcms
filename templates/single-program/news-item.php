@@ -29,9 +29,9 @@ $args['context']    = $template;
 $args['link_image'] = true;
 
 if ( $args['post'] ) :
-	$news_post = $args['post'];
+	$news_post    = $args['post'];
 	$args['post'] = $news_post; // Update args to use the renamed variable
-	$classes = [ 'related-post' ];
+	$classes      = [ 'related-post' ];
 
 	if ( $args['is_featured'] ) {
 		$classes[] = 'related-post--featured';

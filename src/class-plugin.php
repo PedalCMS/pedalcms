@@ -42,7 +42,7 @@ class Plugin {
 	 *
 	 * @var boolean
 	 */
-	private static $_init = false;
+	private static $init = false;
 
 	/**
 	 * Config for reistering ACF options page.
@@ -113,7 +113,7 @@ class Plugin {
 	 * Kicks off the whole plugin setup.
 	 */
 	public function __construct() {
-		if ( self::$_init ) {
+		if ( self::$init ) {
 			return;
 		}
 
@@ -124,7 +124,7 @@ class Plugin {
 		add_action( 'init', [ self::class, 'plugin_init' ], 0 );
 		add_action( 'plugin_action_links', [ self::class, 'add_settings_link' ], 10, 2 );
 
-		self::$_init = true;
+		self::$init = true;
 	}
 
 	/**
@@ -199,8 +199,6 @@ class Plugin {
 		require_once self::$path . '/src/field-group-plugin.php';
 
 		self::$field_groups[] = $field_group;
-
-		return;
 	}
 
 	/**
@@ -330,7 +328,7 @@ class Plugin {
 		self::$post_types[] = FAQ::POST_TYPE;
 		$enabled_subpages   = Program::subpage_manager()->get_enabled_subpages();
 
-		if ( is_array( $enabled_subpages ) && in_array( 'faqs', $enabled_subpages ) ) {
+		if ( is_array( $enabled_subpages ) && in_array( 'faqs', $enabled_subpages, true ) ) {
 			FAQ::get_instance()->register();
 			self::$post_types_enabled[] = FAQ::POST_TYPE;
 		}
@@ -380,8 +378,6 @@ class Plugin {
 		self::$taxonomies[] = FAQCategory::TAXONOMY;
 		FAQCategory::get_instance()->register();
 		self::$taxonomies_enabled[] = FAQCategory::TAXONOMY;
-
-		return;
 	}
 
 	/**
@@ -454,8 +450,6 @@ class Plugin {
 
 		new JobTitleBlock();
 		new ContactInfoBlock();
-
-		return;
 	}
 
 	/**
@@ -498,8 +492,6 @@ class Plugin {
 		);
 
 		add_filter( 'template_include', [ $pdl_TemplateManager, 'maybe_use_template' ], PHP_INT_MAX );
-
-		return;
 	}
 
 	/**
@@ -529,11 +521,11 @@ class Plugin {
 	 * Retrieves a plugin setting.
 	 *
 	 * @param string $option The name of the setting.
-	 * @param mixed $default The fallback value for the setting.
+	 * @param mixed $fallback The fallback value for the setting.
 	 * @return mixed The value of the setting.
 	 */
-	public static function get_option( string $option, mixed $default = null ): mixed {
-		$value = get_option( 'options_pdl_' . $option, $default );
+	public static function get_option( string $option, mixed $fallback = null ): mixed {
+		$value = get_option( 'options_pdl_' . $option, $fallback );
 
 		/**
 		 * Filters the value of all options.
@@ -543,8 +535,8 @@ class Plugin {
 		 * @param $value The value of the option.
 		 * @param $option The name of the option.
 		 */
-		return apply_filters( 'pdl/options/all', $value, $option );
-
+		$value = apply_filters( 'pdl/options/all', $value, $option );
+		
 		/**
 		 * Filters the value of a single option. The last part of the filter is the name of the option.
 		 *

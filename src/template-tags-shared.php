@@ -72,14 +72,14 @@ if ( ! function_exists( 'pdl_sanitize_title_tag' ) ) :
 	 * @since 0.1
 	 *
 	 * @param string $tag The tag to check.
-	 * @param string $default The fallback tag.
+	 * @param string $fallback The fallback tag.
 	 * @return string The safe html title tag.
 	 */
-	function pdl_sanitize_title_tag( $tag, string $default ): string {
+	function pdl_sanitize_title_tag( $tag, string $fallback ): string {
 		$allowed_tags = [ 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div' ];
 
 		if ( ! in_array( $tag, $allowed_tags, true ) ) {
-			$tag = $default;
+			$tag = $fallback;
 		}
 
 		return $tag;
@@ -179,10 +179,10 @@ if ( ! function_exists( 'pdl_article_id_attr' ) ) :
 	 * @since 0.1
 	 *
 	 * @param mixed $post_id The id of the post.
-	 * @param bool $echo Whether to output the result.
+	 * @param bool $output Whether to output the result.
 	 * @return string The id attribute string, not including the id declaration.
 	 */
-	function pdl_article_id_attr( $post_id = 0, bool $echo = false ): string {
+	function pdl_article_id_attr( $post_id = 0, bool $output = false ): string {
 		if ( ! $post_id ) {
 			$post_id = get_the_ID();
 		}
@@ -193,7 +193,7 @@ if ( ! function_exists( 'pdl_article_id_attr' ) ) :
 			$post_id
 		);
 
-		if ( $echo ) {
+		if ( $output ) {
 			echo esc_attr( $id );
 		}
 
@@ -210,10 +210,10 @@ if ( ! function_exists( 'pdl_back_to_top_link' ) ) :
 	 * @since 0.1
 	 *
 	 * @param string $target The id of an existing HTML element without the `#`
-	 * @param boolean $echo Whether or not to output the resulting link.
+	 * @param boolean $output Whether or not to output the resulting link.
 	 * @return string The resulting link.
 	 */
-	function pdl_back_to_top_link( string $target = '', bool $echo = true ): string {
+	function pdl_back_to_top_link( string $target = '', bool $output = true ): string {
 		if ( ! $target ) {
 			$target = pdl_article_id_attr( '', false );
 		}
@@ -239,7 +239,7 @@ if ( ! function_exists( 'pdl_back_to_top_link' ) ) :
 			esc_html( $text )
 		);
 
-		if ( $echo ) {
+		if ( $output ) {
 			echo wp_kses_post( $link );
 		}
 
@@ -361,10 +361,10 @@ if ( ! function_exists( 'pdl_toggletip' ) ) :
 	 *
 	 * @param string $content The contents of the tip popup.
 	 * @param string $aria_label The `aria-label` attribute of the toggle button.
-	 * @param bool $echo Whther to output the result.
+	 * @param bool $output Whther to output the result.
 	 * @return string The generated HTML string.
 	 */
-	function pdl_toggletip( string $content, string $aria_label, bool $echo = true ): string {
+	function pdl_toggletip( string $content, string $aria_label, bool $output = true ): string {
 
 		/**
 		 * Filters the text that appears on the ToggleTip button.
@@ -389,7 +389,7 @@ if ( ! function_exists( 'pdl_toggletip' ) ) :
 			$button_text
 		);
 
-		if ( $echo ) {
+		if ( $output ) {
 			echo wp_kses_post( $toggletip );
 		}
 

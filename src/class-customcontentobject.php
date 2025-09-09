@@ -129,11 +129,7 @@ abstract class CustomContentObject {
 
 			add_action( 'admin_head', [ &$this, 'render_contextual_help' ], 10, 3 );
 		}
-
-		return;
-	}
-
-	/**
+	}   /**
 	 * Utility function to get an absolute help file path.
 	 *
 	 * @param string $file The relative file path.
@@ -204,7 +200,7 @@ abstract class CustomContentObject {
 						$tab['content'] = $content;
 					}
 					// finally, add the tab using the screen API
-					if ( 'sidebar' == $tab['id'] ) {
+					if ( 'sidebar' === $tab['id'] ) {
 						$sidebar_content = $tab['content'];
 					} else {
 						$screen->add_help_tab( $tab );
@@ -219,11 +215,7 @@ abstract class CustomContentObject {
 
 		$this->help      = null;
 		$this->edit_help = null;
-
-		return;
-	}
-
-	/**
+	}   /**
 	 * Initialize the edit screen fields.
 	 *
 	 * @since 0.1.0

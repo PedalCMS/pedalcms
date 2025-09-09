@@ -186,11 +186,7 @@ class Course extends CustomPostType {
 			$query->set( 'order', 'ASC' );
 			$query->set( 'orderby', 'title' );
 		}
-
-		return;
-	}
-
-	/**
+	}   /**
 	 * Prefixes the course title with the course code.
 	 *
 	 * @since 0.1.0

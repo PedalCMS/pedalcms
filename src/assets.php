@@ -133,8 +133,8 @@ function admin_enqueue_assets() {
 	global $pagenow;
 
 	$is_post_edit =
-		in_array( $pagenow, [ 'post.php', 'post-new.php' ] ) &&
-		in_array( get_post_type(), Plugin::post_types() );
+		in_array( $pagenow, [ 'post.php', 'post-new.php' ], true ) &&
+		in_array( get_post_type(), Plugin::post_types(), true );
 
 	if ( $is_post_edit && Department::depends_on_college() ) {
 		$pdl_acf = '/admin/js/pdl-acf.min.js';

@@ -54,10 +54,7 @@ abstract class CustomPostType extends CustomContentObject {
 		$this->setup_icon();
 		$this->init();
 		$this->init = true;
-		return;
-	}
-
-	/**
+	}   /**
 	 * Used to initialize the post_meta for post types that use it.
 	 *
 	 * @return void
@@ -98,11 +95,7 @@ abstract class CustomPostType extends CustomContentObject {
 			$url                     = trailingslashit( Plugin::$url ) . $this->icons_path . $this->icon_file;
 			$this->args['menu_icon'] = $url;
 		}
-
-		return;
-	}
-
-	/**
+	}   /**
 	 * Registers the post type.
 	 *
 	 * Registers the post type and then additional setup work.
@@ -133,11 +126,7 @@ abstract class CustomPostType extends CustomContentObject {
 		if ( static::$enter_title_text ) {
 			add_action( 'enter_title_here', [ static::class, 'update_enter_title_text' ], 10, 2 );
 		}
-
-		return;
-	}
-
-	/**
+	}   /**
 	 * Adds callbacks to hooks.
 	 *
 	 * @return void
@@ -173,11 +162,7 @@ abstract class CustomPostType extends CustomContentObject {
 		foreach ( $this->post_meta as $meta_key => $args ) {
 			register_post_meta( static::POST_TYPE, $meta_key, $args );
 		}
-
-		return;
-	}
-
-	/**
+	}   /**
 	 * Gets all posts of post_type.
 	 *
 	 * Wrapper for get_posts.

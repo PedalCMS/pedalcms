@@ -158,7 +158,7 @@ abstract class CustomBlock {
 	 * @param string $content Block content.
 	 * @return string The HTML output.
 	 */
-	public static function render( array $block_attributes, string $content ): string {
+	public static function render( array $block_attributes, string $content ): string { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 		return '';
 	}
 }

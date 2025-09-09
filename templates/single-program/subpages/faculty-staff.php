@@ -40,9 +40,9 @@ if ( $args['show_subpage'] ) : ?>
 				foreach ( $cats as $person_cat ) :
 					?>
 		<div class="person-category">
-		<h3 id="<?php echo $person_cat->slug; ?>"
+		<h3 id="<?php echo esc_attr( $person_cat->slug ); ?>"
 			class="person-category__title">
-					<?php echo $person_cat->name; ?>
+					<?php echo esc_html( $person_cat->name ); ?>
 		</h3>
 		<div class="person-category__list person-list">
 					<?php

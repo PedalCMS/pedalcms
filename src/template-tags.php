@@ -241,11 +241,11 @@ if ( ! function_exists( 'pdl_subpage_link' ) ) :
 	 * @since 0.1.0
 	 *
 	 * @param string $subpage The slug of the subpage.
-	 * @param boolean $echo Whether or not to output the URL. Defaults to true.
+	 * @param boolean $output Whether or not to output the URL. Defaults to true.
 	 * @return string The subpage URL.
 	 */
-	function pdl_subpage_link( string $subpage, bool $echo = true ): string {
-		return \PedalCMS\Core\Program::subpage_manager()->get_subpage_link( $subpage, $echo );
+	function pdl_subpage_link( string $subpage, bool $output = true ): string {
+		return \PedalCMS\Core\Program::subpage_manager()->get_subpage_link( $subpage, $output );
 	}
 
 endif;

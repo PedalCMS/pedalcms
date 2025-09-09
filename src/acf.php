@@ -39,8 +39,6 @@ function maybe_load_acf(): void {
 
 	add_filter( 'acf/settings/url', __NAMESPACE__ . '\acf_settings_url' );
 	add_filter( 'acf/settings/show_admin', '__return_false' );
-
-	return;
 }
 
 /**
@@ -75,8 +73,6 @@ function acf_init(): void {
 	foreach ( $field_groups as $group ) {
 		acf_add_local_field_group( $group );
 	}
-
-	return;
 }
 
 /**
@@ -181,8 +177,6 @@ function add_relationship( int $add_post, array $to_posts, string $field_name ):
 			update_field( $field_name, $rel_posts, $post_id );
 		}
 	}
-
-	return;
 }
 
 /**
@@ -210,8 +204,6 @@ function remove_relationship( int $remove_post, array $from_posts, string $field
 			}
 		}
 	}
-
-	return;
 }
 
 /**
@@ -315,7 +307,7 @@ function choices_post_type( array $field ): array {
  * @return array|false Either the taxonomy field or false if taxonomy disabled.
  */
 function prepare_taxonomy_field( array|false $field ): array|false {
-	if ( ! in_array( $field['taxonomy'], Plugin::taxonomies( false ) ) ) {
+	if ( ! in_array( $field['taxonomy'], Plugin::taxonomies( false ), true ) ) {
 		return $field;
 	}
 

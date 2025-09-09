@@ -25,7 +25,7 @@ $featured_posts = $args['featured_posts'] ?? get_field( 'news_featured_posts', $
 $related_posts  = $args['posts'];
 
 if ( empty( $related_posts ) && false !== $related_posts ) {
-	$not_in = ! empty( $featured_posts ) ?
+	$not_in        = ! empty( $featured_posts ) ?
 		array_column( $featured_posts, 'ID' ) :
 		[];
 	$related_posts = pdl_get_related_posts( $program_post, $not_in );

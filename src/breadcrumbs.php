@@ -99,8 +99,6 @@ function navxt_add_subpage( object $trail ): void {
 		$linked = (bool) $trail->opt['bcurrent_item_linked'];
 		$trail->add( new \bcn_breadcrumb( $crumb['text'], null, [], $crumb['url'], null, $linked ) );
 	}
-
-	return;
 }
 
 /**
@@ -285,10 +283,10 @@ function aioseo_replace_trail( array $crumbs ): array {
  * Called on filter: rank_math/frontend/breadcrumb/items
  *
  * @param array $crumbs The current trail of crumbs.
- * @param Breadcrumbs $class The current breadcrumb object.
+ * @param Breadcrumbs $breadcrumbs The current breadcrumb object.
  * @return array The filtered trail of crumbs.
  */
-function rankmath_update_trail( array $crumbs, \RankMath\Frontend\Breadcrumbs $class ): array {
+function rankmath_update_trail( array $crumbs, \RankMath\Frontend\Breadcrumbs $breadcrumbs ): array { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
 	if ( is_singular( Program::POST_TYPE ) ) {
 		return rankmath_add_subpage( $crumbs );
 	}

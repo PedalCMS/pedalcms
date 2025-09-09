@@ -7,7 +7,7 @@
  */
 
 spl_autoload_register(
-	function ( $class ) {
+	function ( $class_name ) {
 		// project-specific namespace prefix
 		$prefix = 'PedalCMS\\Core\\';
 
@@ -17,13 +17,13 @@ spl_autoload_register(
 		// does the class use the namespace prefix?
 		$len = strlen( $prefix );
 
-		if ( strncmp( $prefix, $class, $len ) !== 0 ) {
+		if ( strncmp( $prefix, $class_name, $len ) !== 0 ) {
 			// no, move to the next registered autoloader
 			return;
 		}
 
 		// get the relative class name
-		$relative_class = substr( $class, $len );
+		$relative_class = substr( $class_name, $len );
 
 		// convert to WP code standards convention.
 		$file = sprintf(

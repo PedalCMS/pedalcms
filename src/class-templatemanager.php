@@ -57,8 +57,6 @@ class TemplateManager {
 		if ( $templates ) {
 			$this->register_templates( $templates );
 		}
-
-		return $this;
 	}
 
 	/**
