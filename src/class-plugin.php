@@ -535,6 +535,8 @@ class Plugin {
 		 * @param $value The value of the option.
 		 * @param $option The name of the option.
 		 */
+		$value = apply_filters( 'pdl/options/all', $value, $option );
+		
 		/**
 		 * Filters the value of a single option. The last part of the filter is the name of the option.
 		 *
