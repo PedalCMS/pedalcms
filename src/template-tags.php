@@ -495,11 +495,19 @@ if ( ! function_exists( 'pdl_get_icon' ) ) :
 		];
 
 		if ( file_exists( $file ) ) {
-			return sprintf(
-				'<span class="%s">%s</span>',
-				implode( ' ', $classes ),
-				file_get_contents( $file )
-			);
+			// Initialize WordPress filesystem for secure file operations.
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			WP_Filesystem();
+			global $wp_filesystem;
+
+			$file_contents = $wp_filesystem->get_contents( $file );
+			if ( false !== $file_contents ) {
+				return sprintf(
+					'<span class="%s">%s</span>',
+					implode( ' ', $classes ),
+					$file_contents
+				);
+			}
 		}
 
 		return false;
