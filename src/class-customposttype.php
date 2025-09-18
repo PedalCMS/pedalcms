@@ -107,6 +107,8 @@ abstract class CustomPostType extends CustomContentObject {
 
 		if ( is_wp_error( $result ) ) {
 			if ( WP_DEBUG && WP_DEBUG_LOG ) {
+				// Log error using WordPress debug logging when debug mode is enabled.
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Intentional debug logging when WP_DEBUG is enabled.
 				error_log(
 					sprintf(
 						/* translators: The first argument is the machine name of the post type */
@@ -262,7 +264,9 @@ abstract class CustomPostType extends CustomContentObject {
 		global $pagenow;
 
 		if ( 'edit.php' === $pagenow ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check for admin screen context
 			if ( ! empty( $_GET['post_type'] ) ) {
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check for admin screen context
 				if ( static::POST_TYPE === $_GET['post_type'] ) {
 					return true;
 				}

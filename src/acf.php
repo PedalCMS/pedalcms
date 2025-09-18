@@ -44,10 +44,10 @@ function maybe_load_acf(): void {
 /**
  * Returns the ACF settings URL override.
  *
- * @param string $url
- * @return void
+ * @param string $url The current URL (unused, but required by filter signature).
+ * @return string
  */
-function acf_settings_url( string $url ) {
+function acf_settings_url( string $url ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
 	return PDL_ACF_URL;
 }
 
@@ -363,6 +363,7 @@ function prepare_department( array|false $field ): array|false {
  */
 function save_options( $post_id ) {
 	if ( 'options' === $post_id ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- ACF handles nonce verification for this action
 		if ( Plugin::$options_page_slug === $_GET['page'] ) {
 			set_transient( 'pdl_flush_rules', true );
 		}

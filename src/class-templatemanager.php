@@ -96,6 +96,7 @@ class TemplateManager {
 	public static function locate_template( string $template ): string {
 		if ( ! self::$theme_folder ) {
 			if ( WP_DEBUG && WP_DEBUG_LOG ) {
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Intentional debug logging when WP_DEBUG is enabled.
 				error_log( __FUNCTION__ . ': Theme folder not set in ' . static::class );
 			}
 
@@ -173,6 +174,7 @@ class TemplateManager {
 			 */
 			do_action( 'pdl/after_template/' . $template, $args );
 		} elseif ( WP_DEBUG && WP_DEBUG_LOG ) {
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Intentional debug logging when WP_DEBUG is enabled.
 				error_log( __FUNCTION__ . ': File not found ' . $template );
 		}
 	}

@@ -72,7 +72,6 @@ abstract class CustomBlock {
 	 */
 	public function __construct() {
 		$block_dir = __DIR__ . '/blocks/' . static::$block_name;
-		// error_log($block_dir);
 
 		register_block_type(
 			$block_dir,
