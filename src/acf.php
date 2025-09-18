@@ -44,10 +44,10 @@ function maybe_load_acf(): void {
 /**
  * Returns the ACF settings URL override.
  *
- * @param string $url
- * @return void
+ * @param string $url The current URL (unused, but required by filter signature).
+ * @return string
  */
-function acf_settings_url( string $url ) {
+function acf_settings_url( string $url ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found
 	return PDL_ACF_URL;
 }
 

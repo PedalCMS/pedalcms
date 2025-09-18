@@ -485,13 +485,13 @@ class Plugin {
 			];
 		}
 
-		$pdl_TemplateManager = new TemplateManager(
+		$pdl_template_manager = new TemplateManager(
 			self::$template_path,
 			self::$name,
 			$templates
 		);
 
-		add_filter( 'template_include', [ $pdl_TemplateManager, 'maybe_use_template' ], PHP_INT_MAX );
+		add_filter( 'template_include', [ $pdl_template_manager, 'maybe_use_template' ], PHP_INT_MAX );
 	}
 
 	/**
@@ -536,7 +536,7 @@ class Plugin {
 		 * @param $option The name of the option.
 		 */
 		$value = apply_filters( 'pdl/options/all', $value, $option );
-		
+
 		/**
 		 * Filters the value of a single option. The last part of the filter is the name of the option.
 		 *
