@@ -262,7 +262,9 @@ abstract class CustomPostType extends CustomContentObject {
 		global $pagenow;
 
 		if ( 'edit.php' === $pagenow ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check for admin screen context
 			if ( ! empty( $_GET['post_type'] ) ) {
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check for admin screen context
 				if ( static::POST_TYPE === $_GET['post_type'] ) {
 					return true;
 				}

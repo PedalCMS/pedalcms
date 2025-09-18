@@ -363,6 +363,7 @@ function prepare_department( array|false $field ): array|false {
  */
 function save_options( $post_id ) {
 	if ( 'options' === $post_id ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- ACF handles nonce verification for this action
 		if ( Plugin::$options_page_slug === $_GET['page'] ) {
 			set_transient( 'pdl_flush_rules', true );
 		}

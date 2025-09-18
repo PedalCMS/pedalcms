@@ -276,7 +276,9 @@ function term_link( string $link ): string {
 	$query_start = strpos( $link, '?' );
 
 	if ( false !== $query_start ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check for URL context
 		if ( is_admin() && isset( $_GET['post_type'] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check for URL context
 			$post_type = $_GET['post_type'];
 		} else {
 			$post_type = get_query_var( 'post_type' );
