@@ -1,0 +1,128 @@
+/**
+ * ============================================================================
+ * Config
+ * ============================================================================
+ */
+ :root {
+  --color-hue-blue: 221;
+  --color-brand-primary: #222c3c;
+  --primary-color-saturation: 65%;
+  --primary-color: hsl(var(--primary-color-hue), var(--primary-color-saturation), 40%);
+  --font-primary: 'Nunito Sans', -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  --font-secondary: 'Nunito Sans', -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  --font-monospace: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+  --code-background-color: var(--color-brand-primary);
+  --code-border-color: #8f949c;
+}
+
+/**
+* ============================================================================
+* Table of Contents
+* ============================================================================
+*/
+.phpdocumentor-table-of-contents .phpdocumentor-table-of-contents__entry::before {
+  background: transparent url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="hsl(221, 65%, 40%)"/></svg>') no-repeat center center
+}
+
+.phpdocumentor-table-of-contents .phpdocumentor-table-of-contents__entry.-constant::before {
+  background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="-3.05176e-05" y="9.99998" width="14.1422" height="14.1422" transform="rotate(-45 -3.05176e-05 9.99998)" fill="hsl(221, 65%, 40%)"/></svg>');
+}
+
+.phpdocumentor-table-of-contents .phpdocumentor-table-of-contents__entry.-function::before {
+  background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="hsl(221, 65%, 40%)"/></svg>');
+}
+
+.phpdocumentor-table-of-contents .phpdocumentor-table-of-contents__entry > a {
+  font-family: var(--font-monospace);
+}
+
+/**
+* ============================================================================
+* Basic Content
+* ============================================================================
+*/
+.phpdocumentor h1,
+.phpdocumentor h2,
+.phpdocumentor h3,
+.phpdocumentor h4,
+.phpdocumentor h5,
+.phpdocumentor h6 {
+  font-family: var(--font-secondary);
+}
+
+.phpdocumentor-constants .phpdocumentor-element,
+.phpdocumentor-functions .phpdocumentor-element,
+.phpdocumentor-element .phpdocumentor-element {
+  background-color: var(--primary-color-lighter);
+  border: 1px solid var(--primary-color-lighten);
+  border-radius: 5px;
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-xs)
+}
+
+@media (min-width: 550px) {
+  .phpdocumentor-constants .phpdocumentor-element,
+  .phpdocumentor-functions .phpdocumentor-element {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+  }
+}
+
+.phpdocumentor .phpdocumentor-element__name {
+  font-weight: 400;
+  font-family: var(--font-monospace);
+}
+
+/**
+* ============================================================================
+* Code Blocks
+* ============================================================================
+*/
+.phpdocumentor-code {
+  color: rgba(255 255 255 / 90%);
+}
+
+.phpdocumentor-code a {
+  color: rgba(255 255 255 / 80%);
+}
+
+.phpdocumentor-code a:hover {
+  color: #fff;
+}
+
+/**
+* ============================================================================
+* Syntax Highlighting
+* ============================================================================
+*/
+.phpdocumentor-signature .phpdocumentor-signature__visibility,
+.phpdocumentor-signature .phpdocumentor-signature__abstract,
+.phpdocumentor-signature .phpdocumentor-signature__type,
+.phpdocumentor-signature .phpdocumentor-signature__static,
+.phpdocumentor-signature .phpdocumentor-signature__argument__return-type,
+.phpdocumentor-signature .phpdocumentor-signature__response_type {
+  color: rgb(255, 209, 26);
+}
+
+.phpdocumentor-signature .phpdocumentor-signature__name {
+  color: rgb(100, 216, 255);
+}
+
+.phpdocumentor-signature .phpdocumentor-signature__argument__name {
+  color: rgb(255, 129, 192);
+}
+
+.phpdocumentor-argument-list .phpdocumentor-signature__argument__name {
+  display: inline-block;
+  padding: 0 0.2em;
+  font-weight: bold;
+  background: var(--primary-color-lighten);
+}
+
+.phpdocumentor-return-value__heading + .phpdocumentor-signature__response_type,
+.phpdocumentor-argument-list .phpdocumentor-signature__argument__return-type {
+  background-color: rgb(255, 230, 131);
+  color: rgb(79, 64, 4);
+  display: inline-block;
+  padding: 0 0.2em;
+}
