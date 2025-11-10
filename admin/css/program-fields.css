@@ -1,0 +1,10 @@
+#pdl-program-fields .inside {
+	margin: 0;
+	padding: 0;
+}
+
+.pdl-program-fields-wrapper {
+	display: grid;
+	grid-gap: 2em;
+	grid-template-columns: 20% 80%;
+}
