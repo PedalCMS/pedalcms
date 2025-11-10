@@ -8,8 +8,15 @@
 			"name": "PedalCMS"
 		}
 	],
+	"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/pedalcms/wp-cmf"
+        }
+    ],
 	"require": {
-		"php": ">=7.4.0"
+		"php": ">=7.4.0",
+		"pedalcms/wp-cmf": "dev-main"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "3.10.3",
