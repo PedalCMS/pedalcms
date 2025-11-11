@@ -32,17 +32,8 @@
 	}
 }
 
-@media (min-width: 760px) {
-	[role='tabpanel'] {
-		padding-left: 0;
-		/* width: 70%; */
-	}
-}
-
-@media (min-width: 960px) {
-	[role='tabpanel'] {
-		/* width: 77.5%; */
-	}
+[role='tabpanel'] {
+	padding: 20px;
 }
 
 [role='tabpanel'] hr {

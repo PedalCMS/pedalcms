@@ -5,6 +5,5 @@
 
 .pdl-program-fields-wrapper {
 	display: grid;
-	grid-gap: 2em;
 	grid-template-columns: 20% 80%;
 }
