@@ -1,9 +1,6 @@
 .pdl-fancy-toggle {
 	label {
-		--active-color: var(
-			--wp-components-color-accent,
-			var(--wp-admin-theme-color, #2271b1)
-		);
+		--active-color: var(--pdl-components-color-accent, #2271b1);
 		--inactive-color: #555;
 		--switch-color: #fff;
 		--outline-color: #000;

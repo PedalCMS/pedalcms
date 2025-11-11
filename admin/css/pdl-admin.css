@@ -1,3 +1,39 @@
+body {
+	--pdl-components-color-accent: #2271b1;
+
+	&.admin-color-midnight {
+		--pdl-components-color-accent: #e14d43;
+	}
+
+	&.admin-color-sunrise {
+		--pdl-components-color-accent: #dd823b;
+	}
+
+	&.admin-color-coffee {
+		--pdl-components-color-accent: #c7a589;
+	}
+
+	&.admin-color-ectoplasm {
+		--pdl-components-color-accent: #a3b745;
+	}
+
+	&.admin-color-ocean {
+		--pdl-components-color-accent: #9ebaa0;
+	}
+
+	&.admin-color-blue {
+		--pdl-components-color-accent: #e1a948;
+	}
+
+	&.admin-color-modern {
+		--pdl-components-color-accent: #3858e9;
+	}
+
+	&.admin-color-light {
+		--pdl-components-color-accent: #04a4cc;
+	}
+}
+
 body.wp-admin #adminmenu li[id^="menu-posts-pdl_"] > a {
   .wp-menu-image::before {
     background-color: currentColor;
