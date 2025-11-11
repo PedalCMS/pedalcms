@@ -31,6 +31,8 @@
 			transition: all 0.2s;
 
 			&:checked {
+				background: var(--switch-color);
+				border: none;
 				left: calc(var(--size) + var(--border-size));
 
 				/* Add a checkmark when toggled on. */
