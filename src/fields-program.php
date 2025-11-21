@@ -7,13 +7,14 @@ return [
 		'label'       => __( 'Program GUID', 'pedalcms' ),
 		'placeholder' => __( 'e.g. 6112773d640f4', 'pedalcms'),
 		'pattern'     => '[a-zA-Z0-9]+',
-		'instructions' => __( 'The globally unique identifier for the program. Typically, used campus-wide across systems.', 'pedalcms' )
+		'description' => __( 'The globally unique identifier for the program. Typically, used campus-wide across systems.', 'pedalcms' )
 	],
 	'college' => [
 		'name'        => 'college',
 		'type'        => 'select',
 		'label'       => __( 'College', 'pedalcms' ),
 		'placeholder'   => __( 'Select college', 'pedalcms' ),
+		'multiple' => true,
 		'options'  => [
 			'us'   => 'Engineering',
 			'tax'  => 'Populate with Taxonomy',
@@ -50,7 +51,7 @@ return [
 		'name'        => 'prerequisites',
 		'type'        => 'checkbox',
 		'label'       => __( 'Prerequisites', 'pedalcms' ),
-		'instructions' => __( 'This course has prerequisite qualifications.', 'pedalcms'),
+		'description' => __( 'This course has prerequisite qualifications.', 'pedalcms'),
 		'class'       => 'pdl-fancy-toggle'
 	],
 	'overview_content' => [
@@ -63,18 +64,18 @@ return [
 		'name'        => 'url_request_info',
 		'type'        => 'url',
 		'label'       => __( 'Request Info URL', 'pedalcms' ),
-		'instructions' => __( 'Overrides the global pattern for Request Info URLs.', 'pedalcms' ),
+		'description' => __( 'Overrides the global pattern for Request Info URLs.', 'pedalcms' ),
 	],
 	'url_apply_now' => [
 		'name'        => 'url_apply_now',
 		'type'        => 'url',
 		'label'       => __( 'Apply Now URL', 'pedalcms' ),
-		'instructions' => __( 'Overrides the global pattern for Apply Now URLs.', 'pedalcms' ),
+		'description' => __( 'Overrides the global pattern for Apply Now URLs.', 'pedalcms' ),
 	],
 	'url_contact_us' => [
 		'name'        => 'url_contact_us',
 		'type'        => 'url',
 		'label'       => __( 'Contact Us URL', 'pedalcms' ),
-		'instructions' => __( 'Overrides the global pattern for Contact Us URLs.', 'pedalcms' ),
+		'description' => __( 'Overrides the global pattern for Contact Us URLs.', 'pedalcms' ),
 	]
 ];
