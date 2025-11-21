@@ -1,5 +1,8 @@
 body {
 	--pdl-components-color-accent: #2271b1;
+	--pdl-components-color-accent-dark: color(
+    from var(--pdl-components-color-accent) display-p3 calc(r - 0.2) calc(g - 0.2) calc(b - 0.2)
+  );
 
 	&.admin-color-midnight {
 		--pdl-components-color-accent: #e14d43;
@@ -33,6 +36,18 @@ body {
 		--pdl-components-color-accent: #04a4cc;
 	}
 }
+
+/* Safari 16.4+ requires r g b values to be specified as percentages
+ * (with units) in calculations.
+ */
+@supports (color: color(from yellow display-p3 r g calc(b + 30%))) {
+	body {
+		--pdl-components-color-accent-dark: color(
+			from var(--pdl-components-color-accent) display-p3 calc(r - 20%) calc(g - 20%) calc(b - 20%)
+		);
+	}
+}
+
 
 body.wp-admin #adminmenu li[id^="menu-posts-pdl_"] > a {
   .wp-menu-image::before {
