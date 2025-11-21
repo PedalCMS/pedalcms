@@ -1,0 +1,79 @@
+.pdl_program_page_pdl-settings {
+	--header-height: 64px;
+
+	#wpbody-content {
+		padding-top: var(--header-height);
+	}
+
+	#wpbody-content h1 {
+		background: #e6e6eb;
+		background: rgba(113, 113, 133,0.9);
+		border-bottom: solid 1px rgba(0, 0, 0, 0.8);
+		box-sizing: border-box;
+		height: var(--header-height);
+		margin: 0 -20px 20px -22px;
+		padding: 20px;
+		position: fixed;
+		top: var(--wp-admin--admin-bar--height);
+		width: 100%;
+		z-index: 1000;
+
+		&::after {
+			content: url(../img/pedal-logotype-badge-1C.svg);
+			display: inline-block;
+			width: 100px;
+			height: auto;
+			position: absolute;
+			left: 18px;
+			top: 15px;
+		}
+	}
+
+	.submit {
+		position: fixed;
+		top: calc(0.5 * var(--header-height) + var(--wp-admin--admin-bar--height));
+		right: 25px;
+		margin: 0;
+		padding: 0;
+		transform: translateY(-50%);
+		z-index: 1001;
+
+		#submit {
+			box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+			box-shadow: 0 0 0 1px #f1f1f3;
+		}
+	}
+
+	.form-table {
+		--border-radius: 5px;
+		--inner-border: solid 1px #efefef;
+
+		background: #fff;
+		border-spacing: 0;
+		border-collapse: separate;
+		border-radius: var(--border-radius);
+		box-shadow: 0 0 5px #e9e9ea;
+
+		tbody tr {
+			&:first-child th {
+				border-radius: var(--border-radius) 0 0 0;
+			}
+
+			&:last-child th {
+				border-radius: 0 0 0 var(--border-radius);
+			}
+		}
+
+		th[scope='row'] {
+			background: #f9f9f9;
+			border-right: var(--inner-border);
+			border-bottom: var(--inner-border);
+			padding-left: 10px;
+		}
+
+		td {
+			padding-left: 20px;
+			border-bottom: var(--inner-border);
+		}
+	}
+}
