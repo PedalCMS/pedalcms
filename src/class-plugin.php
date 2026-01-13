@@ -121,7 +121,7 @@ class Plugin {
 		self::$url           = plugins_url( self::$name );
 		self::$template_path = self::$path . self::$template_path;
 
-		add_action( 'init', [ self::class, 'plugin_init' ], 0 );
+		add_action( 'init', [ self::class, 'plugin_init' ], 5 );
 		add_action( 'plugin_action_links', [ self::class, 'add_settings_link' ], 10, 2 );
 
 		self::$init = true;
