@@ -345,7 +345,9 @@ function prepare_department( array|false $field ): array|false {
 	if ( 'select' === $field['type'] ) {
 		if ( $field['value'] ) {
 			$term                               = get_term( $field['value'] );
-			$field['choices'][ $term->term_id ] = $term->name;
+			if ($term) {
+				$field['choices'][ $term->term_id ] = $term->name;
+			}
 		}
 	}
 
