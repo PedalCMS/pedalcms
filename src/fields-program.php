@@ -77,5 +77,12 @@ return [
 		'type'        => 'url',
 		'label'       => __( 'Contact Us URL', 'pedalcms' ),
 		'description' => __( 'Overrides the global pattern for Contact Us URLs.', 'pedalcms' ),
+	],
+	'subpages' => [
+		'name'        => 'subpages',
+		'type'        => 'tabs',
+		'label'       => 'Program Subpages',
+		'default_tab' => '',
+		'tabs'        => [],
 	]
 ];
