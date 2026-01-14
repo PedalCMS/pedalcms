@@ -14,7 +14,6 @@ return [
 		'type'        => 'select',
 		'label'       => __( 'College', 'pedalcms' ),
 		'placeholder'   => __( 'Select college', 'pedalcms' ),
-		'multiple' => true,
 		'options'  => [
 			'us'   => 'Engineering',
 			'tax'  => 'Populate with Taxonomy',
