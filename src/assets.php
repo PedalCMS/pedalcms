@@ -132,30 +132,10 @@ function enqueue_assets() {
 function admin_enqueue_assets() {
 	global $pagenow;
 
+	$post_type = get_post_type();
 	$is_post_edit =
 		in_array( $pagenow, [ 'post.php', 'post-new.php' ], true ) &&
-		in_array( get_post_type(), Plugin::post_types(), true );
-
-	if ( $is_post_edit && Department::depends_on_college() ) {
-		$pdl_acf = '/admin/js/pdl-acf.min.js';
-
-		wp_enqueue_script(
-			'pdl-acf',
-			Plugin::$url . $pdl_acf,
-			[ 'acf' ],
-			filemtime( Plugin::$path . $pdl_acf ),
-			true
-		);
-
-		$pdl_acf_data = [
-			'ajax_url'        => admin_url( 'admin-ajax.php' ),
-			'nonce'           => wp_create_nonce( 'pdl_acf_data' ),
-			'label_not_found' => __( 'No departments found', 'pedalcms' ),
-		];
-
-		wp_localize_script( 'pdl-acf', 'pdlACFData', $pdl_acf_data );
-	}
-
+		in_array( $post_type, Plugin::post_types(), true );
 	$pdl_css = '/admin/css/pdl-admin.css';
 
 	wp_enqueue_style(
@@ -164,4 +144,71 @@ function admin_enqueue_assets() {
 		[],
 		filemtime( Plugin::$path . $pdl_css )
 	);
+
+	$pdl_css = '/admin/css/settings-page.css';
+	wp_enqueue_style(
+		'pdl-settings',
+		Plugin::$url . $pdl_css,
+		[],
+		filemtime( Plugin::$path . $pdl_css )
+	);
+
+	$pdl_css = '/admin/css/field-fancy-toggle.css';
+	wp_enqueue_style(
+		'pdl-toggle',
+		Plugin::$url . $pdl_css,
+		[],
+		filemtime( Plugin::$path . $pdl_css )
+	);
+
+	if ($is_post_edit) {
+		if ($post_type === Program::POST_TYPE) {
+			$pdl_css = '/admin/css/metabox-tabs.css';
+
+			wp_enqueue_style(
+				'pdl-metabox-tabs',
+				Plugin::$url . $pdl_css,
+				[],
+				filemtime( Plugin::$path . $pdl_css )
+			);
+
+			$pdl_css = '/admin/css/program-fields.css';
+
+			wp_enqueue_style(
+				'pdl-program-fields',
+				Plugin::$url . $pdl_css,
+				[],
+				filemtime( Plugin::$path . $pdl_css )
+			);
+
+			wp_enqueue_script(
+				'tabby',
+				'https://cdnjs.cloudflare.com/ajax/libs/tabby/12.0.3/js/tabby.polyfills.js',
+				[],
+				'12.0.3',
+				true
+			);
+		}
+
+		if ( Department::depends_on_college() ) {
+			$pdl_acf = '/admin/js/pdl-acf.min.js';
+
+			wp_enqueue_script(
+				'pdl-acf',
+				Plugin::$url . $pdl_acf,
+				[ 'acf' ],
+				filemtime( Plugin::$path . $pdl_acf ),
+				true
+			);
+
+			$pdl_acf_data = [
+				'ajax_url'        => admin_url( 'admin-ajax.php' ),
+				'nonce'           => wp_create_nonce( 'pdl_acf_data' ),
+				'label_not_found' => __( 'No departments found', 'pedalcms' ),
+			];
+
+			wp_localize_script( 'pdl-acf', 'pdlACFData', $pdl_acf_data );
+		}
+	}
+
 }

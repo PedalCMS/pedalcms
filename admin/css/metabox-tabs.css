@@ -1,0 +1,84 @@
+[role='tablist'] {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+[role='tablist'] li {
+	margin: 0;
+}
+
+@media (max-width: 759px) {
+	[role='tablist'] {
+		border-bottom: solid 1px #ccc;
+		overflow: auto;
+		scroll-behavior: smooth;
+		width: 100%;
+	}
+}
+
+@media (min-width: 760px) {
+	[role='tablist'] {
+		border-right: solid 1px #ccc;
+		flex-direction: column;
+		/* width: 27.5%; */
+	}
+}
+
+@media (min-width: 960px) {
+	[role='tablist'] {
+		/* width: 20%; */
+	}
+}
+
+[role='tabpanel'] {
+	padding: 20px;
+}
+
+[role='tabpanel'] hr {
+	display: none;
+}
+
+[role='tab'] {
+	border-bottom: solid 1px #ccc;
+	display: block;
+	font-size: 0.9em;
+	padding: 0.5em 0;
+	text-decoration: none !important;
+}
+
+@media (max-width: 759px) {
+	[role='tab'] {
+		border-bottom: solid 2px transparent;
+		margin: 0 1em;
+		white-space: nowrap;
+	}
+}
+
+@media (min-width: 760px) {
+	[role='tab'] {
+		padding: 8px 12px;
+	}
+}
+
+[role='tab'][aria-selected='true'] {
+	color: #333;
+}
+
+@media (max-width: 759px) {
+	[role='tab'][aria-selected='true'] {
+		border-color: #333;
+	}
+}
+
+@media (min-width: 760px) {
+	[role='tab'][aria-selected='true'] {
+		background: #eee;
+	}
+}
+
+[role='tab']:hover:not([aria-selected='true']) {
+	background: #333;
+	color: #fff;
+}

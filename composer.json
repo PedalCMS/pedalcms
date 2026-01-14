@@ -8,8 +8,11 @@
 			"name": "PedalCMS"
 		}
 	],
+	"repositories": [
+    ],
 	"require": {
-		"php": ">=7.4.0"
+		"php": ">=7.4.0",
+		"pedalcms/wp-cmf": "^0.0.4"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "3.10.3",
