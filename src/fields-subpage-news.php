@@ -39,7 +39,8 @@ return [
 	'news_lead' => [
 		'label'         => _x( 'Lead Content', 'FAQs', 'pedalcms' ),
 		'name'          => 'news_lead',
-		'type'          => 'textarea',
+		'type'          => 'wysiwyg',
+		'textarea_rows' => 20,
 		'instructions'  => __( 'Content to appear at the top of the page, before the posts.', 'pedalcms' ),
 	]
 ];

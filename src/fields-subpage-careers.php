@@ -12,7 +12,8 @@ return [
 	'careers_lead' => [
 		'label'         => _x( 'Lead Content', 'Careers', 'pedalcms' ),
 		'name'          => 'careers_lead',
-		'type'          => 'textarea',
+		'type'          => 'wysiwyg',
+		'textarea_rows' => 20,
 		'instructions'  => __( 'This content goes before the list of careers.', 'pedalcms' ),
 	]
 ];

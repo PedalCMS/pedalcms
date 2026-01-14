@@ -12,7 +12,8 @@ return [
 	'apply_content' => [
 		'label'         => _x( 'Content', 'Apply', 'pedalcms' ),
 		'name'          => 'apply_content',
-		'type'          => 'textarea',
+		'type'          => 'wysiwyg',
+		'textarea_rows' => 20,
 		'instructions'  => ''
 	]
 ];

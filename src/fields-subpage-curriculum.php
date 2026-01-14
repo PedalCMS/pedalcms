@@ -12,7 +12,8 @@ return [
 	'curriculum_lead' => [
 		'label'         => _x( 'Lead Content', 'Curriculum', 'pedalcms' ),
 		'name'          => 'curriculum_lead',
-		'type'          => 'textarea',
+		'type'          => 'wysiwyg',
+		'textarea_rows' => 20,
 		'instructions'  => __( 'This content goes before the list of curriculum sections.', 'pedalcms' ),
 	]
 ];

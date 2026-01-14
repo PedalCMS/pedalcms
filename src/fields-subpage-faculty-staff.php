@@ -12,7 +12,8 @@ return [
 	'faculty_staff_lead' => [
 		'label'         => _x( 'Lead Content', 'Faculty & Staff', 'pedalcms' ),
 		'name'          => 'faculty_staff_lead',
-		'type'          => 'textarea',
+		'type'          => 'wysiwyg',
+		'textarea_rows' => 20,
 		'instructions'  => __( 'This content goes before the list of faculty and staff.', 'pedalcms' ),
 	]
 ];

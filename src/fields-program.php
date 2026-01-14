@@ -56,7 +56,8 @@ return [
 	],
 	'overview_content' => [
 		'name'          => 'overview_content',
-		'type'			=> 'textarea',
+		'type'			=> 'wysiwyg',
+		'textarea_rows' => 20,
 		'label'         => __( 'Overview Content', 'pedalcms' ),
 		'placeholder'   => __( 'Enter the overview content...', 'pedalcms' )
 	],

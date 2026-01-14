@@ -25,7 +25,8 @@ return [
 	'cost_content' => [
 		'label'         => _x( 'Content', 'Cost', 'pedalcms' ),
 		'name'          => 'cost_content',
-		'type'          => 'textarea',
+		'type'          => 'wysiwyg',
+		'textarea_rows' => 20,
 		'description'  => ''
 	]
 ];
