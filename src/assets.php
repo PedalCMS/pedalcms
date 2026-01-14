@@ -145,6 +145,22 @@ function admin_enqueue_assets() {
 		filemtime( Plugin::$path . $pdl_css )
 	);
 
+	$pdl_css = '/admin/css/settings-page.css';
+	wp_enqueue_style(
+		'pdl-settings',
+		Plugin::$url . $pdl_css,
+		[],
+		filemtime( Plugin::$path . $pdl_css )
+	);
+
+	$pdl_css = '/admin/css/field-fancy-toggle.css';
+	wp_enqueue_style(
+		'pdl-toggle',
+		Plugin::$url . $pdl_css,
+		[],
+		filemtime( Plugin::$path . $pdl_css )
+	);
+
 	if ($is_post_edit) {
 		if ($post_type === Program::POST_TYPE) {
 			$pdl_css = '/admin/css/metabox-tabs.css';
