@@ -191,7 +191,7 @@ class Department extends CustomTaxonomy {
 	 */
 	public static function save_terms( $post = null ) {
 		$post    = get_post( $post );
-		$term_id = get_field( 'department', $post );
+		$term_id = get_post_meta( $post->ID, 'department', true );
 
 		if ( $term_id ) {
 			wp_set_object_terms( $post->ID, (int) $term_id, self::TAXONOMY, false );

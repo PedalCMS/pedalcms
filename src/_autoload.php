@@ -8,33 +8,27 @@
 
 spl_autoload_register(
 	function ( $class_name ) {
-		// project-specific namespace prefix
-		$prefix = 'PedalCMS\\Core\\';
-
-		// base directory for the namespace prefix
-		$base_dir = __DIR__ . '/';
-
-		// does the class use the namespace prefix?
-		$len = strlen( $prefix );
-
-		if ( strncmp( $prefix, $class_name, $len ) !== 0 ) {
-			// no, move to the next registered autoloader
+		// PedalCMS\Core namespace — src/class-*.php
+		$core_prefix = 'PedalCMS\\Core\\';
+		$core_len    = strlen( $core_prefix );
+		if ( strncmp( $core_prefix, $class_name, $core_len ) === 0 ) {
+			$relative = substr( $class_name, $core_len );
+			$file     = __DIR__ . '/class-' . strtolower( $relative ) . '.php';
+			if ( file_exists( $file ) ) {
+				require $file;
+			}
 			return;
 		}
 
-		// get the relative class name
-		$relative_class = substr( $class_name, $len );
-
-		// convert to WP code standards convention.
-		$file = sprintf(
-			'%sclass-%s.php',
-			$base_dir,
-			strtolower( $relative_class )
-		);
-
-		// if the file exists, require it
-		if ( file_exists( $file ) ) {
-			require $file;
+		// PedalCMS\Fields namespace — src/Fields/class-*.php
+		$fields_prefix = 'PedalCMS\\Fields\\';
+		$fields_len    = strlen( $fields_prefix );
+		if ( strncmp( $fields_prefix, $class_name, $fields_len ) === 0 ) {
+			$relative = substr( $class_name, $fields_len );
+			$file     = __DIR__ . '/Fields/class-' . strtolower( str_replace( '_', '-', $relative ) ) . '.php';
+			if ( file_exists( $file ) ) {
+				require $file;
+			}
 		}
 	}
 );

@@ -194,20 +194,20 @@ function admin_enqueue_assets() {
 			$pdl_acf = '/admin/js/pdl-acf.min.js';
 
 			wp_enqueue_script(
-				'pdl-acf',
+				'pdl-department',
 				Plugin::$url . $pdl_acf,
-				[ 'acf' ],
+				[],
 				filemtime( Plugin::$path . $pdl_acf ),
 				true
 			);
 
 			$pdl_acf_data = [
 				'ajax_url'        => admin_url( 'admin-ajax.php' ),
-				'nonce'           => wp_create_nonce( 'pdl_acf_data' ),
+				'nonce'           => wp_create_nonce( 'pdl_admin_data' ),
 				'label_not_found' => __( 'No departments found', 'pedalcms' ),
 			];
 
-			wp_localize_script( 'pdl-acf', 'pdlACFData', $pdl_acf_data );
+			wp_localize_script( 'pdl-department', 'pdlACFData', $pdl_acf_data );
 		}
 	}
 
