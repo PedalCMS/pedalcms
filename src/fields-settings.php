@@ -132,19 +132,21 @@ return [
 [
 'label'       => __( 'Custom Width', 'pedalcms' ),
 'name'        => 'image_size_header_w',
-'type'        => 'number',
+'type'        => 'conditional_number',
 'description' => __( 'Measured in pixels', 'pedalcms' ),
 'default'     => 450,
 'min'         => 0,
+'show_if'     => [ 'field' => 'image_size_header', 'value' => 'custom' ],
 ],
 
 [
 'label'       => __( 'Custom Height', 'pedalcms' ),
 'name'        => 'image_size_header_h',
-'type'        => 'number',
+'type'        => 'conditional_number',
 'description' => __( 'Measured in pixels', 'pedalcms' ),
 'default'     => 336,
 'min'         => 0,
+'show_if'     => [ 'field' => 'image_size_header', 'value' => 'custom' ],
 ],
 
 [
@@ -709,10 +711,11 @@ return [
 
 // --- Department ---
 [
-'label'   => __( 'Department — Enable', 'pedalcms' ),
-'name'    => 'department_enable',
-'type'    => 'checkbox',
-'default' => 1,
+'label'       => __( 'Department — Enable', 'pedalcms' ),
+'name'        => 'department_enable',
+'type'        => 'conditional_checkbox',
+'conditional' => [ 'department_enable_archive', 'department_depends_college' ],
+'default'     => 1,
 ],
 
 [

@@ -209,6 +209,16 @@ function admin_enqueue_assets() {
 
 			wp_localize_script( 'pdl-department', 'pdlACFData', $pdl_acf_data );
 		}
+
+		$pdl_conditional = '/admin/js/pdl-conditional.min.js';
+
+		wp_enqueue_script(
+			'pdl-conditional',
+			Plugin::$url . $pdl_conditional,
+			[ 'jquery' ],
+			filemtime( Plugin::$path . $pdl_conditional ),
+			true
+		);
 	}
 
 }

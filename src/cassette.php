@@ -17,6 +17,8 @@ use Pedalcms\CassetteCmf\CassetteCmf;
 use Pedalcms\CassetteCmf\Field\Field_Factory;
 use PedalCMS\Fields\Taxonomy_Field;
 use PedalCMS\Fields\Relationship_Field;
+use PedalCMS\Fields\Conditional_Checkbox_Field;
+use PedalCMS\Fields\Conditional_Number_Field;
 
 // Register custom field types as early as possible.
 add_action( 'init', __NAMESPACE__ . '\register_custom_field_types', 5 );
@@ -45,6 +47,8 @@ add_action( 'admin_init', __NAMESPACE__ . '\maybe_flush_rules' );
 function register_custom_field_types(): void {
 	Field_Factory::register_type( 'taxonomy', Taxonomy_Field::class );
 	Field_Factory::register_type( 'relationship', Relationship_Field::class );
+	Field_Factory::register_type( 'conditional_checkbox', Conditional_Checkbox_Field::class );
+	Field_Factory::register_type( 'conditional_number', Conditional_Number_Field::class );
 }
 
 /**

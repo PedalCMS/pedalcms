@@ -97,10 +97,11 @@ return [
 								'label' => __( 'Contact Us URL', 'pedalcms' ),
 							],
 							[
-								'type'    => 'checkbox',
-								'name'    => 'show_application_deadlines',
-								'label'   => __( 'Show Application Deadlines', 'pedalcms' ),
-								'default' => 1,
+								'type'        => 'conditional_checkbox',
+								'name'        => 'show_application_deadlines',
+								'label'       => __( 'Show Application Deadlines', 'pedalcms' ),
+								'default'     => 1,
+								'conditional' => [ 'application_deadlines', 'related_contacts' ],
 							],
 							[
 								'type'         => 'repeater',
@@ -135,10 +136,11 @@ return [
 						'label'  => __( 'Curriculum', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'    => 'checkbox',
-								'name'    => 'show_curriculum_section',
-								'label'   => __( 'Show Curriculum Section', 'pedalcms' ),
-								'default' => 1,
+								'type'        => 'conditional_checkbox',
+								'name'        => 'show_curriculum_section',
+								'label'       => __( 'Show Curriculum Section', 'pedalcms' ),
+								'default'     => 1,
+								'conditional' => [ 'curriculum_lead', 'curriculum_sections' ],
 							],
 							[
 								'type'  => 'wysiwyg',
@@ -177,10 +179,11 @@ return [
 						'label'  => __( 'Careers', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'    => 'checkbox',
-								'name'    => 'show_careers_section',
-								'label'   => __( 'Show Careers Section', 'pedalcms' ),
-								'default' => 1,
+								'type'        => 'conditional_checkbox',
+								'name'        => 'show_careers_section',
+								'label'       => __( 'Show Careers Section', 'pedalcms' ),
+								'default'     => 1,
+								'conditional' => [ 'careers_lead', 'related_program_careers' ],
 							],
 							[
 								'type'  => 'wysiwyg',
@@ -201,10 +204,11 @@ return [
 						'label'  => __( 'Faculty &amp; Staff', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'    => 'checkbox',
-								'name'    => 'show_faculty_staff_section',
-								'label'   => __( 'Show Faculty &amp; Staff Section', 'pedalcms' ),
-								'default' => 1,
+								'type'        => 'conditional_checkbox',
+								'name'        => 'show_faculty_staff_section',
+								'label'       => __( 'Show Faculty &amp; Staff Section', 'pedalcms' ),
+								'default'     => 1,
+								'conditional' => [ 'faculty_staff_lead', 'faculty_staff_by_category', 'related_faculty_staff' ],
 							],
 							[
 								'type'  => 'wysiwyg',
@@ -231,10 +235,11 @@ return [
 						'label'  => __( 'Cost', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'    => 'checkbox',
-								'name'    => 'show_cost_section',
-								'label'   => __( 'Show Cost Section', 'pedalcms' ),
-								'default' => 1,
+								'type'        => 'conditional_checkbox',
+								'name'        => 'show_cost_section',
+								'label'       => __( 'Show Cost Section', 'pedalcms' ),
+								'default'     => 1,
+								'conditional' => [ 'estimated_cost_label', 'estimated_cost', 'cost_content' ],
 							],
 							[
 								'type'        => 'text',
@@ -260,10 +265,11 @@ return [
 						'label'  => __( 'Apply', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'    => 'checkbox',
-								'name'    => 'show_apply_section',
-								'label'   => __( 'Show Apply Section', 'pedalcms' ),
-								'default' => 1,
+								'type'        => 'conditional_checkbox',
+								'name'        => 'show_apply_section',
+								'label'       => __( 'Show Apply Section', 'pedalcms' ),
+								'default'     => 1,
+								'conditional' => 'apply_content',
 							],
 							[
 								'type'  => 'wysiwyg',
@@ -278,10 +284,11 @@ return [
 						'label'  => __( 'FAQs', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'    => 'checkbox',
-								'name'    => 'show_faqs_section',
-								'label'   => __( 'Show FAQs Section', 'pedalcms' ),
-								'default' => 1,
+								'type'        => 'conditional_checkbox',
+								'name'        => 'show_faqs_section',
+								'label'       => __( 'Show FAQs Section', 'pedalcms' ),
+								'default'     => 1,
+								'conditional' => [ 'faqs_by_category', 'faqs_lead', 'related_faqs_list' ],
 							],
 							[
 								'type'    => 'checkbox',
@@ -344,10 +351,11 @@ return [
 						'label'  => __( 'News', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'    => 'checkbox',
-								'name'    => 'show_news_section',
-								'label'   => __( 'Show News Section', 'pedalcms' ),
-								'default' => 1,
+								'type'        => 'conditional_checkbox',
+								'name'        => 'show_news_section',
+								'label'       => __( 'Show News Section', 'pedalcms' ),
+								'default'     => 1,
+								'conditional' => [ 'news_tag', 'news_num_posts', 'news_show_all_link', 'news_featured_posts', 'news_lead' ],
 							],
 							[
 								'type'       => 'taxonomy',
