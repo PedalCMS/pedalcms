@@ -39,6 +39,10 @@ add_action( 'save_post', __NAMESPACE__ . '\sync_bidirectional_relationships', 25
 add_action( 'cassette_cmf/settings/saved', __NAMESPACE__ . '\cassette_save_options', 20, 1 );
 add_action( 'admin_init', __NAMESPACE__ . '\maybe_flush_rules' );
 
+// CassetteCMF redirects to admin.php?page={page_id} after save, but our page is
+// registered under a different menu_slug. Rewrite to the correct slug.
+add_filter( 'wp_redirect', __NAMESPACE__ . '\fix_settings_redirect', 10, 1 );
+
 /**
  * Register custom CassetteCMF field types.
  *
@@ -149,6 +153,22 @@ function maybe_flush_rules(): void {
 	if ( delete_transient( 'pdl_flush_rules' ) ) {
 		flush_rewrite_rules();
 	}
+}
+
+/**
+ * Rewrites CassetteCMF's post-save redirect to use the correct menu_slug.
+ *
+ * CassetteCMF redirects to admin.php?page={page_id} ('options_pdl') but the
+ * settings page is registered under menu_slug 'pedalcms-settings'.
+ *
+ * @param string $location Redirect URL.
+ * @return string
+ */
+function fix_settings_redirect( string $location ): string {
+	if ( strpos( $location, 'page=options_pdl' ) !== false ) {
+		$location = str_replace( 'page=options_pdl', 'page=' . Plugin::$options_page_slug, $location );
+	}
+	return $location;
 }
 
 /**
