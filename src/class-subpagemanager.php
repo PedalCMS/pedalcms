@@ -487,7 +487,7 @@ class SubpageManager {
 		if ( 'index' !== $subpage->slug && $subpage->is_builtin() ) {
 			$field_safe = str_replace( '-', '_', $subpage->slug );
 
-			$show = (bool) get_field( sprintf( 'show_%s_section', $field_safe ) );
+			$show = (bool) get_post_meta( get_the_ID(), sprintf( 'show_%s_section', $field_safe ), true );
 		}
 
 		/**

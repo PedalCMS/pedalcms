@@ -731,7 +731,7 @@ function options_page_header_backdrop( $defaults, $post_type, $presentation_mode
 	if ( ! $post_type ) {
 		$taxonomy = get_query_var( 'taxonomy' );
 		$term     = get_term_by( 'slug', get_query_var( 'term' ), $taxonomy );
-		$img      = get_field( 'header_background', $term );
+		$img      = get_term_meta( $term->term_id, 'header_background', true );
 
 		if ( $img ) {
 			$defaults['attachment_id'] = $img;

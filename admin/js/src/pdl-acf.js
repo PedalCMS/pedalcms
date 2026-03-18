@@ -1,98 +1,94 @@
 (function ($) {
-	const acf = window.acf;
-	const pdlACFData = window.pdlACFData;
+        'use strict';
 
-	if (typeof acf === 'undefined') {
-		console.warn('acf.js not loaded.'); // eslint-disable-line no-console
-		return;
-	}
+        const pdlACFData = window.pdlACFData;
 
-	if (typeof pdlACFData === 'undefined') {
-		console.warn('pdl-acf.js not localized properly.'); // eslint-disable-line no-console
-		return;
-	}
+        if (typeof pdlACFData === 'undefined') {
+                console.warn('pdl-department.js not localized properly.'); // eslint-disable-line no-console
+                return;
+        }
 
-	const pdlACF = (window.pdlACF = {
-		collegesFieldKey: 'field_611279af182d2',
-		departmentsFieldKey: 'field_630fb69367bc5',
-		departmentLoaded: null,
-		collegesDepartments: {
-			// cache
-		},
-		prepareCollege(field) {
-			field.$el.on('select2:select', function (e) {
-				pdlACF.collegeSet(e.params.data.id);
-			});
-		},
-		loadDepartment(field) {
-			const college = acf.getField(pdlACF.collegesFieldKey);
+        const $collegeSelect    = $('[data-field-name="college"] select');
+        const $departmentSelect = $('[data-field-name="department"] select');
 
-			if (field.val() && !pdlACF.departmentLoaded) {
-				pdlACF.departmentLoaded = Number(field.val());
-			}
+        // Fields are only present on the program post-edit screen.
+        if (!$collegeSelect.length || !$departmentSelect.length) {
+                return;
+        }
 
-			if (!college.val()) {
-				field.disable();
-			} else {
-				field.enable();
-				pdlACF.collegeSet(college.val());
-			}
-		},
-		collegeSet(collegeID) {
-			if (typeof pdlACF.collegesDepartments[collegeID] !== 'undefined') {
-				pdlACF.setDepartments(pdlACF.collegesDepartments[collegeID]);
-			} else {
-				// TODO: debounce/don't make multiple calls.
-				$.post(
-					pdlACFData.ajax_url,
-					{
-						_ajax_nonce: pdlACFData.nonce,
-						action: 'get_college_departments',
-						college: collegeID,
-					},
-					function (data) {
-						pdlACF.collegesDepartments[collegeID] = data;
-						pdlACF.setDepartments(data);
-					}
-				);
-			}
-		},
-		setDepartments(newOptions) {
-			// eslint-disable-next-line no-undef
-			const field = acf.getField(pdlACF.departmentsFieldKey);
-			const $select = $('select', field.$el);
+        // Cache AJAX responses by college ID.
+        const cache = {};
 
-			$select.val(null).empty();
+        // Capture the pre-selected department ID (if editing an existing post)
+        // so it can be re-selected after the AJAX-populated options are inserted.
+        let preselectedDepartmentId = Number($departmentSelect.val()) || null;
 
-			if (typeof newOptions !== 'undefined') {
-				if (newOptions.length) {
-					$select.append(new Option(field.data.placeholder, 0, false, false));
+        // Capture the placeholder text from the server-rendered select before
+        // we start manipulating it.
+        const placeholder =
+                $departmentSelect.find('option[value=""]').first().text() ||
+                pdlACFData.label_not_found;
 
-					newOptions.forEach(function (opt) {
-						const selected = opt.term_id === pdlACF.departmentLoaded;
+        function setDepartments(options) {
+                $departmentSelect.val(null).empty();
 
-						$select.append(
-							new Option(opt.name, opt.term_id, selected, selected)
-						);
-					});
+                if (options && options.length) {
+                        $departmentSelect.append(new Option(placeholder, '', false, false));
 
-					field.enable();
-				} else {
-					$select.append(new Option(pdlACFData.label_not_found, 0));
+                        options.forEach(function (opt) {
+                                const selected = opt.term_id === preselectedDepartmentId;
+                                $departmentSelect.append(
+                                        new Option(opt.name, opt.term_id, selected, selected)
+                                );
+                        });
 
-					field.disable();
-				}
-			}
-		},
-	});
+                        $departmentSelect.prop('disabled', false);
+                } else {
+                        $departmentSelect.append(new Option(pdlACFData.label_not_found, ''));
+                        $departmentSelect.prop('disabled', true);
+                }
+        }
 
-	acf.addAction(
-		'prepare_field/key=' + pdlACF.collegesFieldKey,
-		pdlACF.prepareCollege
-	);
+        function loadForCollege(collegeId) {
+                if (cache[collegeId] !== undefined) {
+                        setDepartments(cache[collegeId]);
+                        return;
+                }
 
-	acf.addAction(
-		'load_field/key=' + pdlACF.departmentsFieldKey,
-		pdlACF.loadDepartment
-	);
+                $.post(
+                        pdlACFData.ajax_url,
+                        {
+                                _ajax_nonce: pdlACFData.nonce,
+                                action: 'get_college_departments',
+                                college: collegeId,
+                        },
+                        function (data) {
+                                cache[collegeId] = Array.isArray(data) ? data : [];
+                                setDepartments(cache[collegeId]);
+                        }
+                );
+        }
+
+        // Initialise on page load.
+        const initialCollege = $collegeSelect.val();
+        if (!initialCollege) {
+                $departmentSelect.prop('disabled', true);
+        } else {
+                loadForCollege(initialCollege);
+        }
+
+        // React to college changes.
+        $collegeSelect.on('change', function () {
+                const collegeId = $(this).val();
+                // Don't try to restore editing pre-selection after a manual change.
+                preselectedDepartmentId = null;
+
+                if (!collegeId) {
+                        $departmentSelect.val(null).empty();
+                        $departmentSelect.append(new Option(placeholder, ''));
+                        $departmentSelect.prop('disabled', true);
+                } else {
+                        loadForCollege(collegeId);
+                }
+        });
 })(window.jQuery);

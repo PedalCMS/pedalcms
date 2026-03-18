@@ -89,246 +89,6 @@ class Program extends CustomPostType {
 	}
 
 	/**
-	 * @inheritdoc
-	 */
-	protected function setup_field_group() {
-		$field_group = [
-			'key'                   => 'group_61118a19b2e4c',
-			'title'                 => _x( 'Program Info', 'field group title', 'pedalcms' ),
-			'location'              => [
-				[
-					[
-						'param'    => 'post_type',
-						'operator' => '==',
-						'value'    => 'pdl_program',
-					],
-				],
-			],
-			'menu_order'            => 0,
-			'position'              => 'acf_after_title',
-			'style'                 => 'seamless',
-			'label_placement'       => 'top',
-			'instruction_placement' => 'label',
-			'hide_on_screen'        => '',
-			'active'                => true,
-			'fields'                => [
-				[
-					'key'       => 'field_6112749bd4b71',
-					'label'     => __( 'Main', 'pedalcms' ),
-					'type'      => 'tab',
-					'placement' => 'top',
-					'endpoint'  => 0,
-				],
-				[
-					'key'          => 'field_6112773d640f4',
-					'label'        => __( 'Program GUID', 'pedalcms' ),
-					'name'         => 'program_guid',
-					'type'         => 'text',
-					'instructions' => __( 'The globally unique identifier for the program. Typically, used campus-wide across systems.', 'pedalcms' ),
-				],
-				[
-					'key'           => 'field_611279af182d2',
-					'label'         => __( 'College', 'pedalcms' ),
-					'name'          => 'college',
-					'type'          => 'taxonomy',
-					'instructions'  => '',
-					'required'      => 0,
-					'taxonomy'      => College::TAXONOMY,
-					'field_type'    => 'select',
-					'allow_null'    => 0,
-					'add_term'      => 0,
-					'save_terms'    => 1,
-					'load_terms'    => 1,
-					'return_format' => 'object',
-					'multiple'      => 0,
-				],
-				[
-					'key'           => 'field_630fb69367bc5',
-					'label'         => __( 'Department', 'pedalcms' ),
-					'name'          => 'department',
-					'type'          => 'select',
-					'instructions'  => '',
-					'placeholder'   => __( 'Select department', 'pedalcms' ),
-					'default_value' => 0,
-					'required'      => 0,
-					'taxonomy'      => Department::TAXONOMY,
-					'field_type'    => 'select',
-					'allow_null'    => 0,
-					'add_term'      => 0,
-					'save_terms'    => 0,
-					'load_terms'    => 0,
-					'return_format' => 'id',
-					'multiple'      => 0,
-					'ui'            => 0,
-					'ajax'          => 0,
-					'disable'       => 1,
-					'choices'       => [
-						0 => __( '(Select college first)', 'pedalcms' ),
-					],
-				],
-				[
-					'key'           => 'field_61127c46a8faf',
-					'label'         => __( 'Program Type', 'pedalcms' ),
-					'name'          => 'program_type',
-					'type'          => 'taxonomy',
-					'instructions'  => '',
-					'required'      => 0,
-					'taxonomy'      => ProgramType::TAXONOMY,
-					'field_type'    => 'radio',
-					'allow_null'    => 0,
-					'add_term'      => 0,
-					'save_terms'    => 1,
-					'load_terms'    => 1,
-					'return_format' => 'object',
-					'multiple'      => 0,
-				],
-				[
-					'key'           => 'field_61127a1f182d4',
-					'label'         => __( 'Instruction Mode', 'pedalcms' ),
-					'name'          => 'instruction_mode',
-					'type'          => 'taxonomy',
-					'instructions'  => '',
-					'taxonomy'      => InstructionMode::TAXONOMY,
-					'field_type'    => 'radio',
-					'allow_null'    => 0,
-					'add_term'      => 0,
-					'save_terms'    => 1,
-					'load_terms'    => 1,
-					'return_format' => 'object',
-					'multiple'      => 0,
-				],
-				[
-					'key'                 => 'field_61128ea8b1920',
-					'label'               => __( 'Prerequisites', 'pedalcms' ),
-					'name'                => 'prerequisites',
-					'type'                => 'true_false',
-					'instructions'        => '',
-					'message'             => '',
-					'default_value'       => true,
-					'ui'                  => 1,
-					'wpml_cf_preferences' => 1,
-				],
-				[
-					'key'           => 'field_6112738ed4b70',
-					'label'         => __( 'Overview Content', 'pedalcms' ),
-					'name'          => 'overview_content',
-					'type'          => 'wysiwyg',
-					'instructions'  => '',
-					'default_value' => '',
-					'tabs'          => 'all',
-					'toolbar'       => 'full',
-					'media_upload'  => 1,
-					'delay'         => 0,
-				],
-				[
-					'key'          => 'field_61127d078fbcb',
-					'label'        => __( 'Request Info URL', 'pedalcms' ),
-					'name'         => 'url_request_info',
-					'type'         => 'url',
-					'instructions' => __( 'Overrides the global pattern for Request Info URLs.', 'pedalcms' ),
-					'placeholder'  => '',
-				],
-				[
-					'key'          => 'field_61127d728fbcc',
-					'label'        => __( 'Apply Now URL', 'pedalcms' ),
-					'name'         => 'url_apply_now',
-					'type'         => 'url',
-					'instructions' => __( 'Overrides the global pattern for Apply Now URLs.', 'pedalcms' ),
-					'placeholder'  => '',
-				],
-				[
-					'key'          => 'field_61127d948fbcd',
-					'label'        => __( 'Contact Us URL', 'pedalcms' ),
-					'name'         => 'url_contact_us',
-					'type'         => 'url',
-					'instructions' => __( 'Overrides the global pattern for Contact Us URLs.', 'pedalcms' ),
-					'placeholder'  => '',
-				],
-				[
-					'key'                 => 'field_6138d5c7722ca',
-					'label'               => __( 'Show Application Deadlines?', 'pedalcms' ),
-					'name'                => 'show_application_deadlines',
-					'type'                => 'true_false',
-					'instructions'        => '',
-					'message'             => '',
-					'default_value'       => true,
-					'ui'                  => 1,
-					'wpml_cf_preferences' => 1,
-				],
-				[
-					'key'               => 'field_613a6d0cce1eb',
-					'label'             => __( 'Application Deadlines', 'pedalcms' ),
-					'name'              => 'application_deadlines',
-					'type'              => 'repeater',
-					'instructions'      => __( 'Leave blank to inherit.', 'pedalcms' ),
-					'collapsed'         => 'field_61156b777d403',
-					'layout'            => 'block',
-					'button_label'      => _x( 'Add Deadline', 'new deadline button label', 'pedalcms' ),
-					'sub_fields'        => [
-						[
-							'key'          => 'field_61156b777d403',
-							'label'        => __( 'Deadline Label', 'pedalcms' ),
-							'name'         => 'label',
-							'type'         => 'text',
-							'instructions' => '',
-							'required'     => 1,
-							'placeholder'  => _x( 'Fall, Spring, etc.', 'deadline label field placeholder', 'pedalcms' ),
-							'maxlength'    => '',
-						],
-						[
-							'key'          => 'field_61156bbe7d404',
-							'label'        => __( 'Deadline Info', 'pedalcms' ),
-							'name'         => 'info',
-							'type'         => 'text',
-							'instructions' => '',
-							'placeholder'  => _x( 'e.g. June 24th', 'deadline info field placeholder', 'pedalcms' ),
-							'maxlength'    => '',
-						],
-					],
-					'conditional_logic' => [
-						[
-							[
-								'field'    => 'field_6138d5c7722ca',
-								'operator' => '==',
-								'value'    => '1',
-							],
-						],
-					],
-				],
-				[
-					'key'           => 'field_611276e3640f3',
-					'label'         => __( 'Program Contacts', 'pedalcms' ),
-					'name'          => 'related_contacts',
-					'type'          => 'relationship',
-					'instructions'  => '',
-					'post_type'     => [
-						0 => 'pdl_person',
-					],
-					'taxonomy'      => '',
-					'filters'       => [
-						0 => 'search',
-					],
-					'elements'      => [
-						0 => 'featured_image',
-					],
-					'min'           => '',
-					'max'           => '',
-					'return_format' => 'object',
-				],
-			],
-		];
-
-		if ( self::$subpage_manager ) {
-			$field_group['fields'] = array_merge(
-				$field_group['fields'],
-				self::$subpage_manager->get_enabled_subpage_fields()
-			);
-		}
-
-		$this->field_groups[] = $field_group;
-	}
-
-	/**
 	 * Initialize the list of Subpages.
 	 *
 	 * @since 0.1.0
@@ -955,8 +715,8 @@ class Program extends CustomPostType {
 	public static function get_related_posts( $program = null, array $not_in = [] ): array {
 		$program = get_post( $program );
 
-		$tag       = get_field( 'news_tag', $program );
-		$num_posts = get_field( 'news_num_posts', $program );
+		$tag       = get_post_meta( $program->ID, 'news_tag', true );
+		$num_posts = get_post_meta( $program->ID, 'news_num_posts', true );
 
 		if ( ! $tag ) {
 			return [];
@@ -991,7 +751,7 @@ class Program extends CustomPostType {
 		$program = get_post( $program );
 
 		// Check for a local override.
-		$url = get_field( 'url_' . $action, $program );
+		$url = get_post_meta( $program->ID, 'url_' . $action, true );
 
 		if ( $url ) {
 			return $url;
@@ -1002,7 +762,7 @@ class Program extends CustomPostType {
 		if ( $url ) {
 			$url = str_replace(
 				[ '{$program_guid}', '{$program_slug}' ],
-				[ get_field( 'program_guid', $program ), $program->post_name ],
+				[ (string) get_post_meta( $program->ID, 'program_guid', true ), $program->post_name ],
 				$url
 			);
 
@@ -1026,7 +786,7 @@ class Program extends CustomPostType {
 		$program = get_post( $program );
 
 		// First, check if the program has specific deadlines.
-		$deadlines = get_field( 'application_deadlines', $program );
+		$deadlines = get_post_meta( $program->ID, 'application_deadlines', true );
 
 		if ( ! empty( $deadlines ) ) {
 			return $deadlines;
@@ -1036,10 +796,10 @@ class Program extends CustomPostType {
 		$terms = [ 'college', 'program_type' ];
 
 		foreach ( $terms as $name ) {
-			$term = get_field( $name, $program );
+			$term_id = (int) get_post_meta( $program->ID, $name, true );
 
-			if ( ! empty( $term ) ) {
-				$deadlines = get_field( 'application_deadlines', $term );
+			if ( ! empty( $term_id ) ) {
+				$deadlines = get_term_meta( $term_id, 'application_deadlines', true );
 
 				if ( ! empty( $deadlines ) ) {
 					return $deadlines;
@@ -1048,7 +808,7 @@ class Program extends CustomPostType {
 		}
 
 		// If all else fails, just return the global setting.
-		$deadlines = get_field( 'pdl_program_application_deadlines', 'option' );
+		$deadlines = Plugin::get_option( 'program_application_deadlines' );
 		if ( is_array( $deadlines ) ) {
 			return $deadlines;
 		}

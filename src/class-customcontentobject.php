@@ -53,15 +53,6 @@ abstract class CustomContentObject {
 	public string $help_path = 'help/';
 
 	/**
-	 * A list of field group arrays to pass to acf_add_local_field_group.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @var array
-	 */
-	public $field_groups = [];
-
-	/**
 	 * Whether this class has been instantiated.
 	 *
 	 * @var boolean
@@ -73,7 +64,6 @@ abstract class CustomContentObject {
 	 * Constructor.
 	 */
 	protected function __construct() {
-		$this->setup_field_group();
 		$this->setup_labels();
 		$this->setup_help();
 	}
@@ -215,27 +205,6 @@ abstract class CustomContentObject {
 
 		$this->help      = null;
 		$this->edit_help = null;
-	}   /**
-	 * Initialize the edit screen fields.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @return void
-	 */
-	protected function setup_field_group() {
-	}
-
-	/**
-	 * Returns the group of edit screen fields.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @return array The ACF field group of fields for this object.
-	 */
-	public static function get_field_group(): array {
-		$instance = static::get_instance();
-
-		return $instance->field_groups[0] ?? [];
 	}
 
 	/**

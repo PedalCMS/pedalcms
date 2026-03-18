@@ -45,13 +45,6 @@ class Plugin {
 	private static $init = false;
 
 	/**
-	 * Config for reistering ACF options page.
-	 *
-	 * @var array
-	 */
-	public static $options_page;
-
-	/**
 	 * The admin page slug for the options page.
 	 *
 	 * @var string
@@ -73,13 +66,6 @@ class Plugin {
 	 * @var array
 	 */
 	public static $labels = [];
-
-	/**
-	 * Stores ACF field group config
-	 *
-	 * @var array
-	 */
-	public static $field_groups = [];
 
 	/**
 	 * Stores the list of post types available in this plugin.
@@ -178,11 +164,8 @@ class Plugin {
 			self::$name . '/languages/'
 		);
 
-		// NOTE: This has to be done before init_field_group.
 		Program::setup_subpage_manager();
 
-		self::setup_options_page();
-		self::setup_field_group();
 		self::setup_labels();
 
 		self::register_content_model();
@@ -190,42 +173,7 @@ class Plugin {
 		self::setup_template_manager();
 	}
 
-	/**
-	 * Loads configuration of the ACF field group.
-	 *
-	 * @return void
-	 */
-	public static function setup_field_group(): void {
-		require_once self::$path . '/src/field-group-plugin.php';
 
-		self::$field_groups[] = $field_group;
-	}
-
-	/**
-	 * Returns the plugin's field group.
-	 *
-	 * @return array The field group.
-	 */
-	public static function get_field_group(): array {
-		return static::$field_groups[0] ?? [];
-	}
-
-	/**
-	 * Sets up the options page config.
-	 *
-	 * @return void
-	 */
-	private static function setup_options_page() {
-		self::$options_page = [
-			'page_title'  => __( 'Pedal CMS Settings', 'pedalcms' ),
-			'menu_title'  => _x( 'Settings', 'menu item title', 'pedalcms' ),
-			'menu_slug'   => self::$options_page_slug,
-			'capability'  => 'manage_options',
-			'parent_slug' => self::$options_page_parent,
-			'position'    => 100,
-			'redirect'    => false,
-		];
-	}
 
 	/**
 	 * Initializes the label repository.

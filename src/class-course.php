@@ -69,98 +69,8 @@ class Course extends CustomPostType {
 	}
 
 	/**
-	 * Initialize the edit screen fields.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @return void
+	 * @inheritdoc
 	 */
-	protected function setup_field_group() {
-		$field_group = [
-			'key'                   => 'group_612f7f2c97e10',
-			'title'                 => __( 'Course Info', 'pedalcms' ),
-			'location'              => [
-				[
-					[
-						'param'    => 'post_type',
-						'operator' => '==',
-						'value'    => self::POST_TYPE,
-					],
-				],
-			],
-			'menu_order'            => 0,
-			'position'              => 'acf_after_title',
-			'style'                 => 'seamless',
-			'label_placement'       => 'top',
-			'instruction_placement' => 'field',
-			'active'                => true,
-			'description'           => '',
-			'fields'                => [
-				[
-					'key'          => 'field_61dc7bfe9a8f8',
-					'label'        => __( 'Course Description', 'pedalcms' ),
-					'name'         => 'short_description',
-					'type'         => 'textarea',
-					'instructions' => __( 'The short description of the course. No more than a paragraph.', 'pedalcms' ),
-				],
-				[
-					'key'          => 'field_61dc6ea8d1509',
-					'label'        => __( 'Course Code', 'pedalcms' ),
-					'name'         => 'course_code',
-					'type'         => 'text',
-					'instructions' => __( 'The short identifier for a course. Usually some combination of subject code and a number.', 'pedalcms' ),
-					'placeholder'  => 'CS101',
-					'wrapper'      => [ 'width' => '25' ],
-				],
-				[
-					'key'          => 'field_615226746dddd',
-					'label'        => __( 'Credit Hours', 'pedalcms' ),
-					'name'         => 'credits',
-					'type'         => 'number',
-					'instructions' => __( 'Number of credit hours earned for this course. Sometimes also referred to as units.', 'pedalcms' ),
-					'placeholder'  => 1,
-					'wrapper'      => [ 'width' => '25' ],
-				],
-				[
-					'key'          => 'field_61252546d4a0d',
-					'label'        => __( 'Course Registration Key', 'pedalcms' ),
-					'name'         => 'course_registration_key',
-					'type'         => 'text',
-					'instructions' => __( 'They key, or ID, that you can use to search course registration systems for this course via URL parameter.', 'pedalcms' ),
-					'wrapper'      => [ 'width' => '50' ],
-					'placeholder'  => '',
-				],
-				[
-					'key'          => 'field_612e96a887a06',
-					'label'        => __( 'Registration Search URL', 'pedalcms' ),
-					'name'         => 'url_reg_search',
-					'type'         => 'url',
-					'instructions' => __( 'Enter a URL for the "Search Sections" link. Overrides global setting.', 'pedalcms' ),
-					'placeholder'  => '',
-				],
-				[
-					'key'           => 'field_615f36b994871',
-					'label'         => __( 'Instructors', 'pedalcms' ),
-					'name'          => 'related_course_personnel',
-					'type'          => 'relationship',
-					'instructions'  => '',
-					'post_type'     => [ 0 => Person::POST_TYPE ],
-					'taxonomy'      => '',
-					'filters'       => [
-						0 => 'search',
-						1 => 'taxonomy',
-					],
-					'elements'      => [
-						0 => 'featured_image',
-					],
-					'return_format' => 'object',
-				],
-			],
-		];
-
-		$this->field_groups[] = $field_group;
-	}
-
 	public function setup_hooks(): void {
 		add_action( 'pre_get_posts', [ static::class, 'update_sort_order' ] );
 	}
@@ -230,7 +140,7 @@ class Course extends CustomPostType {
 	public static function get_action_link( string $action, $course = null ): string {
 		$course = get_post( $course );
 
-		$url = get_field( 'url_' . $action, $course );
+		$url = get_post_meta( $course->ID, 'url_' . $action, true );
 
 		if ( $url ) {
 			return $url;
@@ -245,8 +155,8 @@ class Course extends CustomPostType {
 					'{$course_reg_key}',
 				],
 				[
-					get_field( 'course_catalog_key', $course ),
-					get_field( 'course_registration_key', $course ),
+					(string) get_post_meta( $course->ID, 'course_catalog_key', true ),
+					(string) get_post_meta( $course->ID, 'course_registration_key', true ),
 				],
 				$url
 			);
