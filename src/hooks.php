@@ -170,13 +170,12 @@ function document_title_parts( array $title ): array {
  * @return void
  */
 function options_wp_head() {
-	$style_tag = '<style>html body{%s}</style>';
-	$var_ptrn  = '--pdl-%s: %s';
-	$options   = [
+	$var_ptrn = '--pdl-%s: %s';
+	$options  = [
 		'active_color',
 		'active_color_text',
 	];
-	$vars      = [];
+	$vars     = [];
 
 	foreach ( $options as $option ) {
 		$value = Plugin::get_option( $option );
@@ -192,7 +191,7 @@ function options_wp_head() {
 
 	if ( ! empty( $vars ) ) {
 		printf(
-			wp_kses_post( $style_tag ),
+			'<style>html body{%s}</style>',
 			esc_html( implode( ';', $vars ) )
 		);
 	}
