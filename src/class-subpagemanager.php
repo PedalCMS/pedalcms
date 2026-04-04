@@ -84,7 +84,7 @@ class SubpageManager {
 	 */
 	public function setup_hooks(): void {
 		add_action( 'wp', [ &$this, 'maybe_override_rel_canonical' ] );
-		add_action( 'init', [ &$this, 'insert_rules' ], 1 );
+		add_action( 'init', [ &$this, 'insert_rules' ], 5 );
 		add_filter( 'query_vars', [ &$this, 'add_query_var' ], 1 );
 		add_filter( 'document_title_parts', [ &$this, 'maybe_update_title' ], 20 );
 	}
