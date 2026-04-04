@@ -444,7 +444,8 @@ function before_main_content() {
 	$tag     = Plugin::get_option( 'main_content_wrapper_tag' );
 
 	printf(
-		esc_html( $pattern ),
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static format pattern for wrapper markup.
+		$pattern,
 		esc_html( $tag ),
 		esc_attr( $id ),
 		esc_attr( implode( ' ', $classes ) )
@@ -463,7 +464,7 @@ function before_main_content() {
 function after_main_content() {
 	$tag = Plugin::get_option( 'main_content_wrapper_tag' );
 
-	echo wp_kses_post( "</{$tag}>" );
+	printf( '</%s>', esc_html( $tag ) );
 }
 
 /**
