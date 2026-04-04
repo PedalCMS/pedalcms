@@ -36,7 +36,7 @@ add_action( 'save_post', __NAMESPACE__ . '\sync_taxonomy_terms', 20 );
 add_action( 'save_post', __NAMESPACE__ . '\sync_bidirectional_relationships', 25 );
 
 // Flush rewrite rules after saving plugin settings.
-add_action( 'cassette_cmf/settings/saved', __NAMESPACE__ . '\cassette_save_options', 20, 1 );
+add_filter( 'cassette_cmf_before_save_field', __NAMESPACE__ . '\cassette_save_options', 20, 3 );
 add_action( 'admin_init', __NAMESPACE__ . '\maybe_flush_rules' );
 
 // CassetteCMF redirects to admin.php?page={page_id} after save, but our page is
@@ -135,13 +135,19 @@ function sync_taxonomy_terms( int $post_id ): void {
 /**
  * Creates the `pdl_flush_rules` transient when saving the plugin settings page.
  *
- * @param string $page_id The saved settings page ID.
- * @return void
+	* Called on filter: `cassette_cmf_before_save_field`
+	*
+	* @param mixed  $value The field value (unchanged).
+	* @param string $field_name The field being saved.
+	* @param string $context The save context (settings page ID or post type).
+	* @return mixed The original field value.
  */
-function cassette_save_options( string $page_id ): void {
-	if ( 'options_pdl' === $page_id ) {
+function cassette_save_options( $value, string $field_name, string $context ) {
+	if ( 'options_pdl' === $context || Plugin::$options_page_slug === $context ) {
 		set_transient( 'pdl_flush_rules', true );
 	}
+
+	return $value;
 }
 
 /**
