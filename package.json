@@ -17,12 +17,12 @@
 		"@babel/cli": "^7.16.8",
 		"@babel/core": "^7.16.12",
 		"@babel/preset-env": "^7.16.11",
-		"@wordpress/eslint-plugin": "^10.0.0",
+		"@wordpress/eslint-plugin": "^24.5.0",
 		"autoprefixer": "^10.4.2",
 		"eslint": "^8.7.0",
 		"postcss": "^8.4.6",
 		"postcss-cli": "^9.1.0",
-		"prettier": "^2.3.2",
+		"prettier": "^3.8.1",
 		"sass": "^1.49.7",
 		"@playwright/test": "^1.50.1",
 		"@wordpress/env": "^10.18.0",
@@ -69,7 +69,6 @@
 		"env:start": "wp-env start",
 		"env:stop": "wp-env stop",
 		"env:clean": "wp-env clean",
-		"env:destroy": "wp-env destroy",
-		"test:e2e": "npx playwright test --config=./tests/e2e/playwright.config.ts"
+		"env:destroy": "wp-env destroy"
 	}
 }
