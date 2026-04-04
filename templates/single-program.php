@@ -10,7 +10,9 @@ defined( 'ABSPATH' ) || exit;
 // Prime the cache. We will be getting a lot of meta.
 get_post_meta( get_the_ID() );
 
-pdl_get_template_part( 'common/header' );
+if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
+	pdl_get_template_part( 'common/header' );
+}
 ?>
 <article
 	id="<?php pdl_article_id_attr( '', true ); ?>"
@@ -25,4 +27,6 @@ pdl_get_template_part( 'common/header' );
 	<?php pdl_get_template_part( 'single-program/sidebar' ); ?>
 </article>
 <?php
-pdl_get_template_part( 'common/footer' );
+if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
+	pdl_get_template_part( 'common/footer' );
+}

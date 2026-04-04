@@ -32,9 +32,9 @@ class Relationship_Field extends Abstract_Field {
 		return array_merge(
 			parent::get_defaults(),
 			[
-				'post_type'     => 'post',
-				'multiple'      => true,
-				'return_format' => 'id',
+				'post_type'      => 'post',
+				'multiple'       => true,
+				'return_format'  => 'id',
 				'posts_per_page' => 50,
 			]
 		);
@@ -48,14 +48,16 @@ class Relationship_Field extends Abstract_Field {
 	protected function get_posts(): array {
 		$post_type = $this->config['post_type'] ?? 'post';
 
-		$query = new \WP_Query( [
-			'post_type'      => $post_type,
-			'posts_per_page' => (int) ( $this->config['posts_per_page'] ?? 50 ),
-			'post_status'    => 'publish',
-			'orderby'        => 'title',
-			'order'          => 'ASC',
-			'fields'         => 'all',
-		] );
+		$query = new \WP_Query(
+			[
+				'post_type'      => $post_type,
+				'posts_per_page' => (int) ( $this->config['posts_per_page'] ?? 50 ),
+				'post_status'    => 'publish',
+				'orderby'        => 'title',
+				'order'          => 'ASC',
+				'fields'         => 'all',
+			]
+		);
 
 		return $query->posts;
 	}

@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 return [
 
 	// ── College (pdl_college) ────────────────────────────────────────────────
-	'pdl_college' => [
+	'pdl_college'      => [
 		[
 			'type'  => 'upload',
 			'name'  => 'featured_image',
@@ -30,7 +30,7 @@ return [
 	],
 
 	// ── Department (pdl_department) ──────────────────────────────────────────
-	'pdl_department' => [
+	'pdl_department'   => [
 		[
 			'type'       => 'taxonomy',
 			'name'       => 'college',
@@ -83,7 +83,7 @@ return [
 	],
 
 	// ── Person Category (pdl_person_cat) ─────────────────────────────────────
-	'pdl_person_cat' => [
+	'pdl_person_cat'   => [
 		[
 			'type'  => 'upload',
 			'name'  => 'featured_image',

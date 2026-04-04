@@ -78,10 +78,12 @@ class Taxonomy_Field extends Abstract_Field {
 			return [];
 		}
 
-		$terms = get_terms( [
-			'taxonomy'   => $taxonomy,
-			'hide_empty' => false,
-		] );
+		$terms = get_terms(
+			[
+				'taxonomy'   => $taxonomy,
+				'hide_empty' => false,
+			]
+		);
 
 		if ( is_wp_error( $terms ) ) {
 			return [];

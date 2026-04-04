@@ -61,37 +61,60 @@ function register_custom_field_types(): void {
  * @return void
  */
 function cassette_init(): void {
-	$settings_fields  = require Plugin::$path . '/src/fields-settings.php';
-	$program_fields   = require Plugin::$path . '/src/fields-program.php';
-	$course_fields    = require Plugin::$path . '/src/fields-course.php';
-	$person_fields    = require Plugin::$path . '/src/fields-person.php';
-	$taxonomy_fields  = require Plugin::$path . '/src/fields-taxonomies.php';
+	$settings_fields = require Plugin::$path . '/src/fields-settings.php';
+	$program_fields  = require Plugin::$path . '/src/fields-program.php';
+	$course_fields   = require Plugin::$path . '/src/fields-course.php';
+	$person_fields   = require Plugin::$path . '/src/fields-person.php';
+	$taxonomy_fields = require Plugin::$path . '/src/fields-taxonomies.php';
 
-	CassetteCmf::register_from_array( [
-		'cpts'           => [
-			[ 'id' => 'pdl_program', 'fields' => $program_fields ],
-			[ 'id' => 'pdl_course',  'fields' => $course_fields ],
-			[ 'id' => 'pdl_person',  'fields' => $person_fields ],
-		],
-		'taxonomies'     => [
-			[ 'id' => 'pdl_college',      'fields' => $taxonomy_fields['pdl_college'] ],
-			[ 'id' => 'pdl_department',   'fields' => $taxonomy_fields['pdl_department'] ],
-			[ 'id' => 'pdl_program_type', 'fields' => $taxonomy_fields['pdl_program_type'] ],
-			[ 'id' => 'pdl_person_cat',   'fields' => $taxonomy_fields['pdl_person_cat'] ],
-		],
-		'settings_pages' => [
-			[
-				'id'          => 'options_pdl',
-				'menu_slug'   => Plugin::$options_page_slug,
-				'page_title'  => __( 'Pedal CMS Settings', 'pedalcms' ),
-				'menu_title'  => _x( 'Settings', 'menu item title', 'pedalcms' ),
-				'capability'  => 'manage_options',
-				'parent_slug' => Plugin::$options_page_parent,
-				'position'    => 100,
-				'fields'      => $settings_fields,
+	CassetteCmf::register_from_array(
+		[
+			'cpts'           => [
+				[
+					'id'     => 'pdl_program',
+					'fields' => $program_fields,
+				],
+				[
+					'id'     => 'pdl_course',
+					'fields' => $course_fields,
+				],
+				[
+					'id'     => 'pdl_person',
+					'fields' => $person_fields,
+				],
 			],
-		],
-	] );
+			'taxonomies'     => [
+				[
+					'id'     => 'pdl_college',
+					'fields' => $taxonomy_fields['pdl_college'],
+				],
+				[
+					'id'     => 'pdl_department',
+					'fields' => $taxonomy_fields['pdl_department'],
+				],
+				[
+					'id'     => 'pdl_program_type',
+					'fields' => $taxonomy_fields['pdl_program_type'],
+				],
+				[
+					'id'     => 'pdl_person_cat',
+					'fields' => $taxonomy_fields['pdl_person_cat'],
+				],
+			],
+			'settings_pages' => [
+				[
+					'id'          => 'options_pdl',
+					'menu_slug'   => Plugin::$options_page_slug,
+					'page_title'  => __( 'Pedal CMS Settings', 'pedalcms' ),
+					'menu_title'  => _x( 'Settings', 'menu item title', 'pedalcms' ),
+					'capability'  => 'manage_options',
+					'parent_slug' => Plugin::$options_page_parent,
+					'position'    => 100,
+					'fields'      => $settings_fields,
+				],
+			],
+		]
+	);
 }
 
 /**
@@ -185,10 +208,10 @@ function fix_settings_redirect( string $location ): string {
  */
 function get_bidirectional_pairs(): array {
 	return [
-		'pdl_program' => [ 'related_program_careers'  => 'related_career_programs' ],
-		'pdl_career'  => [ 'related_career_programs'   => 'related_program_careers' ],
-		'pdl_course'  => [ 'related_course_personnel'  => 'related_person_courses' ],
-		'pdl_person'  => [ 'related_person_courses'    => 'related_course_personnel' ],
+		'pdl_program' => [ 'related_program_careers' => 'related_career_programs' ],
+		'pdl_career'  => [ 'related_career_programs' => 'related_program_careers' ],
+		'pdl_course'  => [ 'related_course_personnel' => 'related_person_courses' ],
+		'pdl_person'  => [ 'related_person_courses' => 'related_course_personnel' ],
 	];
 }
 

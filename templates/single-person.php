@@ -8,7 +8,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-pdl_get_template_part( 'common/header' );
+if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
+	pdl_get_template_part( 'common/header' );
+}
 ?>
 <article <?php post_class(); ?>>
 
@@ -23,4 +25,6 @@ pdl_get_template_part( 'common/header' );
 	</div>
 </article>
 <?php
-pdl_get_template_part( 'common/footer' );
+if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
+	pdl_get_template_part( 'common/footer' );
+}
