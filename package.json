@@ -65,6 +65,10 @@
 		"rules": {}
 	},
 	"scripts": {
+		"build:css": "sass --no-source-map --style=compressed assets/scss/base.scss:assets/css/base.min.css assets/scss/full.scss:assets/css/full.min.css assets/scss/global.scss:assets/css/global.min.css assets/scss/global-full.scss:assets/css/global-full.min.css assets/scss/terms-grid.scss:assets/css/terms-grid.min.css && postcss assets/css/*.min.css --use autoprefixer --replace --no-map",
+		"build:js": "babel assets/js/src --out-dir assets/js --extensions .js --out-file-extension .min.js --minified --no-comments --source-maps=false",
+		"build:admin-js": "babel admin/js/src --out-dir admin/js --extensions .js --out-file-extension .min.js --minified --no-comments --source-maps=false",
+		"build": "npm run build:css && npm run build:js && npm run build:admin-js",
 		"wp-env": "wp-env",
 		"env:start": "wp-env start",
 		"env:stop": "wp-env stop",

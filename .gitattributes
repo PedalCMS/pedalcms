@@ -9,6 +9,12 @@
 composer.lock export-ignore
 package.json export-ignore
 package-lock.json export-ignore
+composer.json export-ignore
+Makefile export-ignore
+README.md export-ignore
+.env.e2e.example export-ignore
+playwright.config.js export-ignore
+wpmu-config.xml export-ignore
 phpunit.xml export-ignore
 phpunit.xml.dist export-ignore
 phpcs.xml export-ignore
@@ -19,3 +25,6 @@ phpdoc.dist.xml export-ignore
 /bin export-ignore
 /tests export-ignore
 /.cache export-ignore
+/assets/scss export-ignore
+/assets/js/src export-ignore
+/admin/js/src export-ignore
