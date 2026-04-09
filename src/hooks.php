@@ -170,13 +170,12 @@ function document_title_parts( array $title ): array {
  * @return void
  */
 function options_wp_head() {
-	$style_tag = '<style>html body{%s}</style>';
-	$var_ptrn  = '--pdl-%s: %s';
-	$options   = [
+	$var_ptrn = '--pdl-%s: %s';
+	$options  = [
 		'active_color',
 		'active_color_text',
 	];
-	$vars      = [];
+	$vars     = [];
 
 	foreach ( $options as $option ) {
 		$value = Plugin::get_option( $option );
@@ -192,7 +191,7 @@ function options_wp_head() {
 
 	if ( ! empty( $vars ) ) {
 		printf(
-			wp_kses_post( $style_tag ),
+			'<style>html body{%s}</style>',
 			esc_html( implode( ';', $vars ) )
 		);
 	}
@@ -445,7 +444,8 @@ function before_main_content() {
 	$tag     = Plugin::get_option( 'main_content_wrapper_tag' );
 
 	printf(
-		esc_html( $pattern ),
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static format pattern for wrapper markup.
+		$pattern,
 		esc_html( $tag ),
 		esc_attr( $id ),
 		esc_attr( implode( ' ', $classes ) )
@@ -464,7 +464,7 @@ function before_main_content() {
 function after_main_content() {
 	$tag = Plugin::get_option( 'main_content_wrapper_tag' );
 
-	echo wp_kses_post( "</{$tag}>" );
+	printf( '</%s>', esc_html( $tag ) );
 }
 
 /**

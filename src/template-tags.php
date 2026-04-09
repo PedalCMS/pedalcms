@@ -513,3 +513,63 @@ if ( ! function_exists( 'pdl_get_icon' ) ) :
 		return false;
 	}
 endif;
+
+if ( ! function_exists( 'pdl_kses_svg' ) ) :
+	/**
+	 * Returns an allowed HTML array for use with wp_kses() that permits the safe
+	 * subset of SVG tags and attributes used by inline heroicons, merged on top of
+	 * the standard 'post' context allowed tags.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @return array Allowed HTML tags and attributes.
+	 */
+	function pdl_kses_svg(): array {
+		$svg_tags = [
+			'svg'      => [
+				'xmlns'       => true,
+				'viewbox'     => true,
+				'fill'        => true,
+				'stroke'      => true,
+				'aria-hidden' => true,
+				'focusable'   => true,
+				'role'        => true,
+				'class'       => true,
+				'width'       => true,
+				'height'      => true,
+				'id'          => true,
+			],
+			'path'     => [
+				'd'               => true,
+				'fill'            => true,
+				'fill-rule'       => true,
+				'clip-rule'       => true,
+				'stroke'          => true,
+				'stroke-width'    => true,
+				'stroke-linecap'  => true,
+				'stroke-linejoin' => true,
+				'clip-path'       => true,
+				'id'              => true,
+				'class'           => true,
+			],
+			'g'        => [
+				'fill'      => true,
+				'stroke'    => true,
+				'clip-path' => true,
+				'id'        => true,
+				'class'     => true,
+			],
+			'defs'     => [
+				'id'    => true,
+				'class' => true,
+			],
+			// wp_kses normalises tag names to lowercase, so clipPath → clippath.
+			'clippath' => [
+				'id'    => true,
+				'class' => true,
+			],
+		];
+
+		return array_merge( wp_kses_allowed_html( 'post' ), $svg_tags );
+	}
+endif;

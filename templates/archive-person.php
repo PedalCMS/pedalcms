@@ -9,7 +9,10 @@ defined( 'ABSPATH' ) || exit;
 
 global $posts;
 
-pdl_get_template_part( 'common/header' ); ?>
+if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
+	pdl_get_template_part( 'common/header' );
+}
+?>
 <div class="person-archive-main">
 	<?php
 	pdl_get_template_part( 'common/breadcrumbs' );
@@ -21,4 +24,6 @@ pdl_get_template_part( 'common/header' ); ?>
 	?>
 </div>
 <?php
-pdl_get_template_part( 'common/footer' );
+if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
+	pdl_get_template_part( 'common/footer' );
+}

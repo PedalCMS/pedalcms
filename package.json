@@ -17,12 +17,12 @@
 		"@babel/cli": "^7.16.8",
 		"@babel/core": "^7.16.12",
 		"@babel/preset-env": "^7.16.11",
-		"@wordpress/eslint-plugin": "^10.0.0",
+		"@wordpress/eslint-plugin": "^24.5.0",
 		"autoprefixer": "^10.4.2",
 		"eslint": "^8.7.0",
 		"postcss": "^8.4.6",
 		"postcss-cli": "^9.1.0",
-		"prettier": "^2.3.2",
+		"prettier": "^3.8.1",
 		"sass": "^1.49.7",
 		"@playwright/test": "^1.50.1",
 		"@wordpress/env": "^10.18.0",
@@ -65,11 +65,16 @@
 		"rules": {}
 	},
 	"scripts": {
+		"build:css": "sass --no-source-map --style=compressed assets/scss/base.scss:assets/css/base.min.css assets/scss/full.scss:assets/css/full.min.css assets/scss/global.scss:assets/css/global.min.css assets/scss/global-full.scss:assets/css/global-full.min.css assets/scss/terms-grid.scss:assets/css/terms-grid.min.css && postcss assets/css/*.min.css --use autoprefixer --replace --no-map",
+		"build:js": "babel assets/js/src --out-dir assets/js --extensions .js --out-file-extension .min.js --minified --no-comments --source-maps=false",
+		"build:admin-js": "babel admin/js/src --out-dir admin/js --extensions .js --out-file-extension .min.js --minified --no-comments --source-maps=false",
+		"build": "npm run build:css && npm run build:js && npm run build:admin-js",
 		"wp-env": "wp-env",
 		"env:start": "wp-env start",
 		"env:stop": "wp-env stop",
 		"env:clean": "wp-env clean",
 		"env:destroy": "wp-env destroy",
-		"test:e2e": "npx playwright test --config=./tests/e2e/playwright.config.ts"
+		"test:e2e": "playwright test",
+		"test:e2e:headed": "playwright test --headed"
 	}
 }

@@ -15,4 +15,4 @@ $defaults = [
 
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
-pdl_get_template_part( 'filters/taxonomy', $args );
+pdl_get_template_part( 'common/filters/taxonomy', $args );

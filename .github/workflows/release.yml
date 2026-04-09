@@ -1,0 +1,158 @@
+name: Release Plugin Zip
+
+on:
+  release:
+    types:
+      - published
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout release tag
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - name: Setup Node
+        if: ${{ hashFiles('package.json') != '' }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Build frontend assets
+        if: ${{ hashFiles('package.json') != '' }}
+        run: npm ci && npm run build
+
+      - name: Setup PHP
+        if: ${{ hashFiles('composer.json') != '' }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+
+      - name: Install production Composer dependencies
+        if: ${{ hashFiles('composer.json') != '' }}
+        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+
+      - name: Build release zip
+        id: build_zip
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          PLUGIN_MAIN="$(grep -lE '^[[:space:]]*\* Plugin Name:' ./*.php | head -n 1 || true)"
+
+          if [[ -z "${PLUGIN_MAIN}" ]]; then
+            echo "::error::Unable to detect plugin main file in repository root."
+            exit 1
+          fi
+
+          PLUGIN_MAIN="$(basename "${PLUGIN_MAIN}")"
+          PLUGIN_SLUG="${PLUGIN_MAIN%.php}"
+          BUILD_ROOT="$(mktemp -d)"
+          STAGE_DIR="${BUILD_ROOT}/${PLUGIN_SLUG}"
+          ZIP_PATH="${RUNNER_TEMP}/${PLUGIN_SLUG}.zip"
+
+          mkdir -p "${STAGE_DIR}"
+
+          git archive "${GITHUB_SHA}" | tar -x -C "${STAGE_DIR}"
+
+          if [[ -f package.json ]]; then
+            shopt -s nullglob
+            css_files=(assets/css/*.min.css)
+            js_files=(assets/js/*.min.js)
+            admin_js_files=(admin/js/*.min.js)
+
+            if [[ ${#css_files[@]} -eq 0 || ${#js_files[@]} -eq 0 || ${#admin_js_files[@]} -eq 0 ]]; then
+              echo "::error::Compiled frontend assets are missing."
+              exit 1
+            fi
+
+            rm -rf "${STAGE_DIR}/assets/css" "${STAGE_DIR}/assets/js" "${STAGE_DIR}/admin/js"
+            mkdir -p "${STAGE_DIR}/assets/css" "${STAGE_DIR}/assets/js" "${STAGE_DIR}/admin/js"
+
+            cp "${css_files[@]}" "${STAGE_DIR}/assets/css/"
+            cp "${js_files[@]}" "${STAGE_DIR}/assets/js/"
+            cp "${admin_js_files[@]}" "${STAGE_DIR}/admin/js/"
+
+            rm -rf "${STAGE_DIR}/assets/scss" "${STAGE_DIR}/assets/js/src" "${STAGE_DIR}/admin/js/src"
+          fi
+
+          if [[ -f composer.json ]]; then
+            if [[ ! -d vendor ]]; then
+              echo "::error::Composer dependencies were not installed; vendor directory is missing."
+              exit 1
+            fi
+
+            rm -rf "${STAGE_DIR}/vendor"
+            cp -R vendor "${STAGE_DIR}/vendor"
+          fi
+
+          rm -f \
+            "${STAGE_DIR}/Makefile" \
+            "${STAGE_DIR}/README.md" \
+            "${STAGE_DIR}/composer.json" \
+            "${STAGE_DIR}/.env.e2e.example" \
+            "${STAGE_DIR}/playwright.config.js" \
+            "${STAGE_DIR}/wpmu-config.xml"
+
+          (cd "${BUILD_ROOT}" && zip -rq "${ZIP_PATH}" "${PLUGIN_SLUG}")
+
+          echo "plugin_main=${PLUGIN_MAIN}" >> "${GITHUB_OUTPUT}"
+          echo "plugin_slug=${PLUGIN_SLUG}" >> "${GITHUB_OUTPUT}"
+          echo "zip_path=${ZIP_PATH}" >> "${GITHUB_OUTPUT}"
+
+      - name: Validate zip structure
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          PLUGIN_SLUG="${{ steps.build_zip.outputs.plugin_slug }}"
+          PLUGIN_MAIN="${{ steps.build_zip.outputs.plugin_main }}"
+          ZIP_PATH="${{ steps.build_zip.outputs.zip_path }}"
+
+          if ! unzip -l "${ZIP_PATH}" | grep -q "${PLUGIN_SLUG}/${PLUGIN_MAIN}$"; then
+            echo "::error::Zip does not contain expected plugin main file at ${PLUGIN_SLUG}/${PLUGIN_MAIN}."
+            exit 1
+          fi
+
+          for required_file in \
+            "assets/css/base.min.css" \
+            "assets/css/full.min.css" \
+            "assets/css/global.min.css" \
+            "assets/css/global-full.min.css" \
+            "assets/css/terms-grid.min.css" \
+            "assets/js/global.min.js" \
+            "admin/js/pdl-acf.min.js" \
+            "admin/js/pdl-conditional.min.js" \
+            "vendor/autoload.php"; do
+            if ! unzip -l "${ZIP_PATH}" | grep -q "${PLUGIN_SLUG}/${required_file}$"; then
+              echo "::error::Zip is missing required runtime file ${required_file}."
+              exit 1
+            fi
+          done
+
+          if unzip -l "${ZIP_PATH}" | grep -Eq "${PLUGIN_SLUG}/(tests/|node_modules/|\.github/|\.git/|\.cache/)"; then
+            echo "::error::Zip contains development-only files."
+            exit 1
+          fi
+
+          if unzip -l "${ZIP_PATH}" | grep -Eq "${PLUGIN_SLUG}/(assets/scss/|assets/js/src/|admin/js/src/)"; then
+            echo "::error::Zip contains source asset directories that should not ship in production."
+            exit 1
+          fi
+
+          if unzip -l "${ZIP_PATH}" | grep -Eq "${PLUGIN_SLUG}/(Makefile|README\.md|composer\.json|\.env\.e2e\.example|playwright\.config\.js|wpmu-config\.xml)$"; then
+            echo "::error::Zip contains non-runtime development files."
+            exit 1
+          fi
+
+      - name: Upload zip to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.build_zip.outputs.zip_path }}

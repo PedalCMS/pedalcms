@@ -67,5 +67,4 @@ class College extends CustomTaxonomy {
 			'item_link_description'      => _x( 'A link to a college.', 'navigation link block description', 'pedalcms' ),
 		];
 	}
-
 }

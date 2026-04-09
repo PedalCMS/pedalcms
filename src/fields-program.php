@@ -31,10 +31,10 @@ return [
 						'label'  => __( 'Main', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'         => 'text',
-								'name'         => 'program_guid',
-								'label'        => __( 'Program GUID', 'pedalcms' ),
-								'description'  => __( 'Globally unique identifier used to link program data across systems.', 'pedalcms' ),
+								'type'        => 'text',
+								'name'        => 'program_guid',
+								'label'       => __( 'Program GUID', 'pedalcms' ),
+								'description' => __( 'Globally unique identifier used to link program data across systems.', 'pedalcms' ),
 							],
 							[
 								'type'       => 'taxonomy',
@@ -81,10 +81,10 @@ return [
 								'label' => __( 'Overview Content', 'pedalcms' ),
 							],
 							[
-								'type'         => 'url',
-								'name'         => 'url_request_info',
-								'label'        => __( 'Request Info URL', 'pedalcms' ),
-								'description'  => __( 'Overrides the global pattern for this program.', 'pedalcms' ),
+								'type'        => 'url',
+								'name'        => 'url_request_info',
+								'label'       => __( 'Request Info URL', 'pedalcms' ),
+								'description' => __( 'Overrides the global pattern for this program.', 'pedalcms' ),
 							],
 							[
 								'type'  => 'url',

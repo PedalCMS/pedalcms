@@ -132,11 +132,11 @@ function enqueue_assets() {
 function admin_enqueue_assets() {
 	global $pagenow;
 
-	$post_type = get_post_type();
+	$post_type    = get_post_type();
 	$is_post_edit =
 		in_array( $pagenow, [ 'post.php', 'post-new.php' ], true ) &&
 		in_array( $post_type, Plugin::post_types(), true );
-	$pdl_css = '/admin/css/pdl-admin.css';
+	$pdl_css      = '/admin/css/pdl-admin.css';
 
 	wp_enqueue_style(
 		'pdl-admin',
@@ -161,8 +161,8 @@ function admin_enqueue_assets() {
 		filemtime( Plugin::$path . $pdl_css )
 	);
 
-	if ($is_post_edit) {
-		if ($post_type === Program::POST_TYPE) {
+	if ( $is_post_edit ) {
+		if ( $post_type === Program::POST_TYPE ) {
 			$pdl_css = '/admin/css/metabox-tabs.css';
 
 			wp_enqueue_style(
@@ -220,5 +220,4 @@ function admin_enqueue_assets() {
 			true
 		);
 	}
-
 }

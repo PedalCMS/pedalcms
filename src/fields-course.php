@@ -21,10 +21,10 @@ return [
 		'priority'      => 'default',
 		'fields'        => [
 			[
-				'type'         => 'textarea',
-				'name'         => 'short_description',
-				'label'        => __( 'Short Description', 'pedalcms' ),
-				'description'  => __( 'Brief description of the course, ideally one paragraph or less.', 'pedalcms' ),
+				'type'        => 'textarea',
+				'name'        => 'short_description',
+				'label'       => __( 'Short Description', 'pedalcms' ),
+				'description' => __( 'Brief description of the course, ideally one paragraph or less.', 'pedalcms' ),
 			],
 			[
 				'type'        => 'text',
@@ -44,10 +44,10 @@ return [
 				'label' => __( 'Course Registration Key', 'pedalcms' ),
 			],
 			[
-				'type'         => 'url',
-				'name'         => 'url_reg_search',
-				'label'        => __( 'Registration Search URL', 'pedalcms' ),
-				'description'  => __( 'Overrides the global setting for course registration search.', 'pedalcms' ),
+				'type'        => 'url',
+				'name'        => 'url_reg_search',
+				'label'       => __( 'Registration Search URL', 'pedalcms' ),
+				'description' => __( 'Overrides the global setting for course registration search.', 'pedalcms' ),
 			],
 			[
 				'type'      => 'relationship',

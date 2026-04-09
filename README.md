@@ -163,7 +163,8 @@ composer run coverage    # Generate test coverage
 ```bash
 npm run env:start        # Start WordPress environment
 npm run env:stop         # Stop WordPress environment  
-npm run test:e2e         # Run end-to-end tests
+npm run test:e2e         # Run Playwright end-to-end tests
+npm run test:e2e:headed  # Run Playwright tests in headed mode
 ```
 
 ### Code Standards
@@ -177,6 +178,22 @@ This project follows:
 ## 📊 Testing
 
 ### Unit Tests
+PedalCMS uses WordPress core's official PHPUnit mechanism (`WP_UnitTestCase`) via `wordpress-tests-lib`.
+
+```bash
+# 1) Install WordPress test suite and core test files.
+composer run test:setup
+
+# 2) Run plugin tests against the official WP test bootstrap.
+composer run test
+```
+
+You can override setup defaults with environment variables:
+
+```bash
+WP_TESTS_DB_NAME=pedalcms_test WP_TESTS_DB_USER=root WP_TESTS_DB_PASS=root composer run test:setup
+```
+
 ```bash
 # Run all tests
 composer run test
@@ -189,6 +206,10 @@ composer run coverage:full
 ```
 
 ### End-to-End Tests
+
+1. Copy `.env.e2e.example` to `.env.e2e` and set credentials.
+2. Ensure a WordPress site is running and reachable at `E2E_BASE_URL`.
+
 ```bash
 npm run test:e2e
 ```

@@ -68,5 +68,4 @@ class PersonCategory extends CustomTaxonomy {
 			'none_selected'              => _x( 'Any Category', 'dropdown list none selected', 'pedalcms' ),
 		];
 	}
-
 }

@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 
 $includes = [
 	'/src/_autoload.php',
-    '/vendor/autoload.php',
+	'/vendor/autoload.php',
 	'/src/cassette.php',
 	'/src/ajax.php',
 	'/src/assets.php',

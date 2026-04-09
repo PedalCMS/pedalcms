@@ -135,13 +135,13 @@ if ( ! empty( $args['filters'] ) && ! empty( $args['post_type'] ) ) : ?>
 	</fieldset>
 	<div class="actions">
 		<button class="search-button button" type="submit">
-			<?php echo wp_kses_post( $args['icon_search'] . $args['icon_loading'] ); ?>
+			<?php echo wp_kses( $args['icon_search'] . $args['icon_loading'], pdl_kses_svg() ); ?>
 			<span class="action-text"><?php echo esc_html( $args['label_apply_filters'] ); ?></span>
 		</button>
 
 
 		<?php if ( $reset_active ) : ?>
-		<a class="<?php echo esc_attr( $reset_class ); ?>" href="<?php echo esc_url( $reset_link ); ?>"><?php echo wp_kses_post( $reset_text ); ?></a>
+		<a class="<?php echo esc_attr( $reset_class ); ?>" href="<?php echo esc_url( $reset_link ); ?>"><?php echo wp_kses( $reset_text, pdl_kses_svg() ); ?></a>
 		<?php endif; ?>
 	</div>
 </form>

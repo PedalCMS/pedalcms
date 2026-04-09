@@ -96,6 +96,13 @@ class Plugin {
 	private static $taxonomies_enabled = [];
 
 	/**
+	 * Whether the plugin is currently rendering inside our block template wrapper.
+	 *
+	 * @var bool
+	 */
+	private static $rendering_block_template = false;
+
+	/**
 	 * Kicks off the whole plugin setup.
 	 */
 	public function __construct() {
@@ -406,31 +413,12 @@ class Plugin {
 	 * @return void
 	 */
 	public static function setup_template_manager(): void {
-		$templates  = [];
-		$post_types = self::post_types();
-		$taxonomies = self::taxonomies();
+		$templates = self::get_templates_map();
 
-		foreach ( $post_types as $post_type ) {
-			$template    = TemplateManager::convert_obj_name_to_template( $post_type );
-			$templates[] = [
-				'name'     => 'single-' . $template,
-				'callback' => 'is_singular',
-				'args'     => [ $post_type ],
-			];
-			$templates[] = [
-				'name'     => 'archive-' . $template,
-				'callback' => 'is_post_type_archive',
-				'args'     => [ $post_type ],
-			];
-		}
-
-		foreach ( $taxonomies as $taxonomy ) {
-			$template    = TemplateManager::convert_obj_name_to_template( $taxonomy );
-			$templates[] = [
-				'name'     => 'taxonomy-' . $template,
-				'callback' => 'is_tax',
-				'args'     => [ $taxonomy ],
-			];
+		if ( self::can_register_block_templates() ) {
+			self::register_legacy_template_block();
+			self::register_block_templates( $templates );
+			return;
 		}
 
 		$pdl_template_manager = new TemplateManager(
@@ -440,6 +428,170 @@ class Plugin {
 		);
 
 		add_filter( 'template_include', [ $pdl_template_manager, 'maybe_use_template' ], PHP_INT_MAX );
+	}
+
+	/**
+	 * Gets the list of template mappings for both classic and block template paths.
+	 *
+	 * @return array
+	 */
+	private static function get_templates_map(): array {
+		$templates  = [];
+		$post_types = self::post_types();
+		$taxonomies = self::taxonomies();
+
+		foreach ( $post_types as $post_type ) {
+			$template    = TemplateManager::convert_obj_name_to_template( $post_type );
+			$templates[] = [
+				'name'       => 'single-' . $template,
+				'block_slug' => 'single-' . $post_type,
+				'callback'   => 'is_singular',
+				'args'       => [ $post_type ],
+				'post_types' => [ $post_type ],
+			];
+			$templates[] = [
+				'name'       => 'archive-' . $template,
+				'block_slug' => 'archive-' . $post_type,
+				'callback'   => 'is_post_type_archive',
+				'args'       => [ $post_type ],
+				'post_types' => [ $post_type ],
+			];
+		}
+
+		foreach ( $taxonomies as $taxonomy ) {
+			$template    = TemplateManager::convert_obj_name_to_template( $taxonomy );
+			$templates[] = [
+				'name'       => 'taxonomy-' . $template,
+				'block_slug' => 'taxonomy-' . $taxonomy,
+				'callback'   => 'is_tax',
+				'args'       => [ $taxonomy ],
+				'post_types' => [],
+			];
+		}
+
+		return $templates;
+	}
+
+	/**
+	 * Whether this request supports plugin-registered block templates.
+	 *
+	 * @return bool
+	 */
+	private static function can_register_block_templates(): bool {
+		return function_exists( 'register_block_template' ) &&
+			function_exists( 'register_block_type' ) &&
+			function_exists( 'wp_is_block_theme' ) &&
+			wp_is_block_theme();
+	}
+
+	/**
+	 * Registers plugin block templates for PedalCMS content types.
+	 *
+	 * @param array $templates Template map entries.
+	 * @return void
+	 */
+	private static function register_block_templates( array $templates ): void {
+		foreach ( $templates as $template ) {
+			$args = [
+				'title'       => ucwords( str_replace( '-', ' ', $template['name'] ) ),
+				'description' => sprintf(
+					/* translators: %s: template slug */
+					__( 'PedalCMS template for %s.', 'pedalcms' ),
+					$template['name']
+				),
+				'content'     => self::get_block_template_content( $template['name'] ),
+				'plugin'      => self::$name,
+			];
+
+			if ( ! empty( $template['post_types'] ) ) {
+				$args['post_types'] = $template['post_types'];
+			}
+
+			register_block_template( self::$name . '//' . $template['block_slug'], $args );
+		}
+	}
+
+	/**
+	 * Gets default block template content using a dynamic block to render the
+	 * existing PHP template.
+	 *
+	 * @param string $template_name The PedalCMS template slug.
+	 * @return string
+	 */
+	private static function get_block_template_content( string $template_name ): string {
+		$block_attrs = wp_json_encode( [ 'name' => $template_name ] );
+
+		return sprintf(
+			'<!-- wp:template-part {"slug":"header","tagName":"header"} /-->\n<!-- wp:pedalcms/template-render %1$s /-->\n<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->',
+			$block_attrs
+		);
+	}
+
+	/**
+	 * Registers a server-rendered block used by plugin templates in block themes.
+	 *
+	 * @return void
+	 */
+	private static function register_legacy_template_block(): void {
+		register_block_type(
+			'pedalcms/template-render',
+			[
+				'api_version'     => 3,
+				'render_callback' => [ self::class, 'render_legacy_template_block' ],
+				'attributes'      => [
+					'name' => [
+						'type' => 'string',
+					],
+				],
+				'supports'        => [
+					'html'     => false,
+					'inserter' => false,
+					'multiple' => false,
+					'reusable' => false,
+				],
+			]
+		);
+	}
+
+	/**
+	 * Render callback for the internal template block used by block templates.
+	 *
+	 * @param array $attributes Block attributes.
+	 * @return string
+	 */
+	public static function render_legacy_template_block( array $attributes ): string {
+		$template_name = sanitize_file_name( $attributes['name'] ?? '' );
+
+		if ( ! $template_name ) {
+			return '';
+		}
+
+		$template_names = wp_list_pluck( self::get_templates_map(), 'name' );
+		if ( ! in_array( $template_name, $template_names, true ) ) {
+			return '';
+		}
+
+		ob_start();
+		self::$rendering_block_template = true;
+
+		try {
+			do_action( 'pdl/before_main_content' );
+			TemplateManager::load_template( $template_name );
+			do_action( 'pdl/after_main_content' );
+		} finally {
+			self::$rendering_block_template = false;
+		}
+
+		return ob_get_clean();
+	}
+
+	/**
+	 * Whether templates are currently being rendered via our internal block template block.
+	 *
+	 * @return bool
+	 */
+	public static function is_rendering_block_template(): bool {
+		return self::$rendering_block_template;
 	}
 
 	/**
