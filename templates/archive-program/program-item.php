@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$program_post = pdl_args_or_global( 'post', $args );
+$program_post = pdl_args_or_global( 'program_post', $args );
 
 $defaults = [
 	'show_image'           => true,
