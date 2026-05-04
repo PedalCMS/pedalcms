@@ -91,7 +91,16 @@ class FAQ extends CustomPostType {
 
 		foreach ( $faqs as $faq ) {
 			if ( 'global' === $faq['faq_type'] ) {
-				$post = $faq['faq_post'];
+				if ( empty($faq['faq_post']) ) {
+					continue;
+				}
+
+				$post = get_post($faq['faq_post'][0]);
+
+				if ( ! ( $post instanceof \WP_Post ) ) {
+					continue;
+				}
+
 				$cat  = get_the_terms( $post, FAQCategory::TAXONOMY );
 
 				if ( is_array( $cat ) ) {
