@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$contact_post = $args['post'];
+$contact_post = get_post( $args['post'] );
 
 if ( $contact_post ) :
 	?>
