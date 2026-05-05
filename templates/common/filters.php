@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 $defaults = [
 	'post_type'                  => null,
 	'wrapper_class'              => '',
-	'break_filters_after'        => -1,
+	'break_filters_after'        => 0,
 	'label_filter'               => pdl_get_label( 'filter_your_search' ),
 	'label_show'                 => pdl_get_label( 'show' ),
 	'label_hide'                 => pdl_get_label( 'hide' ),

@@ -241,7 +241,7 @@ return [
 								'name'        => 'program_archive_filters_showing',
 								'type'        => 'number',
 								'description' => __( 'The rest of the filters will be hidden behind a "Show More Filters" toggle. Set to zero to show all.', 'pedalcms' ),
-								'default'     => 3,
+								'default'     => 0,
 								'min'         => 0,
 							],
 
