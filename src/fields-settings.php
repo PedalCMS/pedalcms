@@ -876,16 +876,16 @@ return [
 								'type'        => 'custom_html',
 								'content'	  => '<span class="pdl-group-description">Used by Programs.</span>',
 							],
-							
+
 							[
-								'label'   => __( 'Program Type — Enable', 'pedalcms' ),
+								'label'   => __( 'Enable', 'pedalcms' ),
 								'name'    => 'program_type_enable',
 								'type'    => 'checkbox',
 								'default' => 1,
 							],
 
 							[
-								'label'       => __( 'Program Type — Enable Archive', 'pedalcms' ),
+								'label'       => __( 'Enable Archive', 'pedalcms' ),
 								'name'        => 'program_type_enable_archive',
 								'type'        => 'checkbox',
 								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
@@ -893,14 +893,14 @@ return [
 							],
 
 							[
-								'label'       => __( 'Program Type — Singular Label', 'pedalcms' ),
+								'label'       => __( 'Singular Label', 'pedalcms' ),
 								'name'        => 'program_type_label_single',
 								'type'        => 'text',
 								'placeholder' => __( 'Program Type', 'pedalcms' ),
 							],
 
 							[
-								'label'       => __( 'Program Type — Plural Label', 'pedalcms' ),
+								'label'       => __( 'Plural Label', 'pedalcms' ),
 								'name'        => 'program_type_label_plural',
 								'type'        => 'text',
 								'placeholder' => __( 'Program Types', 'pedalcms' ),
@@ -913,7 +913,7 @@ return [
 								'type'        => 'custom_html',
 								'content'	  => '<span class="pdl-group-description">Used by Programs. (e.g. In-person, Online, Hybrid)</span>',
 							],
-							
+
 							[
 								'label'   => __( 'Enable', 'pedalcms' ),
 								'name'    => 'instruct_mode_enable',
@@ -942,7 +942,7 @@ return [
 								'type'        => 'custom_html',
 								'content'	  => '<span class="pdl-group-description">Used in the Course Catalog.</span>',
 							],
-							
+
 							[
 								'label'   => __( 'Enable', 'pedalcms' ),
 								'name'    => 'subject_enable',
@@ -971,7 +971,7 @@ return [
 								'type'        => 'custom_html',
 								'content'	  => '<span class="pdl-group-description">Used in the Course Catalog. Also commonly referred to as "term." (e.g. Fall, Spring, Summer)</span>',
 							],
-							
+
 							[
 								'label'   => __( 'Enable', 'pedalcms' ),
 								'name'    => 'session_enable',
@@ -1000,7 +1000,7 @@ return [
 								'type'        => 'custom_html',
 								'content'	  => '<span class="pdl-group-description">Used by personnel.</span>',
 							],
-							
+
 							[
 								'label'   => __( 'Enable', 'pedalcms' ),
 								'name'    => 'person_cat_enable',
@@ -1037,7 +1037,7 @@ return [
 								'type'        => 'custom_html',
 								'content'	  => '<span class="pdl-group-description">Used by programs.</span>',
 							],
-							
+
 							[
 								'label'       => __( 'Singular Label', 'pedalcms' ),
 								'name'        => 'faq_cat_label_single',
