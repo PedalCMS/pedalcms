@@ -23,7 +23,7 @@ $args  = pdl_parse_template_args( $args, $defaults, $template );
 $h_tag = pdl_get_heading_tag( $args['h_level'] );
 $person_post = get_post( $args['person_post'] );
 
-if ( $person_post instanceof WP_Post ) :?>
+if ( $person_post instanceof \WP_Post ) :?>
 <article <?php post_class( '', $person_post ); ?>>
 	<?php
 	if ( $args['show_image'] ) :

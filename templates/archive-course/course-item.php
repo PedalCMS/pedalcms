@@ -19,7 +19,7 @@ $defaults    = [
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
 
-if ( $args['course_post'] instanceof WP_Post ) :
+if ( $args['course_post'] instanceof \WP_Post ) :
 	$more_details_id = 'more-details-' . $args['course_post']->ID;
 ?>
 <article <?php post_class( '', $args['course_post'] ); ?>>

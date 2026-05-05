@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 $contact_post = pdl_args_or_global( 'post', $args );
 $contact_post = get_post( $contact_post );
 
-if ( ! $contact_post instanceof WP_Post ) :
+if ( ! $contact_post instanceof \WP_Post ) :
 	return;
 endif;
 
