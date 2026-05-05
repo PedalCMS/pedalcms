@@ -59,7 +59,7 @@ if ( ! empty( $featured_posts ) || ! empty( $related_posts ) ) : ?>
 </div>
 	<?php endif; ?>
 
-	<?php if ( $args['show_all_posts_link'] ) : ?>
+	<?php if ( $args['show_all_posts_link'] && $args['news_tag'] ) : ?>
 <a class="all-posts-link button button-secondary"
 	href="<?php echo esc_url( get_term_link( $args['news_tag'] ) ); ?>"><?php echo esc_html( $args['label_all_posts'] ); ?></a>
 	<?php endif; ?>
