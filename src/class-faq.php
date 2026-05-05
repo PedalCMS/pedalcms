@@ -132,10 +132,10 @@ class FAQ extends CustomPostType {
 			];
 
 			foreach ( $new_list as $faq ) {
-				$term = $faq['faq_category'];
+				$term = get_term( $faq['faq_category'] );
 				unset( $faq['faq_category'] );
 
-				if ( ! $term || is_wp_error( $term ) ) {
+				if ( ! $term instanceof \WP_Term ) {
 					$term = $uncat_term;
 				}
 
