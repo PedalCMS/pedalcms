@@ -441,7 +441,7 @@ function before_main_content() {
 	$id      = apply_filters( 'pdl/main_content_wrapper_id', 'main-content-wrapper' );
 	$classes = [ 'pdlcms', 'pdl-template' ];
 	$classes = apply_filters( 'pdl/careers/main_content_wrapper_class', $classes );
-	$tag     = Plugin::get_option( 'main_content_wrapper_tag' );
+	$tag     = Plugin::get_option( 'main_content_wrapper_tag', 'div' );
 
 	printf(
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static format pattern for wrapper markup.
@@ -462,7 +462,7 @@ function before_main_content() {
  * @return void
  */
 function after_main_content() {
-	$tag = Plugin::get_option( 'main_content_wrapper_tag' );
+	$tag = Plugin::get_option( 'main_content_wrapper_tag', 'div' );
 
 	printf( '</%s>', esc_html( $tag ) );
 }
