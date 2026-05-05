@@ -31,6 +31,8 @@ if ( empty( $related_posts ) && false !== $related_posts ) {
 	$related_posts = pdl_get_related_posts( $program_post, $not_in );
 }
 
+$term_link = $args['news_tag'] ? get_term_link( (int) $args['news_tag'] ) : '';
+
 if ( ! empty( $featured_posts ) || ! empty( $related_posts ) ) : ?>
 
 	<?php if ( ! empty( $featured_posts ) ) : ?>
@@ -59,9 +61,9 @@ if ( ! empty( $featured_posts ) || ! empty( $related_posts ) ) : ?>
 </div>
 	<?php endif; ?>
 
-	<?php if ( $args['show_all_posts_link'] && $args['news_tag'] ) : ?>
+	<?php if ( $args['show_all_posts_link'] && ! is_wp_error( $term_link ) ) : ?>
 <a class="all-posts-link button button-secondary"
-	href="<?php echo esc_url( get_term_link( $args['news_tag'] ) ); ?>"><?php echo esc_html( $args['label_all_posts'] ); ?></a>
+	href="<?php echo esc_url( $term_link ); ?>"><?php echo esc_html( $args['label_all_posts'] ); ?></a>
 	<?php endif; ?>
 
 <?php else : ?>
