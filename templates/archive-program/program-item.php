@@ -8,9 +8,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$program_post = pdl_args_or_global( 'program_post', $args );
-
 $defaults = [
+	'program_post' 		   => null,
 	'show_image'           => true,
 	'show_program_type'    => true,
 	'show_program_meta'    => true,
@@ -21,15 +20,15 @@ $defaults = [
 
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
-if ( $program_post ) : ?>
-<article <?php post_class( $args['wrapper_class'], $program_post ); ?>>
+if ( $args['program_post'] ) : ?>
+<article <?php post_class( $args['wrapper_class'], $args['program_post'] ); ?>>
 
 	<?php
 	if ( $args['show_image'] ) :
 		pdl_get_template_part(
 			'common/post-featured-image',
 			[
-				'post'        => $program_post,
+				'post'        => $args['program_post'],
 				'image_size'  => 'medium',
 				'image_align' => 'left',
 				'link_image'  => true,
@@ -42,10 +41,10 @@ if ( $program_post ) : ?>
 	<div class="program-info item-info">
 		<header>
 			<h2 class="program-title entry-title"><a
-					href="<?php echo esc_url( get_the_permalink( $program_post ) ); ?>"><?php echo esc_html( get_the_title( $program_post ) ); ?></a></h2>
+					href="<?php echo esc_url( get_the_permalink( $args['program_post'] ) ); ?>"><?php echo esc_html( get_the_title( $args['program_post'] ) ); ?></a></h2>
 			<?php
 			if ( $args['show_program_type'] && taxonomy_exists( 'pdl_program_type' ) ) :
-				echo wp_kses_post( pdl_get_the_term_list( $program_post, 'pdl_program_type', '<div class="program-type">', ',', '</div>', $args['link_terms'] ) );
+				echo wp_kses_post( pdl_get_the_term_list( $args['program_post'], 'pdl_program_type', '<div class="program-type">', ',', '</div>', $args['link_terms'] ) );
 			endif;
 			?>
 		</header>
@@ -54,7 +53,7 @@ if ( $program_post ) : ?>
 			pdl_get_template_part(
 				'archive-program/program-meta',
 				[
-					'post'       => $program_post,
+					'post'       => $args['program_post'],
 					'link_terms' => $args['link_terms'],
 				]
 			);
@@ -67,7 +66,7 @@ if ( $program_post ) : ?>
 		pdl_get_template_part(
 			'single-program/program-actions',
 			[
-				'post'          => $program_post,
+				'post'          => $args['program_post'],
 				'add_permalink' => true,
 			]
 		);
