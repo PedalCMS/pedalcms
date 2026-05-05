@@ -8,8 +8,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$course_post = pdl_args_or_global( 'post', $args );
 $defaults    = [
+	'course_post'        => null,
 	'label_more_details' => pdl_get_label( 'more_details' ),
 	'label_permalink'    => pdl_get_post_type_label( 'pdl_course', 'view_item' ),
 	'label_show'         => pdl_get_label( 'show' ),
@@ -18,19 +18,22 @@ $defaults    = [
 
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
-$more_details_id = 'more-details-' . $course_post->ID;
 
-if ( $course_post ) :?>
-<article <?php post_class( '', $course_post ); ?>>
+if ( $args['course_post'] instanceof WP_Post ) :
+	$more_details_id = 'more-details-' . $args['course_post']->ID;
+?>
+<article <?php post_class( '', $args['course_post'] ); ?>>
 	<header>
 		<h2 class="entry-title course-title">
-			<a href="<?php echo esc_url( get_the_permalink( $course_post ) ); ?>">
-				<?php echo esc_html( pdl_get_full_course_title( $course_post ) ); ?>
+			<a href="<?php echo esc_url( get_the_permalink( $args['course_post'] ) ); ?>">
+				<?php echo esc_html( pdl_get_full_course_title( $args['course_post'] ) ); ?>
 			</a>
 		</h2>
-		<?php pdl_get_template_part( 'single-course/course-meta', compact( 'course_post' ) ); ?>
+		<?php pdl_get_template_part( 'single-course/course-meta', $args ); ?>
 	</header>
 	<div class="course-content">
+		<?php if ( $args['course_post']->short_description ) : ?>
+
 		<button class="pdl-toggle__trigger" aria-expanded="false"
 			data-target="<?php echo esc_attr( $more_details_id ); ?>"
 			data-show-label="<?php echo esc_attr( $args['label_show'] ); ?> "
@@ -38,14 +41,14 @@ if ( $course_post ) :?>
 		<div id="<?php echo esc_attr( $more_details_id ); ?>"
 			class="pdl-toggle__content" hidden>
 			<div class="course-details">
-				<p class="course-description"><?php echo esc_html( $course_post->short_description ); ?>
+				<p class="course-description"><?php echo esc_html( $args['course_post']->short_description ); ?>
 				</p>
 
 				<?php
 				pdl_get_template_part(
 					'single-course/related-personnel',
 					[
-						'post'    => $course_post,
+						'post'    => $args['course_post'],
 						'h_level' => 3,
 						'style'   => 'links',
 					]
@@ -53,12 +56,14 @@ if ( $course_post ) :?>
 				?>
 			</div>
 		</div>
+
+		<?php endif; ?>
 	</div>
 	<?php
 	pdl_get_template_part(
 		'single-course/course-actions',
 		[
-			'post'            => $course_post,
+			'post'            => $args['course_post'],
 			'add_permalink'   => true,
 			'label_permalink' => $args['label_permalink'],
 		]
