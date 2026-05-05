@@ -29,7 +29,7 @@ $classes = [
 	<?php
 	if ( is_array( $args['people'] ) && ! empty( $args['people'] ) ) :
 		foreach ( $args['people'] as $person_post ) :
-			$args['post'] = $person_post;
+			$args['person_post'] = $person_post;
 			pdl_get_template_part( 'archive-person/person-item', $args );
 		endforeach;
 	else :

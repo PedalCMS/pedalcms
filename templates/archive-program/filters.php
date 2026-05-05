@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || exit;
 
 $defaults = [
 	'post_type'           => 'pdl_program',
-	'break_filters_after' => 3,
+	'break_filters_after' => 0,
 	'filters'             => [
 		'keyword',
 		'program-type',

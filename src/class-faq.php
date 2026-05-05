@@ -91,7 +91,16 @@ class FAQ extends CustomPostType {
 
 		foreach ( $faqs as $faq ) {
 			if ( 'global' === $faq['faq_type'] ) {
-				$post = $faq['faq_post'];
+				if ( empty($faq['faq_post']) ) {
+					continue;
+				}
+
+				$post = get_post($faq['faq_post'][0]);
+
+				if ( ! ( $post instanceof \WP_Post ) ) {
+					continue;
+				}
+
 				$cat  = get_the_terms( $post, FAQCategory::TAXONOMY );
 
 				if ( is_array( $cat ) ) {
@@ -123,10 +132,10 @@ class FAQ extends CustomPostType {
 			];
 
 			foreach ( $new_list as $faq ) {
-				$term = $faq['faq_category'];
+				$term = get_term( $faq['faq_category'] );
 				unset( $faq['faq_category'] );
 
-				if ( ! $term || is_wp_error( $term ) ) {
+				if ( ! $term instanceof \WP_Term ) {
 					$term = $uncat_term;
 				}
 

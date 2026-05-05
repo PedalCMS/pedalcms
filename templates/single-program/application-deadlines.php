@@ -15,7 +15,7 @@ $defaults = [
 
 $args = pdl_parse_template_args( $args, $defaults, $template );
 
-if ( is_array( $args['deadlines'] ) ) : ?>
+if ( is_array( $args['deadlines'] ) && !empty( $args['deadlines'] ) ) : ?>
 <div class="program-deadlines">
 	<h2 class="program-deadlines__title program-sidebar__title"><?php echo esc_html( $args['heading'] ); ?>
 	</h2>

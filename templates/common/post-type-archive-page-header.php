@@ -9,13 +9,19 @@
 defined( 'ABSPATH' ) || exit;
 
 $defaults = [
-	'archive_title'    => pdl_get_archive_title(),
+	'archive_title'    => null,
 	'show_description' => true,
 	'show_image'       => true,
 	'image_align'      => 'right',
 ];
 
 $args = pdl_parse_template_args( $args, $defaults, $template );
+
+if ( ! $args['archive_title'] ) {
+	$archive_title = pdl_get_archive_title();
+} else {
+	$archive_title = esc_html( $args['archive_title'] );
+}
 
 ?>
 <section
@@ -40,7 +46,7 @@ $args = pdl_parse_template_args( $args, $defaults, $template );
 	endif;
 	?>
 	<h1 class="page-title">
-		<?php echo esc_html( $args['archive_title'] ); ?>
+		<?php echo $archive_title; ?>
 	</h1>
 	<?php if ( $args['show_description'] || $args['show_image'] ) : ?>
 	<div class="archive-summary">

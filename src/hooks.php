@@ -441,7 +441,7 @@ function before_main_content() {
 	$id      = apply_filters( 'pdl/main_content_wrapper_id', 'main-content-wrapper' );
 	$classes = [ 'pdlcms', 'pdl-template' ];
 	$classes = apply_filters( 'pdl/careers/main_content_wrapper_class', $classes );
-	$tag     = Plugin::get_option( 'main_content_wrapper_tag' );
+	$tag     = Plugin::get_option( 'main_content_wrapper_tag', 'div' );
 
 	printf(
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static format pattern for wrapper markup.
@@ -462,7 +462,7 @@ function before_main_content() {
  * @return void
  */
 function after_main_content() {
-	$tag = Plugin::get_option( 'main_content_wrapper_tag' );
+	$tag = Plugin::get_option( 'main_content_wrapper_tag', 'div' );
 
 	printf( '</%s>', esc_html( $tag ) );
 }
@@ -501,7 +501,7 @@ function options_template_args( $args, $template ) {
  * @return array The modified template args.
  */
 function options_search_filters( $args ) {
-	$post_type = str_replace( 'pdl_', '', get_query_var( 'post_type' ) );
+	$post_type = str_replace( 'pdl_', '', get_post_type() );
 	$enabled   = Plugin::get_option( $post_type . '_archive_search_filters' );
 
 	if ( ! is_array( $enabled ) ) {

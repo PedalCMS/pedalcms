@@ -8,9 +8,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$person_post = pdl_args_or_global( 'post', $args );
 
 $defaults = [
+	'person_post'              => null,
 	'show_contact_info'        => true,
 	'show_contact_info_labels' => false,
 	'show_image'               => true,
@@ -21,8 +21,9 @@ $defaults = [
 
 $args  = pdl_parse_template_args( $args, $defaults, $template );
 $h_tag = pdl_get_heading_tag( $args['h_level'] );
+$person_post = get_post( $args['person_post'] );
 
-if ( $person_post ) :?>
+if ( $person_post instanceof \WP_Post ) :?>
 <article <?php post_class( '', $person_post ); ?>>
 	<?php
 	if ( $args['show_image'] ) :

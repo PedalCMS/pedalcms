@@ -51,7 +51,7 @@ if ( $args['show_subpage'] ) : ?>
 						pdl_get_template_part(
 							'archive-person/person-item',
 							[
-								'post'                     => $person,
+								'person_post'              => $person,
 								'h_level'                  => $h_level,
 								'img_size'                 => $args['image_size'],
 								'show_contact_info_labels' => $args['show_contact_info_labels'],
@@ -72,7 +72,7 @@ if ( $args['show_subpage'] ) : ?>
 					pdl_get_template_part(
 						'archive-person/person-item',
 						[
-							'post'                     => $person,
+							'person_post'              => $person,
 							'h_level'                  => $h_level,
 							'img_size'                 => $args['image_size'],
 							'show_contact_info_labels' => $args['show_contact_info_labels'],
