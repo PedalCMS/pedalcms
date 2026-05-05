@@ -11,6 +11,11 @@
 defined( 'ABSPATH' ) || exit;
 
 $contact_post = pdl_args_or_global( 'post', $args );
+$contact_post = get_post( $contact_post );
+
+if ( ! $contact_post instanceof WP_Post ) :
+	return;
+endif;
 
 $defaults = [
 	'office_phone'  => $contact_post->office_phone,
@@ -26,9 +31,7 @@ $defaults = [
 ];
 
 $args = pdl_parse_template_args( $args, $defaults, $template );
-
-if ( $contact_post ) :
-	?>
+?>
 <div class="contact-info">
 	<?php if ( $args['show_phone'] && $args['office_phone'] ) : ?>
 	<div class="contact-info__field">
@@ -65,5 +68,3 @@ if ( $contact_post ) :
 	<?php endif; ?>
 
 </div>
-	<?php
-endif;
