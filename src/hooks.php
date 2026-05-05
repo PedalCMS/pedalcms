@@ -501,7 +501,7 @@ function options_template_args( $args, $template ) {
  * @return array The modified template args.
  */
 function options_search_filters( $args ) {
-	$post_type = str_replace( 'pdl_', '', get_query_var( 'post_type' ) );
+	$post_type = str_replace( 'pdl_', '', get_post_type() );
 	$enabled   = Plugin::get_option( $post_type . '_archive_search_filters' );
 
 	if ( ! is_array( $enabled ) ) {
