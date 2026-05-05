@@ -62,8 +62,8 @@ class Taxonomy_Field extends Abstract_Field {
 		$option_key = str_replace( 'pdl_', '', $taxonomy ) . '_enable';
 		$enabled    = \PedalCMS\Core\Plugin::get_option( $option_key );
 
-		// false means option not found — treat as enabled.
-		return false !== $enabled && ! $enabled;
+		// null means option not found — treat as enabled.
+		return null !== $enabled && ! $enabled;
 	}
 
 	/**
