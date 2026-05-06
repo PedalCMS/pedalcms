@@ -4,9 +4,9 @@
  * Plugin Name: Pedal CMS
  * Plugin URI: https://pedalcms.com
  * Description: A program marketing powerhouse that includes: program listings, course offerings, team  directory, and more.
- * Requires PHP: 8.1
- * Requires at least: 5.6
- * Version: 0.3.0
+ * Requires PHP: 8.2
+ * Requires at least: 6.9
+ * Version: 0.4.0
  * Author: pedalcms
  * Author URI: https://pedalcms.com
  * Text Domain: pedalcms
