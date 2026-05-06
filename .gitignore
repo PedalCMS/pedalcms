@@ -1,21 +1,15 @@
-# Bundled Advanced Custom Fields.
-plugin/src/acf
-
 # No builds.
 *.zip
 
 # Files and folders related to build and test tools.
 *.map
 .env
-/build
 .php_cs.cache
 .php-cs-fixer.cache
 .phpdoc/*
 !.phpdoc/template/
 /docs
 composer.lock
-package-lock.json
-/src/acf/*
 .phpunit.result.cache
 /phpunit.xml
 /vendor/*
