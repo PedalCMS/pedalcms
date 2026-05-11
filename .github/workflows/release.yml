@@ -33,7 +33,7 @@ jobs:
         if: ${{ hashFiles('composer.json') != '' }}
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.2'
 
       - name: Install production Composer dependencies
         if: ${{ hashFiles('composer.json') != '' }}
