@@ -14,19 +14,18 @@
 	},
 	"homepage": "https://github.com/PedalCMS/pedalcms#readme",
 	"devDependencies": {
-		"@babel/cli": "^7.16.8",
-		"@babel/core": "^7.16.12",
-		"@babel/preset-env": "^7.16.11",
-		"@wordpress/eslint-plugin": "^24.5.0",
+		"@wordpress/eslint-plugin": "^25.1.0",
 		"autoprefixer": "^10.4.2",
-		"eslint": "^8.7.0",
+		"esbuild": "^0.28.0",
+		"eslint": "^9.39.4",
 		"postcss": "^8.4.6",
 		"postcss-cli": "^9.1.0",
 		"prettier": "^3.8.1",
 		"sass": "^1.49.7",
 		"@playwright/test": "^1.50.1",
 		"@wordpress/env": "^10.18.0",
-		"dotenv": "^16.4.7"
+		"dotenv": "^16.4.7",
+		"typescript": "^5.9.3"
 	},
 	"prettier": {
 		"semi": true,
@@ -44,30 +43,10 @@
 			}
 		]
 	},
-	"babel": {
-		"presets": [
-			"@babel/preset-env"
-		],
-		"plugins": []
-	},
-	"eslintConfig": {
-		"env": {
-			"browser": true,
-			"es2021": true
-		},
-		"extends": [
-			"plugin:@wordpress/eslint-plugin/recommended"
-		],
-		"parserOptions": {
-			"ecmaVersion": "latest",
-			"sourceType": "module"
-		},
-		"rules": {}
-	},
 	"scripts": {
 		"build:css": "sass --no-source-map --style=compressed assets/scss/base.scss:assets/css/base.min.css assets/scss/full.scss:assets/css/full.min.css assets/scss/global.scss:assets/css/global.min.css assets/scss/global-full.scss:assets/css/global-full.min.css assets/scss/terms-grid.scss:assets/css/terms-grid.min.css && postcss assets/css/*.min.css --use autoprefixer --replace --no-map",
-		"build:js": "babel assets/js/src --out-dir assets/js --extensions .js --out-file-extension .min.js --minified --no-comments --source-maps=false",
-		"build:admin-js": "babel admin/js/src --out-dir admin/js --extensions .js --out-file-extension .min.js --minified --no-comments --source-maps=false",
+		"build:js": "node scripts/build-js.mjs assets/js/src assets/js",
+		"build:admin-js": "node scripts/build-js.mjs admin/js/src admin/js",
 		"build": "npm run build:css && npm run build:js && npm run build:admin-js",
 		"wp-env": "wp-env",
 		"env:start": "wp-env start",

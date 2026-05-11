@@ -4,9 +4,10 @@
 	/**
 	 * Return the element to show/hide for a given field wrapper.
 	 *
-	 * On WordPress settings/metabox tables fields live inside <td> inside <tr>.
-	 * We toggle the <tr> so the <th> label row is also shown/hidden.
-	 * Falls back to the wrapper itself outside of table contexts.
+	 * @param {Object} $el Field wrapper element.
+	 *                     On WordPress settings/metabox tables fields live inside <td> inside <tr>.
+	 *                     We toggle the <tr> so the <th> label row is also shown/hidden.
+	 *                     Falls back to the wrapper itself outside of table contexts.
 	 */
 	function rowOrSelf($el) {
 		const $tr = $el.closest('tr');
@@ -30,9 +31,12 @@
 				return;
 			}
 
-			const fieldNames = String(targets).split(',').map(function (s) {
-				return s.trim();
-			}).filter(Boolean);
+			const fieldNames = String(targets)
+				.split(',')
+				.map(function (s) {
+					return s.trim();
+				})
+				.filter(Boolean);
 
 			if (!fieldNames.length) {
 				return;
@@ -44,7 +48,9 @@
 			function toggle() {
 				const checked = $checkbox.is(':checked');
 				fieldNames.forEach(function (name) {
-					const $target = $scope.find('[data-field-name="' + name + '"]').first();
+					const $target = $scope
+						.find('[data-field-name="' + name + '"]')
+						.first();
 					if ($target.length) {
 						rowOrSelf($target).toggle(checked);
 					}
@@ -73,7 +79,9 @@
 			}
 
 			const $scope = $wrapper.closest('table');
-			const $controller = $scope.find('[data-field-name="' + config.field + '"]').first();
+			const $controller = $scope
+				.find('[data-field-name="' + config.field + '"]')
+				.first();
 			if (!$controller.length) {
 				return;
 			}
@@ -84,7 +92,9 @@
 			}
 
 			function check() {
-				rowOrSelf($wrapper).toggle($input.val() == config.value);
+				rowOrSelf($wrapper).toggle(
+					String($input.val()) === String(config.value)
+				);
 			}
 
 			check();

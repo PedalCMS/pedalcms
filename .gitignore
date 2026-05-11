@@ -1,5 +1,8 @@
 # No builds.
 *.zip
+/admin/js/*.min.js
+/assets/css/*.min.css
+/assets/js/*.min.js
 
 # Files and folders related to build and test tools.
 *.map
@@ -9,7 +12,6 @@
 .phpdoc/*
 !.phpdoc/template/
 /docs
-composer.lock
 .phpunit.result.cache
 /phpunit.xml
 /vendor/*
@@ -18,6 +20,9 @@ composer.lock
 /tests/phpunit/cache
 /tests/phpunit/coverage
 /tests/e2e/artifacts
+/tests/reports
+/tests/reports/playwright-html
+/test-results
 .DS_Store
 
 # File that we want to keep around temporarily.
@@ -25,4 +30,3 @@ composer.lock
 
 # Track placeholders so that empty directories stay in the repo.
 !.gitkeep
-

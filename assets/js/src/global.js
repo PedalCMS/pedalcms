@@ -191,7 +191,11 @@
 
 		updateStickyElements();
 
-		const observer = new IntersectionObserver(updateStickyElements, {
+		if (typeof window.IntersectionObserver === 'undefined') {
+			return;
+		}
+
+		const observer = new window.IntersectionObserver(updateStickyElements, {
 			threshold: [1],
 		});
 
