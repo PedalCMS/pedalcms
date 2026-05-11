@@ -2,7 +2,7 @@
 	"name": "pedalcms/pedalcms",
 	"description": "PedalCMS Core Plugin",
 	"type": "wordpress-plugin",
-	"license": "GPLv2",
+	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "PedalCMS"
@@ -11,7 +11,7 @@
 	"repositories": [
     ],
 	"require": {
-		"php": ">=7.4.0",
+		"php": ">=8.2.0",
 		"pedalcms/cassette-cmf": "^0.0.6"
 	},
 	"require-dev": {
