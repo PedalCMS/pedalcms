@@ -67,9 +67,10 @@ function cassette_init(): void {
 	$person_fields   = require Plugin::$path . '/src/fields-person.php';
 	$taxonomy_fields = require Plugin::$path . '/src/fields-taxonomies.php';
 
-	CassetteCmf::register_from_array(
-		[
-			'cpts'           => [
+	$config = [
+		'cpts'           => apply_filters(
+			'pdl/cassette/cpts',
+			[
 				[
 					'id'     => 'pdl_program',
 					'fields' => $program_fields,
@@ -82,8 +83,11 @@ function cassette_init(): void {
 					'id'     => 'pdl_person',
 					'fields' => $person_fields,
 				],
-			],
-			'taxonomies'     => [
+			]
+		),
+		'taxonomies'     => apply_filters(
+			'pdl/cassette/taxonomies',
+			[
 				[
 					'id'     => 'pdl_college',
 					'fields' => $taxonomy_fields['pdl_college'],
@@ -100,8 +104,11 @@ function cassette_init(): void {
 					'id'     => 'pdl_person_cat',
 					'fields' => $taxonomy_fields['pdl_person_cat'],
 				],
-			],
-			'settings_pages' => [
+			]
+		),
+		'settings_pages' => apply_filters(
+			'pdl/cassette/settings_pages',
+			[
 				[
 					'id'          => 'options_pdl',
 					'menu_slug'   => Plugin::$options_page_slug,
@@ -112,8 +119,12 @@ function cassette_init(): void {
 					'position'    => 100,
 					'fields'      => $settings_fields,
 				],
-			],
-		]
+			]
+		),
+	];
+
+	CassetteCmf::register_from_array(
+		apply_filters( 'pdl/cassette/config', $config )
 	);
 }
 

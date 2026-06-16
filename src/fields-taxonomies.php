@@ -13,7 +13,7 @@ namespace PedalCMS;
 
 defined( 'ABSPATH' ) || exit;
 
-return [
+$fields = [
 
 	// ── College (pdl_college) ────────────────────────────────────────────────
 	'pdl_college'      => [
@@ -97,3 +97,5 @@ return [
 	],
 
 ];
+
+return apply_filters( 'pdl/cassette/fields/taxonomies', $fields );

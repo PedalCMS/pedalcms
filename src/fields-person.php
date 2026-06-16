@@ -11,7 +11,7 @@ namespace PedalCMS;
 
 defined( 'ABSPATH' ) || exit;
 
-return [
+$fields = [
 	[
 		'type'          => 'metabox',
 		'name'          => 'person_info',
@@ -76,3 +76,5 @@ return [
 		],
 	],
 ];
+
+return apply_filters( 'pdl/cassette/fields/person', $fields );
