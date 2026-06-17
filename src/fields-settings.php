@@ -67,7 +67,6 @@ return [
 
 			// -----------------------------------------------------------------
 			// Tabs field — each tab holds the corresponding section's fields.
-			// -----------------------------------------------------------------
 			[
 				'type'        => 'tabs',
 				'name'        => 'settings_tabs',
@@ -1062,3 +1061,5 @@ return [
 	],
 
 ]; // end return
+
+return apply_filters( 'pdl/cassette/fields/settings', $fields );
