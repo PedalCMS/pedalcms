@@ -133,6 +133,8 @@ class Taxonomy_Field extends Abstract_Field {
 		$output .= $this->render_label();
 
 		if ( 'radio' === $field_type ) {
+			$output .= '<fieldset>';
+
 			foreach ( $options as $opt_value => $opt_label ) {
 				$checked  = ( (string) $opt_value === (string) $field_value ) ? ' checked' : '';
 				$radio_id = $field_id . '_' . sanitize_key( (string) $opt_value );
@@ -146,6 +148,8 @@ class Taxonomy_Field extends Abstract_Field {
 					$opt_label
 				);
 			}
+
+			$output .= '</fieldset>';
 		} else {
 			// Select.
 			if ( $multiple && ! is_array( $field_value ) ) {
