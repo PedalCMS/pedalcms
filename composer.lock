@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "917fd33d6dfecaca9c928ba3968d7b25",
+    "content-hash": "e7a96a26a2ec739faed36115de6545ab",
     "packages": [
         {
             "name": "pedalcms/cassette-cmf",
-            "version": "v0.0.7",
+            "version": "v0.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PedalCMS/cassette-cmf.git",
-                "reference": "9799dc01fc08942187a71c27dcaa544634146ad7"
+                "reference": "819a04b53a62b162a82c7a68b73b4e340283f103"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PedalCMS/cassette-cmf/zipball/9799dc01fc08942187a71c27dcaa544634146ad7",
-                "reference": "9799dc01fc08942187a71c27dcaa544634146ad7",
+                "url": "https://api.github.com/repos/PedalCMS/cassette-cmf/zipball/819a04b53a62b162a82c7a68b73b4e340283f103",
+                "reference": "819a04b53a62b162a82c7a68b73b4e340283f103",
                 "shasum": ""
             },
             "require": {
@@ -28,13 +28,13 @@
                 "php-stubs/wordpress-stubs": "^6.7",
                 "phpstan/extension-installer": "^1.4",
                 "phpstan/phpstan": "^2.1",
-                "phpunit/phpunit": "9.6",
+                "phpunit/phpunit": "^9.6.23",
                 "squizlabs/php_codesniffer": "^3.13.0",
                 "szepeviktor/phpstan-wordpress": "^2.0",
                 "wp-cli/wp-cli-bundle": "^2.12",
                 "wp-coding-standards/wpcs": "^3.2",
                 "wp-phpunit/wp-phpunit": "^6.8",
-                "yoast/phpunit-polyfills": "3.0"
+                "yoast/phpunit-polyfills": "^3.1"
             },
             "type": "library",
             "autoload": {
@@ -54,9 +54,9 @@
             "description": "WP Content Modeling Framework",
             "support": {
                 "issues": "https://github.com/PedalCMS/cassette-cmf/issues",
-                "source": "https://github.com/PedalCMS/cassette-cmf/tree/v0.0.7"
+                "source": "https://github.com/PedalCMS/cassette-cmf/tree/v0.0.8"
             },
-            "time": "2026-05-27T20:23:56+00:00"
+            "time": "2026-06-19T19:10:19+00:00"
         }
     ],
     "packages-dev": [
