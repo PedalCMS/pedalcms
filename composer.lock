@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a15cca1062b6af799ac1661fbfd71c8",
+    "content-hash": "917fd33d6dfecaca9c928ba3968d7b25",
     "packages": [
         {
             "name": "pedalcms/cassette-cmf",
-            "version": "v0.0.6",
+            "version": "v0.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PedalCMS/cassette-cmf.git",
-                "reference": "34140bae9bed7371d7b89ae2a8b10981a5ffa1d2"
+                "reference": "9799dc01fc08942187a71c27dcaa544634146ad7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PedalCMS/cassette-cmf/zipball/34140bae9bed7371d7b89ae2a8b10981a5ffa1d2",
-                "reference": "34140bae9bed7371d7b89ae2a8b10981a5ffa1d2",
+                "url": "https://api.github.com/repos/PedalCMS/cassette-cmf/zipball/9799dc01fc08942187a71c27dcaa544634146ad7",
+                "reference": "9799dc01fc08942187a71c27dcaa544634146ad7",
                 "shasum": ""
             },
             "require": {
@@ -54,9 +54,9 @@
             "description": "WP Content Modeling Framework",
             "support": {
                 "issues": "https://github.com/PedalCMS/cassette-cmf/issues",
-                "source": "https://github.com/PedalCMS/cassette-cmf/tree/v0.0.6"
+                "source": "https://github.com/PedalCMS/cassette-cmf/tree/v0.0.7"
             },
-            "time": "2026-02-26T13:26:22+00:00"
+            "time": "2026-05-27T20:23:56+00:00"
         }
     ],
     "packages-dev": [
@@ -7230,12 +7230,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.2.0"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
