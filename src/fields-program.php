@@ -98,7 +98,7 @@ $fields = [
 								'label' => __( 'Contact Us URL', 'pedalcms' ),
 							],
 							[
-								'type'        => 'conditional_checkbox',
+								'type'        => 'checkbox',
 								'name'        => 'show_application_deadlines',
 								'label'       => __( 'Show Application Deadlines', 'pedalcms' ),
 								'default'     => 1,
@@ -138,7 +138,7 @@ $fields = [
 						'label'  => __( 'Curriculum', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'        => 'conditional_checkbox',
+								'type'        => 'checkbox',
 								'name'        => 'show_curriculum_section',
 								'label'       => __( 'Show Curriculum Section', 'pedalcms' ),
 								'default'     => 1,
@@ -182,7 +182,7 @@ $fields = [
 						'label'  => __( 'Careers', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'        => 'conditional_checkbox',
+								'type'        => 'checkbox',
 								'name'        => 'show_careers_section',
 								'label'       => __( 'Show Careers Section', 'pedalcms' ),
 								'default'     => 1,
@@ -208,7 +208,7 @@ $fields = [
 						'label'  => __( 'Faculty &amp; Staff', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'        => 'conditional_checkbox',
+								'type'        => 'checkbox',
 								'name'        => 'show_faculty_staff_section',
 								'label'       => __( 'Show Faculty &amp; Staff Section', 'pedalcms' ),
 								'default'     => 1,
@@ -241,7 +241,7 @@ $fields = [
 						'label'  => __( 'Cost', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'        => 'conditional_checkbox',
+								'type'        => 'checkbox',
 								'name'        => 'show_cost_section',
 								'label'       => __( 'Show Cost Section', 'pedalcms' ),
 								'default'     => 1,
@@ -272,7 +272,7 @@ $fields = [
 						'label'  => __( 'Apply', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'        => 'conditional_checkbox',
+								'type'        => 'checkbox',
 								'name'        => 'show_apply_section',
 								'label'       => __( 'Show Apply Section', 'pedalcms' ),
 								'default'     => 1,
@@ -292,7 +292,7 @@ $fields = [
 						'label'  => __( 'FAQs', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'        => 'conditional_checkbox',
+								'type'        => 'checkbox',
 								'name'        => 'show_faqs_section',
 								'label'       => __( 'Show FAQs Section', 'pedalcms' ),
 								'default'     => 1,
@@ -361,7 +361,7 @@ $fields = [
 						'label'  => __( 'News', 'pedalcms' ),
 						'fields' => [
 							[
-								'type'        => 'conditional_checkbox',
+								'type'        => 'checkbox',
 								'name'        => 'show_news_section',
 								'label'       => __( 'Show News Section', 'pedalcms' ),
 								'default'     => 1,
