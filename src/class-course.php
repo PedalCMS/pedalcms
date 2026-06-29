@@ -108,18 +108,18 @@ class Course extends CustomPostType {
 		$post  = get_post( $post );
 		$title = '';
 
-		if ( $post->course_code ) {
-			$title .= sprintf(
-				'<span class="course-code">%s</span> <span class="separator">&ndash;</span>',
-				esc_html( $post->course_code )
-			);
-		}
-
 		$title .= sprintf(
 			'<span class="course-name">%s</span>',
 			// TODO: should this be a call to get_the_title?
 			esc_html( $post->post_title )
 		);
+
+		if ( $post->course_code ) {
+			$title .= sprintf(
+				' <span class="course-code">(%s)</span>',
+				esc_html( $post->course_code )
+			);
+		}
 
 		// TODO: Filter this or consider .
 		return $title;
