@@ -30,7 +30,7 @@ class College extends CustomTaxonomy {
 		'hierarchical'       => false,
 		'public'             => true,
 		'show_ui'            => true,
-		'show_in_quick_edit' => false,
+		'show_in_quick_edit' => true,
 		'meta_box_cb'        => false,
 		'show_admin_column'  => true,
 		'show_in_nav_menus'  => false,
