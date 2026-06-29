@@ -53,9 +53,10 @@ class Person extends CustomPostType {
 		self::$enter_title_text = __( 'Enter the Full Name', 'pedalcms' );
 
 		$this->args['labels'] = [
-			'name'                     => _x( 'Directory', 'post type general name', 'pedalcms' ),
+			'name'                     => _x( 'Personnel', 'post type general name', 'pedalcms' ),
 			'singular_name'            => _x( 'Person', 'post type singular name', 'pedalcms' ),
 			'plural_not_collective'    => _x( 'Personnel', 'post type plural name not collective', 'pedalcms' ),
+			'menu_name'                => __( 'Directory', 'pedalcms' ),
 			'add_new_item'             => __( 'Add New Person', 'pedalcms' ),
 			'edit_item'                => __( 'Edit Person', 'pedalcms' ),
 			'new_item'                 => __( 'New Person', 'pedalcms' ),
