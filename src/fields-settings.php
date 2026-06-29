@@ -254,15 +254,6 @@ return [
 							],
 
 							[
-								'label'       => __( 'Filters Visible', 'pedalcms' ),
-								'name'        => 'program_archive_filters_showing',
-								'type'        => 'number',
-								'description' => __( 'The rest of the filters will be hidden behind a "Show More Filters" toggle. Set to zero to show all.', 'pedalcms' ),
-								'default'     => 0,
-								'min'         => 0,
-							],
-
-							[
 								'label'       => __( 'Show Images in List View', 'pedalcms' ),
 								'name'        => 'program_archive_show_images',
 								'type'        => 'checkbox',
@@ -632,15 +623,6 @@ return [
 							],
 
 							[
-								'label'       => __( 'Filters Visible', 'pedalcms' ),
-								'name'        => 'course_archive_filters_showing',
-								'type'        => 'number',
-								'description' => __( 'Set to zero to show all filters.', 'pedalcms' ),
-								'default'     => 3,
-								'min'         => 0,
-							],
-
-							[
 								'label'       => __( 'Configure Courses', 'pedalcms' ),
 								'name'        => 'courses_group',
 								'type'        => 'custom_html',
@@ -757,15 +739,6 @@ return [
 									]
 								),
 								'default'     => [ 'keyword', 'person-cat', 'college', 'department' ],
-							],
-
-							[
-								'label'       => __( 'Archive Filters Visible', 'pedalcms' ),
-								'name'        => 'person_archive_filters_showing',
-								'type'        => 'number',
-								'description' => __( 'Set to zero to show all filters.', 'pedalcms' ),
-								'default'     => 2,
-								'min'         => 0,
 							],
 
 							[
