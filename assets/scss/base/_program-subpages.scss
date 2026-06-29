@@ -54,6 +54,10 @@
   margin-bottom: var(--pdl-spacing);
 }
 
+.program-faq {
+	margin-bottom: var(--pdl-spacing-half);
+}
+
 .pdl_program .curriculum-section__content {
   &:not(:has(+ .courses-table)) {
     margin-bottom: var(--pdl-spacing-4x);
