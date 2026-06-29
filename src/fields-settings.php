@@ -131,26 +131,34 @@ return [
 							[
 								'label'       => __( 'Custom Width', 'pedalcms' ),
 								'name'        => 'image_size_header_w',
-								'type'        => 'conditional_number',
+								'type'        => 'number',
 								'description' => __( 'Measured in pixels', 'pedalcms' ),
 								'default'     => 450,
 								'min'         => 0,
-								'show_if'     => [
-									'field' => 'image_size_header',
-									'value' => 'custom',
+								'conditional' => [
+									'rules' => [
+										[
+											'field' => 'image_size_header',
+											'value' => 'custom',
+										]
+									]
 								],
 							],
 
 							[
 								'label'       => __( 'Custom Height', 'pedalcms' ),
 								'name'        => 'image_size_header_h',
-								'type'        => 'conditional_number',
+								'type'        => 'number',
 								'description' => __( 'Measured in pixels', 'pedalcms' ),
 								'default'     => 336,
 								'min'         => 0,
-								'show_if'     => [
-									'field' => 'image_size_header',
-									'value' => 'custom',
+								'conditional' => [
+									'rules' => [
+										[
+											'field' => 'image_size_header',
+											'value' => 'custom',
+										]
+									]
 								],
 							],
 
@@ -217,6 +225,14 @@ return [
 								'label' => __( 'Header Background Image', 'pedalcms' ),
 								'name'  => 'program_archive_header_background',
 								'type'  => 'upload',
+								'conditional' => [
+									'rules' => [
+										[
+											'field' => 'presentation_mode',
+											'value' => 'full',
+										]
+									]
+								],
 							],
 
 							[
@@ -586,6 +602,14 @@ return [
 								'label' => __( 'Header Background Image', 'pedalcms' ),
 								'name'  => 'course_archive_header_background',
 								'type'  => 'upload',
+								'conditional' => [
+									'rules' => [
+										[
+											'field' => 'presentation_mode',
+											'value' => 'full',
+										]
+									]
+								],
 							],
 
 							[
@@ -708,6 +732,14 @@ return [
 								'label' => __( 'Archive Header Background Image', 'pedalcms' ),
 								'name'  => 'person_archive_header_background',
 								'type'  => 'upload',
+								'conditional' => [
+									'rules' => [
+										[
+											'field' => 'presentation_mode',
+											'value' => 'full',
+										]
+									]
+								],
 							],
 
 							[
