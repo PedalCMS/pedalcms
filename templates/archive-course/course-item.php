@@ -34,12 +34,8 @@ if ( $args['course_post'] instanceof \WP_Post ) :
 	<div class="course-content">
 		<?php if ( $args['course_post']->short_description ) : ?>
 
-		<button class="pdl-toggle__trigger" aria-expanded="false"
-			data-target="<?php echo esc_attr( $more_details_id ); ?>"
-			data-show-label="<?php echo esc_attr( $args['label_show'] ); ?> "
-			data-hide-label="<?php echo esc_attr( $args['label_hide'] ); ?> "><?php echo esc_html( $args['label_more_details'] ); ?></button>
 		<div id="<?php echo esc_attr( $more_details_id ); ?>"
-			class="pdl-toggle__content" hidden>
+			class="pdl-toggle__content">
 			<div class="course-details">
 				<p class="course-description"><?php echo esc_html( $args['course_post']->short_description ); ?>
 				</p>
