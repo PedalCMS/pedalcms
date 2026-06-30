@@ -35,7 +35,7 @@ class Relationship_Field extends Abstract_Field {
 				'post_type'      => 'post',
 				'multiple'       => true,
 				'return_format'  => 'id',
-				'posts_per_page' => 50,
+				'posts_per_page' => -1,
 			]
 		);
 	}
@@ -51,7 +51,7 @@ class Relationship_Field extends Abstract_Field {
 		$query = new \WP_Query(
 			[
 				'post_type'      => $post_type,
-				'posts_per_page' => (int) ( $this->config['posts_per_page'] ?? 50 ),
+				'posts_per_page' => (int) ( $this->config['posts_per_page'] ?? -1 ),
 				'post_status'    => 'publish',
 				'orderby'        => 'title',
 				'order'          => 'ASC',
