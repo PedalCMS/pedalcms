@@ -121,6 +121,26 @@ if ( ! function_exists( 'pdl_register_program_subpage' ) ) :
 endif;
 
 
+if ( ! function_exists( 'pdl_register_filter' ) ) :
+	/**
+	 * Registers a reusable archive filter.
+	 *
+	 * Intended to be called on the `pdl/register_filters` action. See
+	 * {@see \PedalCMS\Core\FilterManager::register()} for the accepted args.
+	 *
+	 * @since 0.1.0
+	 *
+	 * @param string $slug The filter slug (also the default query var).
+	 * @param array  $args Filter definition.
+	 * @return array|\WP_Error The stored definition on success, WP_Error on failure.
+	 */
+	function pdl_register_filter( string $slug, array $args = [] ) {
+		return \PedalCMS\Core\FilterManager::get_instance()->register( $slug, $args );
+	}
+
+endif;
+
+
 if ( ! function_exists( 'pdl_show_subpages' ) ) :
 	/**
 	 * Determines whether or not to display Program subpages.

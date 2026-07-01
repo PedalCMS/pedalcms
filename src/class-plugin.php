@@ -173,6 +173,15 @@ class Plugin {
 
 		Program::setup_subpage_manager();
 
+		FilterManager::get_instance();
+
+		/**
+		 * Fires so plugins can register reusable archive filters.
+		 *
+		 * @since 0.1.0
+		 */
+		do_action( 'pdl/register_filters' );
+
 		self::setup_labels();
 
 		self::register_content_model();
