@@ -132,7 +132,7 @@
   position: relative;
 
   @media (min-width: $screen-md-min) {
-    align-items: flex-start;
+    align-items: flex-end;
     display: flex;
     justify-content: space-between;
   }
@@ -188,7 +188,9 @@
 
   &__label {
     color: #555;
+		font-size: 0.85em;
     margin-bottom: 0.25em;
+		white-space: nowrap;
   }
 
   input[type='text'],
@@ -236,11 +238,11 @@
   display: flex;
   font-size: 0.85em;
   gap: var(--pdl-spacing);
-  padding-top: var(--pdl-spacing);
+	padding-bottom: 0.5em;
 
-  @media (min-width: $screen-md-min) {
-    padding-top: 1.5em;
-  }
+	@media (max-width: $screen-sm-max) {
+		flex-direction: column;
+	}
 }
 
 .archive .pdl-post-filters .search-button {

@@ -31,7 +31,7 @@ class PersonCategory extends CustomTaxonomy {
 		'public'             => true,
 		'show_ui'            => true,
 		'meta_box_cb'        => false,
-		'show_in_quick_edit' => false,
+		'show_in_quick_edit' => true,
 		'show_admin_column'  => true,
 		'show_in_nav_menus'  => false,
 		'show_tagcloud'      => false,

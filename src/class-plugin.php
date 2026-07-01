@@ -203,7 +203,7 @@ class Plugin {
 			'hide'                  => __( 'Hide', 'pedalcms' ),
 			'more_filters'          => __( 'More Filters', 'pedalcms' ),
 			'apply_filters'         => __( 'Search', 'pedalcms' ),
-			'reset_filters'         => __( 'Reset Filters', 'pedalcms' ),
+			'reset_filters'         => __( 'Reset', 'pedalcms' ),
 			'missing_filters_data'  => __( 'Missing data to render filters.', 'pedalcms' ),
 			/* translators: The placeholder is the name of the filter. It will be translated separately. */
 			'missing_filter_data'   => __( 'Missing data to render %s filter', 'pedalcms' ),

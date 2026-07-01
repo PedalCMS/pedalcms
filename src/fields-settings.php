@@ -131,26 +131,34 @@ return [
 							[
 								'label'       => __( 'Custom Width', 'pedalcms' ),
 								'name'        => 'image_size_header_w',
-								'type'        => 'conditional_number',
+								'type'        => 'number',
 								'description' => __( 'Measured in pixels', 'pedalcms' ),
 								'default'     => 450,
 								'min'         => 0,
-								'show_if'     => [
-									'field' => 'image_size_header',
-									'value' => 'custom',
+								'conditional' => [
+									'rules' => [
+										[
+											'field' => 'image_size_header',
+											'value' => 'custom',
+										]
+									]
 								],
 							],
 
 							[
 								'label'       => __( 'Custom Height', 'pedalcms' ),
 								'name'        => 'image_size_header_h',
-								'type'        => 'conditional_number',
+								'type'        => 'number',
 								'description' => __( 'Measured in pixels', 'pedalcms' ),
 								'default'     => 336,
 								'min'         => 0,
-								'show_if'     => [
-									'field' => 'image_size_header',
-									'value' => 'custom',
+								'conditional' => [
+									'rules' => [
+										[
+											'field' => 'image_size_header',
+											'value' => 'custom',
+										]
+									]
 								],
 							],
 
@@ -158,6 +166,7 @@ return [
 								'label'       => __( 'Display Breadcrumbs', 'pedalcms' ),
 								'name'        => 'display_breadcrumbs',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Disable this if you have two showing up.', 'pedalcms' ),
 								'default'     => 1,
 							],
@@ -216,12 +225,21 @@ return [
 								'label' => __( 'Header Background Image', 'pedalcms' ),
 								'name'  => 'program_archive_header_background',
 								'type'  => 'upload',
+								'conditional' => [
+									'rules' => [
+										[
+											'field' => 'presentation_mode',
+											'value' => 'full',
+										]
+									]
+								],
 							],
 
 							[
 								'label'       => __( 'Search Filters', 'pedalcms' ),
 								'name'        => 'program_archive_search_filters',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedalcms' ),
 								'options'     => $active_filter_options(
 									[
@@ -236,18 +254,10 @@ return [
 							],
 
 							[
-								'label'       => __( 'Filters Visible', 'pedalcms' ),
-								'name'        => 'program_archive_filters_showing',
-								'type'        => 'number',
-								'description' => __( 'The rest of the filters will be hidden behind a "Show More Filters" toggle. Set to zero to show all.', 'pedalcms' ),
-								'default'     => 0,
-								'min'         => 0,
-							],
-
-							[
 								'label'       => __( 'Show Images in List View', 'pedalcms' ),
 								'name'        => 'program_archive_show_images',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Should lists of programs include their featured images?', 'pedalcms' ),
 								'default'     => 0,
 							],
@@ -352,6 +362,7 @@ return [
 								'label'       => __( 'Enabled Program Subpages', 'pedalcms' ),
 								'name'        => 'enable_subpages_pdl_program',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'This enables subpages globally for all programs. Each subpage can also be disabled per-program.', 'pedalcms' ),
 								'options'     => [
 									'curriculum'    => __( 'Curriculum', 'pedalcms' ),
@@ -422,6 +433,7 @@ return [
 								'label'       => __( 'Show Credits', 'pedalcms' ),
 								'name'        => 'program_subpage_curriculum_show_credits',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Whether to display the credits column in courses tables.', 'pedalcms' ),
 								'default'     => 1,
 							],
@@ -547,6 +559,7 @@ return [
 								'label'       => __( 'Enable Course Catalog', 'pedalcms' ),
 								'name'        => 'course_enable',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Activate the Course Catalog post type and archive.', 'pedalcms' ),
 								'default'     => 0,
 							],
@@ -580,12 +593,21 @@ return [
 								'label' => __( 'Header Background Image', 'pedalcms' ),
 								'name'  => 'course_archive_header_background',
 								'type'  => 'upload',
+								'conditional' => [
+									'rules' => [
+										[
+											'field' => 'presentation_mode',
+											'value' => 'full',
+										]
+									]
+								],
 							],
 
 							[
 								'label'       => __( 'Search Filters', 'pedalcms' ),
 								'name'        => 'course_archive_search_filters',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedalcms' ),
 								'options'     => $active_filter_options(
 									[
@@ -598,15 +620,6 @@ return [
 									]
 								),
 								'default'     => [ 'keyword', 'session', 'subject', 'instruct-mode', 'college', 'department' ],
-							],
-
-							[
-								'label'       => __( 'Filters Visible', 'pedalcms' ),
-								'name'        => 'course_archive_filters_showing',
-								'type'        => 'number',
-								'description' => __( 'Set to zero to show all filters.', 'pedalcms' ),
-								'default'     => 3,
-								'min'         => 0,
 							],
 
 							[
@@ -667,6 +680,7 @@ return [
 								'label'       => __( 'Enable Faculty & Staff Directory', 'pedalcms' ),
 								'name'        => 'person_enable',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Activate the Personnel post type and archive.', 'pedalcms' ),
 								'default'     => 0,
 							],
@@ -700,12 +714,21 @@ return [
 								'label' => __( 'Archive Header Background Image', 'pedalcms' ),
 								'name'  => 'person_archive_header_background',
 								'type'  => 'upload',
+								'conditional' => [
+									'rules' => [
+										[
+											'field' => 'presentation_mode',
+											'value' => 'full',
+										]
+									]
+								],
 							],
 
 							[
 								'label'       => __( 'Archive Search Filters', 'pedalcms' ),
 								'name'        => 'person_archive_search_filters',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedalcms' ),
 								'options'     => $active_filter_options(
 									[
@@ -716,15 +739,6 @@ return [
 									]
 								),
 								'default'     => [ 'keyword', 'person-cat', 'college', 'department' ],
-							],
-
-							[
-								'label'       => __( 'Archive Filters Visible', 'pedalcms' ),
-								'name'        => 'person_archive_filters_showing',
-								'type'        => 'number',
-								'description' => __( 'Set to zero to show all filters.', 'pedalcms' ),
-								'default'     => 2,
-								'min'         => 0,
 							],
 
 							[
@@ -771,6 +785,7 @@ return [
 								'label'   => __( 'Enable', 'pedalcms' ),
 								'name'    => 'college_enable',
 								'type'    => 'checkbox',
+								'class'   => 'is-fancy-toggle',
 								'default' => 1,
 							],
 
@@ -778,6 +793,7 @@ return [
 								'label'       => __( 'Enable Archive', 'pedalcms' ),
 								'name'        => 'college_enable_archive',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
 								'default'     => 1,
 							],
@@ -800,6 +816,7 @@ return [
 								'label'       => __( 'Use With', 'pedalcms' ),
 								'name'        => 'college_object_type',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Choose the features to use this taxonomy with.', 'pedalcms' ),
 								'options'     => [
 									'pdl_program' => __( 'Programs', 'pedalcms' ),
@@ -821,6 +838,7 @@ return [
 								'label'       => __( 'Enable', 'pedalcms' ),
 								'name'        => 'department_enable',
 								'type'        => 'conditional_checkbox',
+								'class'       => 'is-fancy-toggle',
 								'conditional' => [ 'department_enable_archive', 'department_depends_college' ],
 								'default'     => 1,
 							],
@@ -829,6 +847,7 @@ return [
 								'label'       => __( 'Enable Archive', 'pedalcms' ),
 								'name'        => 'department_enable_archive',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
 								'default'     => 1,
 							],
@@ -837,6 +856,7 @@ return [
 								'label'       => __( 'Depends on College', 'pedalcms' ),
 								'name'        => 'department_depends_college',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'If enabled, Departments will belong to a College and the relationship will be enforced.', 'pedalcms' ),
 								'default'     => 1,
 							],
@@ -859,6 +879,7 @@ return [
 								'label'       => __( 'Use With', 'pedalcms' ),
 								'name'        => 'department_object_type',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Choose the features to use this taxonomy with.', 'pedalcms' ),
 								'options'     => [
 									'pdl_program' => __( 'Programs', 'pedalcms' ),
@@ -880,6 +901,7 @@ return [
 								'label'   => __( 'Enable', 'pedalcms' ),
 								'name'    => 'program_type_enable',
 								'type'    => 'checkbox',
+								'class'   => 'is-fancy-toggle',
 								'default' => 1,
 							],
 
@@ -887,6 +909,7 @@ return [
 								'label'       => __( 'Enable Archive', 'pedalcms' ),
 								'name'        => 'program_type_enable_archive',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
 								'default'     => 1,
 							],
@@ -917,6 +940,7 @@ return [
 								'label'   => __( 'Enable', 'pedalcms' ),
 								'name'    => 'instruct_mode_enable',
 								'type'    => 'checkbox',
+								'class'   => 'is-fancy-toggle',
 								'default' => 1,
 							],
 
@@ -946,6 +970,7 @@ return [
 								'label'   => __( 'Enable', 'pedalcms' ),
 								'name'    => 'subject_enable',
 								'type'    => 'checkbox',
+								'class'   => 'is-fancy-toggle',
 								'default' => 1,
 							],
 
@@ -975,6 +1000,7 @@ return [
 								'label'   => __( 'Enable', 'pedalcms' ),
 								'name'    => 'session_enable',
 								'type'    => 'checkbox',
+								'class'   => 'is-fancy-toggle',
 								'default' => 1,
 							],
 
@@ -1004,6 +1030,7 @@ return [
 								'label'   => __( 'Enable', 'pedalcms' ),
 								'name'    => 'person_cat_enable',
 								'type'    => 'checkbox',
+								'class'   => 'is-fancy-toggle',
 								'default' => 1,
 							],
 
@@ -1011,6 +1038,7 @@ return [
 								'label'       => __( 'Enable Archive', 'pedalcms' ),
 								'name'        => 'person_cat_enable_archive',
 								'type'        => 'checkbox',
+								'class'       => 'is-fancy-toggle',
 								'description' => __( 'If disabled, links will point to a filtered directory view.', 'pedalcms' ),
 								'default'     => 1,
 							],
