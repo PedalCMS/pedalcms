@@ -165,7 +165,13 @@ npm run env:start        # Start WordPress environment
 npm run env:stop         # Stop WordPress environment  
 npm run test:e2e         # Run Playwright end-to-end tests
 npm run test:e2e:headed  # Run Playwright tests in headed mode
+npm run playground:build # Build the release ZIP and local Playground bundle
+npm run playground:start # Build and open the complete demo locally
+npm run playground:test  # Build and smoke-test the complete demo headlessly
 ```
+
+The Playground commands use PHP 8.2 and the latest stable WordPress. Generated
+archives are written to `.cache/playground/` and are ignored by Git.
 
 ### Code Standards
 
