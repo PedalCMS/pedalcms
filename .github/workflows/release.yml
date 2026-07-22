@@ -4,6 +4,7 @@ on:
   release:
     types:
       - published
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -16,7 +17,7 @@ jobs:
       - name: Checkout release tag
         uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ github.event.release.tag_name || github.ref }}
 
       - name: Setup Node
         if: ${{ hashFiles('package.json') != '' }}
@@ -25,9 +26,13 @@ jobs:
           node-version: '20'
           cache: npm
 
+      - name: Install Node dependencies
+        if: ${{ hashFiles('package.json') != '' }}
+        run: npm ci
+
       - name: Build frontend assets
         if: ${{ hashFiles('package.json') != '' }}
-        run: npm ci && npm run build
+        run: npm run build
 
       - name: Setup PHP
         if: ${{ hashFiles('composer.json') != '' }}
@@ -39,120 +44,70 @@ jobs:
         if: ${{ hashFiles('composer.json') != '' }}
         run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
-      - name: Build release zip
-        id: build_zip
+      - name: Build and validate release zip
         shell: bash
-        run: |
-          set -euo pipefail
+        run: bash bin/build-release-zip.sh "${RUNNER_TEMP}/pedalcms.zip"
 
-          PLUGIN_MAIN="$(grep -lE '^[[:space:]]*\* Plugin Name:' ./*.php | head -n 1 || true)"
-
-          if [[ -z "${PLUGIN_MAIN}" ]]; then
-            echo "::error::Unable to detect plugin main file in repository root."
-            exit 1
-          fi
-
-          PLUGIN_MAIN="$(basename "${PLUGIN_MAIN}")"
-          PLUGIN_SLUG="${PLUGIN_MAIN%.php}"
-          BUILD_ROOT="$(mktemp -d)"
-          STAGE_DIR="${BUILD_ROOT}/${PLUGIN_SLUG}"
-          ZIP_PATH="${RUNNER_TEMP}/${PLUGIN_SLUG}.zip"
-
-          mkdir -p "${STAGE_DIR}"
-
-          git archive "${GITHUB_SHA}" | tar -x -C "${STAGE_DIR}"
-
-          if [[ -f package.json ]]; then
-            shopt -s nullglob
-            css_files=(assets/css/*.min.css)
-            js_files=(assets/js/*.min.js)
-            admin_js_files=(admin/js/*.min.js)
-
-            if [[ ${#css_files[@]} -eq 0 || ${#js_files[@]} -eq 0 || ${#admin_js_files[@]} -eq 0 ]]; then
-              echo "::error::Compiled frontend assets are missing."
-              exit 1
-            fi
-
-            rm -rf "${STAGE_DIR}/assets/css" "${STAGE_DIR}/assets/js" "${STAGE_DIR}/admin/js"
-            mkdir -p "${STAGE_DIR}/assets/css" "${STAGE_DIR}/assets/js" "${STAGE_DIR}/admin/js"
-
-            cp "${css_files[@]}" "${STAGE_DIR}/assets/css/"
-            cp "${js_files[@]}" "${STAGE_DIR}/assets/js/"
-            cp "${admin_js_files[@]}" "${STAGE_DIR}/admin/js/"
-
-            rm -rf "${STAGE_DIR}/assets/scss" "${STAGE_DIR}/assets/js/src" "${STAGE_DIR}/admin/js/src"
-          fi
-
-          if [[ -f composer.json ]]; then
-            if [[ ! -d vendor ]]; then
-              echo "::error::Composer dependencies were not installed; vendor directory is missing."
-              exit 1
-            fi
-
-            rm -rf "${STAGE_DIR}/vendor"
-            cp -R vendor "${STAGE_DIR}/vendor"
-          fi
-
-          rm -f \
-            "${STAGE_DIR}/Makefile" \
-            "${STAGE_DIR}/README.md" \
-            "${STAGE_DIR}/composer.json" \
-            "${STAGE_DIR}/.env.e2e.example" \
-            "${STAGE_DIR}/playwright.config.js" \
-            "${STAGE_DIR}/wpmu-config.xml"
-
-          (cd "${BUILD_ROOT}" && zip -rq "${ZIP_PATH}" "${PLUGIN_SLUG}")
-
-          echo "plugin_main=${PLUGIN_MAIN}" >> "${GITHUB_OUTPUT}"
-          echo "plugin_slug=${PLUGIN_SLUG}" >> "${GITHUB_OUTPUT}"
-          echo "zip_path=${ZIP_PATH}" >> "${GITHUB_OUTPUT}"
-
-      - name: Validate zip structure
+      - name: Build Playground bundle
         shell: bash
-        run: |
-          set -euo pipefail
+        run: bash bin/build-playground-bundle.sh "${RUNNER_TEMP}/pedalcms.zip" "${RUNNER_TEMP}/pedalcms-playground.zip"
 
-          PLUGIN_SLUG="${{ steps.build_zip.outputs.plugin_slug }}"
-          PLUGIN_MAIN="${{ steps.build_zip.outputs.plugin_main }}"
-          ZIP_PATH="${{ steps.build_zip.outputs.zip_path }}"
+      - name: Smoke test Playground demo
+        run: node scripts/test-playground.mjs "${RUNNER_TEMP}/pedalcms-playground.zip"
 
-          if ! unzip -l "${ZIP_PATH}" | grep -q "${PLUGIN_SLUG}/${PLUGIN_MAIN}$"; then
-            echo "::error::Zip does not contain expected plugin main file at ${PLUGIN_SLUG}/${PLUGIN_MAIN}."
-            exit 1
-          fi
-
-          for required_file in \
-            "assets/css/base.min.css" \
-            "assets/css/full.min.css" \
-            "assets/css/global.min.css" \
-            "assets/css/global-full.min.css" \
-            "assets/css/terms-grid.min.css" \
-            "assets/js/global.min.js" \
-            "admin/js/pdl-acf.min.js" \
-            "admin/js/pdl-conditional.min.js" \
-            "vendor/autoload.php"; do
-            if ! unzip -l "${ZIP_PATH}" | grep -q "${PLUGIN_SLUG}/${required_file}$"; then
-              echo "::error::Zip is missing required runtime file ${required_file}."
-              exit 1
-            fi
-          done
-
-          if unzip -l "${ZIP_PATH}" | grep -Eq "${PLUGIN_SLUG}/(tests/|node_modules/|\.github/|\.git/|\.cache/)"; then
-            echo "::error::Zip contains development-only files."
-            exit 1
-          fi
-
-          if unzip -l "${ZIP_PATH}" | grep -Eq "${PLUGIN_SLUG}/(assets/scss/|assets/js/src/|admin/js/src/)"; then
-            echo "::error::Zip contains source asset directories that should not ship in production."
-            exit 1
-          fi
-
-          if unzip -l "${ZIP_PATH}" | grep -Eq "${PLUGIN_SLUG}/(Makefile|README\.md|composer\.json|\.env\.e2e\.example|playwright\.config\.js|wpmu-config\.xml)$"; then
-            echo "::error::Zip contains non-runtime development files."
-            exit 1
-          fi
+      - name: Upload manual-run artifacts
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pedalcms-playground-preview
+          path: |
+            ${{ runner.temp }}/pedalcms.zip
+            ${{ runner.temp }}/pedalcms-playground.zip
 
       - name: Upload zip to GitHub Release
+        if: ${{ github.event_name == 'release' }}
         uses: softprops/action-gh-release@v3
         with:
-          files: ${{ steps.build_zip.outputs.zip_path }}
+          files: ${{ runner.temp }}/pedalcms.zip
+
+      - name: Generate release Playground URL
+        if: ${{ github.event_name == 'release' }}
+        shell: bash
+        run: |
+          PLAYGROUND_URL="$(node scripts/playground-blueprint.mjs release-url \
+            "${GITHUB_REPOSITORY}" \
+            "${{ github.event.release.tag_name }}" \
+            "${GITHUB_SHA}")"
+          echo "PLAYGROUND_URL=${PLAYGROUND_URL}" >> "${GITHUB_ENV}"
+
+      - name: Add Playground link to release description
+        if: ${{ github.event_name == 'release' }}
+        uses: actions/github-script@v8
+        env:
+          RELEASE_ID: ${{ github.event.release.id }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const startMarker = '<!-- pedalcms-playground:start -->';
+            const endMarker = '<!-- pedalcms-playground:end -->';
+            const section = [
+              startMarker,
+              '## Live demo',
+              '',
+              `[Launch this release in WordPress Playground](${process.env.PLAYGROUND_URL})`,
+              endMarker,
+            ].join('\n');
+            const markerPattern = new RegExp(
+              `\\n?${startMarker}[\\s\\S]*?${endMarker}\\n?`,
+              'g',
+            );
+            const originalBody = context.payload.release.body || '';
+            const preservedBody = originalBody.replace(markerPattern, '').trimEnd();
+            const body = preservedBody ? `${preservedBody}\n\n${section}` : section;
+
+            await github.rest.repos.updateRelease({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: Number(process.env.RELEASE_ID),
+              body,
+            });
