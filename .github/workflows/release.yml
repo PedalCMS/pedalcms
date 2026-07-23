@@ -82,7 +82,7 @@ jobs:
 
       - name: Add Playground link to release description
         if: ${{ github.event_name == 'release' }}
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         env:
           RELEASE_ID: ${{ github.event.release.id }}
         with:
