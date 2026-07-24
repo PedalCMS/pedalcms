@@ -2,7 +2,7 @@
 Requires at least: 5.6
 Tested up to: 6.0
 Requires PHP: 8.2
-Stable tag: main
+Stable tag: 0.4.0
 License: GPL-2.0+
 
 A program marketing powerhouse that includes: program listings, course offerings, team directory, and more.

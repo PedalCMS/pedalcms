@@ -38,6 +38,8 @@ namespace PedalCMS\Core;
 
 defined( 'ABSPATH' ) || exit;
 
+defined( 'PEDALCMS_VERSION' ) || define( 'PEDALCMS_VERSION', '0.4.0' );
+
 $includes = [
 	'/src/_autoload.php',
 	'/vendor/autoload.php',
