@@ -26,7 +26,7 @@ cleanup() {
 trap cleanup EXIT
 
 mkdir -p "${STAGE_DIR}" "$(dirname "${OUTPUT_ZIP}")"
-git archive "${GITHUB_SHA:-HEAD}" | tar -x -C "${STAGE_DIR}"
+git archive "${RELEASE_SHA:-HEAD}" | tar -x -C "${STAGE_DIR}"
 
 if [[ -f package.json ]]; then
 	shopt -s nullglob
