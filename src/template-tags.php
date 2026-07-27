@@ -83,10 +83,11 @@ if ( ! function_exists( 'pdl_get_option' ) ) :
 	 * Gets a plugin option setting.
 	 *
 	 * @param string $option The option key.
+	 * @param mixed $default The default value.
 	 * @return mixed The option value.
 	 */
-	function pdl_get_option( string $option ) {
-		return \PedalCMS\Core\Plugin::get_option( $option );
+	function pdl_get_option( string $option, $default = null ) {
+		return \PedalCMS\Core\Plugin::get_option( $option, $default );
 	}
 
 endif;
