@@ -74,7 +74,7 @@ function register_assets() {
  * @return void
  */
 function enqueue_assets() {
-	$presentation_mode = Plugin::get_option( 'presentation_mode' );
+	$presentation_mode = Plugin::get_option( 'presentation_mode', 'full' );
 
 	if ( ! $presentation_mode ) {
 		$presentation_mode = 'base';

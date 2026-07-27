@@ -160,8 +160,8 @@ class Department extends CustomTaxonomy {
 	 * @return bool Whether departments depend on colleges.
 	 */
 	public static function depends_on_college(): bool {
-		return Plugin::get_option( 'college_enable' ) &&
-			Plugin::get_option( 'department_depends_college' );
+		return Plugin::get_option( 'college_enable', true ) &&
+			Plugin::get_option( 'department_depends_college', true );
 	}
 
 	/**

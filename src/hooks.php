@@ -58,7 +58,7 @@ function options_register_taxonomy_args( array $args, string $taxonomy ): array 
 	}
 
 	$taxonomy       = str_replace( 'pdl_', '', $taxonomy );
-	$enable_archive = Plugin::get_option( $taxonomy . '_enable_archive' );
+	$enable_archive = Plugin::get_option( $taxonomy . '_enable_archive', false );
 
 	if ( false !== $enable_archive ) {
 		/*
@@ -172,13 +172,13 @@ function document_title_parts( array $title ): array {
 function options_wp_head() {
 	$var_ptrn = '--pdl-%s: %s';
 	$options  = [
-		'active_color',
-		'active_color_text',
+		'active_color' => '#000',
+		'active_color_text' => '#fff',
 	];
 	$vars     = [];
 
-	foreach ( $options as $option ) {
-		$value = Plugin::get_option( $option );
+	foreach ( $options as $option => $default ) {
+		$value = Plugin::get_option( $option, $default );
 
 		if ( $value ) {
 			$vars[] = sprintf(
@@ -206,7 +206,7 @@ function options_wp_head() {
  * @return array The resulting array of body class names.
  */
 function body_class( array $classes ): array {
-	$presentation_mode = Plugin::get_option( 'presentation_mode' );
+	$presentation_mode = Plugin::get_option( 'presentation_mode', 'full' );
 
 	if ( $presentation_mode ) {
 		$classes[] = 'pdl-present-mode--' . $presentation_mode;
@@ -228,7 +228,7 @@ function body_class( array $classes ): array {
 function admin_body_class( string $classes ): string {
 	$current_screen = get_current_screen();
 	if ( 'settings_page_' . Plugin::$options_page_slug === $current_screen->id ) {
-		$presentation_mode = Plugin::get_option( 'presentation_mode' );
+		$presentation_mode = Plugin::get_option( 'presentation_mode', 'full' );
 
 		if ( $presentation_mode ) {
 			$classes .= ' pdl-present-mode--' . $presentation_mode;
@@ -594,11 +594,11 @@ function options_template_defaults( $defaults, $template ) {
 	}
 
 	$post_type         = str_replace( 'pdl_', '', $post_type );
-	$presentation_mode = Plugin::get_option( 'presentation_mode' );
+	$presentation_mode = Plugin::get_option( 'presentation_mode', 'full' );
 
 	switch ( $template ) {
 		case 'common/breadcrumbs':
-			$defaults['show_breadcrumbs'] = Plugin::get_option( 'display_breadcrumbs' );
+			$defaults['show_breadcrumbs'] = Plugin::get_option( 'display_breadcrumbs', true );
 
 			break;
 		case 'common/page-header-backdrop':
@@ -623,7 +623,7 @@ function options_template_defaults( $defaults, $template ) {
 
 			break;
 		case 'single-program/courses-table':
-			$show_credits = Plugin::get_option( 'program_subpage_curriculum_show_credits' );
+			$show_credits = Plugin::get_option( 'program_subpage_curriculum_show_credits', true );
 
 			if ( in_array( $show_credits, [ '0','1' ], true ) ) {
 				$defaults['show_credits'] = (bool) $show_credits;
@@ -671,7 +671,7 @@ function options_post_featured_image( $defaults, $post_type, $presentation_mode 
 		$defaults['fallback_attachment_id'] = Plugin::get_option( $post_type . '_featured_image' );
 
 		if ( is_post_type_archive() ) {
-			$defaults['show_image'] = Plugin::get_option( $post_type . '_archive_show_images' );
+			$defaults['show_image'] = Plugin::get_option( $post_type . '_archive_show_images', true );
 
 			if ( 'full' === $presentation_mode ) {
 				$defaults['image_wrapper_class'] = $zoom_class;
@@ -695,15 +695,15 @@ function options_post_featured_image( $defaults, $post_type, $presentation_mode 
  * @return void The modified template defaults.
  */
 function options_header_image_size( $defaults ) {
-	$size = Plugin::get_option( 'image_size_header' );
+	$size = Plugin::get_option( 'image_size_header', 'custom' );
 
 	if ( $size ) {
 		$defaults['image_size'] = $size;
 
 		if ( 'custom' === $defaults['image_size'] ) {
 			$defaults['image_size'] = [
-				(int) Plugin::get_option( 'image_size_header_w' ),
-				(int) Plugin::get_option( 'image_size_header_h' ),
+				(int) Plugin::get_option( 'image_size_header_w', 450 ),
+				(int) Plugin::get_option( 'image_size_header_h', 336 ),
 			];
 		}
 	}

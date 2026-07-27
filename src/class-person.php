@@ -222,6 +222,6 @@ class Person extends CustomPostType {
 	 * @return boolean
 	 */
 	public static function is_block_editor_enabled(): bool {
-		return (bool) Plugin::get_option( 'enable_block_editor_personnel' );
+		return (bool) Plugin::get_option( 'enable_block_editor_personnel', false );
 	}
 }
