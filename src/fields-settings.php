@@ -101,7 +101,7 @@ return [
 								'name'        => 'active_color',
 								'type'        => 'color',
 								'description' => __( 'The color to be used for links and buttons.', 'pedalcms' ),
-								'default'     => '#254fab',
+								'default'     => '#000000',
 							],
 
 							[
@@ -125,7 +125,7 @@ return [
 									'2048x2048'    => '2048x2048 (2048 &times; 2048)',
 									'custom'       => __( 'Custom', 'pedalcms' ),
 								],
-								'default' => null,
+								'default' => 'custom',
 							],
 
 							[
@@ -373,7 +373,7 @@ return [
 									'faqs'          => __( 'FAQs', 'pedalcms' ),
 									'news'          => __( 'News', 'pedalcms' ),
 								],
-								'default'     => [],
+								'default'     => ['curriculum', 'careers', 'faculty-staff', 'cost', 'apply', 'faqs', 'news'],
 							],
 
 							// Careers subpage
@@ -561,7 +561,7 @@ return [
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Activate the Course Catalog post type and archive.', 'pedalcms' ),
-								'default'     => 0,
+								'default'     => true,
 							],
 
 							[
@@ -682,7 +682,7 @@ return [
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Activate the Personnel post type and archive.', 'pedalcms' ),
-								'default'     => 0,
+								'default'     => true,
 							],
 
 							[
@@ -786,7 +786,7 @@ return [
 								'name'    => 'college_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
-								'default' => 1,
+								'default' => true,
 							],
 
 							[
@@ -795,7 +795,7 @@ return [
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
-								'default'     => 1,
+								'default'     => true,
 							],
 
 							[
@@ -840,7 +840,7 @@ return [
 								'type'        => 'conditional_checkbox',
 								'class'       => 'is-fancy-toggle',
 								'conditional' => [ 'department_enable_archive', 'department_depends_college' ],
-								'default'     => 1,
+								'default'     => true,
 							],
 
 							[
@@ -849,7 +849,7 @@ return [
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
-								'default'     => 1,
+								'default'     => true,
 							],
 
 							[
@@ -858,7 +858,7 @@ return [
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'If enabled, Departments will belong to a College and the relationship will be enforced.', 'pedalcms' ),
-								'default'     => 1,
+								'default'     => true,
 							],
 
 							[
@@ -902,7 +902,7 @@ return [
 								'name'    => 'program_type_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
-								'default' => 1,
+								'default' => true,
 							],
 
 							[
@@ -911,7 +911,7 @@ return [
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
-								'default'     => 1,
+								'default'     => true,
 							],
 
 							[
@@ -941,7 +941,7 @@ return [
 								'name'    => 'instruct_mode_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
-								'default' => 1,
+								'default' => true,
 							],
 
 							[
@@ -971,7 +971,7 @@ return [
 								'name'    => 'subject_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
-								'default' => 1,
+								'default' => true,
 							],
 
 							[
@@ -1001,7 +1001,7 @@ return [
 								'name'    => 'session_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
-								'default' => 1,
+								'default' => true,
 							],
 
 							[
@@ -1031,7 +1031,7 @@ return [
 								'name'    => 'person_cat_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
-								'default' => 1,
+								'default' => true,
 							],
 
 							[
@@ -1040,7 +1040,7 @@ return [
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'If disabled, links will point to a filtered directory view.', 'pedalcms' ),
-								'default'     => 1,
+								'default'     => true,
 							],
 
 							[
