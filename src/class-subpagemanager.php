@@ -102,18 +102,8 @@ class SubpageManager {
 	 */
 	public function add_subpage( Subpage $subpage ) {
 		if ( $subpage->is_builtin() ) {
-			$enabled = $this->get_enabled_subpages();
-
 			$this->builtin[] = $subpage;
 			$this->sort( 'builtin' );
-
-			if ( 'index' !== $subpage->slug && ! in_array( $subpage->slug, $enabled, true ) ) {
-				return new \WP_Error(
-					'warning',
-					'Subpage is not enabled.',
-					$subpage
-				);
-			}
 		}
 
 		/**
@@ -285,11 +275,7 @@ class SubpageManager {
 		 * is that in a collision between an attachment and a subpage with the
 		 * same slug, our subpages will win. Sorry not sorry.
 		 */
-		foreach ( $this->subpages as $subpage ) {
-			if ( 'index' === $subpage->slug ) {
-				continue;
-			}
-
+		foreach ( $this->get_subpages(false, 'objects') as $subpage ) {
 			add_rewrite_rule(
 				sprintf( $pretty_pattern, $post_obj->rewrite['slug'], $subpage->slug ),
 				sprintf( $real_pattern, $post_obj->query_var, $this->query_var, $subpage->slug ),
@@ -508,17 +494,11 @@ class SubpageManager {
 	 * The order of these should _not_ be trusted.
 	 *
 	 * @since 0.1.0
+	 * @since 0.7.0 Changed to return all registered subpages, since all registered subpages are enabled by default.
 	 *
 	 * @return array List of subpages by slug.
 	 */
 	public function get_enabled_subpages(): array {
-		// TODO: Make this dynamic based on post type.
-		$enabled = get_option( 'options_pdl_enable_subpages_' . $this->post_type );
-
-		if ( ! is_array( $enabled ) ) {
-			$enabled = [];
-		}
-
 		/**
 		 * Filters the list of currently enabled subpages.
 		 *
@@ -526,7 +506,12 @@ class SubpageManager {
 		 *
 		 * @param array $filters The subpages by slug.
 		 */
-		return apply_filters( 'pdl/enabled_subpages', $enabled, $this->post_type, $this->subpages );
+		return apply_filters(
+			'pdl/enabled_subpages',
+			wp_list_pluck( $this->subpages, 'slug' ),
+			$this->post_type,
+			$this->subpages
+		);
 	}
 
 	/**

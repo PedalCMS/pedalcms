@@ -278,13 +278,13 @@ class Plugin {
 		self::$post_types_enabled[] = Program::POST_TYPE;
 
 		self::$post_types[] = Course::POST_TYPE;
-		if ( self::get_option( 'course_enable' ) ) {
+		if ( self::get_option( 'course_enable', true ) ) {
 			Course::get_instance()->register();
 			self::$post_types_enabled[] = Course::POST_TYPE;
 		}
 
 		self::$post_types[] = Person::POST_TYPE;
-		if ( self::get_option( 'person_enable' ) ) {
+		if ( self::get_option( 'person_enable', true ) ) {
 			Person::get_instance()->register();
 			self::$post_types_enabled[] = Person::POST_TYPE;
 		}
@@ -298,7 +298,7 @@ class Plugin {
 		}
 
 		self::$taxonomies[] = PersonCategory::TAXONOMY;
-		if ( self::get_option( 'person_cat_enable' ) ) {
+		if ( self::get_option( 'person_cat_enable', true ) ) {
 			PersonCategory::get_instance()->register();
 			self::$taxonomies_enabled[] = PersonCategory::TAXONOMY;
 		}
@@ -310,31 +310,31 @@ class Plugin {
 		}
 
 		self::$taxonomies[] = Department::TAXONOMY;
-		if ( self::get_option( 'department_enable' ) ) {
+		if ( self::get_option( 'department_enable', true ) ) {
 			Department::get_instance()->register();
 			self::$taxonomies_enabled[] = Department::TAXONOMY;
 		}
 
 		self::$taxonomies[] = ProgramType::TAXONOMY;
-		if ( self::get_option( 'program_type_enable' ) ) {
+		if ( self::get_option( 'program_type_enable', true ) ) {
 			ProgramType::get_instance()->register();
 			self::$taxonomies_enabled[] = ProgramType::TAXONOMY;
 		}
 
 		self::$taxonomies[] = InstructionMode::TAXONOMY;
-		if ( self::get_option( 'instruct_mode_enable' ) ) {
+		if ( self::get_option( 'instruct_mode_enable', true ) ) {
 			InstructionMode::get_instance()->register();
 			self::$taxonomies_enabled[] = InstructionMode::TAXONOMY;
 		}
 
 		self::$taxonomies[] = Subject::TAXONOMY;
-		if ( self::get_option( 'subject_enable' ) ) {
+		if ( self::get_option( 'subject_enable', true ) ) {
 			Subject::get_instance()->register();
 			self::$taxonomies_enabled[] = Subject::TAXONOMY;
 		}
 
 		self::$taxonomies[] = Session::TAXONOMY;
-		if ( self::get_option( 'session_enable' ) ) {
+		if ( self::get_option( 'session_enable', true ) ) {
 			Session::get_instance()->register();
 			self::$taxonomies_enabled[] = Session::TAXONOMY;
 		}
@@ -531,7 +531,7 @@ class Plugin {
 		$block_attrs = wp_json_encode( [ 'name' => $template_name ] );
 
 		return sprintf(
-			'<!-- wp:template-part {"slug":"header","tagName":"header"} /-->\n<!-- wp:pedalcms/template-render %1$s /-->\n<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->',
+			'<!-- wp:template-part {"slug":"header","tagName":"header"} /--><!-- wp:pedalcms/template-render %1$s /--><!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->',
 			$block_attrs
 		);
 	}
