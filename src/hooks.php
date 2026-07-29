@@ -32,6 +32,7 @@ add_filter( 'pdl/template_defaults', __NAMESPACE__ . '\options_template_defaults
 add_filter( 'pdl/template_args', __NAMESPACE__ . '\options_template_args', 5, 2 );
 add_filter( 'pdl/get_label', __NAMESPACE__ . '\options_plugin_labels', 5, 3 );
 add_filter( 'pdl/add_subpage', __NAMESPACE__ . '\options_subpage_labels', 5, 2 );
+add_filter( 'pdl/get_subpages', __NAMESPACE__ . '\options_get_subpages', 5, 3 );
 
 /**
  * Modifies the taxonomy args based on plugin options.
@@ -797,6 +798,41 @@ function options_subpage_labels( $subpage, $post_type ) {
 	}
 
 	return $subpage;
+}
+
+/**
+ * Filters the subpages to remove those that are disabled in plugin options.
+ *
+ * Called on filter: `pdl/get_subpages`
+ *
+ * @since 0.7.0
+ *
+ * @param array $subpages The current list of subpages.
+ * @param string $list_name The name of the subpage list, either ('builtin' or 'subpages').
+ * @param string $post_type The current post type.
+ * @return array The filtered list of subpages.
+ */
+function options_get_subpages( $subpages, $list_name, $post_type ) {
+	if ( 'builtin' === $list_name ) {
+		return $subpages;
+	}
+
+	$enabled = Plugin::get_option(
+		'enable_subpages_' . $post_type,
+		null
+	);
+
+	if ( !is_array( $enabled ) ) {
+		return $subpages;
+	}
+
+	foreach ( $subpages as $i => $subpage ) {
+		if ( $subpage->is_builtin() && !in_array( $subpage->slug, $enabled ) ) {
+			unset( $subpages[ $i ] );
+		}
+	}
+
+	return $subpages;
 }
 
 /**
