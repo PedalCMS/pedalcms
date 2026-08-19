@@ -12,7 +12,7 @@
     ],
 	"require": {
 		"php": ">=8.2.0",
-		"pedalcms/cassette-cmf": "^0.0.9"
+		"pedalcms/cassette-cmf": "^0.1.0"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "3.10.3",
