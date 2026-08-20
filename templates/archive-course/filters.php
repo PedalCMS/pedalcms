@@ -11,7 +11,6 @@ defined( 'ABSPATH' ) || exit;
 
 $args = [
 	'post_type'           => 'pdl_course',
-	'break_filters_after' => 3,
 	'filters'             => [
 		'keyword',
 		'session',
