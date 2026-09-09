@@ -245,6 +245,38 @@ class Plugin {
 	}
 
 	/**
+	 * Determines whether the settings admin UI should be registered.
+	 *
+	 * Deployments that need to lock configuration down can define the
+	 * `PEDALCMS_DISABLE_SETTINGS_UI` constant as true, or filter the return
+	 * value, to remove the settings page and the links pointing at it.
+	 *
+	 * Only the UI is affected. The settings system itself is untouched:
+	 * stored values are still read by {@see Plugin::get_option()} and can
+	 * still be written programmatically, so a site can be configured first
+	 * and locked down afterwards.
+	 *
+	 * @since 0.6.4
+	 *
+	 * @return bool True when the settings UI should be registered.
+	 */
+	public static function settings_ui_enabled(): bool {
+		$enabled = ! ( defined( 'PEDALCMS_DISABLE_SETTINGS_UI' ) && PEDALCMS_DISABLE_SETTINGS_UI );
+
+		/**
+		 * Filters whether the settings admin UI is registered.
+		 *
+		 * Allows the settings UI to be disabled programmatically, for example
+		 * for everyone but a specific user or role.
+		 *
+		 * @since 0.6.4
+		 *
+		 * @param bool $enabled Whether the settings UI should be registered.
+		 */
+		return (bool) apply_filters( 'pdl/settings_ui_enabled', $enabled );
+	}
+
+	/**
 	 * Add settings link to plugin actions.
 	 *
 	 * Called on filter: `plugin_action_links`
@@ -257,6 +289,10 @@ class Plugin {
 	 * @return string[] The filtered actions.
 	 */
 	public static function add_settings_link( $actions, $plugin_file ) {
+		if ( ! self::settings_ui_enabled() ) {
+			return $actions;
+		}
+
 		$this_plugin = sprintf( '%1$s/%1$s.php', self::$name );
 
 		if ( $this_plugin === $plugin_file ) {
@@ -539,26 +575,28 @@ class Plugin {
 	/**
 	 * Registers a server-rendered block used by plugin templates in block themes.
 	 *
+	 * The block type is defined in src/blocks/template-render/block.json so that
+	 * it carries an editor script. Registering only in PHP leaves the block out
+	 * of the editor's client-side registry, which is what made the Site Editor
+	 * report it as an unsupported block.
+	 *
 	 * @return void
 	 */
 	private static function register_legacy_template_block(): void {
+		$block_path = '/src/blocks/template-render';
+		$script     = $block_path . '/index.js';
+
+		wp_register_script(
+			'pedalcms-template-render-editor',
+			self::$url . $script,
+			[ 'wp-blocks', 'wp-block-editor', 'wp-components', 'wp-element', 'wp-i18n' ],
+			filemtime( self::$path . $script ),
+			true
+		);
+
 		register_block_type(
-			'pedalcms/template-render',
-			[
-				'api_version'     => 3,
-				'render_callback' => [ self::class, 'render_legacy_template_block' ],
-				'attributes'      => [
-					'name' => [
-						'type' => 'string',
-					],
-				],
-				'supports'        => [
-					'html'     => false,
-					'inserter' => false,
-					'multiple' => false,
-					'reusable' => false,
-				],
-			]
+			self::$path . $block_path,
+			[ 'render_callback' => [ self::class, 'render_legacy_template_block' ] ]
 		);
 	}
 

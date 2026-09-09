@@ -64,6 +64,27 @@ A comprehensive WordPress plugin designed as a **program marketing powerhouse** 
 composer require pedalcms/pedalcms
 ```
 
+### Configuration Constants
+
+Define these in `wp-config.php` before WordPress loads plugins.
+
+| Constant | Effect |
+|---|---|
+| `PEDALCMS_DISABLE_SETTINGS_UI` | Removes the Pedal CMS settings page and the links to it. Stored settings still apply and can still be changed programmatically. |
+
+```php
+define( 'PEDALCMS_DISABLE_SETTINGS_UI', true );
+```
+
+To decide at runtime instead — per role, per environment — filter
+`pdl/settings_ui_enabled`:
+
+```php
+add_filter( 'pdl/settings_ui_enabled', function ( $enabled ) {
+	return current_user_can( 'manage_network' );
+} );
+```
+
 ## 🎨 Template System
 
 PedalCMS includes a complete template system for displaying content:

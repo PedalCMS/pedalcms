@@ -87,6 +87,68 @@ function get_filtered_results_breadcrumb_label(): string {
 }
 
 /**
+ * Determines whether the current view is an unfiltered archive of one of our post types.
+ *
+ * The filtered case is handled separately by each adapter, because it rebuilds
+ * the trail rather than adjusting a single crumb.
+ *
+ * @since 0.6.4
+ *
+ * @return bool True on one of our post type archives with no filters applied.
+ */
+function is_unfiltered_archive(): bool {
+	$post_types = Plugin::post_types();
+
+	return is_post_type_archive( $post_types ) && ! pdl_is_filtered_results( $post_types );
+}
+
+/**
+ * Applies our `breadcrumb_label` to the archive crumb of an existing trail.
+ *
+ * Third-party generators build the archive crumb from post_type_archive_title(),
+ * so the crumb still carrying that exact text is the one to relabel. Matching on
+ * the text rather than on position means a trail that hides the current item, or
+ * orders its crumbs differently, is left untouched instead of having some other
+ * crumb rewritten.
+ *
+ * @since 0.6.4
+ *
+ * @param array $crumbs The current trail of crumbs.
+ * @param string|int $text_key The key holding the crumb text for this generator.
+ * @return array The filtered trail of crumbs.
+ */
+function relabel_archive_crumb( array $crumbs, string|int $text_key ): array {
+	$crumb = get_archive_crumb();
+
+	if ( empty( $crumb ) ) {
+		return $crumbs;
+	}
+
+	$default = post_type_archive_title( '', false );
+
+	if ( $crumb['text'] === $default ) {
+		// No breadcrumb_label override is registered for this post type.
+		return $crumbs;
+	}
+
+	foreach ( array_reverse( array_keys( $crumbs ) ) as $key ) {
+		// Generators hand us arrays, but a third-party filter may have injected
+		// something else into the trail. Skip rather than fatal on it.
+		if ( ! is_array( $crumbs[ $key ] ) ) {
+			continue;
+		}
+
+		if ( isset( $crumbs[ $key ][ $text_key ] ) && $default === $crumbs[ $key ][ $text_key ] ) {
+			$crumbs[ $key ][ $text_key ] = $crumb['text'];
+
+			break;
+		}
+	}
+
+	return $crumbs;
+}
+
+/**
  * Adds a crumb for the current program subpage to NavXT.
  *
  * Called on action: bcn_before_fill
@@ -102,7 +164,10 @@ function navxt_add_subpage( object $trail ): void {
 }
 
 /**
- * Rebuilds the entire trail for archives when using Breadcrumb NavXT.
+ * Rebuilds the entire trail for filtered archives when using Breadcrumb NavXT.
+ *
+ * On an unfiltered archive the trail is correct apart from the label, so only
+ * the archive crumb is relabelled.
  *
  * Called on action: bcn_after_fill
  *
@@ -110,6 +175,12 @@ function navxt_add_subpage( object $trail ): void {
  * @return void
  */
 function navxt_replace_archive_trail( object $trail ) {
+	if ( is_unfiltered_archive() ) {
+		navxt_relabel_archive( $trail );
+
+		return;
+	}
+
 	if ( pdl_is_filtered_results( Plugin::post_types() ) ) {
 		if ( $trail->opt['bhome_display'] ) {
 			$home = array_pop( $trail->breadcrumbs );
@@ -123,6 +194,44 @@ function navxt_replace_archive_trail( object $trail ) {
 
 		if ( $trail->opt['bhome_display'] ) {
 			$trail->breadcrumbs[] = $home;
+		}
+	}
+}
+
+/**
+ * Applies our `breadcrumb_label` to the NavXT archive crumb.
+ *
+ * NavXT builds crumbs as bcn_breadcrumb objects rather than arrays, so the
+ * shared relabel_archive_crumb() helper does not apply here.
+ *
+ * @since 0.6.4
+ *
+ * @param object $trail The current breadcrumb trail.
+ * @return void
+ */
+function navxt_relabel_archive( object $trail ): void {
+	$crumb = get_archive_crumb();
+
+	if ( empty( $crumb ) ) {
+		return;
+	}
+
+	$default = post_type_archive_title( '', false );
+
+	if ( $crumb['text'] === $default ) {
+		// No breadcrumb_label override is registered for this post type.
+		return;
+	}
+
+	foreach ( $trail->breadcrumbs as $breadcrumb ) {
+		if ( ! method_exists( $breadcrumb, 'get_title' ) || ! method_exists( $breadcrumb, 'set_title' ) ) {
+			continue;
+		}
+
+		if ( $default === $breadcrumb->get_title() ) {
+			$breadcrumb->set_title( $crumb['text'] );
+
+			break;
 		}
 	}
 }
@@ -180,6 +289,10 @@ function yoast_update_trail( array $crumbs ): array {
 		return yoast_replace_trail( $crumbs );
 	}
 
+	if ( is_unfiltered_archive() ) {
+		return relabel_archive_crumb( $crumbs, 'text' );
+	}
+
 	return $crumbs;
 }
 
@@ -229,6 +342,10 @@ function aioseo_update_trail( array $crumbs ): array {
 
 	if ( pdl_is_filtered_results( Plugin::post_types() ) ) {
 		return aioseo_replace_trail( $crumbs );
+	}
+
+	if ( is_unfiltered_archive() ) {
+		return relabel_archive_crumb( $crumbs, 'label' );
 	}
 
 	return $crumbs;
@@ -293,6 +410,10 @@ function rankmath_update_trail( array $crumbs, \RankMath\Frontend\Breadcrumbs $b
 
 	if ( pdl_is_filtered_results( Plugin::post_types() ) ) {
 		return rankmath_replace_trail( $crumbs );
+	}
+
+	if ( is_unfiltered_archive() ) {
+		return relabel_archive_crumb( $crumbs, 0 );
 	}
 
 	return $crumbs;
