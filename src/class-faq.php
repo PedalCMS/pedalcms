@@ -17,6 +17,11 @@ class FAQ extends CustomPostType {
 	/**
 	 * @inheritdoc
 	 */
+	public static string $enter_title_text = '';
+
+	/**
+	 * @inheritdoc
+	 */
 	public array $args = [
 		'rewrite'         => [ 'slug' => 'faq' ],
 		'has_archive'     => 'faqs',
@@ -37,7 +42,7 @@ class FAQ extends CustomPostType {
 	 * @inheritdoc
 	 */
 	protected function setup_labels(): void {
-		self::$enter_title_text = __( 'Enter the Question', 'pedalcms' );
+		static::$enter_title_text = __( 'Enter the Question', 'pedalcms' );
 
 		$this->args['labels'] = [
 			'name'                     => _x( 'FAQs', 'post type general name', 'pedalcms' ),

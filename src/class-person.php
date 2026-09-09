@@ -14,6 +14,10 @@ class Person extends CustomPostType {
 	 */
 	public const POST_TYPE = 'pdl_person';
 
+	/**
+	 * @inheritdoc
+	 */
+	public static string $enter_title_text = '';
 
 	/**
 	 * @inheritdoc
@@ -50,7 +54,7 @@ class Person extends CustomPostType {
 	 * @inheritdoc
 	 */
 	protected function setup_labels(): void {
-		self::$enter_title_text = __( 'Enter the Full Name', 'pedalcms' );
+		static::$enter_title_text = __( 'Enter the Full Name', 'pedalcms' );
 
 		$this->args['labels'] = [
 			'name'                     => _x( 'Personnel', 'post type general name', 'pedalcms' ),

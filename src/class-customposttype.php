@@ -32,6 +32,11 @@ abstract class CustomPostType extends CustomContentObject {
 	/**
 	 * The placeholder text to replace 'Add title' in the edit screen.
 	 *
+	 * Subclasses that set this MUST redeclare the property on themselves. A
+	 * static property declared here is a single storage slot shared by every
+	 * subclass that does not redeclare it, so assigning to the inherited
+	 * property overwrites the placeholder for all other post types.
+	 *
 	 * @var string
 	 */
 	public static string $enter_title_text = '';
