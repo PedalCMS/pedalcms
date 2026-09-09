@@ -1,0 +1,22 @@
+{
+	"apiVersion": 3,
+	"name": "pedalcms/template-render",
+	"version": "0.1.0",
+	"title": "PedalCMS Template",
+	"category": "theme",
+	"icon": "layout",
+	"description": "Renders the PedalCMS template for this content type.",
+	"attributes": {
+		"name": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"html": false,
+		"inserter": false,
+		"multiple": false,
+		"reusable": false
+	},
+	"editorScript": "pedalcms-template-render-editor",
+	"textdomain": "pedalcms"
+}

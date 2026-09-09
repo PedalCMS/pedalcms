@@ -575,26 +575,28 @@ class Plugin {
 	/**
 	 * Registers a server-rendered block used by plugin templates in block themes.
 	 *
+	 * The block type is defined in src/blocks/template-render/block.json so that
+	 * it carries an editor script. Registering only in PHP leaves the block out
+	 * of the editor's client-side registry, which is what made the Site Editor
+	 * report it as an unsupported block.
+	 *
 	 * @return void
 	 */
 	private static function register_legacy_template_block(): void {
+		$block_path = '/src/blocks/template-render';
+		$script     = $block_path . '/index.js';
+
+		wp_register_script(
+			'pedalcms-template-render-editor',
+			self::$url . $script,
+			[ 'wp-blocks', 'wp-block-editor', 'wp-components', 'wp-element', 'wp-i18n' ],
+			filemtime( self::$path . $script ),
+			true
+		);
+
 		register_block_type(
-			'pedalcms/template-render',
-			[
-				'api_version'     => 3,
-				'render_callback' => [ self::class, 'render_legacy_template_block' ],
-				'attributes'      => [
-					'name' => [
-						'type' => 'string',
-					],
-				],
-				'supports'        => [
-					'html'     => false,
-					'inserter' => false,
-					'multiple' => false,
-					'reusable' => false,
-				],
-			]
+			self::$path . $block_path,
+			[ 'render_callback' => [ self::class, 'render_legacy_template_block' ] ]
 		);
 	}
 
