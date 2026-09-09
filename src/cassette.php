@@ -106,7 +106,16 @@ function cassette_init(): void {
 				],
 			]
 		),
-		'settings_pages' => apply_filters(
+		'settings_pages' => [],
+	];
+
+	/*
+	 * Deployments that lock configuration down can disable the settings UI.
+	 * Only the admin page is skipped here; stored settings remain readable
+	 * through Plugin::get_option() and writable programmatically.
+	 */
+	if ( Plugin::settings_ui_enabled() ) {
+		$config['settings_pages'] = apply_filters(
 			'pdl/cassette/settings_pages',
 			[
 				[
@@ -120,8 +129,8 @@ function cassette_init(): void {
 					'fields'      => $settings_fields,
 				],
 			]
-		),
-	];
+		);
+	}
 
 	CassetteCmf::register_from_array(
 		apply_filters( 'pdl/cassette/config', $config )
