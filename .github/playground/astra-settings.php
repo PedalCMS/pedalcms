@@ -3,7 +3,7 @@ require_once '/wordpress/wp-load.php';
 
 // Set here rather than in setSiteOptions: values this large overflow the
 // call stack when Playground encodes them.
-$settings = json_decode( <<<'JSON'
+$settings_json = <<<'JSON'
 {
 	"blog-single-width": "default",
 	"blog-single-max-width": 1200,
@@ -13635,8 +13635,9 @@ $settings = json_decode( <<<'JSON'
 	"btn-consist-comp": false,
 	"enable-4-11-12-compatibility": false
 }
-JSON
-, true );
+JSON;
+
+$settings = json_decode( $settings_json, true );
 
 if ( ! is_array( $settings ) ) {
 	throw new RuntimeException( 'Invalid Astra settings JSON.' );
