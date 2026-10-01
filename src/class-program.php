@@ -659,6 +659,9 @@ class Program extends CustomPostType {
 	 * @inheritdoc
 	 */
 	public function setup_hooks(): void {
+		//Remove custom fields support for this post type.
+		remove_post_type_support( static::POST_TYPE, 'custom-fields' );
+
 		add_action( 'pre_get_posts', [ static::class, 'update_sort_order' ] );
 		add_action( 'wp_after_insert_post', [ static::class, 'save_terms' ], 10, 2 );
 	}
