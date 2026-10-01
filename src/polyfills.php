@@ -80,8 +80,7 @@ add_action(
 		 * @return void
 		 */
 		function the_field( string $selector, $post_id = false ): void {
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo get_field( $selector, $post_id );
+			echo wp_kses_post( get_field( $selector, $post_id ) );
 		}
 	},
 	1

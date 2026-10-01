@@ -83,11 +83,11 @@ if ( ! function_exists( 'pdl_get_option' ) ) :
 	 * Gets a plugin option setting.
 	 *
 	 * @param string $option The option key.
-	 * @param mixed $default The default value.
+	 * @param mixed $fallback The value to return when the option is not set.
 	 * @return mixed The option value.
 	 */
-	function pdl_get_option( string $option, $default = null ) { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.defaultFound -- Renaming would break named arguments.
-		return \PedalCMS\Core\Plugin::get_option( $option, $default );
+	function pdl_get_option( string $option, $fallback = null ) {
+		return \PedalCMS\Core\Plugin::get_option( $option, $fallback );
 	}
 
 endif;

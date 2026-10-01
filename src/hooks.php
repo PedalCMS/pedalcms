@@ -276,10 +276,10 @@ function term_link( string $link ): string {
 	$query_start = strpos( $link, '?' );
 
 	if ( false !== $query_start ) {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check for URL context
-		if ( is_admin() && isset( $_GET['post_type'] ) ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check for URL context
-			$post_type = sanitize_key( wp_unslash( $_GET['post_type'] ) );
+		global $typenow;
+
+		if ( is_admin() && $typenow ) {
+			$post_type = $typenow;
 		} else {
 			$post_type = get_query_var( 'post_type' );
 		}
@@ -438,16 +438,14 @@ function options_taxonomy_labels( $labels, $taxonomy ) {
  * @return void
  */
 function before_main_content() {
-	$pattern = '<%s id="%s" class="%s">';
 	$id      = apply_filters( 'pdl/main_content_wrapper_id', 'main-content-wrapper' );
 	$classes = [ 'pdlcms', 'pdl-template' ];
 	$classes = apply_filters( 'pdl/careers/main_content_wrapper_class', $classes );
 	$tag     = Plugin::get_option( 'main_content_wrapper_tag', 'div' );
 
 	printf(
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static format pattern for wrapper markup.
-		$pattern,
-		esc_html( $tag ),
+		'<%s id="%s" class="%s">',
+		tag_escape( $tag ),
 		esc_attr( $id ),
 		esc_attr( implode( ' ', $classes ) )
 	);
@@ -827,8 +825,7 @@ function options_get_subpages( $subpages, $list_name, $post_type ) {
 	}
 
 	foreach ( $subpages as $i => $subpage ) {
-		// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict -- Loose comparison preserved for stored option values.
-		if ( $subpage->is_builtin() && ! in_array( $subpage->slug, $enabled ) ) {
+		if ( $subpage->is_builtin() && ! in_array( $subpage->slug, $enabled, true ) ) {
 			unset( $subpages[ $i ] );
 		}
 	}

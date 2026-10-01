@@ -49,7 +49,7 @@ $active_filter_options = static function ( array $options ): array {
 	);
 };
 
-return [
+$fields = [
 
 	// -------------------------------------------------------------------------
 	// Outer wrapper: a metabox containing one tabs field.
@@ -1088,6 +1088,6 @@ return [
 		], // end metabox fields
 	],
 
-]; // end return
+]; // end fields
 
-return apply_filters( 'pdl/cassette/fields/settings', $fields ); // phpcs:ignore Squiz.PHP.NonExecutableCode.Unreachable -- Legacy tail kept as-is.
+return apply_filters( 'pdl/cassette/fields/settings', $fields );
