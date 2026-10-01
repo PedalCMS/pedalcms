@@ -180,14 +180,6 @@ function admin_enqueue_assets() {
 				[],
 				filemtime( Plugin::$path . $pdl_css )
 			);
-
-			wp_enqueue_script(
-				'tabby',
-				'https://cdnjs.cloudflare.com/ajax/libs/tabby/12.0.3/js/tabby.polyfills.js',
-				[],
-				'12.0.3',
-				true
-			);
 		}
 
 		if ( Department::depends_on_college() ) {
