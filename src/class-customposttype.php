@@ -235,7 +235,7 @@ abstract class CustomPostType extends CustomContentObject {
 				'post_type'   => static::POST_TYPE,
 				'numberposts' => $limit,
 				'post_status' => 'any',
-				'meta_query'  => [
+				'meta_query'  => [ // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Lookup by meta is the purpose of this helper.
 					[
 						'key'     => $key,
 						'value'   => $value,

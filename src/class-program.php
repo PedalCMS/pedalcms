@@ -729,7 +729,7 @@ class Program extends CustomPostType {
 		];
 
 		if ( ! empty( $not_in ) ) {
-			$args['post__not_in'] = $not_in;
+			$args['post__not_in'] = $not_in; // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- Small, bounded exclusion list for related posts.
 		}
 
 		return get_posts( $args );

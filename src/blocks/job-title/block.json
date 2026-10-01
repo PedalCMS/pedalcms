@@ -1,5 +1,5 @@
 {
-	"apiVersion": 2,
+	"apiVersion": 3,
 	"name": "pdl/job-title",
 	"version": "0.1.0",
 	"title": "Job Title",

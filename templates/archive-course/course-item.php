@@ -26,7 +26,7 @@ if ( $args['course_post'] instanceof \WP_Post ) :
 	<header>
 		<h2 class="entry-title course-title">
 			<a href="<?php echo esc_url( get_the_permalink( $args['course_post'] ) ); ?>">
-				<?php echo pdl_get_full_course_title( $args['course_post'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Returns markup with already-escaped parts. ?>
+				<?php echo wp_kses_post( pdl_get_full_course_title( $args['course_post'] ) ); ?>
 			</a>
 		</h2>
 		<?php pdl_get_template_part( 'single-course/course-meta', $args ); ?>

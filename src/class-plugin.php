@@ -165,12 +165,6 @@ class Plugin {
 	 * @return void
 	 */
 	public static function plugin_init(): void {
-		load_plugin_textdomain(
-			self::$name,
-			false,
-			self::$name . '/languages/'
-		);
-
 		Program::setup_subpage_manager();
 
 		FilterManager::get_instance();
