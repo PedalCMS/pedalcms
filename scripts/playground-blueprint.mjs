@@ -1,5 +1,7 @@
 import { writeFile } from 'node:fs/promises';
 
+const DEMO_CONTENT_URL = 'https://demo-content.pedalcms.com/demo-content.xml';
+
 const homePageSetup = `<?php
 require_once '/wordpress/wp-load.php';
 
@@ -13,7 +15,7 @@ update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', (int) $home->ID );
 `;
 
-export function createBlueprint({ pluginResource, contentResource }) {
+export function createBlueprint({ pluginResource }) {
 	return {
 		$schema: 'https://playground.wordpress.net/blueprint-schema.json',
 		meta: {
@@ -63,7 +65,10 @@ export function createBlueprint({ pluginResource, contentResource }) {
 			},
 			{
 				step: 'importWxr',
-				file: contentResource,
+				file: {
+					resource: 'url',
+					url: DEMO_CONTENT_URL,
+				},
 				fetchAttachments: true,
 				rewriteUrls: true,
 				authorsMode: 'default-author',
@@ -93,7 +98,6 @@ async function main() {
 
 		const blueprint = createBlueprint({
 			pluginResource: { resource: 'bundled', path: '/pedalcms.zip' },
-			contentResource: { resource: 'bundled', path: '/demo-content.xml' },
 		});
 
 		await writeFile(outputPath, `${JSON.stringify(blueprint, null, 2)}\n`);
@@ -101,11 +105,11 @@ async function main() {
 	}
 
 	if (command === 'release-url') {
-		const [repository, tag, commit] = args;
+		const [repository, tag] = args;
 
-		if (!repository || !tag || !commit) {
+		if (!repository || !tag) {
 			throw new Error(
-				'Usage: playground-blueprint.mjs release-url <owner/repository> <tag> <commit>'
+				'Usage: playground-blueprint.mjs release-url <owner/repository> <tag>'
 			);
 		}
 
@@ -114,15 +118,10 @@ async function main() {
 			.map(encodeURIComponent)
 			.join('/');
 		const encodedTag = encodePathSegment(tag);
-		const encodedCommit = encodeURIComponent(commit);
 		const blueprint = createBlueprint({
 			pluginResource: {
 				resource: 'url',
 				url: `https://github.com/${encodedRepository}/releases/download/${encodedTag}/pedalcms.zip`,
-			},
-			contentResource: {
-				resource: 'url',
-				url: `https://raw.githubusercontent.com/${encodedRepository}/${encodedCommit}/.github/playground/content.xml`,
 			},
 		});
 		const encodedBlueprint = Buffer.from(JSON.stringify(blueprint)).toString(

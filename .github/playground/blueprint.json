@@ -13879,7 +13879,7 @@
          "step":"importWxr",
          "file":{
             "resource":"url",
-            "url":"https://pedalcms.com/demo-content/pedalcms-demo-content.xml"
+            "url":"https://demo-content.pedalcms.com/demo-content.xml"
          },
          "fetchAttachments":true,
          "rewriteUrls":true,
