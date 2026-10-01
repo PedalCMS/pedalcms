@@ -13,8 +13,8 @@
 
 namespace PedalCMS\Core;
 
-use Pedalcms\CassetteCmf\CassetteCmf;
-use Pedalcms\CassetteCmf\Field\Field_Factory;
+use PedalCMS\CassetteCMF\CassetteCMF;
+use PedalCMS\CassetteCMF\Field\Field_Factory;
 use PedalCMS\Fields\Taxonomy_Field;
 use PedalCMS\Fields\Relationship_Field;
 use PedalCMS\Fields\Conditional_Checkbox_Field;
@@ -132,7 +132,7 @@ function cassette_init(): void {
 		);
 	}
 
-	CassetteCmf::register_from_array(
+	CassetteCMF::register_from_array(
 		apply_filters( 'pdl/cassette/config', $config )
 	);
 }

@@ -12,7 +12,7 @@
 
 namespace PedalCMS\Fields;
 
-use Pedalcms\CassetteCmf\Field\Fields\Number_Field;
+use PedalCMS\CassetteCMF\Field\Fields\Number_Field;
 
 /**
  * Conditional_Number_Field class

@@ -8,6 +8,6 @@ class ClassTaxonomyFieldTest extends FeatureTestCase {
 	}
 
 	public function test_taxonomy_field_parent_class(): void {
-		$this->assertSame( \Pedalcms\CassetteCmf\Field\Abstract_Field::class, get_parent_class( \PedalCMS\Fields\Taxonomy_Field::class ) );
+		$this->assertSame( \PedalCMS\CassetteCMF\Field\Abstract_Field::class, get_parent_class( \PedalCMS\Fields\Taxonomy_Field::class ) );
 	}
 }
