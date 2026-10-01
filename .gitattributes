@@ -31,3 +31,5 @@ phpdoc.dist.xml export-ignore
 /assets/scss export-ignore
 /assets/js/src export-ignore
 /admin/js/src export-ignore
+/.phpdoc export-ignore
+/scripts export-ignore
