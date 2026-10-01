@@ -15,7 +15,7 @@
 
 namespace PedalCMS\Fields;
 
-use Pedalcms\CassetteCmf\Field\Fields\Checkbox_Field;
+use PedalCMS\CassetteCMF\Field\Fields\Checkbox_Field;
 
 /**
  * Conditional_Checkbox_Field class

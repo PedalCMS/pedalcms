@@ -3,7 +3,7 @@
  * CassetteCMF field definitions for the PedalCMS settings page.
  *
  * Returns the field array for six settings tabs, wrapped in a metabox.
- * The metabox forces the CassetteCmf_save_settings handler which saves all
+ * The metabox forces the CassetteCMF_save_settings handler which saves all
  * nested fields via process_container_fields() — groups, tabs, and all.
  *
  * Naming convention: field names do NOT include the 'pdl_' prefix. CassetteCMF

@@ -11,7 +11,7 @@
 
 namespace PedalCMS\Fields;
 
-use Pedalcms\CassetteCmf\Field\Abstract_Field;
+use PedalCMS\CassetteCMF\Field\Abstract_Field;
 
 /**
  * Taxonomy_Field class
