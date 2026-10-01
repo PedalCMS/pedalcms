@@ -170,7 +170,7 @@ function sync_taxonomy_terms( int $post_id ): void {
 
 	foreach ( $syncs as $field_name => $taxonomy ) {
 		$value    = get_post_meta( $post_id, $field_name, true );
-		$term_ids = ( $value !== '' && $value !== false ) ? [ absint( $value ) ] : [];
+		$term_ids = ( '' !== $value && false !== $value ) ? [ absint( $value ) ] : [];
 		wp_set_post_terms( $post_id, $term_ids, $taxonomy );
 	}
 }

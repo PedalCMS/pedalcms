@@ -93,8 +93,7 @@ jobs:
         run: |
           PLAYGROUND_URL="$(node scripts/playground-blueprint.mjs release-url \
             "${GITHUB_REPOSITORY}" \
-            "${{ github.event.release.tag_name }}" \
-            "${GITHUB_SHA}")"
+            "${{ github.event.release.tag_name }}")"
           echo "PLAYGROUND_URL=${PLAYGROUND_URL}" >> "${GITHUB_ENV}"
 
       - name: Add Playground link to release description

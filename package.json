@@ -15,7 +15,7 @@
 	"homepage": "https://github.com/PedalCMS/pedalcms#readme",
 	"devDependencies": {
 		"@playwright/test": "^1.50.1",
-		"@wordpress/env": "^10.18.0",
+		"@wordpress/env": "^11.16.0",
 		"@wordpress/eslint-plugin": "^25.1.0",
 		"@wp-playground/cli": "3.1.45",
 		"autoprefixer": "^10.4.2",
@@ -45,6 +45,8 @@
 		]
 	},
 	"scripts": {
+		"lint:js": "eslint .",
+		"lint:js:fix": "eslint . --fix",
 		"build:css": "sass --no-source-map --style=compressed assets/scss/base.scss:assets/css/base.min.css assets/scss/full.scss:assets/css/full.min.css assets/scss/global.scss:assets/css/global.min.css assets/scss/global-full.scss:assets/css/global-full.min.css assets/scss/terms-grid.scss:assets/css/terms-grid.min.css && postcss assets/css/*.min.css --use autoprefixer --replace --no-map",
 		"build:js": "node scripts/build-js.mjs assets/js/src assets/js",
 		"build:admin-js": "node scripts/build-js.mjs admin/js/src admin/js",
@@ -60,5 +62,10 @@
 		"env:destroy": "wp-env destroy",
 		"test:e2e": "playwright test",
 		"test:e2e:headed": "playwright test --headed"
+	},
+	"overrides": {
+		"@wp-playground/cli": {
+			"express": "4.22.3"
+		}
 	}
 }

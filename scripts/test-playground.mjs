@@ -57,31 +57,31 @@ echo wp_json_encode(
 
 	assert(
 		stateResponse.exitCode === 0,
-		stateResponse.errors || 'State check failed.',
+		stateResponse.errors || 'State check failed.'
 	);
 	const state = JSON.parse(stateResponse.text);
 
 	assert(
 		state.active_plugins.includes('pedalcms/pedalcms.php'),
-		'PedalCMS is not active.',
+		'PedalCMS is not active.'
 	);
 	assert(
 		state.active_plugins.includes('wordpress-importer/wordpress-importer.php'),
-		'WordPress Importer is not active.',
+		'WordPress Importer is not active.'
 	);
 	assert(state.stylesheet === 'astra', 'Astra is not the active theme.');
 	assert(
 		state.show_on_front === 'page',
-		'The front page is not set to a page.',
+		'The front page is not set to a page.'
 	);
 	assert(
 		state.home_slug === 'home',
-		'The Home page is not the static front page.',
+		'The Home page is not the static front page.'
 	);
 	assert(state.attachment_count > 0, 'No attachments were imported.');
 	assert(
 		state.downloaded_attachment_count > 0,
-		'No imported attachment files were downloaded.',
+		'No imported attachment files were downloaded.'
 	);
 
 	const frontPageResponse = await cliServer.playground.run({
@@ -104,15 +104,15 @@ echo strlen( $html );
 	});
 	assert(
 		frontPageResponse.exitCode === 0,
-		frontPageResponse.errors || 'The front page content failed to render.',
+		frontPageResponse.errors || 'The front page content failed to render.'
 	);
 	assert(
 		Number.parseInt(frontPageResponse.text, 10) > 500,
-		'The front page content produced no meaningful HTML.',
+		'The front page content produced no meaningful HTML.'
 	);
 
 	console.log(
-		`Playground smoke test passed (${state.downloaded_attachment_count}/${state.attachment_count} attachment files downloaded).`,
+		`Playground smoke test passed (${state.downloaded_attachment_count}/${state.attachment_count} attachment files downloaded).`
 	);
 } finally {
 	if (cliServer) {

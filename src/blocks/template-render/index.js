@@ -9,40 +9,49 @@
  * Registering here is what stops the Site Editor treating the block as an
  * unsupported block, since a PHP-only registration is invisible to the
  * editor's client-side block registry.
+ * @param {Window['wp']} wp WordPress global.
  */
 (function (wp) {
-  var el = wp.element.createElement;
-  var registerBlockType = wp.blocks.registerBlockType;
-  var useBlockProps = wp.blockEditor.useBlockProps;
-  var Placeholder = wp.components.Placeholder;
-  var __ = wp.i18n.__;
-  var sprintf = wp.i18n.sprintf;
+	const el = wp.element.createElement;
+	const registerBlockType = wp.blocks.registerBlockType;
+	const useBlockProps = wp.blockEditor.useBlockProps;
+	const Placeholder = wp.components.Placeholder;
+	const __ = wp.i18n.__;
+	const sprintf = wp.i18n.sprintf;
 
-  registerBlockType('pedalcms/template-render', {
-    edit: function (props) {
-      var blockProps = useBlockProps();
-      var name = props.attributes.name;
+	function TemplateRenderEdit(props) {
+		const blockProps = useBlockProps();
+		const name = props.attributes.name;
 
-      var instructions = name
-        ? sprintf(
-            /* translators: %s: PedalCMS template slug, e.g. archive-program. */
-            __('The "%s" template is rendered here on the front end.', 'pedalcms'),
-            name
-          )
-        : __('A PedalCMS template is rendered here on the front end.', 'pedalcms');
+		const instructions = name
+			? sprintf(
+					/* translators: %s: PedalCMS template slug, e.g. archive-program. */
+					__(
+						'The "%s" template is rendered here on the front end.',
+						'pedalcms'
+					),
+					name
+				)
+			: __(
+					'A PedalCMS template is rendered here on the front end.',
+					'pedalcms'
+				);
 
-      return el(
-        'div',
-        blockProps,
-        el(Placeholder, {
-          icon: 'layout',
-          label: __('PedalCMS Template', 'pedalcms'),
-          instructions: instructions,
-        })
-      );
-    },
-    save: function () {
-      return null;
-    },
-  });
+		return el(
+			'div',
+			blockProps,
+			el(Placeholder, {
+				icon: 'layout',
+				label: __('PedalCMS Template', 'pedalcms'),
+				instructions,
+			})
+		);
+	}
+
+	registerBlockType('pedalcms/template-render', {
+		edit: TemplateRenderEdit,
+		save() {
+			return null;
+		},
+	});
 })(window.wp);

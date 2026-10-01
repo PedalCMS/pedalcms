@@ -1,0 +1,47 @@
+name: JavaScript & Assets
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  javascript:
+    name: Lint and Build Assets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Lint JavaScript
+        run: npm run lint:js
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Verify compiled assets are committed
+        run: |
+          if ! git diff --exit-code -- assets/css admin/js assets/js; then
+            echo "::error::Compiled assets are out of date - run npm run build and commit the result."
+            exit 1
+          fi

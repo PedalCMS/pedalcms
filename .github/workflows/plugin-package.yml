@@ -1,0 +1,56 @@
+name: Plugin Package
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package:
+    name: Build Release Zip and Playground Bundle
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Build frontend assets
+        run: npm run build
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Install production Composer dependencies
+        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+
+      - name: Build and validate release zip
+        shell: bash
+        run: bash bin/build-release-zip.sh "${RUNNER_TEMP}/pedalcms.zip"
+
+      - name: Build Playground bundle
+        shell: bash
+        run: bash bin/build-playground-bundle.sh "${RUNNER_TEMP}/pedalcms.zip" "${RUNNER_TEMP}/pedalcms-playground.zip"
+
+      - name: Smoke test Playground demo
+        run: node scripts/test-playground.mjs "${RUNNER_TEMP}/pedalcms-playground.zip"

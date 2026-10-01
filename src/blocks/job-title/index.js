@@ -1,45 +1,47 @@
 (function (wp) {
-  var el = wp.element.createElement;
-  var registerBlockType = wp.blocks.registerBlockType;
-  var TextControl = wp.components.TextControl;
-  var useSelect = wp.data.useSelect;
-  var useEntityProp = wp.coreData.useEntityProp;
-  var useBlockProps = wp.blockEditor.useBlockProps;
+	const el = wp.element.createElement;
+	const registerBlockType = wp.blocks.registerBlockType;
+	const TextControl = wp.components.TextControl;
+	const useSelect = wp.data.useSelect;
+	const useEntityProp = wp.coreData.useEntityProp;
+	const useBlockProps = wp.blockEditor.useBlockProps;
 
-  registerBlockType('pdl/job-title', {
-    title: 'Job Title',
-    edit: function (props) {
-      var blockProps = useBlockProps();
-      var postType = useSelect(function (select) {
-        return select('core/editor').getCurrentPostType();
-      }, []);
-      var entityProp = useEntityProp('postType', postType, 'meta');
-      var meta = entityProp[0];
-      var setMeta = entityProp[1];
+	function JobTitleEdit() {
+		const blockProps = useBlockProps();
+		const postType = useSelect(function (select) {
+			return select('core/editor').getCurrentPostType();
+		}, []);
+		const entityProp = useEntityProp('postType', postType, 'meta');
+		const meta = entityProp[0];
+		const setMeta = entityProp[1];
 
-      var jobTitle = meta['job_title'];
+		const jobTitle = meta.job_title;
 
-      function updateJobTitle(newValue) {
-        setMeta(
-          Object.assign({}, meta, {
-            job_title: newValue,
-          })
-        );
-      }
+		function updateJobTitle(newValue) {
+			setMeta(
+				Object.assign({}, meta, {
+					job_title: newValue,
+				})
+			);
+		}
 
-      return el(
-        'div',
-        blockProps,
-        el(TextControl, {
-          label: 'Job Title',
-          placeholder: 'Associate Professor',
-          value: jobTitle,
-          onChange: updateJobTitle,
-        })
-      );
-    },
-    save: function () {
-      return null;
-    },
-  });
+		return el(
+			'div',
+			blockProps,
+			el(TextControl, {
+				label: 'Job Title',
+				placeholder: 'Associate Professor',
+				value: jobTitle,
+				onChange: updateJobTitle,
+			})
+		);
+	}
+
+	registerBlockType('pdl/job-title', {
+		title: 'Job Title',
+		edit: JobTitleEdit,
+		save() {
+			return null;
+		},
+	});
 })(window.wp);

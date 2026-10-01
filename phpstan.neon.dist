@@ -1,0 +1,9 @@
+includes:
+    - phpstan-baseline.neon
+parameters:
+    level: 5
+    phpVersion: 80200
+    paths:
+        - pedalcms.php
+        - src/
+    treatPhpDocTypesAsCertain: false

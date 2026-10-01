@@ -162,26 +162,6 @@ function admin_enqueue_assets() {
 	);
 
 	if ( $is_post_edit ) {
-		if ( $post_type === Program::POST_TYPE ) {
-			$pdl_css = '/admin/css/metabox-tabs.css';
-
-			wp_enqueue_style(
-				'pdl-metabox-tabs',
-				Plugin::$url . $pdl_css,
-				[],
-				filemtime( Plugin::$path . $pdl_css )
-			);
-
-			$pdl_css = '/admin/css/program-fields.css';
-
-			wp_enqueue_style(
-				'pdl-program-fields',
-				Plugin::$url . $pdl_css,
-				[],
-				filemtime( Plugin::$path . $pdl_css )
-			);
-		}
-
 		if ( Department::depends_on_college() ) {
 			$pdl_acf = '/admin/js/pdl-acf.min.js';
 

@@ -8,7 +8,7 @@ use PedalCMS\Core\Program;
 		<li><a href="#overview"><?php echo esc_html( __( 'Main', 'pedalcms' ) ); ?></a></li>
 		<?php
 		foreach ( self::$subpages as $slug => $args ) :
-			if ( $slug !== 'index' ) :
+			if ( 'index' !== $slug ) :
 				?>
 		<li><a href="#<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $args['title'] ); ?></a></li>
 					<?php
@@ -23,7 +23,7 @@ endforeach;
 		</div>
 		<?php
 		foreach ( self::$subpages as $slug => $args ) :
-			if ( $slug !== 'index' ) :
+			if ( 'index' !== $slug ) :
 				?>
 		<div id="<?php echo esc_attr( $slug ); ?>">
 			<h3><?php echo esc_html( $args['title'] ); ?></h3>
