@@ -173,7 +173,7 @@ class FilterManager {
 				continue;
 			}
 
-			$value = $this->get_request_value( $filter['query_var'] );
+			$value = $this->get_request_value( $filter['query_var'], $query );
 
 			if ( '' === $value ) {
 				continue;
@@ -184,10 +184,14 @@ class FilterManager {
 	}
 
 	/**
-	 * Reads and sanitizes a filter value from the request.
+	 * Reads and sanitizes a filter value from the parsed request query vars.
+	 *
+	 * @param string        $query_var The registered public query var.
+	 * @param WP_Query|null $query     Query to read from. Defaults to the main query.
 	 */
-	private function get_request_value( string $query_var ): string {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public archive filter read from the query string.
-		return isset( $_GET[ $query_var ] ) ? sanitize_text_field( wp_unslash( $_GET[ $query_var ] ) ) : '';
+	private function get_request_value( string $query_var, ?WP_Query $query = null ): string {
+		$value = $query ? $query->get( $query_var ) : get_query_var( $query_var );
+
+		return sanitize_text_field( wp_unslash( $value ) );
 	}
 }

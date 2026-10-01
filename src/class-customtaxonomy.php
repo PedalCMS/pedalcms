@@ -61,8 +61,8 @@ abstract class CustomTaxonomy extends CustomContentObject {
 
 		if ( is_wp_error( $result ) ) {
 			if ( WP_DEBUG && WP_DEBUG_LOG ) {
-				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- Intentional debug logging when WP_DEBUG is enabled.
-				error_log(
+				wp_trigger_error(
+					__METHOD__,
 					sprintf(
 						/* translators: The first argument is the machine name of the taxonomy */
 						__( 'Could not register taxonomy %1$s. Error: %2$s', 'pedalcms' ),

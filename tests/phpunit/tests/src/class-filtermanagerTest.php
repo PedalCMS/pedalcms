@@ -58,16 +58,17 @@ class ClassFilterManagerTest extends FeatureTestCase {
 			]
 		);
 
-		$_GET['test_apply'] = 'blue';
-
-		$query                       = new WP_Query( [ 'post_type' => 'pdl_program' ] );
+		$query                       = new WP_Query(
+			[
+				'post_type'  => 'pdl_program',
+				'test_apply' => 'blue',
+			]
+		);
 		$query->is_post_type_archive = true;
 		$query->is_archive           = true;
 		$GLOBALS['wp_the_query']     = $query;
 
 		$manager->apply_filters_to_query( $query );
-
-		unset( $_GET['test_apply'] );
 
 		$this->assertSame( 'blue', $captured );
 	}
@@ -87,16 +88,17 @@ class ClassFilterManagerTest extends FeatureTestCase {
 			]
 		);
 
-		$_GET['test_scope'] = 'x';
-
-		$query                       = new WP_Query( [ 'post_type' => 'pdl_program' ] );
+		$query                       = new WP_Query(
+			[
+				'post_type'  => 'pdl_program',
+				'test_scope' => 'x',
+			]
+		);
 		$query->is_post_type_archive = true;
 		$query->is_archive           = true;
 		$GLOBALS['wp_the_query']     = $query;
 
 		$manager->apply_filters_to_query( $query );
-
-		unset( $_GET['test_scope'] );
 
 		$this->assertFalse( $called );
 	}

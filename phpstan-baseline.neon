@@ -25,24 +25,6 @@ parameters:
 			path: src/breadcrumbs.php
 
 		-
-			message: '#^PHPDoc tag @param for parameter \$breadcrumbs with type PedalCMS\\Core\\Breadcrumbs is not subtype of native type RankMath\\Frontend\\Breadcrumbs\.$#'
-			identifier: parameter.phpDocType
-			count: 1
-			path: src/breadcrumbs.php
-
-		-
-			message: '#^Parameter \$breadcrumbs of function PedalCMS\\Core\\rankmath_update_trail\(\) has invalid type PedalCMS\\Core\\Breadcrumbs\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/breadcrumbs.php
-
-		-
-			message: '#^Parameter \$breadcrumbs of function PedalCMS\\Core\\rankmath_update_trail\(\) has invalid type RankMath\\Frontend\\Breadcrumbs\.$#'
-			identifier: class.notFound
-			count: 1
-			path: src/breadcrumbs.php
-
-		-
 			message: '#^Variable \$home might not be defined\.$#'
 			identifier: variable.undefined
 			count: 1
@@ -341,12 +323,6 @@ parameters:
 			identifier: parameter.notFound
 			count: 1
 			path: src/class-templatemanager.php
-
-		-
-			message: '#^Unreachable statement \- code above always terminates\.$#'
-			identifier: deadCode.unreachable
-			count: 1
-			path: src/fields-settings.php
 
 		-
 			message: '#^Callback expects 1 parameter, \$accepted_args is set to 3\.$#'
