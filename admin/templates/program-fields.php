@@ -5,7 +5,7 @@ use PedalCMS\Core\Program;
 
 <div class="pdl-program-fields-wrapper">
 	<ul data-tabs>
-		<li><a data-tabby-default href="#overview"><?php echo esc_html( __( 'Main', 'pedalcms' ) ); ?></a></li>
+		<li><a href="#overview"><?php echo esc_html( __( 'Main', 'pedalcms' ) ); ?></a></li>
 		<?php
 		foreach ( self::$subpages as $slug => $args ) :
 			if ( $slug !== 'index' ) :
@@ -35,9 +35,3 @@ endforeach;
 		?>
 	</div>
 </div>
-
-<script>
-	document.addEventListener('DOMContentLoaded', () => {
-		var tabs = new Tabby('[data-tabs]');
-	});
-</script>

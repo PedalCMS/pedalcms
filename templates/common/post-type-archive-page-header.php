@@ -46,7 +46,7 @@ if ( ! $args['archive_title'] ) {
 	endif;
 	?>
 	<h1 class="page-title">
-		<?php echo $archive_title; ?>
+		<?php echo wp_kses_post( $archive_title ); ?>
 	</h1>
 	<?php if ( $args['show_description'] || $args['show_image'] ) : ?>
 	<div class="archive-summary">

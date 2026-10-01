@@ -2,7 +2,8 @@
 
 # Writes a single version number into every version-bearing published file in
 # the plugin. The plugin header in the main PHP file is the canonical version;
-# this script keeps the runtime constant, package.json and readme.txt in lockstep
+# this script keeps the runtime constant, package.json, readme.txt and the
+# README.md version badge in lockstep
 # with it. Per-file @version/@since docblocks are intentionally left untouched.
 #
 # Usage: bin/set-version.sh <version>
@@ -65,6 +66,13 @@ apply "${PLUGIN_MAIN}" \
 apply "readme.txt" \
 	"s/^(Stable tag:[[:space:]]*).*/\1${VERSION}/" \
 	"^Stable tag:[[:space:]]*${VERSION}[[:space:]]*$"
+
+# Project readme badge:  badge/version-0.4.0-blue.svg
+# Shields.io treats "-" as a field separator, so a literal dash is written as "--".
+BADGE_VERSION="${VERSION//-/--}"
+apply "README.md" \
+	"s/(badge\\/version-)[^)]*(-blue\\.svg)/\\1${BADGE_VERSION}\\2/" \
+	"badge/version-${BADGE_VERSION}-blue\\.svg"
 
 # npm manifest:  "version": "0.4.0"  (first, top-level occurrence only)
 apply "package.json" \

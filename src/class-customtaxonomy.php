@@ -133,8 +133,8 @@ abstract class CustomTaxonomy extends CustomContentObject {
 			[
 				'taxonomy'     => static::TAXONOMY,
 				'hide_empty'   => false,
-				'meta_key'     => $key,
-				'meta_value'   => $value,
+				'meta_key'     => $key, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- Lookup by meta is the purpose of this helper.
+				'meta_value'   => $value, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Lookup by meta is the purpose of this helper.
 				'meta_compare' => $compare,
 			]
 		);
