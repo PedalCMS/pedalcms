@@ -52,6 +52,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y subversion
 
       - name: Install WordPress test suite
+        env:
+          DELETE_EXISTING_DB: 'y'
         run: bash bin/install-wp-tests.sh pedalcms_test root root 127.0.0.1 latest
 
       - name: Run PHPUnit with coverage
