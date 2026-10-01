@@ -1,89 +1,64 @@
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 
-const DEMO_CONTENT_URL = 'https://demo-content.pedalcms.com/demo-content.xml';
+const BLUEPRINT_SOURCE = new URL(
+	'../.github/playground/blueprint.json',
+	import.meta.url
+);
+const PLUGIN_SLUG = 'pedalcms';
+const CORS_PROXY_URL = 'https://wordpress-playground-cors-proxy.net/?';
 
-const homePageSetup = `<?php
-require_once '/wordpress/wp-load.php';
+/**
+ * Loads the Playground blueprint, inlines PHP files referenced as
+ * `"code": { "file": "<name>" }`, and points its PedalCMS install step at
+ * the given plugin resource.
+ *
+ * @param {Object} options
+ * @param {Object} options.pluginResource Playground resource for the plugin zip.
+ * @return {Promise<Object>} The blueprint.
+ */
+export async function createBlueprint({ pluginResource }) {
+	const blueprint = JSON.parse(await readFile(BLUEPRINT_SOURCE, 'utf8'));
+	const pluginStep = blueprint.steps?.find(
+		(step) =>
+			step.step === 'installPlugin' &&
+			step.options?.targetFolderName === PLUGIN_SLUG
+	);
 
-$home = get_page_by_path( 'home', OBJECT, 'page' );
+	if (!pluginStep) {
+		throw new Error(
+			`No installPlugin step with targetFolderName "${PLUGIN_SLUG}" found in the blueprint.`
+		);
+	}
 
-if ( ! $home instanceof WP_Post ) {
-	throw new RuntimeException( 'The imported Home page could not be found.' );
-}
+	pluginStep.pluginData = pluginResource;
 
-update_option( 'show_on_front', 'page' );
-update_option( 'page_on_front', (int) $home->ID );
-`;
+	for (const step of blueprint.steps) {
+		if (typeof step.code?.file === 'string') {
+			step.code = await readFile(
+				new URL(step.code.file, BLUEPRINT_SOURCE),
+				'utf8'
+			);
+		}
+	}
 
-export function createBlueprint({ pluginResource }) {
-	return {
-		$schema: 'https://playground.wordpress.net/blueprint-schema.json',
-		meta: {
-			title: 'PedalCMS demo',
-			description:
-				'A ready-to-use PedalCMS demo with Astra and sample content.',
-			author: 'PedalCMS',
-			categories: ['demo'],
-		},
-		preferredVersions: {
-			php: '8.2',
-			wp: 'latest',
-		},
-		features: {
-			networking: true,
-		},
-		landingPage: '/',
-		login: true,
-		steps: [
-			{
-				step: 'installPlugin',
-				pluginData: pluginResource,
-				options: {
-					activate: true,
-					targetFolderName: 'pedalcms',
-				},
-			},
-			{
-				step: 'installTheme',
-				themeData: {
-					resource: 'wordpress.org/themes',
-					slug: 'astra',
-				},
-				options: {
-					activate: true,
-				},
-			},
-			{
-				step: 'installPlugin',
-				pluginData: {
-					resource: 'wordpress.org/plugins',
-					slug: 'wordpress-importer',
-				},
-				options: {
-					activate: true,
-				},
-			},
-			{
-				step: 'importWxr',
-				file: {
-					resource: 'url',
-					url: DEMO_CONTENT_URL,
-				},
-				fetchAttachments: true,
-				rewriteUrls: true,
-				authorsMode: 'default-author',
-				defaultAuthorUsername: 'admin',
-			},
-			{
-				step: 'runPHP',
-				code: homePageSetup,
-			},
-		],
-	};
+	return blueprint;
 }
 
 function encodePathSegment(value) {
 	return encodeURIComponent(value).replaceAll('%2F', '/');
+}
+
+function releaseAssetUrl(repository, tag, fileName) {
+	const encodedRepository = repository
+		.split('/')
+		.map(encodeURIComponent)
+		.join('/');
+
+	return `https://github.com/${encodedRepository}/releases/download/${encodePathSegment(tag)}/${fileName}`;
+}
+
+async function writeBlueprint(outputPath, blueprint) {
+	await writeFile(outputPath, `${JSON.stringify(blueprint, null, 2)}\n`);
 }
 
 async function main() {
@@ -96,11 +71,33 @@ async function main() {
 			throw new Error('Usage: playground-blueprint.mjs bundle <output-path>');
 		}
 
-		const blueprint = createBlueprint({
-			pluginResource: { resource: 'bundled', path: '/pedalcms.zip' },
-		});
+		await writeBlueprint(
+			outputPath,
+			await createBlueprint({
+				pluginResource: { resource: 'bundled', path: '/pedalcms.zip' },
+			})
+		);
+		return;
+	}
 
-		await writeFile(outputPath, `${JSON.stringify(blueprint, null, 2)}\n`);
+	if (command === 'release') {
+		const [repository, tag, outputPath] = args;
+
+		if (!repository || !tag || !outputPath) {
+			throw new Error(
+				'Usage: playground-blueprint.mjs release <owner/repository> <tag> <output-path>'
+			);
+		}
+
+		await writeBlueprint(
+			outputPath,
+			await createBlueprint({
+				pluginResource: {
+					resource: 'url',
+					url: releaseAssetUrl(repository, tag, 'pedalcms.zip'),
+				},
+			})
+		);
 		return;
 	}
 
@@ -113,29 +110,18 @@ async function main() {
 			);
 		}
 
-		const encodedRepository = repository
-			.split('/')
-			.map(encodeURIComponent)
-			.join('/');
-		const encodedTag = encodePathSegment(tag);
-		const blueprint = createBlueprint({
-			pluginResource: {
-				resource: 'url',
-				url: `https://github.com/${encodedRepository}/releases/download/${encodedTag}/pedalcms.zip`,
-			},
-		});
-		const encodedBlueprint = Buffer.from(JSON.stringify(blueprint)).toString(
-			'base64'
-		);
+		// Release assets are served without CORS headers, so Playground has
+		// to fetch the blueprint through its own CORS proxy.
+		const blueprintUrl = `${CORS_PROXY_URL}${releaseAssetUrl(repository, tag, 'blueprint.json')}`;
 
 		process.stdout.write(
-			`https://playground.wordpress.net/#${encodedBlueprint}`
+			`https://playground.wordpress.net/?blueprint-url=${encodeURIComponent(blueprintUrl)}`
 		);
 		return;
 	}
 
 	throw new Error(
-		'Usage: playground-blueprint.mjs <bundle|release-url> [arguments]'
+		'Usage: playground-blueprint.mjs <bundle|release|release-url> [arguments]'
 	);
 }
 

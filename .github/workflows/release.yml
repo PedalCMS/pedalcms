@@ -81,11 +81,21 @@ jobs:
             ${{ runner.temp }}/pedalcms.zip
             ${{ runner.temp }}/pedalcms-playground.zip
 
-      - name: Upload zip to GitHub Release
+      - name: Build release Playground blueprint
+        if: ${{ github.event_name == 'release' }}
+        run: |
+          node scripts/playground-blueprint.mjs release \
+            "${GITHUB_REPOSITORY}" \
+            "${{ github.event.release.tag_name }}" \
+            "${RUNNER_TEMP}/blueprint.json"
+
+      - name: Upload zip and blueprint to GitHub Release
         if: ${{ github.event_name == 'release' }}
         uses: softprops/action-gh-release@v3
         with:
-          files: ${{ runner.temp }}/pedalcms.zip
+          files: |
+            ${{ runner.temp }}/pedalcms.zip
+            ${{ runner.temp }}/blueprint.json
 
       - name: Generate release Playground URL
         if: ${{ github.event_name == 'release' }}
