@@ -10,8 +10,8 @@
 defined( 'ABSPATH' ) || exit;
 
 $args = [
-	'post_type'           => 'pdl_person',
-	'filters'             => [
+	'post_type' => 'pdl_person',
+	'filters'   => [
 		'keyword',
 		'person-cat',
 		'college',

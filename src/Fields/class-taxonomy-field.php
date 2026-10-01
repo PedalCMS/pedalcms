@@ -210,7 +210,7 @@ class Taxonomy_Field extends Abstract_Field {
 			return array_map( 'absint', $input );
 		}
 
-		return $input !== '' ? absint( $input ) : '';
+		return '' !== $input ? absint( $input ) : '';
 	}
 
 	/**
@@ -235,7 +235,7 @@ class Taxonomy_Field extends Abstract_Field {
 
 		$term_ids = is_array( $value )
 			? array_map( 'absint', $value )
-			: ( $value !== '' ? [ absint( $value ) ] : [] );
+			: ( '' !== $value ? [ absint( $value ) ] : [] );
 
 		wp_set_post_terms( $post_id, $term_ids, $taxonomy );
 	}

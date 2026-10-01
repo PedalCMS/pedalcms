@@ -105,7 +105,7 @@ async function main() {
 
 		if (!repository || !tag || !commit) {
 			throw new Error(
-				'Usage: playground-blueprint.mjs release-url <owner/repository> <tag> <commit>',
+				'Usage: playground-blueprint.mjs release-url <owner/repository> <tag> <commit>'
 			);
 		}
 
@@ -122,21 +122,21 @@ async function main() {
 			},
 			contentResource: {
 				resource: 'url',
-				url: `https://raw.githubusercontent.com/${encodedRepository}/${encodedCommit}/.github/demo-content.xml`,
+				url: `https://raw.githubusercontent.com/${encodedRepository}/${encodedCommit}/.github/playground/content.xml`,
 			},
 		});
 		const encodedBlueprint = Buffer.from(JSON.stringify(blueprint)).toString(
-			'base64',
+			'base64'
 		);
 
 		process.stdout.write(
-			`https://playground.wordpress.net/#${encodedBlueprint}`,
+			`https://playground.wordpress.net/#${encodedBlueprint}`
 		);
 		return;
 	}
 
 	throw new Error(
-		'Usage: playground-blueprint.mjs <bundle|release-url> [arguments]',
+		'Usage: playground-blueprint.mjs <bundle|release-url> [arguments]'
 	);
 }
 

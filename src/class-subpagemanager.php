@@ -275,7 +275,7 @@ class SubpageManager {
 		 * is that in a collision between an attachment and a subpage with the
 		 * same slug, our subpages will win. Sorry not sorry.
 		 */
-		foreach ( $this->get_subpages(false, 'objects') as $subpage ) {
+		foreach ( $this->get_subpages( false, 'objects' ) as $subpage ) {
 			add_rewrite_rule(
 				sprintf( $pretty_pattern, $post_obj->rewrite['slug'], $subpage->slug ),
 				sprintf( $real_pattern, $post_obj->query_var, $this->query_var, $subpage->slug ),

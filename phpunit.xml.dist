@@ -21,12 +21,11 @@
 	</groups>
 	<coverage includeUncoveredFiles="true" processUncoveredFiles="false" pathCoverage="false" cacheDirectory="./tests/phpunit/cache">
 		<include>
-			<directory suffix=".php">./includes</directory>
+			<directory suffix=".php">./src</directory>
 		</include>
 		<exclude>
-			<file>./includes/autoload.php</file>
+			<file>./src/_autoload.php</file>
 			<file>./pedalcms.php</file>
-			<directory>./includes/views</directory>
 		</exclude>
 		<report>
 			<text outputFile="php://stdout" showOnlySummary="true"/>

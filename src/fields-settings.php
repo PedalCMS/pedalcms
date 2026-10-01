@@ -140,8 +140,8 @@ return [
 										[
 											'field' => 'image_size_header',
 											'value' => 'custom',
-										]
-									]
+										],
+									],
 								],
 							],
 
@@ -157,8 +157,8 @@ return [
 										[
 											'field' => 'image_size_header',
 											'value' => 'custom',
-										]
-									]
+										],
+									],
 								],
 							],
 
@@ -198,10 +198,10 @@ return [
 
 							// --- Program Archive ---
 							[
-								'label'       => __( 'Configure Program Listings', 'pedalcms' ),
-								'name'        => 'program_archive_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for searching and browsing the list of programs.</span>',
+								'label'   => __( 'Configure Program Listings', 'pedalcms' ),
+								'name'    => 'program_archive_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for searching and browsing the list of programs.</span>',
 							],
 							[
 								'label' => __( 'Page Title', 'pedalcms' ),
@@ -222,16 +222,16 @@ return [
 							],
 
 							[
-								'label' => __( 'Header Background Image', 'pedalcms' ),
-								'name'  => 'program_archive_header_background',
-								'type'  => 'upload',
+								'label'       => __( 'Header Background Image', 'pedalcms' ),
+								'name'        => 'program_archive_header_background',
+								'type'        => 'upload',
 								'conditional' => [
 									'rules' => [
 										[
 											'field' => 'presentation_mode',
 											'value' => 'full',
-										]
-									]
+										],
+									],
 								],
 							],
 
@@ -264,10 +264,10 @@ return [
 
 							// --- Individual Program ---
 							[
-								'label'       => __( 'Configure Programs', 'pedalcms' ),
-								'name'        => 'program_archive_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for individual programs.</span>',
+								'label'   => __( 'Configure Programs', 'pedalcms' ),
+								'name'    => 'program_archive_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for individual programs.</span>',
 							],
 							[
 								'label' => __( 'Default Program Featured Image', 'pedalcms' ),
@@ -373,15 +373,15 @@ return [
 									'faqs'          => __( 'FAQs', 'pedalcms' ),
 									'news'          => __( 'News', 'pedalcms' ),
 								],
-								'default'     => ['curriculum', 'careers', 'faculty-staff', 'cost', 'apply', 'faqs', 'news'],
+								'default'     => [ 'curriculum', 'careers', 'faculty-staff', 'cost', 'apply', 'faqs', 'news' ],
 							],
 
 							// Careers subpage
 							[
-								'label'       => __( 'Careers', 'pedalcms' ),
-								'name'        => 'career_subpage_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for the Careers program subpage.</span>',
+								'label'   => __( 'Careers', 'pedalcms' ),
+								'name'    => 'career_subpage_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for the Careers program subpage.</span>',
 							],
 							[
 								'label'       => __( 'Career Post Type', 'pedalcms' ),
@@ -410,10 +410,10 @@ return [
 
 							// Curriculum subpage
 							[
-								'label'       => __( 'Curriculum', 'pedalcms' ),
-								'name'        => 'curriculum_subpage_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for the Curriculum program subpage.</span>',
+								'label'   => __( 'Curriculum', 'pedalcms' ),
+								'name'    => 'curriculum_subpage_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for the Curriculum program subpage.</span>',
 							],
 							[
 								'label'       => __( 'Page Title', 'pedalcms' ),
@@ -440,10 +440,10 @@ return [
 
 							// Faculty & Staff subpage
 							[
-								'label'       => __( 'Faculty & Staff', 'pedalcms' ),
-								'name'        => 'faculty_staff_subpage_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for the Faculty &amp; Staff program subpage.</span>',
+								'label'   => __( 'Faculty & Staff', 'pedalcms' ),
+								'name'    => 'faculty_staff_subpage_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for the Faculty &amp; Staff program subpage.</span>',
 							],
 							[
 								'label'       => __( 'Page Title', 'pedalcms' ),
@@ -461,10 +461,10 @@ return [
 
 							// Cost subpage
 							[
-								'label'       => __( 'Cost', 'pedalcms' ),
-								'name'        => 'cost_subpage_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for the Cost program subpage.</span>',
+								'label'   => __( 'Cost', 'pedalcms' ),
+								'name'    => 'cost_subpage_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for the Cost program subpage.</span>',
 							],
 							[
 								'label'       => __( 'Page Title', 'pedalcms' ),
@@ -482,10 +482,10 @@ return [
 
 							// Apply subpage
 							[
-								'label'       => __( 'How to Apply', 'pedalcms' ),
-								'name'        => 'apply_subpage_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for the How to Apply program subpage.</span>',
+								'label'   => __( 'How to Apply', 'pedalcms' ),
+								'name'    => 'apply_subpage_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for the How to Apply program subpage.</span>',
 							],
 							[
 								'label'       => __( 'Page Title', 'pedalcms' ),
@@ -503,10 +503,10 @@ return [
 
 							// FAQs subpage
 							[
-								'label'       => __( 'FAQs', 'pedalcms' ),
-								'name'        => 'faq_subpage_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for the FAQs program subpage.</span>',
+								'label'   => __( 'FAQs', 'pedalcms' ),
+								'name'    => 'faq_subpage_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for the FAQs program subpage.</span>',
 							],
 							[
 								'label'       => __( 'Page Title', 'pedalcms' ),
@@ -524,10 +524,10 @@ return [
 
 							// News subpage
 							[
-								'label'       => __( 'News', 'pedalcms' ),
-								'name'        => 'news_subpage_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for the News program subpage.</span>',
+								'label'   => __( 'News', 'pedalcms' ),
+								'name'    => 'news_subpage_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for the News program subpage.</span>',
 							],
 							[
 								'label'       => __( 'Page Title', 'pedalcms' ),
@@ -565,10 +565,10 @@ return [
 							],
 
 							[
-								'label'       => __( 'Configure Course Catalog', 'pedalcms' ),
-								'name'        => 'course_catalog_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for searching and browsing the list of courses.</span>',
+								'label'   => __( 'Configure Course Catalog', 'pedalcms' ),
+								'name'    => 'course_catalog_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for searching and browsing the list of courses.</span>',
 							],
 
 							[
@@ -590,16 +590,16 @@ return [
 							],
 
 							[
-								'label' => __( 'Header Background Image', 'pedalcms' ),
-								'name'  => 'course_archive_header_background',
-								'type'  => 'upload',
+								'label'       => __( 'Header Background Image', 'pedalcms' ),
+								'name'        => 'course_archive_header_background',
+								'type'        => 'upload',
 								'conditional' => [
 									'rules' => [
 										[
 											'field' => 'presentation_mode',
 											'value' => 'full',
-										]
-									]
+										],
+									],
 								],
 							],
 
@@ -623,10 +623,10 @@ return [
 							],
 
 							[
-								'label'       => __( 'Configure Courses', 'pedalcms' ),
-								'name'        => 'courses_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for individual courses.</span>',
+								'label'   => __( 'Configure Courses', 'pedalcms' ),
+								'name'    => 'courses_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for individual courses.</span>',
 							],
 
 							[
@@ -686,10 +686,10 @@ return [
 							],
 
 							[
-								'label'       => __( 'Configure Directory', 'pedalcms' ),
-								'name'        => 'faculty_staff_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for searching and browsing the list of personnel.</span>',
+								'label'   => __( 'Configure Directory', 'pedalcms' ),
+								'name'    => 'faculty_staff_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for searching and browsing the list of personnel.</span>',
 							],
 
 							[
@@ -711,16 +711,16 @@ return [
 							],
 
 							[
-								'label' => __( 'Archive Header Background Image', 'pedalcms' ),
-								'name'  => 'person_archive_header_background',
-								'type'  => 'upload',
+								'label'       => __( 'Archive Header Background Image', 'pedalcms' ),
+								'name'        => 'person_archive_header_background',
+								'type'        => 'upload',
 								'conditional' => [
 									'rules' => [
 										[
 											'field' => 'presentation_mode',
 											'value' => 'full',
-										]
-									]
+										],
+									],
 								],
 							],
 
@@ -742,10 +742,10 @@ return [
 							],
 
 							[
-								'label'       => __( 'Configure Personnel', 'pedalcms' ),
-								'name'        => 'personnel_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Configuration options for individual personnel.</span>',
+								'label'   => __( 'Configure Personnel', 'pedalcms' ),
+								'name'    => 'personnel_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Configuration options for individual personnel.</span>',
 							],
 
 							[
@@ -775,10 +775,10 @@ return [
 
 							// --- College ---
 							[
-								'label'       => __( 'College', 'pedalcms' ),
-								'name'        => 'college_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Used by Programs, Course Catalog, and Faculty & Staff Directory.</span>',
+								'label'   => __( 'College', 'pedalcms' ),
+								'name'    => 'college_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Used by Programs, Course Catalog, and Faculty & Staff Directory.</span>',
 							],
 
 							[
@@ -828,10 +828,10 @@ return [
 
 							// --- Department ---
 							[
-								'label'       => __( 'Department', 'pedalcms' ),
-								'name'        => 'department_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Used by Programs, Course Catalog, and Faculty & Staff Directory.</span>',
+								'label'   => __( 'Department', 'pedalcms' ),
+								'name'    => 'department_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Used by Programs, Course Catalog, and Faculty & Staff Directory.</span>',
 							],
 
 							[
@@ -891,10 +891,10 @@ return [
 
 							// --- Program Type ---
 							[
-								'label'       => __( 'Program Type', 'pedalcms' ),
-								'name'        => 'program_type_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Used by Programs.</span>',
+								'label'   => __( 'Program Type', 'pedalcms' ),
+								'name'    => 'program_type_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Used by Programs.</span>',
 							],
 
 							[
@@ -930,10 +930,10 @@ return [
 
 							// --- Instruction Mode ---
 							[
-								'label'       => __( 'Instruction Mode', 'pedalcms' ),
-								'name'        => 'instruction_mode_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Used by Programs. (e.g. In-person, Online, Hybrid)</span>',
+								'label'   => __( 'Instruction Mode', 'pedalcms' ),
+								'name'    => 'instruction_mode_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Used by Programs. (e.g. In-person, Online, Hybrid)</span>',
 							],
 
 							[
@@ -960,10 +960,10 @@ return [
 
 							// --- Subject ---
 							[
-								'label'       => __( 'Subject', 'pedalcms' ),
-								'name'        => 'subject_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Used in the Course Catalog.</span>',
+								'label'   => __( 'Subject', 'pedalcms' ),
+								'name'    => 'subject_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Used in the Course Catalog.</span>',
 							],
 
 							[
@@ -990,10 +990,10 @@ return [
 
 							// --- Session ---
 							[
-								'label'       => __( 'Session', 'pedalcms' ),
-								'name'        => 'session_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Used in the Course Catalog. Also commonly referred to as "term." (e.g. Fall, Spring, Summer)</span>',
+								'label'   => __( 'Session', 'pedalcms' ),
+								'name'    => 'session_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Used in the Course Catalog. Also commonly referred to as "term." (e.g. Fall, Spring, Summer)</span>',
 							],
 
 							[
@@ -1020,10 +1020,10 @@ return [
 
 							// --- Personnel Category ---
 							[
-								'label'       => __( 'Personnel Category', 'pedalcms' ),
-								'name'        => 'person_cat_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Used by personnel.</span>',
+								'label'   => __( 'Personnel Category', 'pedalcms' ),
+								'name'    => 'person_cat_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Used by personnel.</span>',
 							],
 
 							[
@@ -1059,10 +1059,10 @@ return [
 
 							// --- FAQ Category ---
 							[
-								'label'       => __( 'FAQ Category', 'pedalcms' ),
-								'name'        => 'faq_cat_group',
-								'type'        => 'custom_html',
-								'content'	  => '<span class="pdl-group-description">Used by programs.</span>',
+								'label'   => __( 'FAQ Category', 'pedalcms' ),
+								'name'    => 'faq_cat_group',
+								'type'    => 'custom_html',
+								'content' => '<span class="pdl-group-description">Used by programs.</span>',
 							],
 
 							[
@@ -1090,4 +1090,4 @@ return [
 
 ]; // end return
 
-return apply_filters( 'pdl/cassette/fields/settings', $fields );
+return apply_filters( 'pdl/cassette/fields/settings', $fields ); // phpcs:ignore Squiz.PHP.NonExecutableCode.Unreachable -- Legacy tail kept as-is.

@@ -21,14 +21,14 @@ if [[ ! -f "${PLUGIN_ZIP}" ]]; then
 	exit 1
 fi
 
-if [[ ! -f .github/demo-content.xml ]]; then
-	echo "Demo content not found: .github/demo-content.xml" >&2
+if [[ ! -f .github/playground/content.xml ]]; then
+	echo "Demo content not found: .github/playground/content.xml" >&2
 	exit 1
 fi
 
 mkdir -p "$(dirname "${OUTPUT_BUNDLE}")"
 cp "${PLUGIN_ZIP}" "${BUILD_ROOT}/pedalcms.zip"
-cp .github/demo-content.xml "${BUILD_ROOT}/demo-content.xml"
+cp .github/playground/content.xml "${BUILD_ROOT}/demo-content.xml"
 node scripts/playground-blueprint.mjs bundle "${BUILD_ROOT}/blueprint.json"
 
 rm -f "${OUTPUT_BUNDLE}"

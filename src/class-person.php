@@ -43,9 +43,7 @@ class Person extends CustomPostType {
 	 * @inheritdoc
 	 */
 	public function register(): void {
-		if ( ! self::is_block_editor_enabled() ) {
-			$this->args['show_in_rest'] = false;
-		}
+		$this->args['show_in_rest'] = self::is_block_editor_enabled();
 
 		parent::register();
 	}

@@ -19,8 +19,8 @@ $defaults = [
 	'h_level'                  => 2,
 ];
 
-$args  = pdl_parse_template_args( $args, $defaults, $template );
-$h_tag = pdl_get_heading_tag( $args['h_level'] );
+$args        = pdl_parse_template_args( $args, $defaults, $template );
+$h_tag       = pdl_get_heading_tag( $args['h_level'] );
 $person_post = get_post( $args['person_post'] );
 
 if ( $person_post instanceof \WP_Post ) :?>

@@ -173,7 +173,7 @@ function document_title_parts( array $title ): array {
 function options_wp_head() {
 	$var_ptrn = '--pdl-%s: %s';
 	$options  = [
-		'active_color' => '#000',
+		'active_color'      => '#000',
 		'active_color_text' => '#fff',
 	];
 	$vars     = [];
@@ -822,12 +822,13 @@ function options_get_subpages( $subpages, $list_name, $post_type ) {
 		null
 	);
 
-	if ( !is_array( $enabled ) ) {
+	if ( ! is_array( $enabled ) ) {
 		return $subpages;
 	}
 
 	foreach ( $subpages as $i => $subpage ) {
-		if ( $subpage->is_builtin() && !in_array( $subpage->slug, $enabled ) ) {
+		// phpcs:ignore WordPress.PHP.StrictInArray.MissingTrueStrict -- Loose comparison preserved for stored option values.
+		if ( $subpage->is_builtin() && ! in_array( $subpage->slug, $enabled ) ) {
 			unset( $subpages[ $i ] );
 		}
 	}

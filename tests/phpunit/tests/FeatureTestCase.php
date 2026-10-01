@@ -26,7 +26,7 @@ abstract class FeatureTestCase extends WP_UnitTestCase {
 	 * @return void
 	 */
 	protected function set_plugin_option( string $option, $value ): void {
-		$full_name                         = 'options_pdl_' . $option;
+		$full_name                           = 'options_pdl_' . $option;
 		$this->touched_options[ $full_name ] = true;
 		update_option( $full_name, $value );
 	}
@@ -38,7 +38,7 @@ abstract class FeatureTestCase extends WP_UnitTestCase {
 	 * @return void
 	 */
 	protected function delete_plugin_option( string $option ): void {
-		$full_name                         = 'options_pdl_' . $option;
+		$full_name                           = 'options_pdl_' . $option;
 		$this->touched_options[ $full_name ] = true;
 		delete_option( $full_name );
 	}

@@ -1,0 +1,427 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to static method get_settings\(\) on an unknown class RankMath\\Helper\.$#'
+			identifier: class.notFound
+			count: 2
+			path: src/breadcrumbs.php
+
+		-
+			message: '#^Function aioseo not found\.$#'
+			identifier: function.notFound
+			count: 3
+			path: src/breadcrumbs.php
+
+		-
+			message: '#^Instantiated class bcn_breadcrumb not found\.$#'
+			identifier: class.notFound
+			count: 3
+			path: src/breadcrumbs.php
+
+		-
+			message: '#^One or more @param tags has an invalid name or invalid syntax\.$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/breadcrumbs.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$breadcrumbs with type PedalCMS\\Core\\Breadcrumbs is not subtype of native type RankMath\\Frontend\\Breadcrumbs\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/breadcrumbs.php
+
+		-
+			message: '#^Parameter \$breadcrumbs of function PedalCMS\\Core\\rankmath_update_trail\(\) has invalid type PedalCMS\\Core\\Breadcrumbs\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/breadcrumbs.php
+
+		-
+			message: '#^Parameter \$breadcrumbs of function PedalCMS\\Core\\rankmath_update_trail\(\) has invalid type RankMath\\Frontend\\Breadcrumbs\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/breadcrumbs.php
+
+		-
+			message: '#^Variable \$home might not be defined\.$#'
+			identifier: variable.undefined
+			count: 1
+			path: src/breadcrumbs.php
+
+		-
+			message: '#^Variable \$post_type might not be defined\.$#'
+			identifier: variable.undefined
+			count: 2
+			path: src/breadcrumbs.php
+
+		-
+			message: '#^Access to an undefined property WP_Post\:\:\$course_code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/class-course.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$query with type PedalCMS\\Core\\WP_Query is not subtype of native type WP_Query\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/class-course.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$program$#'
+			identifier: parameter.notFound
+			count: 1
+			path: src/class-course.php
+
+		-
+			message: '#^Parameter \$query of method PedalCMS\\Core\\Course\:\:update_sort_order\(\) has invalid type PedalCMS\\Core\\WP_Query\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-course.php
+
+		-
+			message: '#^Call to function is_array\(\) with non\-falsy\-string will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 1
+			path: src/class-customcontentobject.php
+
+		-
+			message: '#^Callback expects 0 parameters, \$accepted_args is set to 3\.$#'
+			identifier: arguments.count
+			count: 1
+			path: src/class-customcontentobject.php
+
+		-
+			message: '#^Offset ''content'' on array\{id\: non\-falsy\-string, title\: ''Overview'', content\: non\-falsy\-string\} in empty\(\) always exists and is not falsy\.$#'
+			identifier: empty.offset
+			count: 1
+			path: src/class-customcontentobject.php
+
+		-
+			message: '#^Property PedalCMS\\Core\\CustomContentObject\:\:\$edit_help \(string\) does not accept null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/class-customcontentobject.php
+
+		-
+			message: '#^Property PedalCMS\\Core\\CustomContentObject\:\:\$help \(string\) does not accept null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/class-customcontentobject.php
+
+		-
+			message: '#^Unsafe usage of new static\(\)\.$#'
+			identifier: new.static
+			count: 1
+			path: src/class-customcontentobject.php
+
+		-
+			message: '#^Action callback returns string but should not return anything\.$#'
+			identifier: return.void
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomPostType\:\:get_all\(\) has invalid return type PedalCMS\\Core\\WP_Error\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomPostType\:\:get_by_meta\(\) has invalid return type PedalCMS\\Core\\WP_Error\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomPostType\:\:get_by_meta\(\) has invalid return type PedalCMS\\Core\\WP_Post\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomPostType\:\:get_by_meta\(\) should return PedalCMS\\Core\\WP_Error\|PedalCMS\\Core\\WP_Post\|false but returns WP_Post\.$#'
+			identifier: return.type
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomPostType\:\:get_by_meta\(\) should return PedalCMS\\Core\\WP_Error\|PedalCMS\\Core\\WP_Post\|false but returns array\<int, WP_Post\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomPostType\:\:get_by_meta\(\) should return PedalCMS\\Core\\WP_Error\|PedalCMS\\Core\\WP_Post\|false but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomPostType\:\:get_by_slug\(\) has invalid return type PedalCMS\\Core\\WP_Error\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomPostType\:\:get_by_slug\(\) has invalid return type PedalCMS\\Core\\WP_Post\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomPostType\:\:get_by_slug\(\) should return PedalCMS\\Core\\WP_Error\|PedalCMS\\Core\\WP_Post\|false but returns WP_Post\.$#'
+			identifier: return.type
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomPostType\:\:is_edit_screen\(\) should return bool but returns null\.$#'
+			identifier: return.type
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$limit$#'
+			identifier: parameter.notFound
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^PHPDoc tag @return with type array\|PedalCMS\\Core\\WP_Error is not subtype of native type array\.$#'
+			identifier: return.phpDocType
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Undefined variable\: \$limit$#'
+			identifier: variable.undefined
+			count: 1
+			path: src/class-customposttype.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomTaxonomy\:\:get_by_meta\(\) has invalid return type PedalCMS\\Core\\WP_Error\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-customtaxonomy.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomTaxonomy\:\:get_by_meta\(\) has invalid return type PedalCMS\\Core\\WP_Term\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-customtaxonomy.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomTaxonomy\:\:get_by_meta\(\) should return PedalCMS\\Core\\WP_Error\|PedalCMS\\Core\\WP_Term\|false but returns WP_Error\.$#'
+			identifier: return.type
+			count: 1
+			path: src/class-customtaxonomy.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomTaxonomy\:\:get_by_meta\(\) should return PedalCMS\\Core\\WP_Error\|PedalCMS\\Core\\WP_Term\|false but returns WP_Term\.$#'
+			identifier: return.type
+			count: 1
+			path: src/class-customtaxonomy.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\CustomTaxonomy\:\:get_by_meta\(\) should return PedalCMS\\Core\\WP_Error\|PedalCMS\\Core\\WP_Term\|false but returns array\<int, WP_Term\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/class-customtaxonomy.php
+
+		-
+			message: '#^Negated boolean expression is always false\.$#'
+			identifier: booleanNot.alwaysFalse
+			count: 1
+			path: src/class-customtaxonomy.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$limit$#'
+			identifier: parameter.notFound
+			count: 1
+			path: src/class-customtaxonomy.php
+
+		-
+			message: '#^Access to an undefined property PedalCMS\\Core\\Department\:\:\$field_groups\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/class-department.php
+
+		-
+			message: '#^Instantiated class PedalCMS\\Core\\WP_Error not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-department.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\Department\:\:get_by_college\(\) has invalid return type PedalCMS\\Core\\WP_Error\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-department.php
+
+		-
+			message: '#^Parameter \#2 \$value of static method PedalCMS\\Core\\CustomTaxonomy\:\:get_by_meta\(\) expects string, int given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/class-department.php
+
+		-
+			message: '#^Access to an undefined property WP_Post\:\:\$job_title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/class-jobtitleblock.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$query with type PedalCMS\\Core\\WP_Query is not subtype of native type WP_Query\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/class-person.php
+
+		-
+			message: '#^Parameter \$query of method PedalCMS\\Core\\Person\:\:update_sort_order\(\) has invalid type PedalCMS\\Core\\WP_Query\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-person.php
+
+		-
+			message: '#^Action callback returns array\<string\> but should not return anything\.$#'
+			identifier: return.void
+			count: 1
+			path: src/class-plugin.php
+
+		-
+			message: '#^One or more @param tags has an invalid name or invalid syntax\.$#'
+			identifier: phpDoc.parseError
+			count: 2
+			path: src/class-plugin.php
+
+		-
+			message: '#^PHPDoc tag @param for parameter \$query with type PedalCMS\\Core\\WP_Query is not subtype of native type WP_Query\.$#'
+			identifier: parameter.phpDocType
+			count: 1
+			path: src/class-program.php
+
+		-
+			message: '#^Parameter \$query of method PedalCMS\\Core\\Program\:\:update_sort_order\(\) has invalid type PedalCMS\\Core\\WP_Query\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/class-program.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\Subpage\:\:unslugify\(\) with return type void returns string but should not return anything\.$#'
+			identifier: return.void
+			count: 1
+			path: src/class-subpage.php
+
+		-
+			message: '#^Result of method PedalCMS\\Core\\Subpage\:\:unslugify\(\) \(void\) is used\.$#'
+			identifier: method.void
+			count: 1
+			path: src/class-subpage.php
+
+		-
+			message: '#^Expected 3 @param tags, found 1\.$#'
+			identifier: paramTag.count
+			count: 1
+			path: src/class-subpagemanager.php
+
+		-
+			message: '#^Filter callback return statement is missing\.$#'
+			identifier: return.missing
+			count: 1
+			path: src/class-subpagemanager.php
+
+		-
+			message: '#^Method PedalCMS\\Core\\TemplateManager\:\:locate_template\(\) should return string but returns false\.$#'
+			identifier: return.type
+			count: 1
+			path: src/class-templatemanager.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$data$#'
+			identifier: parameter.notFound
+			count: 1
+			path: src/class-templatemanager.php
+
+		-
+			message: '#^Unreachable statement \- code above always terminates\.$#'
+			identifier: deadCode.unreachable
+			count: 1
+			path: src/fields-settings.php
+
+		-
+			message: '#^Callback expects 1 parameter, \$accepted_args is set to 3\.$#'
+			identifier: arguments.count
+			count: 4
+			path: src/hooks.php
+
+		-
+			message: '#^Filter callback return statement is missing\.$#'
+			identifier: return.missing
+			count: 3
+			path: src/hooks.php
+
+		-
+			message: '#^Function PedalCMS\\Core\\options_header_image_size\(\) with return type void returns array but should not return anything\.$#'
+			identifier: return.void
+			count: 1
+			path: src/hooks.php
+
+		-
+			message: '#^Function PedalCMS\\Core\\options_template_args\(\) should return string but returns array\.$#'
+			identifier: return.type
+			count: 3
+			path: src/hooks.php
+
+		-
+			message: '#^One or more @param tags has an invalid name or invalid syntax\.$#'
+			identifier: phpDoc.parseError
+			count: 2
+			path: src/hooks.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$post_type$#'
+			identifier: parameter.notFound
+			count: 1
+			path: src/hooks.php
+
+		-
+			message: '#^Result of function PedalCMS\\Core\\options_header_image_size \(void\) is used\.$#'
+			identifier: function.void
+			count: 3
+			path: src/hooks.php
+
+		-
+			message: '#^Function PedalCMS\\Core\\render_terms_grid\(\) with return type void returns string but should not return anything\.$#'
+			identifier: return.void
+			count: 1
+			path: src/shortcodes.php
+
+		-
+			message: '#^Function PedalCMS\\Core\\render_terms_grid\(\) with return type void returns string\|false but should not return anything\.$#'
+			identifier: return.void
+			count: 1
+			path: src/shortcodes.php
+
+		-
+			message: '#^Parameter \#2 \$callback of function add_shortcode expects callable\(array\<string\>, string\|null, string\)\: string, ''PedalCMS\\\\Core…'' given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/shortcodes.php
+
+		-
+			message: '#^One or more @param tags has an invalid name or invalid syntax\.$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/template-tags-shared.php
+
+		-
+			message: '#^Function pdl_show_subpages\(\) should return bool but returns int\<0, max\>\.$#'
+			identifier: return.type
+			count: 1
+			path: src/template-tags.php
+
+		-
+			message: '#^PHPDoc tag @param references unknown parameter\: \$program$#'
+			identifier: parameter.notFound
+			count: 2
+			path: src/template-tags.php

@@ -1,0 +1,94 @@
+name: Code Coverage
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  coverage:
+    name: Generate Coverage Report
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: pedalcms_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    env:
+      WP_TESTS_DIR: /tmp/wordpress-tests-lib
+      WP_CORE_DIR: /tmp/wordpress
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mysqli
+          coverage: xdebug
+
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v3
+
+      - name: Install Subversion
+        run: sudo apt-get update && sudo apt-get install -y subversion
+
+      - name: Install WordPress test suite
+        run: bash bin/install-wp-tests.sh pedalcms_test root root 127.0.0.1 latest
+
+      - name: Run PHPUnit with coverage
+        run: |
+          set -o pipefail
+          vendor/bin/phpunit --coverage-clover=coverage.xml --coverage-text | tee coverage-summary.txt
+
+      - name: Extract coverage percentage
+        id: coverage
+        run: |
+          cat coverage-summary.txt
+
+          COVERAGE=$(grep -E "^\s*Lines:" coverage-summary.txt | grep -oP '[\d.]+(?=%)' | head -1)
+
+          if [ -z "$COVERAGE" ]; then
+            COVERAGE=$(grep -oP 'Lines:\s+[\d.]+%\s+\(\s*\d+/\s*\d+\)' coverage-summary.txt | grep -oP '[\d.]+(?=%)' | head -1)
+          fi
+
+          if [ -z "$COVERAGE" ]; then
+            COVERAGE="0"
+          fi
+
+          echo "percentage=$COVERAGE" >> "$GITHUB_OUTPUT"
+          echo "Coverage: $COVERAGE%"
+          echo "### Code coverage: ${COVERAGE}% (lines)" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage-clover
+          path: coverage.xml
+
+      - name: Check coverage threshold
+        env:
+          COVERAGE: ${{ steps.coverage.outputs.percentage }}
+        run: |
+          echo "Current coverage: $COVERAGE%"
+          if (( $(echo "$COVERAGE < 70" | bc -l) )); then
+            echo "::warning::Coverage is below 70% threshold"
+          fi

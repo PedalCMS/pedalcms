@@ -41,6 +41,7 @@
 
 	<!-- Directories and third party library exclusions. -->
 	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/node_modules/*</exclude-pattern>
 
 	<!-- Translation files. -->
 	<exclude-pattern>/languages/*</exclude-pattern>
@@ -60,6 +61,8 @@
 	<!-- Allow short syntax arrays. -->
 	<rule ref="WordPress-Extra">
 		<exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+		<!-- Allow the short ternary (?:); idiomatic on PHP 8.2+. -->
+		<exclude name="Universal.Operators.DisallowShortTernary"/>
 	</rule>
 
 	<!-- Enforce short syntax arrays. -->

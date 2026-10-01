@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $defaults = [
-	'program_post' 		   => null,
+	'program_post'         => null,
 	'show_image'           => true,
 	'show_program_type'    => true,
 	'show_program_meta'    => true,

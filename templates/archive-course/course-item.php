@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults    = [
+$defaults = [
 	'course_post'        => null,
 	'label_more_details' => pdl_get_label( 'more_details' ),
 	'label_permalink'    => pdl_get_post_type_label( 'pdl_course', 'view_item' ),
@@ -21,12 +21,12 @@ $args = pdl_parse_template_args( $args, $defaults, $template );
 
 if ( $args['course_post'] instanceof \WP_Post ) :
 	$more_details_id = 'more-details-' . $args['course_post']->ID;
-?>
+	?>
 <article <?php post_class( '', $args['course_post'] ); ?>>
 	<header>
 		<h2 class="entry-title course-title">
 			<a href="<?php echo esc_url( get_the_permalink( $args['course_post'] ) ); ?>">
-				<?php echo pdl_get_full_course_title( $args['course_post'] ); ?>
+				<?php echo pdl_get_full_course_title( $args['course_post'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Returns markup with already-escaped parts. ?>
 			</a>
 		</h2>
 		<?php pdl_get_template_part( 'single-course/course-meta', $args ); ?>

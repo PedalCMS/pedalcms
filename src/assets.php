@@ -162,7 +162,7 @@ function admin_enqueue_assets() {
 	);
 
 	if ( $is_post_edit ) {
-		if ( $post_type === Program::POST_TYPE ) {
+		if ( Program::POST_TYPE === $post_type ) {
 			$pdl_css = '/admin/css/metabox-tabs.css';
 
 			wp_enqueue_style(

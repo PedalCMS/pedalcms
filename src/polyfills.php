@@ -39,9 +39,9 @@ add_action(
 		 * @param bool   $format_value Ignored; kept for ACF signature compat.
 		 * @return mixed The stored value, or false when nothing is found.
 		 */
-		function get_field( string $selector, $post_id = false, bool $format_value = true ): mixed {
+		function get_field( string $selector, $post_id = false, bool $format_value = true ): mixed { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed -- Kept for ACF signature compatibility.
 			// Options / settings page.
-			if ( $post_id === 'option' || $post_id === 'options' ) {
+			if ( 'option' === $post_id || 'options' === $post_id ) {
 				return get_option( 'options_pdl_' . $selector );
 			}
 

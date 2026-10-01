@@ -86,7 +86,7 @@ if ( ! function_exists( 'pdl_get_option' ) ) :
 	 * @param mixed $default The default value.
 	 * @return mixed The option value.
 	 */
-	function pdl_get_option( string $option, $default = null ) {
+	function pdl_get_option( string $option, $default = null ) { // phpcs:ignore Universal.NamingConventions.NoReservedKeywordParameterNames.defaultFound -- Renaming would break named arguments.
 		return \PedalCMS\Core\Plugin::get_option( $option, $default );
 	}
 
