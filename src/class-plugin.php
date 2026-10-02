@@ -334,7 +334,7 @@ class Plugin {
 		}
 
 		self::$taxonomies[] = College::TAXONOMY;
-		if ( self::get_option( 'college_enable' ) ) {
+		if ( self::get_option( 'college_enable', true ) ) {
 			College::get_instance()->register();
 			self::$taxonomies_enabled[] = College::TAXONOMY;
 		}
