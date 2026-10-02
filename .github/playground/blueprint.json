@@ -1,274 +1,278 @@
 {
-   "$schema":"https://playground.wordpress.net/blueprint-schema.json",
-   "meta":{
-      "title":"Modern U",
-      "description":"A ready-to-use PedalCMS demo with Astra and sample content.",
-      "author":"PedalCMS",
-      "categories":[
-         "demo"
-      ]
-   },
-   "preferredVersions":{
-      "php":"8.2",
-      "wp":"latest"
-   },
-   "features":{
-      "networking":true
-   },
-   "landingPage":"/",
-   "login":true,
-   "steps":[
-      {
-         "step":"installPlugin",
-         "pluginData":{
-            "resource":"url",
-            "url":"https://github.com/PedalCMS/pedalcms/releases/latest/download/pedalcms.zip"
-         },
-         "options":{
-            "activate":true,
-            "targetFolderName":"pedalcms"
-         }
-      },
-      {
-         "step":"installTheme",
-         "themeData":{
-            "resource":"wordpress.org/themes",
-            "slug":"astra"
-         },
-         "options":{
-            "activate":true
-         }
-      },
-      {
-         "step":"installPlugin",
-         "pluginData":{
-            "resource":"wordpress.org/plugins",
-            "slug":"wordpress-importer"
-         },
-         "options":{
-            "activate":true
-         }
-      },
-      {
-         "step":"installPlugin",
-         "pluginData":{
-            "resource":"wordpress.org/plugins",
-            "slug":"breadcrumb-navxt"
-         },
-         "options":{
-            "activate":true
-         }
-      },
-      {
-         "step": "setSiteOptions",
-         "options": {
-            "blogname": "Modern U",
-            "blogdescription": "A Pedal CMS Demo School",
-            "options_pdl_active_color": "#117fa7",
-			"options_pdl_display_breadcrumbs": 0,
-			"options_pdl_program_url_apply_now": "#",
-			"options_pdl_program_url_contact": "#",
-			"astra-color-palettes": {
-				"currentPalette": "palette_3",
-				"palettes": {
-					"palette_1": [
-						"#800a31",
-						"#3c222c",
-						"#3a3a3a",
-						"#4B4F58",
-						"#F5F5F5",
-						"#FFFFFF",
-						"#F2F5F7",
-						"#ffb326",
-						"#000000"
-					],
-					"palette_2": [
-						"#117fa7",
-						"#343d46",
-						"#343d46",
-						"#505a6d",
-						"#f3f5f6",
-						"#FFFFFF",
-						"#dce0e5",
-						"#424242",
-						"#1a1f23"
-					],
-					"palette_3": [
-						"#f2ad0d",
-						"#c28b0a",
-						"#1a1f23",
-						"#505a6d",
-						"#f7ce6e",
-						"#FFFFFF",
-						"#fcefcf",
-						"#141006",
-						"#222222"
-					],
-					"palette_4": [
-						"#0085FF",
-						"#0177E3",
-						"#FFFFFF",
-						"#E7F6FF",
-						"#212A37",
-						"#0F172A",
-						"#4F5B62",
-						"#070614",
-						"#222222"
-					]
-				},
-				"flag": true,
-				"presets": {
-					"Oak": [
-						"#0067FF",
-						"#005EE9",
-						"#0F172A",
-						"#364151",
-						"#E7F6FF",
-						"#FFFFFF",
-						"#D1DAE5",
-						"#070614",
-						"#222222"
-					],
-					"Viola": [
-						"#6528F7",
-						"#5511F8",
-						"#0F172A",
-						"#454F5E",
-						"#F2F0FE",
-						"#FFFFFF",
-						"#D8D8F5",
-						"#0D0614",
-						"#222222"
-					],
-					"Cedar": [
-						"#DD183B",
-						"#CC1939",
-						"#0F172A",
-						"#3A3A3A",
-						"#FFEDE6",
-						"#FFFFFF",
-						"#FFD1BF",
-						"#140609",
-						"#222222"
-					],
-					"Willow": [
-						"#54B435",
-						"#379237",
-						"#0F172A",
-						"#2F3B40",
-						"#EDFBE2",
-						"#FFFFFF",
-						"#D5EAD8",
-						"#0C1406",
-						"#222222"
-					],
-					"Lily": [
-						"#DCA54A",
-						"#D09A40",
-						"#0F172A",
-						"#4A4A4A",
-						"#FAF5E5",
-						"#FFFFFF",
-						"#F0E6C5",
-						"#141004",
-						"#222222"
-					],
-					"Rose": [
-						"#FB5FAB",
-						"#EA559D",
-						"#0F172A",
-						"#454F5E",
-						"#FCEEF5",
-						"#FFFFFF",
-						"#FAD8E9",
-						"#140610",
-						"#222222"
-					],
-					"Sage": [
-						"#1B9C85",
-						"#178E79",
-						"#0F172A",
-						"#454F5E",
-						"#EDF6EE",
-						"#FFFFFF",
-						"#D4F3D7",
-						"#06140C",
-						"#222222"
-					],
-					"Flare": [
-						"#FD9800",
-						"#E98C00",
-						"#0F172A",
-						"#454F5E",
-						"#FEF9E1",
-						"#FFFFFF",
-						"#F9F0C8",
-						"#141006",
-						"#222222"
-					],
-					"Maple": [
-						"#FF6210",
-						"#F15808",
-						"#1C0D0A",
-						"#353535",
-						"#FEF1E4",
-						"#FFFFFF",
-						"#E5D7D1",
-						"#140B06",
-						"#222222"
-					],
-					"Birch": [
-						"#737880",
-						"#65696F",
-						"#151616",
-						"#393C40",
-						"#F6F6F6",
-						"#FFFFFF",
-						"#F1F0F0",
-						"#232529",
-						"#222222"
-					],
-					"Dark": [
-						"#0085FF",
-						"#0177E3",
-						"#FFFFFF",
-						"#E7F6FF",
-						"#212A37",
-						"#0F172A",
-						"#4F5B62",
-						"#070614",
-						"#222222"
-					]
-				}
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Modern U",
+		"description": "A ready-to-use PedalCMS demo with Astra and sample content.",
+		"author": "PedalCMS",
+		"categories": [
+			"demo"
+		]
+	},
+	"preferredVersions": {
+		"php": "8.2",
+		"wp": "latest"
+	},
+	"features": {
+		"networking": true
+	},
+	"landingPage": "/",
+	"login": true,
+	"steps": [
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "url",
+				"url": "https://github.com/PedalCMS/pedalcms/releases/latest/download/pedalcms.zip"
 			},
-			"astra-typography-presets": "typo-preset-03"
-         }
-      },
-      {
-         "step": "runPHP",
-         "code": { "file": "astra-settings.php" }
-      },
-      {
-         "step":"importWxr",
-         "file":{
-            "resource":"url",
-            "url":"https://demo-content.pedalcms.com/demo-content.xml"
-         },
-         "fetchAttachments":true,
-         "rewriteUrls":true,
-         "authorsMode":"default-author",
-         "defaultAuthorUsername":"admin"
-      },
-      {
-         "step":"runPHP",
-         "code":"<?php\nrequire_once '/wordpress/wp-load.php';\n\n$home = get_page_by_path( 'home', OBJECT, 'page' );\n\nif ( ! $home instanceof WP_Post ) {\n\tthrow new RuntimeException( 'The imported Home page could not be found.' );\n}\n\nupdate_option( 'show_on_front', 'page' );\nupdate_option( 'page_on_front', (int) $home->ID );\n"
-      },
-      {
-         "step": "runPHPWithOptions",
-         "options": {
-           "code": "<?php\nrequire_once '/wordpress/wp-load.php';\n\n$menu_name = 'Main Menu';\n\n// Ensure the menu exists.\n$menu_term = get_term_by('name', $menu_name, 'nav_menu');\nif (!$menu_term || is_wp_error($menu_term)) {\n  $menu_id = wp_create_nav_menu($menu_name);\n} else {\n  $menu_id = (int) $menu_term->term_id;\n}\n\n// Load existing assignments and update the primary location.\n$locations = get_theme_mod('nav_menu_locations');\nif (!is_array($locations)) { $locations = []; }\n\n$locations['primary'] = $menu_id;\nset_theme_mod('nav_menu_locations', $locations);\n?>",
-           "body": "Assign Astra primary menu"
-         }
-      }
-   ]
+			"options": {
+				"activate": true,
+				"targetFolderName": "pedalcms"
+			}
+		},
+		{
+			"step": "installTheme",
+			"themeData": {
+				"resource": "wordpress.org/themes",
+				"slug": "astra"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "wordpress-importer"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "breadcrumb-navxt"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "Modern U",
+				"blogdescription": "A Pedal CMS Demo School",
+				"options_pdl_active_color": "#117fa7",
+				"options_pdl_display_breadcrumbs": 0,
+				"astra-color-palettes": {
+					"currentPalette": "palette_3",
+					"palettes": {
+						"palette_1": [
+							"#800a31",
+							"#3c222c",
+							"#3a3a3a",
+							"#4B4F58",
+							"#F5F5F5",
+							"#FFFFFF",
+							"#F2F5F7",
+							"#ffb326",
+							"#000000"
+						],
+						"palette_2": [
+							"#117fa7",
+							"#343d46",
+							"#343d46",
+							"#505a6d",
+							"#f3f5f6",
+							"#FFFFFF",
+							"#dce0e5",
+							"#424242",
+							"#1a1f23"
+						],
+						"palette_3": [
+							"#f2ad0d",
+							"#c28b0a",
+							"#1a1f23",
+							"#505a6d",
+							"#f7ce6e",
+							"#FFFFFF",
+							"#fcefcf",
+							"#141006",
+							"#222222"
+						],
+						"palette_4": [
+							"#0085FF",
+							"#0177E3",
+							"#FFFFFF",
+							"#E7F6FF",
+							"#212A37",
+							"#0F172A",
+							"#4F5B62",
+							"#070614",
+							"#222222"
+						]
+					},
+					"flag": true,
+					"presets": {
+						"Oak": [
+							"#0067FF",
+							"#005EE9",
+							"#0F172A",
+							"#364151",
+							"#E7F6FF",
+							"#FFFFFF",
+							"#D1DAE5",
+							"#070614",
+							"#222222"
+						],
+						"Viola": [
+							"#6528F7",
+							"#5511F8",
+							"#0F172A",
+							"#454F5E",
+							"#F2F0FE",
+							"#FFFFFF",
+							"#D8D8F5",
+							"#0D0614",
+							"#222222"
+						],
+						"Cedar": [
+							"#DD183B",
+							"#CC1939",
+							"#0F172A",
+							"#3A3A3A",
+							"#FFEDE6",
+							"#FFFFFF",
+							"#FFD1BF",
+							"#140609",
+							"#222222"
+						],
+						"Willow": [
+							"#54B435",
+							"#379237",
+							"#0F172A",
+							"#2F3B40",
+							"#EDFBE2",
+							"#FFFFFF",
+							"#D5EAD8",
+							"#0C1406",
+							"#222222"
+						],
+						"Lily": [
+							"#DCA54A",
+							"#D09A40",
+							"#0F172A",
+							"#4A4A4A",
+							"#FAF5E5",
+							"#FFFFFF",
+							"#F0E6C5",
+							"#141004",
+							"#222222"
+						],
+						"Rose": [
+							"#FB5FAB",
+							"#EA559D",
+							"#0F172A",
+							"#454F5E",
+							"#FCEEF5",
+							"#FFFFFF",
+							"#FAD8E9",
+							"#140610",
+							"#222222"
+						],
+						"Sage": [
+							"#1B9C85",
+							"#178E79",
+							"#0F172A",
+							"#454F5E",
+							"#EDF6EE",
+							"#FFFFFF",
+							"#D4F3D7",
+							"#06140C",
+							"#222222"
+						],
+						"Flare": [
+							"#FD9800",
+							"#E98C00",
+							"#0F172A",
+							"#454F5E",
+							"#FEF9E1",
+							"#FFFFFF",
+							"#F9F0C8",
+							"#141006",
+							"#222222"
+						],
+						"Maple": [
+							"#FF6210",
+							"#F15808",
+							"#1C0D0A",
+							"#353535",
+							"#FEF1E4",
+							"#FFFFFF",
+							"#E5D7D1",
+							"#140B06",
+							"#222222"
+						],
+						"Birch": [
+							"#737880",
+							"#65696F",
+							"#151616",
+							"#393C40",
+							"#F6F6F6",
+							"#FFFFFF",
+							"#F1F0F0",
+							"#232529",
+							"#222222"
+						],
+						"Dark": [
+							"#0085FF",
+							"#0177E3",
+							"#FFFFFF",
+							"#E7F6FF",
+							"#212A37",
+							"#0F172A",
+							"#4F5B62",
+							"#070614",
+							"#222222"
+						]
+					}
+				},
+				"astra-typography-presets": "typo-preset-03"
+			}
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php require '/wordpress/wp-load.php'; update_option('options_pdl_program_url_apply_now', site_url('/program-actions/')); update_option('options_pdl_program_url_contact', site_url('/program-actions/'));"
+		},
+		{
+			"step": "runPHP",
+			"code": {
+				"file": "astra-settings.php"
+			}
+		},
+		{
+			"step": "importWxr",
+			"file": {
+				"resource": "url",
+				"url": "https://demo-content.pedalcms.com/demo-content.xml"
+			},
+			"fetchAttachments": true,
+			"rewriteUrls": true,
+			"authorsMode": "default-author",
+			"defaultAuthorUsername": "admin"
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php\nrequire_once '/wordpress/wp-load.php';\n\n$home = get_page_by_path( 'home', OBJECT, 'page' );\n\nif ( ! $home instanceof WP_Post ) {\n\tthrow new RuntimeException( 'The imported Home page could not be found.' );\n}\n\nupdate_option( 'show_on_front', 'page' );\nupdate_option( 'page_on_front', (int) $home->ID );\n"
+		},
+		{
+			"step": "runPHPWithOptions",
+			"options": {
+				"code": "<?php\nrequire_once '/wordpress/wp-load.php';\n\n$menu_name = 'Main Menu';\n\n// Ensure the menu exists.\n$menu_term = get_term_by('name', $menu_name, 'nav_menu');\nif (!$menu_term || is_wp_error($menu_term)) {\n  $menu_id = wp_create_nav_menu($menu_name);\n} else {\n  $menu_id = (int) $menu_term->term_id;\n}\n\n// Load existing assignments and update the primary location.\n$locations = get_theme_mod('nav_menu_locations');\nif (!is_array($locations)) { $locations = []; }\n\n$locations['primary'] = $menu_id;\nset_theme_mod('nav_menu_locations', $locations);\n?>",
+				"body": "Assign Astra primary menu"
+			}
+		}
+	]
 }
