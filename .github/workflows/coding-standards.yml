@@ -32,7 +32,7 @@ jobs:
           tools: cs2pr
 
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
 
       - name: Create cache directory
         run: mkdir -p .cache
