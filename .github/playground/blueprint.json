@@ -66,8 +66,6 @@
             "blogdescription": "A Pedal CMS Demo School",
             "options_pdl_active_color": "#117fa7",
 			"options_pdl_display_breadcrumbs": 0,
-			"options_pdl_program_url_apply_now": "#",
-			"options_pdl_program_url_contact": "#",
 			"astra-color-palettes": {
 				"currentPalette": "palette_3",
 				"palettes": {
@@ -244,6 +242,10 @@
 			"astra-typography-presets": "typo-preset-03"
          }
       },
+	  {
+		"step": "runPHP",
+		"code": "<?php require '/wordpress/wp-load.php'; update_option('options_pdl_program_url_apply_now', site_url('/program-actions/')); update_option('options_pdl_program_url_contact', site_url('/program-actions/'));"
+	 },
       {
          "step": "runPHP",
          "code": { "file": "astra-settings.php" }
