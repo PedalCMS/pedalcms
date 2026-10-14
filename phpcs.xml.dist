@@ -95,4 +95,19 @@
 	<rule ref="WordPress.NamingConventions.ValidHookName.UseUnderscores">
 		<severity>0</severity>
 	</rule>
+
+	<!-- Everything in the global namespace must be prefixed. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="pedalcms"/>
+				<element value="PedalCMS"/>
+			</property>
+		</properties>
+	</rule>
+	<!-- Test scaffolding and playground helper scripts are not shipped plugin code. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<exclude-pattern>/tests/*</exclude-pattern>
+		<exclude-pattern>/.github/*</exclude-pattern>
+	</rule>
 </ruleset>

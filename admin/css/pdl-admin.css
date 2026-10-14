@@ -49,7 +49,7 @@ body {
 }
 
 
-body.wp-admin #adminmenu li[id^="menu-posts-pdl_"] > a {
+body.wp-admin #adminmenu li[id^="menu-posts-pedalcms_"] > a {
   .wp-menu-image::before {
     background-color: currentColor;
     box-sizing: border-box;
@@ -69,19 +69,19 @@ body.wp-admin #adminmenu li[id^="menu-posts-pdl_"] > a {
   }
 }
 
-body.wp-admin .menu-icon-pdl_program .wp-menu-image::before {
+body.wp-admin .menu-icon-pedalcms_program .wp-menu-image::before {
   mask-image: url(../icons/pedal-icon.svg);
 }
 
-body.wp-admin .menu-icon-pdl_course .wp-menu-image::before {
+body.wp-admin .menu-icon-pedalcms_course .wp-menu-image::before {
   mask-image: url(../icons/course.svg);
 }
 
-body.wp-admin .menu-icon-pdl_person .wp-menu-image::before {
+body.wp-admin .menu-icon-pedalcms_person .wp-menu-image::before {
   mask-image: url(../icons/person.svg);
 }
 
-body.wp-admin .menu-icon-pdl_faq .wp-menu-image::before {
+body.wp-admin .menu-icon-pedalcms_faq .wp-menu-image::before {
   mask-image: url(../icons/faq.svg);
 }
 

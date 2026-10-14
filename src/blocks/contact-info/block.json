@@ -1,6 +1,6 @@
 {
 	"apiVersion": 3,
-	"name": "pdl/contact-info",
+	"name": "pedalcms/contact-info",
 	"version": "0.1.0",
 	"title": "Contact Info",
 	"category": "text",

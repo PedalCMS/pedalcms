@@ -6,9 +6,9 @@
  * The metabox forces the CassetteCMF_save_settings handler which saves all
  * nested fields via process_container_fields() — groups, tabs, and all.
  *
- * Naming convention: field names do NOT include the 'pdl_' prefix. CassetteCMF
- * prefixes each option with the page id ('options_pdl'), so field
- * 'presentation_mode' is stored as 'options_pdl_presentation_mode', matching
+ * Naming convention: field names do NOT include the 'pedalcms_' prefix. CassetteCMF
+ * prefixes each option with the page id ('pedalcms'), so field
+ * 'presentation_mode' is stored as 'pedalcms_presentation_mode', matching
  * what Plugin::get_option('presentation_mode') reads.
  *
  * @package PedalCMS
@@ -30,15 +30,15 @@ defined( 'ABSPATH' ) || exit;
  * @param array<string,string> $options Raw options map.
  * @return array<string,string>
  */
-$active_filter_options = static function ( array $options ): array {
+$pedalcms_active_filter_options = static function ( array $options ): array {
 	$tax_map = [
-		'program-type'  => 'pdl_program_type',
-		'instruct-mode' => 'pdl_instruct_mode',
-		'college'       => 'pdl_college',
-		'department'    => 'pdl_department',
-		'session'       => 'pdl_session',
-		'subject'       => 'pdl_subject',
-		'person-cat'    => 'pdl_person_cat',
+		'program-type'  => 'pedalcms_program_type',
+		'instruct-mode' => 'pedalcms_instruct_mode',
+		'college'       => 'pedalcms_college',
+		'department'    => 'pedalcms_department',
+		'session'       => 'pedalcms_session',
+		'subject'       => 'pedalcms_subject',
+		'person-cat'    => 'pedalcms_person_cat',
 	];
 	return array_filter(
 		$options,
@@ -49,7 +49,7 @@ $active_filter_options = static function ( array $options ): array {
 	);
 };
 
-$fields = [
+$pedalcms_fields = [
 
 	// -------------------------------------------------------------------------
 	// Outer wrapper: a metabox containing one tabs field.
@@ -241,7 +241,7 @@ $fields = [
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedal-cms' ),
-								'options'     => $active_filter_options(
+								'options'     => $pedalcms_active_filter_options(
 									[
 										'keyword'       => __( 'Keyword', 'pedal-cms' ),
 										'program-type'  => __( 'Program Type', 'pedal-cms' ),
@@ -360,7 +360,7 @@ $fields = [
 
 							[
 								'label'       => __( 'Enabled Program Subpages', 'pedal-cms' ),
-								'name'        => 'enable_subpages_pdl_program',
+								'name'        => 'enable_subpages_pedalcms_program',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'This enables subpages globally for all programs. Each subpage can also be disabled per-program.', 'pedal-cms' ),
@@ -389,9 +389,9 @@ $fields = [
 								'type'        => 'select',
 								'description' => __( 'Select the post type to associate careers with programs.', 'pedal-cms' ),
 								'options'     => [
-									'pdl_career' => 'pdl_career',
+									'pedalcms_career' => 'pedalcms_career',
 								],
-								'default'     => 'pdl_career',
+								'default'     => 'pedalcms_career',
 							],
 
 							[
@@ -609,7 +609,7 @@ $fields = [
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedal-cms' ),
-								'options'     => $active_filter_options(
+								'options'     => $pedalcms_active_filter_options(
 									[
 										'keyword'       => __( 'Keyword', 'pedal-cms' ),
 										'session'       => __( 'Session', 'pedal-cms' ),
@@ -730,7 +730,7 @@ $fields = [
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedal-cms' ),
-								'options'     => $active_filter_options(
+								'options'     => $pedalcms_active_filter_options(
 									[
 										'keyword'    => __( 'Keyword', 'pedal-cms' ),
 										'person-cat' => __( 'Personnel Category', 'pedal-cms' ),
@@ -819,11 +819,11 @@ $fields = [
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Choose the features to use this taxonomy with.', 'pedal-cms' ),
 								'options'     => [
-									'pdl_program' => __( 'Programs', 'pedal-cms' ),
-									'pdl_course'  => __( 'Course Catalog', 'pedal-cms' ),
-									'pdl_person'  => __( 'Faculty & Staff Directory', 'pedal-cms' ),
+									'pedalcms_program' => __( 'Programs', 'pedal-cms' ),
+									'pedalcms_course'  => __( 'Course Catalog', 'pedal-cms' ),
+									'pedalcms_person'  => __( 'Faculty & Staff Directory', 'pedal-cms' ),
 								],
-								'default'     => [ 'pdl_program', 'pdl_course', 'pdl_person' ],
+								'default'     => [ 'pedalcms_program', 'pedalcms_course', 'pedalcms_person' ],
 							],
 
 							// --- Department ---
@@ -882,11 +882,11 @@ $fields = [
 								'class'       => 'is-fancy-toggle',
 								'description' => __( 'Choose the features to use this taxonomy with.', 'pedal-cms' ),
 								'options'     => [
-									'pdl_program' => __( 'Programs', 'pedal-cms' ),
-									'pdl_course'  => __( 'Course Catalog', 'pedal-cms' ),
-									'pdl_person'  => __( 'Faculty & Staff Directory', 'pedal-cms' ),
+									'pedalcms_program' => __( 'Programs', 'pedal-cms' ),
+									'pedalcms_course'  => __( 'Course Catalog', 'pedal-cms' ),
+									'pedalcms_person'  => __( 'Faculty & Staff Directory', 'pedal-cms' ),
 								],
-								'default'     => [ 'pdl_program', 'pdl_course', 'pdl_person' ],
+								'default'     => [ 'pedalcms_program', 'pedalcms_course', 'pedalcms_person' ],
 							],
 
 							// --- Program Type ---
@@ -1090,4 +1090,4 @@ $fields = [
 
 ]; // end fields
 
-return apply_filters( 'pdl/cassette/fields/settings', $fields );
+return apply_filters( 'pedalcms/cassette/fields/settings', $pedalcms_fields );

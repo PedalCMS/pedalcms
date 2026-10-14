@@ -12,7 +12,7 @@ class Person extends CustomPostType {
 	/**
 	 * @inheritdoc
 	 */
-	public const POST_TYPE = 'pdl_person';
+	public const POST_TYPE = 'pedalcms_person';
 
 	/**
 	 * @inheritdoc
@@ -99,7 +99,7 @@ class Person extends CustomPostType {
 						'core/column',
 						[ 'width' => '66.66%' ],
 						[
-							[ 'pdl/job-title' ],
+							[ 'pedalcms/job-title' ],
 							[
 								'core/paragraph',
 								[
@@ -113,7 +113,7 @@ class Person extends CustomPostType {
 						[ 'width' => '33.33%' ],
 						[
 							[ 'core/post-featured-image' ],
-							[ 'pdl/contact-info' ],
+							[ 'pedalcms/contact-info' ],
 						],
 					],
 				],
@@ -126,7 +126,7 @@ class Person extends CustomPostType {
 	 */
 	protected function setup_post_meta() {
 		$this->post_meta = [
-			'job_title'     => [
+			'pedalcms_job_title'     => [
 				'label'             => __( 'Job Title', 'pedal-cms' ),
 				'description'       => __( 'The current position this team member holds', 'pedal-cms' ),
 				'type'              => 'string',
@@ -135,7 +135,7 @@ class Person extends CustomPostType {
 				'sanitize_callback' => 'sanitize_text_field',
 				'show_in_rest'      => true,
 			],
-			'office_phone'  => [
+			'pedalcms_office_phone'  => [
 				'label'             => __( 'Office Phone', 'pedal-cms' ),
 				'description'       => '',
 				'type'              => 'string',
@@ -144,7 +144,7 @@ class Person extends CustomPostType {
 				'sanitize_callback' => 'sanitize_text_field',
 				'show_in_rest'      => true,
 			],
-			'email_address' => [
+			'pedalcms_email_address' => [
 				'label'             => __( 'Email Address', 'pedal-cms' ),
 				'description'       => '',
 				'type'              => 'string',
@@ -153,7 +153,7 @@ class Person extends CustomPostType {
 				'sanitize_callback' => 'sanitize_email',
 				'show_in_rest'      => true,
 			],
-			'office'        => [
+			'pedalcms_office'        => [
 				'label'             => __( 'Office', 'pedal-cms' ),
 				'description'       => '',
 				'type'              => 'string',

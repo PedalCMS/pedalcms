@@ -14,15 +14,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults = [
+$pedalcms_defaults = [
 	'show_breadcrumbs'         => true,
 	'breadcrumb_wrapper_id'    => 'breadcrumbs',
 	'breadcrumb_wrapper_class' => 'breadcrumbs',
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-if ( $args['show_breadcrumbs'] ) :
+if ( $pedalcms_args['show_breadcrumbs'] ) :
 	/**
 	 * Fires before the breadcrumbs are loaded.
 	 *
@@ -31,10 +31,10 @@ if ( $args['show_breadcrumbs'] ) :
 	 * @param $args The array of args for the template.
 	 *
 	 */
-	do_action( 'pdl/before_breadcrumbs', $args );
+	do_action( 'pedalcms/before_breadcrumbs', $pedalcms_args );
 	?>
-<div id="<?php echo esc_attr( $args['breadcrumb_wrapper_id'] ); ?>"
-	class="pdl-breadcrumbs <?php echo esc_attr( $args['breadcrumb_wrapper_class'] ); ?>">
+<div id="<?php echo esc_attr( $pedalcms_args['breadcrumb_wrapper_id'] ); ?>"
+	class="pdl-breadcrumbs <?php echo esc_attr( $pedalcms_args['breadcrumb_wrapper_class'] ); ?>">
 	<?php
 	if ( function_exists( 'bcn_display' ) ) {
 		bcn_display();
@@ -56,6 +56,6 @@ if ( $args['show_breadcrumbs'] ) :
 	 * @param $args The array of args for the template.
 	 *
 	 */
-	do_action( 'pdl/after_breadcrumbs', $args );
+	do_action( 'pedalcms/after_breadcrumbs', $pedalcms_args );
 
 endif;

@@ -26,6 +26,8 @@ for (const fileName of sourceFiles) {
 	await build({
 		bundle: false,
 		entryPoints: [path.join(sourceDir, fileName)],
+		// Wrap output so esbuild helpers don't leak into the global scope.
+		format: 'iife',
 		legalComments: 'none',
 		minify: true,
 		outfile: path.join(outputDir, fileName.replace(/\.js$/, '.min.js')),

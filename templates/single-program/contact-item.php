@@ -8,16 +8,16 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$contact_post = get_post( $args['post'] );
+$pedalcms_contact_post = get_post( $args['post'] );
 
-if ( $contact_post ) :
+if ( $pedalcms_contact_post ) :
 	?>
 <div class="program-contact">
-	<?php echo get_the_post_thumbnail( $contact_post, 'thumbnail', [ 'class' => 'program-contact__picture' ] ); ?>
-	<div class="program-contact__name"><?php echo esc_html( get_the_title( $contact_post ) ); ?>
+	<?php echo get_the_post_thumbnail( $pedalcms_contact_post, 'thumbnail', [ 'class' => 'program-contact__picture' ] ); ?>
+	<div class="program-contact__name"><?php echo esc_html( get_the_title( $pedalcms_contact_post ) ); ?>
 	</div>
-	<?php pdl_get_template_part( 'blocks/job-title', [ 'job_title' => $contact_post->job_title ] ); ?>
-	<?php pdl_get_template_part( 'blocks/contact-info', [ 'post' => $contact_post ] ); ?>
+	<?php pedalcms_get_template_part( 'blocks/job-title', [ 'job_title' => $pedalcms_contact_post->pedalcms_job_title ] ); ?>
+	<?php pedalcms_get_template_part( 'blocks/contact-info', [ 'post' => $pedalcms_contact_post ] ); ?>
 </div>
 	<?php
 endif;

@@ -12,7 +12,7 @@ class Program extends CustomPostType {
 	/**
 	 * @inheritdoc
 	 */
-	public const POST_TYPE = 'pdl_program';
+	public const POST_TYPE = 'pedalcms_program';
 
 	private static $subpage_manager = null;
 
@@ -110,7 +110,7 @@ class Program extends CustomPostType {
 					[
 						'key'                 => 'field_6112835dfeb44',
 						'label'               => __( 'Show Curriculum Section?', 'pedal-cms' ),
-						'name'                => 'show_curriculum_section',
+						'name'                => 'pedalcms_show_curriculum_section',
 						'type'                => 'true_false',
 						'instructions'        => '',
 						'message'             => '',
@@ -123,7 +123,7 @@ class Program extends CustomPostType {
 					[
 						'key'           => 'field_615f0ea5ecd84',
 						'label'         => _x( 'Lead Content', 'Curriculum', 'pedal-cms' ),
-						'name'          => 'curriculum_lead',
+						'name'          => 'pedalcms_curriculum_lead',
 						'type'          => 'wysiwyg',
 						'instructions'  => __( 'This content goes before the list of curriculum sections.', 'pedal-cms' ),
 						'default_value' => '',
@@ -135,7 +135,7 @@ class Program extends CustomPostType {
 					[
 						'key'          => 'field_615f0c5a22deb',
 						'label'        => __( 'Curriculum Sections', 'pedal-cms' ),
-						'name'         => 'curriculum_sections',
+						'name'         => 'pedalcms_curriculum_sections',
 						'type'         => 'repeater',
 						'instructions' => '',
 						'collapsed'    => 'field_615f0c8022dec',
@@ -178,7 +178,7 @@ class Program extends CustomPostType {
 								'type'          => 'relationship',
 								'instructions'  => '',
 								'post_type'     => [
-									0 => 'pdl_course',
+									0 => 'pedalcms_course',
 								],
 								'filters'       => [
 									0 => 'search',
@@ -199,7 +199,7 @@ class Program extends CustomPostType {
 					[
 						'key'                 => 'field_61118a6ecb6c0',
 						'label'               => __( 'Show Careers Section?', 'pedal-cms' ),
-						'name'                => 'show_careers_section',
+						'name'                => 'pedalcms_show_careers_section',
 						'type'                => 'true_false',
 						'instructions'        => '',
 						'message'             => '',
@@ -212,7 +212,7 @@ class Program extends CustomPostType {
 					[
 						'key'           => 'field_611275a9d4b74',
 						'label'         => _x( 'Lead Content', 'Careers', 'pedal-cms' ),
-						'name'          => 'careers_lead',
+						'name'          => 'pedalcms_careers_lead',
 						'type'          => 'wysiwyg',
 						'instructions'  => '',
 						'default_value' => '',
@@ -224,11 +224,11 @@ class Program extends CustomPostType {
 					[
 						'key'           => 'field_6112754dd4b73',
 						'label'         => __( 'Related Careers', 'pedal-cms' ),
-						'name'          => 'related_program_careers',
+						'name'          => 'pedalcms_related_program_careers',
 						'type'          => 'relationship',
 						'instructions'  => '',
 						'post_type'     => [
-							0 => 'pdl_career',
+							0 => 'pedalcms_career',
 						],
 						'taxonomy'      => '',
 						'filters'       => [
@@ -251,7 +251,7 @@ class Program extends CustomPostType {
 					[
 						'key'                 => 'field_613b63fa499ce',
 						'label'               => __( 'Show Faculty & Staff Section?', 'pedal-cms' ),
-						'name'                => 'show_faculty_staff_section',
+						'name'                => 'pedalcms_show_faculty_staff_section',
 						'type'                => 'true_false',
 						'instructions'        => '',
 						'message'             => '',
@@ -264,7 +264,7 @@ class Program extends CustomPostType {
 					[
 						'key'           => 'field_613b6446aae76',
 						'label'         => _x( 'Lead Content', 'Faculty & Staff', 'pedal-cms' ),
-						'name'          => 'faculty_staff_lead',
+						'name'          => 'pedalcms_faculty_staff_lead',
 						'type'          => 'wysiwyg',
 						'instructions'  => '',
 						'default_value' => '',
@@ -276,7 +276,7 @@ class Program extends CustomPostType {
 					[
 						'key'                 => 'field_613b6ecd4687a',
 						'label'               => __( 'Group by category?', 'pedal-cms' ),
-						'name'                => 'faculty_staff_by_category',
+						'name'                => 'pedalcms_faculty_staff_by_category',
 						'type'                => 'true_false',
 						'instructions'        => '',
 						'message'             => '',
@@ -289,11 +289,11 @@ class Program extends CustomPostType {
 					[
 						'key'           => 'field_613b6de416aa1',
 						'label'         => __( 'Related Faculty & Staff', 'pedal-cms' ),
-						'name'          => 'related_faculty_staff',
+						'name'          => 'pedalcms_related_faculty_staff',
 						'type'          => 'relationship',
 						'instructions'  => '',
 						'post_type'     => [
-							0 => 'pdl_person',
+							0 => 'pedalcms_person',
 						],
 						'taxonomy'      => '',
 						'filters'       => [
@@ -316,7 +316,7 @@ class Program extends CustomPostType {
 					[
 						'key'                 => 'field_6124eebb8a99e',
 						'label'               => __( 'Show Cost Section?', 'pedal-cms' ),
-						'name'                => 'show_cost_section',
+						'name'                => 'pedalcms_show_cost_section',
 						'type'                => 'true_false',
 						'instructions'        => '',
 						'message'             => '',
@@ -329,7 +329,7 @@ class Program extends CustomPostType {
 					[
 						'key'          => 'field_617848545496b',
 						'label'        => __( 'Estimated Cost Label', 'pedal-cms' ),
-						'name'         => 'estimated_cost_label',
+						'name'         => 'pedalcms_estimated_cost_label',
 						'type'         => 'text',
 						'instructions' => '',
 						'placeholder'  => _x( 'Estimated Cost', 'field placeholder', 'pedal-cms' ),
@@ -337,14 +337,14 @@ class Program extends CustomPostType {
 					[
 						'key'          => 'field_6178492a5496c',
 						'label'        => _x( 'Estimated Cost', 'field label', 'pedal-cms' ),
-						'name'         => 'estimated_cost',
+						'name'         => 'pedalcms_estimated_cost',
 						'type'         => 'text',
 						'instructions' => __( 'Leave blank to omit this field.', 'pedal-cms' ),
 					],
 					[
 						'key'           => 'field_61327ef17bf0d',
 						'label'         => __( 'Cost Content', 'pedal-cms' ),
-						'name'          => 'cost_content',
+						'name'          => 'pedalcms_cost_content',
 						'type'          => 'wysiwyg',
 						'instructions'  => '',
 						'default_value' => '',
@@ -363,7 +363,7 @@ class Program extends CustomPostType {
 					[
 						'key'                 => 'field_611d69fb7f47f',
 						'label'               => __( 'Show Apply Section?', 'pedal-cms' ),
-						'name'                => 'show_apply_section',
+						'name'                => 'pedalcms_show_apply_section',
 						'type'                => 'true_false',
 						'instructions'        => '',
 						'message'             => '',
@@ -376,7 +376,7 @@ class Program extends CustomPostType {
 					[
 						'key'           => 'field_611d6bfe199d9',
 						'label'         => __( 'Apply Content', 'pedal-cms' ),
-						'name'          => 'apply_content',
+						'name'          => 'pedalcms_apply_content',
 						'type'          => 'wysiwyg',
 						'instructions'  => '',
 						'default_value' => '',
@@ -396,7 +396,7 @@ class Program extends CustomPostType {
 					[
 						'key'                 => 'field_61118aa8cb6c2',
 						'label'               => __( 'Show FAQs Section?', 'pedal-cms' ),
-						'name'                => 'show_faqs_section',
+						'name'                => 'pedalcms_show_faqs_section',
 						'type'                => 'true_false',
 						'instructions'        => '',
 						'message'             => '',
@@ -409,7 +409,7 @@ class Program extends CustomPostType {
 					[
 						'key'                 => 'field_6113d61abfe26',
 						'label'               => __( 'Group FAQs by category?', 'pedal-cms' ),
-						'name'                => 'faqs_by_category',
+						'name'                => 'pedalcms_faqs_by_category',
 						'type'                => 'true_false',
 						'instructions'        => '',
 						'message'             => '',
@@ -422,7 +422,7 @@ class Program extends CustomPostType {
 					[
 						'key'           => 'field_6112760bd4b75',
 						'label'         => _x( 'Lead Content', 'FAQs', 'pedal-cms' ),
-						'name'          => 'faqs_lead',
+						'name'          => 'pedalcms_faqs_lead',
 						'type'          => 'wysiwyg',
 						'instructions'  => '',
 						'default_value' => '',
@@ -434,7 +434,7 @@ class Program extends CustomPostType {
 					[
 						'key'          => 'field_61701a9d36062',
 						'label'        => __( 'Related FAQs', 'pedal-cms' ),
-						'name'         => 'related_faqs_list',
+						'name'         => 'pedalcms_related_faqs_list',
 						'type'         => 'repeater',
 						'instructions' => '',
 						'collapsed'    => 'field_61701ac036063',
@@ -468,7 +468,7 @@ class Program extends CustomPostType {
 								'return_format'     => 'object',
 								'ui'                => 1,
 								'post_type'         => [
-									0 => 'pdl_faq',
+									0 => 'pedalcms_faq',
 								],
 								'conditional_logic' => [
 									[
@@ -527,7 +527,7 @@ class Program extends CustomPostType {
 								'type'              => 'taxonomy',
 								'instructions'      => '',
 								'required'          => 1,
-								'taxonomy'          => 'pdl_faq_cat',
+								'taxonomy'          => 'pedalcms_faq_cat',
 								'field_type'        => 'select',
 								'allow_null'        => 0,
 								'add_term'          => 0,
@@ -563,7 +563,7 @@ class Program extends CustomPostType {
 					[
 						'key'                 => 'field_611fdfdc20be6',
 						'label'               => __( 'Show News Section?', 'pedal-cms' ),
-						'name'                => 'show_news_section',
+						'name'                => 'pedalcms_show_news_section',
 						'type'                => 'true_false',
 						'instructions'        => '',
 						'message'             => '',
@@ -576,7 +576,7 @@ class Program extends CustomPostType {
 					[
 						'key'           => 'field_611fe01c20be7',
 						'label'         => _x( 'News Tag', 'tag of related news', 'pedal-cms' ),
-						'name'          => 'news_tag',
+						'name'          => 'pedalcms_news_tag',
 						'type'          => 'taxonomy',
 						'instructions'  => __( 'The tag that should associate posts with this program.', 'pedal-cms' ),
 						'taxonomy'      => 'post_tag',
@@ -596,7 +596,7 @@ class Program extends CustomPostType {
 					[
 						'key'           => 'field_6124f029ff016',
 						'label'         => __( 'Number of Posts', 'pedal-cms' ),
-						'name'          => 'news_num_posts',
+						'name'          => 'pedalcms_news_num_posts',
 						'type'          => 'number',
 						'instructions'  => __( 'Number of posts to show on this subpage. Set to -1 to show all.', 'pedal-cms' ),
 						'default_value' => 10,
@@ -612,7 +612,7 @@ class Program extends CustomPostType {
 					[
 						'key'                 => 'field_6124f184ff017',
 						'label'               => __( 'Show link to all posts?', 'pedal-cms' ),
-						'name'                => 'news_show_all_link',
+						'name'                => 'pedalcms_news_show_all_link',
 						'type'                => 'true_false',
 						'instructions'        => __( 'Link to the tag archive view at the bottom of the list?', 'pedal-cms' ),
 						'default_value'       => 1,
@@ -627,7 +627,7 @@ class Program extends CustomPostType {
 					[
 						'key'           => 'field_61263568d2f46',
 						'label'         => __( 'Featured Posts', 'pedal-cms' ),
-						'name'          => 'news_featured_posts',
+						'name'          => 'pedalcms_news_featured_posts',
 						'type'          => 'post_object',
 						'instructions'  => __( 'Select posts to keep at the top of the news subpage.', 'pedal-cms' ),
 						'post_type'     => [
@@ -641,7 +641,7 @@ class Program extends CustomPostType {
 					[
 						'key'           => 'field_611fdfd220be5',
 						'label'         => _x( 'Lead Content', 'News', 'pedal-cms' ),
-						'name'          => 'news_lead',
+						'name'          => 'pedalcms_news_lead',
 						'type'          => 'wysiwyg',
 						'instructions'  => __( 'Content to appear at the top of the page, before the posts.', 'pedal-cms' ),
 						'default_value' => '',
@@ -718,8 +718,8 @@ class Program extends CustomPostType {
 	public static function get_related_posts( $program = null, array $not_in = [] ): array {
 		$program = get_post( $program );
 
-		$tag       = get_post_meta( $program->ID, 'news_tag', true );
-		$num_posts = get_post_meta( $program->ID, 'news_num_posts', true );
+		$tag       = get_post_meta( $program->ID, 'pedalcms_news_tag', true );
+		$num_posts = get_post_meta( $program->ID, 'pedalcms_news_num_posts', true );
 
 		if ( ! $tag ) {
 			return [];
@@ -754,7 +754,7 @@ class Program extends CustomPostType {
 		$program = get_post( $program );
 
 		// Check for a local override.
-		$url = get_post_meta( $program->ID, 'url_' . $action, true );
+		$url = get_post_meta( $program->ID, 'pedalcms_url_' . $action, true );
 
 		if ( $url ) {
 			return $url;
@@ -765,7 +765,7 @@ class Program extends CustomPostType {
 		if ( $url ) {
 			$url = str_replace(
 				[ '{$program_guid}', '{$program_slug}' ],
-				[ (string) get_post_meta( $program->ID, 'program_guid', true ), $program->post_name ],
+				[ (string) get_post_meta( $program->ID, 'pedalcms_program_guid', true ), $program->post_name ],
 				$url
 			);
 
@@ -789,20 +789,20 @@ class Program extends CustomPostType {
 		$program = get_post( $program );
 
 		// First, check if the program has specific deadlines.
-		$deadlines = get_post_meta( $program->ID, 'application_deadlines', true );
+		$deadlines = get_post_meta( $program->ID, 'pedalcms_application_deadlines', true );
 
 		if ( ! empty( $deadlines ) ) {
 			return $deadlines;
 		}
 
 		// Then, check if either the college or the program type has overriden.
-		$terms = [ 'college', 'program_type' ];
+		$terms = [ 'pedalcms_college', 'pedalcms_program_type' ];
 
 		foreach ( $terms as $name ) {
 			$term_id = (int) get_post_meta( $program->ID, $name, true );
 
 			if ( ! empty( $term_id ) ) {
-				$deadlines = get_term_meta( $term_id, 'application_deadlines', true );
+				$deadlines = get_term_meta( $term_id, 'pedalcms_application_deadlines', true );
 
 				if ( ! empty( $deadlines ) ) {
 					return $deadlines;
@@ -830,7 +830,7 @@ class Program extends CustomPostType {
 		self::setup_subpages();
 		self::$subpage_manager = new SubpageManager( self::POST_TYPE );
 
-		do_action( 'pdl/register_subpages', self::POST_TYPE );
+		do_action( 'pedalcms/register_subpages', self::POST_TYPE );
 
 		foreach ( self::$subpages as $slug => $args ) {
 			$subpage = new Subpage( $slug, $args );

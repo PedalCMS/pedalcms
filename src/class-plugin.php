@@ -174,7 +174,7 @@ class Plugin {
 		 *
 		 * @since 0.1.0
 		 */
-		do_action( 'pdl/register_filters' );
+		do_action( 'pedalcms/register_filters' );
 
 		self::setup_labels();
 
@@ -267,7 +267,7 @@ class Plugin {
 		 *
 		 * @param bool $enabled Whether the settings UI should be registered.
 		 */
-		return (bool) apply_filters( 'pdl/settings_ui_enabled', $enabled );
+		return (bool) apply_filters( 'pedalcms/settings_ui_enabled', $enabled );
 	}
 
 	/**
@@ -418,7 +418,7 @@ class Plugin {
 			$filters = array_map(
 				function ( $a ) {
 					return str_replace(
-						[ 'pdl_', '_' ],
+						[ 'pedalcms_', '_' ],
 						[ '', '-' ],
 						$a
 					);
@@ -460,13 +460,13 @@ class Plugin {
 			return;
 		}
 
-		$pdl_template_manager = new TemplateManager(
+		$pedalcms_template_manager = new TemplateManager(
 			self::$template_path,
 			self::$name,
 			$templates
 		);
 
-		add_filter( 'template_include', [ $pdl_template_manager, 'maybe_use_template' ], PHP_INT_MAX );
+		add_filter( 'template_include', [ $pedalcms_template_manager, 'maybe_use_template' ], PHP_INT_MAX );
 	}
 
 	/**
@@ -616,9 +616,9 @@ class Plugin {
 		self::$rendering_block_template = true;
 
 		try {
-			do_action( 'pdl/before_main_content' );
+			do_action( 'pedalcms/before_main_content' );
 			TemplateManager::load_template( $template_name );
-			do_action( 'pdl/after_main_content' );
+			do_action( 'pedalcms/after_main_content' );
 		} finally {
 			self::$rendering_block_template = false;
 		}
@@ -653,7 +653,7 @@ class Plugin {
 				);
 		}
 
-		$label = apply_filters( 'pdl/get_label', $label, $label_key, 'programs' );
+		$label = apply_filters( 'pedalcms/get_label', $label, $label_key, 'programs' );
 
 		return $label;
 	}
@@ -666,7 +666,7 @@ class Plugin {
 	 * @return mixed The value of the setting.
 	 */
 	public static function get_option( string $option, mixed $fallback = null ): mixed {
-		$value = get_option( 'options_pdl_' . $option, $fallback );
+		$value = get_option( 'pedalcms_' . $option, $fallback );
 
 		/**
 		 * Filters the value of all options.
@@ -676,7 +676,7 @@ class Plugin {
 		 * @param $value The value of the option.
 		 * @param $option The name of the option.
 		 */
-		$value = apply_filters( 'pdl/options/all', $value, $option );
+		$value = apply_filters( 'pedalcms/options/all', $value, $option );
 
 		/**
 		 * Filters the value of a single option. The last part of the filter is the name of the option.
@@ -685,6 +685,56 @@ class Plugin {
 		 *
 		 * @param $value The value of the option.
 		 */
-		return apply_filters( "pdl/options/{$option}", $value );
+		return apply_filters( "pedalcms/options/{$option}", $value );
+	}
+
+	/**
+	 * Reads a CassetteCMF-managed field value from native WordPress storage.
+	 *
+	 * Supported $post_id formats:
+	 *   false / null / 0   - current post in the loop (get_the_ID())
+	 *   WP_Post            - post meta on that object
+	 *   WP_Term            - term meta on that object
+	 *   positive int       - post meta for that post ID
+	 *   'term_<n>'         - term meta for term ID n
+	 *   'option'/'options' - plugin option stored by the CassetteCMF settings page
+	 *
+	 * @since 0.7.0
+	 *
+	 * @param string $selector The field / meta key.
+	 * @param mixed  $post_id  Object context.
+	 * @return mixed The stored value, or false when nothing is found.
+	 */
+	public static function get_field( string $selector, $post_id = false ): mixed {
+		// Options / settings page.
+		if ( 'option' === $post_id || 'options' === $post_id ) {
+			return self::get_option( $selector );
+		}
+
+		// WP_Term object.
+		if ( $post_id instanceof \WP_Term ) {
+			return get_term_meta( $post_id->term_id, $selector, true );
+		}
+
+		// WP_Post object.
+		if ( $post_id instanceof \WP_Post ) {
+			return get_post_meta( $post_id->ID, $selector, true );
+		}
+
+		// 'term_<id>' string format.
+		if ( is_string( $post_id ) && str_starts_with( $post_id, 'term_' ) ) {
+			$term_id = (int) substr( $post_id, 5 );
+			return $term_id ? get_term_meta( $term_id, $selector, true ) : false;
+		}
+
+		// Explicit numeric post ID.
+		$post_id = (int) $post_id;
+		if ( $post_id > 0 ) {
+			return get_post_meta( $post_id, $selector, true );
+		}
+
+		// Default: current post in The Loop.
+		$current_id = get_the_ID();
+		return $current_id ? get_post_meta( $current_id, $selector, true ) : false;
 	}
 }

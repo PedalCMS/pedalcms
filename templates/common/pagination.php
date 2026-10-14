@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) || exit;
  * @param array $args The arguments passed to the template.
  *
  */
-do_action( 'pdl/before_pagination', $args );
+do_action( 'pedalcms/before_pagination', $args );
 
 ?>
 <nav class="pagination">
@@ -32,7 +32,7 @@ do_action( 'pdl/before_pagination', $args );
 		wp_paginate();
 	} else {
 		global $wp_query;
-		$links = paginate_links(
+		$pedalcms_links = paginate_links(
 			[
 				'total'     => $wp_query->max_num_pages,
 				'show_all'  => false,
@@ -43,8 +43,8 @@ do_action( 'pdl/before_pagination', $args );
 			]
 		);
 
-		if ( $links ) {
-			echo wp_kses_post( $links );
+		if ( $pedalcms_links ) {
+			echo wp_kses_post( $pedalcms_links );
 		}
 	}
 	?>
@@ -58,4 +58,4 @@ do_action( 'pdl/before_pagination', $args );
  * @param array $args The arguments passed to the template.
  *
  */
-do_action( 'pdl/after_pagination', $args );
+do_action( 'pedalcms/after_pagination', $args );

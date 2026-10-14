@@ -12,7 +12,7 @@ class Session extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_session';
+	public const TAXONOMY = 'pedalcms_session';
 
 	/**
 	 * @inheritdoc

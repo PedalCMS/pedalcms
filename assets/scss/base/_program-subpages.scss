@@ -58,17 +58,17 @@
 	margin-bottom: var(--pdl-spacing-half);
 }
 
-.pdl_program .curriculum-section__content {
+.pedalcms_program .curriculum-section__content {
   &:not(:has(+ .courses-table)) {
     margin-bottom: var(--pdl-spacing-4x);
   }
 }
 
-.pdl_program .courses-table {
+.pedalcms_program .courses-table {
   margin-bottom: var(--pdl-spacing-4x);
 }
 
-.pdl_program .courses-table thead {
+.pedalcms_program .courses-table thead {
   th:first-child {
     text-align: left;
   }
@@ -78,7 +78,7 @@
   }
 }
 
-.pdl_program .courses-table tbody tr td:nth-child(2) {
+.pedalcms_program .courses-table tbody tr td:nth-child(2) {
   text-align: center;
 }
 
@@ -91,7 +91,7 @@
   margin: 0 0 var(--pdl-spacing-4x);
 }
 
-.program-faculty-staff-list .person-list .pdl_person {
+.program-faculty-staff-list .person-list .pedalcms_person {
   padding: 0;
 }
 

@@ -48,7 +48,7 @@ function get_archive_crumb(): array {
 
 	if ( $found ) {
 		return [
-			'text' => pdl_get_post_type_label( $post_type, 'breadcrumb_label' ) ?? post_type_archive_title( '', false ),
+			'text' => pedalcms_get_post_type_label( $post_type, 'breadcrumb_label' ) ?? post_type_archive_title( '', false ),
 			'url'  => get_post_type_archive_link( $post_type ),
 		];
 	}
@@ -62,11 +62,11 @@ function get_archive_crumb(): array {
  * @return array Associative array with 'text' and 'url' keys.
  */
 function get_program_subpage_crumb(): array {
-	$subpage = pdl_get_active_subpage( 'object' );
+	$subpage = pedalcms_get_active_subpage( 'object' );
 
 	return [
 		'text' => $subpage->breadcrumb_label,
-		'url'  => pdl_subpage_link( $subpage->slug, false ),
+		'url'  => pedalcms_subpage_link( $subpage->slug, false ),
 	];
 }
 
@@ -83,7 +83,7 @@ function get_filtered_results_breadcrumb_label(): string {
 	 *
 	 * @param $label The breadcrumb label.
 	 */
-	return apply_filters( 'pdl/filtered_results_breadcrumb_label', Plugin::get_label( 'filtered_results' ) );
+	return apply_filters( 'pedalcms/filtered_results_breadcrumb_label', Plugin::get_label( 'filtered_results' ) );
 }
 
 /**
@@ -99,7 +99,7 @@ function get_filtered_results_breadcrumb_label(): string {
 function is_unfiltered_archive(): bool {
 	$post_types = Plugin::post_types();
 
-	return is_post_type_archive( $post_types ) && ! pdl_is_filtered_results( $post_types );
+	return is_post_type_archive( $post_types ) && ! pedalcms_is_filtered_results( $post_types );
 }
 
 /**
@@ -181,7 +181,7 @@ function navxt_replace_archive_trail( object $trail ) {
 		return;
 	}
 
-	if ( pdl_is_filtered_results( Plugin::post_types() ) ) {
+	if ( pedalcms_is_filtered_results( Plugin::post_types() ) ) {
 		if ( $trail->opt['bhome_display'] ) {
 			$home = array_pop( $trail->breadcrumbs );
 		}
@@ -285,7 +285,7 @@ function yoast_update_trail( array $crumbs ): array {
 		return yoast_add_subpage( $crumbs );
 	}
 
-	if ( pdl_is_filtered_results( Plugin::post_types() ) ) {
+	if ( pedalcms_is_filtered_results( Plugin::post_types() ) ) {
 		return yoast_replace_trail( $crumbs );
 	}
 
@@ -340,7 +340,7 @@ function aioseo_update_trail( array $crumbs ): array {
 		return aioseo_add_subpage( $crumbs );
 	}
 
-	if ( pdl_is_filtered_results( Plugin::post_types() ) ) {
+	if ( pedalcms_is_filtered_results( Plugin::post_types() ) ) {
 		return aioseo_replace_trail( $crumbs );
 	}
 
@@ -407,7 +407,7 @@ function rankmath_update_trail( array $crumbs ): array {
 		return rankmath_add_subpage( $crumbs );
 	}
 
-	if ( pdl_is_filtered_results( Plugin::post_types() ) ) {
+	if ( pedalcms_is_filtered_results( Plugin::post_types() ) ) {
 		return rankmath_replace_trail( $crumbs );
 	}
 

@@ -45,7 +45,7 @@ class FilterManager {
 
 	private function setup_hooks(): void {
 		add_filter( 'query_vars', [ $this, 'add_query_vars' ], 5 );
-		add_action( 'pdl/after_filters_fields', [ $this, 'render_filters' ], 20, 1 );
+		add_action( 'pedalcms/after_filters_fields', [ $this, 'render_filters' ], 20, 1 );
 		add_action( 'pre_get_posts', [ $this, 'apply_filters_to_query' ] );
 	}
 
@@ -126,7 +126,7 @@ class FilterManager {
 	/**
 	 * Renders registered filter controls after the built-in filter fields.
 	 *
-	 * Called on action: `pdl/after_filters_fields`.
+	 * Called on action: `pedalcms/after_filters_fields`.
 	 *
 	 * @param array $args The filter template args (includes 'post_type').
 	 */
@@ -149,7 +149,7 @@ class FilterManager {
 			if ( is_callable( $filter['render'] ) ) {
 				call_user_func( $filter['render'], $context );
 			} elseif ( $filter['template'] ) {
-				pdl_get_template_part( $filter['template'], $context );
+				pedalcms_get_template_part( $filter['template'], $context );
 			}
 		}
 	}

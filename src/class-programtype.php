@@ -12,7 +12,7 @@ class ProgramType extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_program_type';
+	public const TAXONOMY = 'pedalcms_program_type';
 
 	/**
 	 * @inheritdoc

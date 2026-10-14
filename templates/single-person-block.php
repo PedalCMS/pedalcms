@@ -11,13 +11,13 @@ defined( 'ABSPATH' ) || exit;
 get_post_meta( get_the_ID() );
 
 if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
-	pdl_get_template_part( 'common/header' );
+	pedalcms_get_template_part( 'common/header' );
 }
 ?>
 <article <?php post_class(); ?>>
 	<?php
-	pdl_get_template_part( 'common/breadcrumbs' );
-	pdl_get_template_part( 'single-person/page-header' );
+	pedalcms_get_template_part( 'common/breadcrumbs' );
+	pedalcms_get_template_part( 'single-person/page-header' );
 	?>
 	<div class="program-main entry-content">
 		<?php the_content(); ?>
@@ -25,5 +25,5 @@ if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
 </article>
 <?php
 if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
-	pdl_get_template_part( 'common/footer' );
+	pedalcms_get_template_part( 'common/footer' );
 }

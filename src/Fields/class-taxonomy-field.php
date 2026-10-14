@@ -54,12 +54,12 @@ class Taxonomy_Field extends Abstract_Field {
 	protected function is_taxonomy_disabled(): bool {
 		$taxonomy = $this->config['taxonomy'] ?? '';
 
-		// Only pdl_* taxonomies can be disabled via plugin settings.
-		if ( ! $taxonomy || 0 !== strpos( $taxonomy, 'pdl_' ) ) {
+		// Only pedalcms_* taxonomies can be disabled via plugin settings.
+		if ( ! $taxonomy || 0 !== strpos( $taxonomy, 'pedalcms_' ) ) {
 			return false;
 		}
 
-		$option_key = str_replace( 'pdl_', '', $taxonomy ) . '_enable';
+		$option_key = str_replace( 'pedalcms_', '', $taxonomy ) . '_enable';
 		$enabled    = \PedalCMS\Core\Plugin::get_option( $option_key, true );
 
 		// null means option not found — treat as enabled.

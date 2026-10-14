@@ -8,30 +8,30 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$person_post = pdl_args_or_global( 'post', $args );
+$pedalcms_person_post = pedalcms_args_or_global( 'post', $args );
 
-$defaults = [
+$pedalcms_defaults = [
 	'img_size'   => 'medium',
 	'attributes' => null,
 	'link_image' => true,
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
 ?>
 <div class="person-featured-image featured-image">
 	<?php
-	if ( $args['link_image'] ) :
-		printf( '<a href="%s">', esc_url( get_permalink( $person_post ) ) );
+	if ( $pedalcms_args['link_image'] ) :
+		printf( '<a href="%s">', esc_url( get_permalink( $pedalcms_person_post ) ) );
 	endif;
 
-	if ( has_post_thumbnail( $person_post ) ) :
-		echo get_the_post_thumbnail( $person_post, $args['img_size'], $args['attributes'] );
+	if ( has_post_thumbnail( $pedalcms_person_post ) ) :
+		echo get_the_post_thumbnail( $pedalcms_person_post, $pedalcms_args['img_size'], $pedalcms_args['attributes'] );
 	else :
-		pdl_get_template_part( 'single-person/featured-image-placeholder' );
+		pedalcms_get_template_part( 'single-person/featured-image-placeholder' );
 	endif;
 
-	if ( $args['link_image'] ) :
+	if ( $pedalcms_args['link_image'] ) :
 		echo '</a>';
 	endif;
 	?>

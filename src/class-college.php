@@ -12,7 +12,7 @@ class College extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_college';
+	public const TAXONOMY = 'pedalcms_college';
 
 	/**
 	 * @inheritdoc

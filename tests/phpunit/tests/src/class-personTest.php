@@ -28,7 +28,7 @@ class ClassPersonTest extends FeatureTestCase {
 		do_action( 'rest_api_init' );
 		$routes = rest_get_server()->get_routes();
 
-		$this->assertArrayHasKey( '/wp/v2/pdl_person', $routes );
+		$this->assertArrayHasKey( '/wp/v2/pedalcms_person', $routes );
 	}
 
 	/**

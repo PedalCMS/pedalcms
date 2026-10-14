@@ -12,7 +12,7 @@ class FAQCategory extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_faq_cat';
+	public const TAXONOMY = 'pedalcms_faq_cat';
 
 	/**
 	 * @inheritdoc

@@ -12,7 +12,7 @@ class InstructionMode extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_instruct_mode';
+	public const TAXONOMY = 'pedalcms_instruct_mode';
 
 	/**
 	 * @inheritdoc

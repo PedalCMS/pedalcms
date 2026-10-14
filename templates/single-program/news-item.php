@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults = [
+$pedalcms_defaults = [
 	'post'                => null,
 	'is_featured'         => false,
 	'show_featured_label' => false,
@@ -20,36 +20,36 @@ $defaults = [
 	'image_align'         => 'right',
 	'image_size'          => 'small',
 	'image_wrapper_class' => 'related-post__image-wrapper',
-	'label_featured'      => pdl_get_label( 'featured' ),
-	'label_read_more'     => pdl_get_label( 'read_more' ),
+	'label_featured'      => pedalcms_get_label( 'featured' ),
+	'label_read_more'     => pedalcms_get_label( 'read_more' ),
 ];
 
-$args               = pdl_parse_template_args( $args, $defaults, $template );
-$args['context']    = $template;
-$args['link_image'] = true;
+$pedalcms_args               = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
+$pedalcms_args['context']    = $template;
+$pedalcms_args['link_image'] = true;
 
-if ( $args['post'] ) :
-	$news_post    = $args['post'];
-	$args['post'] = $news_post; // Update args to use the renamed variable
-	$classes      = [ 'related-post' ];
+if ( $pedalcms_args['post'] ) :
+	$pedalcms_news_post    = $pedalcms_args['post'];
+	$pedalcms_args['post'] = $pedalcms_news_post; // Update args to use the renamed variable
+	$pedalcms_classes      = [ 'related-post' ];
 
-	if ( $args['is_featured'] ) {
-		$classes[] = 'related-post--featured';
+	if ( $pedalcms_args['is_featured'] ) {
+		$pedalcms_classes[] = 'related-post--featured';
 	}
 
-	if ( has_post_thumbnail( $news_post ) ) {
-		$classes[] = 'related-post--has-image';
+	if ( has_post_thumbnail( $pedalcms_news_post ) ) {
+		$pedalcms_classes[] = 'related-post--has-image';
 	}
 
-	$classes[] = 'related-post--image-' . esc_attr( $args['image_align'] );
+	$pedalcms_classes[] = 'related-post--image-' . esc_attr( $pedalcms_args['image_align'] );
 
 	?>
 <article
-	class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+	class="<?php echo esc_attr( implode( ' ', $pedalcms_classes ) ); ?>">
 
 	<?php
-	if ( $args['show_image'] && has_post_thumbnail( $news_post ) ) :
-		pdl_get_template_part( 'common/post-featured-image', $args );
+	if ( $pedalcms_args['show_image'] && has_post_thumbnail( $pedalcms_news_post ) ) :
+		pedalcms_get_template_part( 'common/post-featured-image', $pedalcms_args );
 	endif;
 	?>
 
@@ -57,41 +57,41 @@ if ( $args['post'] ) :
 		<header class="related-post__header">
 			<h3 class="related-post__title">
 				<a
-					href="<?php echo esc_url( get_permalink( $news_post ) ); ?>">
-					<?php echo esc_html( get_the_title( $news_post ) ); ?>
+					href="<?php echo esc_url( get_permalink( $pedalcms_news_post ) ); ?>">
+					<?php echo esc_html( get_the_title( $pedalcms_news_post ) ); ?>
 				</a>
 			</h3>
 
-			<?php if ( $args['is_featured'] && $args['show_featured_label'] ) : ?>
-			<span class="related-post__title-label label"><?php echo esc_html( $args['label_featured'] ); ?></span>
+			<?php if ( $pedalcms_args['is_featured'] && $pedalcms_args['show_featured_label'] ) : ?>
+			<span class="related-post__title-label label"><?php echo esc_html( $pedalcms_args['label_featured'] ); ?></span>
 			<?php endif; ?>
 
 			<?php
-			if ( $args['show_category'] ) :
+			if ( $pedalcms_args['show_category'] ) :
 				echo wp_kses_post(
-					pdl_get_the_term_list(
-						$news_post,
+					pedalcms_get_the_term_list(
+						$pedalcms_news_post,
 						'category',
 						'<span class="related-post__category">',
 						',',
 						'</span>',
-						$args['link_terms']
+						$pedalcms_args['link_terms']
 					)
 				);
 			endif;
 			?>
 		</header>
 
-		<?php if ( $args['show_excerpt'] ) : ?>
-		<div class="related-post__content"><?php echo wp_kses_post( get_the_excerpt( $news_post ) ); ?>
+		<?php if ( $pedalcms_args['show_excerpt'] ) : ?>
+		<div class="related-post__content"><?php echo wp_kses_post( get_the_excerpt( $pedalcms_news_post ) ); ?>
 		</div>
 		<?php endif; ?>
 
-		<?php if ( $args['show_permalink'] ) : ?>
+		<?php if ( $pedalcms_args['show_permalink'] ) : ?>
 		<p class="related-post__more">
 			<a class="related-post__more-link"
-				href="<?php echo esc_url( get_permalink( $news_post ) ); ?>">
-				<?php echo esc_html( $args['label_read_more'] ); ?>
+				href="<?php echo esc_url( get_permalink( $pedalcms_news_post ) ); ?>">
+				<?php echo esc_html( $pedalcms_args['label_read_more'] ); ?>
 			</a>
 		</p>
 		<?php endif; ?>

@@ -1,6 +1,6 @@
 {
 	"apiVersion": 3,
-	"name": "pdl/job-title",
+	"name": "pedalcms/job-title",
 	"version": "0.1.0",
 	"title": "Job Title",
 	"category": "text",

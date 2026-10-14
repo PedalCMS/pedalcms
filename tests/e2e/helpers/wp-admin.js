@@ -34,7 +34,7 @@ async function openPedalSettings(page) {
 	await loginAsAdmin(page);
 	await ensurePluginIsActive(page);
 	await page.goto(
-		'/wp-admin/edit.php?post_type=pdl_program&page=pedalcms-settings'
+		'/wp-admin/edit.php?post_type=pedalcms_program&page=pedalcms-settings'
 	);
 }
 

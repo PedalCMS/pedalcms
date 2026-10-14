@@ -2,27 +2,27 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$header_post = pdl_args_or_global( 'post', $args );
+$pedalcms_header_post = pedalcms_args_or_global( 'post', $args );
 
-$defaults = [
+$pedalcms_defaults = [
 	'attachment_id'    => 0,
 	'show_backdrop'    => false,
 	'backdrop_size'    => 'large',
 	'fallback_to_post' => true,
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-if ( empty( $args['attachment_id'] ) && $args['fallback_to_post'] ) {
-	$args['attachment_id'] = get_post_thumbnail_id( $header_post );
+if ( empty( $pedalcms_args['attachment_id'] ) && $pedalcms_args['fallback_to_post'] ) {
+	$pedalcms_args['attachment_id'] = get_post_thumbnail_id( $pedalcms_header_post );
 }
 
-if ( $args['show_backdrop'] && $args['attachment_id'] ) :
+if ( $pedalcms_args['show_backdrop'] && $pedalcms_args['attachment_id'] ) :
 	printf(
 		'<div class="page-header__backdrop">%s</div>',
 		wp_get_attachment_image(
-			$args['attachment_id'],
-			$args['backdrop_size'],
+			$pedalcms_args['attachment_id'],
+			$pedalcms_args['backdrop_size'],
 			false,
 			[
 				'alt'   => '',

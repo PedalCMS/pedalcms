@@ -1,15 +1,15 @@
 (function ($) {
 	'use strict';
 
-	const pdlACFData = window.pdlACFData;
+	const pedalcmsACFData = window.pedalcmsACFData;
 
-	if (typeof pdlACFData === 'undefined') {
-		console.warn('pdl-department.js not localized properly.'); // eslint-disable-line no-console
+	if (typeof pedalcmsACFData === 'undefined') {
+		console.warn('pedalcms-department not localized properly.'); // eslint-disable-line no-console
 		return;
 	}
 
-	const $collegeSelect = $('[data-field-name="college"] select');
-	const $departmentSelect = $('[data-field-name="department"] select');
+	const $collegeSelect = $('[data-field-name="pedalcms_college"] select');
+	const $departmentSelect = $('[data-field-name="pedalcms_department"] select');
 
 	// Fields are only present on the program post-edit screen.
 	if (!$collegeSelect.length || !$departmentSelect.length) {
@@ -27,7 +27,7 @@
 	// we start manipulating it.
 	const placeholder =
 		$departmentSelect.find('option[value=""]').first().text() ||
-		pdlACFData.label_not_found;
+		pedalcmsACFData.label_not_found;
 
 	function setDepartments(options) {
 		$departmentSelect.val(null).empty();
@@ -47,7 +47,7 @@
 			$departmentSelect.prop('disabled', false);
 		} else {
 			$departmentSelect.append(
-				new window.Option(pdlACFData.label_not_found, '')
+				new window.Option(pedalcmsACFData.label_not_found, '')
 			);
 			$departmentSelect.prop('disabled', true);
 		}
@@ -60,10 +60,10 @@
 		}
 
 		$.post(
-			pdlACFData.ajax_url,
+			pedalcmsACFData.ajax_url,
 			{
-				_ajax_nonce: pdlACFData.nonce,
-				action: 'get_college_departments',
+				_ajax_nonce: pedalcmsACFData.nonce,
+				action: 'pedalcms_get_college_departments',
 				college: collegeId,
 			},
 			function (data) {

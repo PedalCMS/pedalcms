@@ -11,22 +11,22 @@ defined( 'ABSPATH' ) || exit;
 get_post_meta( get_the_ID() );
 
 if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
-	pdl_get_template_part( 'common/header' );
+	pedalcms_get_template_part( 'common/header' );
 }
 ?>
 <article
-	id="<?php pdl_article_id_attr( '', true ); ?>"
+	id="<?php pedalcms_article_id_attr( '', true ); ?>"
 	<?php post_class(); ?>>
 	<?php
-	pdl_get_template_part( 'common/breadcrumbs' );
-	pdl_get_template_part( 'single-program/page-header' );
+	pedalcms_get_template_part( 'common/breadcrumbs' );
+	pedalcms_get_template_part( 'single-program/page-header' );
 	?>
 	<div class="program-main entry-content">
-		<?php pdl_get_template_part( 'single-program/subpages/' . pdl_get_active_subpage() ); ?>
+		<?php pedalcms_get_template_part( 'single-program/subpages/' . pedalcms_get_active_subpage() ); ?>
 	</div>
-	<?php pdl_get_template_part( 'single-program/sidebar' ); ?>
+	<?php pedalcms_get_template_part( 'single-program/sidebar' ); ?>
 </article>
 <?php
 if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
-	pdl_get_template_part( 'common/footer' );
+	pedalcms_get_template_part( 'common/footer' );
 }

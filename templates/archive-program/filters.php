@@ -9,8 +9,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults = [
-	'post_type'           => 'pdl_program',
+$pedalcms_defaults = [
+	'post_type'           => 'pedalcms_program',
 	'break_filters_after' => 0,
 	'filters'             => [
 		'keyword',
@@ -21,6 +21,6 @@ $defaults = [
 	],
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-pdl_get_template_part( 'common/filters', $args );
+pedalcms_get_template_part( 'common/filters', $pedalcms_args );

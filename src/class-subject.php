@@ -12,7 +12,7 @@ class Subject extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_subject';
+	public const TAXONOMY = 'pedalcms_subject';
 
 	/**
 	 * @inheritdoc

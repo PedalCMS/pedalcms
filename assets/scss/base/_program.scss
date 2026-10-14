@@ -1,6 +1,6 @@
 @use '../common/variables' as *;
 
-.programs-list article.pdl_program {
+.programs-list article.pedalcms_program {
   display: flex;
   flex-direction: column;
   gap: var(--pdl-spacing);
@@ -49,14 +49,14 @@
   padding-left: 0;
 }
 
-.single-pdl_program article.pdl_program {
+.single-pedalcms_program article.pedalcms_program {
   display: flex;
   flex-wrap: wrap;
   gap: var(--pdl-spacing-2x);
   width: 100%;
 }
 
-article.pdl_program[class*='subpage-']:not(.subpage-index) .single-program-page-header {
+article.pedalcms_program[class*='subpage-']:not(.subpage-index) .single-program-page-header {
 
   @media (max-width: $screen-sm-max) {
     .featured-image,
@@ -66,7 +66,7 @@ article.pdl_program[class*='subpage-']:not(.subpage-index) .single-program-page-
   }
 }
 
-.single-pdl_program .page-header__content {
+.single-pedalcms_program .page-header__content {
 
   @media (max-width: $screen-sm-max) {
     display: flex;
@@ -130,7 +130,7 @@ article.pdl_program[class*='subpage-']:not(.subpage-index) .single-program-page-
   }
 }
 
-.single-pdl_program .program-meta {
+.single-pedalcms_program .program-meta {
 
   @media (min-width: $screen-md-min) {
     margin: var(--pdl-spacing-2x) 0;
@@ -249,6 +249,6 @@ article.pdl_program[class*='subpage-']:not(.subpage-index) .single-program-page-
   font-style: italic;
 }
 
-body.single-pdl_program .program-lead-content {
+body.single-pedalcms_program .program-lead-content {
   margin-bottom: var(--pdl-spacing-4x);
 }

@@ -8,36 +8,36 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$program_post = pdl_args_or_global( 'post', $args );
+$pedalcms_program_post = pedalcms_args_or_global( 'post', $args );
 
-$defaults = [
-	'show_subpage' => pdl_show_subpage( 'careers' ),
+$pedalcms_defaults = [
+	'show_subpage' => pedalcms_show_subpage( 'careers' ),
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-if ( $args['show_subpage'] ) :
-	$careers = get_field( 'related_program_careers', $program_post );
+if ( $pedalcms_args['show_subpage'] ) :
+	$pedalcms_careers = pedalcms_get_field( 'pedalcms_related_program_careers', $pedalcms_program_post );
 	?>
 
-<div <?php pdl_subpage_class(); ?>>
-	<h2 class="program-subpage__title"><?php echo esc_html( pdl_subpage_title() ); ?></h2>
-	<?php pdl_get_template_part( 'single-program/subpages/lead-content' ); ?>
+<div <?php pedalcms_subpage_class(); ?>>
+	<h2 class="program-subpage__title"><?php echo esc_html( pedalcms_subpage_title() ); ?></h2>
+	<?php pedalcms_get_template_part( 'single-program/subpages/lead-content' ); ?>
 
 	<?php
-	if ( ! empty( $careers ) ) :
-		if ( function_exists( 'pdl_car_get_template_part' ) ) :
-			pdl_car_get_template_part(
+	if ( ! empty( $pedalcms_careers ) ) :
+		if ( function_exists( 'pedalcms_car_get_template_part' ) ) :
+			pedalcms_car_get_template_part(
 				'archive-career/career-list',
 				[
-					'posts'                 => $careers,
+					'posts'                 => $pedalcms_careers,
 					'title_tag'             => 'h3',
 					'transpose_table'       => false,
 					'show_related_programs' => false,
 				]
 			);
 		else :
-			pdl_get_template_part( 'common/posts-links', [ 'posts' => $careers ] );
+			pedalcms_get_template_part( 'common/posts-links', [ 'posts' => $pedalcms_careers ] );
 		endif;
 	endif;
 	?>

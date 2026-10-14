@@ -12,7 +12,7 @@ class PersonCategory extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_person_cat';
+	public const TAXONOMY = 'pedalcms_person_cat';
 
 	/**
 	 * @inheritdoc

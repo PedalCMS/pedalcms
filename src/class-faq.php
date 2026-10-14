@@ -12,7 +12,7 @@ class FAQ extends CustomPostType {
 	/**
 	 * @inheritdoc
 	 */
-	public const POST_TYPE = 'pdl_faq';
+	public const POST_TYPE = 'pedalcms_faq';
 
 	/**
 	 * @inheritdoc
@@ -116,7 +116,7 @@ class FAQ extends CustomPostType {
 
 				$faq = [
 					'question'     => $post->post_title,
-					'answer'       => apply_filters( 'the_content', $post->post_content ),
+					'answer'       => apply_filters( 'the_content', $post->post_content ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core hook.
 					'faq_category' => $cat,
 				];
 			} else {

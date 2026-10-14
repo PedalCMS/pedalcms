@@ -8,15 +8,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$subpage = pdl_get_active_subpage();
+$pedalcms_subpage = pedalcms_get_active_subpage();
 
-if ( $subpage ) :
-	$field = str_replace( '-', '_', $subpage ) . '_lead';
-	$class = sprintf( 'program-%s-lead-content', $subpage );
+if ( $pedalcms_subpage ) :
+	$pedalcms_field = 'pedalcms_' . str_replace( '-', '_', $pedalcms_subpage ) . '_lead';
+	$pedalcms_class = sprintf( 'program-%s-lead-content', $pedalcms_subpage );
 	?>
-	<?php if ( get_field( $field ) ) : ?>
-<div class="<?php echo esc_attr( $class ); ?> program-lead-content">
-		<?php the_field( $field ); ?>
+	<?php if ( pedalcms_get_field( $pedalcms_field ) ) : ?>
+<div class="<?php echo esc_attr( $pedalcms_class ); ?> program-lead-content">
+		<?php pedalcms_the_field( $pedalcms_field ); ?>
 </div>
 <?php endif; ?>
 	<?php

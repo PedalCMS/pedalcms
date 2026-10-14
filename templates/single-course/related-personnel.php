@@ -8,31 +8,31 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$course_post = pdl_args_or_global( 'post', $args );
+$pedalcms_course_post = pedalcms_args_or_global( 'post', $args );
 
-$defaults = [
+$pedalcms_defaults = [
 	'h_level'           => 2,
 	'style'             => 'full',
-	'label_instructors' => pdl_get_label( 'instructors' ),
-	'personnel'         => get_field( 'related_course_personnel', $course_post ),
+	'label_instructors' => pedalcms_get_label( 'instructors' ),
+	'personnel'         => pedalcms_get_field( 'pedalcms_related_course_personnel', $pedalcms_course_post ),
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-$style = in_array( $args['style'], [ 'full','links' ], true ) ? $args['style'] : $defaults['style'];
-$h_tag = pdl_get_heading_tag( $args['h_level'] );
+$pedalcms_style = in_array( $pedalcms_args['style'], [ 'full','links' ], true ) ? $pedalcms_args['style'] : $pedalcms_defaults['style'];
+$pedalcms_h_tag = pedalcms_get_heading_tag( $pedalcms_args['h_level'] );
 
-if ( ! empty( $args['personnel'] ) ) :
+if ( ! empty( $pedalcms_args['personnel'] ) ) :
 	?>
 <div class="course-personnel">
 	<?php
-	printf( '<%s>%s</%s>', esc_html( $h_tag ), esc_html( $args['label_instructors'] ), esc_html( $h_tag ) );
+	printf( '<%s>%s</%s>', esc_html( $pedalcms_h_tag ), esc_html( $pedalcms_args['label_instructors'] ), esc_html( $pedalcms_h_tag ) );
 
-	if ( 'full' === $style ) :
-		pdl_get_template_part(
+	if ( 'full' === $pedalcms_style ) :
+		pedalcms_get_template_part(
 			'archive-person/person-list',
 			[
-				'people'            => $args['personnel'],
+				'people'            => $pedalcms_args['personnel'],
 				'layout'            => 'list',
 				'show_contact_info' => false,
 				'h_level'           => 3,
@@ -40,8 +40,8 @@ if ( ! empty( $args['personnel'] ) ) :
 				'context'           => $template,
 			]
 		);
-	elseif ( 'links' === $style ) :
-		pdl_get_template_part( 'common/posts-links', [ 'posts' => $args['personnel'] ] );
+	elseif ( 'links' === $pedalcms_style ) :
+		pedalcms_get_template_part( 'common/posts-links', [ 'posts' => $pedalcms_args['personnel'] ] );
 	endif;
 	?>
 </div>

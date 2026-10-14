@@ -8,38 +8,38 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults = [
+$pedalcms_defaults = [
 	'h_level'              => 2,
-	'label_about_program'  => pdl_get_label( 'about_program' ),
-	'label_program_subnav' => pdl_get_label( 'program_subnav' ),
+	'label_about_program'  => pedalcms_get_label( 'about_program' ),
+	'label_program_subnav' => pedalcms_get_label( 'program_subnav' ),
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-$h_tag = pdl_get_heading_tag( $args['h_level'] );
+$pedalcms_h_tag = pedalcms_get_heading_tag( $pedalcms_args['h_level'] );
 
-if ( pdl_show_subpages() ) :
-	$subpages = pdl_get_subpages(); ?>
+if ( pedalcms_show_subpages() ) :
+	$pedalcms_subpages = pedalcms_get_subpages(); ?>
 
-<nav class="program-subnav" aria-label="<?php echo esc_attr( $args['label_program_subnav'] ); ?>">
+<nav class="program-subnav" aria-label="<?php echo esc_attr( $pedalcms_args['label_program_subnav'] ); ?>">
 	<?php
 	printf(
 		'<%s class="program-subnav__heading">%s</%s>',
-		esc_html( $h_tag ),
-		esc_html( $args['label_about_program'] ),
-		esc_html( $h_tag )
+		esc_html( $pedalcms_h_tag ),
+		esc_html( $pedalcms_args['label_about_program'] ),
+		esc_html( $pedalcms_h_tag )
 	);
 	?>
 	<ul class="program-subnav__menu menu">
 	<?php
-	foreach ( $subpages as $subpage ) :
-		if ( pdl_show_subpage( $subpage ) ) :
+	foreach ( $pedalcms_subpages as $pedalcms_subpage ) :
+		if ( pedalcms_show_subpage( $pedalcms_subpage ) ) :
 			?>
 	<li
-		class="<?php echo pdl_is_active_subpage( $subpage->slug ) ? 'active-subpage' : ''; ?>">
+		class="<?php echo pedalcms_is_active_subpage( $pedalcms_subpage->slug ) ? 'active-subpage' : ''; ?>">
 		<span>
-		<a href="<?php pdl_subpage_link( $subpage->slug ); ?>" aria-label="<?php echo esc_attr( $subpage->aria_label ); ?>">
-			<?php echo esc_html( $subpage->tab_label ); ?>
+		<a href="<?php pedalcms_subpage_link( $pedalcms_subpage->slug ); ?>" aria-label="<?php echo esc_attr( $pedalcms_subpage->aria_label ); ?>">
+			<?php echo esc_html( $pedalcms_subpage->tab_label ); ?>
 		</a>
 		</span>
 	</li>

@@ -8,43 +8,43 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults = [
+$pedalcms_defaults = [
 	'course_post'        => null,
-	'label_more_details' => pdl_get_label( 'more_details' ),
-	'label_permalink'    => pdl_get_post_type_label( 'pdl_course', 'view_item' ),
-	'label_show'         => pdl_get_label( 'show' ),
-	'label_hide'         => pdl_get_label( 'hide' ),
+	'label_more_details' => pedalcms_get_label( 'more_details' ),
+	'label_permalink'    => pedalcms_get_post_type_label( 'pedalcms_course', 'view_item' ),
+	'label_show'         => pedalcms_get_label( 'show' ),
+	'label_hide'         => pedalcms_get_label( 'hide' ),
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
 
-if ( $args['course_post'] instanceof \WP_Post ) :
-	$more_details_id = 'more-details-' . $args['course_post']->ID;
+if ( $pedalcms_args['course_post'] instanceof \WP_Post ) :
+	$pedalcms_more_details_id = 'more-details-' . $pedalcms_args['course_post']->ID;
 	?>
-<article <?php post_class( '', $args['course_post'] ); ?>>
+<article <?php post_class( '', $pedalcms_args['course_post'] ); ?>>
 	<header>
 		<h2 class="entry-title course-title">
-			<a href="<?php echo esc_url( get_the_permalink( $args['course_post'] ) ); ?>">
-				<?php echo wp_kses_post( pdl_get_full_course_title( $args['course_post'] ) ); ?>
+			<a href="<?php echo esc_url( get_the_permalink( $pedalcms_args['course_post'] ) ); ?>">
+				<?php echo wp_kses_post( pedalcms_get_full_course_title( $pedalcms_args['course_post'] ) ); ?>
 			</a>
 		</h2>
-		<?php pdl_get_template_part( 'single-course/course-meta', $args ); ?>
+		<?php pedalcms_get_template_part( 'single-course/course-meta', $pedalcms_args ); ?>
 	</header>
 	<div class="course-content">
-		<?php if ( $args['course_post']->short_description ) : ?>
+		<?php if ( $pedalcms_args['course_post']->pedalcms_short_description ) : ?>
 
-		<div id="<?php echo esc_attr( $more_details_id ); ?>"
+		<div id="<?php echo esc_attr( $pedalcms_more_details_id ); ?>"
 			class="pdl-toggle__content">
 			<div class="course-details">
-				<p class="course-description"><?php echo esc_html( $args['course_post']->short_description ); ?>
+				<p class="course-description"><?php echo esc_html( $pedalcms_args['course_post']->pedalcms_short_description ); ?>
 				</p>
 
 				<?php
-				pdl_get_template_part(
+				pedalcms_get_template_part(
 					'single-course/related-personnel',
 					[
-						'post'    => $args['course_post'],
+						'post'    => $pedalcms_args['course_post'],
 						'h_level' => 3,
 						'style'   => 'links',
 					]
@@ -56,12 +56,12 @@ if ( $args['course_post'] instanceof \WP_Post ) :
 		<?php endif; ?>
 	</div>
 	<?php
-	pdl_get_template_part(
+	pedalcms_get_template_part(
 		'single-course/course-actions',
 		[
-			'post'            => $args['course_post'],
+			'post'            => $pedalcms_args['course_post'],
 			'add_permalink'   => true,
-			'label_permalink' => $args['label_permalink'],
+			'label_permalink' => $pedalcms_args['label_permalink'],
 		]
 	);
 	?>

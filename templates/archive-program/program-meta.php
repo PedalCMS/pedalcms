@@ -1,6 +1,6 @@
 <?php
 
-pdl_get_template_part(
+pedalcms_get_template_part(
 	'single-program/program-meta',
 	[
 		'post'            => $args['post'],

@@ -12,7 +12,7 @@ class Department extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_department';
+	public const TAXONOMY = 'pedalcms_department';
 
 	/**
 	 * @inheritdoc
@@ -95,7 +95,7 @@ class Department extends CustomTaxonomy {
 				[
 					'key'               => 'field_630faf40e6008',
 					'label'             => 'College',
-					'name'              => 'college',
+					'name'              => 'pedalcms_college',
 					'type'              => 'taxonomy',
 					'instructions'      => '',
 					'required'          => 0,
@@ -105,7 +105,7 @@ class Department extends CustomTaxonomy {
 						'class' => '',
 						'id'    => '',
 					],
-					'taxonomy'          => 'pdl_college',
+					'taxonomy'          => 'pedalcms_college',
 					'add_term'          => 0,
 					'save_terms'        => 0,
 					'load_terms'        => 0,
@@ -117,7 +117,7 @@ class Department extends CustomTaxonomy {
 				[
 					'key'           => 'field_6304c88d7d4aa',
 					'label'         => __( 'Featured Image', 'pedal-cms' ),
-					'name'          => 'featured_image',
+					'name'          => 'pedalcms_featured_image',
 					'type'          => 'image',
 					'instructions'  => '',
 					'return_format' => 'url',
@@ -127,7 +127,7 @@ class Department extends CustomTaxonomy {
 				[
 					'key'               => 'field_630e13fdc975c',
 					'label'             => __( 'Header Background Image', 'pedal-cms' ),
-					'name'              => 'header_background',
+					'name'              => 'pedalcms_header_background',
 					'type'              => 'image',
 					'instructions'      => __( 'The background image of the archive page header (Tuxedo Mode only).', 'pedal-cms' ),
 					'required'          => 0,
@@ -174,11 +174,11 @@ class Department extends CustomTaxonomy {
 		$term = get_term( $term, College::TAXONOMY );
 
 		if ( $term && ! is_wp_error( $term ) ) {
-			return self::get_by_meta( 'college', $term->term_id );
+			return self::get_by_meta( 'pedalcms_college', $term->term_id );
 		}
 
 		return new WP_Error(
-			'pdl_not_found',
+			'pedalcms_not_found',
 			__( 'The requested college was not found', 'pedal-cms' )
 		);
 	}
@@ -191,7 +191,7 @@ class Department extends CustomTaxonomy {
 	 */
 	public static function save_terms( $post = null ) {
 		$post    = get_post( $post );
-		$term_id = get_post_meta( $post->ID, 'department', true );
+		$term_id = get_post_meta( $post->ID, 'pedalcms_department', true );
 
 		if ( $term_id ) {
 			wp_set_object_terms( $post->ID, (int) $term_id, self::TAXONOMY, false );

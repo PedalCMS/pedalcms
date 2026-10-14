@@ -8,9 +8,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$featured_post = pdl_args_or_global( 'post', $args );
+$pedalcms_featured_post = pedalcms_args_or_global( 'post', $args );
 
-$defaults = [
+$pedalcms_defaults = [
 	'show_image'             => true,
 	'link_image'             => false,
 	'image_size'             => 'medium',
@@ -20,44 +20,44 @@ $defaults = [
 	'fallback_attachment_id' => '',
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-$align_class = in_array( $args['image_align'], [ 'left','right','center','none' ], true )
-	? $args['image_align']
+$pedalcms_align_class = in_array( $pedalcms_args['image_align'], [ 'left','right','center','none' ], true )
+	? $pedalcms_args['image_align']
 	: 'right';
 
-$align_class = 'align' . $align_class;
-$classes     = [
+$pedalcms_align_class = 'align' . $pedalcms_align_class;
+$pedalcms_classes     = [
 	'featured-image',
-	$align_class,
-	esc_attr( $args['image_wrapper_class'] ),
+	$pedalcms_align_class,
+	esc_attr( $pedalcms_args['image_wrapper_class'] ),
 ];
 
-$show_image = $args['show_image'] && (
-	has_post_thumbnail( $featured_post ) ||
-	! empty( $args['fallback_attachment_id'] )
+$pedalcms_show_image = $pedalcms_args['show_image'] && (
+	has_post_thumbnail( $pedalcms_featured_post ) ||
+	! empty( $pedalcms_args['fallback_attachment_id'] )
 );
 
-if ( $show_image ) :
-	$image = pdl_post_thumbnail_or_fallback(
-		$featured_post,
-		$args['fallback_attachment_id'],
-		$args['image_size'],
-		$args['image_attributes']
+if ( $pedalcms_show_image ) :
+	$pedalcms_image = pedalcms_post_thumbnail_or_fallback(
+		$pedalcms_featured_post,
+		$pedalcms_args['fallback_attachment_id'],
+		$pedalcms_args['image_size'],
+		$pedalcms_args['image_attributes']
 	);
 
-	if ( $args['link_image'] ) :
+	if ( $pedalcms_args['link_image'] ) :
 		printf(
 			'<div class="%s"><a href="%s">%s</a></div>',
-			esc_attr( implode( ' ', $classes ) ),
-			esc_url( get_the_permalink( $featured_post ) ),
-			wp_kses_post( $image )
+			esc_attr( implode( ' ', $pedalcms_classes ) ),
+			esc_url( get_the_permalink( $pedalcms_featured_post ) ),
+			wp_kses_post( $pedalcms_image )
 		);
 	else :
 		printf(
 			'<div class="%s">%s</div>',
-			esc_attr( implode( ' ', $classes ) ),
-			wp_kses_post( $image )
+			esc_attr( implode( ' ', $pedalcms_classes ) ),
+			wp_kses_post( $pedalcms_image )
 		);
 	endif;
 endif;

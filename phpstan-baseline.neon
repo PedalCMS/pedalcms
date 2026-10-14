@@ -391,7 +391,7 @@ parameters:
 			path: src/template-tags-shared.php
 
 		-
-			message: '#^Function pdl_show_subpages\(\) should return bool but returns int\<0, max\>\.$#'
+			message: '#^Function pedalcms_show_subpages\(\) should return bool but returns int\<0, max\>\.$#'
 			identifier: return.type
 			count: 1
 			path: src/template-tags.php

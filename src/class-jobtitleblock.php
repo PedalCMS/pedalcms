@@ -35,9 +35,9 @@ class JobTitleBlock extends CustomBlock {
 		$post = get_post();
 
 		ob_start();
-		pdl_get_template_part(
+		pedalcms_get_template_part(
 			'blocks/job-title',
-			[ 'job_title' => $post->job_title ]
+			[ 'job_title' => $post->pedalcms_job_title ]
 		);
 
 		return ob_get_clean();

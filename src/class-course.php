@@ -12,7 +12,7 @@ class Course extends CustomPostType {
 	/**
 	 * @inheritdoc
 	 */
-	public const POST_TYPE = 'pdl_course';
+	public const POST_TYPE = 'pedalcms_course';
 
 	/**
 	 * @inheritdoc
@@ -114,10 +114,10 @@ class Course extends CustomPostType {
 			esc_html( $post->post_title )
 		);
 
-		if ( $post->course_code ) {
+		if ( $post->pedalcms_course_code ) {
 			$title .= sprintf(
 				' <span class="course-code">(%s)</span>',
-				esc_html( $post->course_code )
+				esc_html( $post->pedalcms_course_code )
 			);
 		}
 
@@ -140,7 +140,7 @@ class Course extends CustomPostType {
 	public static function get_action_link( string $action, $course = null ): string {
 		$course = get_post( $course );
 
-		$url = get_post_meta( $course->ID, 'url_' . $action, true );
+		$url = get_post_meta( $course->ID, 'pedalcms_url_' . $action, true );
 
 		if ( $url ) {
 			return $url;
@@ -155,8 +155,8 @@ class Course extends CustomPostType {
 					'{$course_reg_key}',
 				],
 				[
-					(string) get_post_meta( $course->ID, 'course_catalog_key', true ),
-					(string) get_post_meta( $course->ID, 'course_registration_key', true ),
+					(string) get_post_meta( $course->ID, 'pedalcms_course_catalog_key', true ),
+					(string) get_post_meta( $course->ID, 'pedalcms_course_registration_key', true ),
 				],
 				$url
 			);

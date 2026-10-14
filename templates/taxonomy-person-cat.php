@@ -7,4 +7,4 @@
  */
 defined( 'ABSPATH' ) || exit;
 
-pdl_get_template_part( 'archive-person' );
+pedalcms_get_template_part( 'archive-person' );

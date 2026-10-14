@@ -64,8 +64,8 @@
 			"options": {
 				"blogname": "Modern U",
 				"blogdescription": "A Pedal CMS Demo School",
-				"options_pdl_active_color": "#117fa7",
-				"options_pdl_display_breadcrumbs": 0,
+				"pedalcms_active_color": "#117fa7",
+				"pedalcms_display_breadcrumbs": 0,
 				"astra-color-palettes": {
 					"currentPalette": "palette_3",
 					"palettes": {
@@ -244,7 +244,7 @@
 		},
 		{
 			"step": "runPHP",
-			"code": "<?php require '/wordpress/wp-load.php'; update_option('options_pdl_program_url_apply_now', site_url('/program-actions/')); update_option('options_pdl_program_url_contact', site_url('/program-actions/'));"
+			"code": "<?php require '/wordpress/wp-load.php'; update_option('pedalcms_program_url_apply_now', site_url('/program-actions/')); update_option('pedalcms_program_url_contact', site_url('/program-actions/'));"
 		},
 		{
 			"step": "runPHP",
