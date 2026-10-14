@@ -66,6 +66,8 @@ function register_assets() {
 		filemtime( Plugin::$path . $global ),
 		true
 	);
+
+	wp_register_style( 'pdl-options', false, [], PEDALCMS_VERSION );
 }
 
 /**
@@ -120,6 +122,13 @@ function enqueue_assets() {
 	}
 
 	if ( ! is_admin() ) {
+		$options_css = get_options_inline_css();
+
+		if ( $options_css ) {
+			wp_enqueue_style( 'pdl-options' );
+			wp_add_inline_style( 'pdl-options', $options_css );
+		}
+
 		wp_enqueue_script( 'pdl-global' );
 	}
 }

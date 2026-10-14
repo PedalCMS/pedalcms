@@ -11,7 +11,6 @@ namespace PedalCMS\Core;
 add_filter( 'register_taxonomy_args', __NAMESPACE__ . '\options_register_taxonomy_args', 5, 2 );
 add_filter( 'registered_taxonomy', __NAMESPACE__ . '\options_registered_taxonomy', 5, 2 );
 add_filter( 'document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 3 );
-add_action( 'wp_head', __NAMESPACE__ . '\options_wp_head', 7 );
 add_filter( 'body_class', __NAMESPACE__ . '\body_class', 10, 3 );
 add_filter( 'admin_body_class', __NAMESPACE__ . '\admin_body_class', 10, 3 );
 add_filter( 'post_class', __NAMESPACE__ . '\post_class', 10, 3 );
@@ -162,15 +161,13 @@ function document_title_parts( array $title ): array {
 }
 
 /**
- * Outputs CSS variables for user color preferences.
- *
- * Called on action: `wp_head`
+ * Builds CSS variables for user color preferences.
  *
  * @since 0.1.0
  *
- * @return void
+ * @return string CSS declarations, or empty string when none are set.
  */
-function options_wp_head() {
+function get_options_inline_css(): string {
 	$var_ptrn = '--pdl-%s: %s';
 	$options  = [
 		'active_color'      => '#000',
@@ -179,7 +176,7 @@ function options_wp_head() {
 	$vars     = [];
 
 	foreach ( $options as $option => $default ) {
-		$value = Plugin::get_option( $option, $default );
+		$value = sanitize_hex_color( (string) Plugin::get_option( $option, $default ) );
 
 		if ( $value ) {
 			$vars[] = sprintf(
@@ -191,11 +188,10 @@ function options_wp_head() {
 	}
 
 	if ( ! empty( $vars ) ) {
-		printf(
-			'<style>html body{%s}</style>',
-			esc_html( implode( ';', $vars ) )
-		);
+		return 'html body{' . implode( ';', $vars ) . '}';
 	}
+
+	return '';
 }
 
 /**
