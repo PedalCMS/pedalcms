@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 $pedalcms_defaults = [
 	'post_type'     => get_post_type(),
 	'image_size'    => 'medium',

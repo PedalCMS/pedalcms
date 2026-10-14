@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 add_action( 'init', __NAMESPACE__ . '\add_shortcodes' );
 
 /**

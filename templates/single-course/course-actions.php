@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 $pedalcms_course_post = pedalcms_args_or_global( 'post', $args );
 
 $pedalcms_defaults = [

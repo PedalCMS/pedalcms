@@ -8,6 +8,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\register_assets', 0 );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
 add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\admin_enqueue_assets' );

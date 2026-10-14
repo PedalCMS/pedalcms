@@ -17,6 +17,8 @@ namespace PedalCMS\Fields;
 
 use PedalCMS\CassetteCMF\Field\Fields\Checkbox_Field;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Conditional_Checkbox_Field class
  */

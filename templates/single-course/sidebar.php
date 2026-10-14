@@ -1,3 +1,6 @@
+<?php
+defined( 'ABSPATH' ) || exit;
+?>
 <aside class="course-sidebar pdl-sidebar">
 	<div class="pdl-sidebar__contents pdl-sticky">
 		<?php

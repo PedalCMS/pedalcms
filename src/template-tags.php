@@ -6,6 +6,8 @@
  * @since 0.1.0
  */
 
+defined( 'ABSPATH' ) || exit;
+
 if ( ! function_exists( 'pedalcms_get_template_part' ) ) :
 	/**
 	 * Outputs a template.

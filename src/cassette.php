@@ -20,6 +20,8 @@ use PedalCMS\Fields\Relationship_Field;
 use PedalCMS\Fields\Conditional_Checkbox_Field;
 use PedalCMS\Fields\Conditional_Number_Field;
 
+defined( 'ABSPATH' ) || exit;
+
 // Register custom field types as early as possible.
 add_action( 'init', __NAMESPACE__ . '\register_custom_field_types', 5 );
 

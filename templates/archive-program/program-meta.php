@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 pedalcms_get_template_part(
 	'single-program/program-meta',
 	[

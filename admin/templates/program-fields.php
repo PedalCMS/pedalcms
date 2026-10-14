@@ -1,4 +1,7 @@
 <?php
+
+defined( 'ABSPATH' ) || exit;
+
 use PedalCMS\Core\Plugin;
 use PedalCMS\Core\Program;
 ?>

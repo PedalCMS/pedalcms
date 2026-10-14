@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 add_action( 'wp_ajax_pedalcms_get_college_departments', 'pedalcms_ajax_get_college_departments' );
 
 /**

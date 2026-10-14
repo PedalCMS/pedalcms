@@ -6,6 +6,8 @@
  * @since 0.1.0
  */
 
+defined( 'ABSPATH' ) || exit;
+
 if ( ! function_exists( 'pedalcms_args_or_global' ) ) :
 	/**
 	 * Returns the args array value if available, global value if not.

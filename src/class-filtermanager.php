@@ -4,6 +4,8 @@ namespace PedalCMS\Core;
 
 use WP_Query;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * A reusable registry for post-type archive filters.
  *

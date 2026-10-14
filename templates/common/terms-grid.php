@@ -1,4 +1,7 @@
 <?php
+
+defined( 'ABSPATH' ) || exit;
+
 $pedalcms_defaults = [
 	'title_tag'          => 'h2',
 	'show_image'         => true,

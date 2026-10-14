@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 $pedalcms_classes = [
 	'action-list',
 ];

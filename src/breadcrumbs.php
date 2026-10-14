@@ -14,6 +14,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 // Breadcrumb NavXT support.
 add_action( 'bcn_before_fill', __NAMESPACE__ . '\navxt_add_subpage' );
 add_action( 'bcn_after_fill', __NAMESPACE__ . '\navxt_replace_archive_trail' );

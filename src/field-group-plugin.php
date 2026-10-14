@@ -1,6 +1,8 @@
 <?php
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 $pedalcms_field_group = [
 	'key'                   => 'group_624ed9cd20260',
 	'title'                 => __( 'Program Pages Settings', 'pedal-cms' ),

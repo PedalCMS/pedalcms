@@ -14,6 +14,8 @@ namespace PedalCMS\Fields;
 
 use PedalCMS\CassetteCMF\Field\Fields\Number_Field;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Conditional_Number_Field class
  */

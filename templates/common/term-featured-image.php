@@ -1,5 +1,7 @@
 <?php
 
+defined( 'ABSPATH' ) || exit;
+
 $pedalcms_defaults = [
 	'term'          => get_queried_object(),
 	'link_image'    => true,

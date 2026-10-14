@@ -13,6 +13,8 @@ namespace PedalCMS\Fields;
 
 use PedalCMS\CassetteCMF\Field\Abstract_Field;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Relationship_Field class
  *
