@@ -18,5 +18,5 @@
 		"reusable": false
 	},
 	"editorScript": "pedalcms-template-render-editor",
-	"textdomain": "pedalcms"
+	"textdomain": "pedal-cms"
 }

@@ -20,12 +20,12 @@ $fields = [
 		[
 			'type'  => 'upload',
 			'name'  => 'featured_image',
-			'label' => __( 'Featured Image', 'pedalcms' ),
+			'label' => __( 'Featured Image', 'pedal-cms' ),
 		],
 		[
 			'type'  => 'upload',
 			'name'  => 'header_background',
-			'label' => __( 'Header Background', 'pedalcms' ),
+			'label' => __( 'Header Background', 'pedal-cms' ),
 		],
 	],
 
@@ -34,19 +34,19 @@ $fields = [
 		[
 			'type'       => 'taxonomy',
 			'name'       => 'college',
-			'label'      => __( 'College', 'pedalcms' ),
+			'label'      => __( 'College', 'pedal-cms' ),
 			'taxonomy'   => 'pdl_college',
 			'field_type' => 'select',
 		],
 		[
 			'type'  => 'upload',
 			'name'  => 'featured_image',
-			'label' => __( 'Featured Image', 'pedalcms' ),
+			'label' => __( 'Featured Image', 'pedal-cms' ),
 		],
 		[
 			'type'  => 'upload',
 			'name'  => 'header_background',
-			'label' => __( 'Header Background', 'pedalcms' ),
+			'label' => __( 'Header Background', 'pedal-cms' ),
 		],
 	],
 
@@ -55,28 +55,28 @@ $fields = [
 		[
 			'type'  => 'upload',
 			'name'  => 'featured_image',
-			'label' => __( 'Featured Image', 'pedalcms' ),
+			'label' => __( 'Featured Image', 'pedal-cms' ),
 		],
 		[
 			'type'  => 'upload',
 			'name'  => 'header_background',
-			'label' => __( 'Header Background', 'pedalcms' ),
+			'label' => __( 'Header Background', 'pedal-cms' ),
 		],
 		[
 			'type'         => 'repeater',
 			'name'         => 'application_deadlines',
-			'label'        => __( 'Application Deadlines', 'pedalcms' ),
-			'button_label' => __( 'Add Deadline', 'pedalcms' ),
+			'label'        => __( 'Application Deadlines', 'pedal-cms' ),
+			'button_label' => __( 'Add Deadline', 'pedal-cms' ),
 			'fields'       => [
 				[
 					'type'  => 'text',
 					'name'  => 'label',
-					'label' => __( 'Label', 'pedalcms' ),
+					'label' => __( 'Label', 'pedal-cms' ),
 				],
 				[
 					'type'  => 'text',
 					'name'  => 'info',
-					'label' => __( 'Info', 'pedalcms' ),
+					'label' => __( 'Info', 'pedal-cms' ),
 				],
 			],
 		],
@@ -87,12 +87,12 @@ $fields = [
 		[
 			'type'  => 'upload',
 			'name'  => 'featured_image',
-			'label' => __( 'Featured Image', 'pedalcms' ),
+			'label' => __( 'Featured Image', 'pedal-cms' ),
 		],
 		[
 			'type'  => 'upload',
 			'name'  => 'header_background',
-			'label' => __( 'Header Background', 'pedalcms' ),
+			'label' => __( 'Header Background', 'pedal-cms' ),
 		],
 	],
 

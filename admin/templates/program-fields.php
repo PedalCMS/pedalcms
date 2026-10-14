@@ -5,7 +5,7 @@ use PedalCMS\Core\Program;
 
 <div class="pdl-program-fields-wrapper">
 	<ul data-tabs>
-		<li><a href="#overview"><?php echo esc_html( __( 'Main', 'pedalcms' ) ); ?></a></li>
+		<li><a href="#overview"><?php echo esc_html( __( 'Main', 'pedal-cms' ) ); ?></a></li>
 		<?php
 		foreach ( self::$subpages as $slug => $args ) :
 			if ( 'index' !== $slug ) :
@@ -18,7 +18,7 @@ endforeach;
 	</ul>
 	<div class="tab-content">
 		<div id="overview">
-			<h3><?php echo esc_html( __( 'Main', 'pedalcms' ) ); ?></h3>
+			<h3><?php echo esc_html( __( 'Main', 'pedal-cms' ) ); ?></h3>
 			Render fields here.
 		</div>
 		<?php

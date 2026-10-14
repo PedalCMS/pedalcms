@@ -121,8 +121,8 @@ function cassette_init(): void {
 				[
 					'id'          => 'options_pdl',
 					'menu_slug'   => Plugin::$options_page_slug,
-					'page_title'  => __( 'Pedal CMS Settings', 'pedalcms' ),
-					'menu_title'  => _x( 'Settings', 'menu item title', 'pedalcms' ),
+					'page_title'  => __( 'Pedal CMS Settings', 'pedal-cms' ),
+					'menu_title'  => _x( 'Settings', 'menu item title', 'pedal-cms' ),
 					'capability'  => 'manage_options',
 					'parent_slug' => Plugin::$options_page_parent,
 					'position'    => 100,

@@ -52,37 +52,37 @@ class Person extends CustomPostType {
 	 * @inheritdoc
 	 */
 	protected function setup_labels(): void {
-		static::$enter_title_text = __( 'Enter the Full Name', 'pedalcms' );
+		static::$enter_title_text = __( 'Enter the Full Name', 'pedal-cms' );
 
 		$this->args['labels'] = [
-			'name'                     => _x( 'Personnel', 'post type general name', 'pedalcms' ),
-			'singular_name'            => _x( 'Person', 'post type singular name', 'pedalcms' ),
-			'plural_not_collective'    => _x( 'Personnel', 'post type plural name not collective', 'pedalcms' ),
-			'menu_name'                => __( 'Directory', 'pedalcms' ),
-			'add_new_item'             => __( 'Add New Person', 'pedalcms' ),
-			'edit_item'                => __( 'Edit Person', 'pedalcms' ),
-			'new_item'                 => __( 'New Person', 'pedalcms' ),
-			'view_item'                => __( 'View Person', 'pedalcms' ),
-			'view_items'               => __( 'View Personnel', 'pedalcms' ),
-			'search_items'             => __( 'Search Personnel', 'pedalcms' ),
-			'not_found'                => __( 'No personnel found.', 'pedalcms' ),
-			'not_found_in_trash'       => __( 'No personnel found in Trash.', 'pedalcms' ),
-			'parent_item_colon'        => __( 'Parent Person:', 'pedalcms' ),
-			'all_items'                => __( 'All Personnel', 'pedalcms' ),
-			'archives'                 => __( 'Directory', 'pedalcms' ),
-			'attributes'               => __( 'Person Attributes', 'pedalcms' ),
-			'insert_into_item'         => __( 'Insert into person post', 'pedalcms' ),
-			'uploaded_to_this_item'    => __( 'Uploaded to this person', 'pedalcms' ),
-			'filter_items_list'        => __( 'Filter personnel list', 'pedalcms' ),
-			'items_list_navigation'    => __( 'Personnel list navigation', 'pedalcms' ),
-			'items_list'               => __( 'Personnel list', 'pedalcms' ),
-			'item_published'           => __( 'Person published.', 'pedalcms' ),
-			'item_published_privately' => __( 'Person published privately.', 'pedalcms' ),
-			'item_reverted_to_draft'   => __( 'Person reverted to draft.', 'pedalcms' ),
-			'item_scheduled'           => __( 'Person scheduled.', 'pedalcms' ),
-			'item_updated'             => __( 'Person updated.', 'pedalcms' ),
-			'item_link'                => _x( 'Person Link', 'navigation link block title', 'pedalcms' ),
-			'item_link_description'    => _x( 'A link to a person.', 'navigation link block description', 'pedalcms' ),
+			'name'                     => _x( 'Personnel', 'post type general name', 'pedal-cms' ),
+			'singular_name'            => _x( 'Person', 'post type singular name', 'pedal-cms' ),
+			'plural_not_collective'    => _x( 'Personnel', 'post type plural name not collective', 'pedal-cms' ),
+			'menu_name'                => __( 'Directory', 'pedal-cms' ),
+			'add_new_item'             => __( 'Add New Person', 'pedal-cms' ),
+			'edit_item'                => __( 'Edit Person', 'pedal-cms' ),
+			'new_item'                 => __( 'New Person', 'pedal-cms' ),
+			'view_item'                => __( 'View Person', 'pedal-cms' ),
+			'view_items'               => __( 'View Personnel', 'pedal-cms' ),
+			'search_items'             => __( 'Search Personnel', 'pedal-cms' ),
+			'not_found'                => __( 'No personnel found.', 'pedal-cms' ),
+			'not_found_in_trash'       => __( 'No personnel found in Trash.', 'pedal-cms' ),
+			'parent_item_colon'        => __( 'Parent Person:', 'pedal-cms' ),
+			'all_items'                => __( 'All Personnel', 'pedal-cms' ),
+			'archives'                 => __( 'Directory', 'pedal-cms' ),
+			'attributes'               => __( 'Person Attributes', 'pedal-cms' ),
+			'insert_into_item'         => __( 'Insert into person post', 'pedal-cms' ),
+			'uploaded_to_this_item'    => __( 'Uploaded to this person', 'pedal-cms' ),
+			'filter_items_list'        => __( 'Filter personnel list', 'pedal-cms' ),
+			'items_list_navigation'    => __( 'Personnel list navigation', 'pedal-cms' ),
+			'items_list'               => __( 'Personnel list', 'pedal-cms' ),
+			'item_published'           => __( 'Person published.', 'pedal-cms' ),
+			'item_published_privately' => __( 'Person published privately.', 'pedal-cms' ),
+			'item_reverted_to_draft'   => __( 'Person reverted to draft.', 'pedal-cms' ),
+			'item_scheduled'           => __( 'Person scheduled.', 'pedal-cms' ),
+			'item_updated'             => __( 'Person updated.', 'pedal-cms' ),
+			'item_link'                => _x( 'Person Link', 'navigation link block title', 'pedal-cms' ),
+			'item_link_description'    => _x( 'A link to a person.', 'navigation link block description', 'pedal-cms' ),
 		];
 	}
 
@@ -103,7 +103,7 @@ class Person extends CustomPostType {
 							[
 								'core/paragraph',
 								[
-									'placeholder' => __( 'Add some bio text …', 'pedalcms' ),
+									'placeholder' => __( 'Add some bio text …', 'pedal-cms' ),
 								],
 							],
 						],
@@ -127,8 +127,8 @@ class Person extends CustomPostType {
 	protected function setup_post_meta() {
 		$this->post_meta = [
 			'job_title'     => [
-				'label'             => __( 'Job Title', 'pedalcms' ),
-				'description'       => __( 'The current position this team member holds', 'pedalcms' ),
+				'label'             => __( 'Job Title', 'pedal-cms' ),
+				'description'       => __( 'The current position this team member holds', 'pedal-cms' ),
 				'type'              => 'string',
 				'default'           => '',
 				'single'            => true,
@@ -136,7 +136,7 @@ class Person extends CustomPostType {
 				'show_in_rest'      => true,
 			],
 			'office_phone'  => [
-				'label'             => __( 'Office Phone', 'pedalcms' ),
+				'label'             => __( 'Office Phone', 'pedal-cms' ),
 				'description'       => '',
 				'type'              => 'string',
 				'default'           => '',
@@ -145,7 +145,7 @@ class Person extends CustomPostType {
 				'show_in_rest'      => true,
 			],
 			'email_address' => [
-				'label'             => __( 'Email Address', 'pedalcms' ),
+				'label'             => __( 'Email Address', 'pedal-cms' ),
 				'description'       => '',
 				'type'              => 'string',
 				'default'           => '',
@@ -154,7 +154,7 @@ class Person extends CustomPostType {
 				'show_in_rest'      => true,
 			],
 			'office'        => [
-				'label'             => __( 'Office', 'pedalcms' ),
+				'label'             => __( 'Office', 'pedal-cms' ),
 				'description'       => '',
 				'type'              => 'string',
 				'default'           => '',

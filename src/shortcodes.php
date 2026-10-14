@@ -46,7 +46,7 @@ function render_terms_grid( $atts ) {
 	);
 
 	if ( ! $atts['tax'] ) {
-		return __( 'You must supply a taxonomy via the tax attribute (e.g. tax="pdl_program_type").', 'pedalcms' );
+		return __( 'You must supply a taxonomy via the tax attribute (e.g. tax="pdl_program_type").', 'pedal-cms' );
 	}
 
 	$atts['terms'] = get_terms( [ 'taxonomy' => $atts['tax'] ] );

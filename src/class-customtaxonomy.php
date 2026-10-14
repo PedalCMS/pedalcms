@@ -65,7 +65,7 @@ abstract class CustomTaxonomy extends CustomContentObject {
 					__METHOD__,
 					sprintf(
 						/* translators: The first argument is the machine name of the taxonomy */
-						__( 'Could not register taxonomy %1$s. Error: %2$s', 'pedalcms' ),
+						__( 'Could not register taxonomy %1$s. Error: %2$s', 'pedal-cms' ),
 						static::TAXONOMY,
 						$result->get_error_message()
 					)

@@ -108,7 +108,7 @@ class Relationship_Field extends Abstract_Field {
 		if ( $multiple ) {
 			$output .= sprintf(
 				'<p class="description">%s</p>',
-				esc_html__( 'Hold Ctrl / Cmd to select multiple.', 'pedalcms' )
+				esc_html__( 'Hold Ctrl / Cmd to select multiple.', 'pedal-cms' )
 			);
 		}
 

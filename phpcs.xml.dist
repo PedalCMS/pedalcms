@@ -65,6 +65,15 @@
 		<exclude name="Universal.Operators.DisallowShortTernary"/>
 	</rule>
 
+	<!-- Text domain must match the WordPress.org plugin slug. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="pedal-cms"/>
+			</property>
+		</properties>
+	</rule>
+
 	<!-- Enforce short syntax arrays. -->
 	<rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 
