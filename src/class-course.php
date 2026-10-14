@@ -116,10 +116,12 @@ class Course extends CustomPostType {
 			esc_html( $post->post_title )
 		);
 
-		if ( $post->pedalcms_course_code ) {
+		$course_code = get_post_meta( $post->ID, 'pedalcms_course_code', true );
+
+		if ( $course_code ) {
 			$title .= sprintf(
 				' <span class="course-code">(%s)</span>',
-				esc_html( $post->pedalcms_course_code )
+				esc_html( $course_code )
 			);
 		}
 

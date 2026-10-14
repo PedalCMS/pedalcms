@@ -39,7 +39,7 @@ class JobTitleBlock extends CustomBlock {
 		ob_start();
 		pedalcms_get_template_part(
 			'blocks/job-title',
-			[ 'job_title' => $post->pedalcms_job_title ]
+			[ 'job_title' => $post ? get_post_meta( $post->ID, 'pedalcms_job_title', true ) : '' ]
 		);
 
 		return ob_get_clean();
