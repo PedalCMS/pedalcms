@@ -60,7 +60,6 @@ fi
 rm -f \
 	"${STAGE_DIR}/Makefile" \
 	"${STAGE_DIR}/README.md" \
-	"${STAGE_DIR}/composer.json" \
 	"${STAGE_DIR}/.env.e2e.example" \
 	"${STAGE_DIR}/playwright.config.js" \
 	"${STAGE_DIR}/wpmu-config.xml"
@@ -83,6 +82,8 @@ for required_file in \
 	"assets/js/global.min.js" \
 	"admin/js/pdl-acf.min.js" \
 	"admin/js/pdl-conditional.min.js" \
+	"composer.json" \
+	"composer.lock" \
 	"vendor/autoload.php"; do
 	if ! grep -qxF "${PLUGIN_SLUG}/${required_file}" <<< "${ZIP_ENTRIES}"; then
 		echo "Zip is missing required runtime file ${required_file}." >&2
@@ -100,7 +101,7 @@ if grep -Eq "${PLUGIN_SLUG}/(assets/scss/|assets/js/src/|admin/js/src/)" <<< "${
 	exit 1
 fi
 
-if grep -Eq "${PLUGIN_SLUG}/(Makefile|README\.md|composer\.json|\.env\.e2e\.example|playwright\.config\.js|wpmu-config\.xml)$" <<< "${ZIP_ENTRIES}"; then
+if grep -Eq "${PLUGIN_SLUG}/(Makefile|README\.md|\.env\.e2e\.example|playwright\.config\.js|wpmu-config\.xml)$" <<< "${ZIP_ENTRIES}"; then
 	echo "Zip contains non-runtime development files." >&2
 	exit 1
 fi
