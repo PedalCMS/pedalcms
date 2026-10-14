@@ -1,6 +1,6 @@
 @use '../common/variables' as *;
 
-.pdl_person .contact-info .label {
+.pedalcms_person .contact-info .label {
   display: inline-block;
   font-size: 0.8em;
   font-weight: bold;
@@ -16,7 +16,7 @@
   }
 }
 
-.person-list .pdl_person {
+.person-list .pedalcms_person {
   display: flex;
   gap: var(--pdl-spacing);
   margin-bottom: 0 !important;
@@ -73,14 +73,14 @@
   line-height: 1.4;
 }
 
-body.single-pdl_person .person-main {
+body.single-pedalcms_person .person-main {
   --margin: var(--pdl-spacing-2x);
   display: flex;
   flex-wrap: wrap;
   gap: var(--margin);
 }
 
-body.single-pdl_person .person-content {
+body.single-pedalcms_person .person-content {
   width: 100%;
 
   @media (min-width: $screen-md-min) {
@@ -88,7 +88,7 @@ body.single-pdl_person .person-content {
   }
 }
 
-body.single-pdl_person .person-sidebar {
+body.single-pedalcms_person .person-sidebar {
   width: 100%;
 
   @media (min-width: $screen-md-min) {

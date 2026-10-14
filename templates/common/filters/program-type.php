@@ -8,11 +8,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults = [
-	'taxonomy'  => 'pdl_program_type',
+$pedalcms_defaults = [
+	'taxonomy'  => 'pedalcms_program_type',
 	'query_var' => 'prog_type',
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-pdl_get_template_part( 'common/filters/taxonomy', $args );
+pedalcms_get_template_part( 'common/filters/taxonomy', $pedalcms_args );

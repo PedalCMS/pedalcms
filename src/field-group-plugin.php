@@ -1,9 +1,11 @@
 <?php
 namespace PedalCMS\Core;
 
-$field_group = [
+defined( 'ABSPATH' ) || exit;
+
+$pedalcms_field_group = [
 	'key'                   => 'group_624ed9cd20260',
-	'title'                 => __( 'Program Pages Settings', 'pedalcms' ),
+	'title'                 => __( 'Program Pages Settings', 'pedal-cms' ),
 	'location'              => [
 		[
 			[
@@ -25,7 +27,7 @@ $field_group = [
 	'fields'                => [
 		[
 			'key'               => 'field_624f4b40ecfe9',
-			'label'             => __( 'General', 'pedalcms' ),
+			'label'             => __( 'General', 'pedal-cms' ),
 			'name'              => '',
 			'type'              => 'tab',
 			'instructions'      => '',
@@ -41,10 +43,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_625433ee9f135',
-			'label'             => __( 'Presentation Mode', 'pedalcms' ),
-			'name'              => 'pdl_presentation_mode',
+			'label'             => __( 'Presentation Mode', 'pedal-cms' ),
+			'name'              => 'pedalcms_presentation_mode',
 			'type'              => 'radio',
-			'instructions'      => __( 'Choose the amount of design and styling you want applied (CSS). Additional options will be available when Tuxedo Mode is active.', 'pedalcms' ),
+			'instructions'      => __( 'Choose the amount of design and styling you want applied (CSS). Additional options will be available when Tuxedo Mode is active.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -66,10 +68,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_62557df514811',
-			'label'             => __( 'Active Color', 'pedalcms' ),
-			'name'              => 'pdl_active_color',
+			'label'             => __( 'Active Color', 'pedal-cms' ),
+			'name'              => 'pedalcms_active_color',
 			'type'              => 'color_picker',
-			'instructions'      => __( 'The color to be used for links and buttons.', 'pedalcms' ),
+			'instructions'      => __( 'The color to be used for links and buttons.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -83,10 +85,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_625580b4f4863',
-			'label'             => __( 'Button Text Color', 'pedalcms' ),
-			'name'              => 'pdl_active_color_text',
+			'label'             => __( 'Button Text Color', 'pedal-cms' ),
+			'name'              => 'pedalcms_active_color_text',
 			'type'              => 'color_picker',
-			'instructions'      => __( 'The color to be used for text on buttons. Set this if white does not provide enough contrast to your active color.', 'pedalcms' ),
+			'instructions'      => __( 'The color to be used for text on buttons. Set this if white does not provide enough contrast to your active color.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -100,8 +102,8 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_62509138296eb',
-			'label'             => __( 'Header Image Size', 'pedalcms' ),
-			'name'              => 'pdl_image_size_header',
+			'label'             => __( 'Header Image Size', 'pedal-cms' ),
+			'name'              => 'pedalcms_image_size_header',
 			'type'              => 'select',
 			'instructions'      => '',
 			'required'          => 0,
@@ -130,8 +132,8 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_62508f3960c31',
-			'label'             => __( 'Width', 'pedalcms' ),
-			'name'              => 'pdl_image_size_header_w',
+			'label'             => __( 'Width', 'pedal-cms' ),
+			'name'              => 'pedalcms_image_size_header_w',
 			'type'              => 'number',
 			'instructions'      => '',
 			'required'          => 0,
@@ -159,8 +161,8 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_62508f9960c32',
-			'label'             => __( 'Height', 'pedalcms' ),
-			'name'              => 'pdl_image_size_header_h',
+			'label'             => __( 'Height', 'pedal-cms' ),
+			'name'              => 'pedalcms_image_size_header_h',
 			'type'              => 'number',
 			'instructions'      => '',
 			'required'          => 0,
@@ -188,10 +190,10 @@ $field_group = [
 		],
 		[
 			'key'                 => 'field_624f4b5fecfea',
-			'label'               => __( 'Display Breadcrumbs', 'pedalcms' ),
-			'name'                => 'pdl_display_breadcrumbs',
+			'label'               => __( 'Display Breadcrumbs', 'pedal-cms' ),
+			'name'                => 'pedalcms_display_breadcrumbs',
 			'type'                => 'true_false',
-			'instructions'        => __( 'Disable this if you have two showing up.', 'pedalcms' ),
+			'instructions'        => __( 'Disable this if you have two showing up.', 'pedal-cms' ),
 			'required'            => 0,
 			'conditional_logic'   => 0,
 			'wrapper'             => [
@@ -208,10 +210,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_62543575ecebe',
-			'label'             => __( 'Main Content Wrapper Tag', 'pedalcms' ),
-			'name'              => 'pdl_main_content_wrapper_tag',
+			'label'             => __( 'Main Content Wrapper Tag', 'pedal-cms' ),
+			'name'              => 'pedalcms_main_content_wrapper_tag',
 			'type'              => 'select',
-			'instructions'      => __( 'Switch to "main" to fix accessibility issues with some themes.', 'pedalcms' ),
+			'instructions'      => __( 'Switch to "main" to fix accessibility issues with some themes.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -234,7 +236,7 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_624ed9f473c21',
-			'label'             => __( 'Programs', 'pedalcms' ),
+			'label'             => __( 'Programs', 'pedal-cms' ),
 			'name'              => '',
 			'type'              => 'tab',
 			'instructions'      => '',
@@ -250,10 +252,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_624f23fdaf6a2',
-			'label'             => __( 'Configure Program Listings', 'pedalcms' ),
-			'name'              => 'pdl_program_archive',
+			'label'             => __( 'Configure Program Listings', 'pedal-cms' ),
+			'name'              => 'pedalcms_program_archive',
 			'type'              => 'group',
-			'instructions'      => __( 'Configuration options for searching and browsing the list of programs.', 'pedalcms' ),
+			'instructions'      => __( 'Configuration options for searching and browsing the list of programs.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -265,10 +267,10 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_625460ce1849c',
-					'label'               => __( 'Archive Title', 'pedalcms' ),
+					'label'               => __( 'Archive Title', 'pedal-cms' ),
 					'name'                => 'title',
 					'type'                => 'text',
-					'instructions'        => __( 'The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'pedalcms' ),
+					'instructions'        => __( 'The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -277,7 +279,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Programs', 'pedalcms' ),
+					'placeholder'         => __( 'Programs', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -285,10 +287,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_624eda3a73c22',
-					'label'               => __( 'Lead Copy', 'pedalcms' ),
+					'label'               => __( 'Lead Copy', 'pedal-cms' ),
 					'name'                => 'description',
 					'type'                => 'wysiwyg',
-					'instructions'        => __( 'The content that appears in the archive page header.', 'pedalcms' ),
+					'instructions'        => __( 'The content that appears in the archive page header.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -305,10 +307,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_624edb4c73c23',
-					'label'             => __( 'Header Image', 'pedalcms' ),
-					'name'              => 'featured_image',
+					'label'             => __( 'Header Image', 'pedal-cms' ),
+					'name'              => 'pedalcms_featured_image',
 					'type'              => 'image',
-					'instructions'      => __( 'The image to be displayed in the page header of the archive.', 'pedalcms' ),
+					'instructions'      => __( 'The image to be displayed in the page header of the archive.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -329,10 +331,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_624edbc673c24',
-					'label'             => __( 'Header Background Image', 'pedalcms' ),
-					'name'              => 'header_background',
+					'label'             => __( 'Header Background Image', 'pedal-cms' ),
+					'name'              => 'pedalcms_header_background',
 					'type'              => 'image',
-					'instructions'      => __( 'The background image of the archive page header (Tuxedo Mode only).', 'pedalcms' ),
+					'instructions'      => __( 'The background image of the archive page header (Tuxedo Mode only).', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -353,10 +355,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_6250367012e71',
-					'label'             => __( 'Search Filters', 'pedalcms' ),
+					'label'             => __( 'Search Filters', 'pedal-cms' ),
 					'name'              => 'search_filters',
 					'type'              => 'checkbox',
-					'instructions'      => __( 'Select the list of search filters you want enabled. (Disabled taxonomies will not show up in this list).', 'pedalcms' ),
+					'instructions'      => __( 'Select the list of search filters you want enabled. (Disabled taxonomies will not show up in this list).', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -386,10 +388,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_6250434aa7d23',
-					'label'             => __( 'Number of Filters Visible', 'pedalcms' ),
+					'label'             => __( 'Number of Filters Visible', 'pedal-cms' ),
 					'name'              => 'filters_showing',
 					'type'              => 'number',
-					'instructions'      => __( 'The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'pedalcms' ),
+					'instructions'      => __( 'The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -407,10 +409,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_625034133f671',
-					'label'               => __( 'Show Images in List View', 'pedalcms' ),
+					'label'               => __( 'Show Images in List View', 'pedal-cms' ),
 					'name'                => 'show_images',
 					'type'                => 'true_false',
-					'instructions'        => __( 'Should lists of posts include their featured images?', 'pedalcms' ),
+					'instructions'        => __( 'Should lists of posts include their featured images?', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -429,10 +431,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_62542e1c55d3a',
-			'label'             => __( 'Configure Programs', 'pedalcms' ),
-			'name'              => 'pdl_program',
+			'label'             => __( 'Configure Programs', 'pedal-cms' ),
+			'name'              => 'pedalcms_program',
 			'type'              => 'group',
-			'instructions'      => __( 'Configuration options for individual programs.', 'pedalcms' ),
+			'instructions'      => __( 'Configuration options for individual programs.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -444,10 +446,10 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'               => 'field_624f2595939f4',
-					'label'             => __( 'Default Post Featured Image', 'pedalcms' ),
-					'name'              => 'featured_image',
+					'label'             => __( 'Default Post Featured Image', 'pedal-cms' ),
+					'name'              => 'pedalcms_featured_image',
 					'type'              => 'image',
-					'instructions'      => __( 'The default featured image of individual posts.', 'pedalcms' ),
+					'instructions'      => __( 'The default featured image of individual posts.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -468,8 +470,8 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_62542f1855d3b',
-					'label'             => __( 'Application Deadlines', 'pedalcms' ),
-					'name'              => 'application_deadlines',
+					'label'             => __( 'Application Deadlines', 'pedal-cms' ),
+					'name'              => 'pedalcms_application_deadlines',
 					'type'              => 'repeater',
 					'instructions'      => '',
 					'required'          => 0,
@@ -487,7 +489,7 @@ $field_group = [
 					'sub_fields'        => [
 						[
 							'key'                 => 'field_62542f3455d3c',
-							'label'               => __( 'Deadline Label', 'pedalcms' ),
+							'label'               => __( 'Deadline Label', 'pedal-cms' ),
 							'name'                => 'label',
 							'type'                => 'text',
 							'instructions'        => '',
@@ -499,7 +501,7 @@ $field_group = [
 								'id'    => '',
 							],
 							'default_value'       => '',
-							'placeholder'         => __( 'Fall, Spring, etc.', 'pedalcms' ),
+							'placeholder'         => __( 'Fall, Spring, etc.', 'pedal-cms' ),
 							'prepend'             => '',
 							'append'              => '',
 							'maxlength'           => '',
@@ -507,7 +509,7 @@ $field_group = [
 						],
 						[
 							'key'                 => 'field_62542f6555d3d',
-							'label'               => __( 'Deadline Info', 'pedalcms' ),
+							'label'               => __( 'Deadline Info', 'pedal-cms' ),
 							'name'                => 'info',
 							'type'                => 'text',
 							'instructions'        => '',
@@ -519,7 +521,7 @@ $field_group = [
 								'id'    => '',
 							],
 							'default_value'       => '',
-							'placeholder'         => __( 'e.g. June 24th', 'pedalcms' ),
+							'placeholder'         => __( 'e.g. June 24th', 'pedal-cms' ),
 							'prepend'             => '',
 							'append'              => '',
 							'maxlength'           => '',
@@ -529,10 +531,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6262f41e9e285',
-					'label'               => __( 'Request Info Button Text', 'pedalcms' ),
+					'label'               => __( 'Request Info Button Text', 'pedal-cms' ),
 					'name'                => 'label_request_info_action',
 					'type'                => 'text',
-					'instructions'        => __( 'The text to be displayed in the Request Info button.', 'pedalcms' ),
+					'instructions'        => __( 'The text to be displayed in the Request Info button.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -541,7 +543,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Request Info', 'pedalcms' ),
+					'placeholder'         => __( 'Request Info', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -549,10 +551,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6254300d55d3e',
-					'label'               => __( 'Request Info URL', 'pedalcms' ),
-					'name'                => 'url_request_info',
+					'label'               => __( 'Request Info URL', 'pedal-cms' ),
+					'name'                => 'pedalcms_url_request_info',
 					'type'                => 'url',
-					'instructions'        => __( 'Enter a URL pattern to create unique request info URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'pedalcms' ),
+					'instructions'        => __( 'Enter a URL pattern to create unique request info URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -566,10 +568,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6262f40e90f8b',
-					'label'               => __( 'Apply Now Button Text', 'pedalcms' ),
+					'label'               => __( 'Apply Now Button Text', 'pedal-cms' ),
 					'name'                => 'label_apply_now_action',
 					'type'                => 'text',
-					'instructions'        => __( 'The text to be displayed in the Apply Now button.', 'pedalcms' ),
+					'instructions'        => __( 'The text to be displayed in the Apply Now button.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -578,7 +580,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Apply Now', 'pedalcms' ),
+					'placeholder'         => __( 'Apply Now', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -586,10 +588,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6254304c55d40',
-					'label'               => __( 'Apply Now URL', 'pedalcms' ),
-					'name'                => 'url_apply_now',
+					'label'               => __( 'Apply Now URL', 'pedal-cms' ),
+					'name'                => 'pedalcms_url_apply_now',
 					'type'                => 'url',
-					'instructions'        => __( 'Enter a URL pattern to create unique apply now URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'pedalcms' ),
+					'instructions'        => __( 'Enter a URL pattern to create unique apply now URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -603,10 +605,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_625daa155a037',
-					'label'               => __( 'Primary Contact Heading', 'pedalcms' ),
+					'label'               => __( 'Primary Contact Heading', 'pedal-cms' ),
 					'name'                => 'label_program_contact',
 					'type'                => 'text',
-					'instructions'        => __( 'Appears above the list of contacts in the sidebar.', 'pedalcms' ),
+					'instructions'        => __( 'Appears above the list of contacts in the sidebar.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -615,7 +617,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Program Contact', 'pedalcms' ),
+					'placeholder'         => __( 'Program Contact', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -623,10 +625,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6262f31da5a29',
-					'label'               => __( 'Contact Button Text', 'pedalcms' ),
+					'label'               => __( 'Contact Button Text', 'pedal-cms' ),
 					'name'                => 'label_contact_action',
 					'type'                => 'text',
-					'instructions'        => __( 'The text to be displayed in the Contact button.', 'pedalcms' ),
+					'instructions'        => __( 'The text to be displayed in the Contact button.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -635,7 +637,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Contact', 'pedalcms' ),
+					'placeholder'         => __( 'Contact', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -643,10 +645,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_625da91771551',
-					'label'               => __( 'Contact URL', 'pedalcms' ),
+					'label'               => __( 'Contact URL', 'pedal-cms' ),
 					'name'                => 'url_contact',
 					'type'                => 'url',
-					'instructions'        => __( 'Enter a URL pattern to create unique contact URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'pedalcms' ),
+					'instructions'        => __( 'Enter a URL pattern to create unique contact URLs for each program. You can use the following tags: {$program_guid} {$program_slug}', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -662,7 +664,7 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_62573b95abb37',
-			'label'             => __( 'Subpages', 'pedalcms' ),
+			'label'             => __( 'Subpages', 'pedal-cms' ),
 			'name'              => '',
 			'type'              => 'tab',
 			'instructions'      => '',
@@ -678,10 +680,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_6259af11ee00e',
-			'label'             => __( 'Enabled Subpages', 'pedalcms' ),
-			'name'              => 'pdl_enable_subpages_pdl_program',
+			'label'             => __( 'Enabled Subpages', 'pedal-cms' ),
+			'name'              => 'pedalcms_enable_subpages_pedalcms_program',
 			'type'              => 'checkbox',
-			'instructions'      => __( 'This enables subpages for all programs but any subpage can be disabled per program as well.', 'pedalcms' ),
+			'instructions'      => __( 'This enables subpages for all programs but any subpage can be disabled per program as well.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -707,10 +709,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_62587e6f4d704',
-			'label'             => __( 'Careers', 'pedalcms' ),
-			'name'              => 'pdl_program_subpage_careers',
+			'label'             => __( 'Careers', 'pedal-cms' ),
+			'name'              => 'pedalcms_program_subpage_careers',
 			'type'              => 'group',
-			'instructions'      => __( 'Configuration options for the Careers program subpage.', 'pedalcms' ),
+			'instructions'      => __( 'Configuration options for the Careers program subpage.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -722,10 +724,10 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'               => 'field_62587f3b5d771',
-					'label'             => __( 'Career Post Type', 'pedalcms' ),
+					'label'             => __( 'Career Post Type', 'pedal-cms' ),
 					'name'              => 'post_type',
 					'type'              => 'select',
-					'instructions'      => __( 'Select the post type to associate careers with programs.', 'pedalcms' ),
+					'instructions'      => __( 'Select the post type to associate careers with programs.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -734,9 +736,9 @@ $field_group = [
 						'id'    => '',
 					],
 					'choices'           => [
-						'pdl_career' => 'pdl_career',
+						'pedalcms_career' => 'pedalcms_career',
 					],
-					'default_value'     => 'pdl_career',
+					'default_value'     => 'pedalcms_career',
 					'allow_null'        => 1,
 					'multiple'          => 0,
 					'ui'                => 0,
@@ -746,7 +748,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_62587fa7fffe3',
-					'label'               => __( 'Page Title', 'pedalcms' ),
+					'label'               => __( 'Page Title', 'pedal-cms' ),
 					'name'                => 'title',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -758,7 +760,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Careers', 'pedalcms' ),
+					'placeholder'         => __( 'Careers', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -766,7 +768,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_62587fcffffe4',
-					'label'               => __( 'Tab Label', 'pedalcms' ),
+					'label'               => __( 'Tab Label', 'pedal-cms' ),
 					'name'                => 'tab_label',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -778,7 +780,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Careers', 'pedalcms' ),
+					'placeholder'         => __( 'Careers', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -788,8 +790,8 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_625882003b476',
-			'label'             => __( 'Curriculum', 'pedalcms' ),
-			'name'              => 'pdl_program_subpage_curriculum',
+			'label'             => __( 'Curriculum', 'pedal-cms' ),
+			'name'              => 'pedalcms_program_subpage_curriculum',
 			'type'              => 'group',
 			'instructions'      => '',
 			'required'          => 0,
@@ -803,7 +805,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_625882003b479',
-					'label'               => __( 'Page Title', 'pedalcms' ),
+					'label'               => __( 'Page Title', 'pedal-cms' ),
 					'name'                => 'title',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -815,7 +817,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Curriculum', 'pedalcms' ),
+					'placeholder'         => __( 'Curriculum', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -823,7 +825,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_625882003b47a',
-					'label'               => __( 'Tab Label', 'pedalcms' ),
+					'label'               => __( 'Tab Label', 'pedal-cms' ),
 					'name'                => 'tab_label',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -835,7 +837,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Curriculum', 'pedalcms' ),
+					'placeholder'         => __( 'Curriculum', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -843,10 +845,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_62685155391da',
-					'label'               => __( 'Show Credits', 'pedalcms' ),
+					'label'               => __( 'Show Credits', 'pedal-cms' ),
 					'name'                => 'show_credits',
 					'type'                => 'true_false',
-					'instructions'        => __( 'Whether or not to display the credits column in courses tables.', 'pedalcms' ),
+					'instructions'        => __( 'Whether or not to display the credits column in courses tables.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -865,8 +867,8 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_6258827f3b47b',
-			'label'             => __( 'Faculty & Staff', 'pedalcms' ),
-			'name'              => 'pdl_program_subpage_faculty_staff',
+			'label'             => __( 'Faculty & Staff', 'pedal-cms' ),
+			'name'              => 'pedalcms_program_subpage_faculty_staff',
 			'type'              => 'group',
 			'instructions'      => '',
 			'required'          => 0,
@@ -880,7 +882,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_6258827f3b47d',
-					'label'               => __( 'Page Title', 'pedalcms' ),
+					'label'               => __( 'Page Title', 'pedal-cms' ),
 					'name'                => 'title',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -892,7 +894,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Faculty & Staff', 'pedalcms' ),
+					'placeholder'         => __( 'Faculty & Staff', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -900,7 +902,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6258827f3b47e',
-					'label'               => __( 'Tab Label', 'pedalcms' ),
+					'label'               => __( 'Tab Label', 'pedal-cms' ),
 					'name'                => 'tab_label',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -912,7 +914,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Faculty & Staff', 'pedalcms' ),
+					'placeholder'         => __( 'Faculty & Staff', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -922,8 +924,8 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_625d9c82d65d9',
-			'label'             => __( 'Cost', 'pedalcms' ),
-			'name'              => 'pdl_program_subpage_cost',
+			'label'             => __( 'Cost', 'pedal-cms' ),
+			'name'              => 'pedalcms_program_subpage_cost',
 			'type'              => 'group',
 			'instructions'      => '',
 			'required'          => 0,
@@ -937,7 +939,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_625d9c82d65da',
-					'label'               => __( 'Page Title', 'pedalcms' ),
+					'label'               => __( 'Page Title', 'pedal-cms' ),
 					'name'                => 'title',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -949,7 +951,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Cost', 'pedalcms' ),
+					'placeholder'         => __( 'Cost', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -957,7 +959,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_625d9c82d65db',
-					'label'               => __( 'Tab Label', 'pedalcms' ),
+					'label'               => __( 'Tab Label', 'pedal-cms' ),
 					'name'                => 'tab_label',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -969,7 +971,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Cost', 'pedalcms' ),
+					'placeholder'         => __( 'Cost', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -979,8 +981,8 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_625d9cafd65dc',
-			'label'             => __( 'How to Apply', 'pedalcms' ),
-			'name'              => 'pdl_program_subpage_apply',
+			'label'             => __( 'How to Apply', 'pedal-cms' ),
+			'name'              => 'pedalcms_program_subpage_apply',
 			'type'              => 'group',
 			'instructions'      => '',
 			'required'          => 0,
@@ -994,7 +996,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_625d9cafd65dd',
-					'label'               => __( 'Page Title', 'pedalcms' ),
+					'label'               => __( 'Page Title', 'pedal-cms' ),
 					'name'                => 'title',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -1006,7 +1008,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'How to Apply', 'pedalcms' ),
+					'placeholder'         => __( 'How to Apply', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1014,7 +1016,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_625d9cafd65de',
-					'label'               => __( 'Tab Label', 'pedalcms' ),
+					'label'               => __( 'Tab Label', 'pedal-cms' ),
 					'name'                => 'tab_label',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -1026,7 +1028,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'How to Apply', 'pedalcms' ),
+					'placeholder'         => __( 'How to Apply', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1036,8 +1038,8 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_625d9f712f83a',
-			'label'             => __( 'FAQs', 'pedalcms' ),
-			'name'              => 'pdl_program_subpage_faqs',
+			'label'             => __( 'FAQs', 'pedal-cms' ),
+			'name'              => 'pedalcms_program_subpage_faqs',
 			'type'              => 'group',
 			'instructions'      => '',
 			'required'          => 0,
@@ -1051,7 +1053,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_625d9f712f83b',
-					'label'               => __( 'Page Title', 'pedalcms' ),
+					'label'               => __( 'Page Title', 'pedal-cms' ),
 					'name'                => 'title',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -1063,7 +1065,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'FAQs', 'pedalcms' ),
+					'placeholder'         => __( 'FAQs', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1071,7 +1073,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_625d9f712f83c',
-					'label'               => __( 'Tab Label', 'pedalcms' ),
+					'label'               => __( 'Tab Label', 'pedal-cms' ),
 					'name'                => 'tab_label',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -1083,7 +1085,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'FAQs', 'pedalcms' ),
+					'placeholder'         => __( 'FAQs', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1093,8 +1095,8 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_625d9fc572843',
-			'label'             => __( 'News', 'pedalcms' ),
-			'name'              => 'pdl_program_subpage_news',
+			'label'             => __( 'News', 'pedal-cms' ),
+			'name'              => 'pedalcms_program_subpage_news',
 			'type'              => 'group',
 			'instructions'      => '',
 			'required'          => 0,
@@ -1108,7 +1110,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_625d9fc572844',
-					'label'               => __( 'Page Title', 'pedalcms' ),
+					'label'               => __( 'Page Title', 'pedal-cms' ),
 					'name'                => 'title',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -1120,7 +1122,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'News', 'pedalcms' ),
+					'placeholder'         => __( 'News', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1128,7 +1130,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_625d9fc572845',
-					'label'               => __( 'Tab Label', 'pedalcms' ),
+					'label'               => __( 'Tab Label', 'pedal-cms' ),
 					'name'                => 'tab_label',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -1140,7 +1142,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'News', 'pedalcms' ),
+					'placeholder'         => __( 'News', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1150,7 +1152,7 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_625095cab680d',
-			'label'             => __( 'Course Catalog', 'pedalcms' ),
+			'label'             => __( 'Course Catalog', 'pedal-cms' ),
 			'name'              => '',
 			'type'              => 'tab',
 			'instructions'      => '',
@@ -1166,10 +1168,10 @@ $field_group = [
 		],
 		[
 			'key'                 => 'field_624f2bf176f96',
-			'label'               => __( 'Enable this Feature', 'pedalcms' ),
-			'name'                => 'pdl_course_enable',
+			'label'               => __( 'Enable this Feature', 'pedal-cms' ),
+			'name'                => 'pedalcms_course_enable',
 			'type'                => 'true_false',
-			'instructions'        => __( 'If you\'re not going to use this feature, you should disable it.', 'pedalcms' ),
+			'instructions'        => __( 'If you\'re not going to use this feature, you should disable it.', 'pedal-cms' ),
 			'required'            => 0,
 			'conditional_logic'   => 0,
 			'wrapper'             => [
@@ -1186,10 +1188,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_624f2bf176f95',
-			'label'             => __( 'Configure Course Catalog', 'pedalcms' ),
-			'name'              => 'pdl_course_archive',
+			'label'             => __( 'Configure Course Catalog', 'pedal-cms' ),
+			'name'              => 'pedalcms_course_archive',
 			'type'              => 'group',
-			'instructions'      => __( 'Configuration options for searching and browsing the list of courses.', 'pedalcms' ),
+			'instructions'      => __( 'Configuration options for searching and browsing the list of courses.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -1201,10 +1203,10 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_6254633df0007',
-					'label'               => __( 'Archive Title', 'pedalcms' ),
+					'label'               => __( 'Archive Title', 'pedal-cms' ),
 					'name'                => 'title',
 					'type'                => 'text',
-					'instructions'        => __( 'The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'pedalcms' ),
+					'instructions'        => __( 'The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1213,7 +1215,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Course Catalog', 'pedalcms' ),
+					'placeholder'         => __( 'Course Catalog', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1221,10 +1223,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_624f2bf176f97',
-					'label'               => __( 'Lead Copy', 'pedalcms' ),
+					'label'               => __( 'Lead Copy', 'pedal-cms' ),
 					'name'                => 'description',
 					'type'                => 'wysiwyg',
-					'instructions'        => __( 'The content that appears in the archive page header.', 'pedalcms' ),
+					'instructions'        => __( 'The content that appears in the archive page header.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1241,10 +1243,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_624f2bf176f98',
-					'label'             => __( 'Header Image', 'pedalcms' ),
-					'name'              => 'featured_image',
+					'label'             => __( 'Header Image', 'pedal-cms' ),
+					'name'              => 'pedalcms_featured_image',
 					'type'              => 'image',
-					'instructions'      => __( 'The image to be displayed in the page header of the archive.', 'pedalcms' ),
+					'instructions'      => __( 'The image to be displayed in the page header of the archive.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -1265,10 +1267,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_624f2bf176f99',
-					'label'             => __( 'Header Background Image', 'pedalcms' ),
-					'name'              => 'header_background',
+					'label'             => __( 'Header Background Image', 'pedal-cms' ),
+					'name'              => 'pedalcms_header_background',
 					'type'              => 'image',
-					'instructions'      => __( 'The background image of the archive page header (Tuxedo Mode only).', 'pedalcms' ),
+					'instructions'      => __( 'The background image of the archive page header (Tuxedo Mode only).', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -1289,10 +1291,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_625466e002016',
-					'label'             => __( 'Search Filters', 'pedalcms' ),
+					'label'             => __( 'Search Filters', 'pedal-cms' ),
 					'name'              => 'search_filters',
 					'type'              => 'checkbox',
-					'instructions'      => __( 'Select the list of search filters you want enabled.', 'pedalcms' ),
+					'instructions'      => __( 'Select the list of search filters you want enabled.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -1324,10 +1326,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_62546642e4853',
-					'label'             => __( 'Number of Filters Visible', 'pedalcms' ),
+					'label'             => __( 'Number of Filters Visible', 'pedal-cms' ),
 					'name'              => 'filters_showing',
 					'type'              => 'number',
-					'instructions'      => __( 'The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'pedalcms' ),
+					'instructions'      => __( 'The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -1347,10 +1349,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_625430e759b18',
-			'label'             => __( 'Configure Courses', 'pedalcms' ),
-			'name'              => 'pdl_course',
+			'label'             => __( 'Configure Courses', 'pedal-cms' ),
+			'name'              => 'pedalcms_course',
 			'type'              => 'group',
-			'instructions'      => __( 'Configuration options for individual courses.', 'pedalcms' ),
+			'instructions'      => __( 'Configuration options for individual courses.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -1362,10 +1364,10 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_626848ca44429',
-					'label'               => __( 'Course Credits Label', 'pedalcms' ),
+					'label'               => __( 'Course Credits Label', 'pedal-cms' ),
 					'name'                => 'label_credits',
 					'type'                => 'text',
-					'instructions'        => __( 'The unit of measure for course hours. Sometimes called units.', 'pedalcms' ),
+					'instructions'        => __( 'The unit of measure for course hours. Sometimes called units.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1374,7 +1376,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'credits', 'pedalcms' ),
+					'placeholder'         => __( 'credits', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1382,10 +1384,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6268496a4682e',
-					'label'               => __( 'Course Credits Label, Singular', 'pedalcms' ),
+					'label'               => __( 'Course Credits Label, Singular', 'pedal-cms' ),
 					'name'                => 'label_credit',
 					'type'                => 'text',
-					'instructions'        => __( 'The unit of measure for course hours. Singular version.', 'pedalcms' ),
+					'instructions'        => __( 'The unit of measure for course hours. Singular version.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1394,7 +1396,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'credit', 'pedalcms' ),
+					'placeholder'         => __( 'credit', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1402,10 +1404,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_62631221ea0d7',
-					'label'               => __( 'Course Registration Button Text', 'pedalcms' ),
+					'label'               => __( 'Course Registration Button Text', 'pedal-cms' ),
 					'name'                => 'label_register_action',
 					'type'                => 'text',
-					'instructions'        => __( 'The text to be displayed in the Register button.', 'pedalcms' ),
+					'instructions'        => __( 'The text to be displayed in the Register button.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1414,7 +1416,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Register', 'pedalcms' ),
+					'placeholder'         => __( 'Register', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1422,10 +1424,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_625432e181228',
-					'label'               => __( 'Course Registration Search URL', 'pedalcms' ),
-					'name'                => 'url_reg_search',
+					'label'               => __( 'Course Registration Search URL', 'pedal-cms' ),
+					'name'                => 'pedalcms_url_reg_search',
 					'type'                => 'url',
-					'instructions'        => __( 'Enter a URL pattern to create unique "Search Sections" URLs for each course. You can use the following tag: {$course_reg_key}', 'pedalcms' ),
+					'instructions'        => __( 'Enter a URL pattern to create unique "Search Sections" URLs for each course. You can use the following tag: {$course_reg_key}', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1439,10 +1441,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6269913eccb62',
-					'label'               => __( 'Instructors Heading', 'pedalcms' ),
+					'label'               => __( 'Instructors Heading', 'pedal-cms' ),
 					'name'                => 'label_instructors',
 					'type'                => 'text',
-					'instructions'        => __( 'The heading over the list of instructors.', 'pedalcms' ),
+					'instructions'        => __( 'The heading over the list of instructors.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1451,7 +1453,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Instructors', 'pedalcms' ),
+					'placeholder'         => __( 'Instructors', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1461,7 +1463,7 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_625095f5b680e',
-			'label'             => __( 'Directory', 'pedalcms' ),
+			'label'             => __( 'Directory', 'pedal-cms' ),
 			'name'              => '',
 			'type'              => 'tab',
 			'instructions'      => '',
@@ -1477,10 +1479,10 @@ $field_group = [
 		],
 		[
 			'key'                 => 'field_624f2b2a695af',
-			'label'               => __( 'Enable this Feature', 'pedalcms' ),
-			'name'                => 'pdl_person_enable',
+			'label'               => __( 'Enable this Feature', 'pedal-cms' ),
+			'name'                => 'pedalcms_person_enable',
 			'type'                => 'true_false',
-			'instructions'        => __( 'If you\'re not going to use this feature, you should disable it.', 'pedalcms' ),
+			'instructions'        => __( 'If you\'re not going to use this feature, you should disable it.', 'pedal-cms' ),
 			'required'            => 0,
 			'conditional_logic'   => 0,
 			'wrapper'             => [
@@ -1497,10 +1499,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_624f2b16695aa',
-			'label'             => __( 'Configure Faculty & Staff Directory', 'pedalcms' ),
-			'name'              => 'pdl_person_archive',
+			'label'             => __( 'Configure Faculty & Staff Directory', 'pedal-cms' ),
+			'name'              => 'pedalcms_person_archive',
 			'type'              => 'group',
-			'instructions'      => __( 'Configuration options for searching and browsing the list of personnel.', 'pedalcms' ),
+			'instructions'      => __( 'Configuration options for searching and browsing the list of personnel.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -1512,10 +1514,10 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_62546c8a510cf',
-					'label'               => __( 'Archive Title', 'pedalcms' ),
+					'label'               => __( 'Archive Title', 'pedal-cms' ),
 					'name'                => 'title',
 					'type'                => 'text',
-					'instructions'        => __( 'The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'pedalcms' ),
+					'instructions'        => __( 'The page title of the Programs archive. Also appears in the browser tab and breadcrumb trail by default.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1524,7 +1526,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Directory', 'pedalcms' ),
+					'placeholder'         => __( 'Directory', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1532,10 +1534,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_624f2b16695ab',
-					'label'               => __( 'Lead Copy', 'pedalcms' ),
+					'label'               => __( 'Lead Copy', 'pedal-cms' ),
 					'name'                => 'description',
 					'type'                => 'wysiwyg',
-					'instructions'        => __( 'The content that appears in the archive page header.', 'pedalcms' ),
+					'instructions'        => __( 'The content that appears in the archive page header.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1552,10 +1554,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_624f2b16695ac',
-					'label'             => __( 'Featured Image', 'pedalcms' ),
-					'name'              => 'featured_image',
+					'label'             => __( 'Featured Image', 'pedal-cms' ),
+					'name'              => 'pedalcms_featured_image',
 					'type'              => 'image',
-					'instructions'      => __( 'The image to be displayed in the page header of the archive.', 'pedalcms' ),
+					'instructions'      => __( 'The image to be displayed in the page header of the archive.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -1576,10 +1578,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_624f2b16695ad',
-					'label'             => __( 'Header Background Image', 'pedalcms' ),
-					'name'              => 'header_background',
+					'label'             => __( 'Header Background Image', 'pedal-cms' ),
+					'name'              => 'pedalcms_header_background',
 					'type'              => 'image',
-					'instructions'      => __( 'The background image of the archive page header (Tuxedo Mode only).', 'pedalcms' ),
+					'instructions'      => __( 'The background image of the archive page header (Tuxedo Mode only).', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -1600,10 +1602,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_62546a55dc204',
-					'label'             => __( 'Search Filters', 'pedalcms' ),
+					'label'             => __( 'Search Filters', 'pedal-cms' ),
 					'name'              => 'search_filters',
 					'type'              => 'checkbox',
-					'instructions'      => __( 'Select the list of search filters you want enabled.', 'pedalcms' ),
+					'instructions'      => __( 'Select the list of search filters you want enabled.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -1633,10 +1635,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_62546a62dc205',
-					'label'             => __( 'Number of Filters Visible', 'pedalcms' ),
+					'label'             => __( 'Number of Filters Visible', 'pedal-cms' ),
 					'name'              => 'filters_showing',
 					'type'              => 'number',
-					'instructions'      => __( 'The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'pedalcms' ),
+					'instructions'      => __( 'The rest of the filters will be hidden behind "Show More Filters" toggle switch. Set to zero to show all filters.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -1656,10 +1658,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_625436e5d0dba',
-			'label'             => __( 'Configure Personnel', 'pedalcms' ),
-			'name'              => 'pdl_person',
+			'label'             => __( 'Configure Personnel', 'pedal-cms' ),
+			'name'              => 'pedalcms_person',
 			'type'              => 'group',
-			'instructions'      => __( 'Configuration options for individual personnel.', 'pedalcms' ),
+			'instructions'      => __( 'Configuration options for individual personnel.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -1671,10 +1673,10 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'               => 'field_62696f57bc6bb',
-					'label'             => __( 'Header Background Image', 'pedalcms' ),
-					'name'              => 'header_background',
+					'label'             => __( 'Header Background Image', 'pedal-cms' ),
+					'name'              => 'pedalcms_header_background',
 					'type'              => 'image',
-					'instructions'      => __( 'The background image of the personnel page header (Tuxedo Mode only).', 'pedalcms' ),
+					'instructions'      => __( 'The background image of the personnel page header (Tuxedo Mode only).', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -1695,10 +1697,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_62696cdb81e93',
-					'label'               => __( 'Courses Taught Heading', 'pedalcms' ),
+					'label'               => __( 'Courses Taught Heading', 'pedal-cms' ),
 					'name'                => 'label_courses_taught',
 					'type'                => 'text',
-					'instructions'        => __( 'The heading above this list of courses a faculty member teaches.', 'pedalcms' ),
+					'instructions'        => __( 'The heading above this list of courses a faculty member teaches.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1707,7 +1709,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Courses Taught', 'pedalcms' ),
+					'placeholder'         => __( 'Courses Taught', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1717,7 +1719,7 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_6250950db680c',
-			'label'             => __( 'Taxonomies', 'pedalcms' ),
+			'label'             => __( 'Taxonomies', 'pedal-cms' ),
 			'name'              => '',
 			'type'              => 'tab',
 			'instructions'      => '',
@@ -1733,10 +1735,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_6255d51d49335',
-			'label'             => __( 'College', 'pedalcms' ),
-			'name'              => 'pdl_college',
+			'label'             => __( 'College', 'pedal-cms' ),
+			'name'              => 'pedalcms_college',
 			'type'              => 'group',
-			'instructions'      => __( 'Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'pedalcms' ),
+			'instructions'      => __( 'Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -1748,7 +1750,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_6255d51d49336',
-					'label'               => __( 'Enable this Taxonomy', 'pedalcms' ),
+					'label'               => __( 'Enable this Taxonomy', 'pedal-cms' ),
 					'name'                => 'enable',
 					'type'                => 'true_false',
 					'instructions'        => '',
@@ -1768,10 +1770,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_630e5de55cf04',
-					'label'               => __( 'Enable Archive', 'pedalcms' ),
+					'label'               => __( 'Enable Archive', 'pedal-cms' ),
 					'name'                => 'enable_archive',
 					'type'                => 'true_false',
-					'instructions'        => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
+					'instructions'        => __( 'If disabled, links will point to a filtered programs view.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1788,7 +1790,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255d51d49337',
-					'label'               => __( 'Singular Label', 'pedalcms' ),
+					'label'               => __( 'Singular Label', 'pedal-cms' ),
 					'name'                => 'label_single',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -1800,7 +1802,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'College', 'pedalcms' ),
+					'placeholder'         => __( 'College', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1808,7 +1810,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255d51d49338',
-					'label'               => __( 'Plural Label', 'pedalcms' ),
+					'label'               => __( 'Plural Label', 'pedal-cms' ),
 					'name'                => 'label_plural',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -1820,7 +1822,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Colleges', 'pedalcms' ),
+					'placeholder'         => __( 'Colleges', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1828,10 +1830,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_630e706b11afc',
-					'label'             => __( 'Use with:', 'pedalcms' ),
+					'label'             => __( 'Use with:', 'pedal-cms' ),
 					'name'              => 'object_type',
 					'type'              => 'checkbox',
-					'instructions'      => __( 'Choose the the features to use this taxonomy with.', 'pedalcms' ),
+					'instructions'      => __( 'Choose the the features to use this taxonomy with.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -1855,10 +1857,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_6255e021cb5de',
-			'label'             => __( 'Department', 'pedalcms' ),
-			'name'              => 'pdl_department',
+			'label'             => __( 'Department', 'pedal-cms' ),
+			'name'              => 'pedalcms_department',
 			'type'              => 'group',
-			'instructions'      => __( 'Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'pedalcms' ),
+			'instructions'      => __( 'Used by Programs, Course Catalog, and Faculty & Staff Directory.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -1870,7 +1872,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_6255e021cb5df',
-					'label'               => __( 'Enable this Taxonomy', 'pedalcms' ),
+					'label'               => __( 'Enable this Taxonomy', 'pedal-cms' ),
 					'name'                => 'enable',
 					'type'                => 'true_false',
 					'instructions'        => '',
@@ -1890,10 +1892,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_630e66adbf615',
-					'label'               => __( 'Enable Archive', 'pedalcms' ),
+					'label'               => __( 'Enable Archive', 'pedal-cms' ),
 					'name'                => 'enable_archive',
 					'type'                => 'true_false',
-					'instructions'        => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
+					'instructions'        => __( 'If disabled, links will point to a filtered programs view.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -1910,10 +1912,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_631a428ff3f05',
-					'label'               => __( 'Depends on College', 'pedalcms' ),
+					'label'               => __( 'Depends on College', 'pedal-cms' ),
 					'name'                => 'depends_college',
 					'type'                => 'true_false',
-					'instructions'        => __( 'If enabled, Departments will belong to a College and the relationship will be enforced.', 'pedalcms' ),
+					'instructions'        => __( 'If enabled, Departments will belong to a College and the relationship will be enforced.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => [
 						[
@@ -1938,7 +1940,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255e021cb5e0',
-					'label'               => __( 'Singular Label', 'pedalcms' ),
+					'label'               => __( 'Singular Label', 'pedal-cms' ),
 					'name'                => 'label_single',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -1950,7 +1952,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Department', 'pedalcms' ),
+					'placeholder'         => __( 'Department', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1958,7 +1960,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255e021cb5e1',
-					'label'               => __( 'Plural Label', 'pedalcms' ),
+					'label'               => __( 'Plural Label', 'pedal-cms' ),
 					'name'                => 'label_plural',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -1970,7 +1972,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Departments', 'pedalcms' ),
+					'placeholder'         => __( 'Departments', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -1978,10 +1980,10 @@ $field_group = [
 				],
 				[
 					'key'               => 'field_630e6ba4ce6d5',
-					'label'             => __( 'Use with:', 'pedalcms' ),
+					'label'             => __( 'Use with:', 'pedal-cms' ),
 					'name'              => 'object_type',
 					'type'              => 'checkbox',
-					'instructions'      => __( 'Choose the the features to use this taxonomy with.', 'pedalcms' ),
+					'instructions'      => __( 'Choose the the features to use this taxonomy with.', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -2005,10 +2007,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_6255c198c4cfe',
-			'label'             => __( 'Program Type', 'pedalcms' ),
-			'name'              => 'pdl_program_type',
+			'label'             => __( 'Program Type', 'pedal-cms' ),
+			'name'              => 'pedalcms_program_type',
 			'type'              => 'group',
-			'instructions'      => __( 'Used by Programs.', 'pedalcms' ),
+			'instructions'      => __( 'Used by Programs.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -2020,7 +2022,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_6255c2091ea8a',
-					'label'               => __( 'Enable this Taxonomy', 'pedalcms' ),
+					'label'               => __( 'Enable this Taxonomy', 'pedal-cms' ),
 					'name'                => 'enable',
 					'type'                => 'true_false',
 					'instructions'        => '',
@@ -2040,10 +2042,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_630e5d63b6a25',
-					'label'               => __( 'Enable Archive', 'pedalcms' ),
+					'label'               => __( 'Enable Archive', 'pedal-cms' ),
 					'name'                => 'enable_archive',
 					'type'                => 'true_false',
-					'instructions'        => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
+					'instructions'        => __( 'If disabled, links will point to a filtered programs view.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -2060,7 +2062,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255c22b1ea8b',
-					'label'               => __( 'Singular Label', 'pedalcms' ),
+					'label'               => __( 'Singular Label', 'pedal-cms' ),
 					'name'                => 'label_single',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2072,7 +2074,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Program Type', 'pedalcms' ),
+					'placeholder'         => __( 'Program Type', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -2080,7 +2082,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255c2561ea8c',
-					'label'               => __( 'Plural Label', 'pedalcms' ),
+					'label'               => __( 'Plural Label', 'pedal-cms' ),
 					'name'                => 'label_plural',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2092,7 +2094,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Program Types', 'pedalcms' ),
+					'placeholder'         => __( 'Program Types', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -2102,10 +2104,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_6255df25cb5ce',
-			'label'             => __( 'Instruction Mode', 'pedalcms' ),
-			'name'              => 'pdl_instruct_mode',
+			'label'             => __( 'Instruction Mode', 'pedal-cms' ),
+			'name'              => 'pedalcms_instruct_mode',
 			'type'              => 'group',
-			'instructions'      => __( 'Used by Programs. (e.g. In-person, Online, Hybrid)', 'pedalcms' ),
+			'instructions'      => __( 'Used by Programs. (e.g. In-person, Online, Hybrid)', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -2117,7 +2119,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_6255df25cb5cf',
-					'label'               => __( 'Enable this Taxonomy', 'pedalcms' ),
+					'label'               => __( 'Enable this Taxonomy', 'pedal-cms' ),
 					'name'                => 'enable',
 					'type'                => 'true_false',
 					'instructions'        => '',
@@ -2137,7 +2139,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255df25cb5d0',
-					'label'               => __( 'Singular Label', 'pedalcms' ),
+					'label'               => __( 'Singular Label', 'pedal-cms' ),
 					'name'                => 'label_single',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2149,7 +2151,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Instruction Mode', 'pedalcms' ),
+					'placeholder'         => __( 'Instruction Mode', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -2157,7 +2159,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255df25cb5d1',
-					'label'               => __( 'Plural Label', 'pedalcms' ),
+					'label'               => __( 'Plural Label', 'pedal-cms' ),
 					'name'                => 'label_plural',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2169,7 +2171,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Instruction Modes', 'pedalcms' ),
+					'placeholder'         => __( 'Instruction Modes', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -2179,10 +2181,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_6255df6ccb5d2',
-			'label'             => __( 'Subject', 'pedalcms' ),
-			'name'              => 'pdl_subject',
+			'label'             => __( 'Subject', 'pedal-cms' ),
+			'name'              => 'pedalcms_subject',
 			'type'              => 'group',
-			'instructions'      => __( 'Used in the Course Catalog.', 'pedalcms' ),
+			'instructions'      => __( 'Used in the Course Catalog.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -2194,7 +2196,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_6255df6ccb5d3',
-					'label'               => __( 'Enable this Taxonomy', 'pedalcms' ),
+					'label'               => __( 'Enable this Taxonomy', 'pedal-cms' ),
 					'name'                => 'enable',
 					'type'                => 'true_false',
 					'instructions'        => '',
@@ -2214,7 +2216,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255df6ccb5d4',
-					'label'               => __( 'Singular Label', 'pedalcms' ),
+					'label'               => __( 'Singular Label', 'pedal-cms' ),
 					'name'                => 'label_single',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2226,7 +2228,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Subject', 'pedalcms' ),
+					'placeholder'         => __( 'Subject', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -2234,7 +2236,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255df6ccb5d5',
-					'label'               => __( 'Plural Label', 'pedalcms' ),
+					'label'               => __( 'Plural Label', 'pedal-cms' ),
 					'name'                => 'label_plural',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2246,7 +2248,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Subjects', 'pedalcms' ),
+					'placeholder'         => __( 'Subjects', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -2256,10 +2258,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_6255dfa3cb5d6',
-			'label'             => __( 'Session', 'pedalcms' ),
-			'name'              => 'pdl_session',
+			'label'             => __( 'Session', 'pedal-cms' ),
+			'name'              => 'pedalcms_session',
 			'type'              => 'group',
-			'instructions'      => __( 'Used in the Course Catalog. Also commonly referred to as "term." (e.g. Fall, Spring, Summer)', 'pedalcms' ),
+			'instructions'      => __( 'Used in the Course Catalog. Also commonly referred to as "term." (e.g. Fall, Spring, Summer)', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -2271,7 +2273,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_6255dfa3cb5d7',
-					'label'               => __( 'Enable this Taxonomy', 'pedalcms' ),
+					'label'               => __( 'Enable this Taxonomy', 'pedal-cms' ),
 					'name'                => 'enable',
 					'type'                => 'true_false',
 					'instructions'        => '',
@@ -2291,7 +2293,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255dfa3cb5d8',
-					'label'               => __( 'Singular Label', 'pedalcms' ),
+					'label'               => __( 'Singular Label', 'pedal-cms' ),
 					'name'                => 'label_single',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2303,7 +2305,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Session', 'pedalcms' ),
+					'placeholder'         => __( 'Session', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -2311,7 +2313,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255dfa3cb5d9',
-					'label'               => __( 'Plural Label', 'pedalcms' ),
+					'label'               => __( 'Plural Label', 'pedal-cms' ),
 					'name'                => 'label_plural',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2323,7 +2325,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Sessions', 'pedalcms' ),
+					'placeholder'         => __( 'Sessions', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -2333,10 +2335,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_6255dfe6cb5da',
-			'label'             => __( 'Personnel Category', 'pedalcms' ),
-			'name'              => 'pdl_person_cat',
+			'label'             => __( 'Personnel Category', 'pedal-cms' ),
+			'name'              => 'pedalcms_person_cat',
 			'type'              => 'group',
-			'instructions'      => __( 'Used in the Faculty & Staff Directory.', 'pedalcms' ),
+			'instructions'      => __( 'Used in the Faculty & Staff Directory.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -2348,7 +2350,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_6255dfe6cb5db',
-					'label'               => __( 'Enable this Taxonomy', 'pedalcms' ),
+					'label'               => __( 'Enable this Taxonomy', 'pedal-cms' ),
 					'name'                => 'enable',
 					'type'                => 'true_false',
 					'instructions'        => '',
@@ -2368,10 +2370,10 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_630e5ee33fe9b',
-					'label'               => __( 'Enable Archive', 'pedalcms' ),
+					'label'               => __( 'Enable Archive', 'pedal-cms' ),
 					'name'                => 'enable_archive',
 					'type'                => 'true_false',
-					'instructions'        => __( 'If disabled, links will point to a filtered personnel directory view.', 'pedalcms' ),
+					'instructions'        => __( 'If disabled, links will point to a filtered personnel directory view.', 'pedal-cms' ),
 					'required'            => 0,
 					'conditional_logic'   => 0,
 					'wrapper'             => [
@@ -2388,7 +2390,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255dfe6cb5dc',
-					'label'               => __( 'Singular Label', 'pedalcms' ),
+					'label'               => __( 'Singular Label', 'pedal-cms' ),
 					'name'                => 'label_single',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2400,7 +2402,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Personnel Category', 'pedalcms' ),
+					'placeholder'         => __( 'Personnel Category', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -2408,7 +2410,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255dfe6cb5dd',
-					'label'               => __( 'Plural Label', 'pedalcms' ),
+					'label'               => __( 'Plural Label', 'pedal-cms' ),
 					'name'                => 'label_plural',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2420,7 +2422,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'Personnel Categories', 'pedalcms' ),
+					'placeholder'         => __( 'Personnel Categories', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -2430,10 +2432,10 @@ $field_group = [
 		],
 		[
 			'key'               => 'field_6255e041cb5e2',
-			'label'             => __( 'FAQ Category', 'pedalcms' ),
-			'name'              => 'pdl_faq_cat',
+			'label'             => __( 'FAQ Category', 'pedal-cms' ),
+			'name'              => 'pedalcms_faq_cat',
 			'type'              => 'group',
-			'instructions'      => __( 'Used by Programs.', 'pedalcms' ),
+			'instructions'      => __( 'Used by Programs.', 'pedal-cms' ),
 			'required'          => 0,
 			'conditional_logic' => 0,
 			'wrapper'           => [
@@ -2445,7 +2447,7 @@ $field_group = [
 			'sub_fields'        => [
 				[
 					'key'                 => 'field_6255e041cb5e4',
-					'label'               => __( 'Singular Label', 'pedalcms' ),
+					'label'               => __( 'Singular Label', 'pedal-cms' ),
 					'name'                => 'label_single',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2457,7 +2459,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'FAQ Category', 'pedalcms' ),
+					'placeholder'         => __( 'FAQ Category', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',
@@ -2465,7 +2467,7 @@ $field_group = [
 				],
 				[
 					'key'                 => 'field_6255e041cb5e5',
-					'label'               => __( 'Plural Label', 'pedalcms' ),
+					'label'               => __( 'Plural Label', 'pedal-cms' ),
 					'name'                => 'label_plural',
 					'type'                => 'text',
 					'instructions'        => '',
@@ -2477,7 +2479,7 @@ $field_group = [
 						'id'    => '',
 					],
 					'default_value'       => '',
-					'placeholder'         => __( 'FAQ Categories', 'pedalcms' ),
+					'placeholder'         => __( 'FAQ Categories', 'pedal-cms' ),
 					'prepend'             => '',
 					'append'              => '',
 					'maxlength'           => '',

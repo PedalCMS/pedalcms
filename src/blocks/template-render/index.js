@@ -28,13 +28,13 @@
 					/* translators: %s: PedalCMS template slug, e.g. archive-program. */
 					__(
 						'The "%s" template is rendered here on the front end.',
-						'pedalcms'
+						'pedal-cms'
 					),
 					name
 				)
 			: __(
 					'A PedalCMS template is rendered here on the front end.',
-					'pedalcms'
+					'pedal-cms'
 				);
 
 		return el(
@@ -42,7 +42,7 @@
 			blockProps,
 			el(Placeholder, {
 				icon: 'layout',
-				label: __('PedalCMS Template', 'pedalcms'),
+				label: __('PedalCMS Template', 'pedal-cms'),
 				instructions,
 			})
 		);

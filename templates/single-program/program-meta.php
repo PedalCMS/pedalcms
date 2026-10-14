@@ -8,76 +8,76 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$program_post = pdl_args_or_global( 'post', $args );
+$pedalcms_program_post = pedalcms_args_or_global( 'post', $args );
 
-$defaults = [
+$pedalcms_defaults = [
 	'show_college'           => true,
 	'show_department'        => true,
 	'show_instruction_mode'  => true,
 	'show_prerequisites'     => true,
 	'link_terms'             => true,
-	'label_instruction_mode' => pdl_get_taxonomy_label( 'pdl_instruct_mode', 'singular_name' ),
-	'label_prerequisites'    => pdl_get_label( 'prerequisites' ),
-	'label_department'       => pdl_get_taxonomy_label( 'pdl_department', 'singular_name' ),
-	'label_college'          => pdl_get_taxonomy_label( 'pdl_college', 'singular_name' ),
-	'label_yes'              => pdl_get_label( 'yes' ),
-	'label_no'               => pdl_get_label( 'no' ),
+	'label_instruction_mode' => pedalcms_get_taxonomy_label( 'pedalcms_instruct_mode', 'singular_name' ),
+	'label_prerequisites'    => pedalcms_get_label( 'prerequisites' ),
+	'label_department'       => pedalcms_get_taxonomy_label( 'pedalcms_department', 'singular_name' ),
+	'label_college'          => pedalcms_get_taxonomy_label( 'pedalcms_college', 'singular_name' ),
+	'label_yes'              => pedalcms_get_label( 'yes' ),
+	'label_no'               => pedalcms_get_label( 'no' ),
 	'wrapper_class'          => 'pdl-meta-group',
 	'meta_before_fmt'        => '<span class="%s pdl-meta-group__item"><span class="label">%s<span class="separator">:</span></span> <span class="value">',
 	'terms_separator'        => ', ',
 	'meta_after'             => '</span></span>',
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-$classes = [
+$pedalcms_classes = [
 	'program-meta',
-	esc_attr( $args['wrapper_class'] ),
+	esc_attr( $pedalcms_args['wrapper_class'] ),
 ];
 
-printf( '<div class="%s">', esc_attr( implode( ' ', $classes ) ) );
+printf( '<div class="%s">', esc_attr( implode( ' ', $pedalcms_classes ) ) );
 
-if ( $args['show_instruction_mode'] && taxonomy_exists( 'pdl_instruct_mode' ) ) :
+if ( $pedalcms_args['show_instruction_mode'] && taxonomy_exists( 'pedalcms_instruct_mode' ) ) :
 	echo wp_kses_post(
-		pdl_get_the_term_list(
-			$program_post->ID,
-			'pdl_instruct_mode',
-			sprintf( wp_kses_post( $args['meta_before_fmt'] ), 'instruction-mode', $args['label_instruction_mode'] ),
-			$args['terms_separator'],
-			wp_kses_post( $args['meta_after'] ),
-			$args['link_terms']
+		pedalcms_get_the_term_list(
+			$pedalcms_program_post->ID,
+			'pedalcms_instruct_mode',
+			sprintf( wp_kses_post( $pedalcms_args['meta_before_fmt'] ), 'instruction-mode', $pedalcms_args['label_instruction_mode'] ),
+			$pedalcms_args['terms_separator'],
+			wp_kses_post( $pedalcms_args['meta_after'] ),
+			$pedalcms_args['link_terms']
 		)
 	);
 endif;
 
-if ( $args['show_prerequisites'] ) :
-	printf( wp_kses_post( $args['meta_before_fmt'] ), 'prerequisites', esc_html( $args['label_prerequisites'] ) );
-	echo esc_html( get_field( 'prerequisites', $program_post ) ? $args['label_yes'] : $args['label_no'] );
-	echo wp_kses_post( $args['meta_after'] );
+if ( $pedalcms_args['show_prerequisites'] ) :
+	printf( wp_kses_post( $pedalcms_args['meta_before_fmt'] ), 'prerequisites', esc_html( $pedalcms_args['label_prerequisites'] ) );
+	echo esc_html( pedalcms_get_field( 'pedalcms_prerequisites', $pedalcms_program_post ) ? $pedalcms_args['label_yes'] : $pedalcms_args['label_no'] );
+	echo wp_kses_post( $pedalcms_args['meta_after'] );
 endif;
 
-if ( $args['show_college'] && taxonomy_exists( 'pdl_college' ) ) :
+if ( $pedalcms_args['show_college'] && taxonomy_exists( 'pedalcms_college' ) ) :
 	echo wp_kses_post(
-		pdl_get_the_term_list(
-			$program_post->ID,
-			'pdl_college',
-			sprintf( $args['meta_before_fmt'], 'program-college', $args['label_college'] ),
-			$args['terms_separator'],
-			$args['meta_after'],
-			$args['link_terms']
+		pedalcms_get_the_term_list(
+			$pedalcms_program_post->ID,
+			'pedalcms_college',
+			sprintf( $pedalcms_args['meta_before_fmt'], 'program-college', $pedalcms_args['label_college'] ),
+			$pedalcms_args['terms_separator'],
+			$pedalcms_args['meta_after'],
+			$pedalcms_args['link_terms']
 		)
 	);
 endif;
 
-if ( $args['show_department'] && taxonomy_exists( 'pdl_department' ) ) :
+if ( $pedalcms_args['show_department'] && taxonomy_exists( 'pedalcms_department' ) ) :
 	echo wp_kses_post(
-		pdl_get_the_term_list(
-			$program_post->ID,
-			'pdl_department',
-			sprintf( $args['meta_before_fmt'], 'department', $args['label_department'] ),
-			$args['terms_separator'],
-			$args['meta_after'],
-			$args['link_terms']
+		pedalcms_get_the_term_list(
+			$pedalcms_program_post->ID,
+			'pedalcms_department',
+			sprintf( $pedalcms_args['meta_before_fmt'], 'department', $pedalcms_args['label_department'] ),
+			$pedalcms_args['terms_separator'],
+			$pedalcms_args['meta_after'],
+			$pedalcms_args['link_terms']
 		)
 	);
 endif;

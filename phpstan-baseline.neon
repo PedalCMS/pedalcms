@@ -37,12 +37,6 @@ parameters:
 			path: src/breadcrumbs.php
 
 		-
-			message: '#^Access to an undefined property WP_Post\:\:\$course_code\.$#'
-			identifier: property.notFound
-			count: 1
-			path: src/class-course.php
-
-		-
 			message: '#^PHPDoc tag @param for parameter \$query with type PedalCMS\\Core\\WP_Query is not subtype of native type WP_Query\.$#'
 			identifier: parameter.phpDocType
 			count: 1
@@ -247,12 +241,6 @@ parameters:
 			path: src/class-department.php
 
 		-
-			message: '#^Access to an undefined property WP_Post\:\:\$job_title\.$#'
-			identifier: property.notFound
-			count: 1
-			path: src/class-jobtitleblock.php
-
-		-
 			message: '#^PHPDoc tag @param for parameter \$query with type PedalCMS\\Core\\WP_Query is not subtype of native type WP_Query\.$#'
 			identifier: parameter.phpDocType
 			count: 1
@@ -391,7 +379,7 @@ parameters:
 			path: src/template-tags-shared.php
 
 		-
-			message: '#^Function pdl_show_subpages\(\) should return bool but returns int\<0, max\>\.$#'
+			message: '#^Function pedalcms_show_subpages\(\) should return bool but returns int\<0, max\>\.$#'
 			identifier: return.type
 			count: 1
 			path: src/template-tags.php

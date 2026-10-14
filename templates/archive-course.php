@@ -10,20 +10,20 @@ defined( 'ABSPATH' ) || exit;
 global $posts;
 
 if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
-	pdl_get_template_part( 'common/header' );
+	pedalcms_get_template_part( 'common/header' );
 }
 ?>
 <div class="course-archive-main">
 	<?php
-	pdl_get_template_part( 'common/breadcrumbs' );
-	pdl_get_template_part( 'archive-course/page-header' );
-	pdl_get_template_part( 'archive-course/filters' );
-	pdl_get_template_part( 'archive-course/num-results' );
-	pdl_get_template_part( 'archive-course/course-list', [ 'courses' => $posts ] );
-	pdl_get_template_part( 'common/pagination' );
+	pedalcms_get_template_part( 'common/breadcrumbs' );
+	pedalcms_get_template_part( 'archive-course/page-header' );
+	pedalcms_get_template_part( 'archive-course/filters' );
+	pedalcms_get_template_part( 'archive-course/num-results' );
+	pedalcms_get_template_part( 'archive-course/course-list', [ 'courses' => $posts ] );
+	pedalcms_get_template_part( 'common/pagination' );
 	?>
 </div>
 <?php
 if ( ! \PedalCMS\Core\Plugin::is_rendering_block_template() ) {
-	pdl_get_template_part( 'common/footer' );
+	pedalcms_get_template_part( 'common/footer' );
 }

@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Manages config of each subpage.
  *

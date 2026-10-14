@@ -43,14 +43,14 @@ class ClassPluginTest extends FeatureTestCase {
 			return strtoupper( (string) $value );
 		};
 
-		add_filter( 'pdl/options/all', $global_filter, 10, 2 );
-		add_filter( 'pdl/options/presentation_mode', $option_filter );
+		add_filter( 'pedalcms/options/all', $global_filter, 10, 2 );
+		add_filter( 'pedalcms/options/presentation_mode', $option_filter );
 
 		$this->set_plugin_option( 'presentation_mode', 'none' );
 		$this->assertSame( 'BASE', \PedalCMS\Core\Plugin::get_option( 'presentation_mode' ) );
 
-		remove_filter( 'pdl/options/all', $global_filter, 10 );
-		remove_filter( 'pdl/options/presentation_mode', $option_filter );
+		remove_filter( 'pedalcms/options/all', $global_filter, 10 );
+		remove_filter( 'pedalcms/options/presentation_mode', $option_filter );
 	}
 
 	/**
@@ -59,12 +59,12 @@ class ClassPluginTest extends FeatureTestCase {
 	public function test_register_custom_blocks_when_enabled(): void {
 		$registry = \WP_Block_Type_Registry::get_instance();
 
-		if ( ! $registry->is_registered( 'pdl/contact-info' ) || ! $registry->is_registered( 'pdl/job-title' ) ) {
+		if ( ! $registry->is_registered( 'pedalcms/contact-info' ) || ! $registry->is_registered( 'pedalcms/job-title' ) ) {
 			$this->set_plugin_option( 'enable_block_editor_personnel', 1 );
 			\PedalCMS\Core\Plugin::register_custom_blocks();
 		}
 
-		$this->assertTrue( $registry->is_registered( 'pdl/contact-info' ) );
-		$this->assertTrue( $registry->is_registered( 'pdl/job-title' ) );
+		$this->assertTrue( $registry->is_registered( 'pedalcms/contact-info' ) );
+		$this->assertTrue( $registry->is_registered( 'pedalcms/job-title' ) );
 	}
 }

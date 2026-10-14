@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Person Category custom taxonomy.
  *
@@ -12,7 +14,7 @@ class PersonCategory extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_person_cat';
+	public const TAXONOMY = 'pedalcms_person_cat';
 
 	/**
 	 * @inheritdoc
@@ -42,30 +44,30 @@ class PersonCategory extends CustomTaxonomy {
 	 */
 	protected function setup_labels(): void {
 		$this->args['labels'] = [
-			'name'                       => _x( 'Personnel Categories', 'taxonomy general name', 'pedalcms' ),
-			'singular_name'              => _x( 'Personnel Category', 'taxonomy singular name', 'pedalcms' ),
-			'search_items'               => __( 'Search Personnel Categories', 'pedalcms' ),
-			'popular_items'              => __( 'Popular Personnel Categories', 'pedalcms' ),
-			'all_items'                  => __( 'All Personnel Categories', 'pedalcms' ),
-			'parent_item'                => __( 'Parent Personnel Category', 'pedalcms' ),
-			'parent_item_colon'          => __( 'Parent Personnel Category:', 'pedalcms' ),
-			'edit_item'                  => __( 'Edit Personnel Category', 'pedalcms' ),
-			'view_item'                  => __( 'View Personnel Category', 'pedalcms' ),
-			'update_item'                => __( 'Update Personnel Category', 'pedalcms' ),
-			'add_new_item'               => __( 'Add New Personnel Category', 'pedalcms' ),
-			'new_item_name'              => __( 'New Personnel Category Name', 'pedalcms' ),
-			'separate_items_with_commas' => __( 'Separate personnel categories with commas', 'pedalcms' ),
-			'add_or_remove_items'        => __( 'Add or remove personnel categories', 'pedalcms' ),
-			'choose_from_most_used'      => __( 'Choose from the most used personnel categories', 'pedalcms' ),
-			'not_found'                  => __( 'No personnel categories found.', 'pedalcms' ),
-			'no_terms'                   => __( 'No personnel categories', 'pedalcms' ),
-			'filter_by_item'             => __( 'Filter by personnel category', 'pedalcms' ),
-			'items_list_navigation'      => __( 'Personnel Category list navigation', 'pedalcms' ),
-			'items_list'                 => __( 'Personnel Category list', 'pedalcms' ),
-			'back_to_items'              => __( '&larr; Go to Personnel Categories', 'pedalcms' ),
-			'item_link'                  => _x( 'Personnel Category Link', 'navigation link block title', 'pedalcms' ),
-			'item_link_description'      => _x( 'A link to a personnel category.', 'navigation link block description', 'pedalcms' ),
-			'none_selected'              => _x( 'Any Category', 'dropdown list none selected', 'pedalcms' ),
+			'name'                       => _x( 'Personnel Categories', 'taxonomy general name', 'pedal-cms' ),
+			'singular_name'              => _x( 'Personnel Category', 'taxonomy singular name', 'pedal-cms' ),
+			'search_items'               => __( 'Search Personnel Categories', 'pedal-cms' ),
+			'popular_items'              => __( 'Popular Personnel Categories', 'pedal-cms' ),
+			'all_items'                  => __( 'All Personnel Categories', 'pedal-cms' ),
+			'parent_item'                => __( 'Parent Personnel Category', 'pedal-cms' ),
+			'parent_item_colon'          => __( 'Parent Personnel Category:', 'pedal-cms' ),
+			'edit_item'                  => __( 'Edit Personnel Category', 'pedal-cms' ),
+			'view_item'                  => __( 'View Personnel Category', 'pedal-cms' ),
+			'update_item'                => __( 'Update Personnel Category', 'pedal-cms' ),
+			'add_new_item'               => __( 'Add New Personnel Category', 'pedal-cms' ),
+			'new_item_name'              => __( 'New Personnel Category Name', 'pedal-cms' ),
+			'separate_items_with_commas' => __( 'Separate personnel categories with commas', 'pedal-cms' ),
+			'add_or_remove_items'        => __( 'Add or remove personnel categories', 'pedal-cms' ),
+			'choose_from_most_used'      => __( 'Choose from the most used personnel categories', 'pedal-cms' ),
+			'not_found'                  => __( 'No personnel categories found.', 'pedal-cms' ),
+			'no_terms'                   => __( 'No personnel categories', 'pedal-cms' ),
+			'filter_by_item'             => __( 'Filter by personnel category', 'pedal-cms' ),
+			'items_list_navigation'      => __( 'Personnel Category list navigation', 'pedal-cms' ),
+			'items_list'                 => __( 'Personnel Category list', 'pedal-cms' ),
+			'back_to_items'              => __( '&larr; Go to Personnel Categories', 'pedal-cms' ),
+			'item_link'                  => _x( 'Personnel Category Link', 'navigation link block title', 'pedal-cms' ),
+			'item_link_description'      => _x( 'A link to a personnel category.', 'navigation link block description', 'pedal-cms' ),
+			'none_selected'              => _x( 'Any Category', 'dropdown list none selected', 'pedal-cms' ),
 		];
 	}
 }

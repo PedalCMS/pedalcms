@@ -1,5 +1,8 @@
 <?php
-$defaults = [
+
+defined( 'ABSPATH' ) || exit;
+
+$pedalcms_defaults = [
 	'title_tag'          => 'h2',
 	'show_image'         => true,
 	'show_description'   => true,
@@ -14,58 +17,58 @@ $defaults = [
 	'image_size'         => 'medium',
 ];
 
-$args              = pdl_parse_template_args( $args, $defaults, $template );
-$args['title_tag'] = pdl_sanitize_title_tag( $args['title_tag'], $defaults['title_tag'] );
+$pedalcms_args              = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
+$pedalcms_args['title_tag'] = pedalcms_sanitize_title_tag( $pedalcms_args['title_tag'], $pedalcms_defaults['title_tag'] );
 
-$args['columns'] = max( 1, min( 4, $args['columns'] ) );
+$pedalcms_args['columns'] = max( 1, min( 4, $pedalcms_args['columns'] ) );
 
-$classes = [
+$pedalcms_classes = [
 	'terms-grid',
-	$args['show_image'] ? 'has-images' : 'no-images',
-	$args['wrapper_class'],
+	$pedalcms_args['show_image'] ? 'has-images' : 'no-images',
+	$pedalcms_args['wrapper_class'],
 ];
 
-if ( ! empty( $args['terms'] ) ) :
-	$classes[] = ( $args['terms'][0] )->taxonomy . '-terms-grid';
+if ( ! empty( $pedalcms_args['terms'] ) ) :
+	$pedalcms_classes[] = ( $pedalcms_args['terms'][0] )->taxonomy . '-terms-grid';
 	?>
-<ul class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"
-	data-columns="<?php echo esc_attr( $args['columns'] ); ?>">
+<ul class="<?php echo esc_attr( implode( ' ', $pedalcms_classes ) ); ?>"
+	data-columns="<?php echo esc_attr( $pedalcms_args['columns'] ); ?>">
 	<?php
-	foreach ( $args['terms'] as $grid_term ) :
+	foreach ( $pedalcms_args['terms'] as $pedalcms_grid_term ) :
 		?>
 	<li class="term">
 		<div class="term__title-group">
-			<?php printf( '<%s class="term__title">', esc_html( $args['title_tag'] ) ); ?>
+			<?php printf( '<%s class="term__title">', esc_html( $pedalcms_args['title_tag'] ) ); ?>
 			<a
-				href="<?php echo esc_url( get_term_link( $grid_term, $grid_term->taxonomy ) ); ?>"><?php echo esc_html( $grid_term->name ); ?></a>
-			<?php printf( '</%s>', esc_html( $args['title_tag'] ) ); ?>
+				href="<?php echo esc_url( get_term_link( $pedalcms_grid_term, $pedalcms_grid_term->taxonomy ) ); ?>"><?php echo esc_html( $pedalcms_grid_term->name ); ?></a>
+			<?php printf( '</%s>', esc_html( $pedalcms_args['title_tag'] ) ); ?>
 		</div>
 
 		<?php
-		if ( $args['show_image'] ) :
-			$args['term'] = $grid_term;
-			pdl_get_template_part( 'common/term-featured-image', $args );
+		if ( $pedalcms_args['show_image'] ) :
+			$pedalcms_args['term'] = $pedalcms_grid_term;
+			pedalcms_get_template_part( 'common/term-featured-image', $pedalcms_args );
 		endif;
 		?>
 
-		<?php if ( $args['show_description'] ) : ?>
-		<div class="term__description"><?php echo wp_kses_post( $grid_term->description ); ?>
+		<?php if ( $pedalcms_args['show_description'] ) : ?>
+		<div class="term__description"><?php echo wp_kses_post( $pedalcms_grid_term->description ); ?>
 		</div>
 		<?php endif; ?>
 
-		<?php if ( $args['show_posts_link'] ) : ?>
+		<?php if ( $pedalcms_args['show_posts_link'] ) : ?>
 		<div class="term__posts-link">
 			<a
-				href="<?php echo esc_url( get_term_link( $grid_term, $grid_term->taxonomy ) ); ?>">
+				href="<?php echo esc_url( get_term_link( $pedalcms_grid_term, $pedalcms_grid_term->taxonomy ) ); ?>">
 				<?php
 				printf(
 					'%s %s %s',
-					esc_html( $args['posts_link_prefix'] ),
-					$args['show_num_posts'] ? number_format( (int) $grid_term->count ) : '',
-					esc_html( $args['label_posts'] )
+					esc_html( $pedalcms_args['posts_link_prefix'] ),
+					$pedalcms_args['show_num_posts'] ? number_format( (int) $pedalcms_grid_term->count ) : '',
+					esc_html( $pedalcms_args['label_posts'] )
 				);
 				?>
-				<span class="screen-reader-text"><?php printf( esc_html( $args['label_sr_text'] ), esc_html( $grid_term->name ) ); ?>
+				<span class="screen-reader-text"><?php printf( esc_html( $pedalcms_args['label_sr_text'] ), esc_html( $pedalcms_grid_term->name ) ); ?>
 				</span>
 			</a>
 		</div>

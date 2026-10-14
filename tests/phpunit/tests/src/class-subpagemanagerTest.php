@@ -8,9 +8,9 @@ class ClassSubpageManagerTest extends FeatureTestCase {
 	}
 
 	public function test_subpage_manager_add_query_var_registers_var(): void {
-		$manager = new \PedalCMS\Core\SubpageManager( 'pdl_program' );
+		$manager = new \PedalCMS\Core\SubpageManager( 'pedalcms_program' );
 		$result  = $manager->add_query_var( [] );
 
-		$this->assertContains( 'pdl_subpage', $result );
+		$this->assertContains( 'pedalcms_subpage', $result );
 	}
 }

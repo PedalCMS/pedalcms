@@ -8,6 +8,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\register_assets', 0 );
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets' );
 add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\admin_enqueue_assets' );
@@ -20,7 +22,7 @@ add_action( 'admin_enqueue_scripts', __NAMESPACE__ . '\admin_enqueue_assets' );
 function register_assets() {
 	$global = '/assets/css/global.min.css';
 	wp_register_style(
-		'pdl-global',
+		'pedalcms-global',
 		Plugin::$url . $global,
 		[],
 		filemtime( Plugin::$path . $global )
@@ -28,44 +30,46 @@ function register_assets() {
 
 	$base = '/assets/css/base.min.css';
 	wp_register_style(
-		'pdl-programs-base',
+		'pedalcms-programs-base',
 		Plugin::$url . $base,
-		[ 'pdl-global' ],
+		[ 'pedalcms-global' ],
 		filemtime( Plugin::$path . $base )
 	);
 
 	$global_full = '/assets/css/global-full.min.css';
 	wp_register_style(
-		'pdl-global-full',
+		'pedalcms-global-full',
 		Plugin::$url . $global_full,
-		[ 'pdl-global' ],
+		[ 'pedalcms-global' ],
 		filemtime( Plugin::$path . $global_full )
 	);
 
 	$full = '/assets/css/full.min.css';
 	wp_register_style(
-		'pdl-programs-full',
+		'pedalcms-programs-full',
 		Plugin::$url . $full,
-		[ 'pdl-global', 'pdl-programs-base' ],
+		[ 'pedalcms-global', 'pedalcms-programs-base' ],
 		filemtime( Plugin::$path . $full )
 	);
 
 	$terms_grid = '/assets/css/terms-grid.min.css';
 	wp_register_style(
-		'pdl-terms-grid',
+		'pedalcms-terms-grid',
 		Plugin::$url . $terms_grid,
-		[ 'pdl-global' ],
+		[ 'pedalcms-global' ],
 		filemtime( Plugin::$path . $terms_grid )
 	);
 
 	$global = '/assets/js/global.min.js';
 	wp_register_script(
-		'pdl-global',
+		'pedalcms-global',
 		Plugin::$url . $global,
 		[],
 		filemtime( Plugin::$path . $global ),
 		true
 	);
+
+	wp_register_style( 'pedalcms-options', false, [], PEDALCMS_VERSION );
 }
 
 /**
@@ -80,17 +84,17 @@ function enqueue_assets() {
 		$presentation_mode = 'base';
 	}
 
-	if ( pdl_is_active_subpage( 'careers' ) && 'none' !== $presentation_mode ) {
-		wp_enqueue_style( 'pdl-careers-base' );
+	if ( pedalcms_is_active_subpage( 'careers' ) && 'none' !== $presentation_mode ) {
+		wp_enqueue_style( 'pedalcms-careers-base' );
 	}
 
 	if ( ! is_admin() ) {
 		if ( 'none' !== $presentation_mode ) {
-			wp_enqueue_style( 'pdl-global' );
+			wp_enqueue_style( 'pedalcms-global' );
 		}
 
 		if ( 'full' === $presentation_mode ) {
-			wp_enqueue_style( 'pdl-global-full' );
+			wp_enqueue_style( 'pedalcms-global-full' );
 		}
 	}
 
@@ -98,8 +102,8 @@ function enqueue_assets() {
 		if ( is_singular() ) {
 			$post = get_post();
 
-			if ( strpos( $post->post_content, '[pdl_terms_grid ' ) ) {
-				wp_enqueue_style( 'pdl-terms-grid' );
+			if ( strpos( $post->post_content, '[pedalcms_terms_grid ' ) ) {
+				wp_enqueue_style( 'pedalcms-terms-grid' );
 			}
 		}
 	}
@@ -111,16 +115,23 @@ function enqueue_assets() {
 
 	if ( ! is_admin() && $is_plugin_content ) {
 		if ( 'none' !== $presentation_mode ) {
-			wp_enqueue_style( 'pdl-programs-base' );
+			wp_enqueue_style( 'pedalcms-programs-base' );
 		}
 
 		if ( 'full' === $presentation_mode ) {
-			wp_enqueue_style( 'pdl-programs-full' );
+			wp_enqueue_style( 'pedalcms-programs-full' );
 		}
 	}
 
 	if ( ! is_admin() ) {
-		wp_enqueue_script( 'pdl-global' );
+		$options_css = get_options_inline_css();
+
+		if ( $options_css ) {
+			wp_enqueue_style( 'pedalcms-options' );
+			wp_add_inline_style( 'pedalcms-options', $options_css );
+		}
+
+		wp_enqueue_script( 'pedalcms-global' );
 	}
 }
 
@@ -136,59 +147,59 @@ function admin_enqueue_assets() {
 	$is_post_edit =
 		in_array( $pagenow, [ 'post.php', 'post-new.php' ], true ) &&
 		in_array( $post_type, Plugin::post_types(), true );
-	$pdl_css      = '/admin/css/pdl-admin.css';
+	$pedalcms_css = '/admin/css/pdl-admin.css';
 
 	wp_enqueue_style(
-		'pdl-admin',
-		Plugin::$url . $pdl_css,
+		'pedalcms-admin',
+		Plugin::$url . $pedalcms_css,
 		[],
-		filemtime( Plugin::$path . $pdl_css )
+		filemtime( Plugin::$path . $pedalcms_css )
 	);
 
-	$pdl_css = '/admin/css/settings-page.css';
+	$pedalcms_css = '/admin/css/settings-page.css';
 	wp_enqueue_style(
-		'pdl-settings',
-		Plugin::$url . $pdl_css,
+		'pedalcms-settings',
+		Plugin::$url . $pedalcms_css,
 		[],
-		filemtime( Plugin::$path . $pdl_css )
+		filemtime( Plugin::$path . $pedalcms_css )
 	);
 
-	$pdl_css = '/admin/css/field-fancy-toggle.css';
+	$pedalcms_css = '/admin/css/field-fancy-toggle.css';
 	wp_enqueue_style(
-		'pdl-toggle',
-		Plugin::$url . $pdl_css,
+		'pedalcms-toggle',
+		Plugin::$url . $pedalcms_css,
 		[],
-		filemtime( Plugin::$path . $pdl_css )
+		filemtime( Plugin::$path . $pedalcms_css )
 	);
 
 	if ( $is_post_edit ) {
 		if ( Department::depends_on_college() ) {
-			$pdl_acf = '/admin/js/pdl-acf.min.js';
+			$pedalcms_acf = '/admin/js/pdl-acf.min.js';
 
 			wp_enqueue_script(
-				'pdl-department',
-				Plugin::$url . $pdl_acf,
+				'pedalcms-department',
+				Plugin::$url . $pedalcms_acf,
 				[],
-				filemtime( Plugin::$path . $pdl_acf ),
+				filemtime( Plugin::$path . $pedalcms_acf ),
 				true
 			);
 
-			$pdl_acf_data = [
+			$pedalcms_acf_data = [
 				'ajax_url'        => admin_url( 'admin-ajax.php' ),
-				'nonce'           => wp_create_nonce( 'pdl_admin_data' ),
-				'label_not_found' => __( 'No departments found', 'pedalcms' ),
+				'nonce'           => wp_create_nonce( 'pedalcms_admin_data' ),
+				'label_not_found' => __( 'No departments found', 'pedal-cms' ),
 			];
 
-			wp_localize_script( 'pdl-department', 'pdlACFData', $pdl_acf_data );
+			wp_localize_script( 'pedalcms-department', 'pedalcmsACFData', $pedalcms_acf_data );
 		}
 
-		$pdl_conditional = '/admin/js/pdl-conditional.min.js';
+		$pedalcms_conditional = '/admin/js/pdl-conditional.min.js';
 
 		wp_enqueue_script(
-			'pdl-conditional',
-			Plugin::$url . $pdl_conditional,
+			'pedalcms-conditional',
+			Plugin::$url . $pedalcms_conditional,
 			[ 'jquery' ],
-			filemtime( Plugin::$path . $pdl_conditional ),
+			filemtime( Plugin::$path . $pedalcms_conditional ),
 			true
 		);
 	}

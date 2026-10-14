@@ -17,4 +17,4 @@ get_header();
  *
  * @since 0.1
  */
-do_action( 'pdl/before_main_content' );
+do_action( 'pedalcms/before_main_content' );

@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Job Title custom block.
  *
@@ -35,9 +37,9 @@ class JobTitleBlock extends CustomBlock {
 		$post = get_post();
 
 		ob_start();
-		pdl_get_template_part(
+		pedalcms_get_template_part(
 			'blocks/job-title',
-			[ 'job_title' => $post->job_title ]
+			[ 'job_title' => $post ? get_post_meta( $post->ID, 'pedalcms_job_title', true ) : '' ]
 		);
 
 		return ob_get_clean();

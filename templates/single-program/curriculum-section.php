@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<?php
 	if ( isset( $args['section_content'] ) ) :
-		pdl_get_template_part( 'single-program/courses-table', [ 'courses' => $args['section_courses'] ] );
+		pedalcms_get_template_part( 'single-program/courses-table', [ 'courses' => $args['section_courses'] ] );
 	endif;
 	?>
 </div>

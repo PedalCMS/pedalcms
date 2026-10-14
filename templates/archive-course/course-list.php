@@ -8,24 +8,24 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults = [
+$pedalcms_defaults = [
 	'courses'                => null,
-	'label_no_courses_found' => pdl_get_post_type_label( 'pdl_course', 'not_found' ),
+	'label_no_courses_found' => pedalcms_get_post_type_label( 'pedalcms_course', 'not_found' ),
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
 ?>
 <section class="course-list article-list">
 	<?php
-	if ( is_array( $args['courses'] ) && ! empty( $args['courses'] ) ) :
-		foreach ( $args['courses'] as $course_post ) :
-			pdl_get_template_part( 'archive-course/course-item', compact( 'course_post' ) );
+	if ( is_array( $pedalcms_args['courses'] ) && ! empty( $pedalcms_args['courses'] ) ) :
+		foreach ( $pedalcms_args['courses'] as $pedalcms_course_post ) :
+			pedalcms_get_template_part( 'archive-course/course-item', [ 'course_post' => $pedalcms_course_post ] );
 		endforeach;
 	else :
 		?>
 
-	<p class="empty-state-message"><?php echo esc_html( $args['label_no_courses_found'] ); ?>
+	<p class="empty-state-message"><?php echo esc_html( $pedalcms_args['label_no_courses_found'] ); ?>
 	</p>
 
 	<?php endif; ?>

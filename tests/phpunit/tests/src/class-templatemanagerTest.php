@@ -8,6 +8,6 @@ class ClassTemplateManagerTest extends FeatureTestCase {
 	}
 
 	public function test_convert_obj_name_to_template_returns_slug(): void {
-		$this->assertSame( 'program-type', \PedalCMS\Core\TemplateManager::convert_obj_name_to_template( 'pdl_program_type' ) );
+		$this->assertSame( 'program-type', \PedalCMS\Core\TemplateManager::convert_obj_name_to_template( 'pedalcms_program_type' ) );
 	}
 }

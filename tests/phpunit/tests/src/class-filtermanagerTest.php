@@ -17,13 +17,13 @@ class ClassFilterManagerTest extends FeatureTestCase {
 			'test_program_filter',
 			[
 				'label'     => 'Program Filter',
-				'post_type' => 'pdl_program',
+				'post_type' => 'pedalcms_program',
 				'query_var' => 'test_program_filter',
 			]
 		);
 
-		$program_filters = $manager->get_for_post_type( 'pdl_program' );
-		$course_filters  = $manager->get_for_post_type( 'pdl_course' );
+		$program_filters = $manager->get_for_post_type( 'pedalcms_program' );
+		$course_filters  = $manager->get_for_post_type( 'pedalcms_course' );
 
 		$this->assertArrayHasKey( 'test_program_filter', $program_filters );
 		$this->assertArrayNotHasKey( 'test_program_filter', $course_filters );
@@ -35,7 +35,7 @@ class ClassFilterManagerTest extends FeatureTestCase {
 		$manager->register(
 			'test_qv_filter',
 			[
-				'post_type' => 'pdl_program',
+				'post_type' => 'pedalcms_program',
 				'query_var' => 'test_qv',
 			]
 		);
@@ -50,7 +50,7 @@ class ClassFilterManagerTest extends FeatureTestCase {
 		$manager->register(
 			'test_apply_filter',
 			[
-				'post_type' => 'pdl_program',
+				'post_type' => 'pedalcms_program',
 				'query_var' => 'test_apply',
 				'apply'     => function ( $query, $value ) use ( &$captured ) {
 					$captured = $value;
@@ -60,7 +60,7 @@ class ClassFilterManagerTest extends FeatureTestCase {
 
 		$query                       = new WP_Query(
 			[
-				'post_type'  => 'pdl_program',
+				'post_type'  => 'pedalcms_program',
 				'test_apply' => 'blue',
 			]
 		);
@@ -80,7 +80,7 @@ class ClassFilterManagerTest extends FeatureTestCase {
 		$manager->register(
 			'test_scope_filter',
 			[
-				'post_type' => 'pdl_course',
+				'post_type' => 'pedalcms_course',
 				'query_var' => 'test_scope',
 				'apply'     => function () use ( &$called ) {
 					$called = true;
@@ -90,7 +90,7 @@ class ClassFilterManagerTest extends FeatureTestCase {
 
 		$query                       = new WP_Query(
 			[
-				'post_type'  => 'pdl_program',
+				'post_type'  => 'pedalcms_program',
 				'test_scope' => 'x',
 			]
 		);

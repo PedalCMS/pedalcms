@@ -11,32 +11,32 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults = [
+$pedalcms_defaults = [
 	'post_type'                  => null,
 	'wrapper_class'              => '',
 	'break_filters_after'        => 0,
-	'label_filter'               => pdl_get_label( 'filter_your_search' ),
-	'label_show'                 => pdl_get_label( 'show' ),
-	'label_hide'                 => pdl_get_label( 'hide' ),
-	'label_more_filters'         => pdl_get_label( 'more_filters' ),
-	'label_apply_filters'        => pdl_get_label( 'apply_filters' ),
-	'label_reset_filters'        => pdl_get_label( 'reset_filters' ),
-	'label_missing_filters_data' => pdl_get_label( 'missing_filters_data' ),
-	'icon_search'                => pdl_get_icon(
+	'label_filter'               => pedalcms_get_label( 'filter_your_search' ),
+	'label_show'                 => pedalcms_get_label( 'show' ),
+	'label_hide'                 => pedalcms_get_label( 'hide' ),
+	'label_more_filters'         => pedalcms_get_label( 'more_filters' ),
+	'label_apply_filters'        => pedalcms_get_label( 'apply_filters' ),
+	'label_reset_filters'        => pedalcms_get_label( 'reset_filters' ),
+	'label_missing_filters_data' => pedalcms_get_label( 'missing_filters_data' ),
+	'icon_search'                => pedalcms_get_icon(
 		'magnifying-glass',
 		[
 			'size'  => 20,
 			'class' => 'pdl-icon--md normal',
 		]
 	),
-	'icon_loading'               => pdl_get_icon(
+	'icon_loading'               => pedalcms_get_icon(
 		'arrow-path',
 		[
 			'size'  => 20,
 			'class' => 'pdl-icon--md loading',
 		]
 	),
-	'icon_reset'                 => pdl_get_icon(
+	'icon_reset'                 => pedalcms_get_icon(
 		'x-circle',
 		[
 			'size'  => 20,
@@ -46,41 +46,41 @@ $defaults = [
 	'filters'                    => [ 'keyword' ],
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-$form_id      = 'search-filter-form';
-$form_action  = sprintf(
+$pedalcms_form_id      = 'search-filter-form';
+$pedalcms_form_action  = sprintf(
 	'%s#%s',
-	get_post_type_archive_link( $args['post_type'] ),
+	get_post_type_archive_link( $pedalcms_args['post_type'] ),
 	'post-list'
 );
-$form_class   = pdl_get_html_class_attr(
+$pedalcms_form_class   = pedalcms_get_html_class_attr(
 	'pdl-post-filters',
-	'pdl-post-filters-' . count( $args['filters'] ),
-	$args['post_type'] . '-filters',
-	$args['wrapper_class']
+	'pdl-post-filters-' . count( $pedalcms_args['filters'] ),
+	$pedalcms_args['post_type'] . '-filters',
+	$pedalcms_args['wrapper_class']
 );
-$reset_link   = sprintf(
+$pedalcms_reset_link   = sprintf(
 	'%s#%s',
-	get_post_type_archive_link( $args['post_type'] ),
-	$form_id
+	get_post_type_archive_link( $pedalcms_args['post_type'] ),
+	$pedalcms_form_id
 );
-$reset_active = pdl_is_filtered_results( $args['post_type'] ) ||
-	is_tax( get_object_taxonomies( $args['post_type'] ) );
-$reset_class  = pdl_get_html_class_attr(
+$pedalcms_reset_active = pedalcms_is_filtered_results( $pedalcms_args['post_type'] ) ||
+	is_tax( get_object_taxonomies( $pedalcms_args['post_type'] ) );
+$pedalcms_reset_class  = pedalcms_get_html_class_attr(
 	'reset-link',
-	$reset_active ? 'reset-link--active' : 'reset-link--inactive'
+	$pedalcms_reset_active ? 'reset-link--active' : 'reset-link--inactive'
 );
-$reset_text   = sprintf(
+$pedalcms_reset_text   = sprintf(
 	'%s<span class="link-text">%s</span>',
-	$args['icon_reset'],
-	$args['label_reset_filters']
+	$pedalcms_args['icon_reset'],
+	$pedalcms_args['label_reset_filters']
 );
 
-if ( ! empty( $args['filters'] ) && ! empty( $args['post_type'] ) ) : ?>
-<form id="<?php echo esc_attr( $form_id ); ?>" action="<?php echo esc_url( $form_action ); ?>" class="<?php echo esc_attr( $form_class ); ?>">
+if ( ! empty( $pedalcms_args['filters'] ) && ! empty( $pedalcms_args['post_type'] ) ) : ?>
+<form id="<?php echo esc_attr( $pedalcms_form_id ); ?>" action="<?php echo esc_url( $pedalcms_form_action ); ?>" class="<?php echo esc_attr( $pedalcms_form_class ); ?>">
 	<fieldset>
-		<legend class="screen-reader-text"><?php echo esc_html( $args['label_filter'] ); ?>
+		<legend class="screen-reader-text"><?php echo esc_html( $pedalcms_args['label_filter'] ); ?>
 		</legend>
 		<div class="filters">
 			<?php
@@ -92,32 +92,32 @@ if ( ! empty( $args['filters'] ) && ! empty( $args['post_type'] ) ) : ?>
 			 *
 			 * @param array $args The args passed to the template: a list of filters and the post_type.
 			 */
-			do_action( 'pdl/before_filters_fields', $args );
+			do_action( 'pedalcms/before_filters_fields', $pedalcms_args );
 
-			$show_more = false;
+			$pedalcms_show_more = false;
 
-			foreach ( $args['filters'] as $i => $filter ) :
-				if ( $args['break_filters_after'] && $args['break_filters_after'] === $i ) :
-					$show_more = true;
+			foreach ( $pedalcms_args['filters'] as $pedalcms_i => $pedalcms_filter ) :
+				if ( $pedalcms_args['break_filters_after'] && $pedalcms_args['break_filters_after'] === $pedalcms_i ) :
+					$pedalcms_show_more = true;
 					?>
 			<button type="button" data-target="more-filters" class="pdl-toggle__trigger" aria-expanded="false"
-				data-show-label="<?php echo esc_attr( $args['label_show'] ); ?> "
-				data-hide-label="<?php echo esc_attr( $args['label_hide'] ); ?> ">
-					<?php echo esc_html( $args['label_more_filters'] ); ?>
+				data-show-label="<?php echo esc_attr( $pedalcms_args['label_show'] ); ?> "
+				data-hide-label="<?php echo esc_attr( $pedalcms_args['label_hide'] ); ?> ">
+					<?php echo esc_html( $pedalcms_args['label_more_filters'] ); ?>
 			</button>
 			<div id="more-filters" class="more-filters pdl-toggle__content" hidden>
 				<div class="more-filters__content">
 					<?php
 				endif;
 
-				if ( is_array( $filter ) && count( $filter ) > 1 ) :
-					pdl_get_template_part( 'common/filters/' . $filter[0], $filter[1] );
-				elseif ( is_string( $filter ) ) :
-					pdl_get_template_part( 'common/filters/' . $filter );
+				if ( is_array( $pedalcms_filter ) && count( $pedalcms_filter ) > 1 ) :
+					pedalcms_get_template_part( 'common/filters/' . $pedalcms_filter[0], $pedalcms_filter[1] );
+				elseif ( is_string( $pedalcms_filter ) ) :
+					pedalcms_get_template_part( 'common/filters/' . $pedalcms_filter );
 				endif;
 			endforeach;
 
-			if ( $show_more ) :
+			if ( $pedalcms_show_more ) :
 				echo '</div></div>';
 			endif;
 
@@ -128,20 +128,20 @@ if ( ! empty( $args['filters'] ) && ! empty( $args['post_type'] ) ) : ?>
 			 *
 			 * @param array $args The args passed to the template: a list of filters and the post_type.
 			 */
-			do_action( 'pdl/after_filters_fields', $args );
+			do_action( 'pedalcms/after_filters_fields', $pedalcms_args );
 			?>
 		</div>
-		<input type="hidden" name="post_type" value="<?php echo esc_attr( $args['post_type'] ); ?>">
+		<input type="hidden" name="post_type" value="<?php echo esc_attr( $pedalcms_args['post_type'] ); ?>">
 	</fieldset>
 	<div class="actions">
 		<button class="search-button button" type="submit">
-			<?php echo wp_kses( $args['icon_search'] . $args['icon_loading'], pdl_kses_svg() ); ?>
-			<span class="action-text"><?php echo esc_html( $args['label_apply_filters'] ); ?></span>
+			<?php echo wp_kses( $pedalcms_args['icon_search'] . $pedalcms_args['icon_loading'], pedalcms_kses_svg() ); ?>
+			<span class="action-text"><?php echo esc_html( $pedalcms_args['label_apply_filters'] ); ?></span>
 		</button>
 
 
-		<?php if ( $reset_active ) : ?>
-		<a class="<?php echo esc_attr( $reset_class ); ?>" href="<?php echo esc_url( $reset_link ); ?>"><?php echo wp_kses( $reset_text, pdl_kses_svg() ); ?></a>
+		<?php if ( $pedalcms_reset_active ) : ?>
+		<a class="<?php echo esc_attr( $pedalcms_reset_class ); ?>" href="<?php echo esc_url( $pedalcms_reset_link ); ?>"><?php echo wp_kses( $pedalcms_reset_text, pedalcms_kses_svg() ); ?></a>
 		<?php endif; ?>
 	</div>
 </form>

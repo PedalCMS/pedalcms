@@ -1,6 +1,8 @@
 <?php
 
-pdl_get_template_part(
+defined( 'ABSPATH' ) || exit;
+
+pedalcms_get_template_part(
 	'single-program/program-meta',
 	[
 		'post'            => $args['post'],

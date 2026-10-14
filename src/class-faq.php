@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * FAQ custom post type.
  *
@@ -12,7 +14,7 @@ class FAQ extends CustomPostType {
 	/**
 	 * @inheritdoc
 	 */
-	public const POST_TYPE = 'pdl_faq';
+	public const POST_TYPE = 'pedalcms_faq';
 
 	/**
 	 * @inheritdoc
@@ -42,35 +44,35 @@ class FAQ extends CustomPostType {
 	 * @inheritdoc
 	 */
 	protected function setup_labels(): void {
-		static::$enter_title_text = __( 'Enter the Question', 'pedalcms' );
+		static::$enter_title_text = __( 'Enter the Question', 'pedal-cms' );
 
 		$this->args['labels'] = [
-			'name'                     => _x( 'FAQs', 'post type general name', 'pedalcms' ),
-			'singular_name'            => _x( 'FAQ', 'post type singular name', 'pedalcms' ),
-			'add_new_item'             => __( 'Add New FAQ', 'pedalcms' ),
-			'edit_item'                => __( 'Edit FAQ', 'pedalcms' ),
-			'new_item'                 => __( 'New FAQ', 'pedalcms' ),
-			'view_item'                => __( 'View FAQ', 'pedalcms' ),
-			'view_items'               => __( 'View FAQs', 'pedalcms' ),
-			'search_items'             => __( 'Search FAQs', 'pedalcms' ),
-			'not_found'                => __( 'No FAQs found.', 'pedalcms' ),
-			'not_found_in_trash'       => __( 'No FAQs found in Trash.', 'pedalcms' ),
-			'parent_item_colon'        => __( 'Parent FAQ:', 'pedalcms' ),
-			'all_items'                => __( 'All FAQs', 'pedalcms' ),
-			'archives'                 => __( 'FAQ Archives', 'pedalcms' ),
-			'attributes'               => __( 'FAQ Attributes', 'pedalcms' ),
-			'insert_into_item'         => __( 'Insert into FAQ', 'pedalcms' ),
-			'uploaded_to_this_item'    => __( 'Uploaded to this FAQ', 'pedalcms' ),
-			'filter_items_list'        => __( 'Filter FAQs list', 'pedalcms' ),
-			'items_list_navigation'    => __( 'FAQs list navigation', 'pedalcms' ),
-			'items_list'               => __( 'FAQs list', 'pedalcms' ),
-			'item_published'           => __( 'FAQ published.', 'pedalcms' ),
-			'item_published_privately' => __( 'FAQ published privately.', 'pedalcms' ),
-			'item_reverted_to_draft'   => __( 'FAQ reverted to draft.', 'pedalcms' ),
-			'item_scheduled'           => __( 'FAQ scheduled.', 'pedalcms' ),
-			'item_updated'             => __( 'FAQ updated.', 'pedalcms' ),
-			'item_link'                => _x( 'FAQ Link', 'navigation link block title', 'pedalcms' ),
-			'item_link_description'    => _x( 'A link to an FAQ.', 'navigation link block description', 'pedalcms' ),
+			'name'                     => _x( 'FAQs', 'post type general name', 'pedal-cms' ),
+			'singular_name'            => _x( 'FAQ', 'post type singular name', 'pedal-cms' ),
+			'add_new_item'             => __( 'Add New FAQ', 'pedal-cms' ),
+			'edit_item'                => __( 'Edit FAQ', 'pedal-cms' ),
+			'new_item'                 => __( 'New FAQ', 'pedal-cms' ),
+			'view_item'                => __( 'View FAQ', 'pedal-cms' ),
+			'view_items'               => __( 'View FAQs', 'pedal-cms' ),
+			'search_items'             => __( 'Search FAQs', 'pedal-cms' ),
+			'not_found'                => __( 'No FAQs found.', 'pedal-cms' ),
+			'not_found_in_trash'       => __( 'No FAQs found in Trash.', 'pedal-cms' ),
+			'parent_item_colon'        => __( 'Parent FAQ:', 'pedal-cms' ),
+			'all_items'                => __( 'All FAQs', 'pedal-cms' ),
+			'archives'                 => __( 'FAQ Archives', 'pedal-cms' ),
+			'attributes'               => __( 'FAQ Attributes', 'pedal-cms' ),
+			'insert_into_item'         => __( 'Insert into FAQ', 'pedal-cms' ),
+			'uploaded_to_this_item'    => __( 'Uploaded to this FAQ', 'pedal-cms' ),
+			'filter_items_list'        => __( 'Filter FAQs list', 'pedal-cms' ),
+			'items_list_navigation'    => __( 'FAQs list navigation', 'pedal-cms' ),
+			'items_list'               => __( 'FAQs list', 'pedal-cms' ),
+			'item_published'           => __( 'FAQ published.', 'pedal-cms' ),
+			'item_published_privately' => __( 'FAQ published privately.', 'pedal-cms' ),
+			'item_reverted_to_draft'   => __( 'FAQ reverted to draft.', 'pedal-cms' ),
+			'item_scheduled'           => __( 'FAQ scheduled.', 'pedal-cms' ),
+			'item_updated'             => __( 'FAQ updated.', 'pedal-cms' ),
+			'item_link'                => _x( 'FAQ Link', 'navigation link block title', 'pedal-cms' ),
+			'item_link_description'    => _x( 'A link to an FAQ.', 'navigation link block description', 'pedal-cms' ),
 		];
 	}
 
@@ -116,7 +118,7 @@ class FAQ extends CustomPostType {
 
 				$faq = [
 					'question'     => $post->post_title,
-					'answer'       => apply_filters( 'the_content', $post->post_content ),
+					'answer'       => apply_filters( 'the_content', $post->post_content ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core hook.
 					'faq_category' => $cat,
 				];
 			} else {

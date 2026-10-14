@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 add_action( 'init', __NAMESPACE__ . '\add_shortcodes' );
 
 /**
@@ -12,11 +14,11 @@ add_action( 'init', __NAMESPACE__ . '\add_shortcodes' );
  * @return void
  */
 function add_shortcodes() {
-	add_shortcode( 'pdl_terms_grid', __NAMESPACE__ . '\render_terms_grid' );
+	add_shortcode( 'pedalcms_terms_grid', __NAMESPACE__ . '\render_terms_grid' );
 }
 
 /**
- * Renders the `pdl_terms_grid` shortcode.
+ * Renders the `pedalcms_terms_grid` shortcode.
  *
  * @since 0.1.0
  *
@@ -42,17 +44,17 @@ function render_terms_grid( $atts ) {
 
 		],
 		$atts,
-		'pdl_terms_grid'
+		'pedalcms_terms_grid'
 	);
 
 	if ( ! $atts['tax'] ) {
-		return __( 'You must supply a taxonomy via the tax attribute (e.g. tax="pdl_program_type").', 'pedalcms' );
+		return __( 'You must supply a taxonomy via the tax attribute (e.g. tax="pedalcms_program_type").', 'pedal-cms' );
 	}
 
 	$atts['terms'] = get_terms( [ 'taxonomy' => $atts['tax'] ] );
 
 	ob_start();
-	pdl_get_template_part( 'common/terms-grid', $atts );
+	pedalcms_get_template_part( 'common/terms-grid', $atts );
 
 	return ob_get_clean();
 }

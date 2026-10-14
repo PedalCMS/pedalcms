@@ -15,12 +15,12 @@
 		const meta = entityProp[0];
 		const setMeta = entityProp[1];
 
-		const jobTitle = meta.job_title;
+		const jobTitle = meta.pedalcms_job_title;
 
 		function updateJobTitle(newValue) {
 			setMeta(
 				Object.assign({}, meta, {
-					job_title: newValue,
+					pedalcms_job_title: newValue,
 				})
 			);
 		}
@@ -37,7 +37,7 @@
 		);
 	}
 
-	registerBlockType('pdl/job-title', {
+	registerBlockType('pedalcms/job-title', {
 		title: 'Job Title',
 		edit: JobTitleEdit,
 		save() {

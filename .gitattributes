@@ -6,10 +6,8 @@
 .nvmrc export-ignore
 .pre-commit-config.yaml export-ignore
 .wp-env.json export-ignore
-composer.lock export-ignore
 package.json export-ignore
 package-lock.json export-ignore
-composer.json export-ignore
 Makefile export-ignore
 README.md export-ignore
 .env.e2e.example export-ignore

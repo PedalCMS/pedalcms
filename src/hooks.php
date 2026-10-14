@@ -8,31 +8,32 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 add_filter( 'register_taxonomy_args', __NAMESPACE__ . '\options_register_taxonomy_args', 5, 2 );
 add_filter( 'registered_taxonomy', __NAMESPACE__ . '\options_registered_taxonomy', 5, 2 );
 add_filter( 'document_title_parts', __NAMESPACE__ . '\document_title_parts', 10, 3 );
-add_action( 'wp_head', __NAMESPACE__ . '\options_wp_head', 7 );
 add_filter( 'body_class', __NAMESPACE__ . '\body_class', 10, 3 );
 add_filter( 'admin_body_class', __NAMESPACE__ . '\admin_body_class', 10, 3 );
 add_filter( 'post_class', __NAMESPACE__ . '\post_class', 10, 3 );
 add_filter( 'term_link', __NAMESPACE__ . '\term_link', 10 );
-add_filter( 'pdl/before_main_content', __NAMESPACE__ . '\before_main_content' );
-add_filter( 'pdl/after_main_content', __NAMESPACE__ . '\after_main_content' );
+add_filter( 'pedalcms/before_main_content', __NAMESPACE__ . '\before_main_content' );
+add_filter( 'pedalcms/after_main_content', __NAMESPACE__ . '\after_main_content' );
 add_filter( 'post_type_archive_title', __NAMESPACE__ . '\options_post_type_archive_title', 5, 2 );
 add_filter( 'get_the_post_type_description', __NAMESPACE__ . '\options_post_type_description', 5, 2 );
-add_filter( 'taxonomy_labels_pdl_program_type', __NAMESPACE__ . '\options_program_type_labels' );
-add_filter( 'taxonomy_labels_pdl_college', __NAMESPACE__ . '\options_college_labels' );
-add_filter( 'taxonomy_labels_pdl_instruct_mode', __NAMESPACE__ . '\options_instruct_mode_labels' );
-add_filter( 'taxonomy_labels_pdl_subject', __NAMESPACE__ . '\options_subject_labels' );
-add_filter( 'taxonomy_labels_pdl_session', __NAMESPACE__ . '\options_session_labels' );
-add_filter( 'taxonomy_labels_pdl_person_cat', __NAMESPACE__ . '\options_person_cat_labels' );
-add_filter( 'taxonomy_labels_pdl_department', __NAMESPACE__ . '\options_department_labels' );
-add_filter( 'taxonomy_labels_pdl_faq_cat', __NAMESPACE__ . '\options_faq_cat_labels' );
-add_filter( 'pdl/template_defaults', __NAMESPACE__ . '\options_template_defaults', 5, 2 );
-add_filter( 'pdl/template_args', __NAMESPACE__ . '\options_template_args', 5, 2 );
-add_filter( 'pdl/get_label', __NAMESPACE__ . '\options_plugin_labels', 5, 3 );
-add_filter( 'pdl/add_subpage', __NAMESPACE__ . '\options_subpage_labels', 5, 2 );
-add_filter( 'pdl/get_subpages', __NAMESPACE__ . '\options_get_subpages', 5, 3 );
+add_filter( 'taxonomy_labels_pedalcms_program_type', __NAMESPACE__ . '\options_program_type_labels' );
+add_filter( 'taxonomy_labels_pedalcms_college', __NAMESPACE__ . '\options_college_labels' );
+add_filter( 'taxonomy_labels_pedalcms_instruct_mode', __NAMESPACE__ . '\options_instruct_mode_labels' );
+add_filter( 'taxonomy_labels_pedalcms_subject', __NAMESPACE__ . '\options_subject_labels' );
+add_filter( 'taxonomy_labels_pedalcms_session', __NAMESPACE__ . '\options_session_labels' );
+add_filter( 'taxonomy_labels_pedalcms_person_cat', __NAMESPACE__ . '\options_person_cat_labels' );
+add_filter( 'taxonomy_labels_pedalcms_department', __NAMESPACE__ . '\options_department_labels' );
+add_filter( 'taxonomy_labels_pedalcms_faq_cat', __NAMESPACE__ . '\options_faq_cat_labels' );
+add_filter( 'pedalcms/template_defaults', __NAMESPACE__ . '\options_template_defaults', 5, 2 );
+add_filter( 'pedalcms/template_args', __NAMESPACE__ . '\options_template_args', 5, 2 );
+add_filter( 'pedalcms/get_label', __NAMESPACE__ . '\options_plugin_labels', 5, 3 );
+add_filter( 'pedalcms/add_subpage', __NAMESPACE__ . '\options_subpage_labels', 5, 2 );
+add_filter( 'pedalcms/get_subpages', __NAMESPACE__ . '\options_get_subpages', 5, 3 );
 
 /**
  * Modifies the taxonomy args based on plugin options.
@@ -58,7 +59,7 @@ function options_register_taxonomy_args( array $args, string $taxonomy ): array 
 		return $args;
 	}
 
-	$taxonomy       = str_replace( 'pdl_', '', $taxonomy );
+	$taxonomy       = str_replace( 'pedalcms_', '', $taxonomy );
 	$enable_archive = Plugin::get_option( $taxonomy . '_enable_archive', false );
 
 	if ( false !== $enable_archive ) {
@@ -95,7 +96,7 @@ function options_registered_taxonomy( string $taxonomy, $object_type ) {
 		return;
 	}
 
-	$tax             = str_replace( 'pdl_', '', $taxonomy );
+	$tax             = str_replace( 'pedalcms_', '', $taxonomy );
 	$obj_type_option = Plugin::get_option( $tax . '_object_type' );
 
 	if ( is_array( $obj_type_option ) ) {
@@ -123,7 +124,7 @@ function options_registered_taxonomy( string $taxonomy, $object_type ) {
  */
 function document_title_parts( array $title ): array {
 
-	if ( pdl_is_filtered_results( Plugin::post_types() ) ) {
+	if ( pedalcms_is_filtered_results( Plugin::post_types() ) ) {
 		$post_type = get_query_var( 'post_type' );
 		/**
 		 * Filters the format of the document title part of filtered post type archives.
@@ -132,7 +133,7 @@ function document_title_parts( array $title ): array {
 		 * @param $post_type The current post type.
 		 */
 		$format = apply_filters(
-			'pdl/filter_results_document_title_format',
+			'pedalcms/filter_results_document_title_format',
 			'%1$s, %2$s',
 			$post_type
 		);
@@ -144,7 +145,7 @@ function document_title_parts( array $title ): array {
 		 * @param $post_type The current post type.
 		 */
 		$filtered_label = apply_filters(
-			'pdl/filtered_results_document_title_label',
+			'pedalcms/filtered_results_document_title_label',
 			Plugin::get_label( 'filtered_results' ),
 			$post_type
 		);
@@ -162,15 +163,13 @@ function document_title_parts( array $title ): array {
 }
 
 /**
- * Outputs CSS variables for user color preferences.
- *
- * Called on action: `wp_head`
+ * Builds CSS variables for user color preferences.
  *
  * @since 0.1.0
  *
- * @return void
+ * @return string CSS declarations, or empty string when none are set.
  */
-function options_wp_head() {
+function get_options_inline_css(): string {
 	$var_ptrn = '--pdl-%s: %s';
 	$options  = [
 		'active_color'      => '#000',
@@ -179,7 +178,7 @@ function options_wp_head() {
 	$vars     = [];
 
 	foreach ( $options as $option => $default ) {
-		$value = Plugin::get_option( $option, $default );
+		$value = sanitize_hex_color( (string) Plugin::get_option( $option, $default ) );
 
 		if ( $value ) {
 			$vars[] = sprintf(
@@ -191,11 +190,10 @@ function options_wp_head() {
 	}
 
 	if ( ! empty( $vars ) ) {
-		printf(
-			'<style>html body{%s}</style>',
-			esc_html( implode( ';', $vars ) )
-		);
+		return 'html body{' . implode( ';', $vars ) . '}';
 	}
+
+	return '';
 }
 
 /**
@@ -295,7 +293,7 @@ function term_link( string $link ): string {
 /**
  * Alters Program Type labels based on plugin options.
  *
- * Called on filter: `taxonomy_labels_pdl_program_type`
+ * Called on filter: `taxonomy_labels_pedalcms_program_type`
  *
  * @since 0.1.0
  *
@@ -309,7 +307,7 @@ function options_program_type_labels( $labels ) {
 /**
  * Alters College labels based on plugin options.
  *
- * Called on filter: `taxonomy_labels_pdl_college`
+ * Called on filter: `taxonomy_labels_pedalcms_college`
  *
  * @since 0.1.0
  *
@@ -323,7 +321,7 @@ function options_college_labels( $labels ) {
 /**
  * Alters Instruction Mode labels based on plugin options.
  *
- * Called on filter: `taxonomy_labels_pdl_instruct_mode`
+ * Called on filter: `taxonomy_labels_pedalcms_instruct_mode`
  *
  * @since 0.1.0
  *
@@ -337,7 +335,7 @@ function options_instruct_mode_labels( $labels ) {
 /**
  * Alters Subject labels based on plugin options.
  *
- * Called on filter: `taxonomy_labels_pdl_subject`
+ * Called on filter: `taxonomy_labels_pedalcms_subject`
  *
  * @since 0.1.0
  *
@@ -351,7 +349,7 @@ function options_subject_labels( $labels ) {
 /**
  * Alters Session labels based on plugin options.
  *
- * Called on filter: `taxonomy_labels_pdl_session`
+ * Called on filter: `taxonomy_labels_pedalcms_session`
  *
  * @since 0.1.0
  *
@@ -365,7 +363,7 @@ function options_session_labels( $labels ) {
 /**
  * Alters Person Category labels based on plugin options.
  *
- * Called on filter: `taxonomy_labels_pdl_person_cat`
+ * Called on filter: `taxonomy_labels_pedalcms_person_cat`
  *
  * @param object $labels The WP_Taxonomy labels property.
  * @return object The filtered labels.
@@ -377,7 +375,7 @@ function options_person_cat_labels( $labels ) {
 /**
  * Alters Department labels based on plugin options.
  *
- * Called on filter: `taxonomy_labels_pdl_department`
+ * Called on filter: `taxonomy_labels_pedalcms_department`
  *
  * @since 0.1.0
  *
@@ -391,7 +389,7 @@ function options_department_labels( $labels ) {
 /**
  * Alters FAQ Category labels based on plugin options.
  *
- * Called on filter: `taxonomy_labels_pdl_faq_cat`
+ * Called on filter: `taxonomy_labels_pedalcms_faq_cat`
  *
  * @since 0.1.0
  *
@@ -412,7 +410,7 @@ function options_faq_cat_labels( $labels ) {
  * @return object The filtered labels.
  */
 function options_taxonomy_labels( $labels, $taxonomy ) {
-	$tax = str_replace( 'pdl_', '', $taxonomy );
+	$tax = str_replace( 'pedalcms_', '', $taxonomy );
 
 	$single = Plugin::get_option( $tax . '_label_single' );
 	$plural = Plugin::get_option( $tax . '_label_plural' );
@@ -431,16 +429,16 @@ function options_taxonomy_labels( $labels, $taxonomy ) {
 /**
  * Action to output opening tag of main content wrapper.
  *
- * Called on: `pdl/before_main_content`
+ * Called on: `pedalcms/before_main_content`
  *
  * @since 0.1.0
  *
  * @return void
  */
 function before_main_content() {
-	$id      = apply_filters( 'pdl/main_content_wrapper_id', 'main-content-wrapper' );
+	$id      = apply_filters( 'pedalcms/main_content_wrapper_id', 'main-content-wrapper' );
 	$classes = [ 'pdlcms', 'pdl-template' ];
-	$classes = apply_filters( 'pdl/careers/main_content_wrapper_class', $classes );
+	$classes = apply_filters( 'pedalcms/careers/main_content_wrapper_class', $classes );
 	$tag     = Plugin::get_option( 'main_content_wrapper_tag', 'div' );
 
 	printf(
@@ -454,7 +452,7 @@ function before_main_content() {
 /**
  * Action to output end tag of main content wrapper.
  *
- * Called on: `pdl/after_main_content`
+ * Called on: `pedalcms/after_main_content`
  *
  * @since 0.1.0
  *
@@ -469,7 +467,7 @@ function after_main_content() {
 /**
  * Filters various template args based on plugin options.
  *
- * Called on filter: `pdl/template_args`
+ * Called on filter: `pedalcms/template_args`
  *
  * @since 0.1.0
  *
@@ -500,7 +498,7 @@ function options_template_args( $args, $template ) {
  * @return array The modified template args.
  */
 function options_search_filters( $args ) {
-	$post_type = str_replace( 'pdl_', '', get_post_type() );
+	$post_type = str_replace( 'pedalcms_', '', get_post_type() );
 	$enabled   = Plugin::get_option( $post_type . '_archive_search_filters' );
 
 	if ( ! is_array( $enabled ) ) {
@@ -539,7 +537,7 @@ function options_search_filters( $args ) {
  */
 function options_post_type_archive_title( $title, $post_type ) {
 	if ( in_array( $post_type, Plugin::post_types(), true ) ) {
-		$post_type = str_replace( 'pdl_', '', $post_type );
+		$post_type = str_replace( 'pedalcms_', '', $post_type );
 		$new_title = Plugin::get_option( $post_type . '_archive_title' );
 
 		if ( $new_title ) {
@@ -562,7 +560,7 @@ function options_post_type_archive_title( $title, $post_type ) {
  */
 function options_post_type_description( $description, $post_type_obj ) {
 	if ( in_array( $post_type_obj->name, Plugin::post_types(), true ) ) {
-		$post_type = str_replace( 'pdl_', '', $post_type_obj->name );
+		$post_type = str_replace( 'pedalcms_', '', $post_type_obj->name );
 		$new_desc  = Plugin::get_option( $post_type . '_archive_description' );
 
 		if ( $new_desc ) {
@@ -576,7 +574,7 @@ function options_post_type_description( $description, $post_type_obj ) {
 /**
  * Updated the template defaults based on the plugin options.
  *
- * Called on filter: `pdl/template_defaults`
+ * Called on filter: `pedalcms/template_defaults`
  *
  * @since 0.1.0
  *
@@ -592,7 +590,7 @@ function options_template_defaults( $defaults, $template ) {
 		return $defaults;
 	}
 
-	$post_type         = str_replace( 'pdl_', '', $post_type );
+	$post_type         = str_replace( 'pedalcms_', '', $post_type );
 	$presentation_mode = Plugin::get_option( 'presentation_mode', 'full' );
 
 	switch ( $template ) {
@@ -730,7 +728,7 @@ function options_page_header_backdrop( $defaults, $post_type, $presentation_mode
 	if ( ! $post_type ) {
 		$taxonomy = get_query_var( 'taxonomy' );
 		$term     = get_term_by( 'slug', get_query_var( 'term' ), $taxonomy );
-		$img      = get_term_meta( $term->term_id, 'header_background', true );
+		$img      = get_term_meta( $term->term_id, 'pedalcms_header_background', true );
 
 		if ( $img ) {
 			$defaults['attachment_id'] = $img;
@@ -738,7 +736,7 @@ function options_page_header_backdrop( $defaults, $post_type, $presentation_mode
 			$taxonomy = get_taxonomy( $taxonomy );
 
 			if ( ! empty( $taxonomy->object_type ) ) {
-				$post_type = str_replace( 'pdl_', '', $taxonomy->object_type[0] );
+				$post_type = str_replace( 'pedalcms_', '', $taxonomy->object_type[0] );
 			}
 		}
 	}
@@ -767,7 +765,7 @@ function options_page_header_backdrop( $defaults, $post_type, $presentation_mode
 /**
  * Sets the subpage labels based on plugin options.
  *
- * Called on filter: `pdl/add_subpage`
+ * Called on filter: `pedalcms/add_subpage`
  *
  * @since 0.1.0
  *
@@ -778,7 +776,7 @@ function options_page_header_backdrop( $defaults, $post_type, $presentation_mode
 function options_subpage_labels( $subpage, $post_type ) {
 	$option_prefix = sprintf(
 		'%s_subpage_%s_',
-		str_replace( 'pdl_', '', $post_type ),
+		str_replace( 'pedalcms_', '', $post_type ),
 		str_replace( '-', '_', $subpage->slug )
 	);
 
@@ -801,7 +799,7 @@ function options_subpage_labels( $subpage, $post_type ) {
 /**
  * Filters the subpages to remove those that are disabled in plugin options.
  *
- * Called on filter: `pdl/get_subpages`
+ * Called on filter: `pedalcms/get_subpages`
  *
  * @since 0.7.0
  *
@@ -869,7 +867,7 @@ function options_action_list( $args ) {
 /**
  * Modifies registered plugin labels based on plugin options.
  *
- * Called on filter: `pdl/get_label`
+ * Called on filter: `pedalcms/get_label`
  *
  * @since 0.1.0
  *

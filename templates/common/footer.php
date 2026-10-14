@@ -15,6 +15,6 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 0.1
  */
-do_action( 'pdl/after_main_content' );
+do_action( 'pedalcms/after_main_content' );
 
 get_footer();

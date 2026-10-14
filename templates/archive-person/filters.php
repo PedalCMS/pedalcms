@@ -9,8 +9,8 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$args = [
-	'post_type' => 'pdl_person',
+$pedalcms_args = [
+	'post_type' => 'pedalcms_person',
 	'filters'   => [
 		'keyword',
 		'person-cat',
@@ -19,4 +19,4 @@ $args = [
 	],
 ];
 
-pdl_get_template_part( 'common/filters', $args );
+pedalcms_get_template_part( 'common/filters', $pedalcms_args );

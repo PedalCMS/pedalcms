@@ -65,6 +65,15 @@
 		<exclude name="Universal.Operators.DisallowShortTernary"/>
 	</rule>
 
+	<!-- Text domain must match the WordPress.org plugin slug. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="pedal-cms"/>
+			</property>
+		</properties>
+	</rule>
+
 	<!-- Enforce short syntax arrays. -->
 	<rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 
@@ -85,5 +94,20 @@
 	<!-- Exclude hook name convention warnings - allow forward slashes in hook names. -->
 	<rule ref="WordPress.NamingConventions.ValidHookName.UseUnderscores">
 		<severity>0</severity>
+	</rule>
+
+	<!-- Everything in the global namespace must be prefixed. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="pedalcms"/>
+				<element value="PedalCMS"/>
+			</property>
+		</properties>
+	</rule>
+	<!-- Test scaffolding and playground helper scripts are not shipped plugin code. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<exclude-pattern>/tests/*</exclude-pattern>
+		<exclude-pattern>/.github/*</exclude-pattern>
 	</rule>
 </ruleset>

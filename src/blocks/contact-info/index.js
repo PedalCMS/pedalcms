@@ -15,14 +15,14 @@
 		const meta = entityProp[0];
 		const setMeta = entityProp[1];
 
-		const officePhone = meta.office_phone;
-		const emailAddress = meta.email_address;
-		const office = meta.office;
+		const officePhone = meta.pedalcms_office_phone;
+		const emailAddress = meta.pedalcms_email_address;
+		const office = meta.pedalcms_office;
 
 		function updatePhone(newValue) {
 			setMeta(
 				Object.assign({}, meta, {
-					office_phone: newValue,
+					pedalcms_office_phone: newValue,
 				})
 			);
 		}
@@ -30,7 +30,7 @@
 		function updateEmail(newValue) {
 			setMeta(
 				Object.assign({}, meta, {
-					email_address: newValue,
+					pedalcms_email_address: newValue,
 				})
 			);
 		}
@@ -38,7 +38,7 @@
 		function updateOffice(newValue) {
 			setMeta(
 				Object.assign({}, meta, {
-					office: newValue,
+					pedalcms_office: newValue,
 				})
 			);
 		}
@@ -67,7 +67,7 @@
 		);
 	}
 
-	registerBlockType('pdl/contact-info', {
+	registerBlockType('pedalcms/contact-info', {
 		title: 'Contact Info',
 		edit: ContactInfoEdit,
 		save() {

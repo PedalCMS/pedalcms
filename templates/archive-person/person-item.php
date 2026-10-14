@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 
 
-$defaults = [
+$pedalcms_defaults = [
 	'person_post'              => null,
 	'show_contact_info'        => true,
 	'show_contact_info_labels' => false,
@@ -19,40 +19,40 @@ $defaults = [
 	'h_level'                  => 2,
 ];
 
-$args        = pdl_parse_template_args( $args, $defaults, $template );
-$h_tag       = pdl_get_heading_tag( $args['h_level'] );
-$person_post = get_post( $args['person_post'] );
+$pedalcms_args        = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
+$pedalcms_h_tag       = pedalcms_get_heading_tag( $pedalcms_args['h_level'] );
+$pedalcms_person_post = get_post( $pedalcms_args['person_post'] );
 
-if ( $person_post instanceof \WP_Post ) :?>
-<article <?php post_class( '', $person_post ); ?>>
+if ( $pedalcms_person_post instanceof \WP_Post ) :?>
+<article <?php post_class( '', $pedalcms_person_post ); ?>>
 	<?php
-	if ( $args['show_image'] ) :
-		pdl_get_template_part(
+	if ( $pedalcms_args['show_image'] ) :
+		pedalcms_get_template_part(
 			'single-person/featured-image',
 			[
-				'post'     => $person_post,
-				'img_size' => $args['img_size'],
+				'post'     => $pedalcms_person_post,
+				'img_size' => $pedalcms_args['img_size'],
 			]
 		);
 	endif;
 	?>
 	<div class="person-info">
 		<header>
-			<?php printf( '<%s class="person-name">', esc_html( $h_tag ) ); ?>
-			<a href="<?php echo esc_url( get_the_permalink( $person_post ) ); ?>"><?php echo esc_html( get_the_title( $person_post ) ); ?></a>
-			<?php printf( '</%s>', esc_html( $h_tag ) ); ?>
+			<?php printf( '<%s class="person-name">', esc_html( $pedalcms_h_tag ) ); ?>
+			<a href="<?php echo esc_url( get_the_permalink( $pedalcms_person_post ) ); ?>"><?php echo esc_html( get_the_title( $pedalcms_person_post ) ); ?></a>
+			<?php printf( '</%s>', esc_html( $pedalcms_h_tag ) ); ?>
 			<div class="person-position">
-				<?php pdl_get_template_part( 'blocks/job-title', [ 'job_title' => $person_post->job_title ] ); ?>
+				<?php pedalcms_get_template_part( 'blocks/job-title', [ 'job_title' => $pedalcms_person_post->pedalcms_job_title ] ); ?>
 				<?php
-				if ( taxonomy_exists( 'pdl_department' ) ) :
+				if ( taxonomy_exists( 'pedalcms_department' ) ) :
 					echo wp_kses_post(
-						pdl_get_the_term_list(
-							$person_post,
-							'pdl_department',
+						pedalcms_get_the_term_list(
+							$pedalcms_person_post,
+							'pedalcms_department',
 							'<div class="person-department">',
 							', ',
 							'</div>',
-							$args['link_terms']
+							$pedalcms_args['link_terms']
 						)
 					);
 				endif;
@@ -60,12 +60,12 @@ if ( $person_post instanceof \WP_Post ) :?>
 			</div>
 		</header>
 		<?php
-		if ( $args['show_contact_info'] ) :
-			pdl_get_template_part(
+		if ( $pedalcms_args['show_contact_info'] ) :
+			pedalcms_get_template_part(
 				'blocks/contact-info',
 				[
-					'post'        => $person_post,
-					'show_labels' => $args['show_contact_info_labels'],
+					'post'        => $pedalcms_person_post,
+					'show_labels' => $pedalcms_args['show_contact_info_labels'],
 				]
 			);
 		endif;

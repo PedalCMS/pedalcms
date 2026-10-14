@@ -20,6 +20,8 @@ use PedalCMS\Fields\Relationship_Field;
 use PedalCMS\Fields\Conditional_Checkbox_Field;
 use PedalCMS\Fields\Conditional_Number_Field;
 
+defined( 'ABSPATH' ) || exit;
+
 // Register custom field types as early as possible.
 add_action( 'init', __NAMESPACE__ . '\register_custom_field_types', 5 );
 
@@ -69,40 +71,40 @@ function cassette_init(): void {
 
 	$config = [
 		'cpts'           => apply_filters(
-			'pdl/cassette/cpts',
+			'pedalcms/cassette/cpts',
 			[
 				[
-					'id'     => 'pdl_program',
+					'id'     => 'pedalcms_program',
 					'fields' => $program_fields,
 				],
 				[
-					'id'     => 'pdl_course',
+					'id'     => 'pedalcms_course',
 					'fields' => $course_fields,
 				],
 				[
-					'id'     => 'pdl_person',
+					'id'     => 'pedalcms_person',
 					'fields' => $person_fields,
 				],
 			]
 		),
 		'taxonomies'     => apply_filters(
-			'pdl/cassette/taxonomies',
+			'pedalcms/cassette/taxonomies',
 			[
 				[
-					'id'     => 'pdl_college',
-					'fields' => $taxonomy_fields['pdl_college'],
+					'id'     => 'pedalcms_college',
+					'fields' => $taxonomy_fields['pedalcms_college'],
 				],
 				[
-					'id'     => 'pdl_department',
-					'fields' => $taxonomy_fields['pdl_department'],
+					'id'     => 'pedalcms_department',
+					'fields' => $taxonomy_fields['pedalcms_department'],
 				],
 				[
-					'id'     => 'pdl_program_type',
-					'fields' => $taxonomy_fields['pdl_program_type'],
+					'id'     => 'pedalcms_program_type',
+					'fields' => $taxonomy_fields['pedalcms_program_type'],
 				],
 				[
-					'id'     => 'pdl_person_cat',
-					'fields' => $taxonomy_fields['pdl_person_cat'],
+					'id'     => 'pedalcms_person_cat',
+					'fields' => $taxonomy_fields['pedalcms_person_cat'],
 				],
 			]
 		),
@@ -116,13 +118,13 @@ function cassette_init(): void {
 	 */
 	if ( Plugin::settings_ui_enabled() ) {
 		$config['settings_pages'] = apply_filters(
-			'pdl/cassette/settings_pages',
+			'pedalcms/cassette/settings_pages',
 			[
 				[
-					'id'          => 'options_pdl',
+					'id'          => 'pedalcms',
 					'menu_slug'   => Plugin::$options_page_slug,
-					'page_title'  => __( 'Pedal CMS Settings', 'pedalcms' ),
-					'menu_title'  => _x( 'Settings', 'menu item title', 'pedalcms' ),
+					'page_title'  => __( 'Pedal CMS Settings', 'pedal-cms' ),
+					'menu_title'  => _x( 'Settings', 'menu item title', 'pedal-cms' ),
 					'capability'  => 'manage_options',
 					'parent_slug' => Plugin::$options_page_parent,
 					'position'    => 100,
@@ -133,7 +135,7 @@ function cassette_init(): void {
 	}
 
 	CassetteCMF::register_from_array(
-		apply_filters( 'pdl/cassette/config', $config )
+		apply_filters( 'pedalcms/cassette/config', $config )
 	);
 }
 
@@ -154,14 +156,14 @@ function sync_taxonomy_terms( int $post_id ): void {
 
 	/** @var array<string, array<string, string>> $fields_map post_type => [ field_name => taxonomy ] */
 	$fields_map = [
-		'pdl_program' => [
-			'college'          => 'pdl_college',
-			'program_type'     => 'pdl_program_type',
-			'instruction_mode' => 'pdl_instruct_mode',
+		'pedalcms_program' => [
+			'pedalcms_college'          => 'pedalcms_college',
+			'pedalcms_program_type'     => 'pedalcms_program_type',
+			'pedalcms_instruction_mode' => 'pedalcms_instruct_mode',
 		],
-		'pdl_person'  => [
-			'person_category' => 'pdl_person_cat',
-			'college'         => 'pdl_college',
+		'pedalcms_person'  => [
+			'pedalcms_person_category' => 'pedalcms_person_cat',
+			'pedalcms_college'         => 'pedalcms_college',
 		],
 	];
 
@@ -176,7 +178,7 @@ function sync_taxonomy_terms( int $post_id ): void {
 }
 
 /**
- * Creates the `pdl_flush_rules` transient when saving the plugin settings page.
+ * Creates the `pedalcms_flush_rules` transient when saving the plugin settings page.
  *
 	* Called on filter: `cassette_cmf_before_save_field`
 	*
@@ -186,20 +188,20 @@ function sync_taxonomy_terms( int $post_id ): void {
 	* @return mixed The original field value.
  */
 function cassette_save_options( $value, string $field_name, string $context ) {
-	if ( 'options_pdl' === $context || Plugin::$options_page_slug === $context ) {
-		set_transient( 'pdl_flush_rules', true );
+	if ( 'pedalcms' === $context || Plugin::$options_page_slug === $context ) {
+		set_transient( 'pedalcms_flush_rules', true );
 	}
 
 	return $value;
 }
 
 /**
- * Flushes the rewrite rules when `pdl_flush_rules` transient is present.
+ * Flushes the rewrite rules when `pedalcms_flush_rules` transient is present.
  *
  * @return void
  */
 function maybe_flush_rules(): void {
-	if ( delete_transient( 'pdl_flush_rules' ) ) {
+	if ( delete_transient( 'pedalcms_flush_rules' ) ) {
 		flush_rewrite_rules();
 	}
 }
@@ -207,17 +209,15 @@ function maybe_flush_rules(): void {
 /**
  * Rewrites CassetteCMF's post-save redirect to use the correct menu_slug.
  *
- * CassetteCMF redirects to admin.php?page={page_id} ('options_pdl') but the
+ * CassetteCMF redirects to admin.php?page={page_id} ('pedalcms') but the
  * settings page is registered under menu_slug 'pedalcms-settings'.
  *
  * @param string $location Redirect URL.
  * @return string
  */
 function fix_settings_redirect( string $location ): string {
-	if ( strpos( $location, 'page=options_pdl' ) !== false ) {
-		$location = str_replace( 'page=options_pdl', 'page=' . Plugin::$options_page_slug, $location );
-	}
-	return $location;
+	// Only the bare page id; leave an already-correct `page=pedalcms-settings` untouched.
+	return preg_replace( '/page=pedalcms(?![\w-])/', 'page=' . Plugin::$options_page_slug, $location ) ?? $location;
 }
 
 /**
@@ -228,10 +228,10 @@ function fix_settings_redirect( string $location ): string {
  */
 function get_bidirectional_pairs(): array {
 	return [
-		'pdl_program' => [ 'related_program_careers' => 'related_career_programs' ],
-		'pdl_career'  => [ 'related_career_programs' => 'related_program_careers' ],
-		'pdl_course'  => [ 'related_course_personnel' => 'related_person_courses' ],
-		'pdl_person'  => [ 'related_person_courses' => 'related_course_personnel' ],
+		'pedalcms_program' => [ 'pedalcms_related_program_careers' => 'pedalcms_related_career_programs' ],
+		'pedalcms_career'  => [ 'pedalcms_related_career_programs' => 'pedalcms_related_program_careers' ],
+		'pedalcms_course'  => [ 'pedalcms_related_course_personnel' => 'pedalcms_related_person_courses' ],
+		'pedalcms_person'  => [ 'pedalcms_related_person_courses' => 'pedalcms_related_course_personnel' ],
 	];
 }
 
@@ -255,7 +255,7 @@ function capture_old_relationship_values( int $post_id ): void {
 	}
 
 	foreach ( $pairs[ $post_type ] as $field_name => $_ ) {
-		$GLOBALS['pdl_bidir_old'][ $post_id ][ $field_name ] =
+		$GLOBALS['pedalcms_bidir_old'][ $post_id ][ $field_name ] =
 			array_map( 'intval', (array) ( get_post_meta( $post_id, $field_name, true ) ?: [] ) );
 	}
 }
@@ -275,7 +275,7 @@ function sync_bidirectional_relationships( int $post_id ): void {
 	}
 
 	// Prevent re-entry when we update related posts below.
-	if ( ! empty( $GLOBALS['pdl_is_syncing_bidir'] ) ) {
+	if ( ! empty( $GLOBALS['pedalcms_is_syncing_bidir'] ) ) {
 		return;
 	}
 
@@ -286,10 +286,10 @@ function sync_bidirectional_relationships( int $post_id ): void {
 		return;
 	}
 
-	$GLOBALS['pdl_is_syncing_bidir'] = true;
+	$GLOBALS['pedalcms_is_syncing_bidir'] = true;
 
 	foreach ( $pairs[ $post_type ] as $field_name => $rel_field_name ) {
-		$old_ids = $GLOBALS['pdl_bidir_old'][ $post_id ][ $field_name ] ?? [];
+		$old_ids = $GLOBALS['pedalcms_bidir_old'][ $post_id ][ $field_name ] ?? [];
 		$new_ids = array_map( 'intval', (array) ( get_post_meta( $post_id, $field_name, true ) ?: [] ) );
 
 		$add_to      = array_diff( $new_ids, $old_ids );
@@ -310,7 +310,5 @@ function sync_bidirectional_relationships( int $post_id ): void {
 		}
 	}
 
-	unset( $GLOBALS['pdl_is_syncing_bidir'] );
+	unset( $GLOBALS['pedalcms_is_syncing_bidir'] );
 }
-
-require __DIR__ . '/polyfills.php';

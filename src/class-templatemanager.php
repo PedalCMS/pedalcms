@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Handles all functionality related to our extended template system.
  *
@@ -34,7 +36,7 @@ class TemplateManager {
 	 *      [
 	 *        'name' => 'single-career',
 	 *        'callback' => 'is_singular',
-	 *        'args' => ['pdl_career']
+	 *        'args' => ['pedalcms_career']
 	 *      ]
 	 *    ];
 	 * ```
@@ -122,7 +124,7 @@ class TemplateManager {
 		 * @param string $name The template name.
 		 */
 		return apply_filters(
-			'pdl/locate_template',
+			'pedalcms/locate_template',
 			sprintf( $pattern, self::$base_path, $template ),
 			$template
 		);
@@ -148,7 +150,7 @@ class TemplateManager {
 			 * @param string $template The template name.
 			 */
 			$args = apply_filters(
-				'pdl/template_args',
+				'pedalcms/template_args',
 				$args,
 				$template
 			);
@@ -160,7 +162,7 @@ class TemplateManager {
 			 *
 			 * @param array  $args The array of template args.
 			 */
-			do_action( 'pdl/before_template/' . $template, $args );
+			do_action( 'pedalcms/before_template/' . $template, $args );
 
 			include $path;
 
@@ -171,7 +173,7 @@ class TemplateManager {
 			 *
 			 * @param array  $args The array of template args.
 			 */
-			do_action( 'pdl/after_template/' . $template, $args );
+			do_action( 'pedalcms/after_template/' . $template, $args );
 		} elseif ( WP_DEBUG && WP_DEBUG_LOG ) {
 			wp_trigger_error( __METHOD__, 'File not found ' . $template );
 		}
@@ -187,7 +189,7 @@ class TemplateManager {
 	 */
 	public static function convert_obj_name_to_template( $obj_name ): string {
 		return str_replace(
-			[ 'pdl_', '_' ],
+			[ 'pedalcms_', '_' ],
 			[ '', '-' ],
 			$obj_name
 		);

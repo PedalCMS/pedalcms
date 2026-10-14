@@ -77,10 +77,10 @@ define( 'PEDALCMS_DISABLE_SETTINGS_UI', true );
 ```
 
 To decide at runtime instead — per role, per environment — filter
-`pdl/settings_ui_enabled`:
+`pedalcms/settings_ui_enabled`:
 
 ```php
-add_filter( 'pdl/settings_ui_enabled', function ( $enabled ) {
+add_filter( 'pedalcms/settings_ui_enabled', function ( $enabled ) {
 	return current_user_can( 'manage_network' );
 } );
 ```
@@ -109,10 +109,10 @@ PedalCMS includes a complete template system for displaying content:
 
 | Post Type | Description | Slug |
 |-----------|-------------|------|
-| Programs | Academic programs and degrees | `pdl_program` |
-| Courses | Individual courses and classes | `pdl_course` |
-| People | Faculty, staff, and personnel | `pdl_person` |
-| FAQs | Frequently asked questions | `pdl_faq` |
+| Programs | Academic programs and degrees | `pedalcms_program` |
+| Courses | Individual courses and classes | `pedalcms_course` |
+| People | Faculty, staff, and personnel | `pedalcms_person` |
+| FAQs | Frequently asked questions | `pedalcms_faq` |
 
 ## 🏷️ Taxonomies
 
@@ -132,21 +132,21 @@ PedalCMS provides numerous template tags for theme development:
 
 ### Program Functions
 ```php
-pdl_program_title()          // Get program title
-pdl_program_subpages()       // Get program subpages
-pdl_get_the_term_list()      // Get formatted taxonomy terms
+pedalcms_program_title()          // Get program title
+pedalcms_program_subpages()       // Get program subpages
+pedalcms_get_the_term_list()      // Get formatted taxonomy terms
 ```
 
 ### Course Functions
 ```php
-pdl_course_prerequisites()   // Get course prerequisites
-pdl_course_schedule()        // Get course schedule
+pedalcms_course_prerequisites()   // Get course prerequisites
+pedalcms_course_schedule()        // Get course schedule
 ```
 
 ### Person Functions
 ```php
-pdl_person_contact_info()    // Get contact information
-pdl_person_job_title()       // Get job title
+pedalcms_person_contact_info()    // Get contact information
+pedalcms_person_job_title()       // Get job title
 ```
 
 ## 🧪 Development

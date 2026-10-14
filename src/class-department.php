@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Department custom taxonomy.
  *
@@ -12,7 +14,7 @@ class Department extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_department';
+	public const TAXONOMY = 'pedalcms_department';
 
 	/**
 	 * @inheritdoc
@@ -42,29 +44,29 @@ class Department extends CustomTaxonomy {
 	 */
 	protected function setup_labels(): void {
 		$this->args['labels'] = [
-			'name'                       => _x( 'Departments', 'taxonomy general name', 'pedalcms' ),
-			'singular_name'              => _x( 'Department', 'taxonomy singular name', 'pedalcms' ),
-			'search_items'               => __( 'Search Departments', 'pedalcms' ),
-			'popular_items'              => __( 'Popular Departments', 'pedalcms' ),
-			'all_items'                  => __( 'All Departments', 'pedalcms' ),
-			'parent_item'                => __( 'Parent Department', 'pedalcms' ),
-			'parent_item_colon'          => __( 'Parent Department:', 'pedalcms' ),
-			'edit_item'                  => __( 'Edit Department', 'pedalcms' ),
-			'view_item'                  => __( 'View Department', 'pedalcms' ),
-			'update_item'                => __( 'Update Department', 'pedalcms' ),
-			'add_new_item'               => __( 'Add New Department', 'pedalcms' ),
-			'new_item_name'              => __( 'New Department Name', 'pedalcms' ),
-			'separate_items_with_commas' => __( 'Separate departments with commas', 'pedalcms' ),
-			'add_or_remove_items'        => __( 'Add or remove departments', 'pedalcms' ),
-			'choose_from_most_used'      => __( 'Choose from the most used departments', 'pedalcms' ),
-			'not_found'                  => __( 'No departments found.', 'pedalcms' ),
-			'no_terms'                   => __( 'No departments', 'pedalcms' ),
-			'filter_by_item'             => __( 'Filter by category', 'pedalcms' ),
-			'items_list_navigation'      => __( 'Departments list navigation', 'pedalcms' ),
-			'items_list'                 => __( 'Departments list', 'pedalcms' ),
-			'back_to_items'              => __( '&larr; Go to Departments', 'pedalcms' ),
-			'item_link'                  => _x( 'Department Link', 'navigation link block title', 'pedalcms' ),
-			'item_link_description'      => _x( 'A link to a department.', 'navigation link block description', 'pedalcms' ),
+			'name'                       => _x( 'Departments', 'taxonomy general name', 'pedal-cms' ),
+			'singular_name'              => _x( 'Department', 'taxonomy singular name', 'pedal-cms' ),
+			'search_items'               => __( 'Search Departments', 'pedal-cms' ),
+			'popular_items'              => __( 'Popular Departments', 'pedal-cms' ),
+			'all_items'                  => __( 'All Departments', 'pedal-cms' ),
+			'parent_item'                => __( 'Parent Department', 'pedal-cms' ),
+			'parent_item_colon'          => __( 'Parent Department:', 'pedal-cms' ),
+			'edit_item'                  => __( 'Edit Department', 'pedal-cms' ),
+			'view_item'                  => __( 'View Department', 'pedal-cms' ),
+			'update_item'                => __( 'Update Department', 'pedal-cms' ),
+			'add_new_item'               => __( 'Add New Department', 'pedal-cms' ),
+			'new_item_name'              => __( 'New Department Name', 'pedal-cms' ),
+			'separate_items_with_commas' => __( 'Separate departments with commas', 'pedal-cms' ),
+			'add_or_remove_items'        => __( 'Add or remove departments', 'pedal-cms' ),
+			'choose_from_most_used'      => __( 'Choose from the most used departments', 'pedal-cms' ),
+			'not_found'                  => __( 'No departments found.', 'pedal-cms' ),
+			'no_terms'                   => __( 'No departments', 'pedal-cms' ),
+			'filter_by_item'             => __( 'Filter by category', 'pedal-cms' ),
+			'items_list_navigation'      => __( 'Departments list navigation', 'pedal-cms' ),
+			'items_list'                 => __( 'Departments list', 'pedal-cms' ),
+			'back_to_items'              => __( '&larr; Go to Departments', 'pedal-cms' ),
+			'item_link'                  => _x( 'Department Link', 'navigation link block title', 'pedal-cms' ),
+			'item_link_description'      => _x( 'A link to a department.', 'navigation link block description', 'pedal-cms' ),
 		];
 	}
 
@@ -74,7 +76,7 @@ class Department extends CustomTaxonomy {
 	protected function setup_field_group() {
 		$field_group = [
 			'key'                   => 'group_630e244b8c660',
-			'title'                 => __( 'Department Info', 'pedalcms' ),
+			'title'                 => __( 'Department Info', 'pedal-cms' ),
 			'menu_order'            => 0,
 			'position'              => 'acf_after_title',
 			'style'                 => 'seamless',
@@ -95,7 +97,7 @@ class Department extends CustomTaxonomy {
 				[
 					'key'               => 'field_630faf40e6008',
 					'label'             => 'College',
-					'name'              => 'college',
+					'name'              => 'pedalcms_college',
 					'type'              => 'taxonomy',
 					'instructions'      => '',
 					'required'          => 0,
@@ -105,7 +107,7 @@ class Department extends CustomTaxonomy {
 						'class' => '',
 						'id'    => '',
 					],
-					'taxonomy'          => 'pdl_college',
+					'taxonomy'          => 'pedalcms_college',
 					'add_term'          => 0,
 					'save_terms'        => 0,
 					'load_terms'        => 0,
@@ -116,8 +118,8 @@ class Department extends CustomTaxonomy {
 				],
 				[
 					'key'           => 'field_6304c88d7d4aa',
-					'label'         => __( 'Featured Image', 'pedalcms' ),
-					'name'          => 'featured_image',
+					'label'         => __( 'Featured Image', 'pedal-cms' ),
+					'name'          => 'pedalcms_featured_image',
 					'type'          => 'image',
 					'instructions'  => '',
 					'return_format' => 'url',
@@ -126,10 +128,10 @@ class Department extends CustomTaxonomy {
 				],
 				[
 					'key'               => 'field_630e13fdc975c',
-					'label'             => __( 'Header Background Image', 'pedalcms' ),
-					'name'              => 'header_background',
+					'label'             => __( 'Header Background Image', 'pedal-cms' ),
+					'name'              => 'pedalcms_header_background',
 					'type'              => 'image',
-					'instructions'      => __( 'The background image of the archive page header (Tuxedo Mode only).', 'pedalcms' ),
+					'instructions'      => __( 'The background image of the archive page header (Tuxedo Mode only).', 'pedal-cms' ),
 					'required'          => 0,
 					'conditional_logic' => 0,
 					'wrapper'           => [
@@ -174,12 +176,12 @@ class Department extends CustomTaxonomy {
 		$term = get_term( $term, College::TAXONOMY );
 
 		if ( $term && ! is_wp_error( $term ) ) {
-			return self::get_by_meta( 'college', $term->term_id );
+			return self::get_by_meta( 'pedalcms_college', $term->term_id );
 		}
 
 		return new WP_Error(
-			'pdl_not_found',
-			__( 'The requested college was not found', 'pedalcms' )
+			'pedalcms_not_found',
+			__( 'The requested college was not found', 'pedal-cms' )
 		);
 	}
 
@@ -191,7 +193,7 @@ class Department extends CustomTaxonomy {
 	 */
 	public static function save_terms( $post = null ) {
 		$post    = get_post( $post );
-		$term_id = get_post_meta( $post->ID, 'department', true );
+		$term_id = get_post_meta( $post->ID, 'pedalcms_department', true );
 
 		if ( $term_id ) {
 			wp_set_object_terms( $post->ID, (int) $term_id, self::TAXONOMY, false );

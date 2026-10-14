@@ -8,29 +8,29 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$person_post = pdl_args_or_global( 'post', $args );
+$pedalcms_person_post = pedalcms_args_or_global( 'post', $args );
 
-$defaults = [
+$pedalcms_defaults = [
 	'link_terms' => false,
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
 ?>
 <div class="single-person__meta">
 	<div class="person-meta__item">
-		<?php pdl_get_template_part( 'blocks/job-title', [ 'job_title' => $person_post->job_title ] ); ?>
+		<?php pedalcms_get_template_part( 'blocks/job-title', [ 'job_title' => $pedalcms_person_post->pedalcms_job_title ] ); ?>
 	</div>
 	<?php
-	if ( taxonomy_exists( 'pdl_department' ) ) :
+	if ( taxonomy_exists( 'pedalcms_department' ) ) :
 		echo wp_kses_post(
-			pdl_get_the_term_list(
-				$person_post,
-				'pdl_department',
+			pedalcms_get_the_term_list(
+				$pedalcms_person_post,
+				'pedalcms_department',
 				'<div class="person-department person-meta__item">',
 				', ',
 				'</div>',
-				$args['link_terms']
+				$pedalcms_args['link_terms']
 			)
 		);
 	endif;

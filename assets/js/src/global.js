@@ -123,7 +123,7 @@
 			}
 
 			if (event.type === 'click' || event.type === 'blur') {
-				if (typeof window.toggleTipDebug === 'undefined') {
+				if (typeof window.pedalcmsToggleTipDebug === 'undefined') {
 					active.hide();
 					event.preventDefault();
 				}

@@ -25,6 +25,6 @@ class ClassCollegeTest extends FeatureTestCase {
 		do_action( 'rest_api_init' );
 		$routes = rest_get_server()->get_routes();
 
-		$this->assertArrayNotHasKey( '/wp/v2/pdl_college', $routes );
+		$this->assertArrayNotHasKey( '/wp/v2/pedalcms_college', $routes );
 	}
 }

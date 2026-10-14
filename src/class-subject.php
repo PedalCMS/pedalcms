@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Subject custom taxonomy.
  *
@@ -12,7 +14,7 @@ class Subject extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_subject';
+	public const TAXONOMY = 'pedalcms_subject';
 
 	/**
 	 * @inheritdoc
@@ -40,29 +42,29 @@ class Subject extends CustomTaxonomy {
 	 */
 	protected function setup_labels(): void {
 		$this->args['labels'] = [
-			'name'                       => _x( 'Subjects', 'taxonomy general name', 'pedalcms' ),
-			'singular_name'              => _x( 'Subject', 'taxonomy singular name', 'pedalcms' ),
-			'search_items'               => __( 'Search Subjects', 'pedalcms' ),
-			'popular_items'              => __( 'Popular Subjects', 'pedalcms' ),
-			'all_items'                  => __( 'All Subjects', 'pedalcms' ),
-			'parent_item'                => __( 'Parent Subject', 'pedalcms' ),
-			'parent_item_colon'          => __( 'Parent Subject:', 'pedalcms' ),
-			'edit_item'                  => __( 'Edit Subject', 'pedalcms' ),
-			'view_item'                  => __( 'View Subject', 'pedalcms' ),
-			'update_item'                => __( 'Update Subject', 'pedalcms' ),
-			'add_new_item'               => __( 'Add New Subject', 'pedalcms' ),
-			'new_item_name'              => __( 'New Subject Name', 'pedalcms' ),
-			'separate_items_with_commas' => __( 'Separate subjects with commas', 'pedalcms' ),
-			'add_or_remove_items'        => __( 'Add or remove subjects', 'pedalcms' ),
-			'choose_from_most_used'      => __( 'Choose from the most used subjects', 'pedalcms' ),
-			'not_found'                  => __( 'No subjects found.', 'pedalcms' ),
-			'no_terms'                   => __( 'No subjects', 'pedalcms' ),
-			'filter_by_item'             => __( 'Filter by subject', 'pedalcms' ),
-			'items_list_navigation'      => __( 'Subject list navigation', 'pedalcms' ),
-			'items_list'                 => __( 'Subject list', 'pedalcms' ),
-			'back_to_items'              => __( '&larr; Go to Subjects', 'pedalcms' ),
-			'item_link'                  => _x( 'Subject Link', 'navigation link block title', 'pedalcms' ),
-			'item_link_description'      => _x( 'A link to a subject.', 'navigation link block description', 'pedalcms' ),
+			'name'                       => _x( 'Subjects', 'taxonomy general name', 'pedal-cms' ),
+			'singular_name'              => _x( 'Subject', 'taxonomy singular name', 'pedal-cms' ),
+			'search_items'               => __( 'Search Subjects', 'pedal-cms' ),
+			'popular_items'              => __( 'Popular Subjects', 'pedal-cms' ),
+			'all_items'                  => __( 'All Subjects', 'pedal-cms' ),
+			'parent_item'                => __( 'Parent Subject', 'pedal-cms' ),
+			'parent_item_colon'          => __( 'Parent Subject:', 'pedal-cms' ),
+			'edit_item'                  => __( 'Edit Subject', 'pedal-cms' ),
+			'view_item'                  => __( 'View Subject', 'pedal-cms' ),
+			'update_item'                => __( 'Update Subject', 'pedal-cms' ),
+			'add_new_item'               => __( 'Add New Subject', 'pedal-cms' ),
+			'new_item_name'              => __( 'New Subject Name', 'pedal-cms' ),
+			'separate_items_with_commas' => __( 'Separate subjects with commas', 'pedal-cms' ),
+			'add_or_remove_items'        => __( 'Add or remove subjects', 'pedal-cms' ),
+			'choose_from_most_used'      => __( 'Choose from the most used subjects', 'pedal-cms' ),
+			'not_found'                  => __( 'No subjects found.', 'pedal-cms' ),
+			'no_terms'                   => __( 'No subjects', 'pedal-cms' ),
+			'filter_by_item'             => __( 'Filter by subject', 'pedal-cms' ),
+			'items_list_navigation'      => __( 'Subject list navigation', 'pedal-cms' ),
+			'items_list'                 => __( 'Subject list', 'pedal-cms' ),
+			'back_to_items'              => __( '&larr; Go to Subjects', 'pedal-cms' ),
+			'item_link'                  => _x( 'Subject Link', 'navigation link block title', 'pedal-cms' ),
+			'item_link_description'      => _x( 'A link to a subject.', 'navigation link block description', 'pedal-cms' ),
 		];
 	}
 }

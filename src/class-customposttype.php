@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Base class for common custom post type tasks in WordPress.
  *
@@ -116,7 +118,7 @@ abstract class CustomPostType extends CustomContentObject {
 					__METHOD__,
 					sprintf(
 						/* translators: The first argument is the machine name of the post type */
-						__( 'Could not register post type %1$s. Error: %2$s', 'pedalcms' ),
+						__( 'Could not register post type %1$s. Error: %2$s', 'pedal-cms' ),
 						static::POST_TYPE,
 						$result->get_error_message()
 					)

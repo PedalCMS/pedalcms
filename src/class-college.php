@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * College custom taxonomy.
  *
@@ -12,7 +14,7 @@ class College extends CustomTaxonomy {
 	/**
 	 * @inheritdoc
 	 */
-	public const TAXONOMY = 'pdl_college';
+	public const TAXONOMY = 'pedalcms_college';
 
 	/**
 	 * @inheritdoc
@@ -42,29 +44,29 @@ class College extends CustomTaxonomy {
 	 */
 	protected function setup_labels(): void {
 		$this->args['labels'] = [
-			'name'                       => _x( 'Colleges', 'taxonomy general name', 'pedalcms' ),
-			'singular_name'              => _x( 'College', 'taxonomy singular name', 'pedalcms' ),
-			'search_items'               => __( 'Search Colleges', 'pedalcms' ),
-			'popular_items'              => __( 'Popular Colleges', 'pedalcms' ),
-			'all_items'                  => __( 'All Colleges', 'pedalcms' ),
-			'parent_item'                => __( 'Parent College', 'pedalcms' ),
-			'parent_item_colon'          => __( 'Parent College:', 'pedalcms' ),
-			'edit_item'                  => __( 'Edit College', 'pedalcms' ),
-			'view_item'                  => __( 'View College', 'pedalcms' ),
-			'update_item'                => __( 'Update College', 'pedalcms' ),
-			'add_new_item'               => __( 'Add New College', 'pedalcms' ),
-			'new_item_name'              => __( 'New College Name', 'pedalcms' ),
-			'separate_items_with_commas' => __( 'Separate colleges with commas', 'pedalcms' ),
-			'add_or_remove_items'        => __( 'Add or remove colleges', 'pedalcms' ),
-			'choose_from_most_used'      => __( 'Choose from the most used colleges', 'pedalcms' ),
-			'not_found'                  => __( 'No colleges found.', 'pedalcms' ),
-			'no_terms'                   => __( 'No colleges', 'pedalcms' ),
-			'filter_by_item'             => __( 'Filter by college', 'pedalcms' ),
-			'items_list_navigation'      => __( 'Colleges list navigation', 'pedalcms' ),
-			'items_list'                 => __( 'Colleges list', 'pedalcms' ),
-			'back_to_items'              => __( '&larr; Go to Colleges', 'pedalcms' ),
-			'item_link'                  => _x( 'College Link', 'navigation link block title', 'pedalcms' ),
-			'item_link_description'      => _x( 'A link to a college.', 'navigation link block description', 'pedalcms' ),
+			'name'                       => _x( 'Colleges', 'taxonomy general name', 'pedal-cms' ),
+			'singular_name'              => _x( 'College', 'taxonomy singular name', 'pedal-cms' ),
+			'search_items'               => __( 'Search Colleges', 'pedal-cms' ),
+			'popular_items'              => __( 'Popular Colleges', 'pedal-cms' ),
+			'all_items'                  => __( 'All Colleges', 'pedal-cms' ),
+			'parent_item'                => __( 'Parent College', 'pedal-cms' ),
+			'parent_item_colon'          => __( 'Parent College:', 'pedal-cms' ),
+			'edit_item'                  => __( 'Edit College', 'pedal-cms' ),
+			'view_item'                  => __( 'View College', 'pedal-cms' ),
+			'update_item'                => __( 'Update College', 'pedal-cms' ),
+			'add_new_item'               => __( 'Add New College', 'pedal-cms' ),
+			'new_item_name'              => __( 'New College Name', 'pedal-cms' ),
+			'separate_items_with_commas' => __( 'Separate colleges with commas', 'pedal-cms' ),
+			'add_or_remove_items'        => __( 'Add or remove colleges', 'pedal-cms' ),
+			'choose_from_most_used'      => __( 'Choose from the most used colleges', 'pedal-cms' ),
+			'not_found'                  => __( 'No colleges found.', 'pedal-cms' ),
+			'no_terms'                   => __( 'No colleges', 'pedal-cms' ),
+			'filter_by_item'             => __( 'Filter by college', 'pedal-cms' ),
+			'items_list_navigation'      => __( 'Colleges list navigation', 'pedal-cms' ),
+			'items_list'                 => __( 'Colleges list', 'pedal-cms' ),
+			'back_to_items'              => __( '&larr; Go to Colleges', 'pedal-cms' ),
+			'item_link'                  => _x( 'College Link', 'navigation link block title', 'pedal-cms' ),
+			'item_link_description'      => _x( 'A link to a college.', 'navigation link block description', 'pedal-cms' ),
 		];
 	}
 }

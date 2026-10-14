@@ -9,7 +9,7 @@
  * Version: 0.6.7
  * Author: pedalcms
  * Author URI: https://pedalcms.com
- * Text Domain: pedalcms
+ * Text Domain: pedal-cms
  * License: GPL 2.0 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  *
@@ -40,7 +40,7 @@ defined( 'ABSPATH' ) || exit;
 
 defined( 'PEDALCMS_VERSION' ) || define( 'PEDALCMS_VERSION', '0.6.7' );
 
-$includes = [
+$pedalcms_includes = [
 	'/src/_autoload.php',
 	'/vendor/autoload.php',
 	'/src/cassette.php',
@@ -51,8 +51,8 @@ $includes = [
 	'/src/breadcrumbs.php',
 ];
 
-foreach ( $includes as $subpath ) {
-	require __DIR__ . $subpath;
+foreach ( $pedalcms_includes as $pedalcms_subpath ) {
+	require __DIR__ . $pedalcms_subpath;
 }
 
 add_action(

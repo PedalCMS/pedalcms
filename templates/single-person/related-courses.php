@@ -8,19 +8,19 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults = [
-	'posts'                => get_field( 'related_person_courses' ),
-	'label_courses_taught' => pdl_get_label( 'courses_taught' ),
+$pedalcms_defaults = [
+	'posts'                => pedalcms_get_field( 'pedalcms_related_person_courses' ),
+	'label_courses_taught' => pedalcms_get_label( 'courses_taught' ),
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-if ( ! empty( $args['posts'] ) ) :
+if ( ! empty( $pedalcms_args['posts'] ) ) :
 	?>
 <div class="person-courses">
-	<h2><?php echo esc_html( $args['label_courses_taught'] ); ?>
+	<h2><?php echo esc_html( $pedalcms_args['label_courses_taught'] ); ?>
 	</h2>
-	<?php pdl_get_template_part( 'common/posts-links', $args ); ?>
+	<?php pedalcms_get_template_part( 'common/posts-links', $pedalcms_args ); ?>
 </div>
 	<?php
 endif;

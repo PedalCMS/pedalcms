@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults = [
+$pedalcms_defaults = [
 	'program_post'         => null,
 	'show_image'           => true,
 	'show_program_type'    => true,
@@ -18,17 +18,17 @@ $defaults = [
 	'wrapper_class'        => '',
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-if ( $args['program_post'] ) : ?>
-<article <?php post_class( $args['wrapper_class'], $args['program_post'] ); ?>>
+if ( $pedalcms_args['program_post'] ) : ?>
+<article <?php post_class( $pedalcms_args['wrapper_class'], $pedalcms_args['program_post'] ); ?>>
 
 	<?php
-	if ( $args['show_image'] ) :
-		pdl_get_template_part(
+	if ( $pedalcms_args['show_image'] ) :
+		pedalcms_get_template_part(
 			'common/post-featured-image',
 			[
-				'post'        => $args['program_post'],
+				'post'        => $pedalcms_args['program_post'],
 				'image_size'  => 'medium',
 				'image_align' => 'left',
 				'link_image'  => true,
@@ -41,20 +41,20 @@ if ( $args['program_post'] ) : ?>
 	<div class="program-info item-info">
 		<header>
 			<h2 class="program-title entry-title"><a
-					href="<?php echo esc_url( get_the_permalink( $args['program_post'] ) ); ?>"><?php echo esc_html( get_the_title( $args['program_post'] ) ); ?></a></h2>
+					href="<?php echo esc_url( get_the_permalink( $pedalcms_args['program_post'] ) ); ?>"><?php echo esc_html( get_the_title( $pedalcms_args['program_post'] ) ); ?></a></h2>
 			<?php
-			if ( $args['show_program_type'] && taxonomy_exists( 'pdl_program_type' ) ) :
-				echo wp_kses_post( pdl_get_the_term_list( $args['program_post'], 'pdl_program_type', '<div class="program-type">', ',', '</div>', $args['link_terms'] ) );
+			if ( $pedalcms_args['show_program_type'] && taxonomy_exists( 'pedalcms_program_type' ) ) :
+				echo wp_kses_post( pedalcms_get_the_term_list( $pedalcms_args['program_post'], 'pedalcms_program_type', '<div class="program-type">', ',', '</div>', $pedalcms_args['link_terms'] ) );
 			endif;
 			?>
 		</header>
 		<?php
-		if ( $args['show_program_meta'] ) :
-			pdl_get_template_part(
+		if ( $pedalcms_args['show_program_meta'] ) :
+			pedalcms_get_template_part(
 				'archive-program/program-meta',
 				[
-					'post'       => $args['program_post'],
-					'link_terms' => $args['link_terms'],
+					'post'       => $pedalcms_args['program_post'],
+					'link_terms' => $pedalcms_args['link_terms'],
 				]
 			);
 		endif;
@@ -62,11 +62,11 @@ if ( $args['program_post'] ) : ?>
 	</div>
 
 	<?php
-	if ( $args['show_program_actions'] ) :
-		pdl_get_template_part(
+	if ( $pedalcms_args['show_program_actions'] ) :
+		pedalcms_get_template_part(
 			'single-program/program-actions',
 			[
-				'post'          => $args['program_post'],
+				'post'          => $pedalcms_args['program_post'],
 				'add_permalink' => true,
 			]
 		);

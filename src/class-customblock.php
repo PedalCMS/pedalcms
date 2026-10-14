@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Base class for common custom block tasks in WordPress.
  *
@@ -13,11 +15,11 @@ abstract class CustomBlock {
 	/**
 	 * The namespace to prefix the block.
 	 *
-	 * Example: 'pdl/block-name'
+	 * Example: 'pedalcms/block-name'
 	 *
 	 * @var string
 	 */
-	public static string $namespace = 'pdl';
+	public static string $namespace = 'pedalcms';
 	/**
 	 * The block's machine name.
 	 *
@@ -142,9 +144,9 @@ abstract class CustomBlock {
 		$dot = stripos( $name, '.' );
 
 		return sprintf(
-			'%s%s-block-%s-%s',
-			$editor_only ? 'admin-' : '',
+			'%s-%sblock-%s-%s',
 			static::$namespace,
+			$editor_only ? 'admin-' : '',
 			static::$block_name,
 			$dot ? substr( $name, 0, $dot ) : $name
 		);

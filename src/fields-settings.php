@@ -6,9 +6,9 @@
  * The metabox forces the CassetteCMF_save_settings handler which saves all
  * nested fields via process_container_fields() — groups, tabs, and all.
  *
- * Naming convention: field names do NOT include the 'pdl_' prefix. CassetteCMF
- * prefixes each option with the page id ('options_pdl'), so field
- * 'presentation_mode' is stored as 'options_pdl_presentation_mode', matching
+ * Naming convention: field names do NOT include the 'pedalcms_' prefix. CassetteCMF
+ * prefixes each option with the page id ('pedalcms'), so field
+ * 'presentation_mode' is stored as 'pedalcms_presentation_mode', matching
  * what Plugin::get_option('presentation_mode') reads.
  *
  * @package PedalCMS
@@ -30,15 +30,15 @@ defined( 'ABSPATH' ) || exit;
  * @param array<string,string> $options Raw options map.
  * @return array<string,string>
  */
-$active_filter_options = static function ( array $options ): array {
+$pedalcms_active_filter_options = static function ( array $options ): array {
 	$tax_map = [
-		'program-type'  => 'pdl_program_type',
-		'instruct-mode' => 'pdl_instruct_mode',
-		'college'       => 'pdl_college',
-		'department'    => 'pdl_department',
-		'session'       => 'pdl_session',
-		'subject'       => 'pdl_subject',
-		'person-cat'    => 'pdl_person_cat',
+		'program-type'  => 'pedalcms_program_type',
+		'instruct-mode' => 'pedalcms_instruct_mode',
+		'college'       => 'pedalcms_college',
+		'department'    => 'pedalcms_department',
+		'session'       => 'pedalcms_session',
+		'subject'       => 'pedalcms_subject',
+		'person-cat'    => 'pedalcms_person_cat',
 	];
 	return array_filter(
 		$options,
@@ -49,7 +49,7 @@ $active_filter_options = static function ( array $options ): array {
 	);
 };
 
-$fields = [
+$pedalcms_fields = [
 
 	// -------------------------------------------------------------------------
 	// Outer wrapper: a metabox containing one tabs field.
@@ -60,7 +60,7 @@ $fields = [
 		'type'          => 'metabox',
 		'name'          => 'settings_main',
 		'metabox_id'    => 'pedalcms_settings_main',
-		'metabox_title' => __( 'Settings', 'pedalcms' ),
+		'metabox_title' => __( 'Settings', 'pedal-cms' ),
 		'context'       => 'normal',
 		'priority'      => 'default',
 		'fields'        => [
@@ -78,15 +78,15 @@ $fields = [
 					// =========================================================
 					[
 						'id'     => 'general',
-						'label'  => __( 'General', 'pedalcms' ),
+						'label'  => __( 'General', 'pedal-cms' ),
 						'icon'   => 'dashicons-admin-generic',
 						'fields' => [
 
 							[
-								'label'       => __( 'Presentation Mode', 'pedalcms' ),
+								'label'       => __( 'Presentation Mode', 'pedal-cms' ),
 								'name'        => 'presentation_mode',
 								'type'        => 'radio',
-								'description' => __( 'Choose the amount of design and styling you want applied (CSS). Additional options will be available when Tuxedo Mode is active.', 'pedalcms' ),
+								'description' => __( 'Choose the amount of design and styling you want applied (CSS). Additional options will be available when Tuxedo Mode is active.', 'pedal-cms' ),
 								'default'     => 'full',
 								'layout'      => 'vertical',
 								'options'     => [
@@ -97,23 +97,23 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Active Color', 'pedalcms' ),
+								'label'       => __( 'Active Color', 'pedal-cms' ),
 								'name'        => 'active_color',
 								'type'        => 'color',
-								'description' => __( 'The color to be used for links and buttons.', 'pedalcms' ),
+								'description' => __( 'The color to be used for links and buttons.', 'pedal-cms' ),
 								'default'     => '#000000',
 							],
 
 							[
-								'label'       => __( 'Button Text Color', 'pedalcms' ),
+								'label'       => __( 'Button Text Color', 'pedal-cms' ),
 								'name'        => 'active_color_text',
 								'type'        => 'color',
-								'description' => __( 'The color to be used for text on buttons. Set this if white does not provide enough contrast to your active color.', 'pedalcms' ),
+								'description' => __( 'The color to be used for text on buttons. Set this if white does not provide enough contrast to your active color.', 'pedal-cms' ),
 								'default'     => '#ffffff',
 							],
 
 							[
-								'label'   => __( 'Header Image Size', 'pedalcms' ),
+								'label'   => __( 'Header Image Size', 'pedal-cms' ),
 								'name'    => 'image_size_header',
 								'type'    => 'select',
 								'options' => [
@@ -123,16 +123,16 @@ $fields = [
 									'large'        => 'large (1024 &times; 1024)',
 									'1536x1536'    => '1536x1536 (1536 &times; 1536)',
 									'2048x2048'    => '2048x2048 (2048 &times; 2048)',
-									'custom'       => __( 'Custom', 'pedalcms' ),
+									'custom'       => __( 'Custom', 'pedal-cms' ),
 								],
 								'default' => 'custom',
 							],
 
 							[
-								'label'       => __( 'Custom Width', 'pedalcms' ),
+								'label'       => __( 'Custom Width', 'pedal-cms' ),
 								'name'        => 'image_size_header_w',
 								'type'        => 'number',
-								'description' => __( 'Measured in pixels', 'pedalcms' ),
+								'description' => __( 'Measured in pixels', 'pedal-cms' ),
 								'default'     => 450,
 								'min'         => 0,
 								'conditional' => [
@@ -146,10 +146,10 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Custom Height', 'pedalcms' ),
+								'label'       => __( 'Custom Height', 'pedal-cms' ),
 								'name'        => 'image_size_header_h',
 								'type'        => 'number',
-								'description' => __( 'Measured in pixels', 'pedalcms' ),
+								'description' => __( 'Measured in pixels', 'pedal-cms' ),
 								'default'     => 336,
 								'min'         => 0,
 								'conditional' => [
@@ -163,19 +163,19 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Display Breadcrumbs', 'pedalcms' ),
+								'label'       => __( 'Display Breadcrumbs', 'pedal-cms' ),
 								'name'        => 'display_breadcrumbs',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'Disable this if you have two showing up.', 'pedalcms' ),
+								'description' => __( 'Disable this if you have two showing up.', 'pedal-cms' ),
 								'default'     => 1,
 							],
 
 							[
-								'label'       => __( 'Main Content Wrapper Tag', 'pedalcms' ),
+								'label'       => __( 'Main Content Wrapper Tag', 'pedal-cms' ),
 								'name'        => 'main_content_wrapper_tag',
 								'type'        => 'select',
-								'description' => __( 'Switch to "main" to fix accessibility issues with some themes.', 'pedalcms' ),
+								'description' => __( 'Switch to "main" to fix accessibility issues with some themes.', 'pedal-cms' ),
 								'options'     => [
 									'div'     => 'div',
 									'main'    => 'main',
@@ -192,37 +192,37 @@ $fields = [
 					// =========================================================
 					[
 						'id'     => 'programs',
-						'label'  => __( 'Programs', 'pedalcms' ),
+						'label'  => __( 'Programs', 'pedal-cms' ),
 						'icon'   => 'dashicons-welcome-learn-more',
 						'fields' => [
 
 							// --- Program Archive ---
 							[
-								'label'   => __( 'Configure Program Listings', 'pedalcms' ),
+								'label'   => __( 'Configure Program Listings', 'pedal-cms' ),
 								'name'    => 'program_archive_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for searching and browsing the list of programs.</span>',
 							],
 							[
-								'label' => __( 'Page Title', 'pedalcms' ),
+								'label' => __( 'Page Title', 'pedal-cms' ),
 								'name'  => 'program_archive_title',
 								'type'  => 'text',
 							],
 
 							[
-								'label' => __( 'Page Description', 'pedalcms' ),
+								'label' => __( 'Page Description', 'pedal-cms' ),
 								'name'  => 'program_archive_description',
 								'type'  => 'wysiwyg',
 							],
 
 							[
-								'label' => __( 'Featured Image', 'pedalcms' ),
+								'label' => __( 'Featured Image', 'pedal-cms' ),
 								'name'  => 'program_archive_featured_image',
 								'type'  => 'upload',
 							],
 
 							[
-								'label'       => __( 'Header Background Image', 'pedalcms' ),
+								'label'       => __( 'Header Background Image', 'pedal-cms' ),
 								'name'        => 'program_archive_header_background',
 								'type'        => 'upload',
 								'conditional' => [
@@ -236,114 +236,114 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Search Filters', 'pedalcms' ),
+								'label'       => __( 'Search Filters', 'pedal-cms' ),
 								'name'        => 'program_archive_search_filters',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedalcms' ),
-								'options'     => $active_filter_options(
+								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedal-cms' ),
+								'options'     => $pedalcms_active_filter_options(
 									[
-										'keyword'       => __( 'Keyword', 'pedalcms' ),
-										'program-type'  => __( 'Program Type', 'pedalcms' ),
-										'instruct-mode' => __( 'Instruction Mode', 'pedalcms' ),
-										'college'       => __( 'College', 'pedalcms' ),
-										'department'    => __( 'Department', 'pedalcms' ),
+										'keyword'       => __( 'Keyword', 'pedal-cms' ),
+										'program-type'  => __( 'Program Type', 'pedal-cms' ),
+										'instruct-mode' => __( 'Instruction Mode', 'pedal-cms' ),
+										'college'       => __( 'College', 'pedal-cms' ),
+										'department'    => __( 'Department', 'pedal-cms' ),
 									]
 								),
 								'default'     => [ 'keyword', 'program-type', 'instruct-mode', 'college', 'department' ],
 							],
 
 							[
-								'label'       => __( 'Show Images in List View', 'pedalcms' ),
+								'label'       => __( 'Show Images in List View', 'pedal-cms' ),
 								'name'        => 'program_archive_show_images',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'Should lists of programs include their featured images?', 'pedalcms' ),
+								'description' => __( 'Should lists of programs include their featured images?', 'pedal-cms' ),
 								'default'     => 0,
 							],
 
 							// --- Individual Program ---
 							[
-								'label'   => __( 'Configure Programs', 'pedalcms' ),
+								'label'   => __( 'Configure Programs', 'pedal-cms' ),
 								'name'    => 'program_archive_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for individual programs.</span>',
 							],
 							[
-								'label' => __( 'Default Program Featured Image', 'pedalcms' ),
+								'label' => __( 'Default Program Featured Image', 'pedal-cms' ),
 								'name'  => 'program_featured_image',
 								'type'  => 'upload',
 							],
 
 							[
-								'label'        => __( 'Application Deadlines', 'pedalcms' ),
+								'label'        => __( 'Application Deadlines', 'pedal-cms' ),
 								'name'         => 'program_application_deadlines',
 								'type'         => 'repeater',
-								'description'  => __( 'Global application deadlines. Individual programs can override these.', 'pedalcms' ),
-								'button_label' => __( 'Add Deadline', 'pedalcms' ),
+								'description'  => __( 'Global application deadlines. Individual programs can override these.', 'pedal-cms' ),
+								'button_label' => __( 'Add Deadline', 'pedal-cms' ),
 								'fields'       => [
 									[
-										'label'       => __( 'Deadline Label', 'pedalcms' ),
+										'label'       => __( 'Deadline Label', 'pedal-cms' ),
 										'name'        => 'label',
 										'type'        => 'text',
-										'placeholder' => _x( 'Fall, Spring, etc.', 'deadline label field placeholder', 'pedalcms' ),
+										'placeholder' => _x( 'Fall, Spring, etc.', 'deadline label field placeholder', 'pedal-cms' ),
 									],
 									[
-										'label'       => __( 'Deadline Info', 'pedalcms' ),
+										'label'       => __( 'Deadline Info', 'pedal-cms' ),
 										'name'        => 'info',
 										'type'        => 'text',
-										'placeholder' => _x( 'e.g. June 24th', 'deadline info field placeholder', 'pedalcms' ),
+										'placeholder' => _x( 'e.g. June 24th', 'deadline info field placeholder', 'pedal-cms' ),
 									],
 								],
 							],
 
 							[
-								'label'       => __( 'Request Info Button Text', 'pedalcms' ),
+								'label'       => __( 'Request Info Button Text', 'pedal-cms' ),
 								'name'        => 'program_label_request_info_action',
 								'type'        => 'text',
-								'placeholder' => __( 'Request Info', 'pedalcms' ),
+								'placeholder' => __( 'Request Info', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Request Info URL', 'pedalcms' ),
+								'label'       => __( 'Request Info URL', 'pedal-cms' ),
 								'name'        => 'program_url_request_info',
 								'type'        => 'url',
-								'description' => __( 'Enter a URL pattern. You may use {$program_guid} and {$program_slug}.', 'pedalcms' ),
+								'description' => __( 'Enter a URL pattern. You may use {$program_guid} and {$program_slug}.', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Apply Now Button Text', 'pedalcms' ),
+								'label'       => __( 'Apply Now Button Text', 'pedal-cms' ),
 								'name'        => 'program_label_apply_now_action',
 								'type'        => 'text',
-								'placeholder' => __( 'Apply Now', 'pedalcms' ),
+								'placeholder' => __( 'Apply Now', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Apply Now URL', 'pedalcms' ),
+								'label'       => __( 'Apply Now URL', 'pedal-cms' ),
 								'name'        => 'program_url_apply_now',
 								'type'        => 'url',
-								'description' => __( 'Enter a URL pattern. You may use {$program_guid} and {$program_slug}.', 'pedalcms' ),
+								'description' => __( 'Enter a URL pattern. You may use {$program_guid} and {$program_slug}.', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Program Contact Label', 'pedalcms' ),
+								'label'       => __( 'Program Contact Label', 'pedal-cms' ),
 								'name'        => 'program_label_program_contact',
 								'type'        => 'text',
-								'placeholder' => __( 'Program Contact', 'pedalcms' ),
+								'placeholder' => __( 'Program Contact', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Contact Button Text', 'pedalcms' ),
+								'label'       => __( 'Contact Button Text', 'pedal-cms' ),
 								'name'        => 'program_label_contact_action',
 								'type'        => 'text',
-								'placeholder' => __( 'Contact', 'pedalcms' ),
+								'placeholder' => __( 'Contact', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Contact URL', 'pedalcms' ),
+								'label'       => __( 'Contact URL', 'pedal-cms' ),
 								'name'        => 'program_url_contact',
 								'type'        => 'url',
-								'description' => __( 'Enter a URL pattern. You may use {$program_guid} and {$program_slug}.', 'pedalcms' ),
+								'description' => __( 'Enter a URL pattern. You may use {$program_guid} and {$program_slug}.', 'pedal-cms' ),
 							],
 
 						], // end programs fields
@@ -354,193 +354,193 @@ $fields = [
 					// =========================================================
 					[
 						'id'     => 'subpages',
-						'label'  => __( 'Subpages', 'pedalcms' ),
+						'label'  => __( 'Subpages', 'pedal-cms' ),
 						'icon'   => 'dashicons-admin-page',
 						'fields' => [
 
 							[
-								'label'       => __( 'Enabled Program Subpages', 'pedalcms' ),
-								'name'        => 'enable_subpages_pdl_program',
+								'label'       => __( 'Enabled Program Subpages', 'pedal-cms' ),
+								'name'        => 'enable_subpages_pedalcms_program',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'This enables subpages globally for all programs. Each subpage can also be disabled per-program.', 'pedalcms' ),
+								'description' => __( 'This enables subpages globally for all programs. Each subpage can also be disabled per-program.', 'pedal-cms' ),
 								'options'     => [
-									'curriculum'    => __( 'Curriculum', 'pedalcms' ),
-									'careers'       => __( 'Careers', 'pedalcms' ),
-									'faculty-staff' => __( 'Faculty & Staff', 'pedalcms' ),
-									'cost'          => __( 'Cost', 'pedalcms' ),
-									'apply'         => __( 'How to Apply', 'pedalcms' ),
-									'faqs'          => __( 'FAQs', 'pedalcms' ),
-									'news'          => __( 'News', 'pedalcms' ),
+									'curriculum'    => __( 'Curriculum', 'pedal-cms' ),
+									'careers'       => __( 'Careers', 'pedal-cms' ),
+									'faculty-staff' => __( 'Faculty & Staff', 'pedal-cms' ),
+									'cost'          => __( 'Cost', 'pedal-cms' ),
+									'apply'         => __( 'How to Apply', 'pedal-cms' ),
+									'faqs'          => __( 'FAQs', 'pedal-cms' ),
+									'news'          => __( 'News', 'pedal-cms' ),
 								],
 								'default'     => [ 'curriculum', 'careers', 'faculty-staff', 'cost', 'apply', 'faqs', 'news' ],
 							],
 
 							// Careers subpage
 							[
-								'label'   => __( 'Careers', 'pedalcms' ),
+								'label'   => __( 'Careers', 'pedal-cms' ),
 								'name'    => 'career_subpage_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for the Careers program subpage.</span>',
 							],
 							[
-								'label'       => __( 'Career Post Type', 'pedalcms' ),
+								'label'       => __( 'Career Post Type', 'pedal-cms' ),
 								'name'        => 'program_subpage_careers_post_type',
 								'type'        => 'select',
-								'description' => __( 'Select the post type to associate careers with programs.', 'pedalcms' ),
+								'description' => __( 'Select the post type to associate careers with programs.', 'pedal-cms' ),
 								'options'     => [
-									'pdl_career' => 'pdl_career',
+									'pedalcms_career' => 'pedalcms_career',
 								],
-								'default'     => 'pdl_career',
+								'default'     => 'pedalcms_career',
 							],
 
 							[
-								'label'       => __( 'Page Title', 'pedalcms' ),
+								'label'       => __( 'Page Title', 'pedal-cms' ),
 								'name'        => 'program_subpage_careers_title',
 								'type'        => 'text',
-								'placeholder' => __( 'Careers', 'pedalcms' ),
+								'placeholder' => __( 'Careers', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Tab Label', 'pedalcms' ),
+								'label'       => __( 'Tab Label', 'pedal-cms' ),
 								'name'        => 'program_subpage_careers_tab_label',
 								'type'        => 'text',
-								'placeholder' => __( 'Careers', 'pedalcms' ),
+								'placeholder' => __( 'Careers', 'pedal-cms' ),
 							],
 
 							// Curriculum subpage
 							[
-								'label'   => __( 'Curriculum', 'pedalcms' ),
+								'label'   => __( 'Curriculum', 'pedal-cms' ),
 								'name'    => 'curriculum_subpage_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for the Curriculum program subpage.</span>',
 							],
 							[
-								'label'       => __( 'Page Title', 'pedalcms' ),
+								'label'       => __( 'Page Title', 'pedal-cms' ),
 								'name'        => 'program_subpage_curriculum_title',
 								'type'        => 'text',
-								'placeholder' => __( 'Curriculum', 'pedalcms' ),
+								'placeholder' => __( 'Curriculum', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Tab Label', 'pedalcms' ),
+								'label'       => __( 'Tab Label', 'pedal-cms' ),
 								'name'        => 'program_subpage_curriculum_tab_label',
 								'type'        => 'text',
-								'placeholder' => __( 'Curriculum', 'pedalcms' ),
+								'placeholder' => __( 'Curriculum', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Show Credits', 'pedalcms' ),
+								'label'       => __( 'Show Credits', 'pedal-cms' ),
 								'name'        => 'program_subpage_curriculum_show_credits',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'Whether to display the credits column in courses tables.', 'pedalcms' ),
+								'description' => __( 'Whether to display the credits column in courses tables.', 'pedal-cms' ),
 								'default'     => 1,
 							],
 
 							// Faculty & Staff subpage
 							[
-								'label'   => __( 'Faculty & Staff', 'pedalcms' ),
+								'label'   => __( 'Faculty & Staff', 'pedal-cms' ),
 								'name'    => 'faculty_staff_subpage_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for the Faculty &amp; Staff program subpage.</span>',
 							],
 							[
-								'label'       => __( 'Page Title', 'pedalcms' ),
+								'label'       => __( 'Page Title', 'pedal-cms' ),
 								'name'        => 'program_subpage_faculty_staff_title',
 								'type'        => 'text',
-								'placeholder' => __( 'Faculty & Staff', 'pedalcms' ),
+								'placeholder' => __( 'Faculty & Staff', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Tab Label', 'pedalcms' ),
+								'label'       => __( 'Tab Label', 'pedal-cms' ),
 								'name'        => 'program_subpage_faculty_staff_tab_label',
 								'type'        => 'text',
-								'placeholder' => __( 'Faculty & Staff', 'pedalcms' ),
+								'placeholder' => __( 'Faculty & Staff', 'pedal-cms' ),
 							],
 
 							// Cost subpage
 							[
-								'label'   => __( 'Cost', 'pedalcms' ),
+								'label'   => __( 'Cost', 'pedal-cms' ),
 								'name'    => 'cost_subpage_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for the Cost program subpage.</span>',
 							],
 							[
-								'label'       => __( 'Page Title', 'pedalcms' ),
+								'label'       => __( 'Page Title', 'pedal-cms' ),
 								'name'        => 'program_subpage_cost_title',
 								'type'        => 'text',
-								'placeholder' => __( 'Cost', 'pedalcms' ),
+								'placeholder' => __( 'Cost', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Tab Label', 'pedalcms' ),
+								'label'       => __( 'Tab Label', 'pedal-cms' ),
 								'name'        => 'program_subpage_cost_tab_label',
 								'type'        => 'text',
-								'placeholder' => __( 'Cost', 'pedalcms' ),
+								'placeholder' => __( 'Cost', 'pedal-cms' ),
 							],
 
 							// Apply subpage
 							[
-								'label'   => __( 'How to Apply', 'pedalcms' ),
+								'label'   => __( 'How to Apply', 'pedal-cms' ),
 								'name'    => 'apply_subpage_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for the How to Apply program subpage.</span>',
 							],
 							[
-								'label'       => __( 'Page Title', 'pedalcms' ),
+								'label'       => __( 'Page Title', 'pedal-cms' ),
 								'name'        => 'program_subpage_apply_title',
 								'type'        => 'text',
-								'placeholder' => __( 'How to Apply', 'pedalcms' ),
+								'placeholder' => __( 'How to Apply', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Tab Label', 'pedalcms' ),
+								'label'       => __( 'Tab Label', 'pedal-cms' ),
 								'name'        => 'program_subpage_apply_tab_label',
 								'type'        => 'text',
-								'placeholder' => __( 'How to Apply', 'pedalcms' ),
+								'placeholder' => __( 'How to Apply', 'pedal-cms' ),
 							],
 
 							// FAQs subpage
 							[
-								'label'   => __( 'FAQs', 'pedalcms' ),
+								'label'   => __( 'FAQs', 'pedal-cms' ),
 								'name'    => 'faq_subpage_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for the FAQs program subpage.</span>',
 							],
 							[
-								'label'       => __( 'Page Title', 'pedalcms' ),
+								'label'       => __( 'Page Title', 'pedal-cms' ),
 								'name'        => 'program_subpage_faqs_title',
 								'type'        => 'text',
-								'placeholder' => __( 'FAQs', 'pedalcms' ),
+								'placeholder' => __( 'FAQs', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Tab Label', 'pedalcms' ),
+								'label'       => __( 'Tab Label', 'pedal-cms' ),
 								'name'        => 'program_subpage_faqs_tab_label',
 								'type'        => 'text',
-								'placeholder' => __( 'FAQs', 'pedalcms' ),
+								'placeholder' => __( 'FAQs', 'pedal-cms' ),
 							],
 
 							// News subpage
 							[
-								'label'   => __( 'News', 'pedalcms' ),
+								'label'   => __( 'News', 'pedal-cms' ),
 								'name'    => 'news_subpage_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for the News program subpage.</span>',
 							],
 							[
-								'label'       => __( 'Page Title', 'pedalcms' ),
+								'label'       => __( 'Page Title', 'pedal-cms' ),
 								'name'        => 'program_subpage_news_title',
 								'type'        => 'text',
-								'placeholder' => __( 'News', 'pedalcms' ),
+								'placeholder' => __( 'News', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Tab Label', 'pedalcms' ),
+								'label'       => __( 'Tab Label', 'pedal-cms' ),
 								'name'        => 'program_subpage_news_tab_label',
 								'type'        => 'text',
-								'placeholder' => __( 'News', 'pedalcms' ),
+								'placeholder' => __( 'News', 'pedal-cms' ),
 							],
 
 						], // end subpages fields
@@ -551,46 +551,46 @@ $fields = [
 					// =========================================================
 					[
 						'id'     => 'course_catalog',
-						'label'  => __( 'Course Catalog', 'pedalcms' ),
+						'label'  => __( 'Course Catalog', 'pedal-cms' ),
 						'icon'   => 'dashicons-book',
 						'fields' => [
 
 							[
-								'label'       => __( 'Enable Course Catalog', 'pedalcms' ),
+								'label'       => __( 'Enable Course Catalog', 'pedal-cms' ),
 								'name'        => 'course_enable',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'Activate the Course Catalog post type and archive.', 'pedalcms' ),
+								'description' => __( 'Activate the Course Catalog post type and archive.', 'pedal-cms' ),
 								'default'     => true,
 							],
 
 							[
-								'label'   => __( 'Configure Course Catalog', 'pedalcms' ),
+								'label'   => __( 'Configure Course Catalog', 'pedal-cms' ),
 								'name'    => 'course_catalog_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for searching and browsing the list of courses.</span>',
 							],
 
 							[
-								'label' => __( 'Page Title', 'pedalcms' ),
+								'label' => __( 'Page Title', 'pedal-cms' ),
 								'name'  => 'course_archive_title',
 								'type'  => 'text',
 							],
 
 							[
-								'label' => __( 'Page Description', 'pedalcms' ),
+								'label' => __( 'Page Description', 'pedal-cms' ),
 								'name'  => 'course_archive_description',
 								'type'  => 'wysiwyg',
 							],
 
 							[
-								'label' => __( 'Featured Image', 'pedalcms' ),
+								'label' => __( 'Featured Image', 'pedal-cms' ),
 								'name'  => 'course_archive_featured_image',
 								'type'  => 'upload',
 							],
 
 							[
-								'label'       => __( 'Header Background Image', 'pedalcms' ),
+								'label'       => __( 'Header Background Image', 'pedal-cms' ),
 								'name'        => 'course_archive_header_background',
 								'type'        => 'upload',
 								'conditional' => [
@@ -604,64 +604,64 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Search Filters', 'pedalcms' ),
+								'label'       => __( 'Search Filters', 'pedal-cms' ),
 								'name'        => 'course_archive_search_filters',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedalcms' ),
-								'options'     => $active_filter_options(
+								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedal-cms' ),
+								'options'     => $pedalcms_active_filter_options(
 									[
-										'keyword'       => __( 'Keyword', 'pedalcms' ),
-										'session'       => __( 'Session', 'pedalcms' ),
-										'subject'       => __( 'Subject', 'pedalcms' ),
-										'instruct-mode' => __( 'Instruction Mode', 'pedalcms' ),
-										'college'       => __( 'College', 'pedalcms' ),
-										'department'    => __( 'Department', 'pedalcms' ),
+										'keyword'       => __( 'Keyword', 'pedal-cms' ),
+										'session'       => __( 'Session', 'pedal-cms' ),
+										'subject'       => __( 'Subject', 'pedal-cms' ),
+										'instruct-mode' => __( 'Instruction Mode', 'pedal-cms' ),
+										'college'       => __( 'College', 'pedal-cms' ),
+										'department'    => __( 'Department', 'pedal-cms' ),
 									]
 								),
 								'default'     => [ 'keyword', 'session', 'subject', 'instruct-mode', 'college', 'department' ],
 							],
 
 							[
-								'label'   => __( 'Configure Courses', 'pedalcms' ),
+								'label'   => __( 'Configure Courses', 'pedal-cms' ),
 								'name'    => 'courses_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for individual courses.</span>',
 							],
 
 							[
-								'label'       => __( 'Credits Label (plural)', 'pedalcms' ),
+								'label'       => __( 'Credits Label (plural)', 'pedal-cms' ),
 								'name'        => 'course_label_credits',
 								'type'        => 'text',
-								'description' => __( 'The unit of measure for course hours. Sometimes called units.', 'pedalcms' ),
-								'placeholder' => __( 'credits', 'pedalcms' ),
+								'description' => __( 'The unit of measure for course hours. Sometimes called units.', 'pedal-cms' ),
+								'placeholder' => __( 'credits', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Credits Label (singular)', 'pedalcms' ),
+								'label'       => __( 'Credits Label (singular)', 'pedal-cms' ),
 								'name'        => 'course_label_credit',
 								'type'        => 'text',
-								'placeholder' => __( 'credit', 'pedalcms' ),
+								'placeholder' => __( 'credit', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Register Button Text', 'pedalcms' ),
+								'label'       => __( 'Register Button Text', 'pedal-cms' ),
 								'name'        => 'course_label_register_action',
 								'type'        => 'text',
-								'placeholder' => __( 'Register', 'pedalcms' ),
+								'placeholder' => __( 'Register', 'pedal-cms' ),
 							],
 
 							[
-								'label' => __( 'Registration Search URL', 'pedalcms' ),
+								'label' => __( 'Registration Search URL', 'pedal-cms' ),
 								'name'  => 'course_url_reg_search',
 								'type'  => 'url',
 							],
 
 							[
-								'label'       => __( 'Instructors Label', 'pedalcms' ),
+								'label'       => __( 'Instructors Label', 'pedal-cms' ),
 								'name'        => 'course_label_instructors',
 								'type'        => 'text',
-								'placeholder' => __( 'Instructors', 'pedalcms' ),
+								'placeholder' => __( 'Instructors', 'pedal-cms' ),
 							],
 
 						], // end course_catalog fields
@@ -672,46 +672,46 @@ $fields = [
 					// =========================================================
 					[
 						'id'     => 'directory',
-						'label'  => __( 'Directory', 'pedalcms' ),
+						'label'  => __( 'Directory', 'pedal-cms' ),
 						'icon'   => 'dashicons-groups',
 						'fields' => [
 
 							[
-								'label'       => __( 'Enable Faculty & Staff Directory', 'pedalcms' ),
+								'label'       => __( 'Enable Faculty & Staff Directory', 'pedal-cms' ),
 								'name'        => 'person_enable',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'Activate the Personnel post type and archive.', 'pedalcms' ),
+								'description' => __( 'Activate the Personnel post type and archive.', 'pedal-cms' ),
 								'default'     => true,
 							],
 
 							[
-								'label'   => __( 'Configure Directory', 'pedalcms' ),
+								'label'   => __( 'Configure Directory', 'pedal-cms' ),
 								'name'    => 'faculty_staff_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for searching and browsing the list of personnel.</span>',
 							],
 
 							[
-								'label' => __( 'Archive Page Title', 'pedalcms' ),
+								'label' => __( 'Archive Page Title', 'pedal-cms' ),
 								'name'  => 'person_archive_title',
 								'type'  => 'text',
 							],
 
 							[
-								'label' => __( 'Archive Page Description', 'pedalcms' ),
+								'label' => __( 'Archive Page Description', 'pedal-cms' ),
 								'name'  => 'person_archive_description',
 								'type'  => 'wysiwyg',
 							],
 
 							[
-								'label' => __( 'Archive Featured Image', 'pedalcms' ),
+								'label' => __( 'Archive Featured Image', 'pedal-cms' ),
 								'name'  => 'person_archive_featured_image',
 								'type'  => 'upload',
 							],
 
 							[
-								'label'       => __( 'Archive Header Background Image', 'pedalcms' ),
+								'label'       => __( 'Archive Header Background Image', 'pedal-cms' ),
 								'name'        => 'person_archive_header_background',
 								'type'        => 'upload',
 								'conditional' => [
@@ -725,40 +725,40 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Archive Search Filters', 'pedalcms' ),
+								'label'       => __( 'Archive Search Filters', 'pedal-cms' ),
 								'name'        => 'person_archive_search_filters',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedalcms' ),
-								'options'     => $active_filter_options(
+								'description' => __( 'Select the list of search filters you want enabled. Disabled taxonomies will not appear.', 'pedal-cms' ),
+								'options'     => $pedalcms_active_filter_options(
 									[
-										'keyword'    => __( 'Keyword', 'pedalcms' ),
-										'person-cat' => __( 'Personnel Category', 'pedalcms' ),
-										'college'    => __( 'College', 'pedalcms' ),
-										'department' => __( 'Department', 'pedalcms' ),
+										'keyword'    => __( 'Keyword', 'pedal-cms' ),
+										'person-cat' => __( 'Personnel Category', 'pedal-cms' ),
+										'college'    => __( 'College', 'pedal-cms' ),
+										'department' => __( 'Department', 'pedal-cms' ),
 									]
 								),
 								'default'     => [ 'keyword', 'person-cat', 'college', 'department' ],
 							],
 
 							[
-								'label'   => __( 'Configure Personnel', 'pedalcms' ),
+								'label'   => __( 'Configure Personnel', 'pedal-cms' ),
 								'name'    => 'personnel_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Configuration options for individual personnel.</span>',
 							],
 
 							[
-								'label' => __( 'Personnel Header Background Image', 'pedalcms' ),
+								'label' => __( 'Personnel Header Background Image', 'pedal-cms' ),
 								'name'  => 'person_header_background',
 								'type'  => 'upload',
 							],
 
 							[
-								'label'       => __( 'Courses Taught Label', 'pedalcms' ),
+								'label'       => __( 'Courses Taught Label', 'pedal-cms' ),
 								'name'        => 'person_label_courses_taught',
 								'type'        => 'text',
-								'placeholder' => __( 'Courses Taught', 'pedalcms' ),
+								'placeholder' => __( 'Courses Taught', 'pedal-cms' ),
 							],
 
 						], // end directory fields
@@ -769,20 +769,20 @@ $fields = [
 					// =========================================================
 					[
 						'id'     => 'taxonomies',
-						'label'  => __( 'Taxonomies', 'pedalcms' ),
+						'label'  => __( 'Taxonomies', 'pedal-cms' ),
 						'icon'   => 'dashicons-tag',
 						'fields' => [
 
 							// --- College ---
 							[
-								'label'   => __( 'College', 'pedalcms' ),
+								'label'   => __( 'College', 'pedal-cms' ),
 								'name'    => 'college_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Used by Programs, Course Catalog, and Faculty & Staff Directory.</span>',
 							],
 
 							[
-								'label'   => __( 'Enable', 'pedalcms' ),
+								'label'   => __( 'Enable', 'pedal-cms' ),
 								'name'    => 'college_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
@@ -790,52 +790,52 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Enable Archive', 'pedalcms' ),
+								'label'       => __( 'Enable Archive', 'pedal-cms' ),
 								'name'        => 'college_enable_archive',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
+								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedal-cms' ),
 								'default'     => true,
 							],
 
 							[
-								'label'       => __( 'Singular Label', 'pedalcms' ),
+								'label'       => __( 'Singular Label', 'pedal-cms' ),
 								'name'        => 'college_label_single',
 								'type'        => 'text',
-								'placeholder' => __( 'College', 'pedalcms' ),
+								'placeholder' => __( 'College', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Plural Label', 'pedalcms' ),
+								'label'       => __( 'Plural Label', 'pedal-cms' ),
 								'name'        => 'college_label_plural',
 								'type'        => 'text',
-								'placeholder' => __( 'Colleges', 'pedalcms' ),
+								'placeholder' => __( 'Colleges', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Use With', 'pedalcms' ),
+								'label'       => __( 'Use With', 'pedal-cms' ),
 								'name'        => 'college_object_type',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'Choose the features to use this taxonomy with.', 'pedalcms' ),
+								'description' => __( 'Choose the features to use this taxonomy with.', 'pedal-cms' ),
 								'options'     => [
-									'pdl_program' => __( 'Programs', 'pedalcms' ),
-									'pdl_course'  => __( 'Course Catalog', 'pedalcms' ),
-									'pdl_person'  => __( 'Faculty & Staff Directory', 'pedalcms' ),
+									'pedalcms_program' => __( 'Programs', 'pedal-cms' ),
+									'pedalcms_course'  => __( 'Course Catalog', 'pedal-cms' ),
+									'pedalcms_person'  => __( 'Faculty & Staff Directory', 'pedal-cms' ),
 								],
-								'default'     => [ 'pdl_program', 'pdl_course', 'pdl_person' ],
+								'default'     => [ 'pedalcms_program', 'pedalcms_course', 'pedalcms_person' ],
 							],
 
 							// --- Department ---
 							[
-								'label'   => __( 'Department', 'pedalcms' ),
+								'label'   => __( 'Department', 'pedal-cms' ),
 								'name'    => 'department_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Used by Programs, Course Catalog, and Faculty & Staff Directory.</span>',
 							],
 
 							[
-								'label'       => __( 'Enable', 'pedalcms' ),
+								'label'       => __( 'Enable', 'pedal-cms' ),
 								'name'        => 'department_enable',
 								'type'        => 'conditional_checkbox',
 								'class'       => 'is-fancy-toggle',
@@ -844,61 +844,61 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Enable Archive', 'pedalcms' ),
+								'label'       => __( 'Enable Archive', 'pedal-cms' ),
 								'name'        => 'department_enable_archive',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
+								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedal-cms' ),
 								'default'     => true,
 							],
 
 							[
-								'label'       => __( 'Depends on College', 'pedalcms' ),
+								'label'       => __( 'Depends on College', 'pedal-cms' ),
 								'name'        => 'department_depends_college',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'If enabled, Departments will belong to a College and the relationship will be enforced.', 'pedalcms' ),
+								'description' => __( 'If enabled, Departments will belong to a College and the relationship will be enforced.', 'pedal-cms' ),
 								'default'     => true,
 							],
 
 							[
-								'label'       => __( 'Singular Label', 'pedalcms' ),
+								'label'       => __( 'Singular Label', 'pedal-cms' ),
 								'name'        => 'department_label_single',
 								'type'        => 'text',
-								'placeholder' => __( 'Department', 'pedalcms' ),
+								'placeholder' => __( 'Department', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Plural Label', 'pedalcms' ),
+								'label'       => __( 'Plural Label', 'pedal-cms' ),
 								'name'        => 'department_label_plural',
 								'type'        => 'text',
-								'placeholder' => __( 'Departments', 'pedalcms' ),
+								'placeholder' => __( 'Departments', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Use With', 'pedalcms' ),
+								'label'       => __( 'Use With', 'pedal-cms' ),
 								'name'        => 'department_object_type',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'Choose the features to use this taxonomy with.', 'pedalcms' ),
+								'description' => __( 'Choose the features to use this taxonomy with.', 'pedal-cms' ),
 								'options'     => [
-									'pdl_program' => __( 'Programs', 'pedalcms' ),
-									'pdl_course'  => __( 'Course Catalog', 'pedalcms' ),
-									'pdl_person'  => __( 'Faculty & Staff Directory', 'pedalcms' ),
+									'pedalcms_program' => __( 'Programs', 'pedal-cms' ),
+									'pedalcms_course'  => __( 'Course Catalog', 'pedal-cms' ),
+									'pedalcms_person'  => __( 'Faculty & Staff Directory', 'pedal-cms' ),
 								],
-								'default'     => [ 'pdl_program', 'pdl_course', 'pdl_person' ],
+								'default'     => [ 'pedalcms_program', 'pedalcms_course', 'pedalcms_person' ],
 							],
 
 							// --- Program Type ---
 							[
-								'label'   => __( 'Program Type', 'pedalcms' ),
+								'label'   => __( 'Program Type', 'pedal-cms' ),
 								'name'    => 'program_type_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Used by Programs.</span>',
 							],
 
 							[
-								'label'   => __( 'Enable', 'pedalcms' ),
+								'label'   => __( 'Enable', 'pedal-cms' ),
 								'name'    => 'program_type_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
@@ -906,38 +906,38 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Enable Archive', 'pedalcms' ),
+								'label'       => __( 'Enable Archive', 'pedal-cms' ),
 								'name'        => 'program_type_enable_archive',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedalcms' ),
+								'description' => __( 'If disabled, links will point to a filtered programs view.', 'pedal-cms' ),
 								'default'     => true,
 							],
 
 							[
-								'label'       => __( 'Singular Label', 'pedalcms' ),
+								'label'       => __( 'Singular Label', 'pedal-cms' ),
 								'name'        => 'program_type_label_single',
 								'type'        => 'text',
-								'placeholder' => __( 'Program Type', 'pedalcms' ),
+								'placeholder' => __( 'Program Type', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Plural Label', 'pedalcms' ),
+								'label'       => __( 'Plural Label', 'pedal-cms' ),
 								'name'        => 'program_type_label_plural',
 								'type'        => 'text',
-								'placeholder' => __( 'Program Types', 'pedalcms' ),
+								'placeholder' => __( 'Program Types', 'pedal-cms' ),
 							],
 
 							// --- Instruction Mode ---
 							[
-								'label'   => __( 'Instruction Mode', 'pedalcms' ),
+								'label'   => __( 'Instruction Mode', 'pedal-cms' ),
 								'name'    => 'instruction_mode_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Used by Programs. (e.g. In-person, Online, Hybrid)</span>',
 							],
 
 							[
-								'label'   => __( 'Enable', 'pedalcms' ),
+								'label'   => __( 'Enable', 'pedal-cms' ),
 								'name'    => 'instruct_mode_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
@@ -945,29 +945,29 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Singular Label', 'pedalcms' ),
+								'label'       => __( 'Singular Label', 'pedal-cms' ),
 								'name'        => 'instruct_mode_label_single',
 								'type'        => 'text',
-								'placeholder' => __( 'Instruction Mode', 'pedalcms' ),
+								'placeholder' => __( 'Instruction Mode', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Plural Label', 'pedalcms' ),
+								'label'       => __( 'Plural Label', 'pedal-cms' ),
 								'name'        => 'instruct_mode_label_plural',
 								'type'        => 'text',
-								'placeholder' => __( 'Instruction Modes', 'pedalcms' ),
+								'placeholder' => __( 'Instruction Modes', 'pedal-cms' ),
 							],
 
 							// --- Subject ---
 							[
-								'label'   => __( 'Subject', 'pedalcms' ),
+								'label'   => __( 'Subject', 'pedal-cms' ),
 								'name'    => 'subject_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Used in the Course Catalog.</span>',
 							],
 
 							[
-								'label'   => __( 'Enable', 'pedalcms' ),
+								'label'   => __( 'Enable', 'pedal-cms' ),
 								'name'    => 'subject_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
@@ -975,29 +975,29 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Singular Label', 'pedalcms' ),
+								'label'       => __( 'Singular Label', 'pedal-cms' ),
 								'name'        => 'subject_label_single',
 								'type'        => 'text',
-								'placeholder' => __( 'Subject', 'pedalcms' ),
+								'placeholder' => __( 'Subject', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Plural Label', 'pedalcms' ),
+								'label'       => __( 'Plural Label', 'pedal-cms' ),
 								'name'        => 'subject_label_plural',
 								'type'        => 'text',
-								'placeholder' => __( 'Subjects', 'pedalcms' ),
+								'placeholder' => __( 'Subjects', 'pedal-cms' ),
 							],
 
 							// --- Session ---
 							[
-								'label'   => __( 'Session', 'pedalcms' ),
+								'label'   => __( 'Session', 'pedal-cms' ),
 								'name'    => 'session_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Used in the Course Catalog. Also commonly referred to as "term." (e.g. Fall, Spring, Summer)</span>',
 							],
 
 							[
-								'label'   => __( 'Enable', 'pedalcms' ),
+								'label'   => __( 'Enable', 'pedal-cms' ),
 								'name'    => 'session_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
@@ -1005,29 +1005,29 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Singular Label', 'pedalcms' ),
+								'label'       => __( 'Singular Label', 'pedal-cms' ),
 								'name'        => 'session_label_single',
 								'type'        => 'text',
-								'placeholder' => __( 'Session', 'pedalcms' ),
+								'placeholder' => __( 'Session', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Plural Label', 'pedalcms' ),
+								'label'       => __( 'Plural Label', 'pedal-cms' ),
 								'name'        => 'session_label_plural',
 								'type'        => 'text',
-								'placeholder' => __( 'Sessions', 'pedalcms' ),
+								'placeholder' => __( 'Sessions', 'pedal-cms' ),
 							],
 
 							// --- Personnel Category ---
 							[
-								'label'   => __( 'Personnel Category', 'pedalcms' ),
+								'label'   => __( 'Personnel Category', 'pedal-cms' ),
 								'name'    => 'person_cat_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Used by personnel.</span>',
 							],
 
 							[
-								'label'   => __( 'Enable', 'pedalcms' ),
+								'label'   => __( 'Enable', 'pedal-cms' ),
 								'name'    => 'person_cat_enable',
 								'type'    => 'checkbox',
 								'class'   => 'is-fancy-toggle',
@@ -1035,48 +1035,48 @@ $fields = [
 							],
 
 							[
-								'label'       => __( 'Enable Archive', 'pedalcms' ),
+								'label'       => __( 'Enable Archive', 'pedal-cms' ),
 								'name'        => 'person_cat_enable_archive',
 								'type'        => 'checkbox',
 								'class'       => 'is-fancy-toggle',
-								'description' => __( 'If disabled, links will point to a filtered directory view.', 'pedalcms' ),
+								'description' => __( 'If disabled, links will point to a filtered directory view.', 'pedal-cms' ),
 								'default'     => true,
 							],
 
 							[
-								'label'       => __( 'Singular Label', 'pedalcms' ),
+								'label'       => __( 'Singular Label', 'pedal-cms' ),
 								'name'        => 'person_cat_label_single',
 								'type'        => 'text',
-								'placeholder' => __( 'Personnel Category', 'pedalcms' ),
+								'placeholder' => __( 'Personnel Category', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Plural Label', 'pedalcms' ),
+								'label'       => __( 'Plural Label', 'pedal-cms' ),
 								'name'        => 'person_cat_label_plural',
 								'type'        => 'text',
-								'placeholder' => __( 'Personnel Categories', 'pedalcms' ),
+								'placeholder' => __( 'Personnel Categories', 'pedal-cms' ),
 							],
 
 							// --- FAQ Category ---
 							[
-								'label'   => __( 'FAQ Category', 'pedalcms' ),
+								'label'   => __( 'FAQ Category', 'pedal-cms' ),
 								'name'    => 'faq_cat_group',
 								'type'    => 'custom_html',
 								'content' => '<span class="pdl-group-description">Used by programs.</span>',
 							],
 
 							[
-								'label'       => __( 'Singular Label', 'pedalcms' ),
+								'label'       => __( 'Singular Label', 'pedal-cms' ),
 								'name'        => 'faq_cat_label_single',
 								'type'        => 'text',
-								'placeholder' => __( 'FAQ Category', 'pedalcms' ),
+								'placeholder' => __( 'FAQ Category', 'pedal-cms' ),
 							],
 
 							[
-								'label'       => __( 'Plural Label', 'pedalcms' ),
+								'label'       => __( 'Plural Label', 'pedal-cms' ),
 								'name'        => 'faq_cat_label_plural',
 								'type'        => 'text',
-								'placeholder' => __( 'FAQ Categories', 'pedalcms' ),
+								'placeholder' => __( 'FAQ Categories', 'pedal-cms' ),
 							],
 
 						], // end taxonomies fields
@@ -1090,4 +1090,4 @@ $fields = [
 
 ]; // end fields
 
-return apply_filters( 'pdl/cassette/fields/settings', $fields );
+return apply_filters( 'pedalcms/cassette/fields/settings', $pedalcms_fields );

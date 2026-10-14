@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Handles all global settings and setup.
  *
@@ -174,7 +176,7 @@ class Plugin {
 		 *
 		 * @since 0.1.0
 		 */
-		do_action( 'pdl/register_filters' );
+		do_action( 'pedalcms/register_filters' );
 
 		self::setup_labels();
 
@@ -192,49 +194,49 @@ class Plugin {
 	 */
 	private static function setup_labels() {
 		self::$labels = [
-			'more_details'          => __( 'More Details', 'pedalcms' ),
-			'no_one_found'          => __( 'No one was found.', 'pedalcms' ),
-			'no_programs_found'     => __( 'No programs were found.', 'pedalcms' ),
-			'prerequisites'         => __( 'Prerequisites', 'pedalcms' ),
-			'yes'                   => __( 'Yes', 'pedalcms' ),
-			'no'                    => __( 'No', 'pedalcms' ),
-			'phone'                 => _x( 'Phone', 'noun', 'pedalcms' ),
-			'email'                 => _x( 'Email', 'noun', 'pedalcms' ),
-			'office'                => __( 'Office', 'pedalcms' ),
-			'filter'                => __( 'Filter', 'pedalcms' ),
-			'show'                  => __( 'Show', 'pedalcms' ),
-			'hide'                  => __( 'Hide', 'pedalcms' ),
-			'more_filters'          => __( 'More Filters', 'pedalcms' ),
-			'apply_filters'         => __( 'Search', 'pedalcms' ),
-			'reset_filters'         => __( 'Reset', 'pedalcms' ),
-			'missing_filters_data'  => __( 'Missing data to render filters.', 'pedalcms' ),
+			'more_details'          => __( 'More Details', 'pedal-cms' ),
+			'no_one_found'          => __( 'No one was found.', 'pedal-cms' ),
+			'no_programs_found'     => __( 'No programs were found.', 'pedal-cms' ),
+			'prerequisites'         => __( 'Prerequisites', 'pedal-cms' ),
+			'yes'                   => __( 'Yes', 'pedal-cms' ),
+			'no'                    => __( 'No', 'pedal-cms' ),
+			'phone'                 => _x( 'Phone', 'noun', 'pedal-cms' ),
+			'email'                 => _x( 'Email', 'noun', 'pedal-cms' ),
+			'office'                => __( 'Office', 'pedal-cms' ),
+			'filter'                => __( 'Filter', 'pedal-cms' ),
+			'show'                  => __( 'Show', 'pedal-cms' ),
+			'hide'                  => __( 'Hide', 'pedal-cms' ),
+			'more_filters'          => __( 'More Filters', 'pedal-cms' ),
+			'apply_filters'         => __( 'Search', 'pedal-cms' ),
+			'reset_filters'         => __( 'Reset', 'pedal-cms' ),
+			'missing_filters_data'  => __( 'Missing data to render filters.', 'pedal-cms' ),
 			/* translators: The placeholder is the name of the filter. It will be translated separately. */
-			'missing_filter_data'   => __( 'Missing data to render %s filter', 'pedalcms' ),
-			'filtered_results'      => __( 'Filtered Results', 'pedalcms' ),
-			'showing'               => __( 'Showing', 'pedalcms' ),
+			'missing_filter_data'   => __( 'Missing data to render %s filter', 'pedal-cms' ),
+			'filtered_results'      => __( 'Filtered Results', 'pedal-cms' ),
+			'showing'               => __( 'Showing', 'pedal-cms' ),
 			/* translators: Number of results (e.g. 'Showing 1-10 of 120 posts'). Note: the last placeholder is the name of the post_type.  */
-			'showing_of'            => __( 'Showing %1$s–%2$s of %3$s %4$s.', 'pedalcms' ),
-			'keyword'               => __( 'Keyword', 'pedalcms' ),
-			'none_selected_prefix'  => __( 'Any ', 'pedalcms' ),
-			'credit'                => __( 'credit', 'pedalcms' ),
-			'credits'               => __( 'credits', 'pedalcms' ),
-			'offered_in'            => __( 'Offered in', 'pedalcms' ),
-			'instructors'           => __( 'Instructors', 'pedalcms' ),
-			'courses_taught'        => __( 'Courses Taught', 'pedalcms' ),
-			'program_subnav'        => __( 'Program Subnav', 'pedalcms' ),
-			'about_program'         => __( 'About this Program', 'pedalcms' ),
-			'application_deadlines' => __( 'Application Deadlines', 'pedalcms' ),
-			'program_contact'       => __( 'Program Contact', 'pedalcms' ),
-			'contact_action'        => __( 'Contact', 'pedalcms' ),
-			'featured'              => __( 'Featured', 'pedalcms' ),
-			'read_more'             => __( 'Read More', 'pedalcms' ),
-			'show_all_posts'        => __( 'Show All Posts', 'pedalcms' ),
-			'program_details'       => __( 'Program Details', 'pedalcms' ),
-			'apply_now_action'      => __( 'Apply Now', 'pedalcms' ),
-			'request_info_action'   => __( 'Request Info', 'pedalcms' ),
-			'estimated_cost'        => __( 'Estimated Cost', 'pedalcms' ),
-			'register_action'       => __( 'Register', 'pedalcms' ),
-			'back_to_top'           => __( 'Back to Top', 'pedalcms' ),
+			'showing_of'            => __( 'Showing %1$s–%2$s of %3$s %4$s.', 'pedal-cms' ),
+			'keyword'               => __( 'Keyword', 'pedal-cms' ),
+			'none_selected_prefix'  => __( 'Any ', 'pedal-cms' ),
+			'credit'                => __( 'credit', 'pedal-cms' ),
+			'credits'               => __( 'credits', 'pedal-cms' ),
+			'offered_in'            => __( 'Offered in', 'pedal-cms' ),
+			'instructors'           => __( 'Instructors', 'pedal-cms' ),
+			'courses_taught'        => __( 'Courses Taught', 'pedal-cms' ),
+			'program_subnav'        => __( 'Program Subnav', 'pedal-cms' ),
+			'about_program'         => __( 'About this Program', 'pedal-cms' ),
+			'application_deadlines' => __( 'Application Deadlines', 'pedal-cms' ),
+			'program_contact'       => __( 'Program Contact', 'pedal-cms' ),
+			'contact_action'        => __( 'Contact', 'pedal-cms' ),
+			'featured'              => __( 'Featured', 'pedal-cms' ),
+			'read_more'             => __( 'Read More', 'pedal-cms' ),
+			'show_all_posts'        => __( 'Show All Posts', 'pedal-cms' ),
+			'program_details'       => __( 'Program Details', 'pedal-cms' ),
+			'apply_now_action'      => __( 'Apply Now', 'pedal-cms' ),
+			'request_info_action'   => __( 'Request Info', 'pedal-cms' ),
+			'estimated_cost'        => __( 'Estimated Cost', 'pedal-cms' ),
+			'register_action'       => __( 'Register', 'pedal-cms' ),
+			'back_to_top'           => __( 'Back to Top', 'pedal-cms' ),
 		];
 	}
 
@@ -267,7 +269,7 @@ class Plugin {
 		 *
 		 * @param bool $enabled Whether the settings UI should be registered.
 		 */
-		return (bool) apply_filters( 'pdl/settings_ui_enabled', $enabled );
+		return (bool) apply_filters( 'pedalcms/settings_ui_enabled', $enabled );
 	}
 
 	/**
@@ -418,7 +420,7 @@ class Plugin {
 			$filters = array_map(
 				function ( $a ) {
 					return str_replace(
-						[ 'pdl_', '_' ],
+						[ 'pedalcms_', '_' ],
 						[ '', '-' ],
 						$a
 					);
@@ -460,13 +462,13 @@ class Plugin {
 			return;
 		}
 
-		$pdl_template_manager = new TemplateManager(
+		$pedalcms_template_manager = new TemplateManager(
 			self::$template_path,
 			self::$name,
 			$templates
 		);
 
-		add_filter( 'template_include', [ $pdl_template_manager, 'maybe_use_template' ], PHP_INT_MAX );
+		add_filter( 'template_include', [ $pedalcms_template_manager, 'maybe_use_template' ], PHP_INT_MAX );
 	}
 
 	/**
@@ -535,7 +537,7 @@ class Plugin {
 				'title'       => ucwords( str_replace( '-', ' ', $template['name'] ) ),
 				'description' => sprintf(
 					/* translators: %s: template slug */
-					__( 'PedalCMS template for %s.', 'pedalcms' ),
+					__( 'PedalCMS template for %s.', 'pedal-cms' ),
 					$template['name']
 				),
 				'content'     => self::get_block_template_content( $template['name'] ),
@@ -616,9 +618,9 @@ class Plugin {
 		self::$rendering_block_template = true;
 
 		try {
-			do_action( 'pdl/before_main_content' );
+			do_action( 'pedalcms/before_main_content' );
 			TemplateManager::load_template( $template_name );
-			do_action( 'pdl/after_main_content' );
+			do_action( 'pedalcms/after_main_content' );
 		} finally {
 			self::$rendering_block_template = false;
 		}
@@ -648,12 +650,12 @@ class Plugin {
 			$label = self::$labels[ $label_key ] ??
 				sprintf(
 					/* translators: the argument is the key of the label */
-					__( 'Label "%s" not found', 'pedalcms' ),
+					__( 'Label "%s" not found', 'pedal-cms' ),
 					$label_key
 				);
 		}
 
-		$label = apply_filters( 'pdl/get_label', $label, $label_key, 'programs' );
+		$label = apply_filters( 'pedalcms/get_label', $label, $label_key, 'programs' );
 
 		return $label;
 	}
@@ -666,7 +668,7 @@ class Plugin {
 	 * @return mixed The value of the setting.
 	 */
 	public static function get_option( string $option, mixed $fallback = null ): mixed {
-		$value = get_option( 'options_pdl_' . $option, $fallback );
+		$value = get_option( 'pedalcms_' . $option, $fallback );
 
 		/**
 		 * Filters the value of all options.
@@ -676,7 +678,7 @@ class Plugin {
 		 * @param $value The value of the option.
 		 * @param $option The name of the option.
 		 */
-		$value = apply_filters( 'pdl/options/all', $value, $option );
+		$value = apply_filters( 'pedalcms/options/all', $value, $option );
 
 		/**
 		 * Filters the value of a single option. The last part of the filter is the name of the option.
@@ -685,6 +687,56 @@ class Plugin {
 		 *
 		 * @param $value The value of the option.
 		 */
-		return apply_filters( "pdl/options/{$option}", $value );
+		return apply_filters( "pedalcms/options/{$option}", $value );
+	}
+
+	/**
+	 * Reads a CassetteCMF-managed field value from native WordPress storage.
+	 *
+	 * Supported $post_id formats:
+	 *   false / null / 0   - current post in the loop (get_the_ID())
+	 *   WP_Post            - post meta on that object
+	 *   WP_Term            - term meta on that object
+	 *   positive int       - post meta for that post ID
+	 *   'term_<n>'         - term meta for term ID n
+	 *   'option'/'options' - plugin option stored by the CassetteCMF settings page
+	 *
+	 * @since 0.7.0
+	 *
+	 * @param string $selector The field / meta key.
+	 * @param mixed  $post_id  Object context.
+	 * @return mixed The stored value, or false when nothing is found.
+	 */
+	public static function get_field( string $selector, $post_id = false ): mixed {
+		// Options / settings page.
+		if ( 'option' === $post_id || 'options' === $post_id ) {
+			return self::get_option( $selector );
+		}
+
+		// WP_Term object.
+		if ( $post_id instanceof \WP_Term ) {
+			return get_term_meta( $post_id->term_id, $selector, true );
+		}
+
+		// WP_Post object.
+		if ( $post_id instanceof \WP_Post ) {
+			return get_post_meta( $post_id->ID, $selector, true );
+		}
+
+		// 'term_<id>' string format.
+		if ( is_string( $post_id ) && str_starts_with( $post_id, 'term_' ) ) {
+			$term_id = (int) substr( $post_id, 5 );
+			return $term_id ? get_term_meta( $term_id, $selector, true ) : false;
+		}
+
+		// Explicit numeric post ID.
+		$post_id = (int) $post_id;
+		if ( $post_id > 0 ) {
+			return get_post_meta( $post_id, $selector, true );
+		}
+
+		// Default: current post in The Loop.
+		$current_id = get_the_ID();
+		return $current_id ? get_post_meta( $current_id, $selector, true ) : false;
 	}
 }

@@ -8,13 +8,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$faq = $args['faq'] ?? null;
+$pedalcms_faq = $args['faq'] ?? null;
 
-if ( $faq ) : ?>
+if ( $pedalcms_faq ) : ?>
 <details class="program-faq pdl-expandable">
-	<summary class="program-faq__question"><?php echo esc_html( $faq['question'] ); ?>
+	<summary class="program-faq__question"><?php echo esc_html( $pedalcms_faq['question'] ); ?>
 	</summary>
-	<div class="program-faq__answer pdl-expandable__contents"><?php echo wp_kses_post( $faq['answer'] ); ?>
+	<div class="program-faq__answer pdl-expandable__contents"><?php echo wp_kses_post( $pedalcms_faq['answer'] ); ?>
 	</div>
 </details>
 	<?php

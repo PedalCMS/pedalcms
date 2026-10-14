@@ -8,34 +8,34 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$defaults = [
+$pedalcms_defaults = [
 	'people'                   => null,
 	'layout'                   => 'grid',
 	'show_contact_info'        => true,
 	'show_contact_info_labels' => false,
 	'img_size'                 => 'medium',
-	'label_no_one_found'       => pdl_get_post_type_label( 'pdl_person', 'not_found' ),
+	'label_no_one_found'       => pedalcms_get_post_type_label( 'pedalcms_person', 'not_found' ),
 ];
 
-$args = pdl_parse_template_args( $args, $defaults, $template );
+$pedalcms_args = pedalcms_parse_template_args( $args, $pedalcms_defaults, $template );
 
-$classes = [
+$pedalcms_classes = [
 	'person-list',
-	'person-list--' . $args['layout'],
+	'person-list--' . $pedalcms_args['layout'],
 ];
 ?>
 <section
-	class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+	class="<?php echo esc_attr( implode( ' ', $pedalcms_classes ) ); ?>">
 	<?php
-	if ( is_array( $args['people'] ) && ! empty( $args['people'] ) ) :
-		foreach ( $args['people'] as $person_post ) :
-			$args['person_post'] = $person_post;
-			pdl_get_template_part( 'archive-person/person-item', $args );
+	if ( is_array( $pedalcms_args['people'] ) && ! empty( $pedalcms_args['people'] ) ) :
+		foreach ( $pedalcms_args['people'] as $pedalcms_person_post ) :
+			$pedalcms_args['person_post'] = $pedalcms_person_post;
+			pedalcms_get_template_part( 'archive-person/person-item', $pedalcms_args );
 		endforeach;
 	else :
 		?>
 
-	<p class="empty-state-message"><?php echo esc_html( $args['label_no_one_found'] ); ?>
+	<p class="empty-state-message"><?php echo esc_html( $pedalcms_args['label_no_one_found'] ); ?>
 	</p>
 
 	<?php endif; ?>

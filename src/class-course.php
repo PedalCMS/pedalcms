@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Course custom post type.
  *
@@ -12,7 +14,7 @@ class Course extends CustomPostType {
 	/**
 	 * @inheritdoc
 	 */
-	public const POST_TYPE = 'pdl_course';
+	public const POST_TYPE = 'pedalcms_course';
 
 	/**
 	 * @inheritdoc
@@ -38,33 +40,33 @@ class Course extends CustomPostType {
 	 */
 	protected function setup_labels(): void {
 		$this->args['labels'] = [
-			'name'                     => _x( 'Course Catalog', 'post type general name', 'pedalcms' ),
-			'singular_name'            => _x( 'Course', 'post type singular name', 'pedalcms' ),
-			'plural_not_collective'    => _x( 'Courses', 'post type plural name not collective', 'pedalcms' ),
-			'add_new_item'             => __( 'Add New Course', 'pedalcms' ),
-			'edit_item'                => __( 'Edit Course', 'pedalcms' ),
-			'new_item'                 => __( 'New Course', 'pedalcms' ),
-			'view_item'                => __( 'View Course', 'pedalcms' ),
-			'view_items'               => __( 'View Courses', 'pedalcms' ),
-			'search_items'             => __( 'Search Courses', 'pedalcms' ),
-			'not_found'                => __( 'No courses found.', 'pedalcms' ),
-			'not_found_in_trash'       => __( 'No courses found in Trash.', 'pedalcms' ),
-			'parent_item_colon'        => __( 'Parent Course:', 'pedalcms' ),
-			'all_items'                => __( 'All Courses', 'pedalcms' ),
-			'archives'                 => __( 'Course Catalog', 'pedalcms' ),
-			'attributes'               => __( 'Course Attributes', 'pedalcms' ),
-			'insert_into_item'         => __( 'Insert into course', 'pedalcms' ),
-			'uploaded_to_this_item'    => __( 'Uploaded to this course', 'pedalcms' ),
-			'filter_items_list'        => __( 'Filter courses list', 'pedalcms' ),
-			'items_list_navigation'    => __( 'Courses list navigation', 'pedalcms' ),
-			'items_list'               => __( 'Courses list', 'pedalcms' ),
-			'item_published'           => __( 'Course published.', 'pedalcms' ),
-			'item_published_privately' => __( 'Course published privately.', 'pedalcms' ),
-			'item_reverted_to_draft'   => __( 'Course reverted to draft.', 'pedalcms' ),
-			'item_scheduled'           => __( 'Course scheduled.', 'pedalcms' ),
-			'item_updated'             => __( 'Course updated.', 'pedalcms' ),
-			'item_link'                => _x( 'Course Link', 'navigation link block title', 'pedalcms' ),
-			'item_link_description'    => _x( 'A link to a course.', 'navigation link block description', 'pedalcms' ),
+			'name'                     => _x( 'Course Catalog', 'post type general name', 'pedal-cms' ),
+			'singular_name'            => _x( 'Course', 'post type singular name', 'pedal-cms' ),
+			'plural_not_collective'    => _x( 'Courses', 'post type plural name not collective', 'pedal-cms' ),
+			'add_new_item'             => __( 'Add New Course', 'pedal-cms' ),
+			'edit_item'                => __( 'Edit Course', 'pedal-cms' ),
+			'new_item'                 => __( 'New Course', 'pedal-cms' ),
+			'view_item'                => __( 'View Course', 'pedal-cms' ),
+			'view_items'               => __( 'View Courses', 'pedal-cms' ),
+			'search_items'             => __( 'Search Courses', 'pedal-cms' ),
+			'not_found'                => __( 'No courses found.', 'pedal-cms' ),
+			'not_found_in_trash'       => __( 'No courses found in Trash.', 'pedal-cms' ),
+			'parent_item_colon'        => __( 'Parent Course:', 'pedal-cms' ),
+			'all_items'                => __( 'All Courses', 'pedal-cms' ),
+			'archives'                 => __( 'Course Catalog', 'pedal-cms' ),
+			'attributes'               => __( 'Course Attributes', 'pedal-cms' ),
+			'insert_into_item'         => __( 'Insert into course', 'pedal-cms' ),
+			'uploaded_to_this_item'    => __( 'Uploaded to this course', 'pedal-cms' ),
+			'filter_items_list'        => __( 'Filter courses list', 'pedal-cms' ),
+			'items_list_navigation'    => __( 'Courses list navigation', 'pedal-cms' ),
+			'items_list'               => __( 'Courses list', 'pedal-cms' ),
+			'item_published'           => __( 'Course published.', 'pedal-cms' ),
+			'item_published_privately' => __( 'Course published privately.', 'pedal-cms' ),
+			'item_reverted_to_draft'   => __( 'Course reverted to draft.', 'pedal-cms' ),
+			'item_scheduled'           => __( 'Course scheduled.', 'pedal-cms' ),
+			'item_updated'             => __( 'Course updated.', 'pedal-cms' ),
+			'item_link'                => _x( 'Course Link', 'navigation link block title', 'pedal-cms' ),
+			'item_link_description'    => _x( 'A link to a course.', 'navigation link block description', 'pedal-cms' ),
 		];
 	}
 
@@ -114,10 +116,12 @@ class Course extends CustomPostType {
 			esc_html( $post->post_title )
 		);
 
-		if ( $post->course_code ) {
+		$course_code = get_post_meta( $post->ID, 'pedalcms_course_code', true );
+
+		if ( $course_code ) {
 			$title .= sprintf(
 				' <span class="course-code">(%s)</span>',
-				esc_html( $post->course_code )
+				esc_html( $course_code )
 			);
 		}
 
@@ -140,7 +144,7 @@ class Course extends CustomPostType {
 	public static function get_action_link( string $action, $course = null ): string {
 		$course = get_post( $course );
 
-		$url = get_post_meta( $course->ID, 'url_' . $action, true );
+		$url = get_post_meta( $course->ID, 'pedalcms_url_' . $action, true );
 
 		if ( $url ) {
 			return $url;
@@ -155,8 +159,8 @@ class Course extends CustomPostType {
 					'{$course_reg_key}',
 				],
 				[
-					(string) get_post_meta( $course->ID, 'course_catalog_key', true ),
-					(string) get_post_meta( $course->ID, 'course_registration_key', true ),
+					(string) get_post_meta( $course->ID, 'pedalcms_course_catalog_key', true ),
+					(string) get_post_meta( $course->ID, 'pedalcms_course_registration_key', true ),
 				],
 				$url
 			);

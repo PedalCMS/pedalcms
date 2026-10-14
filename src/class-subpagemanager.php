@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Handles all functionality related to Subpages.
  *
@@ -25,7 +27,7 @@ class SubpageManager {
 	 *
 	 * @var string
 	 */
-	private $query_var = 'pdl_subpage';
+	private $query_var = 'pedalcms_subpage';
 
 	/**
 	 * List of registered {@see \PedalCMS\Core\Subpage} objects, all of which are enabled.
@@ -114,7 +116,7 @@ class SubpageManager {
 		 * @param Subpage $subpage The subpage to be registered.
 		 * @param string $post_type The post_type this subpage belongs to.
 		 */
-		$subpage = apply_filters( 'pdl/add_subpage', $subpage, $this->post_type );
+		$subpage = apply_filters( 'pedalcms/add_subpage', $subpage, $this->post_type );
 		$subpage->before_add();
 		$this->subpages[] = $subpage;
 		$this->sort();
@@ -219,7 +221,7 @@ class SubpageManager {
 			array_shift( $subpages );
 		}
 
-		$subpages = apply_filters( 'pdl/get_subpages', $subpages, $list_name, $this->post_type );
+		$subpages = apply_filters( 'pedalcms/get_subpages', $subpages, $list_name, $this->post_type );
 
 		if ( 'hash' === $return_type ) {
 			return array_combine(
@@ -311,7 +313,7 @@ class SubpageManager {
 				 * @param array $title_parts The complete title parts from `document_title_parts` filter.
 				 */
 				$title['title'] = apply_filters(
-					'pdl/subpage_document_title_part',
+					'pedalcms/subpage_document_title_part',
 					$subpage->document_title . ', ' . $title['title'],
 					$subpage->document_title,
 					$title['title'],
@@ -473,7 +475,7 @@ class SubpageManager {
 		if ( 'index' !== $subpage->slug && $subpage->is_builtin() ) {
 			$field_safe = str_replace( '-', '_', $subpage->slug );
 
-			$show = (bool) get_post_meta( get_the_ID(), sprintf( 'show_%s_section', $field_safe ), true );
+			$show = (bool) get_post_meta( get_the_ID(), sprintf( 'pedalcms_show_%s_section', $field_safe ), true );
 		}
 
 		/**
@@ -485,7 +487,7 @@ class SubpageManager {
 		 * @param string $subpage The subpage in question.
 		 * @param string $post_type The post_type this subpage belongs to.
 		 */
-		return apply_filters( 'pdl/maybe_show_subpage', $show, $subpage, $this->post_type );
+		return apply_filters( 'pedalcms/maybe_show_subpage', $show, $subpage, $this->post_type );
 	}
 
 	/**
@@ -507,7 +509,7 @@ class SubpageManager {
 		 * @param array $filters The subpages by slug.
 		 */
 		return apply_filters(
-			'pdl/enabled_subpages',
+			'pedalcms/enabled_subpages',
 			wp_list_pluck( $this->subpages, 'slug' ),
 			$this->post_type,
 			$this->subpages
@@ -539,7 +541,7 @@ class SubpageManager {
 		 * @param string $url The url of the subpage.
 		 * @param string $subpage The slug of the corresponding subpage.
 		 */
-		$link = apply_filters( 'pdl/get_subpage_link', $link, $subpage );
+		$link = apply_filters( 'pedalcms/get_subpage_link', $link, $subpage );
 
 		if ( $output ) {
 			echo esc_url( $link );

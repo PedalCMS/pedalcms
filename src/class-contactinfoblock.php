@@ -2,6 +2,8 @@
 
 namespace PedalCMS\Core;
 
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Contact Info custom block.
  *
@@ -35,7 +37,7 @@ class ContactInfoBlock extends CustomBlock {
 		$post = get_post();
 
 		ob_start();
-		pdl_get_template_part(
+		pedalcms_get_template_part(
 			'blocks/contact-info',
 			compact( 'post' )
 		);

@@ -8,4 +8,4 @@
 
 defined( 'ABSPATH' ) || exit;
 
-pdl_get_template_part( 'common/num-results' );
+pedalcms_get_template_part( 'common/num-results' );
