@@ -174,6 +174,14 @@ See the PHP API reference in the [documentation](https://pedalcms.com/docs/phpdo
    npm install
    ```
 
+   > **Prefixed dependencies:** `pedalcms/cassette-cmf` is namespace-prefixed with
+   > [Strauss](https://github.com/BrianHenryIE/strauss) so it cannot collide with another
+   > plugin's copy. `composer install`/`update` runs `composer prefix-namespaces`, which
+   > downloads a pinned `bin/strauss.phar` (git-ignored) and writes the prefixed library to
+   > `vendor-prefixed/` (also git-ignored, `PedalCMS\Vendor\PedalCMS\CassetteCMF`). Never
+   > reference the unprefixed namespace in plugin code, and always run `composer install`
+   > (not just a copy of `vendor/`) before building or testing.
+
 3. **Start development environment**
    ```bash
    npm run env:start

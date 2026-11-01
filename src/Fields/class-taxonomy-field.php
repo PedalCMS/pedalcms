@@ -11,7 +11,7 @@
 
 namespace PedalCMS\Fields;
 
-use PedalCMS\CassetteCMF\Field\Abstract_Field;
+use PedalCMS\Vendor\PedalCMS\CassetteCMF\Field\Abstract_Field;
 
 defined( 'ABSPATH' ) || exit;
 
