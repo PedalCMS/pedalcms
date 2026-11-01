@@ -138,7 +138,7 @@ No. It is strictly for marketing your course catalog, not facilitating coursewor
 
 ### Where can I get help?
 
-Visit [pedalcms.com](https://pedalcms.com) or post in the [support forum](https://wordpress.org/support/plugin/pedalcms/).
+Read the [documentation](https://pedalcms.com/docs/), visit [pedalcms.com](https://pedalcms.com) or post in the [support forum](https://wordpress.org/support/plugin/pedalcms/).
 
 == Changelog ==
 

@@ -9,9 +9,6 @@
 .env
 .php_cs.cache
 .php-cs-fixer.cache
-.phpdoc/*
-!.phpdoc/template/
-/docs
 .phpunit.result.cache
 /phpunit.xml
 /vendor/*

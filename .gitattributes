@@ -21,7 +21,6 @@ phpstan.neon.dist export-ignore
 phpstan-baseline.neon export-ignore
 eslint.config.mjs export-ignore
 .phpcs.xml export-ignore
-phpdoc.dist.xml export-ignore
 /.github export-ignore
 /bin export-ignore
 /tests export-ignore
@@ -29,5 +28,4 @@ phpdoc.dist.xml export-ignore
 /assets/scss export-ignore
 /assets/js/src export-ignore
 /admin/js/src export-ignore
-/.phpdoc export-ignore
 /scripts export-ignore

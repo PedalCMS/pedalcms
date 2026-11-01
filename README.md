@@ -2,10 +2,18 @@
 
 [![Version](https://img.shields.io/badge/version-0.7.0-blue.svg)](https://github.com/PedalCMS/pedalcms)
 [![PHP](https://img.shields.io/badge/PHP-8.2%2B-blue.svg)](https://php.net)
-[![WordPress](https://img.shields.io/badge/WordPress-5.6%2B-blue.svg)](https://wordpress.org)
+[![WordPress](https://img.shields.io/badge/WordPress-6.9%2B-blue.svg)](https://wordpress.org)
 [![License](https://img.shields.io/badge/license-GPL--2.0%2B-green.svg)](https://www.gnu.org/licenses/gpl-2.0.html)
 
 A comprehensive WordPress plugin designed as a **program marketing powerhouse** for educational institutions. PedalCMS provides a complete content management system for academic programs, courses, faculty, and student information.
+
+## 📖 Documentation
+
+The documentation lives at **[pedalcms.com/docs](https://pedalcms.com/docs)** and is maintained in a separate docs repository:
+
+- **User guide**: a hands-on course for site administrators and content editors.
+- **Developer handbook**: architecture, template overrides, configuration and hooks.
+- **PHP API reference** and **hooks reference**: generated from this source by the docs repository for every release.
 
 ## 🚀 Features
 
@@ -41,10 +49,9 @@ A comprehensive WordPress plugin designed as a **program marketing powerhouse** 
 ## 🛠️ Installation
 
 ### Requirements
-- **WordPress**: 5.6 or higher
+- **WordPress**: 6.9 or higher
 - **PHP**: 8.2 or higher
 - **MySQL**: 5.6 or higher
-- **Advanced Custom Fields (ACF)**: Required for full functionality
 
 ### Quick Install
 
@@ -87,7 +94,7 @@ add_filter( 'pedalcms/settings_ui_enabled', function ( $enabled ) {
 
 ## 🎨 Template System
 
-PedalCMS includes a complete template system for displaying content:
+PedalCMS includes a complete template system for displaying content. To change any template, copy it into `your-theme/pedalcms/` (keeping the same file name and sub-folder); see *Template overrides* in the [developer handbook](https://pedalcms.com/docs/developers/template-overrides/).
 
 ### Single Templates
 - `single-program.php` - Individual program pages
@@ -124,30 +131,32 @@ PedalCMS includes a complete template system for displaying content:
 | Departments | Academic departments | Programs, Courses, People |
 | Subjects | Academic subjects | Courses |
 | FAQ Categories | FAQ organization | FAQs |
-| Instruction Modes | Delivery methods | Programs, Courses |
+| Instruction Modes | Delivery methods | Programs |
 
 ## 🎛️ Template Tags
 
 PedalCMS provides numerous template tags for theme development:
 
-### Program Functions
+### Common Functions
 ```php
-pedalcms_program_title()          // Get program title
-pedalcms_program_subpages()       // Get program subpages
-pedalcms_get_the_term_list()      // Get formatted taxonomy terms
+pedalcms_get_option( $option, $fallback )          // Read a plugin setting
+pedalcms_get_label( $label_key )                   // Read a front-end label
+pedalcms_get_field( $selector, $post_id )          // Read a field value (post, term or setting)
+pedalcms_get_the_term_list( $post, $taxonomy )     // Get a formatted list of terms
+pedalcms_get_action_link( $action, $program )      // Get a program button URL
+pedalcms_get_template_part( $template, $data )     // Load a plugin template
 ```
 
-### Course Functions
+### Subpage and Filter Functions
 ```php
-pedalcms_course_prerequisites()   // Get course prerequisites
-pedalcms_course_schedule()        // Get course schedule
+pedalcms_register_program_subpage( $slug, $args )  // Register a custom program subpage
+pedalcms_get_subpages()                            // Get the registered program subpages
+pedalcms_get_active_subpage()                      // Get the slug of the current subpage
+pedalcms_subpage_link( $subpage )                  // Output or return a subpage URL
+pedalcms_register_filter( $slug, $args )           // Register an archive search filter
 ```
 
-### Person Functions
-```php
-pedalcms_person_contact_info()    // Get contact information
-pedalcms_person_job_title()       // Get job title
-```
+See the PHP API reference in the [documentation](https://pedalcms.com/docs/phpdocs/) for the full list.
 
 ## 🧪 Development
 
@@ -258,7 +267,7 @@ PedalCMS\Core\
 - **Custom Post Types**: Program, Course, Person, FAQ
 - **Custom Taxonomies**: Program Types, Person Categories, etc.
 - **Template System**: Comprehensive template hierarchy
-- **ACF Integration**: Advanced Custom Fields support
+- **CassetteCMF**: Settings pages and custom fields come from the bundled `pedalcms/cassette-cmf` library
 - **Block Editor**: Gutenberg block compatibility
 
 ## 🎨 Theming
@@ -273,15 +282,15 @@ PedalCMS is designed to work with any WordPress theme. Include the following in 
 ### CSS Classes
 All PedalCMS templates include semantic CSS classes:
 ```css
-.program-header          /* Program page headers */
-.course-info            /* Course information blocks */
-.person-profile         /* Person profile containers */
-.faq-item              /* Individual FAQ items */
+.pdlcms                      /* Wrapper around all PedalCMS templates */
+.single-program-page-header  /* Program page header */
+.program-subnav              /* Program subpage navigation */
+.pdl-breadcrumbs             /* Breadcrumb container */
 ```
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions! Documentation changes go to the separate docs repository; its *Writing the docs* page explains the style and the build.
 
 ### Development Workflow
 1. Fork the repository
@@ -297,7 +306,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ## 📄 License
 
-This project is licensed under the **GPL-2.0+** License - see the [LICENSE](gpl-3.txt) file for details.
+This project is licensed under the **GPL-2.0+** License - see the [LICENSE](LICENSE.txt) file for details.
 
 ## 🆘 Support
 
@@ -317,9 +326,7 @@ This project is licensed under the **GPL-2.0+** License - see the [LICENSE](gpl-
 - [ ] Integration with learning management systems
 
 ### Version History
-- **0.3.0** - Current version with enhanced template system
-- **0.2.0** - Added custom blocks and improved ACF integration
-- **0.1.0** - Initial release with core post types and taxonomies
+See [GitHub Releases](https://github.com/PedalCMS/pedalcms/releases) and the changelog in `readme.txt`.
 
 ---
 
