@@ -41,6 +41,7 @@
 
 	<!-- Directories and third party library exclusions. -->
 	<exclude-pattern>/vendor/*</exclude-pattern>
+	<exclude-pattern>/vendor-prefixed/*</exclude-pattern>
 	<exclude-pattern>/node_modules/*</exclude-pattern>
 
 	<!-- Translation files. -->

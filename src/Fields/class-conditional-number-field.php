@@ -12,7 +12,7 @@
 
 namespace PedalCMS\Fields;
 
-use PedalCMS\CassetteCMF\Field\Fields\Number_Field;
+use PedalCMS\Vendor\PedalCMS\CassetteCMF\Field\Fields\Number_Field;
 
 defined( 'ABSPATH' ) || exit;
 

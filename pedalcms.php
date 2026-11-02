@@ -43,6 +43,7 @@ defined( 'PEDALCMS_VERSION' ) || define( 'PEDALCMS_VERSION', '0.7.0' );
 $pedalcms_includes = [
 	'/src/_autoload.php',
 	'/vendor/autoload.php',
+	'/vendor-prefixed/autoload.php',
 	'/src/cassette.php',
 	'/src/ajax.php',
 	'/src/assets.php',

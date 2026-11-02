@@ -8,6 +8,6 @@ class ClassConditionalNumberFieldTest extends FeatureTestCase {
 	}
 
 	public function test_conditional_number_field_parent_class(): void {
-		$this->assertSame( \PedalCMS\CassetteCMF\Field\Fields\Number_Field::class, get_parent_class( \PedalCMS\Fields\Conditional_Number_Field::class ) );
+		$this->assertSame( \PedalCMS\Vendor\PedalCMS\CassetteCMF\Field\Fields\Number_Field::class, get_parent_class( \PedalCMS\Fields\Conditional_Number_Field::class ) );
 	}
 }

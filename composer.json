@@ -8,11 +8,10 @@
 			"name": "PedalCMS"
 		}
 	],
-	"repositories": [
-    ],
+	"repositories": [],
 	"require": {
 		"php": ">=8.2.0",
-		"pedalcms/cassette-cmf": "^0.1.2"
+		"pedalcms/cassette-cmf": "^0.2.1"
 	},
 	"require-dev": {
 		"squizlabs/php_codesniffer": "^3.13.6",
@@ -31,12 +30,42 @@
 			"phpstan/extension-installer": true
 		}
 	},
+	"extra": {
+		"strauss": {
+			"target_directory": "vendor-prefixed",
+			"namespace_prefix": "PedalCMS\\Vendor\\",
+			"classmap_prefix": "PedalCMS_Vendor_",
+			"constant_prefix": "PEDALCMS_VENDOR_",
+			"packages": [
+				"pedalcms/cassette-cmf"
+			],
+			"override_autoload": {
+				"pedalcms/cassette-cmf": {
+					"classmap": [
+						"src/"
+					]
+				}
+			},
+			"delete_vendor_packages": true
+		}
+	},
 	"autoload-dev": {
 		"psr-4": {
 			"PedalCMS\\Tests\\": "tests/phpunit/tests/"
 		}
 	},
 	"scripts": {
+		"prefix-namespaces": [
+			"@php -r \"if ( ! file_exists( 'bin/strauss.phar' ) ) { copy( 'https://github.com/BrianHenryIE/strauss/releases/download/0.31.1/strauss.phar', 'bin/strauss.phar' ); }\"",
+			"@php bin/strauss.phar",
+			"@composer dump-autoload"
+		],
+		"post-install-cmd": [
+			"@prefix-namespaces"
+		],
+		"post-update-cmd": [
+			"@prefix-namespaces"
+		],
 		"test:setup": "bash ./bin/install-wp-tests.sh ${WP_TESTS_DB_NAME:-pedalcms_test} ${WP_TESTS_DB_USER:-root} ${WP_TESTS_DB_PASS:-root} ${WP_TESTS_DB_HOST:-localhost} ${WP_VERSION:-latest}",
 		"build:assets": [
 			"Composer\\Config::disableProcessTimeout",

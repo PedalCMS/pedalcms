@@ -12,6 +12,8 @@
 .phpunit.result.cache
 /phpunit.xml
 /vendor/*
+/vendor-prefixed/
+/bin/strauss.phar
 /node_modules/*
 .cache/*
 /tests/phpunit/cache

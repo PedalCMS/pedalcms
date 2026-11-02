@@ -6,4 +6,6 @@ parameters:
     paths:
         - pedalcms.php
         - src/
+    scanDirectories:
+        - vendor-prefixed
     treatPhpDocTypesAsCertain: false

@@ -53,8 +53,14 @@ if [[ -f composer.json ]]; then
 		exit 1
 	fi
 
-	rm -rf "${STAGE_DIR}/vendor"
+	if [[ ! -d vendor-prefixed ]]; then
+		echo "Prefixed dependencies are missing; run composer install (it runs Strauss)." >&2
+		exit 1
+	fi
+
+	rm -rf "${STAGE_DIR}/vendor" "${STAGE_DIR}/vendor-prefixed"
 	cp -R vendor "${STAGE_DIR}/vendor"
+	cp -R vendor-prefixed "${STAGE_DIR}/vendor-prefixed"
 fi
 
 rm -f \
@@ -84,12 +90,18 @@ for required_file in \
 	"admin/js/pdl-conditional.min.js" \
 	"composer.json" \
 	"composer.lock" \
-	"vendor/autoload.php"; do
+	"vendor/autoload.php" \
+	"vendor-prefixed/autoload.php"; do
 	if ! grep -qxF "${PLUGIN_SLUG}/${required_file}" <<< "${ZIP_ENTRIES}"; then
 		echo "Zip is missing required runtime file ${required_file}." >&2
 		exit 1
 	fi
 done
+
+if grep -q "${PLUGIN_SLUG}/vendor/pedalcms/cassette-cmf/" <<< "${ZIP_ENTRIES}"; then
+	echo "Zip contains an unprefixed cassette-cmf copy." >&2
+	exit 1
+fi
 
 if grep -Eq "${PLUGIN_SLUG}/(tests/|node_modules/|\.github/|\.git/|\.cache/)" <<< "${ZIP_ENTRIES}"; then
 	echo "Zip contains development-only files." >&2

@@ -13,8 +13,8 @@
 
 namespace PedalCMS\Core;
 
-use PedalCMS\CassetteCMF\CassetteCMF;
-use PedalCMS\CassetteCMF\Field\Field_Factory;
+use PedalCMS\Vendor\PedalCMS\CassetteCMF\CassetteCMF;
+use PedalCMS\Vendor\PedalCMS\CassetteCMF\Field\Field_Factory;
 use PedalCMS\Fields\Taxonomy_Field;
 use PedalCMS\Fields\Relationship_Field;
 use PedalCMS\Fields\Conditional_Checkbox_Field;
@@ -63,6 +63,20 @@ function register_custom_field_types(): void {
  * @return void
  */
 function cassette_init(): void {
+	/*
+	 * Give this copy of the library its own front-end identity so it never
+	 * collides with another plugin's copy (asset handle, JS global, REST
+	 * namespace). Must be the first Manager call; Field_Factory::register_type()
+	 * above does not initialise the Manager.
+	 */
+	CassetteCMF::boot(
+		[
+			'asset_handle'   => 'pedalcms-cmf',
+			'js_global'      => 'PedalCMSCMFFields',
+			'rest_namespace' => 'pedalcms-cmf/v1',
+		]
+	);
+
 	$settings_fields = require Plugin::$path . '/src/fields-settings.php';
 	$program_fields  = require Plugin::$path . '/src/fields-program.php';
 	$course_fields   = require Plugin::$path . '/src/fields-course.php';
