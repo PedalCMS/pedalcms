@@ -57,8 +57,7 @@
                 "issues": "https://github.com/PedalCMS/cassette-cmf/issues",
                 "source": "https://github.com/PedalCMS/cassette-cmf/tree/v0.2.1"
             },
-            "time": "2026-11-01T18:39:00+00:00",
-            "published-time": "2026-11-01T18:40:17+00:00"
+            "time": "2026-11-01T18:39:00+00:00"
         }
     ],
     "packages-dev": [
@@ -1876,11 +1875,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.2.16",
+            "version": "2.3.4",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/46a6d9060e5a7763adfcc21ebcb8b504ebdbcb92",
-                "reference": "46a6d9060e5a7763adfcc21ebcb8b504ebdbcb92",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f20ce6f3c82556cfcfc086b152445a12d1d64fff",
+                "reference": "f20ce6f3c82556cfcfc086b152445a12d1d64fff",
                 "shasum": ""
             },
             "require": {
@@ -1936,7 +1935,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-09-25T09:31:51+00:00"
+            "time": "2026-10-28T22:38:53+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -7459,5 +7458,5 @@
         "php": ">=8.2.0"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.11.0"
+    "plugin-api-version": "2.9.0"
 }
