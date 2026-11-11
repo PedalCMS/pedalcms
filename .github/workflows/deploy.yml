@@ -1,0 +1,150 @@
+name: Deploy to WordPress.org
+
+# Publishes a released tag to the WordPress.org SVN repository.
+#
+# Manual by design: WordPress.org treats SVN as a release repository, so a push
+# there is public and awkward to undo. Runs as a dry run unless explicitly told
+# otherwise, and the job waits for a manual approval on the "wordpress-org"
+# environment (required reviewers are configured in the repository settings).
+# The SVN credentials are secrets of that environment, so no other job can read
+# them.
+#
+# Being manual does not mean the version is guessed. version-sync.yml has
+# already written the tag's version into the plugin header, the
+# PEDALCMS_VERSION constant and readme.txt, and re-pointed the tag at that
+# commit, so checking out the tag yields the synced tree. This workflow asserts
+# that before touching SVN: if the tag's files do not read the tag's version, it
+# fails instead of publishing a release WordPress.org would serve under the
+# wrong number.
+#
+# The deployed files are built by bin/build-release-zip.sh (the same ZIP the
+# GitHub release carries), not taken from the checkout: vendor-prefixed/ and the
+# minified assets only exist after the build.
+#
+# Listing assets (banner, icon, screenshots) live in .wordpress-org/ and are
+# synced to the SVN assets/ folder by the deploy action.
+#
+# Requires the environment secrets SVN_USERNAME and SVN_PASSWORD.
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag to publish, for example v0.7.0'
+        required: true
+        type: string
+      dry_run:
+        description: 'Dry run (skip the SVN commit)'
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Publish to WordPress.org
+    runs-on: ubuntu-latest
+    environment: wordpress-org
+
+    steps:
+      # The tag, not a branch: version-sync.yml points it at the commit whose
+      # files carry this version.
+      - name: Checkout the release tag
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ inputs.tag }}
+          fetch-depth: 0
+
+      # WordPress.org serves whatever Stable tag says, so a tree whose version
+      # values disagree — with each other or with the tag — must never reach SVN.
+      # set-version.sh rewrites every version-bearing file; any resulting diff
+      # means the tag was not synced.
+      - name: Verify the tag's files carry the tag's version
+        shell: bash
+        env:
+          TAG: ${{ inputs.tag }}
+        run: |
+          VERSION="${TAG#v}"
+
+          bash bin/set-version.sh "${VERSION}"
+
+          if ! git diff --quiet; then
+            git --no-pager diff --stat
+            echo "::error::${TAG} does not carry version ${VERSION}. Run the Sync Version From Tag workflow for ${TAG}, then deploy again." >&2
+            exit 1
+          fi
+
+          echo "DEPLOY_VERSION=${VERSION}" >> "${GITHUB_ENV}"
+          echo "Deploying version ${VERSION} from ${TAG}."
+
+      - name: Setup Node
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Build frontend assets
+        run: npm run build
+
+      # PHP 8.2: Strauss (run by composer install) needs PHP 8.2 or newer.
+      - name: Setup PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2.40.0
+        with:
+          php-version: '8.2'
+          tools: composer
+          coverage: none
+
+      - name: Install production Composer dependencies
+        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+
+      - name: Build release ZIP
+        shell: bash
+        run: |
+          bash bin/build-release-zip.sh "${RUNNER_TEMP}/pedalcms.zip"
+          mkdir -p "${RUNNER_TEMP}/deploy"
+          unzip -q "${RUNNER_TEMP}/pedalcms.zip" -d "${RUNNER_TEMP}/deploy"
+
+      # The live preview on wordpress.org installs the plugin from the
+      # directory, so the SVN copy of the blueprint (assets/blueprints/
+      # blueprint.json in SVN) installs PedalCMS by its directory slug instead
+      # of the GitHub release ZIP. The images in .wordpress-org/ are committed;
+      # the blueprint is generated here and not committed.
+      - name: Prepare the wordpress.org blueprint
+        run: |
+          mkdir -p .wordpress-org/blueprints
+          node scripts/playground-blueprint.mjs wporg .wordpress-org/blueprints/blueprint.json
+
+      - name: Deploy to WordPress.org
+        uses: 10up/action-wordpress-plugin-deploy@54bd289b8525fd23a5c365ec369185f2966529c2 # 2.3.0
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: pedalcms
+          VERSION: ${{ env.DEPLOY_VERSION }}
+          BUILD_DIR: ${{ runner.temp }}/deploy/pedalcms
+          ASSETS_DIR: .wordpress-org
+        with:
+          dry-run: ${{ inputs.dry_run }}
+
+      - name: Summary
+        shell: bash
+        env:
+          TAG: ${{ inputs.tag }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          {
+            echo "### WordPress.org deploy"
+            echo
+            echo "- Tag: \`${TAG}\`"
+            echo "- Version: \`${DEPLOY_VERSION}\`"
+            echo "- Dry run: \`${DRY_RUN}\`"
+            if [[ "${DRY_RUN}" == 'true' ]]; then
+              echo
+              echo "Nothing was committed to SVN. Re-run with *Dry run* unticked to publish."
+            fi
+          } >> "${GITHUB_STEP_SUMMARY}"

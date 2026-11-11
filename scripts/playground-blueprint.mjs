@@ -101,6 +101,26 @@ async function main() {
 		return;
 	}
 
+	if (command === 'wporg') {
+		const [outputPath] = args;
+
+		if (!outputPath) {
+			throw new Error('Usage: playground-blueprint.mjs wporg <output-path>');
+		}
+
+		// The wordpress.org live preview installs PedalCMS from the directory.
+		await writeBlueprint(
+			outputPath,
+			await createBlueprint({
+				pluginResource: {
+					resource: 'wordpress.org/plugins',
+					slug: PLUGIN_SLUG,
+				},
+			})
+		);
+		return;
+	}
+
 	if (command === 'release-url') {
 		const [repository, tag] = args;
 
@@ -121,7 +141,7 @@ async function main() {
 	}
 
 	throw new Error(
-		'Usage: playground-blueprint.mjs <bundle|release|release-url> [arguments]'
+		'Usage: playground-blueprint.mjs <bundle|release|wporg|release-url> [arguments]'
 	);
 }
 

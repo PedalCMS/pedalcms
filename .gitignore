@@ -29,3 +29,6 @@
 
 # Track placeholders so that empty directories stay in the repo.
 !.gitkeep
+
+# Generated at deploy time by .github/workflows/deploy.yml.
+/.wordpress-org/blueprints/

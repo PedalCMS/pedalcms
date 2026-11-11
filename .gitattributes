@@ -29,3 +29,4 @@ eslint.config.mjs export-ignore
 /assets/js/src export-ignore
 /admin/js/src export-ignore
 /scripts export-ignore
+/.wordpress-org export-ignore
