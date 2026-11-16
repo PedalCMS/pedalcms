@@ -6,7 +6,7 @@
  * Description: A program marketing powerhouse that includes: program listings, course offerings, team  directory, and more.
  * Requires PHP: 8.2
  * Requires at least: 6.9
- * Version: 0.7.0
+ * Version: 0.7.1
  * Author: pedalcms
  * Author URI: https://pedalcms.com
  * Text Domain: pedal-cms
@@ -38,7 +38,7 @@ namespace PedalCMS\Core;
 
 defined( 'ABSPATH' ) || exit;
 
-defined( 'PEDALCMS_VERSION' ) || define( 'PEDALCMS_VERSION', '0.7.0' );
+defined( 'PEDALCMS_VERSION' ) || define( 'PEDALCMS_VERSION', '0.7.1' );
 
 $pedalcms_includes = [
 	'/src/_autoload.php',
