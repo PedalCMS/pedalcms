@@ -62,7 +62,7 @@ echo wp_json_encode(
 	const state = JSON.parse(stateResponse.text);
 
 	assert(
-		state.active_plugins.includes('pedalcms/pedalcms.php'),
+		state.active_plugins.includes('pedal-cms/pedalcms.php'),
 		'PedalCMS is not active.'
 	);
 	assert(

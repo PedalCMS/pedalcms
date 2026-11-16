@@ -54,6 +54,20 @@ class ClassPluginTest extends FeatureTestCase {
 	}
 
 	/**
+	 * Verifies the Settings link is added only to this plugin's row.
+	 */
+	public function test_add_settings_link_matches_installed_folder(): void {
+		$own_file = plugin_basename( \PedalCMS\Core\Plugin::$path . '/pedalcms.php' );
+
+		$actions = \PedalCMS\Core\Plugin::add_settings_link( [ 'deactivate' => 'x' ], $own_file );
+		$this->assertCount( 2, $actions );
+		$this->assertStringContainsString( '>Settings</a>', $actions[0] );
+
+		$other = \PedalCMS\Core\Plugin::add_settings_link( [ 'deactivate' => 'x' ], 'other/other.php' );
+		$this->assertSame( [ 'deactivate' => 'x' ], $other );
+	}
+
+	/**
 	 * Verifies custom blocks register when personnel block editor mode is enabled.
 	 */
 	public function test_register_custom_blocks_when_enabled(): void {

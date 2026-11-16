@@ -16,7 +16,8 @@ if [[ -z "${PLUGIN_MAIN}" ]]; then
 fi
 
 PLUGIN_MAIN="$(basename "${PLUGIN_MAIN}")"
-PLUGIN_SLUG="${PLUGIN_MAIN%.php}"
+# Install folder inside the ZIP: the WordPress.org slug.
+PLUGIN_SLUG="pedal-cms"
 BUILD_ROOT="$(mktemp -d)"
 STAGE_DIR="${BUILD_ROOT}/${PLUGIN_SLUG}"
 

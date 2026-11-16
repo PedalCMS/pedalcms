@@ -26,7 +26,7 @@
 			},
 			"options": {
 				"activate": true,
-				"targetFolderName": "pedalcms"
+				"targetFolderName": "pedal-cms"
 			}
 		},
 		{

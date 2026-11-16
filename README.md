@@ -321,7 +321,7 @@ This project is licensed under the **GPL-2.0+** License - see the [LICENSE](LICE
 - **Website**: [https://pedalcms.com](https://pedalcms.com)
 - **Documentation**: [https://pedalcms.com/docs](https://pedalcms.com/docs)
 - **Issues**: [GitHub Issues](https://github.com/PedalCMS/pedalcms/issues)
-- **Community**: [WordPress.org Plugin Forum](https://wordpress.org/support/plugin/pedalcms/)
+- **Community**: [WordPress.org Plugin Forum](https://wordpress.org/support/plugin/pedal-cms/)
 
 ## 🚀 Roadmap
 

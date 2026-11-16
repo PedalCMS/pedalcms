@@ -280,7 +280,7 @@ class Plugin {
 	 * @since 0.1.0
 	 *
 	 * @param string[] $actions The current list of actions.
-	 * @param $plugin_file The file name identifier of the current plugin (e.g. pedalcms/pedalcms.php).
+	 * @param $plugin_file The file name identifier of the current plugin (e.g. pedal-cms/pedalcms.php).
 	 *
 	 * @return string[] The filtered actions.
 	 */
@@ -289,7 +289,7 @@ class Plugin {
 			return $actions;
 		}
 
-		$this_plugin = sprintf( '%1$s/%1$s.php', self::$name );
+		$this_plugin = plugin_basename( self::$path . '/pedalcms.php' );
 
 		if ( $this_plugin === $plugin_file ) {
 			$link = sprintf( '%s&page=%s', self::$options_page_parent, self::$options_page_slug );

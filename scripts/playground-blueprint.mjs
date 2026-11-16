@@ -4,7 +4,8 @@ const BLUEPRINT_SOURCE = new URL(
 	'../.github/playground/blueprint.json',
 	import.meta.url
 );
-const PLUGIN_SLUG = 'pedalcms';
+// WordPress.org slug, install folder and text domain.
+const PLUGIN_SLUG = 'pedal-cms';
 const CORS_PROXY_URL = 'https://wordpress-playground-cors-proxy.net/?';
 
 /**

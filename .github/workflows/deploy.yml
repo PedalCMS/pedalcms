@@ -124,9 +124,9 @@ jobs:
         env:
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
-          SLUG: pedalcms
+          SLUG: pedal-cms
           VERSION: ${{ env.DEPLOY_VERSION }}
-          BUILD_DIR: ${{ runner.temp }}/deploy/pedalcms
+          BUILD_DIR: ${{ runner.temp }}/deploy/pedal-cms
           ASSETS_DIR: .wordpress-org
         with:
           dry-run: ${{ inputs.dry_run }}
