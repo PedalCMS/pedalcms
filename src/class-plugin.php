@@ -12,7 +12,8 @@ defined( 'ABSPATH' ) || exit;
  */
 class Plugin {
 	/**
-	 * Slug style name of the plugin. Should match folder name.
+	 * Identifier for the plugin's block templates (pedalcms//<slug>) and
+	 * template overrides. Not the install folder; do not change.
 	 *
 	 * @var string
 	 */
@@ -113,7 +114,7 @@ class Plugin {
 		}
 
 		self::$path          = dirname( __DIR__ );
-		self::$url           = plugins_url( self::$name );
+		self::$url           = plugins_url( '', self::$path . '/pedalcms.php' );
 		self::$template_path = self::$path . self::$template_path;
 
 		add_action( 'init', [ self::class, 'plugin_init' ], 4 );

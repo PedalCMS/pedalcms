@@ -54,6 +54,16 @@ class ClassPluginTest extends FeatureTestCase {
 	}
 
 	/**
+	 * Verifies asset URLs point at the folder the plugin is installed in.
+	 */
+	public function test_url_points_at_install_folder(): void {
+		$this->assertStringEndsWith(
+			'/' . basename( \PedalCMS\Core\Plugin::$path ),
+			\PedalCMS\Core\Plugin::$url
+		);
+	}
+
+	/**
 	 * Verifies the Settings link is added only to this plugin's row.
 	 */
 	public function test_add_settings_link_matches_installed_folder(): void {

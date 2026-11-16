@@ -15,7 +15,7 @@ async function loginAsAdmin(page) {
 
 async function ensurePluginIsActive(
 	page,
-	pluginSlug = process.env.E2E_PLUGIN_SLUG || 'pedalcms'
+	pluginSlug = process.env.E2E_PLUGIN_SLUG || 'pedal-cms'
 ) {
 	await loginAsAdmin(page);
 	await page.goto('/wp-admin/plugins.php');

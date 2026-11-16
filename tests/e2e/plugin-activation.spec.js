@@ -8,7 +8,7 @@ test.describe('PedalCMS plugin activation', () => {
 
 		await page.goto('/wp-admin/plugins.php');
 
-		const pluginRow = page.locator('tr[data-slug="pedalcms"]');
+		const pluginRow = page.locator('tr[data-slug="pedal-cms"]');
 		await expect(pluginRow).toBeVisible();
 		await expect(pluginRow).toContainText('Pedal CMS');
 		await expect(
